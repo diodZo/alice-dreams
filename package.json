@@ -1,0 +1,19 @@
+{
+  "name": "guardiana-de-los-suenos",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Guardiana de los Sueños — plataformas 2D en Phaser 3. Mundo 1: El Reino de las Nubes de Algodón.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "assets": "python tools/prepare_assets.py"
+  },
+  "dependencies": {
+    "phaser": "3.80.1"
+  },
+  "devDependencies": {
+    "vite": "5.4.10"
+  }
+}

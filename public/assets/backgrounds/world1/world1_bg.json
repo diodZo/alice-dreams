@@ -1,0 +1,174 @@
+{
+ "frames": {
+  "island_big": {
+   "frame": {
+    "x": 119,
+    "y": 2,
+    "w": 58,
+    "h": 42
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 58,
+    "h": 42
+   },
+   "sourceSize": {
+    "w": 58,
+    "h": 42
+   }
+  },
+  "island_wide": {
+   "frame": {
+    "x": 258,
+    "y": 2,
+    "w": 45,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 45,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 45,
+    "h": 31
+   }
+  },
+  "island_eggs": {
+   "frame": {
+    "x": 179,
+    "y": 2,
+    "w": 49,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 49,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 49,
+    "h": 36
+   }
+  },
+  "island_small_a": {
+   "frame": {
+    "x": 230,
+    "y": 2,
+    "w": 26,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 26,
+    "h": 31
+   }
+  },
+  "island_small_b": {
+   "frame": {
+    "x": 305,
+    "y": 2,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   }
+  },
+  "island_tiny": {
+   "frame": {
+    "x": 327,
+    "y": 2,
+    "w": 14,
+    "h": 18
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 14,
+    "h": 18
+   },
+   "sourceSize": {
+    "w": 14,
+    "h": 18
+   }
+  },
+  "moon": {
+   "frame": {
+    "x": 75,
+    "y": 2,
+    "w": 42,
+    "h": 44
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 42,
+    "h": 44
+   },
+   "sourceSize": {
+    "w": 42,
+    "h": 44
+   }
+  },
+  "castle": {
+   "frame": {
+    "x": 2,
+    "y": 2,
+    "w": 71,
+    "h": 72
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 71,
+    "h": 72
+   },
+   "sourceSize": {
+    "w": 71,
+    "h": 72
+   }
+  }
+ },
+ "meta": {
+  "app": "tools/prepare_assets.py",
+  "image": "world1_bg.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 512,
+   "h": 128
+  },
+  "scale": "1"
+ }
+}
