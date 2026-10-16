@@ -37,6 +37,12 @@ var gravity_enabled := true
 var grounded := false
 ## Bloqueos contra los límites laterales/superior del mundo (collideWorldBounds de Phaser).
 var world_width := 0.0
+## Superficies pintadas (Mundo 2). Valores neutros = comportamiento original. Las fija el nivel
+## en cada fotograma según la pintura que se pisa y vuelven a 1 al salir del área.
+var surface_speed := 1.0
+var surface_friction := 1.0
+## Velocidad vertical con la que se aterrizó en el último paso (para la pintura elástica).
+var landed_speed := 0.0
 
 
 func setup(owner_level: Node, input: InputController) -> void:
@@ -91,12 +97,12 @@ func _control(time: float, dt: float) -> void:
 
 	# --- horizontal: aceleración y desaceleración ---
 	var axis: int = controls.axis if can_control else 0
-	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed))
+	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed
 	var vx := velocity.x
 	var rate: float
 	if grounded:
 		var same_dir := axis != 0 and signf(axis) == signf(vx if vx != 0 else axis)
-		rate = T.groundAccel if same_dir else T.groundDecel
+		rate = (T.groundAccel if same_dir else T.groundDecel) * surface_friction
 	else:
 		rate = T.airAccel if axis != 0 else T.airDecel
 	var next := target
@@ -143,8 +149,11 @@ func _control(time: float, dt: float) -> void:
 func _integrate(delta: float) -> void:
 	if gravity_enabled:
 		velocity.y += C.GRAVITY * delta
+	var was_grounded := grounded
+	var vy_before := velocity.y
 	move_and_slide()
 	grounded = is_on_floor()
+	landed_speed = vy_before if grounded and not was_grounded else 0.0
 	# límites del mundo: izquierda, derecha y arriba (abajo no: caer al vacío es peligro)
 	var half: float = ($Body.shape as RectangleShape2D).size.x / 2.0
 	var top: float = -$Body.position.y + ($Body.shape as RectangleShape2D).size.y / 2.0

@@ -48,8 +48,8 @@ func _ready() -> void:
 	kind = c.get("kind", "")
 	damage = int(c.get("damage", 1))
 	var tex_name: String = c.get("texture", "fx")
-	if tex_name == "fx":
-		sprite.texture = Assets.frame("fx", c.get("frame", ""))
+	if Assets.atlases.has(tex_name):
+		sprite.texture = Assets.frame(tex_name, c.get("frame", ""))
 	else:
 		sprite.texture = Assets.generated(tex_name)
 	var s: float = c.get("scale", 1.0)

@@ -16,6 +16,12 @@ const CHAR_OUT := {
 	"nubarron": "res://resources/bosses/nubarron_frames.tres",
 	"fx_portal": "res://resources/effects/portal_frames.tres",
 }
+## Mundo 2 (data/world2, generado por tools/world2/prepare_world2_assets.py).
+const WORLD2_FRAMES_DIR := "res://resources/world2/frames"
+const TILESET_OUT := {
+	"world1_tiles": "res://resources/tilesets/world1/world1_tileset.tres",
+	"world2_tiles": "res://resources/world2/terrain/world2_tileset.tres",
+}
 
 var errors := 0
 
@@ -29,7 +35,12 @@ func _init() -> void:
 	_build_sprite_frames(atlases.atlases, characters)
 	_build_tileset(atlases.tileset)
 	_build_weapons(_json("res://data/weapons/weapons.json"))
-	_build_enemies(_json("res://data/enemies/enemies.json"))
+	_build_enemies(_json("res://data/enemies/enemies.json"), "res://resources/enemies")
+	if FileAccess.file_exists("res://data/world2/atlases.json"):
+		var a2: Dictionary = _json("res://data/world2/atlases.json")
+		_build_sprite_frames(a2.atlases, _json("res://data/world2/characters.json"), WORLD2_FRAMES_DIR)
+		_build_tileset(a2.tileset)
+		_build_enemies(_json("res://data/world2/enemies.json"), "res://resources/world2/enemies")
 	print("[build_resources] terminado con %d errores" % errors)
 	quit(1 if errors > 0 else 0)
 
@@ -53,7 +64,7 @@ func _save(res: Resource, path: String) -> void:
 		print("  escrito ", path)
 
 
-func _build_sprite_frames(atlases: Dictionary, characters: Dictionary) -> void:
+func _build_sprite_frames(atlases: Dictionary, characters: Dictionary, out_dir := "") -> void:
 	for key in characters:
 		var c: Dictionary = characters[key]
 		var atlas_key: String = c.get("atlas", key)
@@ -82,7 +93,7 @@ func _build_sprite_frames(atlases: Dictionary, characters: Dictionary) -> void:
 					at.resource_name = fname
 					cache[fname] = at
 				sf.add_frame(anim_name, cache[fname])
-		_save(sf, CHAR_OUT[key])
+		_save(sf, out_dir.path_join("%s_frames.tres" % key) if out_dir != "" else CHAR_OUT[key])
 
 
 func _build_tileset(info: Dictionary) -> void:
@@ -116,7 +127,7 @@ func _build_tileset(info: Dictionary) -> void:
 		var td := src.get_tile_data(coords, 0)
 		td.add_collision_polygon(0)
 		td.set_collision_polygon_points(0, 0, PackedVector2Array([Vector2(-h, -h), Vector2(h, -h), Vector2(h, h), Vector2(-h, h)]))
-	_save(ts, "res://resources/tilesets/world1/world1_tileset.tres")
+	_save(ts, TILESET_OUT[info.key])
 
 
 func _build_weapons(data: Dictionary) -> void:
@@ -152,7 +163,7 @@ func _build_weapons(data: Dictionary) -> void:
 		_save(r, "res://resources/weapons/%s.tres" % id)
 
 
-func _build_enemies(data: Dictionary) -> void:
+func _build_enemies(data: Dictionary, out_dir: String) -> void:
 	var EnemyDefScript := load("res://scripts/entities/enemy_def.gd")
 	for key in data:
 		var e: Dictionary = data[key]
@@ -171,4 +182,4 @@ func _build_enemies(data: Dictionary) -> void:
 		if e.has("keepDistance"):
 			r.keep_distance = Vector2(e.keepDistance[0], e.keepDistance[1])
 		r.retreat_distance = float(e.get("retreatDistance", 0))
-		_save(r, "res://resources/enemies/%s.tres" % key)
+		_save(r, out_dir.path_join("%s.tres" % key))

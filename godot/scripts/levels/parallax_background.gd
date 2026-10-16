@@ -14,11 +14,14 @@ var base_near_y := 0.0
 var drifters: Array = []
 
 
-func build(cam: CameraRig, atlas: String, objects_atlas: String, world_width: float, world_h: float, show_castle := true, seed_key := "1") -> void:
+func build(cam: CameraRig, atlas: String, objects_atlas: String, world_width: float, world_h: float, show_castle := true, seed_key := "1", spec: Dictionary = {}) -> void:
 	camera = cam
 	world_height = world_h
 	var rnd := RandomNumberGenerator.new()
 	rnd.seed = hash(seed_key)
+	if not spec.is_empty():
+		_build_spec(spec, rnd, world_width)
+		return
 	var fixed := _layer(Vector2.ZERO, 0)
 
 	var sky := Sprite2D.new()
@@ -105,6 +108,94 @@ func build(cam: CameraRig, atlas: String, objects_atlas: String, world_width: fl
 		drifters.append({"obj": c, "speed": rnd.randf_range(4, 10)})
 
 	var near_tex := Assets.image("clouds_near")
+	clouds_near = TiledSprite.new().setup(near_tex, Vector2(C.GAME_W, near_tex.get_height()))
+	clouds_near.position = Vector2(0, C.GAME_H - near_tex.get_height() + 30)
+	_layer(Vector2.ZERO, 10).add_child(clouds_near)
+	base_far_y = clouds_far.position.y
+	base_near_y = clouds_near.position.y
+
+
+## Fondo descrito por datos (Mundo 2 y siguientes). Capas (de lejos a cerca):
+##  cielo fijo, brillos, capas con scroll_scale propio (elementos fijos o repetidos a lo largo
+##  del recorrido), banco de nubes lejano, nubes a la deriva y banco de nubes cercano.
+## spec: { sky, far, near, atlas, objectsAtlas, sparkles, drifters: [frames],
+##         layers: [{scroll: [fx, fy], depth, items: [{frame, x, y, alpha, scale}],
+##                   frames: [...], step, y: [min, max], alpha, scale, bob, top, sway}] }
+func _build_spec(spec: Dictionary, rnd: RandomNumberGenerator, world_width: float) -> void:
+	var atlas: String = spec.atlas
+	var fixed := _layer(Vector2.ZERO, 0)
+	var sky := Sprite2D.new()
+	sky.texture = Assets.image(spec.sky)
+	sky.centered = false
+	sky.scale = Vector2(C.GAME_W, C.GAME_H) / sky.texture.get_size()
+	fixed.add_child(sky)
+	if spec.get("sparkles", false):
+		var stars := _layer(Vector2.ZERO, 1)
+		for i in 18:
+			var s := Sprite2D.new()
+			s.texture = Assets.frame("fx", "sparkle")
+			s.position = Vector2(rnd.randi_range(4, C.GAME_W - 4), rnd.randi_range(4, 100))
+			var sc := rnd.randf_range(0.3, 0.6)
+			s.scale = Vector2(sc, sc)
+			s.modulate.a = rnd.randf_range(0.4, 1.0)
+			stars.add_child(s)
+	for L in spec.get("layers", []):
+		var layer := _layer(Vector2(L.scroll[0], L.scroll[1]), int(L.depth))
+		for it in L.get("items", []):
+			var img := Sprite2D.new()
+			img.texture = Assets.frame(atlas, it.frame)
+			img.position = Vector2(it.x, it.y)
+			img.modulate.a = it.get("alpha", 1.0)
+			var isc: float = it.get("scale", 1.0)
+			img.scale = Vector2(isc, isc)
+			layer.add_child(img)
+		var frames: Array = L.get("frames", [])
+		if frames.is_empty():
+			continue
+		var span: float = world_width * float(L.scroll[0]) + C.GAME_W + 200
+		var x := -60.0
+		var step: float = L.get("step", 200)
+		while x < span:
+			var img := Sprite2D.new()
+			img.texture = Assets.frame(atlas, frames[rnd.randi() % frames.size()])
+			var yr: Array = L.get("y", [60, 120])
+			if L.get("top", false):
+				Anim.set_origin(img, img.texture.get_size(), 0.5, 0.0)
+				img.position = Vector2(x, rnd.randi_range(int(yr[0]), int(yr[1])) - rnd.randi_range(0, 18))
+			else:
+				img.position = Vector2(x, rnd.randi_range(int(yr[0]), int(yr[1])))
+			img.modulate.a = L.get("alpha", 1.0)
+			var lsc: float = L.get("scale", 1.0)
+			img.scale = Vector2(lsc, lsc)
+			layer.add_child(img)
+			if L.get("bob", false):
+				var y0 := img.position.y
+				var d := rnd.randi_range(1600, 2600) / 1000.0
+				var tw := img.create_tween().set_loops()
+				tw.tween_property(img, "position:y", y0 + 3, d).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+				tw.tween_property(img, "position:y", y0, d).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+			if L.get("sway", false):
+				img.rotation_degrees = -4
+				var d2 := rnd.randi_range(1400, 2200) / 1000.0
+				var tw2 := img.create_tween().set_loops()
+				tw2.tween_property(img, "rotation_degrees", 4.0, d2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+				tw2.tween_property(img, "rotation_degrees", -4.0, d2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+			x += step + rnd.randi_range(-40, 40)
+	var far_tex := Assets.image(spec.far)
+	clouds_far = TiledSprite.new().setup(far_tex, Vector2(C.GAME_W, far_tex.get_height()))
+	clouds_far.position = Vector2(0, C.GAME_H - far_tex.get_height() + 20)
+	_layer(Vector2.ZERO, 8).add_child(clouds_far)
+	var drift_layer := _layer(Vector2.ZERO, 9)
+	var dframes: Array = spec.get("drifters", [])
+	for i in (5 if not dframes.is_empty() else 0):
+		var c := Sprite2D.new()
+		c.texture = Assets.frame(spec.get("objectsAtlas", atlas), dframes[rnd.randi() % dframes.size()])
+		c.position = Vector2(rnd.randi_range(0, C.GAME_W), rnd.randi_range(30, 110))
+		c.modulate.a = 0.7
+		c.scale = Vector2(0.6, 0.6)
+		drift_layer.add_child(c)
+		drifters.append({"obj": c, "speed": rnd.randf_range(4, 10)})
+	var near_tex := Assets.image(spec.near)
 	clouds_near = TiledSprite.new().setup(near_tex, Vector2(C.GAME_W, near_tex.get_height()))
 	clouds_near.position = Vector2(0, C.GAME_H - near_tex.get_height() + 30)
 	_layer(Vector2.ZERO, 10).add_child(clouds_near)

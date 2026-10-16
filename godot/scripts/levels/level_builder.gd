@@ -36,6 +36,12 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		platforms.add_child(CloudPlatform.new().setup(c, atlas))
 	for b in data.bridges:
 		platforms.add_child(RainbowBridge.new().setup(b, atlas))
+	# Mundo 2: puentes de reglas (rectos, inclinados, articulados, dibujados, temporales, activables)
+	out.rulers = []
+	for r in data.get("rulers", []):
+		var rb := RulerBridge.new().setup(level, r, atlas)
+		platforms.add_child(rb)
+		out.rulers.append(rb)
 	out.movers = []
 	for m in data.movers:
 		var p := MovingPlatform.new().setup(m, atlas)
@@ -57,6 +63,22 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		objects.add_child(Hazard.new().setup(h, atlas))
 	for w in data.winds:
 		objects.add_child(WindZone.new().setup(level, w))
+	# Mundo 2: pintura, lápices rodantes, borradores que rebotan, goteos, crayones e interruptores
+	for p in data.get("paints", []):
+		objects.add_child(PaintSurface.new().setup(p, atlas))
+	for r in data.get("rollers", []):
+		objects.add_child(RollingPencil.new().setup(level, r, atlas))
+	for b in data.get("bouncers", []):
+		objects.add_child(BouncingEraser.new().setup(level, b, atlas))
+	for d in data.get("drips", []):
+		objects.add_child(PaintDrip.new().setup(level, d, atlas))
+	for m in data.get("magicCrayons", []):
+		if not (m.color in GameState.get_v("magicCrayons", [])):
+			objects.add_child(MagicCrayon.new().setup(level, m, atlas))
+	for i in data.get("rulers", []).size():
+		var r: Dictionary = data.rulers[i]
+		if r.has("switch"):
+			objects.add_child(BridgeSwitch.new().setup(r.switch, out.rulers[i], atlas))
 
 	out.stars = []
 	var stars_root := Node2D.new()
@@ -68,7 +90,7 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		var id := "%s:s%d" % [data.key, i]
 		if id in collected_stars:
 			continue
-		var star := Star.new().setup(level, Vector2(float(s.x) * C.TILE + C.TILE / 2.0, float(s.y) * C.TILE + C.TILE / 2.0), {"id": id})
+		var star := Star.new().setup(level, Vector2(float(s.x) * C.TILE + C.TILE / 2.0, float(s.y) * C.TILE + C.TILE / 2.0), {"id": id, "look": frame_of("star", "")})
 		stars_root.add_child(star)
 		out.stars.append(star)
 	out.stars_total = data.stars.size()
@@ -76,21 +98,47 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		objects.add_child(WeaponPickup.new().setup(level, p))
 	out.signs = []
 	for s in data.signs:
-		var sign := SignPost.new().setup(s, atlas, touch_mode)
+		var sign := SignPost.new().setup(s, atlas, touch_mode, frame_of("signpost", "signpost"))
 		objects.add_child(sign)
 		out.signs.append(sign)
 	var decor := Node2D.new()
 	decor.name = "Decor"
 	root.add_child(decor)
+	# Mundo 2: ríos de pintura (decorado al fondo de los huecos; caer sigue siendo caer al vacío)
+	for r in data.get("rivers", []):
+		var tex := Assets.frame(atlas, "paint_%s_surface" % r.color)
+		var river := TiledSprite.new().setup(tex, Vector2(float(r.w) * C.TILE, tex.get_height()))
+		river.position = Vector2(float(r.x) * C.TILE, float(rows) * C.TILE - tex.get_height() - 4)
+		river.z_index = C.Z_DECOR_BACK
+		decor.add_child(river)
+		var tw := river.create_tween().set_loops()
+		tw.tween_property(river, "tile_offset:x", float(tex.get_width()), 2.4).from(0.0)
 	for d in data.decor:
 		decor.add_child(_build_decor(d, atlas))
 	return out
 
 
+## Fotograma de un elemento común que cada mundo puede sustituir en sus datos ("frames").
+func frame_of(key: String, default: Variant) -> Variant:
+	return data.get("frames", {}).get(key, default)
+
+
 ## Avisa (sin ocultarlo) si el atlas no contiene algún fotograma usado por los datos.
 func _check_frames(atlas: String) -> void:
-	var frames := ["cloud_puff", "jump_pad", "signpost", "flag", "rainbow_mid", "rainbow_cap_l", "rainbow_cap_r"]
-	for list in [data.clouds, data.movers, data.hazards, data.decor]:
+	var frames: Array = []
+	if data.crumbles.any(func(c): return not c.has("frame")):
+		frames.append("cloud_puff")
+	if not data.pads.is_empty():
+		frames.append("jump_pad")
+	if not data.signs.is_empty():
+		frames.append(frame_of("signpost", "signpost"))
+	if not data.checkpoints.is_empty():
+		frames.append(frame_of("flag", "flag"))
+	if not data.bridges.is_empty():
+		frames += ["rainbow_mid", "rainbow_cap_l", "rainbow_cap_r"]
+	if not data.get("rulers", []).is_empty():
+		frames += ["ruler_mid", "ruler_post", "ruler_hinge"]
+	for list in [data.clouds, data.movers, data.hazards, data.decor, data.crumbles]:
 		for x in list:
 			if x.has("frame"):
 				frames.append(x.frame)
@@ -101,7 +149,7 @@ func _check_frames(atlas: String) -> void:
 
 # ------------------------------------------------------------------- terreno
 func build_terrain() -> TileMapLayer:
-	var ts: Dictionary = Assets.tileset_info
+	var ts: Dictionary = Assets.tileset_data(data.get("tileset", "world1_tiles"))
 	grid = []
 	for y in rows:
 		var row := PackedByteArray()
@@ -113,7 +161,7 @@ func build_terrain() -> TileMapLayer:
 				grid[y][x] = 1
 	layer = TileMapLayer.new()
 	layer.name = "Terrain"
-	layer.tile_set = Assets.tileset()
+	layer.tile_set = Assets.tileset(data.get("tileset", "world1_tiles"))
 	layer.z_index = C.Z_TERRAIN
 	if layer.tile_set:
 		var src := layer.tile_set.get_source(0) as TileSetAtlasSource
@@ -165,7 +213,7 @@ func set_block(x: int, y: int, type: String) -> void:
 	if type == "":
 		layer.erase_cell(Vector2i(x, y))
 	else:
-		_put(x, y, int(Assets.tileset_info.blocks[type]))
+		_put(x, y, int(Assets.tileset_data(data.get("tileset", "world1_tiles")).blocks[type]))
 
 
 func is_solid(world_pos: Vector2) -> bool:

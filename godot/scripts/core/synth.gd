@@ -55,6 +55,22 @@ const MUSIC := {
 		"melody": "A4 . C5 . E5 . A5 . | G5 . E5 . C5 . E5 . | F5 . A5 . C6 . A5 . | G5 - - . E5 - - . | A4 . C5 . E5 . A5 . | B5 . A5 . G5 . E5 . | F5 . E5 . D5 . B4 . | A4 - - - . . . .",
 		"bassline": "A2 A2 . A2 E3 . A2 . | C3 C3 . C3 G3 . C3 . | F2 F2 . F2 C3 . F2 . | G2 G2 . G2 D3 . G2 . | A2 A2 . A2 E3 . A2 . | E2 E2 . E2 B2 . E2 . | D3 D3 . D3 A2 . D3 . | E2 E2 . E2 G#2 . E2 .",
 	},
+	# --- Mundo 2 (provisionales, estilo chiptune NES: pulso + triángulo) ---
+	"world2": {
+		"bpm": 138, "lead": ["square", 0.045], "bass": ["triangle", 0.1],
+		"melody": "G5 . E5 G5 C6 - B5 . | A5 . F5 A5 C6 - A5 . | G5 . E5 G5 C6 - E6 . | D6 - C6 . B5 - - . | A5 . C6 A5 G5 . E5 . | F5 . A5 F5 E5 . C5 . | D5 . E5 F5 G5 - B5 . | C6 - - - . . G5 . | E5 E5 . G5 C6 . E5 . | F5 F5 . A5 C6 . F5 . | G5 G5 . B5 D6 . G5 . | E6 - D6 - C6 - . . | A5 . G5 . F5 . E5 . | D5 . E5 . F5 . A5 . | G5 . F5 . E5 . D5 . | C5 - - - . . . .",
+		"bassline": "C3 . G3 . C3 . G3 . | F2 . C3 . F2 . C3 . | C3 . G3 . C3 . G3 . | G2 . D3 . G2 . D3 . | A2 . E3 . A2 . E3 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . B2 . | C3 . G2 . C3 . . . | C3 . E3 . G3 . E3 . | F2 . A2 . C3 . A2 . | G2 . B2 . D3 . B2 . | C3 . G2 . C3 . G2 . | F2 . C3 . F2 . C3 . | D3 . A2 . D3 . A2 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . . .",
+	},
+	"garabato": {
+		"bpm": 160, "lead": ["square", 0.05], "bass": ["sawtooth", 0.045],
+		"melody": "E5 . G5 . B5 . E5 . | D5 . F#5 . A5 . D5 . | C5 . E5 . G5 . C6 . | B5 - A5 - G5 - F#5 - | E5 . G5 . B5 . E6 . | D6 . B5 . G5 . E5 . | F#5 . A5 . B5 . D6 . | E6 - - - B5 - - - | G5 G5 . G5 A5 . B5 . | A5 A5 . A5 G5 . F#5 . | E5 E5 . E5 F#5 . G5 . | F#5 - E5 - D#5 - B4 - | E5 . E5 . G5 . B5 . | C6 . B5 . A5 . G5 . | F#5 . G5 . A5 . F#5 . | E5 - - - . . . .",
+		"bassline": "E2 E2 . E2 B2 . E2 . | D2 D2 . D2 A2 . D2 . | C2 C2 . C2 G2 . C2 . | B1 B1 . B1 F#2 . B1 . | E2 E2 . E2 B2 . E2 . | G2 G2 . G2 D3 . G2 . | D2 D2 . D2 A2 . D2 . | B1 B1 . B1 F#2 . B1 . | E2 E2 . E2 B2 . E2 . | A2 A2 . A2 E3 . A2 . | C2 C2 . C2 G2 . C2 . | B1 B1 . B1 D#2 . B1 . | E2 E2 . E2 B2 . E2 . | A2 A2 . A2 E3 . A2 . | B1 B1 . B1 F#2 . B1 . | E2 E2 . E2 B2 . E2 .",
+	},
+	"world2_victory": {
+		"bpm": 120, "lead": ["square", 0.05], "bass": ["triangle", 0.1],
+		"melody": "C5 . E5 . G5 . C6 - | - - B5 . C6 . D6 . | E6 - - - D6 - C6 - | B5 - G5 - - - . . | A5 . C6 . F6 - E6 . | D6 . C6 . B5 . A5 . | G5 . C6 . E6 - D6 . | C6 - - - . . . .",
+		"bassline": "C3 . G3 . C3 . G3 . | G2 . D3 . G2 . D3 . | A2 . E3 . A2 . E3 . | E2 . B2 . E2 . B2 . | F2 . C3 . F2 . C3 . | D3 . A2 . D3 . A2 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . . .",
+	},
 }
 
 static var _noise: PackedFloat32Array

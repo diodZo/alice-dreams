@@ -1,0 +1,276 @@
+{
+ "key": "world2_boss",
+ "worldId": 2,
+ "widthTiles": 60,
+ "heightTiles": 17,
+ "music": "world2",
+ "bossMusic": "garabato",
+ "tileset": "world2_tiles",
+ "objectsAtlas": "world2_objects",
+ "backgroundAtlas": "world2_bg",
+ "background": {
+  "sky": "w2_sky",
+  "far": "w2_clouds_far",
+  "near": "w2_clouds_near",
+  "atlas": "world2_bg",
+  "objectsAtlas": "world2_objects",
+  "sparkles": true,
+  "drifters": [
+   "cloud_small",
+   "cloud_puffy",
+   "cloud_long"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.02,
+     0.04
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_rainbow",
+      "x": 250,
+      "y": 84,
+      "alpha": 0.95,
+      "scale": 1.3
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.05,
+     0.08
+    ],
+    "depth": 3,
+    "items": [
+     {
+      "frame": "bg_castle",
+      "x": 300,
+      "y": 120
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.12,
+     0.05
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_cloud_face",
+     "bg_cloud_a"
+    ],
+    "step": 280,
+    "y": [
+     30,
+     80
+    ],
+    "alpha": 0.9,
+    "scale": 0.85,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.2,
+     0.08
+    ],
+    "depth": 5,
+    "frames": [
+     "bg_scrap_a",
+     "bg_scrap_b",
+     "bg_scrap_c",
+     "bg_doodle_heart",
+     "bg_doodle_star",
+     "bg_doodle_sun",
+     "bg_doodle_flower"
+    ],
+    "step": 150,
+    "y": [
+     70,
+     150
+    ],
+    "alpha": 0.8,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.32,
+     0.1
+    ],
+    "depth": 6,
+    "frames": [
+     "bg_star_hang_a",
+     "bg_star_hang_b"
+    ],
+    "step": 120,
+    "y": [
+     0,
+     0
+    ],
+    "top": true,
+    "sway": true
+   }
+  ]
+ },
+ "frames": {
+  "flag": "flag_w2",
+  "signpost": "signpost_w2",
+  "star": [
+   "world2_objects",
+   "star_big"
+  ]
+ },
+ "progress": {
+  "total": 9000,
+  "offset": 7584,
+  "scale": 1.475
+ },
+ "playerStart": {
+  "x": 2,
+  "y": 14
+ },
+ "sections": [
+  {
+   "id": "E",
+   "name": "El Gran Lienzo",
+   "from": 7300
+  }
+ ],
+ "terrain": [
+  {
+   "x": 0,
+   "y": 14,
+   "w": 60,
+   "h": 3
+  }
+ ],
+ "blocks": [],
+ "clouds": [
+  {
+   "x": 16,
+   "y": 10,
+   "frame": "cloud_puffy"
+  },
+  {
+   "x": 44,
+   "y": 10,
+   "frame": "cloud_puffy"
+  }
+ ],
+ "bridges": [],
+ "rulers": [
+  {
+   "x": 27,
+   "y": 8,
+   "w": 6
+  }
+ ],
+ "movers": [],
+ "crumbles": [],
+ "pads": [],
+ "winds": [],
+ "hazards": [],
+ "stars": [
+  {
+   "x": 14,
+   "y": 13
+  },
+  {
+   "x": 15,
+   "y": 13
+  },
+  {
+   "x": 16,
+   "y": 13
+  },
+  {
+   "x": 28,
+   "y": 7
+  },
+  {
+   "x": 29,
+   "y": 7
+  },
+  {
+   "x": 30,
+   "y": 7
+  },
+  {
+   "x": 31,
+   "y": 7
+  },
+  {
+   "x": 43,
+   "y": 13
+  },
+  {
+   "x": 44,
+   "y": 13
+  },
+  {
+   "x": 45,
+   "y": 13
+  }
+ ],
+ "enemies": [],
+ "checkpoints": [],
+ "pickups": [],
+ "signs": [],
+ "decor": [
+  {
+   "x": 1,
+   "y": 14,
+   "frame": "crayon_giant_pink"
+  },
+  {
+   "x": 2,
+   "y": 14,
+   "frame": "crayon_giant_blue"
+  },
+  {
+   "x": 30,
+   "y": 14,
+   "frame": "flower_white",
+   "front": true
+  },
+  {
+   "x": 57,
+   "y": 14,
+   "frame": "books_stack"
+  },
+  {
+   "x": 59,
+   "y": 14,
+   "frame": "pencil_giant_yellow"
+  }
+ ],
+ "gate": {
+  "x": 5,
+  "rows": [
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": "block_color"
+ },
+ "triggerX": 9,
+ "boss": {
+  "homeX": 36,
+  "minX": 8,
+  "maxX": 58,
+  "floorY": 224,
+  "frameBoth": true,
+  "scene": "res://scenes/bosses/Garabato.tscn",
+  "name": "Garabato",
+  "introBanner": "¡Garabato, el Rey de los Crayones!",
+  "defeatBanner": "¡Los colores mágicos vuelven al lienzo!",
+  "portalToast": "Se ha abierto el portal al Mundo 3",
+  "afterMusic": "world2"
+ },
+ "portal": {
+  "x": 57,
+  "y": 14
+ }
+}

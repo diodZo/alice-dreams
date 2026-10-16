@@ -74,14 +74,14 @@ func _ready() -> void:
 	fx_root.name = "FX"
 	fx_root.z_index = C.Z_FX
 	effects = Effects.new(fx_root)
-	parallax.build(camera, data.backgroundAtlas, data.objectsAtlas, world_w, world_h, true, data.key)
+	parallax.build(camera, data.backgroundAtlas, data.objectsAtlas, world_w, world_h, true, data.key, data.get("background", {}))
 
 	builder = LevelBuilder.new(self, data)
 	level_objects = builder.build(world_root, touch_mode, GameState.get_v("collectedStars", []))
 
 	controls = InputController.new()
 	var start := Vector2(float(data.playerStart.x) * C.TILE + C.TILE / 2.0, float(data.playerStart.y) * C.TILE)
-	checkpoints = CheckpointManager.new(self, data.checkpoints, data.objectsAtlas, scene_key, start, level_objects.objects)
+	checkpoints = CheckpointManager.new(self, data.checkpoints, data.objectsAtlas, scene_key, start, level_objects.objects, builder.frame_of("flag", "flag"))
 	var spawn := checkpoints.respawn_point()
 	player = PLAYER_SCENE.instantiate()
 	player.setup(self, controls)
@@ -182,6 +182,7 @@ func _physics_process(delta: float) -> void:
 ## Despacha los solapamientos del sensor de la protagonista (equivale a los overlap de
 ## Arcade Physics registrados en LevelScene.setupCollisions).
 func _process_overlaps(delta: float) -> void:
+	var paint: Dictionary = {}
 	for area in player.sensor.get_overlapping_areas():
 		if player.dead and not leaving:
 			return
@@ -206,8 +207,61 @@ func _process_overlaps(delta: float) -> void:
 				player.hurt(entity.position.x)
 			"wind":
 				entity.apply(player, delta)
+			"paint":
+				paint[entity.color] = entity.effect()
+			"magic":
+				on_magic_crayon(entity)
+			"switch":
+				entity.trigger()
 			var kind:
 				on_custom_overlap(kind, entity)
+	apply_paint(paint)
+
+
+## Superficies pintadas: los efectos sólo actúan mientras se pisa la pintura y se restauran
+## en cuanto la protagonista sale del área (o salta: en el aire no hay fricción del suelo).
+func apply_paint(paint: Dictionary) -> void:
+	var speed := 1.0
+	var friction := 1.0
+	for c in paint:
+		speed = minf(speed, float(paint[c].get("speed", 1.0)))
+		friction = minf(friction, float(paint[c].get("friction", 1.0)))
+	player.surface_speed = speed
+	player.surface_friction = friction
+	if paint.has("yellow") and player.grounded and player.landed_speed > 60 and not player.dead:
+		var v: float = paint.yellow.bounce
+		if controls.jump_held:
+			v *= 1.18
+		player.bounce(v)
+		AudioManager.play("bounce")
+		effects.sparkle(player.position.x, player.position.y, 6)
+
+
+func on_magic_crayon(m: MagicCrayon) -> void:
+	if not m.collect():
+		return
+	var list: Array = GameState.get_v("magicCrayons", []).duplicate()
+	if not m.color in list:
+		list.append(m.color)
+	GameState.set_v("magicCrayons", list)
+	AudioManager.play("pickup")
+	var names := {"red": "rojo", "blue": "azul", "yellow": "amarillo"}
+	GameState.show_banner("¡Crayón mágico %s!" % names.get(m.color, m.color))
+
+
+## Puerta de salida del nivel (castillo de Nubarrón, Gran Lienzo de Garabato...).
+func enter_door() -> void:
+	if leaving or player.dead:
+		return
+	leaving = true
+	player.frozen = true
+	player.velocity = Vector2.ZERO
+	controls.set_enabled(false)
+	AudioManager.play("portal")
+	GameState.set_v("hp", player.hp)
+	await Fader.fade_out(600)
+	if is_inside_tree():
+		Router.go(data.nextScene)
 
 
 func on_platform_contact(plat: Node) -> void:
@@ -337,6 +391,12 @@ func on_projectile_expired(proj: Projectile) -> void:
 			effects.impact(x, y, C.rgb(0x7ee07e))
 		"cloudball", "rain", "flea":
 			effects.poof(x, y, 5)
+		# Mundo 2
+		"drop", "brushpaint":
+			effects.paint_splat(x, y, proj.tint_color if proj.kind == "drop" else C.rgb(0xf7489a))
+		"rainbow", "swirl", "crayon", "splash":
+			effects.poof(x, y, 6)
+			effects.sparkle(x, y, 4)
 
 
 func on_enemy_finished(enemy: Enemy) -> void:

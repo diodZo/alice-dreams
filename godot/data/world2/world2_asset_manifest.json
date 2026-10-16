@@ -1,0 +1,4714 @@
+{
+ "version": 1,
+ "generatedBy": "tools/world2/prepare_world2_assets.py",
+ "sources": {
+  "scene": "imagenes/word_2.png",
+  "tiles": "imagenes/tilesets_world_2.png",
+  "enemies": "imagenes/enemies_world_2.png",
+  "boss": "imagenes/jefemundo2.png"
+ },
+ "resources": [
+  {
+   "name": "eraser/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    38,
+    136,
+    133,
+    208
+   ],
+   "trimmed": [
+    40,
+    138,
+    131,
+    206
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    14,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    151,
+    136,
+    244,
+    208
+   ],
+   "trimmed": [
+    153,
+    138,
+    242,
+    206
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    15,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    262,
+    136,
+    357,
+    208
+   ],
+   "trimmed": [
+    264,
+    138,
+    355,
+    206
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    15,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    381,
+    136,
+    478,
+    208
+   ],
+   "trimmed": [
+    383,
+    138,
+    476,
+    206
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    14,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    525,
+    135,
+    615,
+    208
+   ],
+   "trimmed": [
+    527,
+    137,
+    613,
+    205
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    10,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    639,
+    129,
+    732,
+    215
+   ],
+   "trimmed": [
+    641,
+    131,
+    730,
+    205
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    3
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    766,
+    133,
+    853,
+    199
+   ],
+   "trimmed": [
+    768,
+    135,
+    851,
+    197
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    12,
+    6
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    877,
+    131,
+    963,
+    195
+   ],
+   "trimmed": [
+    879,
+    133,
+    961,
+    193
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    14,
+    7
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/jump_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1075,
+    126,
+    1175,
+    194
+   ],
+   "trimmed": [
+    1077,
+    128,
+    1173,
+    192
+   ],
+   "animation": "jump",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    19,
+    5
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/jump_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1245,
+    112,
+    1357,
+    185
+   ],
+   "trimmed": [
+    1247,
+    112,
+    1355,
+    183
+   ],
+   "animation": "jump",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    19,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba | revisado a mano: sombra inferior excluida a propósito; el borrador está completo"
+  },
+  {
+   "name": "eraser/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    57,
+    271,
+    180,
+    344
+   ],
+   "trimmed": [
+    59,
+    273,
+    178,
+    344
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    14,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: abajo | revisado a mano: la estela de polvo continúa fuera de la caja; el borrador está completo"
+  },
+  {
+   "name": "eraser/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    218,
+    264,
+    379,
+    338
+   ],
+   "trimmed": [
+    220,
+    266,
+    377,
+    336
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    7,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/attack_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    409,
+    265,
+    537,
+    337
+   ],
+   "trimmed": [
+    411,
+    267,
+    535,
+    335
+   ],
+   "animation": "attack",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    9,
+    4
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    636,
+    259,
+    734,
+    343
+   ],
+   "trimmed": [
+    638,
+    261,
+    732,
+    341
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    17,
+    1
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    811,
+    260,
+    904,
+    328
+   ],
+   "trimmed": [
+    813,
+    262,
+    902,
+    326
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    17,
+    5
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1072,
+    262,
+    1183,
+    342
+   ],
+   "trimmed": [
+    1074,
+    264,
+    1181,
+    340
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    16,
+    2
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": "La hoja indica 3 fotogramas pero sólo contiene 2 dibujos del borrador; el resto son nubes de polvo (efecto eraser_dust)."
+  },
+  {
+   "name": "eraser/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1230,
+    283,
+    1361,
+    342
+   ],
+   "trimmed": [
+    1232,
+    285,
+    1361,
+    340
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 250,
+   "offset": [
+    9,
+    8
+   ],
+   "origin": [
+    26,
+    23
+   ],
+   "cell": [
+    52,
+    24
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: nubes de polvo laterales excluidas (efecto eraser_dust)"
+  },
+  {
+   "name": "crayon/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    45,
+    461,
+    140,
+    583
+   ],
+   "trimmed": [
+    47,
+    463,
+    138,
+    581
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    21,
+    3
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    154,
+    461,
+    246,
+    583
+   ],
+   "trimmed": [
+    156,
+    463,
+    244,
+    581
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    21,
+    3
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    261,
+    459,
+    356,
+    583
+   ],
+   "trimmed": [
+    263,
+    461,
+    354,
+    581
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    20,
+    2
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    373,
+    462,
+    462,
+    583
+   ],
+   "trimmed": [
+    375,
+    464,
+    460,
+    581
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    22,
+    3
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    515,
+    462,
+    603,
+    583
+   ],
+   "trimmed": [
+    517,
+    464,
+    601,
+    581
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    21,
+    3
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    627,
+    461,
+    720,
+    584
+   ],
+   "trimmed": [
+    629,
+    463,
+    718,
+    582
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    22,
+    3
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    737,
+    462,
+    829,
+    583
+   ],
+   "trimmed": [
+    739,
+    464,
+    827,
+    581
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    23,
+    3
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    851,
+    462,
+    939,
+    584
+   ],
+   "trimmed": [
+    853,
+    464,
+    937,
+    582
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    22,
+    3
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/charge_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1012,
+    455,
+    1125,
+    584
+   ],
+   "trimmed": [
+    1017,
+    458,
+    1123,
+    583
+   ],
+   "animation": "charge",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    21,
+    1
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/charge_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1156,
+    467,
+    1269,
+    584
+   ],
+   "trimmed": [
+    1158,
+    469,
+    1267,
+    583
+   ],
+   "animation": "charge",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    26,
+    4
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/charge_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1302,
+    456,
+    1414,
+    584
+   ],
+   "trimmed": [
+    1304,
+    458,
+    1412,
+    582
+   ],
+   "animation": "charge",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    25,
+    1
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    64,
+    622,
+    185,
+    734
+   ],
+   "trimmed": [
+    66,
+    623,
+    183,
+    734
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    18,
+    5
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: abajo | revisado a mano: brazo completo; sólo se excluye una chispa"
+  },
+  {
+   "name": "crayon/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    212,
+    622,
+    414,
+    734
+   ],
+   "trimmed": [
+    260,
+    622,
+    412,
+    732
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    24,
+    5
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/attack_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    433,
+    622,
+    541,
+    733
+   ],
+   "trimmed": [
+    435,
+    622,
+    539,
+    731
+   ],
+   "animation": "attack",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    19,
+    5
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    626,
+    624,
+    733,
+    733
+   ],
+   "trimmed": [
+    628,
+    624,
+    731,
+    731
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    22,
+    6
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba | revisado a mano: estrellita de golpe excluida"
+  },
+  {
+   "name": "crayon/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    809,
+    625,
+    907,
+    732
+   ],
+   "trimmed": [
+    811,
+    627,
+    905,
+    730
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    21,
+    7
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1027,
+    638,
+    1176,
+    729
+   ],
+   "trimmed": [
+    1029,
+    640,
+    1174,
+    727
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    13,
+    11
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1221,
+    660,
+    1375,
+    729
+   ],
+   "trimmed": [
+    1223,
+    662,
+    1373,
+    727
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 250,
+   "offset": [
+    23,
+    17
+   ],
+   "origin": [
+    33,
+    35
+   ],
+   "cell": [
+    66,
+    36
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    34,
+    853,
+    112,
+    948
+   ],
+   "trimmed": [
+    36,
+    855,
+    110,
+    946
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    18,
+    4
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    121,
+    851,
+    201,
+    946
+   ],
+   "trimmed": [
+    124,
+    853,
+    199,
+    944
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    16,
+    4
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    212,
+    852,
+    289,
+    949
+   ],
+   "trimmed": [
+    214,
+    854,
+    287,
+    945
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    17,
+    4
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    303,
+    846,
+    386,
+    946
+   ],
+   "trimmed": [
+    305,
+    848,
+    384,
+    944
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    16,
+    3
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    428,
+    849,
+    507,
+    943
+   ],
+   "trimmed": [
+    430,
+    851,
+    505,
+    941
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    16,
+    4
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    533,
+    845,
+    601,
+    948
+   ],
+   "trimmed": [
+    535,
+    847,
+    599,
+    946
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    26,
+    2
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    624,
+    845,
+    695,
+    943
+   ],
+   "trimmed": [
+    626,
+    847,
+    693,
+    941
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    14,
+    3
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    700,
+    842,
+    779,
+    949
+   ],
+   "trimmed": [
+    702,
+    842,
+    775,
+    942
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    21,
+    2
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba | revisado a mano: pincel completo; el panel queda justo encima"
+  },
+  {
+   "name": "brush/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    820,
+    844,
+    905,
+    949
+   ],
+   "trimmed": [
+    824,
+    846,
+    905,
+    945
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    19,
+    2
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": "La hoja indica 4 fotogramas pero contiene 3 pinceles; las gotas sueltas se extraen como proyectiles. Se recorta el cuerpo sin el chorro."
+  },
+  {
+   "name": "brush/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1008,
+    849,
+    1107,
+    949
+   ],
+   "trimmed": [
+    1010,
+    851,
+    1105,
+    946
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    22,
+    3
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": "La hoja indica 4 fotogramas pero contiene 3 pinceles; las gotas sueltas se extraen como proyectiles. Se recorta el cuerpo sin el chorro."
+  },
+  {
+   "name": "brush/attack_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1205,
+    845,
+    1300,
+    949
+   ],
+   "trimmed": [
+    1207,
+    847,
+    1300,
+    947
+   ],
+   "animation": "attack",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    21,
+    2
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: cuerpo sin el chorro de pintura (proyectil aparte)"
+  },
+  {
+   "name": "brush/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    44,
+    985,
+    153,
+    1072
+   ],
+   "trimmed": [
+    46,
+    985,
+    151,
+    1070
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    12,
+    6
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    234,
+    985,
+    319,
+    1073
+   ],
+   "trimmed": [
+    236,
+    985,
+    317,
+    1071
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    17,
+    6
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba | revisado a mano: estrellita de golpe excluida"
+  },
+  {
+   "name": "brush/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    424,
+    989,
+    595,
+    1067
+   ],
+   "trimmed": [
+    428,
+    991,
+    593,
+    1065
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    12,
+    9
+   ],
+   "origin": [
+    29,
+    29
+   ],
+   "cell": [
+    58,
+    30
+   ],
+   "status": "ok",
+   "notes": "La hoja indica 2 fotogramas pero sólo hay un pincel tumbado (el charco es un efecto)."
+  },
+  {
+   "name": "garabato/idle_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    53,
+    9,
+    294,
+    183
+   ],
+   "trimmed": [
+    56,
+    12,
+    291,
+    180
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    30,
+    8
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/idle_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    317,
+    9,
+    553,
+    183
+   ],
+   "trimmed": [
+    318,
+    12,
+    546,
+    180
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    26,
+    8
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/idle_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    593,
+    10,
+    839,
+    183
+   ],
+   "trimmed": [
+    595,
+    13,
+    836,
+    180
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    28,
+    8
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/move_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    22,
+    195,
+    238,
+    361
+   ],
+   "trimmed": [
+    23,
+    196,
+    235,
+    358
+   ],
+   "animation": "move",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    28,
+    11
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/move_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    262,
+    195,
+    482,
+    362
+   ],
+   "trimmed": [
+    264,
+    197,
+    479,
+    360
+   ],
+   "animation": "move",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    28,
+    10
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/move_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    503,
+    201,
+    724,
+    362
+   ],
+   "trimmed": [
+    505,
+    202,
+    722,
+    360
+   ],
+   "animation": "move",
+   "frame": 2,
+   "duration_ms": 111,
+   "offset": [
+    28,
+    12
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/move_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    756,
+    199,
+    957,
+    362
+   ],
+   "trimmed": [
+    756,
+    201,
+    954,
+    359
+   ],
+   "animation": "move",
+   "frame": 3,
+   "duration_ms": 111,
+   "offset": [
+    41,
+    12
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/move_4",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    974,
+    196,
+    1184,
+    364
+   ],
+   "trimmed": [
+    976,
+    199,
+    1181,
+    361
+   ],
+   "animation": "move",
+   "frame": 4,
+   "duration_ms": 111,
+   "offset": [
+    33,
+    11
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/move_5",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1207,
+    198,
+    1425,
+    364
+   ],
+   "trimmed": [
+    1209,
+    199,
+    1422,
+    361
+   ],
+   "animation": "move",
+   "frame": 5,
+   "duration_ms": 111,
+   "offset": [
+    28,
+    11
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/shoot_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    40,
+    386,
+    277,
+    546
+   ],
+   "trimmed": [
+    41,
+    387,
+    274,
+    544
+   ],
+   "animation": "shoot",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    35,
+    13
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "Fotogramas 2 y 3 recortados sin el chorro de pintura (se extrae como efecto rainbow_burst)."
+  },
+  {
+   "name": "garabato/shoot_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    293,
+    383,
+    543,
+    546
+   ],
+   "trimmed": [
+    295,
+    385,
+    543,
+    543
+   ],
+   "animation": "shoot",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    25,
+    12
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: cuerpo sin el chorro arcoíris (efecto rainbow_burst)"
+  },
+  {
+   "name": "garabato/shoot_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    737,
+    390,
+    968,
+    550
+   ],
+   "trimmed": [
+    739,
+    392,
+    968,
+    546
+   ],
+   "animation": "shoot",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    34,
+    14
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "Fotogramas 2 y 3 recortados sin el chorro de pintura (se extrae como efecto rainbow_burst)."
+  },
+  {
+   "name": "garabato/shoot_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1106,
+    391,
+    1329,
+    551
+   ],
+   "trimmed": [
+    1108,
+    393,
+    1326,
+    548
+   ],
+   "animation": "shoot",
+   "frame": 3,
+   "duration_ms": 143,
+   "offset": [
+    34,
+    13
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "Fotogramas 2 y 3 recortados sin el chorro de pintura (se extrae como efecto rainbow_burst)."
+  },
+  {
+   "name": "garabato/swirl_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    36,
+    560,
+    286,
+    726
+   ],
+   "trimmed": [
+    39,
+    562,
+    283,
+    724
+   ],
+   "animation": "swirl",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    22,
+    11
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "Las espirales sueltas se extraen como efecto swirl."
+  },
+  {
+   "name": "garabato/swirl_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    351,
+    570,
+    568,
+    727
+   ],
+   "trimmed": [
+    353,
+    570,
+    566,
+    724
+   ],
+   "animation": "swirl",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    38,
+    14
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "Las espirales sueltas se extraen como efecto swirl."
+  },
+  {
+   "name": "garabato/swirl_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    658,
+    561,
+    918,
+    731
+   ],
+   "trimmed": [
+    701,
+    564,
+    917,
+    728
+   ],
+   "animation": "swirl",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    23,
+    10
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "Las espirales sueltas se extraen como efecto swirl."
+  },
+  {
+   "name": "garabato/swirl_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1071,
+    579,
+    1308,
+    731
+   ],
+   "trimmed": [
+    1071,
+    582,
+    1300,
+    729
+   ],
+   "animation": "swirl",
+   "frame": 3,
+   "duration_ms": 143,
+   "offset": [
+    24,
+    17
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "Las espirales sueltas se extraen como efecto swirl."
+  },
+  {
+   "name": "garabato/spin_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    85,
+    741,
+    295,
+    916
+   ],
+   "trimmed": [
+    88,
+    744,
+    294,
+    914
+   ],
+   "animation": "spin",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    36,
+    7
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/spin_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    421,
+    754,
+    651,
+    936
+   ],
+   "trimmed": [
+    421,
+    755,
+    650,
+    933
+   ],
+   "animation": "spin",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    8,
+    4
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: crayones orbitando recortados: se generan aparte en el juego"
+  },
+  {
+   "name": "garabato/spin_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    763,
+    753,
+    935,
+    935
+   ],
+   "trimmed": [
+    763,
+    756,
+    935,
+    933
+   ],
+   "animation": "spin",
+   "frame": 2,
+   "duration_ms": 111,
+   "offset": [
+    42,
+    4
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: crayones orbitando recortados: se generan aparte en el juego"
+  },
+  {
+   "name": "garabato/spin_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1092,
+    747,
+    1381,
+    934
+   ],
+   "trimmed": [
+    1092,
+    750,
+    1340,
+    934
+   ],
+   "animation": "spin",
+   "frame": 3,
+   "duration_ms": 111,
+   "offset": [
+    28,
+    1
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: crayones orbitando recortados: se generan aparte en el juego"
+  },
+  {
+   "name": "garabato/stun_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    42,
+    934,
+    265,
+    1077
+   ],
+   "trimmed": [
+    43,
+    937,
+    262,
+    1074
+   ],
+   "animation": "stun",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    29,
+    21
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/stun_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    269,
+    926,
+    473,
+    1079
+   ],
+   "trimmed": [
+    269,
+    927,
+    473,
+    1077
+   ],
+   "animation": "stun",
+   "frame": 1,
+   "duration_ms": 250,
+   "offset": [
+    34,
+    16
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: estrella decorativa excluida"
+  },
+  {
+   "name": "garabato/hurt_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    517,
+    949,
+    785,
+    1077
+   ],
+   "trimmed": [
+    518,
+    952,
+    782,
+    1074
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    24,
+    27
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/defeated_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    797,
+    969,
+    1052,
+    1073
+   ],
+   "trimmed": [
+    798,
+    972,
+    1052,
+    1070
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 333,
+   "offset": [
+    22,
+    37
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato/defeated_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1068,
+    971,
+    1419,
+    1077
+   ],
+   "trimmed": [
+    1070,
+    974,
+    1416,
+    1074
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 333,
+   "offset": [
+    5,
+    37
+   ],
+   "origin": [
+    76,
+    79
+   ],
+   "cell": [
+    152,
+    80
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_big",
+   "type": "fx",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    813,
+    986,
+    924,
+    1038
+   ],
+   "trimmed": [
+    814,
+    987,
+    923,
+    1037
+   ],
+   "size": [
+    30,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_blob",
+   "type": "fx",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    982,
+    996,
+    1025,
+    1022
+   ],
+   "trimmed": [
+    983,
+    997,
+    1024,
+    1021
+   ],
+   "size": [
+    11,
+    7
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_drop",
+   "type": "fx",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1347,
+    886,
+    1393,
+    911
+   ],
+   "trimmed": [
+    1347,
+    886,
+    1391,
+    910
+   ],
+   "size": [
+    12,
+    7
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "eraser_dust",
+   "type": "fx",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1138,
+    990,
+    1184,
+    1035
+   ],
+   "trimmed": [
+    1138,
+    991,
+    1183,
+    1034
+   ],
+   "size": [
+    12,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_trail",
+   "type": "fx",
+   "source": "imagenes/enemies_world_2.png",
+   "crop": [
+    1313,
+    998,
+    1364,
+    1027
+   ],
+   "trimmed": [
+    1313,
+    998,
+    1362,
+    1027
+   ],
+   "size": [
+    14,
+    8
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rainbow_burst",
+   "type": "fx",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    972,
+    412,
+    1086,
+    532
+   ],
+   "trimmed": [
+    972,
+    412,
+    1086,
+    532
+   ],
+   "size": [
+    34,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: abajo | revisado a mano: salpicadura separada del brazo del jefe"
+  },
+  {
+   "name": "swirl",
+   "type": "fx",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1312,
+    610,
+    1446,
+    712
+   ],
+   "trimmed": [
+    1312,
+    614,
+    1437,
+    712
+   ],
+   "size": [
+    38,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_red",
+   "type": "fx",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    407,
+    740,
+    473,
+    795
+   ],
+   "trimmed": [
+    408,
+    741,
+    472,
+    794
+   ],
+   "size": [
+    20,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_yellow",
+   "type": "fx",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    367,
+    805,
+    415,
+    884
+   ],
+   "trimmed": [
+    368,
+    806,
+    414,
+    883
+   ],
+   "size": [
+    14,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_blue",
+   "type": "fx",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    694,
+    837,
+    736,
+    903
+   ],
+   "trimmed": [
+    695,
+    838,
+    735,
+    902
+   ],
+   "size": [
+    12,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_purple",
+   "type": "fx",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1061,
+    774,
+    1100,
+    849
+   ],
+   "trimmed": [
+    1062,
+    775,
+    1099,
+    848
+   ],
+   "size": [
+    11,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_green",
+   "type": "fx",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    941,
+    865,
+    1006,
+    919
+   ],
+   "trimmed": [
+    942,
+    866,
+    1005,
+    918
+   ],
+   "size": [
+    19,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "book_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    720,
+    210,
+    824,
+    256
+   ],
+   "trimmed": [
+    722,
+    212,
+    822,
+    254
+   ],
+   "size": [
+    40,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "book_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    831,
+    211,
+    929,
+    256
+   ],
+   "trimmed": [
+    833,
+    213,
+    927,
+    254
+   ],
+   "size": [
+    38,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "book_stack_small",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    938,
+    188,
+    1046,
+    265
+   ],
+   "trimmed": [
+    940,
+    190,
+    1044,
+    263
+   ],
+   "size": [
+    42,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_face",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1064,
+    194,
+    1208,
+    260
+   ],
+   "trimmed": [
+    1066,
+    196,
+    1206,
+    258
+   ],
+   "size": [
+    56,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_puffy",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1211,
+    195,
+    1315,
+    250
+   ],
+   "trimmed": [
+    1213,
+    197,
+    1313,
+    248
+   ],
+   "size": [
+    40,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_long",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1318,
+    195,
+    1426,
+    250
+   ],
+   "trimmed": [
+    1320,
+    199,
+    1424,
+    248
+   ],
+   "size": [
+    42,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_plat_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    715,
+    300,
+    790,
+    334
+   ],
+   "trimmed": [
+    717,
+    303,
+    790,
+    332
+   ],
+   "size": [
+    30,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: fila de tres crayones unidos: se separa cada uno"
+  },
+  {
+   "name": "crayon_plat_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    791,
+    300,
+    870,
+    334
+   ],
+   "trimmed": [
+    791,
+    302,
+    870,
+    333
+   ],
+   "size": [
+    32,
+    13
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fila de tres crayones unidos: se separa cada uno"
+  },
+  {
+   "name": "crayon_plat_yellow",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    871,
+    300,
+    950,
+    334
+   ],
+   "trimmed": [
+    871,
+    302,
+    948,
+    333
+   ],
+   "size": [
+    31,
+    13
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: fila de tres crayones unidos: se separa cada uno"
+  },
+  {
+   "name": "notebook_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    957,
+    296,
+    1150,
+    372
+   ],
+   "trimmed": [
+    959,
+    298,
+    1148,
+    370
+   ],
+   "size": [
+    76,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pencil_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1160,
+    303,
+    1305,
+    371
+   ],
+   "trimmed": [
+    1162,
+    305,
+    1303,
+    369
+   ],
+   "size": [
+    57,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pinwheel_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1307,
+    197,
+    1429,
+    372
+   ],
+   "trimmed": [
+    1309,
+    251,
+    1427,
+    370
+   ],
+   "size": [
+    48,
+    48
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "ruler_mid",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    56,
+    452,
+    104,
+    492
+   ],
+   "trimmed": [
+    56,
+    452,
+    104,
+    492
+   ],
+   "size": [
+    20,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: abajo, izquierda, derecha | revisado a mano: tramo central opaco de la regla para repetirlo en mosaico"
+  },
+  {
+   "name": "ruler_post",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    455,
+    438,
+    482,
+    519
+   ],
+   "trimmed": [
+    457,
+    440,
+    480,
+    517
+   ],
+   "size": [
+    10,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "ruler_end",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    238,
+    447,
+    309,
+    503
+   ],
+   "trimmed": [
+    240,
+    449,
+    307,
+    501
+   ],
+   "size": [
+    27,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "ruler_hinge",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    113,
+    575,
+    141,
+    602
+   ],
+   "trimmed": [
+    113,
+    575,
+    141,
+    602
+   ],
+   "size": [
+    12,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: abajo, izquierda, derecha | revisado a mano: bisagra extraída del puente articulado"
+  },
+  {
+   "name": "paint_blue_surface",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    583,
+    444,
+    684,
+    495
+   ],
+   "trimmed": [
+    585,
+    446,
+    682,
+    493
+   ],
+   "size": [
+    39,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_yellow_surface",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    583,
+    511,
+    684,
+    563
+   ],
+   "trimmed": [
+    585,
+    513,
+    682,
+    561
+   ],
+   "size": [
+    39,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_pink_surface",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    583,
+    579,
+    684,
+    629
+   ],
+   "trimmed": [
+    585,
+    581,
+    682,
+    627
+   ],
+   "size": [
+    39,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_blue_puddle",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    935,
+    465,
+    1013,
+    497
+   ],
+   "trimmed": [
+    936,
+    465,
+    1011,
+    495
+   ],
+   "size": [
+    30,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_yellow_puddle",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    935,
+    532,
+    1013,
+    564
+   ],
+   "trimmed": [
+    936,
+    532,
+    1011,
+    562
+   ],
+   "size": [
+    30,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_pink_puddle",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    934,
+    597,
+    1013,
+    632
+   ],
+   "trimmed": [
+    936,
+    599,
+    1011,
+    630
+   ],
+   "size": [
+    30,
+    13
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_giant_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    36,
+    692,
+    75,
+    786
+   ],
+   "trimmed": [
+    38,
+    694,
+    73,
+    784
+   ],
+   "size": [
+    14,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_giant_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    85,
+    692,
+    123,
+    786
+   ],
+   "trimmed": [
+    87,
+    694,
+    121,
+    784
+   ],
+   "size": [
+    14,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_giant_yellow",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    134,
+    692,
+    172,
+    786
+   ],
+   "trimmed": [
+    136,
+    694,
+    170,
+    784
+   ],
+   "size": [
+    14,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crayon_giant_purple",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    184,
+    692,
+    222,
+    786
+   ],
+   "trimmed": [
+    186,
+    694,
+    220,
+    784
+   ],
+   "size": [
+    14,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pencil_giant_yellow",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    234,
+    694,
+    270,
+    785
+   ],
+   "trimmed": [
+    236,
+    696,
+    268,
+    783
+   ],
+   "size": [
+    13,
+    35
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pencil_giant_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    280,
+    694,
+    317,
+    785
+   ],
+   "trimmed": [
+    282,
+    696,
+    315,
+    783
+   ],
+   "size": [
+    14,
+    35
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "books_stack",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    337,
+    699,
+    454,
+    803
+   ],
+   "trimmed": [
+    339,
+    701,
+    452,
+    787
+   ],
+   "size": [
+    46,
+    35
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "notebook_page",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    470,
+    701,
+    590,
+    783
+   ],
+   "trimmed": [
+    472,
+    703,
+    588,
+    781
+   ],
+   "size": [
+    47,
+    32
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bush_wide",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    22,
+    817,
+    188,
+    885
+   ],
+   "trimmed": [
+    24,
+    819,
+    186,
+    883
+   ],
+   "size": [
+    65,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "flower_white",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    203,
+    822,
+    247,
+    885
+   ],
+   "trimmed": [
+    205,
+    824,
+    245,
+    883
+   ],
+   "size": [
+    16,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "flower_tulip",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    256,
+    817,
+    303,
+    884
+   ],
+   "trimmed": [
+    258,
+    819,
+    301,
+    882
+   ],
+   "size": [
+    18,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pinwheel_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    315,
+    812,
+    378,
+    886
+   ],
+   "trimmed": [
+    317,
+    814,
+    376,
+    884
+   ],
+   "size": [
+    24,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pinwheel_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    391,
+    814,
+    452,
+    886
+   ],
+   "trimmed": [
+    393,
+    816,
+    450,
+    884
+   ],
+   "size": [
+    23,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_small",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    455,
+    823,
+    528,
+    876
+   ],
+   "trimmed": [
+    457,
+    825,
+    526,
+    874
+   ],
+   "size": [
+    28,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rolling_pencil",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    700,
+    704,
+    763,
+    767
+   ],
+   "trimmed": [
+    700,
+    723,
+    761,
+    765
+   ],
+   "size": [
+    25,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: líneas de movimiento excluidas"
+  },
+  {
+   "name": "bouncing_eraser",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    849,
+    701,
+    906,
+    766
+   ],
+   "trimmed": [
+    851,
+    703,
+    906,
+    764
+   ],
+   "size": [
+    22,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "splash_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    610,
+    794,
+    688,
+    878
+   ],
+   "trimmed": [
+    620,
+    811,
+    686,
+    876
+   ],
+   "size": [
+    27,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "splash_yellow",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    691,
+    795,
+    763,
+    877
+   ],
+   "trimmed": [
+    693,
+    814,
+    761,
+    875
+   ],
+   "size": [
+    28,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "splash_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    766,
+    800,
+    839,
+    877
+   ],
+   "trimmed": [
+    768,
+    820,
+    831,
+    875
+   ],
+   "size": [
+    26,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "drip_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    858,
+    801,
+    906,
+    882
+   ],
+   "trimmed": [
+    860,
+    803,
+    906,
+    880
+   ],
+   "size": [
+    19,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "drip_yellow",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    908,
+    801,
+    958,
+    882
+   ],
+   "trimmed": [
+    908,
+    803,
+    958,
+    880
+   ],
+   "size": [
+    20,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "drip_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    960,
+    801,
+    1014,
+    882
+   ],
+   "trimmed": [
+    963,
+    803,
+    1012,
+    858
+   ],
+   "size": [
+    20,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_big",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1092,
+    703,
+    1149,
+    758
+   ],
+   "trimmed": [
+    1094,
+    705,
+    1147,
+    756
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "magic_crayon_red",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1220,
+    699,
+    1268,
+    760
+   ],
+   "trimmed": [
+    1225,
+    701,
+    1266,
+    758
+   ],
+   "size": [
+    17,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "magic_crayon_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1280,
+    699,
+    1326,
+    760
+   ],
+   "trimmed": [
+    1282,
+    701,
+    1324,
+    758
+   ],
+   "size": [
+    17,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "magic_crayon_yellow",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1335,
+    699,
+    1381,
+    761
+   ],
+   "trimmed": [
+    1337,
+    701,
+    1379,
+    759
+   ],
+   "size": [
+    17,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "flag_w2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1042,
+    783,
+    1107,
+    878
+   ],
+   "trimmed": [
+    1044,
+    785,
+    1105,
+    876
+   ],
+   "size": [
+    28,
+    41
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "arrow_sign",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1119,
+    812,
+    1181,
+    878
+   ],
+   "trimmed": [
+    1121,
+    814,
+    1179,
+    876
+   ],
+   "size": [
+    27,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sign_heart",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1192,
+    809,
+    1254,
+    878
+   ],
+   "trimmed": [
+    1194,
+    811,
+    1252,
+    876
+   ],
+   "size": [
+    27,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "signpost_w2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1265,
+    795,
+    1326,
+    878
+   ],
+   "trimmed": [
+    1267,
+    797,
+    1324,
+    876
+   ],
+   "size": [
+    26,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "portal_w2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1334,
+    770,
+    1430,
+    880
+   ],
+   "trimmed": [
+    1336,
+    772,
+    1428,
+    878
+   ],
+   "size": [
+    37,
+    43
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_cloud_face",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    16,
+    964,
+    147,
+    1048
+   ],
+   "trimmed": [
+    18,
+    966,
+    145,
+    1046
+   ],
+   "size": [
+    51,
+    32
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_cloud_a",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    156,
+    963,
+    327,
+    1066
+   ],
+   "trimmed": [
+    159,
+    965,
+    325,
+    1049
+   ],
+   "size": [
+    67,
+    34
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_star_hang_a",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    330,
+    950,
+    374,
+    1032
+   ],
+   "trimmed": [
+    330,
+    950,
+    374,
+    1027
+   ],
+   "size": [
+    18,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba | revisado a mano: el hilo sube hasta la cabecera del panel"
+  },
+  {
+   "name": "bg_star_hang_b",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    390,
+    958,
+    428,
+    1046
+   ],
+   "trimmed": [
+    390,
+    958,
+    428,
+    1044
+   ],
+   "size": [
+    16,
+    35
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: el hilo sube hasta la cabecera del panel"
+  },
+  {
+   "name": "bg_rainbow",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    487,
+    961,
+    687,
+    1045
+   ],
+   "trimmed": [
+    489,
+    963,
+    685,
+    1043
+   ],
+   "size": [
+    89,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_doodle_heart",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    718,
+    970,
+    768,
+    1015
+   ],
+   "trimmed": [
+    720,
+    972,
+    766,
+    1013
+   ],
+   "size": [
+    19,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_doodle_star",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    771,
+    976,
+    815,
+    1020
+   ],
+   "trimmed": [
+    773,
+    978,
+    813,
+    1018
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_doodle_sun",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    820,
+    964,
+    880,
+    1021
+   ],
+   "trimmed": [
+    834,
+    966,
+    866,
+    1007
+   ],
+   "size": [
+    13,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_doodle_flower",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    882,
+    970,
+    929,
+    1017
+   ],
+   "trimmed": [
+    889,
+    972,
+    927,
+    1010
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_scrap_a",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    930,
+    960,
+    1010,
+    1048
+   ],
+   "trimmed": [
+    936,
+    960,
+    1010,
+    1039
+   ],
+   "size": [
+    30,
+    32
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_scrap_b",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1010,
+    958,
+    1100,
+    1048
+   ],
+   "trimmed": [
+    1010,
+    958,
+    1100,
+    1042
+   ],
+   "size": [
+    36,
+    34
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: hojas superpuestas: se toma una"
+  },
+  {
+   "name": "bg_scrap_c",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1112,
+    962,
+    1185,
+    1048
+   ],
+   "trimmed": [
+    1124,
+    962,
+    1185,
+    1043
+   ],
+   "size": [
+    25,
+    33
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_castle",
+   "type": "background",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1190,
+    909,
+    1436,
+    1065
+   ],
+   "trimmed": [
+    1192,
+    911,
+    1429,
+    1053
+   ],
+   "size": [
+    119,
+    72
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "w2_sky",
+   "type": "generated_background",
+   "source": "imagenes/word_2.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_2.png (cielo ['#307AFC', '#3283FC', '#95B4F9', '#E7DAFC'], nubes ['#FCECF5', '#FCDEFC', '#5EAAFC', '#FED965'])"
+  },
+  {
+   "name": "w2_clouds_far",
+   "type": "generated_background",
+   "source": "imagenes/word_2.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_2.png (cielo ['#307AFC', '#3283FC', '#95B4F9', '#E7DAFC'], nubes ['#FCECF5', '#FCDEFC', '#5EAAFC', '#FED965'])"
+  },
+  {
+   "name": "w2_clouds_near",
+   "type": "generated_background",
+   "source": "imagenes/word_2.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_2.png (cielo ['#307AFC', '#3283FC', '#95B4F9', '#E7DAFC'], nubes ['#FCECF5', '#FCDEFC', '#5EAAFC', '#FED965'])"
+  },
+  {
+   "name": "block_a",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1044,
+    447,
+    1103,
+    505
+   ],
+   "trimmed": [
+    1046,
+    449,
+    1101,
+    503
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_b",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1107,
+    447,
+    1166,
+    505
+   ],
+   "trimmed": [
+    1109,
+    449,
+    1164,
+    503
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_c",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1169,
+    447,
+    1227,
+    504
+   ],
+   "trimmed": [
+    1171,
+    449,
+    1225,
+    502
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_star_w2",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1235,
+    447,
+    1293,
+    505
+   ],
+   "trimmed": [
+    1237,
+    449,
+    1291,
+    503
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_heart_w2",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1301,
+    446,
+    1359,
+    504
+   ],
+   "trimmed": [
+    1303,
+    448,
+    1357,
+    502
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_color",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1366,
+    447,
+    1424,
+    506
+   ],
+   "trimmed": [
+    1368,
+    449,
+    1422,
+    504
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_notebook",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1044,
+    553,
+    1104,
+    614
+   ],
+   "trimmed": [
+    1046,
+    555,
+    1102,
+    612
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_notebook_heart",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1107,
+    553,
+    1167,
+    614
+   ],
+   "trimmed": [
+    1109,
+    555,
+    1165,
+    612
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_notebook_star",
+   "type": "block",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    1170,
+    553,
+    1230,
+    614
+   ],
+   "trimmed": [
+    1172,
+    555,
+    1228,
+    612
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "ground_top",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    244,
+    190,
+    346,
+    255
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "textura reducida; bordes laterales y base generados por el script"
+  },
+  {
+   "name": "ground_fill",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_2.png",
+   "crop": [
+    30,
+    222,
+    118,
+    255
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "textura reducida; bordes laterales y base generados por el script"
+  }
+ ],
+ "summary": {
+  "total": 167,
+  "pending": []
+ }
+}

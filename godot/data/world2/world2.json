@@ -1,0 +1,1799 @@
+{
+ "id": 2,
+ "key": "world2",
+ "name": "El Reino de los Crayones Encantados",
+ "widthTiles": 474,
+ "heightTiles": 25,
+ "music": "world2",
+ "tileset": "world2_tiles",
+ "objectsAtlas": "world2_objects",
+ "backgroundAtlas": "world2_bg",
+ "progress": {
+  "total": 9000,
+  "offset": 0,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 3,
+  "y": 20
+ },
+ "nextScene": "Boss2",
+ "startWeapons": [
+  "bubble",
+  "paint",
+  "sling"
+ ],
+ "frames": {
+  "flag": "flag_w2",
+  "signpost": "signpost_w2",
+  "star": [
+   "world2_objects",
+   "star_big"
+  ]
+ },
+ "sections": [
+  {
+   "id": "A",
+   "name": "Escritorio gigante",
+   "from": 0
+  },
+  {
+   "id": "B",
+   "name": "Jardín de crayones",
+   "from": 1500
+  },
+  {
+   "id": "C",
+   "name": "Río de pintura",
+   "from": 3300
+  },
+  {
+   "id": "D",
+   "name": "Fábrica de dibujos",
+   "from": 5200
+  },
+  {
+   "id": "E",
+   "name": "El Gran Lienzo",
+   "from": 7300
+  }
+ ],
+ "background": {
+  "sky": "w2_sky",
+  "far": "w2_clouds_far",
+  "near": "w2_clouds_near",
+  "atlas": "world2_bg",
+  "objectsAtlas": "world2_objects",
+  "sparkles": true,
+  "drifters": [
+   "cloud_small",
+   "cloud_puffy",
+   "cloud_long"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.02,
+     0.04
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_rainbow",
+      "x": 250,
+      "y": 84,
+      "alpha": 0.95,
+      "scale": 1.3
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.05,
+     0.08
+    ],
+    "depth": 3,
+    "items": [
+     {
+      "frame": "bg_castle",
+      "x": 300,
+      "y": 120
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.12,
+     0.05
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_cloud_face",
+     "bg_cloud_a"
+    ],
+    "step": 280,
+    "y": [
+     30,
+     80
+    ],
+    "alpha": 0.9,
+    "scale": 0.85,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.2,
+     0.08
+    ],
+    "depth": 5,
+    "frames": [
+     "bg_scrap_a",
+     "bg_scrap_b",
+     "bg_scrap_c",
+     "bg_doodle_heart",
+     "bg_doodle_star",
+     "bg_doodle_sun",
+     "bg_doodle_flower"
+    ],
+    "step": 150,
+    "y": [
+     70,
+     150
+    ],
+    "alpha": 0.8,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.32,
+     0.1
+    ],
+    "depth": 6,
+    "frames": [
+     "bg_star_hang_a",
+     "bg_star_hang_b"
+    ],
+    "step": 120,
+    "y": [
+     0,
+     0
+    ],
+    "top": true,
+    "sway": true
+   }
+  ]
+ },
+ "terrain": [
+  {
+   "x": 0,
+   "y": 20,
+   "w": 22,
+   "h": 5
+  },
+  {
+   "x": 25,
+   "y": 20,
+   "w": 14,
+   "h": 5
+  },
+  {
+   "x": 47,
+   "y": 20,
+   "w": 13,
+   "h": 5
+  },
+  {
+   "x": 66,
+   "y": 17,
+   "w": 8,
+   "h": 2
+  },
+  {
+   "x": 74,
+   "y": 20,
+   "w": 20,
+   "h": 5
+  },
+  {
+   "x": 94,
+   "y": 20,
+   "w": 24,
+   "h": 5
+  },
+  {
+   "x": 122,
+   "y": 19,
+   "w": 10,
+   "h": 6
+  },
+  {
+   "x": 141,
+   "y": 19,
+   "w": 22,
+   "h": 6
+  },
+  {
+   "x": 173,
+   "y": 19,
+   "w": 14,
+   "h": 6
+  },
+  {
+   "x": 204,
+   "y": 19,
+   "w": 15,
+   "h": 6
+  },
+  {
+   "x": 237,
+   "y": 19,
+   "w": 6,
+   "h": 3
+  },
+  {
+   "x": 249,
+   "y": 19,
+   "w": 16,
+   "h": 6
+  },
+  {
+   "x": 282,
+   "y": 19,
+   "w": 18,
+   "h": 6
+  },
+  {
+   "x": 306,
+   "y": 19,
+   "w": 44,
+   "h": 6
+  },
+  {
+   "x": 355,
+   "y": 19,
+   "w": 25,
+   "h": 6
+  },
+  {
+   "x": 380,
+   "y": 16,
+   "w": 14,
+   "h": 9
+  },
+  {
+   "x": 400,
+   "y": 19,
+   "w": 30,
+   "h": 6
+  },
+  {
+   "x": 434,
+   "y": 19,
+   "w": 40,
+   "h": 6
+  }
+ ],
+ "blocks": [
+  {
+   "x": 29,
+   "y": 17,
+   "type": "block_a"
+  },
+  {
+   "x": 30,
+   "y": 17,
+   "type": "block_b"
+  },
+  {
+   "x": 31,
+   "y": 17,
+   "type": "block_c"
+  },
+  {
+   "x": 70,
+   "y": 16,
+   "type": "block_notebook"
+  },
+  {
+   "x": 334,
+   "y": 13,
+   "type": "block_notebook"
+  },
+  {
+   "x": 342,
+   "y": 13,
+   "type": "block_notebook_heart"
+  },
+  {
+   "x": 377,
+   "y": 18,
+   "type": "block_a"
+  },
+  {
+   "x": 378,
+   "y": 18,
+   "type": "block_b"
+  },
+  {
+   "x": 378,
+   "y": 17,
+   "type": "block_c"
+  },
+  {
+   "x": 379,
+   "y": 18,
+   "type": "block_star_w2"
+  },
+  {
+   "x": 379,
+   "y": 17,
+   "type": "block_heart_w2"
+  },
+  {
+   "x": 379,
+   "y": 16,
+   "type": "block_color"
+  },
+  {
+   "x": 386,
+   "y": 15,
+   "type": "block_color"
+  },
+  {
+   "x": 386,
+   "y": 14,
+   "type": "block_star_w2"
+  },
+  {
+   "x": 386,
+   "y": 13,
+   "type": "block_heart_w2"
+  },
+  {
+   "x": 412,
+   "y": 13,
+   "type": "block_notebook_star"
+  },
+  {
+   "x": 446,
+   "y": 15,
+   "type": "block_a"
+  },
+  {
+   "x": 447,
+   "y": 15,
+   "type": "block_b"
+  },
+  {
+   "x": 448,
+   "y": 15,
+   "type": "block_c"
+  }
+ ],
+ "clouds": [
+  {
+   "x": 23,
+   "y": 18,
+   "frame": "book_pink"
+  },
+  {
+   "x": 53,
+   "y": 16,
+   "frame": "book_blue"
+  },
+  {
+   "x": 80,
+   "y": 16,
+   "frame": "crayon_plat_pink"
+  },
+  {
+   "x": 84,
+   "y": 14,
+   "frame": "crayon_plat_blue"
+  },
+  {
+   "x": 88,
+   "y": 12,
+   "frame": "crayon_plat_yellow"
+  },
+  {
+   "x": 145,
+   "y": 15,
+   "frame": "cloud_puffy"
+  },
+  {
+   "x": 150,
+   "y": 12,
+   "frame": "cloud_face"
+  },
+  {
+   "x": 156,
+   "y": 14,
+   "frame": "cloud_long"
+  },
+  {
+   "x": 240,
+   "y": 11,
+   "frame": "cloud_puffy"
+  },
+  {
+   "x": 246,
+   "y": 9,
+   "frame": "cloud_long"
+  },
+  {
+   "x": 252,
+   "y": 8,
+   "frame": "cloud_face"
+  },
+  {
+   "x": 286,
+   "y": 14,
+   "frame": "book_pink"
+  },
+  {
+   "x": 292,
+   "y": 12,
+   "frame": "book_blue"
+  },
+  {
+   "x": 302,
+   "y": 18,
+   "frame": "cloud_puffy"
+  },
+  {
+   "x": 431,
+   "y": 18,
+   "frame": "cloud_puffy"
+  }
+ ],
+ "bridges": [],
+ "rulers": [
+  {
+   "x": 39,
+   "y": 20,
+   "w": 8
+  },
+  {
+   "x": 60,
+   "y": 20,
+   "to": [
+    66,
+    17
+   ]
+  },
+  {
+   "x": 132,
+   "y": 19,
+   "w": 9,
+   "drawn": true,
+   "cycle": [
+    2600,
+    1600,
+    0
+   ]
+  },
+  {
+   "x": 163,
+   "y": 19,
+   "w": 10,
+   "switch": [
+    160,
+    19
+   ]
+  },
+  {
+   "x": 187,
+   "y": 19,
+   "points": [
+    [
+     191,
+     20
+    ],
+    [
+     195,
+     21
+    ],
+    [
+     199,
+     20
+    ],
+    [
+     204,
+     19
+    ]
+   ]
+  },
+  {
+   "x": 350,
+   "y": 19,
+   "w": 5,
+   "drawn": true
+  },
+  {
+   "x": 394,
+   "y": 16,
+   "to": [
+    400,
+    19
+   ]
+  }
+ ],
+ "movers": [
+  {
+   "x": 222,
+   "y": 19,
+   "frame": "notebook_plat",
+   "top": 6,
+   "dx": 11,
+   "dy": 0,
+   "duration": 3000
+  },
+  {
+   "x": 244,
+   "y": 19,
+   "frame": "book_blue",
+   "dx": 3,
+   "dy": 0,
+   "duration": 1600
+  }
+ ],
+ "crumbles": [
+  {
+   "x": 267,
+   "y": 18,
+   "frame": "notebook_page"
+  },
+  {
+   "x": 271,
+   "y": 17,
+   "frame": "notebook_page"
+  },
+  {
+   "x": 275,
+   "y": 18,
+   "frame": "notebook_page"
+  },
+  {
+   "x": 279,
+   "y": 17,
+   "frame": "notebook_page"
+  }
+ ],
+ "pads": [],
+ "winds": [],
+ "hazards": [
+  {
+   "x": 262,
+   "y": 18,
+   "frame": "splash_pink"
+  },
+  {
+   "x": 452,
+   "y": 17,
+   "frame": "splash_blue",
+   "dy": -2,
+   "duration": 1300
+  }
+ ],
+ "paints": [
+  {
+   "x": 100,
+   "y": 20,
+   "w": 12,
+   "color": "blue"
+  },
+  {
+   "x": 237,
+   "y": 19,
+   "w": 6,
+   "color": "yellow"
+  },
+  {
+   "x": 312,
+   "y": 19,
+   "w": 6,
+   "color": "yellow"
+  },
+  {
+   "x": 330,
+   "y": 19,
+   "w": 9,
+   "color": "pink"
+  },
+  {
+   "x": 420,
+   "y": 19,
+   "w": 7,
+   "color": "pink"
+  },
+  {
+   "x": 438,
+   "y": 19,
+   "w": 8,
+   "color": "blue"
+  }
+ ],
+ "rollers": [
+  {
+   "x": 340,
+   "y": 19,
+   "range": [
+    331,
+    348
+   ],
+   "speed": 55
+  },
+  {
+   "x": 405,
+   "y": 19,
+   "range": [
+    402,
+    418
+   ],
+   "speed": 70
+  },
+  {
+   "x": 414,
+   "y": 19,
+   "range": [
+    402,
+    418
+   ],
+   "speed": 45
+  }
+ ],
+ "bouncers": [
+  {
+   "x": 368,
+   "y": 19,
+   "height": 3,
+   "period": 1200,
+   "delay": 0
+  },
+  {
+   "x": 372,
+   "y": 19,
+   "height": 3,
+   "period": 1200,
+   "delay": 600
+  },
+  {
+   "x": 442,
+   "y": 19,
+   "height": 2.5,
+   "period": 1000,
+   "delay": 300
+  }
+ ],
+ "drips": [
+  {
+   "x": 334,
+   "y": 14,
+   "color": "pink",
+   "period": 1800
+  },
+  {
+   "x": 342,
+   "y": 14,
+   "color": "blue",
+   "period": 2200,
+   "delay": 900
+  },
+  {
+   "x": 412,
+   "y": 14,
+   "color": "yellow",
+   "period": 1700
+  }
+ ],
+ "rivers": [
+  {
+   "x": 219,
+   "w": 18,
+   "color": "blue"
+  },
+  {
+   "x": 243,
+   "w": 6,
+   "color": "pink"
+  },
+  {
+   "x": 265,
+   "w": 17,
+   "color": "yellow"
+  },
+  {
+   "x": 300,
+   "w": 6,
+   "color": "blue"
+  }
+ ],
+ "magicCrayons": [
+  {
+   "x": 150,
+   "y": 12,
+   "color": "red"
+  },
+  {
+   "x": 252,
+   "y": 8,
+   "color": "blue"
+  },
+  {
+   "x": 386,
+   "y": 13,
+   "color": "yellow"
+  }
+ ],
+ "stars": [
+  {
+   "x": 6,
+   "y": 19
+  },
+  {
+   "x": 7,
+   "y": 19
+  },
+  {
+   "x": 8,
+   "y": 19
+  },
+  {
+   "x": 9,
+   "y": 19
+  },
+  {
+   "x": 10,
+   "y": 19
+  },
+  {
+   "x": 21,
+   "y": 18
+  },
+  {
+   "x": 22,
+   "y": 17
+  },
+  {
+   "x": 23,
+   "y": 16
+  },
+  {
+   "x": 24,
+   "y": 17
+  },
+  {
+   "x": 25,
+   "y": 18
+  },
+  {
+   "x": 29,
+   "y": 15
+  },
+  {
+   "x": 30,
+   "y": 15
+  },
+  {
+   "x": 31,
+   "y": 15
+  },
+  {
+   "x": 39,
+   "y": 19
+  },
+  {
+   "x": 40,
+   "y": 18
+  },
+  {
+   "x": 41,
+   "y": 17
+  },
+  {
+   "x": 42,
+   "y": 17
+  },
+  {
+   "x": 43,
+   "y": 17
+  },
+  {
+   "x": 44,
+   "y": 17
+  },
+  {
+   "x": 45,
+   "y": 18
+  },
+  {
+   "x": 46,
+   "y": 19
+  },
+  {
+   "x": 51,
+   "y": 15
+  },
+  {
+   "x": 52,
+   "y": 15
+  },
+  {
+   "x": 53,
+   "y": 15
+  },
+  {
+   "x": 54,
+   "y": 15
+  },
+  {
+   "x": 62,
+   "y": 18
+  },
+  {
+   "x": 63,
+   "y": 18
+  },
+  {
+   "x": 64,
+   "y": 18
+  },
+  {
+   "x": 67,
+   "y": 15
+  },
+  {
+   "x": 68,
+   "y": 15
+  },
+  {
+   "x": 69,
+   "y": 15
+  },
+  {
+   "x": 70,
+   "y": 15
+  },
+  {
+   "x": 79,
+   "y": 15
+  },
+  {
+   "x": 80,
+   "y": 15
+  },
+  {
+   "x": 81,
+   "y": 15
+  },
+  {
+   "x": 87,
+   "y": 11
+  },
+  {
+   "x": 88,
+   "y": 11
+  },
+  {
+   "x": 89,
+   "y": 11
+  },
+  {
+   "x": 101,
+   "y": 19
+  },
+  {
+   "x": 102,
+   "y": 19
+  },
+  {
+   "x": 103,
+   "y": 19
+  },
+  {
+   "x": 104,
+   "y": 19
+  },
+  {
+   "x": 105,
+   "y": 19
+  },
+  {
+   "x": 106,
+   "y": 19
+  },
+  {
+   "x": 117,
+   "y": 18
+  },
+  {
+   "x": 118,
+   "y": 17
+  },
+  {
+   "x": 119,
+   "y": 16
+  },
+  {
+   "x": 120,
+   "y": 16
+  },
+  {
+   "x": 121,
+   "y": 17
+  },
+  {
+   "x": 122,
+   "y": 18
+  },
+  {
+   "x": 133,
+   "y": 18
+  },
+  {
+   "x": 134,
+   "y": 18
+  },
+  {
+   "x": 135,
+   "y": 18
+  },
+  {
+   "x": 136,
+   "y": 18
+  },
+  {
+   "x": 137,
+   "y": 18
+  },
+  {
+   "x": 138,
+   "y": 18
+  },
+  {
+   "x": 144,
+   "y": 14
+  },
+  {
+   "x": 145,
+   "y": 14
+  },
+  {
+   "x": 146,
+   "y": 14
+  },
+  {
+   "x": 154,
+   "y": 13
+  },
+  {
+   "x": 155,
+   "y": 13
+  },
+  {
+   "x": 156,
+   "y": 13
+  },
+  {
+   "x": 157,
+   "y": 13
+  },
+  {
+   "x": 164,
+   "y": 18
+  },
+  {
+   "x": 165,
+   "y": 18
+  },
+  {
+   "x": 166,
+   "y": 18
+  },
+  {
+   "x": 167,
+   "y": 18
+  },
+  {
+   "x": 168,
+   "y": 18
+  },
+  {
+   "x": 169,
+   "y": 18
+  },
+  {
+   "x": 170,
+   "y": 18
+  },
+  {
+   "x": 188,
+   "y": 18
+  },
+  {
+   "x": 189,
+   "y": 18
+  },
+  {
+   "x": 190,
+   "y": 18
+  },
+  {
+   "x": 196,
+   "y": 19
+  },
+  {
+   "x": 197,
+   "y": 19
+  },
+  {
+   "x": 198,
+   "y": 19
+  },
+  {
+   "x": 208,
+   "y": 18
+  },
+  {
+   "x": 209,
+   "y": 18
+  },
+  {
+   "x": 210,
+   "y": 18
+  },
+  {
+   "x": 211,
+   "y": 18
+  },
+  {
+   "x": 222,
+   "y": 17
+  },
+  {
+   "x": 223,
+   "y": 17
+  },
+  {
+   "x": 224,
+   "y": 17
+  },
+  {
+   "x": 225,
+   "y": 17
+  },
+  {
+   "x": 226,
+   "y": 17
+  },
+  {
+   "x": 239,
+   "y": 10
+  },
+  {
+   "x": 240,
+   "y": 10
+  },
+  {
+   "x": 241,
+   "y": 10
+  },
+  {
+   "x": 245,
+   "y": 8
+  },
+  {
+   "x": 246,
+   "y": 8
+  },
+  {
+   "x": 247,
+   "y": 8
+  },
+  {
+   "x": 255,
+   "y": 18
+  },
+  {
+   "x": 256,
+   "y": 18
+  },
+  {
+   "x": 257,
+   "y": 18
+  },
+  {
+   "x": 258,
+   "y": 18
+  },
+  {
+   "x": 268,
+   "y": 16
+  },
+  {
+   "x": 269,
+   "y": 16
+  },
+  {
+   "x": 276,
+   "y": 16
+  },
+  {
+   "x": 277,
+   "y": 16
+  },
+  {
+   "x": 285,
+   "y": 13
+  },
+  {
+   "x": 286,
+   "y": 13
+  },
+  {
+   "x": 287,
+   "y": 13
+  },
+  {
+   "x": 291,
+   "y": 11
+  },
+  {
+   "x": 292,
+   "y": 11
+  },
+  {
+   "x": 293,
+   "y": 11
+  },
+  {
+   "x": 310,
+   "y": 18
+  },
+  {
+   "x": 311,
+   "y": 18
+  },
+  {
+   "x": 312,
+   "y": 18
+  },
+  {
+   "x": 313,
+   "y": 18
+  },
+  {
+   "x": 326,
+   "y": 18
+  },
+  {
+   "x": 327,
+   "y": 18
+  },
+  {
+   "x": 328,
+   "y": 18
+  },
+  {
+   "x": 351,
+   "y": 18
+  },
+  {
+   "x": 352,
+   "y": 18
+  },
+  {
+   "x": 353,
+   "y": 18
+  },
+  {
+   "x": 360,
+   "y": 18
+  },
+  {
+   "x": 361,
+   "y": 18
+  },
+  {
+   "x": 362,
+   "y": 18
+  },
+  {
+   "x": 363,
+   "y": 18
+  },
+  {
+   "x": 377,
+   "y": 16
+  },
+  {
+   "x": 378,
+   "y": 16
+  },
+  {
+   "x": 383,
+   "y": 15
+  },
+  {
+   "x": 384,
+   "y": 15
+  },
+  {
+   "x": 385,
+   "y": 15
+  },
+  {
+   "x": 386,
+   "y": 15
+  },
+  {
+   "x": 394,
+   "y": 15
+  },
+  {
+   "x": 395,
+   "y": 14
+  },
+  {
+   "x": 396,
+   "y": 13
+  },
+  {
+   "x": 397,
+   "y": 13
+  },
+  {
+   "x": 398,
+   "y": 14
+  },
+  {
+   "x": 399,
+   "y": 15
+  },
+  {
+   "x": 404,
+   "y": 16
+  },
+  {
+   "x": 405,
+   "y": 16
+  },
+  {
+   "x": 406,
+   "y": 16
+  },
+  {
+   "x": 407,
+   "y": 16
+  },
+  {
+   "x": 424,
+   "y": 18
+  },
+  {
+   "x": 425,
+   "y": 18
+  },
+  {
+   "x": 426,
+   "y": 18
+  },
+  {
+   "x": 430,
+   "y": 16
+  },
+  {
+   "x": 431,
+   "y": 16
+  },
+  {
+   "x": 432,
+   "y": 16
+  },
+  {
+   "x": 440,
+   "y": 18
+  },
+  {
+   "x": 441,
+   "y": 18
+  },
+  {
+   "x": 442,
+   "y": 18
+  },
+  {
+   "x": 443,
+   "y": 18
+  },
+  {
+   "x": 446,
+   "y": 14
+  },
+  {
+   "x": 447,
+   "y": 14
+  },
+  {
+   "x": 448,
+   "y": 14
+  },
+  {
+   "x": 455,
+   "y": 18
+  },
+  {
+   "x": 456,
+   "y": 18
+  },
+  {
+   "x": 457,
+   "y": 18
+  },
+  {
+   "x": 458,
+   "y": 18
+  }
+ ],
+ "enemies": [
+  {
+   "type": "eraser",
+   "x": 34,
+   "y": 20,
+   "patrol": [
+    26,
+    38
+   ]
+  },
+  {
+   "type": "eraser",
+   "x": 86,
+   "y": 20,
+   "patrol": [
+    76,
+    92
+   ]
+  },
+  {
+   "type": "crayon",
+   "x": 108,
+   "y": 20,
+   "patrol": [
+    100,
+    116
+   ]
+  },
+  {
+   "type": "crayon",
+   "x": 156,
+   "y": 19,
+   "patrol": [
+    145,
+    161
+   ]
+  },
+  {
+   "type": "crayon",
+   "x": 180,
+   "y": 19,
+   "patrol": [
+    175,
+    185
+   ]
+  },
+  {
+   "type": "brush",
+   "x": 258,
+   "y": 19,
+   "patrol": [
+    252,
+    263
+   ]
+  },
+  {
+   "type": "brush",
+   "x": 292,
+   "y": 19,
+   "patrol": [
+    285,
+    298
+   ]
+  },
+  {
+   "type": "brush",
+   "x": 316,
+   "y": 19,
+   "patrol": [
+    308,
+    324
+   ]
+  },
+  {
+   "type": "eraser",
+   "x": 344,
+   "y": 19,
+   "patrol": [
+    339,
+    349
+   ]
+  },
+  {
+   "type": "crayon",
+   "x": 364,
+   "y": 19,
+   "patrol": [
+    358,
+    375
+   ]
+  },
+  {
+   "type": "brush",
+   "x": 388,
+   "y": 16,
+   "patrol": [
+    382,
+    393
+   ]
+  },
+  {
+   "type": "crayon",
+   "x": 410,
+   "y": 19,
+   "patrol": [
+    403,
+    417
+   ]
+  },
+  {
+   "type": "eraser",
+   "x": 424,
+   "y": 19,
+   "patrol": [
+    419,
+    429
+   ]
+  },
+  {
+   "type": "brush",
+   "x": 446,
+   "y": 19,
+   "patrol": [
+    437,
+    452
+   ]
+  }
+ ],
+ "checkpoints": [
+  {
+   "x": 146,
+   "y": 19
+  },
+  {
+   "x": 357,
+   "y": 19
+  }
+ ],
+ "pickups": [],
+ "signs": [
+  {
+   "x": 5,
+   "y": 20,
+   "text": "Mundo 2: el Reino de los Crayones Encantados. ¡Tus tres armas te acompañan!"
+  },
+  {
+   "x": 36,
+   "y": 20,
+   "text": "Las reglas sirven de puente: ¡crúzalas!"
+  },
+  {
+   "x": 58,
+   "y": 20,
+   "text": "Algunas reglas están inclinadas: sube con cuidado"
+  },
+  {
+   "x": 97,
+   "y": 20,
+   "text": "La pintura AZUL resbala: frena con tiempo"
+  },
+  {
+   "x": 129,
+   "y": 19,
+   "text": "Los puentes dibujados aparecen y desaparecen. ¡Atento al parpadeo!"
+  },
+  {
+   "x": 158,
+   "y": 19,
+   "text": "Toca el molinillo para dibujar el puente"
+  },
+  {
+   "x": 233,
+   "y": 19,
+   "text": "Cruza el río de pintura sobre los cuadernos"
+  },
+  {
+   "x": 238,
+   "y": 19,
+   "text": "La pintura AMARILLA rebota. Mantén SALTAR para subir más"
+  },
+  {
+   "x": 327,
+   "y": 19,
+   "text": "La pintura ROSA es pegajosa: te frena"
+  },
+  {
+   "x": 348,
+   "y": 19,
+   "text": "¡Los borradores pueden borrar los puentes dibujados!"
+  },
+  {
+   "x": 460,
+   "y": 19,
+   "text": "El Gran Lienzo. ¡Garabato te espera!"
+  }
+ ],
+ "decor": [
+  {
+   "x": 2,
+   "y": 20,
+   "frame": "crayon_giant_pink"
+  },
+  {
+   "x": 3,
+   "y": 20,
+   "frame": "crayon_giant_blue"
+  },
+  {
+   "x": 8,
+   "y": 20,
+   "frame": "bush_wide"
+  },
+  {
+   "x": 12,
+   "y": 20,
+   "frame": "flower_white",
+   "front": true
+  },
+  {
+   "x": 16,
+   "y": 20,
+   "frame": "books_stack"
+  },
+  {
+   "x": 19,
+   "y": 20,
+   "frame": "pinwheel_a",
+   "sway": true
+  },
+  {
+   "x": 27,
+   "y": 20,
+   "frame": "flower_tulip"
+  },
+  {
+   "x": 44,
+   "y": 20,
+   "frame": "pencil_giant_yellow"
+  },
+  {
+   "x": 49,
+   "y": 20,
+   "frame": "bush_wide"
+  },
+  {
+   "x": 56,
+   "y": 20,
+   "frame": "notebook_page"
+  },
+  {
+   "x": 68,
+   "y": 17,
+   "frame": "flower_white"
+  },
+  {
+   "x": 77,
+   "y": 20,
+   "frame": "crayon_giant_yellow"
+  },
+  {
+   "x": 82,
+   "y": 20,
+   "frame": "flower_tulip",
+   "front": true
+  },
+  {
+   "x": 91,
+   "y": 20,
+   "frame": "books_stack"
+  },
+  {
+   "x": 95,
+   "y": 20,
+   "frame": "crayon_giant_purple"
+  },
+  {
+   "x": 96,
+   "y": 20,
+   "frame": "crayon_giant_pink"
+  },
+  {
+   "x": 113,
+   "y": 20,
+   "frame": "pinwheel_b",
+   "sway": true
+  },
+  {
+   "x": 115,
+   "y": 20,
+   "frame": "pencil_giant_blue"
+  },
+  {
+   "x": 124,
+   "y": 19,
+   "frame": "bush_wide"
+  },
+  {
+   "x": 143,
+   "y": 19,
+   "frame": "crayon_giant_blue"
+  },
+  {
+   "x": 148,
+   "y": 19,
+   "frame": "flower_white",
+   "front": true
+  },
+  {
+   "x": 152,
+   "y": 19,
+   "frame": "pinwheel_a",
+   "sway": true
+  },
+  {
+   "x": 175,
+   "y": 19,
+   "frame": "crayon_giant_yellow"
+  },
+  {
+   "x": 177,
+   "y": 19,
+   "frame": "crayon_giant_pink"
+  },
+  {
+   "x": 184,
+   "y": 19,
+   "frame": "bush_wide"
+  },
+  {
+   "x": 206,
+   "y": 19,
+   "frame": "pinwheel_b",
+   "sway": true
+  },
+  {
+   "x": 212,
+   "y": 19,
+   "frame": "notebook_page"
+  },
+  {
+   "x": 216,
+   "y": 19,
+   "frame": "paint_blue_puddle"
+  },
+  {
+   "x": 251,
+   "y": 19,
+   "frame": "books_stack"
+  },
+  {
+   "x": 284,
+   "y": 19,
+   "frame": "flower_tulip"
+  },
+  {
+   "x": 297,
+   "y": 19,
+   "frame": "paint_yellow_puddle"
+  },
+  {
+   "x": 308,
+   "y": 19,
+   "frame": "pencil_giant_blue"
+  },
+  {
+   "x": 320,
+   "y": 19,
+   "frame": "notebook_page"
+  },
+  {
+   "x": 328,
+   "y": 19,
+   "frame": "books_stack"
+  },
+  {
+   "x": 352,
+   "y": 19,
+   "frame": "paint_pink_puddle"
+  },
+  {
+   "x": 356,
+   "y": 19,
+   "frame": "crayon_giant_purple"
+  },
+  {
+   "x": 362,
+   "y": 19,
+   "frame": "pencil_giant_yellow"
+  },
+  {
+   "x": 382,
+   "y": 16,
+   "frame": "pinwheel_a",
+   "sway": true
+  },
+  {
+   "x": 391,
+   "y": 16,
+   "frame": "books_stack"
+  },
+  {
+   "x": 402,
+   "y": 19,
+   "frame": "notebook_page"
+  },
+  {
+   "x": 428,
+   "y": 19,
+   "frame": "crayon_giant_blue"
+  },
+  {
+   "x": 436,
+   "y": 19,
+   "frame": "bush_wide"
+  },
+  {
+   "x": 444,
+   "y": 19,
+   "frame": "flower_white",
+   "front": true
+  },
+  {
+   "x": 450,
+   "y": 19,
+   "frame": "pinwheel_b",
+   "sway": true
+  },
+  {
+   "x": 458,
+   "y": 19,
+   "frame": "crayon_giant_pink"
+  },
+  {
+   "x": 459,
+   "y": 19,
+   "frame": "crayon_giant_yellow"
+  },
+  {
+   "x": 463,
+   "y": 19,
+   "frame": "books_stack"
+  },
+  {
+   "x": 470,
+   "y": 19,
+   "frame": "crayon_giant_purple"
+  },
+  {
+   "x": 471,
+   "y": 19,
+   "frame": "pencil_giant_blue"
+  }
+ ],
+ "door": {
+  "x": 466,
+  "y": 19,
+  "atlas": "world2_objects",
+  "frame": "portal_w2",
+  "scale": 1.0
+ }
+}

@@ -44,13 +44,16 @@ func _ready() -> void:
 			_sfx_streams[ev] = Synth.render_sfx(ev)
 	for track in Synth.MUSIC:
 		var file := _load_file(AudioConfig.MUSIC_FILES.get(track, ""))
+		var optional: String = AudioConfig.OPTIONAL_MUSIC.get(track, "")
+		if file == null and optional != "" and ResourceLoader.exists(optional):
+			file = load(optional) as AudioStream
 		if file:
 			_music_streams[track] = file
 		else:
 			_music_pending[track] = true
 	if not _music_pending.is_empty():
 		# el orden prioriza la música que suena primero
-		var order := ["menu", "world1", "boss"].filter(func(t): return _music_pending.has(t))
+		var order := ["menu", "world1", "boss", "world2", "garabato", "world2_victory"].filter(func(t): return _music_pending.has(t))
 		_music_task = WorkerThreadPool.add_task(_render_music_tracks.bind(order), false, "Música provisional")
 
 
@@ -169,7 +172,7 @@ func duck(on: bool) -> void:
 
 
 func _apply_music_volume() -> void:
-	var file_music: bool = AudioConfig.MUSIC_FILES.get(current_track, "") != ""
+	var file_music: bool = AudioConfig.MUSIC_FILES.get(current_track, "") != "" or _music_streams.get(current_track) is AudioStreamOggVorbis
 	var vol := 1.0 if not file_music else 0.5
 	if ducked:
 		vol = 0.35 if not file_music else 0.2

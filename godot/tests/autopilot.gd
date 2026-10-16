@@ -36,8 +36,14 @@ func _ready() -> void:
 		if a.begins_with("start="):
 			start_tile = float(a.substr(6))
 	AudioManager.sfx_on = false # sin persistir: no toca el guardado del usuario
-	WorldRegistry.start_run(1)
-	level = load(Router.SCENES.World1).instantiate()
+	SaveManager.save_path = "user://tools_save.json"
+	SaveManager.load_state()
+	var world := 1
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("world="):
+			world = int(a.substr(6))
+	var scene_key := WorldRegistry.start_run(world)
+	level = load(Router.SCENES[scene_key]).instantiate()
 	add_child(level)
 	level.controls.scripted = true
 	if start_tile >= 0:
@@ -120,7 +126,7 @@ func _physics_process(_delta: float) -> void:
 		# se deja llevar por la nube móvil y salta cuando el suelo queda cerca
 		c.script_held.erase("move_right")
 		c.script_held.erase("run")
-		for d in [20, 36, 52, 68]:
+		for d in [20, 36, 52, 68, 84, 100]:
 			if level.terrain_solid_at(p.position + Vector2(d, 4)):
 				c.script_held["move_right"] = true
 				c.script_held["run"] = true
@@ -217,6 +223,6 @@ func _enemy_ahead(p: Player) -> bool:
 
 func _finish(ok: bool) -> void:
 	set_physics_process(false)
-	print("[autopilot] %s en %d fotogramas (%.0f s de juego): mejor tesela %d de 475, golpes/caídas %d, estrellas %d" % [
-		"LLEGA A LA PUERTA DEL CASTILLO" if ok else "NO llega", frame, frame / 60.0, int(best_x / 16), deaths, int(GameState.get_v("stars", 0))])
+	print("[autopilot] %s en %d fotogramas (%.0f s de juego): mejor tesela %d, golpes/caídas %d, estrellas %d" % [
+		"LLEGA A LA PUERTA DEL JEFE" if ok else "NO llega", frame, frame / 60.0, int(best_x / 16), deaths, int(GameState.get_v("stars", 0))])
 	get_tree().quit(0 if ok else 1)

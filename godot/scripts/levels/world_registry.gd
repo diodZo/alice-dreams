@@ -7,11 +7,19 @@ class_name WorldRegistry
 ##   3. su entrada en esta tabla y en Router.SCENES.
 ## Cada mundo define en sus datos: tileset, fondo, longitud, secciones, enemigos, obstáculos,
 ## coleccionables, checkpoints, jefe, música y portal de salida.
-## De momento sólo el Mundo 1 está implementado; el resto queda reservado.
+## Implementados: Mundo 1 y Mundo 2; el resto queda reservado.
+## Campos de presentación (menú y pantalla de victoria): victoryTitle, victorySub, bossFrames,
+## bossFrame (fotograma del jefe vencido), nextPortal, victoryMusic.
 
 const WORLDS := [
-	{"id": 1, "name": "El Reino de las Nubes de Algodón", "scene": "World1", "data": "res://data/worlds/world1.json", "boss_data": "res://data/worlds/world1_boss.json", "implemented": true},
-	{"id": 2, "name": "Mundo 2", "scene": "", "data": "", "boss_data": "", "implemented": false},
+	{"id": 1, "name": "El Reino de las Nubes de Algodón", "scene": "World1", "data": "res://data/worlds/world1.json", "boss_data": "res://data/worlds/world1_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 1 completado!", "victorySub": "Nubarrón vuelve a ser una nube feliz",
+		"bossFrames": "nubarron", "bossAnim": "idle", "bossFrame": 1, "bossScale": 0.5,
+		"nextPortal": "Portal al Mundo 2: abierto", "victoryMusic": "menu"},
+	{"id": 2, "name": "El Reino de los Crayones Encantados", "scene": "World2", "data": "res://data/world2/world2.json", "boss_data": "res://data/world2/world2_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 2 completado!", "victorySub": "Garabato devuelve los colores al lienzo",
+		"bossFrames": "garabato", "bossAnim": "idle", "bossFrame": 1, "bossScale": 0.5,
+		"nextPortal": "Portal al Mundo 3: abierto (próximamente)", "victoryMusic": "world2_victory"},
 	{"id": 3, "name": "Mundo 3", "scene": "", "data": "", "boss_data": "", "implemented": false},
 	{"id": 4, "name": "Mundo 4", "scene": "", "data": "", "boss_data": "", "implemented": false},
 	{"id": 5, "name": "Mundo 5", "scene": "", "data": "", "boss_data": "", "implemented": false},
@@ -37,4 +45,13 @@ static func start_run(id: int) -> String:
 	var data: Variant = C.load_json(w.data)
 	var boss: Variant = C.load_json(w.boss_data) if w.boss_data != "" else {}
 	GameState.new_run(data if data is Dictionary else {}, boss if boss is Dictionary else {})
+	if data is Dictionary and data.has("startWeapons"):
+		GameState.set_v("weaponsOwned", data.startWeapons.duplicate())
+		GameState.set_v("weapon", data.startWeapons[0])
 	return w.scene
+
+
+## ¿Se puede jugar? (implementado y desbloqueado en el guardado)
+static func is_playable(id: int) -> bool:
+	var w := get_world(id)
+	return not w.is_empty() and w.implemented and id <= SaveManager.unlocked_world()

@@ -8,6 +8,7 @@ var clouds_near: TiledSprite
 var music_btn: CloudButton
 var sfx_btn: CloudButton
 var reset_btn: CloudButton
+var world2_btn: CloudButton
 
 
 func _ready() -> void:
@@ -38,8 +39,7 @@ func _ready() -> void:
 	var tt := title.create_tween().set_loops()
 	tt.tween_property(title, "position:y", 29.0, 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tt.tween_property(title, "position:y", 26.0, 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	var world := WorldRegistry.get_world(1)
-	var sub := PixelText.make("Mundo 1: %s" % world.name, {"origin": Vector2(0.5, 0.5), "tint": C.CREAM})
+	var sub := PixelText.make("Elige un mundo", {"origin": Vector2(0.5, 0.5), "tint": C.CREAM})
 	sub.position = Vector2(W / 2, 50)
 	art.add_child(sub)
 
@@ -60,39 +60,45 @@ func _ready() -> void:
 	bt.tween_property(boss, "position:y", 92.0, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	# progreso guardado
-	var w1 := SaveManager.get_world(1)
-	if w1.get("completed", false):
-		var done := PixelText.make("* Mundo 1 completado - Mejor marca: %d estrellas *" % int(w1.bestStars), {"origin": Vector2(0.5, 0.5), "tint": C.YELLOW})
+	var done_lines: PackedStringArray = []
+	for id in [1, 2]:
+		var wd := SaveManager.get_world(id)
+		if wd.get("completed", false):
+			done_lines.append("Mundo %d: %d estrellas" % [id, int(wd.bestStars)])
+	if not done_lines.is_empty():
+		var done := PixelText.make("* " + " - ".join(done_lines) + " *", {"origin": Vector2(0.5, 0.5), "tint": C.YELLOW})
 		done.position = Vector2(W / 2, 62)
 		art.add_child(done)
 
-	# botones (contenedor vertical centrado: y = 88, 114, 140, 166)
+	# botones (contenedor vertical centrado): un botón por mundo + opciones
 	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 4)
-	box.position = Vector2(W / 2 - 70, 77)
-	box.size = Vector2(140, 100)
+	box.add_theme_constant_override("separation", 3)
+	box.position = Vector2(W / 2 - 75, 70)
+	box.size = Vector2(150, 120)
 	add_child(box)
-	var play := CloudButton.make("Jugar")
-	play.activated.connect(func(_b): start_game())
-	music_btn = CloudButton.make(_music_label())
+	var play := CloudButton.make("Mundo 1: Nubes de Algodón", 150)
+	play.activated.connect(func(_b): start_game(1))
+	world2_btn = CloudButton.make(_world2_label(), 150)
+	world2_btn.activated.connect(func(_b): start_game(2))
+	music_btn = CloudButton.make(_music_label(), 150)
 	music_btn.activated.connect(func(b):
 		AudioManager.set_music_enabled(not AudioManager.music_on)
 		b.set_label(_music_label())
 		AudioManager.play("ui_select"))
-	sfx_btn = CloudButton.make(_sfx_label())
+	sfx_btn = CloudButton.make(_sfx_label(), 150)
 	sfx_btn.activated.connect(func(b):
 		AudioManager.set_sfx_enabled(not AudioManager.sfx_on)
 		b.set_label(_sfx_label())
 		AudioManager.play("ui_select"))
-	reset_btn = CloudButton.make("Borrar progreso")
+	reset_btn = CloudButton.make("Borrar progreso", 150)
 	reset_btn.activated.connect(confirm_reset)
-	var buttons: Array[CloudButton] = [play, music_btn, sfx_btn, reset_btn]
+	var buttons: Array[CloudButton] = [play, world2_btn, music_btn, sfx_btn, reset_btn]
 	for b in buttons:
 		box.add_child(b)
 	add_child(MenuList.new().setup(buttons))
 
 	var help := PixelText.make("A/D: mover - ESPACIO: saltar - SHIFT: correr\nJ: disparar - K: arma - W+J: arriba - ESC: pausa", {"origin": Vector2(0.5, 0.5), "tint": C.CREAM, "center": true})
-	help.position = Vector2(W / 2, 198)
+	help.position = Vector2(W / 2, 214)
 	add_child(help)
 
 	if Assets.used_placeholders.size() > 0:
@@ -149,12 +155,21 @@ func confirm_reset(btn: CloudButton) -> void:
 	get_tree().reload_current_scene()
 
 
-func start_game() -> void:
+func _world2_label() -> String:
+	return "Mundo 2: Crayones" if WorldRegistry.is_playable(2) else "Mundo 2 (bloqueado)"
+
+
+func start_game(id := 1) -> void:
 	if starting:
+		return
+	if not WorldRegistry.is_playable(id):
+		AudioManager.play("no_weapon")
+		GameState.show_toast("Completa el Mundo %d para desbloquearlo" % (id - 1))
+		_toast("Completa el Mundo %d para desbloquearlo" % (id - 1))
 		return
 	starting = true
 	AudioManager.play("ui_select")
-	var key := WorldRegistry.start_run(1)
+	var key := WorldRegistry.start_run(id)
 	GameState.entry = {"introBanner": true}
 	await Fader.fade_out(400)
 	Router.go(key)
@@ -163,3 +178,17 @@ func start_game() -> void:
 func _process(delta: float) -> void:
 	clouds_far.tile_offset.x += delta * 1000.0 * 0.006
 	clouds_near.tile_offset.x += delta * 1000.0 * 0.014
+
+
+var _toast_label: PixelText
+
+
+func _toast(text: String) -> void:
+	if _toast_label == null:
+		_toast_label = PixelText.make("", {"origin": Vector2(0.5, 0.5), "tint": C.rgb(0xff8080)})
+		_toast_label.position = Vector2(C.GAME_W / 2.0, 200)
+		add_child(_toast_label)
+	_toast_label.text = text
+	_toast_label.modulate.a = 1.0
+	var tw := _toast_label.create_tween()
+	tw.tween_property(_toast_label, "modulate:a", 0.0, 0.5).set_delay(1.6)

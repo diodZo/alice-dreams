@@ -21,7 +21,7 @@ func setup(def: Dictionary, atlas: String) -> MovingPlatform:
 	collision_mask = 0
 	sync_to_physics = true
 	position.x = float(def.x) * C.TILE
-	CloudPlatform.add_cloud_shape(self, spr, spr.texture.get_size(), float(def.y) * C.TILE)
+	CloudPlatform.add_cloud_shape(self, spr, spr.texture.get_size(), float(def.y) * C.TILE, float(def.get("top", 3)))
 	start = position
 	delta_px = Vector2(float(def.get("dx", 0)), float(def.get("dy", 0))) * C.TILE
 	duration = float(def.get("duration", 3000))

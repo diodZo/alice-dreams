@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_f7bco"]
+
+[resource]
+script = ExtResource("1_f7bco")
+key = "crayon"
+display_name = "Crayón guerrero"
+hp = 3
+speed = 44.0
+body_size = Vector2(12, 26)
+detect_range = 150.0
+reaction_time = 400.0
+attack_cooldown = 1400.0
+attack_range = 70.0

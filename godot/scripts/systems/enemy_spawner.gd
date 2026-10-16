@@ -8,6 +8,10 @@ const SCENES := {
 	"scratch": preload("res://scenes/enemies/Scratch.tscn"),
 	"spit": preload("res://scenes/enemies/Spit.tscn"),
 	"flea": preload("res://scenes/enemies/Flea.tscn"),
+	# Mundo 2
+	"eraser": preload("res://scenes/enemies/world2/Eraser.tscn"),
+	"crayon": preload("res://scenes/enemies/world2/Crayon.tscn"),
+	"brush": preload("res://scenes/enemies/world2/Brush.tscn"),
 }
 
 var level: Node

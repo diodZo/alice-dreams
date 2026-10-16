@@ -11,14 +11,14 @@ var sprite: Sprite2D
 
 
 ## def: { x, y (teselas, superficie) }
-func setup(owner_level: Node, def: Dictionary, atlas: String, i: int) -> Checkpoint:
+func setup(owner_level: Node, def: Dictionary, atlas: String, i: int, flag_frame := "flag") -> Checkpoint:
 	level = owner_level
 	index = i
 	position = Vector2(float(def.x) * C.TILE + C.TILE / 2.0, float(def.y) * C.TILE + 3)
 	respawn = Vector2(position.x, float(def.y) * C.TILE)
 	z_index = C.Z_DECOR_BACK + 1
 	sprite = Sprite2D.new()
-	sprite.texture = Assets.frame(atlas, "flag")
+	sprite.texture = Assets.frame(atlas, flag_frame)
 	Anim.set_origin(sprite, sprite.texture.get_size(), 0.5, 1.0)
 	sprite.modulate = C.rgb(0x8b86b8)
 	add_child(sprite)

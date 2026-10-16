@@ -8,11 +8,11 @@ var _tween: Tween
 
 
 ## def: { x, y (teselas), text, touch? }
-func setup(def: Dictionary, atlas: String, touch_mode: bool) -> SignPost:
+func setup(def: Dictionary, atlas: String, touch_mode: bool, post_frame := "signpost") -> SignPost:
 	position = Vector2(float(def.x) * C.TILE + C.TILE / 2.0, float(def.y) * C.TILE + 2)
 	z_index = C.Z_DECOR_BACK + 1
 	var post := Sprite2D.new()
-	post.texture = Assets.frame(atlas, "signpost")
+	post.texture = Assets.frame(atlas, def.get("frame", post_frame))
 	Anim.set_origin(post, post.texture.get_size(), 0.5, 1.0)
 	add_child(post)
 	var text: String = def.touch if touch_mode and def.has("touch") else def.text

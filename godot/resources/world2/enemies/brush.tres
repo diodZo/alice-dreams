@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_7ee1y"]
+
+[resource]
+script = ExtResource("1_7ee1y")
+key = "brush"
+display_name = "Pincel travieso"
+hp = 3
+speed = 40.0
+body_size = Vector2(12, 22)
+detect_range = 210.0
+detect_height = 70.0
+reaction_time = 500.0
+attack_cooldown = 1600.0
+keep_distance = Vector2(80, 160)

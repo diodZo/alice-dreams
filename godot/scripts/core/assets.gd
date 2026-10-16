@@ -2,7 +2,9 @@ extends Node
 ## Catálogo de recursos gráficos y de datos (autoload "Assets").
 ##
 ## Equivale a PreloadScene + AnimationManager + PlaceholderFactory de Phaser:
-##  - Atlas: data/atlases.json (generado por tools/convert_phaser.mjs) -> AtlasTexture por fotograma.
+##  - Atlas: data/atlases.json (Mundo 1, generado por tools/convert_phaser.mjs) y
+##    data/world2/atlases.json (Mundo 2, generado por tools/world2/prepare_world2_assets.py)
+##    -> AtlasTexture por fotograma. Cada mundo es un "paquete" de datos (PACKS).
 ##  - Animaciones: resources/**/<clave>_frames.tres (SpriteFrames generados por tools/build_resources.gd).
 ##  - Si un recurso falta se usa un marcador a cuadros magenta/negro, se registra en `used_placeholders`
 ##    y el menú muestra un aviso (nunca se oculta la falta).
@@ -14,12 +16,24 @@ const FRAMES_PATHS := {
 	"flea": "res://resources/enemies/flea_frames.tres",
 	"nubarron": "res://resources/bosses/nubarron_frames.tres",
 	"fx_portal": "res://resources/effects/portal_frames.tres",
+	"eraser": "res://resources/world2/frames/eraser_frames.tres",
+	"crayon": "res://resources/world2/frames/crayon_frames.tres",
+	"brush": "res://resources/world2/frames/brush_frames.tres",
+	"garabato": "res://resources/world2/frames/garabato_frames.tres",
 }
-const TILESET_PATH := "res://resources/tilesets/world1/world1_tileset.tres"
+const TILESET_PATHS := {
+	"world1_tiles": "res://resources/tilesets/world1/world1_tileset.tres",
+	"world2_tiles": "res://resources/world2/terrain/world2_tileset.tres",
+}
+## Paquetes de datos por mundo (atlases.json + characters.json). El primero es obligatorio.
+const PACKS := ["res://data", "res://data/world2"]
+const ENEMY_DIRS := ["res://resources/enemies", "res://resources/world2/enemies"]
 
 var atlases: Dictionary = {}
 var images: Dictionary = {}
+## TileSet del Mundo 1 (compatibilidad); los de todos los mundos están en `tilesets`.
 var tileset_info: Dictionary = {}
+var tilesets: Dictionary = {}
 var characters: Dictionary = {}
 var tuning: Dictionary = {}
 var weapons_meta: Dictionary = {}
@@ -35,18 +49,24 @@ var _enemies: Dictionary = {}
 
 
 func _ready() -> void:
-	var a: Variant = C.load_json("res://data/atlases.json")
-	if a is Dictionary:
-		atlases = a.atlases
-		images = a.images
-		tileset_info = a.tileset
-	else:
-		ok = false
-	var ch: Variant = C.load_json("res://data/characters.json")
-	if ch is Dictionary:
-		characters = ch
-	else:
-		ok = false
+	for i in PACKS.size():
+		var pack: String = PACKS[i]
+		var required := i == 0
+		if not required and not FileAccess.file_exists(pack.path_join("atlases.json")):
+			continue
+		var a: Variant = C.load_json(pack.path_join("atlases.json"))
+		if a is Dictionary:
+			atlases.merge(a.atlases)
+			images.merge(a.images)
+			tilesets[a.tileset.key] = a.tileset
+		elif required:
+			ok = false
+		var ch: Variant = C.load_json(pack.path_join("characters.json"))
+		if ch is Dictionary:
+			characters.merge(ch)
+		elif required:
+			ok = false
+	tileset_info = tilesets.get("world1_tiles", {})
 	var t: Variant = C.load_json("res://data/tuning.json")
 	tuning = t if t is Dictionary else {}
 	if not t is Dictionary:
@@ -119,11 +139,17 @@ func cell_size(key: String) -> Vector2:
 	return Vector2(c.get("frameWidth", 32), c.get("frameHeight", 32))
 
 
-func tileset() -> TileSet:
-	if ResourceLoader.exists(TILESET_PATH):
-		return load(TILESET_PATH) as TileSet
-	mark_placeholder("tileset")
+func tileset(key := "world1_tiles") -> TileSet:
+	var path: String = TILESET_PATHS.get(key, "")
+	if path != "" and ResourceLoader.exists(path):
+		return load(path) as TileSet
+	mark_placeholder("tileset:" + key)
 	return null
+
+
+## Datos del TileSet (autotiling de terreno y bloques) por clave.
+func tileset_data(key := "world1_tiles") -> Dictionary:
+	return tilesets.get(key, {})
 
 
 # ------------------------------------------------------------------ armas/enemigos
@@ -142,8 +168,12 @@ func weapon_order() -> Array:
 
 func enemy_def(type: String) -> EnemyDef:
 	if not _enemies.has(type):
-		var path := "res://resources/enemies/%s.tres" % type
-		_enemies[type] = load(path) as EnemyDef if ResourceLoader.exists(path) else null
+		_enemies[type] = null
+		for dir in ENEMY_DIRS:
+			var path: String = dir.path_join("%s.tres" % type)
+			if ResourceLoader.exists(path):
+				_enemies[type] = load(path) as EnemyDef
+				break
 	return _enemies[type]
 
 

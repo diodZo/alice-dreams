@@ -16,6 +16,9 @@ var progress_marker: Control
 var section_text: PixelText
 var boss_group: Control
 var boss_bar: ColorRect
+var boss_label: PixelText
+## Mundo 2: casillas de los crayones mágicos (rojo, azul, amarillo).
+var magic_icons: Array[TextureRect] = []
 var banner: PixelText
 var toast: PixelText
 var _banner_tween: Tween
@@ -68,6 +71,16 @@ func _ready() -> void:
 	star_text = PixelText.make("0", {"tint": C.YELLOW})
 	star_text.position = Vector2(W - 42, 7)
 	root.add_child(star_text)
+	for i in 3:
+		var m := TextureRect.new()
+		var c: String = ["red", "blue", "yellow"][i]
+		m.texture = Assets.frame("world2_objects", "magic_crayon_" + c) if Assets.has_frame("world2_objects", "magic_crayon_" + c) else null
+		m.scale = Vector2(0.5, 0.5)
+		m.position = Vector2(W - 58 + i * 12, 20)
+		m.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		m.visible = false
+		root.add_child(m)
+		magic_icons.append(m)
 
 	# --- progreso del nivel ---
 	progress_x = W / 2.0 - 80
@@ -112,7 +125,7 @@ func _ready() -> void:
 	boss_bar.size = Vector2(200, 6)
 	boss_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	boss_group.add_child(boss_bar)
-	var boss_label := PixelText.make("Nubarrón", {"origin": Vector2(0.5, 0.5), "tint": C.YELLOW})
+	boss_label = PixelText.make("Nubarrón", {"origin": Vector2(0.5, 0.5), "tint": C.YELLOW})
 	boss_label.position = Vector2(0, -16)
 	boss_group.add_child(boss_label)
 	boss_group.visible = false
@@ -193,6 +206,15 @@ func refresh(key: String) -> void:
 	if all or key == "section":
 		var s: Variant = GameState.get_v("section")
 		section_text.text = "Sección %s" % s if s is String and s != "" else ""
+	if all or key == "bossName":
+		boss_label.text = str(GameState.get_v("bossName", "Nubarrón"))
+	if all or key in ["magicCrayons", "magicTotal"]:
+		var have: Array = GameState.get_v("magicCrayons", [])
+		var shown := int(GameState.get_v("magicTotal", 0)) > 0
+		for i in magic_icons.size():
+			var c: String = ["red", "blue", "yellow"][i]
+			magic_icons[i].visible = shown
+			magic_icons[i].modulate = Color.WHITE if c in have else Color(0.25, 0.22, 0.4, 0.7)
 	if all or key in ["bossVisible", "bossHp", "bossMaxHp"]:
 		boss_group.visible = bool(GameState.get_v("bossVisible", false))
 		var mx := float(GameState.get_v("bossMaxHp", 1))

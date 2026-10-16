@@ -21,7 +21,7 @@ func setup(owner_level: Node, def: Dictionary, atlas: String) -> CrumblePlatform
 	collision_layer = C.L_ONE_WAY
 	collision_mask = 0
 	position.x = float(def.x) * C.TILE
-	shape = CloudPlatform.add_cloud_shape(self, sprite, sprite.texture.get_size(), float(def.y) * C.TILE)
+	shape = CloudPlatform.add_cloud_shape(self, sprite, sprite.texture.get_size(), float(def.y) * C.TILE, float(def.get("top", 3)))
 	base_x = sprite.position.x
 	return self
 

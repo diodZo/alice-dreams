@@ -11,12 +11,12 @@ var flags: Array[Checkpoint] = []
 var current: Variant = null
 
 
-func _init(owner_level: Node, defs: Array, atlas: String, key: String, start_point: Vector2, parent: Node) -> void:
+func _init(owner_level: Node, defs: Array, atlas: String, key: String, start_point: Vector2, parent: Node, flag_frame := "flag") -> void:
 	level = owner_level
 	scene_key = key
 	start = start_point
 	for i in defs.size():
-		var f := Checkpoint.new().setup(level, defs[i], atlas, i)
+		var f := Checkpoint.new().setup(level, defs[i], atlas, i, flag_frame)
 		parent.add_child(f)
 		flags.append(f)
 	var saved: Variant = GameState.get_v("checkpoint")

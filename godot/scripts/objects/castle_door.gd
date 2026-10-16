@@ -5,14 +5,16 @@ extends Area2D
 
 
 ## def: { x, y (teselas, superficie) }
+## def admite "atlas", "frame" y "scale" para que cada mundo use su propia entrada.
 func setup(def: Dictionary, bg_atlas: String) -> CastleDoor:
 	var x := float(def.x) * C.TILE + C.TILE / 2.0
 	var y := float(def.y) * C.TILE
 	position = Vector2(x, y)
 	var castle := Sprite2D.new()
-	castle.texture = Assets.frame(bg_atlas, "castle")
+	castle.texture = Assets.frame(def.get("atlas", bg_atlas), def.get("frame", "castle"))
 	Anim.set_origin(castle, castle.texture.get_size(), 0.5, 1.0)
-	castle.scale = Vector2(1.6, 1.6)
+	var sc: float = def.get("scale", 1.6)
+	castle.scale = Vector2(sc, sc)
 	castle.position = Vector2(0, 6)
 	castle.z_as_relative = false
 	castle.z_index = C.Z_DECOR_BACK - 1

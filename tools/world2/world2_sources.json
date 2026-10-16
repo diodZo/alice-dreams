@@ -1,0 +1,1567 @@
+{
+ "_doc": [
+  "Fuentes gráficas del Mundo 2. Cajas [x0, y0, x1, y1] (inclusivas) en píxeles de la imagen original.",
+  "Las cajas de enemigos y jefe se obtuvieron etiquetando componentes conectados (alfa >= 240) dentro de cada panel;",
+  "las de la hoja de teselas, con el mismo método sobre el fondo crema. Se pueden corregir a mano aquí.",
+  "mode: alpha -> la hoja trae canal alfa con halo de color (se conserva alfa >= alpha_min);",
+  "      cream -> paneles color crema: se elimina sólo el fondo conectado con el borde del recorte (no se tocan blancos interiores).",
+  "status: ok | pending (se conserva el recorte pero queda marcado para revisión) | auto (lo decide la validación)."
+ ],
+ "sources": {
+  "scene": "imagenes/word_2.png",
+  "tiles": "imagenes/tilesets_world_2.png",
+  "enemies": "imagenes/enemies_world_2.png",
+  "boss": "imagenes/jefemundo2.png"
+ },
+ "characters": {
+  "eraser": {
+   "name": "Borrador saltarín",
+   "src": "enemies",
+   "mode": "alpha",
+   "alpha_min": 240,
+   "scale": 0.27,
+   "anchor": "feet",
+   "colors": 24,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       38,
+       136,
+       133,
+       208
+      ],
+      [
+       151,
+       136,
+       244,
+       208
+      ],
+      [
+       262,
+       136,
+       357,
+       208
+      ],
+      [
+       381,
+       136,
+       478,
+       208
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 8,
+     "loop": true,
+     "label": "mover",
+     "boxes": [
+      [
+       525,
+       135,
+       615,
+       208
+      ],
+      [
+       639,
+       129,
+       732,
+       215
+      ],
+      [
+       766,
+       133,
+       853,
+       199
+      ],
+      [
+       877,
+       131,
+       963,
+       195
+      ]
+     ]
+    },
+    "jump": {
+     "fps": 6,
+     "loop": false,
+     "boxes": [
+      [
+       1075,
+       126,
+       1175,
+       194
+      ],
+      [
+       1245,
+       112,
+       1357,
+       185
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 10,
+     "loop": false,
+     "boxes": [
+      [
+       57,
+       271,
+       180,
+       344
+      ],
+      [
+       218,
+       264,
+       379,
+       338
+      ],
+      [
+       409,
+       265,
+       537,
+       337
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       636,
+       259,
+       734,
+       343
+      ],
+      [
+       811,
+       260,
+       904,
+       328
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "note": "La hoja indica 3 fotogramas pero sólo contiene 2 dibujos del borrador; el resto son nubes de polvo (efecto eraser_dust).",
+     "boxes": [
+      [
+       1072,
+       262,
+       1183,
+       342
+      ],
+      [
+       1230,
+       283,
+       1361,
+       342
+      ]
+     ]
+    }
+   }
+  },
+  "crayon": {
+   "name": "Crayón guerrero",
+   "src": "enemies",
+   "mode": "alpha",
+   "alpha_min": 240,
+   "scale": 0.27,
+   "anchor": "feet",
+   "colors": 24,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       45,
+       461,
+       140,
+       583
+      ],
+      [
+       154,
+       461,
+       246,
+       583
+      ],
+      [
+       261,
+       459,
+       356,
+       583
+      ],
+      [
+       373,
+       462,
+       462,
+       583
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 8,
+     "loop": true,
+     "boxes": [
+      [
+       515,
+       462,
+       603,
+       583
+      ],
+      [
+       627,
+       461,
+       720,
+       584
+      ],
+      [
+       737,
+       462,
+       829,
+       583
+      ],
+      [
+       851,
+       462,
+       939,
+       584
+      ]
+     ]
+    },
+    "charge": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       1012,
+       455,
+       1125,
+       584
+      ],
+      [
+       1156,
+       467,
+       1269,
+       584
+      ],
+      [
+       1302,
+       456,
+       1414,
+       584
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 10,
+     "loop": false,
+     "boxes": [
+      [
+       64,
+       622,
+       185,
+       734
+      ],
+      [
+       212,
+       622,
+       414,
+       734
+      ],
+      [
+       433,
+       622,
+       541,
+       733
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       626,
+       624,
+       733,
+       733
+      ],
+      [
+       809,
+       625,
+       907,
+       732
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "boxes": [
+      [
+       1027,
+       638,
+       1176,
+       729
+      ],
+      [
+       1221,
+       660,
+       1375,
+       729
+      ]
+     ]
+    }
+   }
+  },
+  "brush": {
+   "name": "Pincel travieso",
+   "src": "enemies",
+   "mode": "alpha",
+   "alpha_min": 240,
+   "scale": 0.27,
+   "anchor": "feet",
+   "colors": 28,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       34,
+       853,
+       112,
+       948
+      ],
+      [
+       121,
+       851,
+       201,
+       946
+      ],
+      [
+       212,
+       852,
+       289,
+       949
+      ],
+      [
+       303,
+       846,
+       386,
+       946
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 8,
+     "loop": true,
+     "label": "move",
+     "boxes": [
+      [
+       428,
+       849,
+       507,
+       943
+      ],
+      [
+       533,
+       845,
+       601,
+       948
+      ],
+      [
+       624,
+       845,
+       695,
+       943
+      ],
+      [
+       700,
+       842,
+       779,
+       949
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 8,
+     "loop": false,
+     "label": "disparo",
+     "note": "La hoja indica 4 fotogramas pero contiene 3 pinceles; las gotas sueltas se extraen como proyectiles. Se recorta el cuerpo sin el chorro.",
+     "boxes": [
+      [
+       820,
+       844,
+       905,
+       949
+      ],
+      [
+       1008,
+       849,
+       1107,
+       949
+      ],
+      [
+       1205,
+       845,
+       1300,
+       949
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       44,
+       985,
+       153,
+       1072
+      ],
+      [
+       234,
+       985,
+       319,
+       1073
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "note": "La hoja indica 2 fotogramas pero sólo hay un pincel tumbado (el charco es un efecto).",
+     "boxes": [
+      [
+       424,
+       989,
+       595,
+       1067
+      ]
+     ]
+    }
+   }
+  },
+  "garabato": {
+   "name": "Garabato, el Rey de los Crayones",
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 230,
+   "scale": 0.42,
+   "anchor": "feet",
+   "colors": 48,
+   "keep": 0.12,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       53,
+       9,
+       294,
+       183
+      ],
+      [
+       317,
+       9,
+       553,
+       183
+      ],
+      [
+       593,
+       10,
+       839,
+       183
+      ]
+     ]
+    },
+    "move": {
+     "fps": 9,
+     "loop": true,
+     "boxes": [
+      [
+       22,
+       195,
+       238,
+       361
+      ],
+      [
+       262,
+       195,
+       482,
+       362
+      ],
+      [
+       503,
+       201,
+       724,
+       362
+      ],
+      [
+       756,
+       199,
+       957,
+       362
+      ],
+      [
+       974,
+       196,
+       1184,
+       364
+      ],
+      [
+       1207,
+       198,
+       1425,
+       364
+      ]
+     ]
+    },
+    "shoot": {
+     "fps": 7,
+     "loop": false,
+     "note": "Fotogramas 2 y 3 recortados sin el chorro de pintura (se extrae como efecto rainbow_burst).",
+     "boxes": [
+      [
+       40,
+       386,
+       277,
+       546
+      ],
+      [
+       293,
+       383,
+       543,
+       546
+      ],
+      [
+       737,
+       390,
+       968,
+       550
+      ],
+      [
+       1106,
+       391,
+       1329,
+       551
+      ]
+     ]
+    },
+    "swirl": {
+     "fps": 7,
+     "loop": false,
+     "note": "Las espirales sueltas se extraen como efecto swirl.",
+     "boxes": [
+      [
+       36,
+       560,
+       286,
+       726
+      ],
+      [
+       351,
+       570,
+       568,
+       727
+      ],
+      [
+       658,
+       561,
+       918,
+       731
+      ],
+      [
+       1071,
+       579,
+       1308,
+       731
+      ]
+     ]
+    },
+    "spin": {
+     "fps": 9,
+     "loop": true,
+     "label": "remolino de crayones",
+     "boxes": [
+      [
+       85,
+       741,
+       295,
+       916
+      ],
+      [
+       421,
+       754,
+       651,
+       936
+      ],
+      [
+       763,
+       753,
+       935,
+       935
+      ],
+      [
+       1092,
+       747,
+       1381,
+       934
+      ]
+     ]
+    },
+    "stun": {
+     "fps": 4,
+     "loop": true,
+     "label": "aturdido",
+     "boxes": [
+      [
+       42,
+       934,
+       265,
+       1077
+      ],
+      [
+       269,
+       926,
+       473,
+       1079
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 6,
+     "loop": false,
+     "boxes": [
+      [
+       517,
+       949,
+       785,
+       1077
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 3,
+     "loop": false,
+     "boxes": [
+      [
+       797,
+       969,
+       1052,
+       1073
+      ],
+      [
+       1068,
+       971,
+       1419,
+       1077
+      ]
+     ]
+    }
+   }
+  }
+ },
+ "fx": {
+  "paint_big": {
+   "src": "enemies",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    813,
+    986,
+    924,
+    1038
+   ],
+   "scale": 0.27
+  },
+  "paint_blob": {
+   "src": "enemies",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    982,
+    996,
+    1025,
+    1022
+   ],
+   "scale": 0.27
+  },
+  "paint_drop": {
+   "src": "enemies",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    1347,
+    886,
+    1393,
+    911
+   ],
+   "scale": 0.27
+  },
+  "eraser_dust": {
+   "src": "enemies",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    1138,
+    990,
+    1184,
+    1035
+   ],
+   "scale": 0.27
+  },
+  "crayon_trail": {
+   "src": "enemies",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    1313,
+    998,
+    1364,
+    1027
+   ],
+   "scale": 0.27
+  },
+  "rainbow_burst": {
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 160,
+   "box": [
+    972,
+    412,
+    1086,
+    532
+   ],
+   "scale": 0.3,
+   "keep": 0.05
+  },
+  "swirl": {
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 110,
+   "box": [
+    1312,
+    610,
+    1446,
+    712
+   ],
+   "scale": 0.3,
+   "keep": 0.02,
+   "nocomp": true
+  },
+  "crayon_red": {
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    407,
+    740,
+    473,
+    795
+   ],
+   "scale": 0.3
+  },
+  "crayon_yellow": {
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    367,
+    805,
+    415,
+    884
+   ],
+   "scale": 0.3
+  },
+  "crayon_blue": {
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    694,
+    837,
+    736,
+    903
+   ],
+   "scale": 0.3
+  },
+  "crayon_purple": {
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    1061,
+    774,
+    1100,
+    849
+   ],
+   "scale": 0.3
+  },
+  "crayon_green": {
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    941,
+    865,
+    1006,
+    919
+   ],
+   "scale": 0.3
+  }
+ },
+ "objects": {
+  "book_pink": {
+   "box": [
+    720,
+    210,
+    824,
+    256
+   ],
+   "scale": 0.4
+  },
+  "book_blue": {
+   "box": [
+    831,
+    211,
+    929,
+    256
+   ],
+   "scale": 0.4
+  },
+  "book_stack_small": {
+   "box": [
+    938,
+    188,
+    1046,
+    265
+   ],
+   "scale": 0.4
+  },
+  "cloud_face": {
+   "box": [
+    1064,
+    194,
+    1208,
+    260
+   ],
+   "scale": 0.4
+  },
+  "cloud_puffy": {
+   "box": [
+    1211,
+    195,
+    1315,
+    250
+   ],
+   "scale": 0.4
+  },
+  "cloud_long": {
+   "box": [
+    1318,
+    195,
+    1426,
+    250
+   ],
+   "scale": 0.4
+  },
+  "crayon_plat_pink": {
+   "box": [
+    715,
+    300,
+    790,
+    334
+   ],
+   "scale": 0.4
+  },
+  "crayon_plat_blue": {
+   "box": [
+    791,
+    300,
+    870,
+    334
+   ],
+   "scale": 0.4
+  },
+  "crayon_plat_yellow": {
+   "box": [
+    871,
+    300,
+    950,
+    334
+   ],
+   "scale": 0.4
+  },
+  "notebook_plat": {
+   "box": [
+    957,
+    296,
+    1150,
+    372
+   ],
+   "scale": 0.4
+  },
+  "pencil_plat": {
+   "box": [
+    1160,
+    303,
+    1305,
+    371
+   ],
+   "scale": 0.4
+  },
+  "pinwheel_plat": {
+   "box": [
+    1307,
+    197,
+    1429,
+    372
+   ],
+   "scale": 0.4,
+   "keep": 0.05,
+   "crop_top": 248
+  },
+  "ruler_mid": {
+   "box": [
+    56,
+    452,
+    104,
+    492
+   ],
+   "scale": 0.4,
+   "opaque": true
+  },
+  "ruler_post": {
+   "box": [
+    455,
+    438,
+    482,
+    519
+   ],
+   "scale": 0.4
+  },
+  "ruler_end": {
+   "box": [
+    238,
+    447,
+    309,
+    503
+   ],
+   "scale": 0.4
+  },
+  "ruler_hinge": {
+   "box": [
+    113,
+    575,
+    141,
+    602
+   ],
+   "scale": 0.4
+  },
+  "paint_blue_surface": {
+   "box": [
+    583,
+    444,
+    684,
+    495
+   ],
+   "scale": 0.4
+  },
+  "paint_yellow_surface": {
+   "box": [
+    583,
+    511,
+    684,
+    563
+   ],
+   "scale": 0.4
+  },
+  "paint_pink_surface": {
+   "box": [
+    583,
+    579,
+    684,
+    629
+   ],
+   "scale": 0.4
+  },
+  "paint_blue_puddle": {
+   "box": [
+    935,
+    465,
+    1013,
+    497
+   ],
+   "scale": 0.4
+  },
+  "paint_yellow_puddle": {
+   "box": [
+    935,
+    532,
+    1013,
+    564
+   ],
+   "scale": 0.4
+  },
+  "paint_pink_puddle": {
+   "box": [
+    934,
+    597,
+    1013,
+    632
+   ],
+   "scale": 0.4
+  },
+  "crayon_giant_pink": {
+   "box": [
+    36,
+    692,
+    75,
+    786
+   ],
+   "scale": 0.4
+  },
+  "crayon_giant_blue": {
+   "box": [
+    85,
+    692,
+    123,
+    786
+   ],
+   "scale": 0.4
+  },
+  "crayon_giant_yellow": {
+   "box": [
+    134,
+    692,
+    172,
+    786
+   ],
+   "scale": 0.4
+  },
+  "crayon_giant_purple": {
+   "box": [
+    184,
+    692,
+    222,
+    786
+   ],
+   "scale": 0.4
+  },
+  "pencil_giant_yellow": {
+   "box": [
+    234,
+    694,
+    270,
+    785
+   ],
+   "scale": 0.4
+  },
+  "pencil_giant_blue": {
+   "box": [
+    280,
+    694,
+    317,
+    785
+   ],
+   "scale": 0.4
+  },
+  "books_stack": {
+   "box": [
+    337,
+    699,
+    454,
+    803
+   ],
+   "scale": 0.4
+  },
+  "notebook_page": {
+   "box": [
+    470,
+    701,
+    590,
+    783
+   ],
+   "scale": 0.4
+  },
+  "bush_wide": {
+   "box": [
+    22,
+    817,
+    188,
+    885
+   ],
+   "scale": 0.4
+  },
+  "flower_white": {
+   "box": [
+    203,
+    822,
+    247,
+    885
+   ],
+   "scale": 0.4
+  },
+  "flower_tulip": {
+   "box": [
+    256,
+    817,
+    303,
+    884
+   ],
+   "scale": 0.4
+  },
+  "pinwheel_a": {
+   "box": [
+    315,
+    812,
+    378,
+    886
+   ],
+   "scale": 0.4
+  },
+  "pinwheel_b": {
+   "box": [
+    391,
+    814,
+    452,
+    886
+   ],
+   "scale": 0.4
+  },
+  "cloud_small": {
+   "box": [
+    455,
+    823,
+    528,
+    876
+   ],
+   "scale": 0.4
+  },
+  "rolling_pencil": {
+   "box": [
+    700,
+    704,
+    763,
+    767
+   ],
+   "scale": 0.4,
+   "keep": 0.3
+  },
+  "bouncing_eraser": {
+   "box": [
+    849,
+    701,
+    906,
+    766
+   ],
+   "scale": 0.4
+  },
+  "splash_blue": {
+   "box": [
+    610,
+    794,
+    688,
+    878
+   ],
+   "scale": 0.4
+  },
+  "splash_yellow": {
+   "box": [
+    691,
+    795,
+    763,
+    877
+   ],
+   "scale": 0.4
+  },
+  "splash_pink": {
+   "box": [
+    766,
+    800,
+    839,
+    877
+   ],
+   "scale": 0.4
+  },
+  "drip_blue": {
+   "box": [
+    858,
+    801,
+    906,
+    882
+   ],
+   "scale": 0.4
+  },
+  "drip_yellow": {
+   "box": [
+    908,
+    801,
+    958,
+    882
+   ],
+   "scale": 0.4
+  },
+  "drip_pink": {
+   "box": [
+    960,
+    801,
+    1014,
+    882
+   ],
+   "scale": 0.4
+  },
+  "star_big": {
+   "box": [
+    1092,
+    703,
+    1149,
+    758
+   ],
+   "scale": 0.3
+  },
+  "magic_crayon_red": {
+   "box": [
+    1220,
+    699,
+    1268,
+    760
+   ],
+   "scale": 0.4
+  },
+  "magic_crayon_blue": {
+   "box": [
+    1280,
+    699,
+    1326,
+    760
+   ],
+   "scale": 0.4
+  },
+  "magic_crayon_yellow": {
+   "box": [
+    1335,
+    699,
+    1381,
+    761
+   ],
+   "scale": 0.4
+  },
+  "flag_w2": {
+   "box": [
+    1042,
+    783,
+    1107,
+    878
+   ],
+   "scale": 0.45
+  },
+  "arrow_sign": {
+   "box": [
+    1119,
+    812,
+    1181,
+    878
+   ],
+   "scale": 0.45
+  },
+  "sign_heart": {
+   "box": [
+    1192,
+    809,
+    1254,
+    878
+   ],
+   "scale": 0.45
+  },
+  "signpost_w2": {
+   "box": [
+    1265,
+    795,
+    1326,
+    878
+   ],
+   "scale": 0.45
+  },
+  "portal_w2": {
+   "box": [
+    1334,
+    770,
+    1430,
+    880
+   ],
+   "scale": 0.4
+  }
+ },
+ "blocks": {
+  "block_a": [
+   1044,
+   447,
+   1103,
+   505
+  ],
+  "block_b": [
+   1107,
+   447,
+   1166,
+   505
+  ],
+  "block_c": [
+   1169,
+   447,
+   1227,
+   504
+  ],
+  "block_star_w2": [
+   1235,
+   447,
+   1293,
+   505
+  ],
+  "block_heart_w2": [
+   1301,
+   446,
+   1359,
+   504
+  ],
+  "block_color": [
+   1366,
+   447,
+   1424,
+   506
+  ],
+  "block_notebook": [
+   1044,
+   553,
+   1104,
+   614
+  ],
+  "block_notebook_heart": [
+   1107,
+   553,
+   1167,
+   614
+  ],
+  "block_notebook_star": [
+   1170,
+   553,
+   1230,
+   614
+  ]
+ },
+ "ground": {
+  "top_sample": [
+   244,
+   190,
+   346,
+   255
+  ],
+  "top_column": 1,
+  "fill_sample": [
+   30,
+   222,
+   118,
+   255
+  ],
+  "outline": [
+   86,
+   48,
+   30
+  ]
+ },
+ "background": {
+  "bg_cloud_face": {
+   "box": [
+    16,
+    964,
+    147,
+    1048
+   ],
+   "scale": 0.4
+  },
+  "bg_cloud_a": {
+   "box": [
+    156,
+    963,
+    327,
+    1066
+   ],
+   "scale": 0.4
+  },
+  "bg_star_hang_a": {
+   "box": [
+    330,
+    950,
+    374,
+    1032
+   ],
+   "scale": 0.4,
+   "nocomp": true
+  },
+  "bg_star_hang_b": {
+   "box": [
+    390,
+    958,
+    428,
+    1046
+   ],
+   "scale": 0.4,
+   "nocomp": true
+  },
+  "bg_rainbow": {
+   "box": [
+    487,
+    961,
+    687,
+    1045
+   ],
+   "scale": 0.45
+  },
+  "bg_doodle_heart": {
+   "box": [
+    718,
+    970,
+    768,
+    1015
+   ],
+   "scale": 0.4
+  },
+  "bg_doodle_star": {
+   "box": [
+    771,
+    976,
+    815,
+    1020
+   ],
+   "scale": 0.4
+  },
+  "bg_doodle_sun": {
+   "box": [
+    820,
+    964,
+    880,
+    1021
+   ],
+   "scale": 0.4
+  },
+  "bg_doodle_flower": {
+   "box": [
+    882,
+    970,
+    929,
+    1017
+   ],
+   "scale": 0.4
+  },
+  "bg_scrap_a": {
+   "box": [
+    930,
+    960,
+    1010,
+    1048
+   ],
+   "scale": 0.4
+  },
+  "bg_scrap_b": {
+   "box": [
+    1010,
+    958,
+    1100,
+    1048
+   ],
+   "scale": 0.4
+  },
+  "bg_scrap_c": {
+   "box": [
+    1112,
+    962,
+    1185,
+    1048
+   ],
+   "scale": 0.4
+  },
+  "bg_castle": {
+   "box": [
+    1190,
+    909,
+    1436,
+    1065
+   ],
+   "scale": 0.5
+  }
+ },
+ "scene_palette": {
+  "_doc": "Colores muestreados de word_2.png para el cielo y los bancos de nubes generados.",
+  "sky_points": [
+   [
+    400,
+    20
+   ],
+   [
+    700,
+    120
+   ],
+   [
+    900,
+    300
+   ],
+   [
+    380,
+    300
+   ]
+  ],
+  "cloud_points": [
+   [
+    560,
+    120
+   ],
+   [
+    1220,
+    120
+   ],
+   [
+    1000,
+    840
+   ],
+   [
+    300,
+    880
+   ]
+  ]
+ },
+ "reviewed": {
+  "_doc": "Recortes que tocan su caja y se revisaron a mano en tools/out/world2/debug_*.png (python ... --debug).",
+  "eraser/jump_1": "sombra inferior excluida a propósito; el borrador está completo",
+  "eraser/attack_0": "la estela de polvo continúa fuera de la caja; el borrador está completo",
+  "eraser/defeated_1": "nubes de polvo laterales excluidas (efecto eraser_dust)",
+  "crayon/attack_0": "brazo completo; sólo se excluye una chispa",
+  "crayon/hurt_0": "estrellita de golpe excluida",
+  "brush/walk_3": "pincel completo; el panel queda justo encima",
+  "brush/attack_2": "cuerpo sin el chorro de pintura (proyectil aparte)",
+  "brush/hurt_1": "estrellita de golpe excluida",
+  "garabato/shoot_1": "cuerpo sin el chorro arcoíris (efecto rainbow_burst)",
+  "garabato/spin_1": "crayones orbitando recortados: se generan aparte en el juego",
+  "garabato/spin_2": "crayones orbitando recortados: se generan aparte en el juego",
+  "garabato/spin_3": "crayones orbitando recortados: se generan aparte en el juego",
+  "garabato/stun_1": "estrella decorativa excluida",
+  "rainbow_burst": "salpicadura separada del brazo del jefe",
+  "crayon_plat_pink": "fila de tres crayones unidos: se separa cada uno",
+  "crayon_plat_blue": "fila de tres crayones unidos: se separa cada uno",
+  "crayon_plat_yellow": "fila de tres crayones unidos: se separa cada uno",
+  "ruler_mid": "tramo central opaco de la regla para repetirlo en mosaico",
+  "ruler_hinge": "bisagra extraída del puente articulado",
+  "rolling_pencil": "líneas de movimiento excluidas",
+  "bg_star_hang_a": "el hilo sube hasta la cabecera del panel",
+  "bg_star_hang_b": "el hilo sube hasta la cabecera del panel",
+  "bg_scrap_b": "hojas superpuestas: se toma una"
+ }
+}

@@ -7,6 +7,8 @@ const SCENES := {
 	"World1": "res://scenes/worlds/World1.tscn",
 	"Boss": "res://scenes/bosses/World1Boss.tscn",
 	"Victory": "res://scenes/menus/Victory.tscn",
+	"World2": "res://scenes/worlds/World2.tscn",
+	"Boss2": "res://scenes/bosses/World2Boss.tscn",
 }
 
 

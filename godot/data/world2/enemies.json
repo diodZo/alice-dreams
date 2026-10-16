@@ -1,0 +1,20 @@
+{
+ "eraser": {
+  "key": "eraser", "name": "Borrador saltarín", "hp": 2, "speed": 52,
+  "body": {"width": 18, "height": 14},
+  "detectRange": 150, "detectHeight": 60, "reactionTime": 450,
+  "attackRange": 96, "attackCooldown": 1300, "trapTime": 3500
+ },
+ "crayon": {
+  "key": "crayon", "name": "Crayón guerrero", "hp": 3, "speed": 44,
+  "body": {"width": 12, "height": 26},
+  "detectRange": 150, "detectHeight": 40, "reactionTime": 400,
+  "attackRange": 70, "attackCooldown": 1400, "trapTime": 3500
+ },
+ "brush": {
+  "key": "brush", "name": "Pincel travieso", "hp": 3, "speed": 40,
+  "body": {"width": 12, "height": 22},
+  "detectRange": 210, "detectHeight": 70, "reactionTime": 500,
+  "keepDistance": [80, 160], "attackCooldown": 1600, "trapTime": 3500
+ }
+}

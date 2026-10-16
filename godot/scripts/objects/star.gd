@@ -30,7 +30,13 @@ func setup(owner_level: Node, pos: Vector2, opts: Dictionary = {}) -> Star:
 	collision_mask = C.L_WORLD
 	var s := 1.5 if special else 0.8
 	sprite = Sprite2D.new()
-	sprite.texture = Assets.frame("fx", "star_gold")
+	# "look": [atlas, fotograma] permite a cada mundo usar su propia estrella (Mundo 2)
+	var look: Variant = opts.get("look", "")
+	if look is Array and look.size() == 2:
+		sprite.texture = Assets.frame(look[0], look[1])
+		s *= 16.0 / maxf(sprite.texture.get_width(), 1.0)
+	else:
+		sprite.texture = Assets.frame("fx", "star_gold")
 	sprite.scale = Vector2(s, s)
 	add_child(sprite)
 	var circle := CircleShape2D.new()

@@ -1,29 +1,41 @@
 extends Level
-## Arena del castillo, tramo final del Mundo 1 (port de scenes/BossScene.js). Usa el mismo
-## motor que el resto del nivel y añade: puerta que se cierra, combate con Nubarrón,
-## estrella especial y portal al siguiente mundo.
+## Arena del jefe de cada mundo (port de scenes/BossScene.js). Usa el mismo motor que el resto
+## del nivel y añade: puerta que se cierra, combate con el jefe, estrella especial y portal al
+## siguiente mundo. Lo propio de cada jefe sale de los datos (data.boss); los valores por
+## defecto son los del Mundo 1 (Nubarrón).
+##   boss.scene, boss.name, boss.introBanner, boss.defeatBanner, boss.portalToast,
+##   boss.afterMusic, worldId
 
-const NUBARRON := preload("res://scenes/bosses/Nubarron.tscn")
+const DEFAULT_BOSS := "res://scenes/bosses/Nubarron.tscn"
 
-var boss: Nubarron
+## Nubarron o Garabato (misma interfaz: setup, intro, hit_by, fsm, hp, defeated_at...).
+var boss: Node2D
 var fight_started := false
 var portal: Portal
+## Encuadre del combate (boss.frameBoth): la cámara sigue un punto entre la protagonista y el
+## jefe para mantener a ambos a la vista en arenas de más de una pantalla.
+var cam_focus: Node2D
 
 
 func on_create() -> void:
 	fight_started = false
 	portal = null
-	boss = NUBARRON.instantiate()
+	boss = load(data.boss.get("scene", DEFAULT_BOSS)).instantiate()
 	boss.setup(self, data.boss)
 	world_root.add_child(boss)
 	boss.visible = false
 	boss.defeated_at.connect(on_boss_defeated)
 	GameState.set_v("bossVisible", false)
+	GameState.set_v("bossName", data.boss.get("name", "Nubarrón"))
 
 
 func on_update(_time: float, _delta: float) -> void:
 	if not fight_started and player.position.x > float(data.triggerX) * C.TILE:
 		start_fight()
+	if cam_focus != null:
+		var b := boss.position + Vector2(0, -24)
+		var w := 0.4 if fight_started and boss.position.y > 0 else 0.0
+		cam_focus.position = player.position.lerp(b, w)
 
 
 func on_custom_overlap(kind: String, _entity: Object) -> void:
@@ -48,20 +60,25 @@ func start_fight() -> void:
 	camera.shake(500, 0.005)
 	player.frozen = true
 	after(1500, func(): player.frozen = false)
+	if data.boss.get("frameBoth", false):
+		cam_focus = Node2D.new()
+		cam_focus.position = player.position
+		world_root.add_child(cam_focus)
+		camera.target = cam_focus
 	boss.visible = true
 	boss.set_body_enabled(true)
 	boss.intro()
 	GameState.set_v("bossMaxHp", boss.max_hp)
 	GameState.set_v("bossHp", boss.hp)
 	GameState.set_v("bossVisible", true)
-	GameState.show_banner("¡Nubarrón!")
+	GameState.show_banner(data.boss.get("introBanner", "¡Nubarrón!"))
 
 
 func on_boss_defeated(x: float, y: float) -> void:
 	GameState.set_v("bossVisible", false)
 	kill_enemy_projectiles()
-	AudioManager.play_music("world1")
-	GameState.show_banner("¡Has calmado a Nubarrón!")
+	AudioManager.play_music(data.boss.get("afterMusic", "world1"))
+	GameState.show_banner(data.boss.get("defeatBanner", "¡Has calmado a Nubarrón!"))
 	# entrega la estrella dorada especial, que cae hasta el suelo de la arena
 	var star := Star.new().setup(self, Vector2(x, y), {"special": true})
 	level_objects.stars_root.add_child(star)
@@ -76,7 +93,7 @@ func on_special_star(_star: Star) -> void:
 		portal = Portal.new().setup(Vector2(float(p.x) * C.TILE + C.TILE / 2.0, float(p.y) * C.TILE))
 		level_objects.objects.add_child(portal)
 		AudioManager.play("portal")
-		GameState.show_toast("Se ha abierto el portal al Mundo 2"))
+		GameState.show_toast(data.boss.get("portalToast", "Se ha abierto el portal al Mundo 2")))
 
 
 func enter_portal() -> void:
@@ -94,13 +111,15 @@ func enter_portal() -> void:
 	var total := int(GameState.get_v("starsTotal", 0))
 	var special := bool(GameState.get_v("specialStar", false))
 	var time: float = GameState.get_v("playTime", 0.0)
-	SaveManager.mark_world_completed(1, stars, total, special, time)
+	var world_id := int(data.get("worldId", 1))
+	var magic: Array = GameState.get_v("magicCrayons", [])
+	SaveManager.mark_world_completed(world_id, stars, total, special, time, magic)
 
 	after(2200, func():
 		await Fader.fade_out(700, Color8(255, 247, 255))
 		if not is_inside_tree():
 			return
-		GameState.entry = {"stars": stars, "total": total, "special": special, "time": time}
+		GameState.entry = {"stars": stars, "total": total, "special": special, "time": time, "world": world_id, "magic": magic, "magicTotal": int(GameState.get_v("magicTotal", 0))}
 		Router.go("Victory"))
 
 

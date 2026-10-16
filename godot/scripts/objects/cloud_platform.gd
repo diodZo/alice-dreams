@@ -19,7 +19,7 @@ func setup(def: Dictionary, atlas: String) -> CloudPlatform:
 	collision_layer = C.L_ONE_WAY
 	collision_mask = 0
 	position.x = float(def.x) * C.TILE
-	add_cloud_shape(self, sprite, tex.get_size(), float(def.y) * C.TILE)
+	add_cloud_shape(self, sprite, tex.get_size(), float(def.y) * C.TILE, float(def.get("top", 3)))
 	bouncy = float(def.get("bouncy", 0))
 	if bouncy != 0:
 		sprite.modulate = C.rgb(0xffe6f6)
@@ -28,10 +28,11 @@ func setup(def: Dictionary, atlas: String) -> CloudPlatform:
 
 ## Configura el dibujo y la franja de colisión: la superficie visual de la nube está 3 px
 ## por debajo del borde superior; el cuerpo mide (ancho - 2*margen) x 10.
-static func add_cloud_shape(body: CollisionObject2D, spr: Sprite2D, size: Vector2, surface_y: float) -> CollisionShape2D:
+## `top`: distancia del borde superior del dibujo a la superficie pisable (3 px en las nubes;
+## más en objetos del Mundo 2 como los cuadernos con anillas).
+static func add_cloud_shape(body: CollisionObject2D, spr: Sprite2D, size: Vector2, surface_y: float, top := 3.0) -> CollisionShape2D:
 	var w := size.x
 	var inset := minf(6.0, floorf(w * 0.12))
-	var top := 3.0
 	body.position.y = surface_y - top
 	spr.centered = false
 	spr.offset = Vector2(-round(w / 2.0), 0)

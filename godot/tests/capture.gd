@@ -16,18 +16,24 @@ var frame := 0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	# guardado aislado: las capturas nunca tocan el progreso real del jugador
+	SaveManager.save_path = "user://tools_save.json"
+	SaveManager.load_state()
+	if "real_save" in OS.get_cmdline_user_args():
+		SaveManager.save_path = SaveManager.SAVE_PATH
+		SaveManager.load_state()
 	for a in OS.get_cmdline_user_args():
 		var kv := a.split("=", true, 1)
 		args[kv[0]] = kv[1] if kv.size() > 1 else "1"
 	var scene_key: String = args.get("scene", "World1")
-	if scene_key in ["World1", "Boss"]:
-		WorldRegistry.start_run(1)
+	if scene_key in ["World1", "Boss", "World2", "Boss2"]:
+		WorldRegistry.start_run(2 if scene_key.ends_with("2") else 1)
 		if args.has("weapons"):
 			GameState.set_v("weaponsOwned", ["bubble", "paint", "sling"])
 			GameState.set_v("weapon", args.get("weapon", "bubble"))
 		GameState.entry = {"introBanner": true}
 	if scene_key == "Victory":
-		GameState.entry = {"stars": 97, "total": 144, "special": true, "time": 412000}
+		GameState.entry = {"stars": 97, "total": 144, "special": true, "time": 412000, "world": int(args.get("world", "1")), "magic": ["red", "blue"], "magicTotal": 3 if args.get("world", "1") == "2" else 0}
 	var inst: Node = load(Router.SCENES[scene_key]).instantiate()
 	add_child(inst)
 	level = inst
@@ -59,6 +65,10 @@ func _physics_process(_delta: float) -> void:
 		if level.boss.phase == 3:
 			level.boss.sprite.modulate = Nubarron.PHASE3_TINT
 		GameState.set_v("bossHp", hp)
+	if args.has("kill_at") and level is Level and frame == int(args.kill_at) and level.get("boss"):
+		level.player.invulnerable_until = level.now + 100000
+		level.boss.hp = 0
+		level.boss.fsm.set_state("DEFEATED")
 	if args.has("pause") and level is Level and frame == int(args.pause):
 		level.pause_game()
 	var total := int(args.get("frames", "60"))

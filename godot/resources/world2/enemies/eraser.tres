@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_ssieu"]
+
+[resource]
+script = ExtResource("1_ssieu")
+key = "eraser"
+display_name = "Borrador saltarín"
+speed = 52.0
+body_size = Vector2(18, 14)
+detect_range = 150.0
+detect_height = 60.0
+attack_cooldown = 1300.0
+attack_range = 96.0

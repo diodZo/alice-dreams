@@ -66,6 +66,8 @@ func _merge(p: Dictionary) -> void:
 					"bestTime": float(w.get("bestTime", 0)),
 					"completedAt": str(w.get("completedAt", "")),
 				}
+				if w.get("magicCrayons") is Array:
+					state.worlds[str(k)]["magicCrayons"] = w.magicCrayons.filter(func(c): return c is String)
 	if p.get("settings") is Dictionary:
 		for k in ["music", "sfx"]:
 			if p.settings.get(k) is bool:
@@ -109,7 +111,7 @@ func unlocked_world() -> int:
 	return int(state.unlockedWorld)
 
 
-func mark_world_completed(world_id: int, stars: int, total_stars: int, special_star := false, time_ms := 0.0) -> void:
+func mark_world_completed(world_id: int, stars: int, total_stars: int, special_star := false, time_ms := 0.0, magic_crayons: Array = []) -> void:
 	var prev := get_world(world_id)
 	var best_time: float = prev.get("bestTime", 0.0)
 	if time_ms > 0 and (best_time <= 0 or time_ms < best_time):
@@ -122,6 +124,14 @@ func mark_world_completed(world_id: int, stars: int, total_stars: int, special_s
 		"bestTime": best_time,
 		"completedAt": Time.get_datetime_string_from_system(true),
 	}
+	# Mundo 2: crayones mágicos (se acumulan entre partidas)
+	var prev_magic: Array = prev.get("magicCrayons", [])
+	if not magic_crayons.is_empty() or not prev_magic.is_empty():
+		var all := prev_magic.duplicate()
+		for c in magic_crayons:
+			if not c in all:
+				all.append(c)
+		state.worlds[str(world_id)]["magicCrayons"] = all
 	state.unlockedWorld = clampi(maxi(int(state.unlockedWorld), world_id + 1), 1, WORLD_COUNT)
 	persist()
 
