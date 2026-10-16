@@ -1,0 +1,90 @@
+{
+ "order": [
+  "bubble",
+  "paint",
+  "sling"
+ ],
+ "paintColors": [
+  16205978,
+  7915000,
+  16769154,
+  8315006,
+  12167156,
+  16752474
+ ],
+ "foamColors": [
+  16230616,
+  7915000,
+  16769154,
+  12167156,
+  10350784
+ ],
+ "weapons": {
+  "bubble": {
+   "id": "bubble",
+   "name": "Lanzaburbujas",
+   "icon": "icon_bubble",
+   "sound": "shoot_bubble",
+   "cooldown": 230,
+   "projectile": {
+    "texture": "fx",
+    "frame": "bubble",
+    "speed": 185,
+    "vy": -14,
+    "gravity": 0,
+    "lifespan": 950,
+    "alpha": 0.85,
+    "wobble": 3,
+    "body": 10,
+    "scale": 0.9
+   },
+   "damage": 0,
+   "bossDamage": 1,
+   "effect": "trap",
+   "recoil": 0
+  },
+  "paint": {
+   "id": "paint",
+   "name": "Lanzapintura",
+   "icon": "icon_paint",
+   "sound": "shoot_paint",
+   "cooldown": 380,
+   "projectile": {
+    "texture": "paint_blob",
+    "speed": 255,
+    "vy": 0,
+    "gravity": 0,
+    "lifespan": 560,
+    "body": 7,
+    "tintCycle": "paint",
+    "trail": true
+   },
+   "damage": 1,
+   "bossDamage": 2,
+   "effect": "paint",
+   "recoil": 0
+  },
+  "sling": {
+   "id": "sling",
+   "name": "Tirachinas",
+   "icon": "icon_sling",
+   "sound": "shoot_sling",
+   "cooldown": 650,
+   "projectile": {
+    "texture": "fx",
+    "frame": "pellet",
+    "speed": 235,
+    "vy": -150,
+    "gravity": 520,
+    "lifespan": 1500,
+    "body": 7,
+    "tintCycle": "foam",
+    "spin": 720
+   },
+   "damage": 2,
+   "bossDamage": 3,
+   "effect": "impact",
+   "recoil": 160
+  }
+ }
+}

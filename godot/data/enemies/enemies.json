@@ -1,0 +1,53 @@
+{
+ "scratch": {
+  "key": "scratch",
+  "name": "Arañitas",
+  "hp": 2,
+  "speed": 62,
+  "body": {
+   "width": 16,
+   "height": 20
+  },
+  "detectRange": 130,
+  "detectHeight": 40,
+  "reactionTime": 450,
+  "attackRange": 26,
+  "attackCooldown": 900,
+  "trapTime": 3500
+ },
+ "spit": {
+  "key": "spit",
+  "name": "Escupitín",
+  "hp": 3,
+  "speed": 42,
+  "body": {
+   "width": 16,
+   "height": 20
+  },
+  "detectRange": 210,
+  "detectHeight": 70,
+  "reactionTime": 500,
+  "keepDistance": [
+   85,
+   170
+  ],
+  "attackCooldown": 1500,
+  "trapTime": 3500
+ },
+ "flea": {
+  "key": "flea",
+  "name": "Pulgoso",
+  "hp": 3,
+  "speed": 48,
+  "body": {
+   "width": 15,
+   "height": 18
+  },
+  "detectRange": 220,
+  "detectHeight": 90,
+  "reactionTime": 500,
+  "retreatDistance": 90,
+  "attackCooldown": 1700,
+  "trapTime": 3500
+ }
+}

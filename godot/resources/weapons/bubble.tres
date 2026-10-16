@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_def.gd" id="1_88psu"]
+
+[resource]
+script = ExtResource("1_88psu")
+id = "bubble"
+display_name = "Lanzaburbujas"
+icon = "icon_bubble"
+sound = "shoot_bubble"
+cooldown = 230.0
+damage = 0
+effect = "trap"
+proj_frame = "bubble"
+proj_speed = 185.0
+proj_vy = -14.0
+proj_lifespan = 950.0
+proj_alpha = 0.85
+proj_wobble = 3.0
+proj_body = 10.0
+proj_scale = 0.9

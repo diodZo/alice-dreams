@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectile.gd" id="1_proj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_proj"]
+size = Vector2(8, 8)
+
+[node name="Projectile" type="CharacterBody2D"]
+z_index = 30
+collision_layer = 0
+script = ExtResource("1_proj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="Body" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_proj")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 272
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_proj")

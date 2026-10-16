@@ -1,0 +1,174 @@
+extends SceneTree
+## Conversión Phaser -> Godot (paso 2 de 2). Genera recursos nativos a partir de data/*.json:
+##  - SpriteFrames (.tres) de cada personaje con sus animaciones (fotogramas, fps, bucle).
+##  - TileSet (.tres) del terreno 16x16 con colisión en cada tesela.
+##  - WeaponDef (.tres) de las tres armas y EnemyDef (.tres) de los tres monstruos.
+##
+## Uso (después de convert_phaser.mjs y de importar las texturas):
+##     godot --headless --path godot --import
+##     godot --headless --path godot --script res://tools/build_resources.gd
+
+const CHAR_OUT := {
+	"player": "res://resources/player/player_frames.tres",
+	"scratch": "res://resources/enemies/scratch_frames.tres",
+	"spit": "res://resources/enemies/spit_frames.tres",
+	"flea": "res://resources/enemies/flea_frames.tres",
+	"nubarron": "res://resources/bosses/nubarron_frames.tres",
+	"fx_portal": "res://resources/effects/portal_frames.tres",
+}
+
+var errors := 0
+
+
+func _init() -> void:
+	var atlases: Dictionary = _json("res://data/atlases.json")
+	var characters: Dictionary = _json("res://data/characters.json")
+	if atlases.is_empty() or characters.is_empty():
+		quit(1)
+		return
+	_build_sprite_frames(atlases.atlases, characters)
+	_build_tileset(atlases.tileset)
+	_build_weapons(_json("res://data/weapons/weapons.json"))
+	_build_enemies(_json("res://data/enemies/enemies.json"))
+	print("[build_resources] terminado con %d errores" % errors)
+	quit(1 if errors > 0 else 0)
+
+
+func _json(path: String) -> Dictionary:
+	if not FileAccess.file_exists(path):
+		push_error("Falta %s: ejecuta antes node godot/tools/convert_phaser.mjs" % path)
+		errors += 1
+		return {}
+	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return d if d is Dictionary else {}
+
+
+func _save(res: Resource, path: String) -> void:
+	DirAccess.make_dir_recursive_absolute(path.get_base_dir())
+	var err := ResourceSaver.save(res, path)
+	if err != OK:
+		push_error("No se pudo guardar %s (%d)" % [path, err])
+		errors += 1
+	else:
+		print("  escrito ", path)
+
+
+func _build_sprite_frames(atlases: Dictionary, characters: Dictionary) -> void:
+	for key in characters:
+		var c: Dictionary = characters[key]
+		var atlas_key: String = c.get("atlas", key)
+		var atlas: Dictionary = atlases[atlas_key]
+		var tex := load(atlas.texture) as Texture2D
+		if tex == null:
+			push_error("Textura no importada: %s (ejecuta --import antes)" % atlas.texture)
+			errors += 1
+			continue
+		var sf := SpriteFrames.new()
+		sf.remove_animation("default")
+		var cache := {}
+		for anim_name in c.anims:
+			var a: Dictionary = c.anims[anim_name]
+			sf.add_animation(anim_name)
+			sf.set_animation_speed(anim_name, float(a.fps))
+			sf.set_animation_loop(anim_name, bool(a.loop))
+			for fname in a.frames:
+				if not cache.has(fname):
+					var f: Array = atlas.frames[fname]
+					var at := AtlasTexture.new()
+					at.atlas = tex
+					at.region = Rect2(f[0], f[1], f[2], f[3])
+					at.margin = Rect2(f[4], f[5], f[6] - f[2], f[7] - f[3])
+					at.filter_clip = true
+					at.resource_name = fname
+					cache[fname] = at
+				sf.add_frame(anim_name, cache[fname])
+		_save(sf, CHAR_OUT[key])
+
+
+func _build_tileset(info: Dictionary) -> void:
+	var size: int = int(info.tileSize)
+	var tex := load(info.texture) as Texture2D
+	if tex == null:
+		push_error("Textura de teselas no importada: %s" % info.texture)
+		errors += 1
+		return
+	var ts := TileSet.new()
+	ts.tile_size = Vector2i(size, size)
+	ts.add_physics_layer()
+	ts.set_physics_layer_collision_layer(0, C.L_WORLD)
+	ts.set_physics_layer_collision_mask(0, 0)
+	var src := TileSetAtlasSource.new()
+	src.texture = tex
+	src.texture_region_size = Vector2i(size, size)
+	ts.add_source(src, 0)
+	# Se crean todas las teselas usadas por el terreno (autotiling) y por los bloques.
+	var used := {}
+	for set_name in info.terrain:
+		for idx in info.terrain[set_name]:
+			used[int(idx)] = true
+	for b in info.blocks:
+		used[int(info.blocks[b])] = true
+	var cols := tex.get_width() / size
+	var h := size / 2.0
+	for idx in used:
+		var coords := Vector2i(idx % cols, idx / cols)
+		src.create_tile(coords)
+		var td := src.get_tile_data(coords, 0)
+		td.add_collision_polygon(0)
+		td.set_collision_polygon_points(0, 0, PackedVector2Array([Vector2(-h, -h), Vector2(h, -h), Vector2(h, h), Vector2(-h, h)]))
+	_save(ts, "res://resources/tilesets/world1/world1_tileset.tres")
+
+
+func _build_weapons(data: Dictionary) -> void:
+	if data.is_empty():
+		return
+	var WeaponDefScript := load("res://scripts/weapons/weapon_def.gd")
+	for id in data.weapons:
+		var w: Dictionary = data.weapons[id]
+		var p: Dictionary = w.projectile
+		var r: Resource = WeaponDefScript.new()
+		r.id = w.id
+		r.display_name = w.name
+		r.icon = w.icon
+		r.sound = w.sound
+		r.cooldown = float(w.cooldown)
+		r.damage = int(w.damage)
+		r.boss_damage = int(w.bossDamage)
+		r.effect = w.effect
+		r.recoil = float(w.recoil)
+		r.proj_texture = p.texture
+		r.proj_frame = p.get("frame", "")
+		r.proj_speed = float(p.speed)
+		r.proj_vy = float(p.get("vy", 0))
+		r.proj_gravity = float(p.get("gravity", 0))
+		r.proj_lifespan = float(p.get("lifespan", 1500))
+		r.proj_alpha = float(p.get("alpha", 1))
+		r.proj_wobble = float(p.get("wobble", 0))
+		r.proj_body = float(p.get("body", 8))
+		r.proj_scale = float(p.get("scale", 1))
+		r.proj_tint_cycle = p.get("tintCycle", "")
+		r.proj_trail = bool(p.get("trail", false))
+		r.proj_spin = float(p.get("spin", 0))
+		_save(r, "res://resources/weapons/%s.tres" % id)
+
+
+func _build_enemies(data: Dictionary) -> void:
+	var EnemyDefScript := load("res://scripts/entities/enemy_def.gd")
+	for key in data:
+		var e: Dictionary = data[key]
+		var r: Resource = EnemyDefScript.new()
+		r.key = e.key
+		r.display_name = e.name
+		r.hp = int(e.hp)
+		r.speed = float(e.speed)
+		r.body_size = Vector2(e.body.width, e.body.height)
+		r.detect_range = float(e.detectRange)
+		r.detect_height = float(e.detectHeight)
+		r.reaction_time = float(e.reactionTime)
+		r.attack_cooldown = float(e.attackCooldown)
+		r.trap_time = float(e.trapTime)
+		r.attack_range = float(e.get("attackRange", 0))
+		if e.has("keepDistance"):
+			r.keep_distance = Vector2(e.keepDistance[0], e.keepDistance[1])
+		r.retreat_distance = float(e.get("retreatDistance", 0))
+		_save(r, "res://resources/enemies/%s.tres" % key)

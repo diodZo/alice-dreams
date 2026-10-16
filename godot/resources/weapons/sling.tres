@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_def.gd" id="1_sgegc"]
+
+[resource]
+script = ExtResource("1_sgegc")
+id = "sling"
+display_name = "Tirachinas"
+icon = "icon_sling"
+sound = "shoot_sling"
+cooldown = 650.0
+damage = 2
+boss_damage = 3
+recoil = 160.0
+proj_frame = "pellet"
+proj_speed = 235.0
+proj_vy = -150.0
+proj_gravity = 520.0
+proj_lifespan = 1500.0
+proj_body = 7.0
+proj_tint_cycle = "foam"
+proj_spin = 720.0

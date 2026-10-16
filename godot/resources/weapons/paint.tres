@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_def.gd" id="1_decmo"]
+
+[resource]
+script = ExtResource("1_decmo")
+id = "paint"
+display_name = "Lanzapintura"
+icon = "icon_paint"
+sound = "shoot_paint"
+cooldown = 380.0
+boss_damage = 2
+effect = "paint"
+proj_texture = "paint_blob"
+proj_speed = 255.0
+proj_lifespan = 560.0
+proj_body = 7.0
+proj_tint_cycle = "paint"
+proj_trail = true

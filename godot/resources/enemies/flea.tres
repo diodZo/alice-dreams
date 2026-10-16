@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_rdi22"]
+
+[resource]
+script = ExtResource("1_rdi22")
+key = "flea"
+display_name = "Pulgoso"
+hp = 3
+speed = 48.0
+body_size = Vector2(15, 18)
+detect_range = 220.0
+detect_height = 90.0
+reaction_time = 500.0
+attack_cooldown = 1700.0
+retreat_distance = 90.0

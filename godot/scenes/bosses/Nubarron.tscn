@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/nubarron.gd" id="1_boss"]
+[ext_resource type="SpriteFrames" path="res://resources/bosses/nubarron_frames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boss"]
+size = Vector2(60, 46)
+
+[node name="Nubarron" type="Area2D"]
+z_index = 22
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_boss")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_frames")
+animation = &"idle"
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_boss")

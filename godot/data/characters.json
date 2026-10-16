@@ -1,0 +1,395 @@
+{
+ "player": {
+  "frameWidth": 42,
+  "frameHeight": 44,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 6,
+    "loop": true,
+    "derived": false
+   },
+   "blink": {
+    "frames": [
+     "blink_0"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3",
+     "walk_4",
+     "walk_5"
+    ],
+    "fps": 10,
+    "loop": true,
+    "derived": false
+   },
+   "jump": {
+    "frames": [
+     "jump_0",
+     "jump_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "victory": {
+    "frames": [
+     "victory_0",
+     "victory_1",
+     "victory_2"
+    ],
+    "fps": 4,
+    "loop": true,
+    "derived": false
+   },
+   "bubble": {
+    "frames": [
+     "bubble_0",
+     "bubble_1",
+     "bubble_2",
+     "bubble_3"
+    ],
+    "fps": 16,
+    "loop": false,
+    "derived": false
+   },
+   "paint": {
+    "frames": [
+     "paint_0",
+     "paint_1",
+     "paint_2",
+     "paint_3"
+    ],
+    "fps": 14,
+    "loop": false,
+    "derived": false
+   },
+   "sling": {
+    "frames": [
+     "sling_0",
+     "sling_1",
+     "sling_2",
+     "sling_3"
+    ],
+    "fps": 12,
+    "loop": false,
+    "derived": false
+   },
+   "run": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3",
+     "walk_4",
+     "walk_5"
+    ],
+    "fps": 15,
+    "loop": true,
+    "derived": true
+   },
+   "fall": {
+    "frames": [
+     "jump_1",
+     "jump_0"
+    ],
+    "fps": 6,
+    "loop": true,
+    "derived": true
+   }
+  }
+ },
+ "scratch": {
+  "frameWidth": 44,
+  "frameHeight": 28,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2",
+     "attack_3"
+    ],
+    "fps": 10,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  }
+ },
+ "spit": {
+  "frameWidth": 34,
+  "frameHeight": 28,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2",
+     "attack_3"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  }
+ },
+ "flea": {
+  "frameWidth": 30,
+  "frameHeight": 26,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2",
+     "attack_3"
+    ],
+    "fps": 9,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  }
+ },
+ "nubarron": {
+  "frameWidth": 166,
+  "frameHeight": 82,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "move": {
+    "frames": [
+     "move_0",
+     "move_1",
+     "move_2",
+     "move_3",
+     "move_4",
+     "move_5"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "blow": {
+    "frames": [
+     "blow_0",
+     "blow_1",
+     "blow_2",
+     "blow_3"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": false
+   },
+   "shoot": {
+    "frames": [
+     "shoot_0",
+     "shoot_1",
+     "shoot_2",
+     "shoot_3"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "storm": {
+    "frames": [
+     "storm_0",
+     "storm_1",
+     "storm_2",
+     "storm_3"
+    ],
+    "fps": 7,
+    "loop": true,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1"
+    ],
+    "fps": 3,
+    "loop": false,
+    "derived": false
+   }
+  }
+ },
+ "fx_portal": {
+  "atlas": "fx",
+  "frameWidth": 40,
+  "frameHeight": 40,
+  "anims": {
+   "spin": {
+    "frames": [
+     "portal_0",
+     "portal_1",
+     "portal_2",
+     "portal_3",
+     "portal_4",
+     "portal_5"
+    ],
+    "fps": 10,
+    "loop": true,
+    "derived": false
+   }
+  }
+ }
+}

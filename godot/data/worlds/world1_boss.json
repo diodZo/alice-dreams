@@ -1,0 +1,125 @@
+{
+ "key": "world1_boss",
+ "widthTiles": 40,
+ "heightTiles": 17,
+ "music": "world1",
+ "bossMusic": "boss",
+ "tileset": "world1_tiles",
+ "objectsAtlas": "world1_objects",
+ "backgroundAtlas": "world1_bg",
+ "progress": {
+  "total": 8000,
+  "offset": 7600,
+  "scale": 0.625
+ },
+ "playerStart": {
+  "x": 2,
+  "y": 14
+ },
+ "sections": [
+  {
+   "id": "E",
+   "name": "Castillo de Nubarrón",
+   "from": 6500
+  }
+ ],
+ "terrain": [
+  {
+   "x": 0,
+   "y": 14,
+   "w": 40,
+   "h": 3
+  }
+ ],
+ "blocks": [],
+ "clouds": [
+  {
+   "x": 11,
+   "y": 10,
+   "frame": "cloud_med"
+  },
+  {
+   "x": 29,
+   "y": 10,
+   "frame": "cloud_med"
+  }
+ ],
+ "bridges": [],
+ "movers": [],
+ "crumbles": [],
+ "pads": [],
+ "winds": [],
+ "hazards": [],
+ "stars": [
+  {
+   "x": 14,
+   "y": 13
+  },
+  {
+   "x": 15,
+   "y": 13
+  },
+  {
+   "x": 16,
+   "y": 13
+  },
+  {
+   "x": 24,
+   "y": 13
+  },
+  {
+   "x": 25,
+   "y": 13
+  },
+  {
+   "x": 26,
+   "y": 13
+  }
+ ],
+ "enemies": [],
+ "checkpoints": [],
+ "pickups": [],
+ "signs": [],
+ "decor": [
+  {
+   "x": 1,
+   "y": 14,
+   "frame": "lollipops",
+   "sway": true
+  },
+  {
+   "x": 38,
+   "y": 14,
+   "frame": "pinwheel_big",
+   "sway": true
+  },
+  {
+   "x": 20,
+   "y": 14,
+   "frame": "flowers_a",
+   "front": true
+  }
+ ],
+ "gate": {
+  "x": 5,
+  "rows": [
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": "block_swirl_purple"
+ },
+ "triggerX": 9,
+ "boss": {
+  "homeX": 28,
+  "homeY": 150,
+  "minX": 8,
+  "maxX": 38,
+  "floorY": 224
+ },
+ "portal": {
+  "x": 37,
+  "y": 14
+ }
+}

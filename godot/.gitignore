@@ -1,0 +1,6 @@
+# Caché del editor e importaciones (se regeneran al abrir el proyecto)
+.godot/
+/android/
+*.translation
+export/
+tests/out/

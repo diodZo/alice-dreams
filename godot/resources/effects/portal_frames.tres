@@ -1,0 +1,65 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://resources/effects/fx.png" id="1_ld6eb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j7qf"]
+resource_name = "portal_0"
+atlas = ExtResource("1_ld6eb")
+region = Rect2(43, 2, 40, 40)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bqj8"]
+resource_name = "portal_1"
+atlas = ExtResource("1_ld6eb")
+region = Rect2(85, 2, 40, 40)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e8p8"]
+resource_name = "portal_2"
+atlas = ExtResource("1_ld6eb")
+region = Rect2(127, 2, 40, 40)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3wey"]
+resource_name = "portal_3"
+atlas = ExtResource("1_ld6eb")
+region = Rect2(169, 2, 40, 40)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3su7u"]
+resource_name = "portal_4"
+atlas = ExtResource("1_ld6eb")
+region = Rect2(211, 2, 40, 40)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1rly"]
+resource_name = "portal_5"
+atlas = ExtResource("1_ld6eb")
+region = Rect2(253, 2, 40, 40)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j7qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bqj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e8p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3wey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3su7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1rly")
+}],
+"loop": 1,
+"name": &"spin",
+"speed": 10.0
+}]

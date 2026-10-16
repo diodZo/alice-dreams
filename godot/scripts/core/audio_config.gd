@@ -1,0 +1,39 @@
+class_name AudioConfig
+## Asociación de eventos de sonido con archivos de audio (equivale a config/audioConfig.js).
+##
+## Mientras un evento no tenga archivo asignado (cadena vacía), AudioManager usa el sonido
+## PROVISIONAL sintetizado (scripts/core/synth.gd). Para sustituirlo: copiar el archivo a
+## res://resources/audio/ y escribir aquí su ruta, p. ej. "jump": "res://resources/audio/jump.ogg".
+## Si la ruta no existe se vuelve al sonido provisional: la falta de audio nunca bloquea el juego.
+
+const SFX_FILES := {
+	"jump": "",
+	"shoot_bubble": "",
+	"shoot_paint": "",
+	"shoot_sling": "",
+	"weapon_switch": "",
+	"star": "",
+	"hurt": "",
+	"checkpoint": "",
+	"boss_appear": "",
+	"victory": "",
+	"enemy_hit": "",
+	"enemy_defeat": "",
+	"bubble_trap": "",
+	"bubble_pop": "",
+	"bounce": "",
+	"pickup": "",
+	"wind": "",
+	"boss_hit": "",
+	"ui_move": "",
+	"ui_select": "",
+	"pause": "",
+	"no_weapon": "",
+	"portal": "",
+}
+
+const MUSIC_FILES := {
+	"menu": "",
+	"world1": "",
+	"boss": "",
+}

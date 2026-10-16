@@ -1,0 +1,43 @@
+{
+ "game": {
+  "width": 480,
+  "height": 270,
+  "tile": 16,
+  "gravity": 900
+ },
+ "player": {
+  "maxHp": 3,
+  "walkSpeed": 95,
+  "runSpeed": 150,
+  "groundAccel": 950,
+  "groundDecel": 1200,
+  "airAccel": 620,
+  "airDecel": 380,
+  "jumpVelocity": -335,
+  "jumpCutVelocity": -120,
+  "maxFallSpeed": 430,
+  "coyoteTime": 100,
+  "jumpBuffer": 120,
+  "invulnerableTime": 1300,
+  "hurtStunTime": 350,
+  "hurtKnockback": {
+   "x": 150,
+   "y": -170
+  },
+  "stompBounce": -250,
+  "attackPoseTime": 260,
+  "body": {
+   "width": 12,
+   "height": 30,
+   "footPadding": 1
+  }
+ },
+ "camera": {
+  "lerp": 0.12,
+  "deadzone": {
+   "width": 40,
+   "height": 60
+  },
+  "lookAhead": 36
+ }
+}
