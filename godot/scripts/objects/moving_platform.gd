@@ -9,6 +9,7 @@ var delta_px := Vector2.ZERO
 var duration := 3000.0
 var phase := 0.0
 var elapsed := 0.0
+var active := true
 
 
 ## def: { x, y, frame, dx, dy (teselas), duration (ms), delay (ms) }
@@ -26,6 +27,11 @@ func setup(def: Dictionary, atlas: String) -> MovingPlatform:
 	delta_px = Vector2(float(def.get("dx", 0)), float(def.get("dy", 0))) * C.TILE
 	duration = float(def.get("duration", 3000))
 	phase = float(def.get("delay", 0)) / duration
+	active = bool(def.get("active", true))
+	visible = active
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.disabled = not active
 	return self
 
 
@@ -39,9 +45,19 @@ func target_at(ms: float) -> Vector2:
 
 ## La llama el nivel una vez por fotograma de física.
 func step(delta_ms: float) -> void:
+	if not active:
+		return
 	elapsed += delta_ms
 	position = target_at(elapsed)
 
 
 func on_player_contact() -> void:
 	pass
+
+
+func activate() -> void:
+	active = true
+	visible = true
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.set_deferred("disabled", false)

@@ -1,0 +1,1434 @@
+{
+ "id": 3,
+ "key": "world3",
+ "name": "El Reino de los Peluches Dormilones",
+ "widthTiles": 565,
+ "heightTiles": 25,
+ "music": "world3",
+ "tileset": "world3_tiles",
+ "objectsAtlas": "world3_objects",
+ "backgroundAtlas": "world3_bg",
+ "progress": {
+  "total": 10000,
+  "offset": 0,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 3,
+  "y": 20
+ },
+ "nextScene": "Boss3",
+ "startWeapons": [
+  "bubble",
+  "paint",
+  "sling"
+ ],
+ "frames": {
+  "flag": "flag_w3",
+  "signpost": "rabbit_plush",
+  "star": [
+   "world3_objects",
+   "star_w3"
+  ]
+ },
+ "sections": [
+  {
+   "id": "A",
+   "name": "El rincón de los juguetes",
+   "from": 0
+  },
+  {
+   "id": "B",
+   "name": "Los puentes de lana",
+   "from": 1700
+  },
+  {
+   "id": "C",
+   "name": "Las almohadas flotantes",
+   "from": 3500
+  },
+  {
+   "id": "D",
+   "name": "El laberinto de las mantas",
+   "from": 5500
+  },
+  {
+   "id": "E",
+   "name": "El castillo de los sueños",
+   "from": 7800
+  }
+ ],
+ "background": {
+  "sky": "w3_sky",
+  "far": "w3_clouds_far",
+  "near": "w3_clouds_near",
+  "atlas": "world3_bg",
+  "objectsAtlas": "world3_objects",
+  "sparkles": true,
+  "drifters": [
+   "cloud_plush"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.01,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_reference",
+      "x": 240,
+      "y": 135,
+      "scale": 1.0,
+      "alpha": 0.7
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.04,
+     0.04
+    ],
+    "depth": 3,
+    "frames": [
+     "bg_moon",
+     "bg_window"
+    ],
+    "step": 760,
+    "y": [
+     30,
+     75
+    ],
+    "alpha": 0.9
+   },
+   {
+    "scroll": [
+     0.13,
+     0.05
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_mobile",
+     "bg_teddy"
+    ],
+    "step": 420,
+    "y": [
+     20,
+     160
+    ],
+    "alpha": 0.85,
+    "sway": true
+   }
+  ]
+ },
+ "terrain": [
+  {
+   "x": 0,
+   "y": 20,
+   "w": 35,
+   "h": 5
+  },
+  {
+   "x": 39,
+   "y": 20,
+   "w": 39,
+   "h": 5
+  },
+  {
+   "x": 82,
+   "y": 20,
+   "w": 35,
+   "h": 5
+  },
+  {
+   "x": 122,
+   "y": 19,
+   "w": 42,
+   "h": 6
+  },
+  {
+   "x": 169,
+   "y": 20,
+   "w": 36,
+   "h": 5
+  },
+  {
+   "x": 211,
+   "y": 20,
+   "w": 39,
+   "h": 5
+  },
+  {
+   "x": 255,
+   "y": 19,
+   "w": 34,
+   "h": 6
+  },
+  {
+   "x": 294,
+   "y": 20,
+   "w": 45,
+   "h": 5
+  },
+  {
+   "x": 344,
+   "y": 19,
+   "w": 38,
+   "h": 6
+  },
+  {
+   "x": 387,
+   "y": 20,
+   "w": 42,
+   "h": 5
+  },
+  {
+   "x": 434,
+   "y": 19,
+   "w": 43,
+   "h": 6
+  },
+  {
+   "x": 482,
+   "y": 20,
+   "w": 40,
+   "h": 5
+  },
+  {
+   "x": 527,
+   "y": 19,
+   "w": 38,
+   "h": 6
+  }
+ ],
+ "blocks": [
+  {
+   "x": 18,
+   "y": 18,
+   "type": "block_pink"
+  },
+  {
+   "x": 19,
+   "y": 18,
+   "type": "block_blue"
+  },
+  {
+   "x": 20,
+   "y": 18,
+   "type": "block_star"
+  },
+  {
+   "x": 91,
+   "y": 18,
+   "type": "block_heart"
+  },
+  {
+   "x": 92,
+   "y": 18,
+   "type": "block_pink"
+  },
+  {
+   "x": 137,
+   "y": 18,
+   "type": "block_blue"
+  },
+  {
+   "x": 138,
+   "y": 18,
+   "type": "block_star"
+  },
+  {
+   "x": 270,
+   "y": 18,
+   "type": "block_heart"
+  },
+  {
+   "x": 271,
+   "y": 18,
+   "type": "block_pink"
+  },
+  {
+   "x": 359,
+   "y": 18,
+   "type": "block_blue"
+  },
+  {
+   "x": 360,
+   "y": 18,
+   "type": "block_star"
+  },
+  {
+   "x": 498,
+   "y": 18,
+   "type": "block_heart"
+  },
+  {
+   "x": 499,
+   "y": 18,
+   "type": "block_pink"
+  }
+ ],
+ "clouds": [
+  {
+   "x": 36,
+   "y": 17,
+   "frame": "pillow_pink"
+  },
+  {
+   "x": 79,
+   "y": 16,
+   "frame": "pillow_blue"
+  },
+  {
+   "x": 119,
+   "y": 15,
+   "frame": "cloud_plush"
+  },
+  {
+   "x": 165,
+   "y": 16,
+   "frame": "pillow_pink"
+  },
+  {
+   "x": 205,
+   "y": 14,
+   "frame": "rope_mid"
+  },
+  {
+   "x": 251,
+   "y": 16,
+   "frame": "pillow_blue"
+  },
+  {
+   "x": 290,
+   "y": 13,
+   "frame": "cloud_plush"
+  },
+  {
+   "x": 340,
+   "y": 15,
+   "frame": "pillow_pink"
+  },
+  {
+   "x": 383,
+   "y": 12,
+   "frame": "cloud_plush"
+  },
+  {
+   "x": 430,
+   "y": 15,
+   "frame": "pillow_blue"
+  },
+  {
+   "x": 478,
+   "y": 14,
+   "frame": "pillow_pink"
+  },
+  {
+   "x": 523,
+   "y": 13,
+   "frame": "cloud_plush"
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [
+  {
+   "x": 185,
+   "y": 15,
+   "frame": "pillow_blue",
+   "dx": 7,
+   "dy": 0,
+   "duration": 2600
+  },
+  {
+   "x": 228,
+   "y": 16,
+   "frame": "pillow_pink",
+   "dx": 0,
+   "dy": -6,
+   "duration": 2300
+  },
+  {
+   "x": 306,
+   "y": 17,
+   "frame": "cloud_plush",
+   "dx": 8,
+   "dy": -2,
+   "duration": 3000
+  },
+  {
+   "x": 400,
+   "y": 14,
+   "frame": "pillow_blue",
+   "dx": 0,
+   "dy": -7,
+   "duration": 2500
+  },
+  {
+   "x": 451,
+   "y": 16,
+   "frame": "pillow_pink",
+   "dx": 7,
+   "dy": 0,
+   "duration": 2800,
+   "active": false
+  }
+ ],
+ "swings": [
+  {
+   "x": 112,
+   "y": 12,
+   "frame": "rope_mid",
+   "radius": 52,
+   "duration": 2800
+  },
+  {
+   "x": 146,
+   "y": 11,
+   "frame": "rope_mid",
+   "radius": 44,
+   "duration": 2400
+  },
+  {
+   "x": 366,
+   "y": 11,
+   "frame": "rope_mid",
+   "radius": 58,
+   "duration": 3000
+  },
+  {
+   "x": 420,
+   "y": 10,
+   "frame": "rope_mid",
+   "radius": 48,
+   "duration": 2600
+  }
+ ],
+ "crumbles": [
+  {
+   "x": 238,
+   "y": 13,
+   "frame": "cloud_plush"
+  },
+  {
+   "x": 244,
+   "y": 12,
+   "frame": "cloud_plush"
+  },
+  {
+   "x": 275,
+   "y": 13,
+   "frame": "cloud_plush"
+  },
+  {
+   "x": 281,
+   "y": 12,
+   "frame": "cloud_plush"
+  }
+ ],
+ "pads": [
+  {
+   "x": 27,
+   "y": 20,
+   "frame": "pillow_pink",
+   "power": -500
+  },
+  {
+   "x": 67,
+   "y": 20,
+   "frame": "pillow_blue",
+   "power": -470
+  },
+  {
+   "x": 315,
+   "y": 20,
+   "frame": "pillow_pink",
+   "power": -520
+  },
+  {
+   "x": 463,
+   "y": 19,
+   "frame": "pillow_blue",
+   "power": -490
+  }
+ ],
+ "winds": [
+  {
+   "x": 260,
+   "y": 8,
+   "w": 5,
+   "h": 12,
+   "vx": 12,
+   "vy": -85
+  },
+  {
+   "x": 325,
+   "y": 9,
+   "w": 4,
+   "h": 11,
+   "vx": -8,
+   "vy": -75
+  }
+ ],
+ "hazards": [],
+ "paints": [],
+ "rollers": [],
+ "bouncers": [],
+ "drips": [],
+ "rivers": [],
+ "magicCrayons": [],
+ "yarnRollers": [
+  {
+   "x": 132,
+   "y": 19,
+   "range": [
+    124,
+    160
+   ],
+   "speed": 55
+  },
+  {
+   "x": 178,
+   "y": 20,
+   "range": [
+    170,
+    203
+   ],
+   "speed": 65
+  },
+  {
+   "x": 354,
+   "y": 19,
+   "range": [
+    346,
+    379
+   ],
+   "speed": 72
+  },
+  {
+   "x": 443,
+   "y": 19,
+   "range": [
+    436,
+    474
+   ],
+   "speed": 60
+  }
+ ],
+ "sleepClouds": [
+  {
+   "x": 264,
+   "y": 15,
+   "w": 4,
+   "duration": 2400
+  },
+  {
+   "x": 326,
+   "y": 16,
+   "w": 5,
+   "duration": 2400
+  },
+  {
+   "x": 408,
+   "y": 15,
+   "w": 4,
+   "duration": 2400
+  },
+  {
+   "x": 505,
+   "y": 15,
+   "w": 5,
+   "duration": 2400
+  }
+ ],
+ "magicButtons": [
+  {
+   "x": 447,
+   "y": 19,
+   "frame": "button_pink",
+   "targetMover": 4
+  }
+ ],
+ "dreamCollectibles": [
+  {
+   "id": "moon_1",
+   "kind": "moon",
+   "x": 96,
+   "y": 15,
+   "frame": "moon_w3"
+  },
+  {
+   "id": "moon_2",
+   "kind": "moon",
+   "x": 280,
+   "y": 10,
+   "frame": "moon_w3"
+  },
+  {
+   "id": "moon_3",
+   "kind": "moon",
+   "x": 425,
+   "y": 8,
+   "frame": "moon_w3"
+  },
+  {
+   "id": "button_gold",
+   "kind": "button",
+   "x": 190,
+   "y": 13,
+   "frame": "button_pink"
+  },
+  {
+   "id": "gift_1",
+   "kind": "regalo",
+   "x": 374,
+   "y": 9,
+   "frame": "pillow_pink"
+  },
+  {
+   "id": "key_1",
+   "kind": "llave",
+   "x": 512,
+   "y": 13,
+   "frame": "button_blue"
+  }
+ ],
+ "stars": [
+  {
+   "x": 5,
+   "y": 17
+  },
+  {
+   "x": 9,
+   "y": 18
+  },
+  {
+   "x": 13,
+   "y": 17
+  },
+  {
+   "x": 17,
+   "y": 18
+  },
+  {
+   "x": 21,
+   "y": 17
+  },
+  {
+   "x": 25,
+   "y": 18
+  },
+  {
+   "x": 29,
+   "y": 17
+  },
+  {
+   "x": 33,
+   "y": 18
+  },
+  {
+   "x": 37,
+   "y": 17
+  },
+  {
+   "x": 41,
+   "y": 18
+  },
+  {
+   "x": 45,
+   "y": 17
+  },
+  {
+   "x": 49,
+   "y": 18
+  },
+  {
+   "x": 53,
+   "y": 17
+  },
+  {
+   "x": 57,
+   "y": 18
+  },
+  {
+   "x": 61,
+   "y": 17
+  },
+  {
+   "x": 65,
+   "y": 18
+  },
+  {
+   "x": 69,
+   "y": 17
+  },
+  {
+   "x": 73,
+   "y": 18
+  },
+  {
+   "x": 77,
+   "y": 17
+  },
+  {
+   "x": 81,
+   "y": 18
+  },
+  {
+   "x": 85,
+   "y": 17
+  },
+  {
+   "x": 89,
+   "y": 18
+  },
+  {
+   "x": 93,
+   "y": 17
+  },
+  {
+   "x": 97,
+   "y": 18
+  },
+  {
+   "x": 101,
+   "y": 17
+  },
+  {
+   "x": 105,
+   "y": 18
+  },
+  {
+   "x": 109,
+   "y": 17
+  },
+  {
+   "x": 112,
+   "y": 17
+  },
+  {
+   "x": 116,
+   "y": 16
+  },
+  {
+   "x": 120,
+   "y": 17
+  },
+  {
+   "x": 124,
+   "y": 16
+  },
+  {
+   "x": 128,
+   "y": 17
+  },
+  {
+   "x": 132,
+   "y": 16
+  },
+  {
+   "x": 136,
+   "y": 17
+  },
+  {
+   "x": 140,
+   "y": 16
+  },
+  {
+   "x": 144,
+   "y": 17
+  },
+  {
+   "x": 148,
+   "y": 16
+  },
+  {
+   "x": 152,
+   "y": 17
+  },
+  {
+   "x": 156,
+   "y": 16
+  },
+  {
+   "x": 160,
+   "y": 17
+  },
+  {
+   "x": 164,
+   "y": 16
+  },
+  {
+   "x": 168,
+   "y": 17
+  },
+  {
+   "x": 172,
+   "y": 16
+  },
+  {
+   "x": 176,
+   "y": 17
+  },
+  {
+   "x": 180,
+   "y": 16
+  },
+  {
+   "x": 184,
+   "y": 17
+  },
+  {
+   "x": 188,
+   "y": 16
+  },
+  {
+   "x": 192,
+   "y": 17
+  },
+  {
+   "x": 196,
+   "y": 16
+  },
+  {
+   "x": 200,
+   "y": 17
+  },
+  {
+   "x": 204,
+   "y": 16
+  },
+  {
+   "x": 208,
+   "y": 17
+  },
+  {
+   "x": 212,
+   "y": 16
+  },
+  {
+   "x": 218,
+   "y": 16
+  },
+  {
+   "x": 222,
+   "y": 15
+  },
+  {
+   "x": 226,
+   "y": 16
+  },
+  {
+   "x": 230,
+   "y": 15
+  },
+  {
+   "x": 234,
+   "y": 16
+  },
+  {
+   "x": 238,
+   "y": 15
+  },
+  {
+   "x": 242,
+   "y": 16
+  },
+  {
+   "x": 246,
+   "y": 15
+  },
+  {
+   "x": 250,
+   "y": 16
+  },
+  {
+   "x": 254,
+   "y": 15
+  },
+  {
+   "x": 258,
+   "y": 16
+  },
+  {
+   "x": 262,
+   "y": 15
+  },
+  {
+   "x": 266,
+   "y": 16
+  },
+  {
+   "x": 270,
+   "y": 15
+  },
+  {
+   "x": 274,
+   "y": 16
+  },
+  {
+   "x": 278,
+   "y": 15
+  },
+  {
+   "x": 282,
+   "y": 16
+  },
+  {
+   "x": 286,
+   "y": 15
+  },
+  {
+   "x": 290,
+   "y": 16
+  },
+  {
+   "x": 294,
+   "y": 15
+  },
+  {
+   "x": 298,
+   "y": 16
+  },
+  {
+   "x": 302,
+   "y": 15
+  },
+  {
+   "x": 306,
+   "y": 16
+  },
+  {
+   "x": 310,
+   "y": 15
+  },
+  {
+   "x": 314,
+   "y": 16
+  },
+  {
+   "x": 318,
+   "y": 15
+  },
+  {
+   "x": 322,
+   "y": 16
+  },
+  {
+   "x": 326,
+   "y": 15
+  },
+  {
+   "x": 330,
+   "y": 16
+  },
+  {
+   "x": 334,
+   "y": 15
+  },
+  {
+   "x": 338,
+   "y": 16
+  },
+  {
+   "x": 342,
+   "y": 16
+  },
+  {
+   "x": 346,
+   "y": 17
+  },
+  {
+   "x": 350,
+   "y": 16
+  },
+  {
+   "x": 354,
+   "y": 17
+  },
+  {
+   "x": 358,
+   "y": 16
+  },
+  {
+   "x": 362,
+   "y": 17
+  },
+  {
+   "x": 366,
+   "y": 16
+  },
+  {
+   "x": 370,
+   "y": 17
+  },
+  {
+   "x": 374,
+   "y": 16
+  },
+  {
+   "x": 378,
+   "y": 17
+  },
+  {
+   "x": 382,
+   "y": 16
+  },
+  {
+   "x": 386,
+   "y": 17
+  },
+  {
+   "x": 390,
+   "y": 16
+  },
+  {
+   "x": 394,
+   "y": 17
+  },
+  {
+   "x": 398,
+   "y": 16
+  },
+  {
+   "x": 402,
+   "y": 17
+  },
+  {
+   "x": 406,
+   "y": 16
+  },
+  {
+   "x": 410,
+   "y": 17
+  },
+  {
+   "x": 414,
+   "y": 16
+  },
+  {
+   "x": 418,
+   "y": 17
+  },
+  {
+   "x": 422,
+   "y": 16
+  },
+  {
+   "x": 426,
+   "y": 17
+  },
+  {
+   "x": 430,
+   "y": 16
+  },
+  {
+   "x": 434,
+   "y": 17
+  },
+  {
+   "x": 438,
+   "y": 16
+  },
+  {
+   "x": 442,
+   "y": 17
+  },
+  {
+   "x": 446,
+   "y": 16
+  },
+  {
+   "x": 450,
+   "y": 17
+  },
+  {
+   "x": 454,
+   "y": 16
+  },
+  {
+   "x": 458,
+   "y": 17
+  },
+  {
+   "x": 462,
+   "y": 16
+  },
+  {
+   "x": 466,
+   "y": 17
+  },
+  {
+   "x": 470,
+   "y": 16
+  },
+  {
+   "x": 474,
+   "y": 17
+  },
+  {
+   "x": 478,
+   "y": 16
+  },
+  {
+   "x": 482,
+   "y": 16
+  },
+  {
+   "x": 486,
+   "y": 15
+  },
+  {
+   "x": 490,
+   "y": 16
+  },
+  {
+   "x": 494,
+   "y": 15
+  },
+  {
+   "x": 498,
+   "y": 16
+  },
+  {
+   "x": 502,
+   "y": 15
+  },
+  {
+   "x": 506,
+   "y": 16
+  },
+  {
+   "x": 510,
+   "y": 15
+  },
+  {
+   "x": 514,
+   "y": 16
+  },
+  {
+   "x": 518,
+   "y": 15
+  },
+  {
+   "x": 522,
+   "y": 16
+  },
+  {
+   "x": 526,
+   "y": 15
+  },
+  {
+   "x": 530,
+   "y": 16
+  },
+  {
+   "x": 534,
+   "y": 15
+  },
+  {
+   "x": 538,
+   "y": 16
+  },
+  {
+   "x": 542,
+   "y": 15
+  },
+  {
+   "x": 546,
+   "y": 16
+  },
+  {
+   "x": 550,
+   "y": 15
+  },
+  {
+   "x": 554,
+   "y": 16
+  }
+ ],
+ "enemies": [
+  {
+   "type": "rabbit",
+   "x": 48,
+   "y": 20,
+   "patrol": [
+    40,
+    56
+   ]
+  },
+  {
+   "type": "rabbit",
+   "x": 88,
+   "y": 20,
+   "patrol": [
+    80,
+    96
+   ]
+  },
+  {
+   "type": "rabbit",
+   "x": 142,
+   "y": 20,
+   "patrol": [
+    134,
+    150
+   ]
+  },
+  {
+   "type": "rabbit",
+   "x": 320,
+   "y": 20,
+   "patrol": [
+    312,
+    328
+   ]
+  },
+  {
+   "type": "rabbit",
+   "x": 390,
+   "y": 20,
+   "patrol": [
+    382,
+    398
+   ]
+  },
+  {
+   "type": "rabbit",
+   "x": 468,
+   "y": 20,
+   "patrol": [
+    460,
+    476
+   ]
+  },
+  {
+   "type": "rabbit",
+   "x": 535,
+   "y": 20,
+   "patrol": [
+    527,
+    543
+   ]
+  },
+  {
+   "type": "wool",
+   "x": 128,
+   "y": 20,
+   "patrol": [
+    120,
+    136
+   ]
+  },
+  {
+   "type": "wool",
+   "x": 176,
+   "y": 20,
+   "patrol": [
+    168,
+    184
+   ]
+  },
+  {
+   "type": "wool",
+   "x": 348,
+   "y": 20,
+   "patrol": [
+    340,
+    356
+   ]
+  },
+  {
+   "type": "wool",
+   "x": 420,
+   "y": 20,
+   "patrol": [
+    412,
+    428
+   ]
+  },
+  {
+   "type": "wool",
+   "x": 505,
+   "y": 20,
+   "patrol": [
+    497,
+    513
+   ]
+  },
+  {
+   "type": "pillow",
+   "x": 230,
+   "y": 14,
+   "patrol": [
+    220,
+    240
+   ]
+  },
+  {
+   "type": "pillow",
+   "x": 270,
+   "y": 14,
+   "patrol": [
+    260,
+    280
+   ]
+  },
+  {
+   "type": "pillow",
+   "x": 302,
+   "y": 14,
+   "patrol": [
+    292,
+    312
+   ]
+  },
+  {
+   "type": "pillow",
+   "x": 370,
+   "y": 14,
+   "patrol": [
+    360,
+    380
+   ]
+  },
+  {
+   "type": "pillow",
+   "x": 455,
+   "y": 14,
+   "patrol": [
+    445,
+    465
+   ]
+  },
+  {
+   "type": "pillow",
+   "x": 520,
+   "y": 14,
+   "patrol": [
+    510,
+    530
+   ]
+  }
+ ],
+ "checkpoints": [
+  {
+   "x": 109,
+   "y": 20
+  },
+  {
+   "x": 354,
+   "y": 19
+  }
+ ],
+ "pickups": [],
+ "signs": [
+  {
+   "x": 5,
+   "y": 20,
+   "text": "Mundo 3: El Reino de los Peluches Dormilones"
+  },
+  {
+   "x": 24,
+   "y": 20,
+   "text": "Las almohadas elásticas te impulsan suavemente"
+  },
+  {
+   "x": 108,
+   "y": 20,
+   "text": "Los puentes de lana se balancean: espera su ritmo"
+  },
+  {
+   "x": 258,
+   "y": 19,
+   "text": "Las nubes violetas dan sueño, pero no quitan el control"
+  },
+  {
+   "x": 445,
+   "y": 19,
+   "text": "Pulsa el botón mágico para despertar la plataforma"
+  },
+  {
+   "x": 540,
+   "y": 19,
+   "text": "El Castillo de los Sueños: Rey Siestón te espera"
+  }
+ ],
+ "decor": [
+  {
+   "x": 10,
+   "y": 20,
+   "frame": "rabbit_plush",
+   "front": false
+  },
+  {
+   "x": 31,
+   "y": 20,
+   "frame": "yarn_pink",
+   "front": true
+  },
+  {
+   "x": 70,
+   "y": 20,
+   "frame": "pillow_blue",
+   "front": false
+  },
+  {
+   "x": 100,
+   "y": 20,
+   "frame": "rabbit_plush",
+   "front": false
+  },
+  {
+   "x": 153,
+   "y": 19,
+   "frame": "yarn_pink",
+   "front": true
+  },
+  {
+   "x": 220,
+   "y": 20,
+   "frame": "pillow_pink",
+   "front": false
+  },
+  {
+   "x": 288,
+   "y": 19,
+   "frame": "rabbit_plush",
+   "front": false
+  },
+  {
+   "x": 337,
+   "y": 20,
+   "frame": "yarn_pink",
+   "front": true
+  },
+  {
+   "x": 410,
+   "y": 20,
+   "frame": "rabbit_plush",
+   "front": false
+  },
+  {
+   "x": 475,
+   "y": 19,
+   "frame": "pillow_blue",
+   "front": false
+  },
+  {
+   "x": 530,
+   "y": 19,
+   "frame": "yarn_pink",
+   "front": true
+  }
+ ],
+ "door": {
+  "x": 558,
+  "y": 19,
+  "atlas": "world3_objects",
+  "frame": "portal_w3",
+  "scale": 1.0
+ }
+}

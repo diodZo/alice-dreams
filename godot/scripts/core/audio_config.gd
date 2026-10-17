@@ -39,6 +39,9 @@ const MUSIC_FILES := {
 	"world2": "",
 	"garabato": "",
 	"world2_victory": "",
+	"world3": "",
+	"sieston": "",
+	"world3_victory": "",
 }
 
 ## Música del Mundo 2: si se copian estos archivos a res://resources/audio/, se usan en lugar de
@@ -47,4 +50,7 @@ const OPTIONAL_MUSIC := {
 	"world2": "res://resources/audio/world2_theme.ogg",
 	"garabato": "res://resources/audio/garabato_boss.ogg",
 	"world2_victory": "res://resources/audio/world2_victory.ogg",
+	"world3": "res://resources/audio/world3_theme.ogg",
+	"sieston": "res://resources/audio/rey_sieston_boss.ogg",
+	"world3_victory": "res://resources/audio/world3_victory.ogg",
 }

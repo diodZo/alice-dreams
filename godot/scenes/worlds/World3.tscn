@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/levels/world3.gd" id="1"]
+[node name="World3" type="Node2D"]
+script = ExtResource("1")
+data_path = "res://data/world3/world3.json"
+scene_key = "World3"

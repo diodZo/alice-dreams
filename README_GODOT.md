@@ -159,3 +159,13 @@ Guarda: mundo desbloqueado, mundos completados con mejor marca de estrellas, est
 ## 8. Audio
 
 Igual que en Phaser, **todos los sonidos y la música son provisionales**: se sintetizan al arrancar (`scripts/core/synth.gd`, port directo de `SynthSounds.js`: mismas ondas, notas, envolventes y partituras). Para usar archivos reales, cópialos a `godot/resources/audio/` y asígnalos en `scripts/core/audio_config.gd` (p. ej. `"jump": "res://resources/audio/jump.ogg"`). La música del Mundo 2 se reconoce sola si existen `world2_theme.ogg`, `garabato_boss.ogg` y `world2_victory.ogg` en esa carpeta. Si una ruta no existe se vuelve al sonido provisional: la falta de audio nunca bloquea el juego.
+# Mundo 3
+
+El Reino de los Peluches Dormilones está integrado en la selección de mundos. Incluye sus cinco secciones, tres enemigos, mecánicas de sueño y Rey Siestón. Los recursos pueden regenerarse con:
+
+```powershell
+python tools/world3/prepare_world3_assets.py
+python tools/world3/world3_level.py
+```
+
+Consulta `WORLD3_REPORT.md` para el inventario de contenido y validaciones.

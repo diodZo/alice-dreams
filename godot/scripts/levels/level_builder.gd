@@ -52,6 +52,11 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		var p := CrumblePlatform.new().setup(level, c, atlas)
 		platforms.add_child(p)
 		out.crumbles.append(p)
+	# Mundo 3: plataformas oscilantes suspendidas por cuerdas.
+	for s in data.get("swings", []):
+		var p := SwingPlatform.new().setup(s, atlas)
+		platforms.add_child(p)
+		out.movers.append(p)
 
 	var objects := Node2D.new()
 	objects.name = "Objects"
@@ -72,6 +77,20 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		objects.add_child(BouncingEraser.new().setup(level, b, atlas))
 	for d in data.get("drips", []):
 		objects.add_child(PaintDrip.new().setup(level, d, atlas))
+	# Mundo 3: ovillos, nubes de sueño, coleccionables y mecanismos por señales.
+	for y in data.get("yarnRollers", []):
+		objects.add_child(RollingYarn.new().setup(y, atlas))
+	for c in data.get("sleepClouds", []):
+		objects.add_child(SleepCloud.new().setup(c, atlas))
+	for c in data.get("dreamCollectibles", []):
+		if not (str(c.id) in GameState.get_v("dreamCollectibles", [])):
+			objects.add_child(DreamCollectible.new().setup(level, c, atlas))
+	for b in data.get("magicButtons", []):
+		var button := MagicButton.new().setup(b, atlas)
+		objects.add_child(button)
+		var target_i := int(b.get("targetMover", -1))
+		if target_i >= 0 and target_i < out.movers.size():
+			button.activated.connect(out.movers[target_i].activate)
 	for m in data.get("magicCrayons", []):
 		if not (m.color in GameState.get_v("magicCrayons", [])):
 			objects.add_child(MagicCrayon.new().setup(level, m, atlas))
@@ -129,7 +148,8 @@ func _check_frames(atlas: String) -> void:
 	if data.crumbles.any(func(c): return not c.has("frame")):
 		frames.append("cloud_puff")
 	if not data.pads.is_empty():
-		frames.append("jump_pad")
+		for p in data.pads:
+			frames.append(p.get("frame", "jump_pad"))
 	if not data.signs.is_empty():
 		frames.append(frame_of("signpost", "signpost"))
 	if not data.checkpoints.is_empty():
@@ -138,6 +158,12 @@ func _check_frames(atlas: String) -> void:
 		frames += ["rainbow_mid", "rainbow_cap_l", "rainbow_cap_r"]
 	if not data.get("rulers", []).is_empty():
 		frames += ["ruler_mid", "ruler_post", "ruler_hinge"]
+	for x in data.get("swings", []):
+		frames.append(x.get("frame", "rope_mid"))
+	for x in data.get("yarnRollers", []):
+		frames.append(x.get("frame", "yarn_pink"))
+	for x in data.get("sleepClouds", []):
+		frames.append(x.get("frame", "cloud_plush"))
 	for list in [data.clouds, data.movers, data.hazards, data.decor, data.crumbles]:
 		for x in list:
 			if x.has("frame"):

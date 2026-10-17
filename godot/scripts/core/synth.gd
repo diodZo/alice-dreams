@@ -71,6 +71,22 @@ const MUSIC := {
 		"melody": "C5 . E5 . G5 . C6 - | - - B5 . C6 . D6 . | E6 - - - D6 - C6 - | B5 - G5 - - - . . | A5 . C6 . F6 - E6 . | D6 . C6 . B5 . A5 . | G5 . C6 . E6 - D6 . | C6 - - - . . . .",
 		"bassline": "C3 . G3 . C3 . G3 . | G2 . D3 . G2 . D3 . | A2 . E3 . A2 . E3 . | E2 . B2 . E2 . B2 . | F2 . C3 . F2 . C3 . | D3 . A2 . D3 . A2 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . . .",
 	},
+	# Mundo 3: caja de música nocturna; el jefe acelera el motivo sin abandonar el tono infantil.
+	"world3": {
+		"bpm": 112, "lead": ["triangle", 0.065], "bass": ["square", 0.045],
+		"melody": "C5 . E5 . G5 - E5 . | D5 . F5 . A5 - F5 . | E5 . G5 . C6 - B5 . | A5 - G5 - E5 - - . | F5 . A5 . C6 . A5 . | G5 . E5 . D5 . G5 . | C5 . E5 . G5 . B5 . | C6 - - - . . . .",
+		"bassline": "C3 . G3 . C3 . G3 . | F2 . C3 . F2 . C3 . | A2 . E3 . A2 . E3 . | G2 . D3 . G2 . D3 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . G2 . | C3 . G2 . C3 . . .",
+	},
+	"sieston": {
+		"bpm": 154, "lead": ["square", 0.05], "bass": ["triangle", 0.09],
+		"melody": "C5 C5 . E5 G5 . C6 . | B5 . G5 . E5 . D5 . | F5 F5 . A5 C6 . A5 . | G5 - F5 - E5 - D5 - | C5 . E5 . G5 . C6 . | A5 . C6 . E6 . C6 . | D6 . B5 . G5 . D5 . | C5 - - - . . . .",
+		"bassline": "C3 C3 . C3 G2 . C3 . | G2 G2 . G2 D3 . G2 . | F2 F2 . F2 C3 . F2 . | G2 G2 . G2 D3 . G2 . | C3 C3 . C3 G2 . C3 . | A2 A2 . A2 E3 . A2 . | G2 G2 . G2 D3 . G2 . | C3 C3 . C3 G2 . C3 .",
+	},
+	"world3_victory": {
+		"bpm": 104, "lead": ["triangle", 0.075], "bass": ["sine", 0.09],
+		"melody": "C5 . E5 . G5 . C6 - | E6 - D6 . C6 . G5 . | A5 . C6 . E6 - D6 . | C6 - - - . . . .",
+		"bassline": "C3 . G3 . C3 . G3 . | A2 . E3 . A2 . E3 . | F2 . C3 . G2 . D3 . | C3 . G2 . C3 . . .",
+	},
 }
 
 static var _noise: PackedFloat32Array

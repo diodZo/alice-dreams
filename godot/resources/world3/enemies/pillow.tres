@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_ccbfd"]
+
+[resource]
+script = ExtResource("1_ccbfd")
+key = "pillow"
+display_name = "Almohada voladora"
+hp = 3
+speed = 38.0
+body_size = Vector2(24, 16)
+detect_range = 220.0
+detect_height = 100.0
+reaction_time = 500.0
+attack_cooldown = 1700.0
+keep_distance = Vector2(90, 170)

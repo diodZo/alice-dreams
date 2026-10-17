@@ -113,13 +113,14 @@ func enter_portal() -> void:
 	var time: float = GameState.get_v("playTime", 0.0)
 	var world_id := int(data.get("worldId", 1))
 	var magic: Array = GameState.get_v("magicCrayons", [])
-	SaveManager.mark_world_completed(world_id, stars, total, special, time, magic)
+	var dream: Array = GameState.get_v("dreamCollectibles", [])
+	SaveManager.mark_world_completed(world_id, stars, total, special, time, magic, dream)
 
 	after(2200, func():
 		await Fader.fade_out(700, Color8(255, 247, 255))
 		if not is_inside_tree():
 			return
-		GameState.entry = {"stars": stars, "total": total, "special": special, "time": time, "world": world_id, "magic": magic, "magicTotal": int(GameState.get_v("magicTotal", 0))}
+		GameState.entry = {"stars": stars, "total": total, "special": special, "time": time, "world": world_id, "magic": magic, "magicTotal": int(GameState.get_v("magicTotal", 0)), "dream": dream, "dreamTotal": int(GameState.get_v("dreamTotal", 0))}
 		Router.go("Victory"))
 
 

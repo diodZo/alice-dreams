@@ -68,6 +68,8 @@ func _merge(p: Dictionary) -> void:
 				}
 				if w.get("magicCrayons") is Array:
 					state.worlds[str(k)]["magicCrayons"] = w.magicCrayons.filter(func(c): return c is String)
+				if w.get("dreamCollectibles") is Array:
+					state.worlds[str(k)]["dreamCollectibles"] = w.dreamCollectibles.filter(func(c): return c is String)
 	if p.get("settings") is Dictionary:
 		for k in ["music", "sfx"]:
 			if p.settings.get(k) is bool:
@@ -111,7 +113,7 @@ func unlocked_world() -> int:
 	return int(state.unlockedWorld)
 
 
-func mark_world_completed(world_id: int, stars: int, total_stars: int, special_star := false, time_ms := 0.0, magic_crayons: Array = []) -> void:
+func mark_world_completed(world_id: int, stars: int, total_stars: int, special_star := false, time_ms := 0.0, magic_crayons: Array = [], dream_collectibles: Array = []) -> void:
 	var prev := get_world(world_id)
 	var best_time: float = prev.get("bestTime", 0.0)
 	if time_ms > 0 and (best_time <= 0 or time_ms < best_time):
@@ -132,6 +134,13 @@ func mark_world_completed(world_id: int, stars: int, total_stars: int, special_s
 			if not c in all:
 				all.append(c)
 		state.worlds[str(world_id)]["magicCrayons"] = all
+	var prev_dream: Array = prev.get("dreamCollectibles", [])
+	if not dream_collectibles.is_empty() or not prev_dream.is_empty():
+		var all_dream := prev_dream.duplicate()
+		for item in dream_collectibles:
+			if not item in all_dream:
+				all_dream.append(item)
+		state.worlds[str(world_id)]["dreamCollectibles"] = all_dream
 	state.unlockedWorld = clampi(maxi(int(state.unlockedWorld), world_id + 1), 1, WORLD_COUNT)
 	persist()
 

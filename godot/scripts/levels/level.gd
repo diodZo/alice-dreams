@@ -213,6 +213,12 @@ func _process_overlaps(delta: float) -> void:
 				on_magic_crayon(entity)
 			"switch":
 				entity.trigger()
+			"magic_button":
+				entity.trigger()
+			"sleep_cloud":
+				entity.apply(player)
+			"dream_collectible":
+				on_dream_collectible(entity)
 			var kind:
 				on_custom_overlap(kind, entity)
 	apply_paint(paint)
@@ -247,6 +253,22 @@ func on_magic_crayon(m: MagicCrayon) -> void:
 	AudioManager.play("pickup")
 	var names := {"red": "rojo", "blue": "azul", "yellow": "amarillo"}
 	GameState.show_banner("¡Crayón mágico %s!" % names.get(m.color, m.color))
+
+
+func on_dream_collectible(item: DreamCollectible) -> void:
+	if not item.collect():
+		return
+	var list: Array = GameState.get_v("dreamCollectibles", []).duplicate()
+	if not item.id in list:
+		list.append(item.id)
+	GameState.set_v("dreamCollectibles", list)
+	AudioManager.play("pickup")
+	if item.kind == "moon" and list.filter(func(x): return str(x).begins_with("moon")).size() == 3:
+		GameState.inc("stars", 1)
+		effects.confetti(player.position.x, player.position.y - 20, 36)
+		GameState.show_banner("¡Las tres lunas mágicas! Estrella extra")
+	else:
+		GameState.show_toast("¡%s encontrado!" % item.kind.capitalize())
 
 
 ## Puerta de salida del nivel (castillo de Nubarrón, Gran Lienzo de Garabato...).

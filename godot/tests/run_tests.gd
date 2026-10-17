@@ -29,6 +29,9 @@ func _ready() -> void:
 		"test_w2_switch_and_temporary", "test_w2_hazards", "test_w2_magic_and_checkpoint",
 		"test_w2_eraser", "test_w2_crayon", "test_w2_brush", "test_w2_weapons_vs_enemies",
 		"test_w2_boss", "test_w2_progression",
+		# Mundo 3
+		"test_w3_data", "test_w3_sprites", "test_w3_level_loads", "test_w3_mechanics",
+		"test_w3_enemies", "test_w3_boss", "test_w3_progression",
 	]
 	# "-- only=test_x,test_y" ejecuta sólo esas pruebas
 	for a in OS.get_cmdline_user_args():
@@ -74,7 +77,8 @@ func load_level(scene_key := "World1", setup := Callable()) -> Level:
 	if is_instance_valid(level):
 		level.queue_free()
 		await get_tree().process_frame
-	WorldRegistry.start_run(2 if scene_key.ends_with("2") else 1)
+	var world_id := 3 if scene_key.ends_with("3") else (2 if scene_key.ends_with("2") else 1)
+	WorldRegistry.start_run(world_id)
 	if setup.is_valid():
 		setup.call()
 	level = load(Router.SCENES[scene_key]).instantiate()
@@ -1076,4 +1080,94 @@ func test_w2_progression() -> void:
 	await frames(2)
 	check(v2.world_id == 2, "pantalla de victoria del Mundo 2")
 	v2.queue_free()
+	SaveManager.reset_progress()
+
+
+# ======================================================================= MUNDO 3
+func test_w3_data() -> void:
+	var w: Dictionary = C.load_json("res://data/world3/world3.json")
+	var b: Dictionary = C.load_json("res://data/world3/world3_boss.json")
+	check(w.progress.total == 10000 and w.widthTiles * 16 + b.widthTiles * 16 == 10000, "recorrido total de 10.000 px")
+	check(w.sections.map(func(x): return int(x.from)) == [0,1700,3500,5500,7800], "cinco secciones del Mundo 3")
+	check(w.checkpoints.size() == 2 and w.dreamCollectibles.filter(func(x): return x.kind == "moon").size() == 3, "dos checkpoints y tres lunas mágicas")
+	check(w.swings.size() >= 4 and w.pads.size() >= 4 and w.yarnRollers.size() >= 4 and w.sleepClouds.size() >= 4, "mecánicas exclusivas distribuidas")
+	var types := {}
+	for e in w.enemies: types[e.type] = true
+	check(types.has("rabbit") and types.has("wool") and types.has("pillow"), "los tres enemigos oficiales")
+	check(String(b.boss.scene).ends_with("ReySieston.tscn"), "arena con Rey Siestón")
+	var manifest: Dictionary = C.load_json("res://data/world3/world3_asset_manifest.json")
+	check(manifest.summary.pending.is_empty(), "manifiesto de recursos sin pendientes")
+
+func test_w3_sprites() -> void:
+	var expected := {"rabbit":{"idle":4,"walk":5,"jump":3,"attack":3,"hurt":2,"defeated":3},"wool":{"idle":4,"walk":4,"jump":3,"attack":3,"hurt":2,"defeated":3},"pillow":{"idle":4,"walk":4,"dash":3,"attack":3,"hurt":2,"defeated":3},"sieston":{"idle":4,"move":6,"pillow":4,"jump":3,"special":3,"hurt":2,"defeated":3}}
+	for key in expected:
+		var sf := Assets.sprite_frames(key)
+		for a in expected[key]: check(sf.get_frame_count(a) == expected[key][a], "%s/%s conserva sus fotogramas" % [key,a])
+	check(Assets.tileset("world3_tiles") != null, "TileSet nativo del Mundo 3")
+	for atlas in ["world3_objects","world3_bg","w3_fx"]: check(Assets.atlases.has(atlas), "atlas %s cargado" % atlas)
+
+func test_w3_level_loads() -> void:
+	Assets.used_placeholders.clear()
+	await load_level("World3")
+	await settle()
+	check(level.data.key == "world3" and level.player.grounded, "Mundo 3 carga con Alice sobre terreno real")
+	check(Assets.used_placeholders.is_empty(), "Mundo 3 no usa marcadores provisionales (%s)" % str(Assets.used_placeholders.keys()))
+	check(level.level_objects.movers.size() == 9, "cinco plataformas móviles y cuatro cuerdas oscilantes")
+	check(GameState.get_v("weaponsOwned").size() == 3, "reutiliza las tres armas")
+
+func test_w3_mechanics() -> void:
+	await load_level("World3")
+	await settle(); _clear_spawner()
+	var pillow_pad: BouncePad = level.level_objects.objects.get_children().filter(func(n): return n is BouncePad)[0]
+	level.player.position = pillow_pad.position + Vector2(0,-4); level.player.velocity.y = 80
+	await frames(3)
+	check(level.player.velocity.y < -400, "almohada elástica impulsa a Alice")
+	var swing: SwingPlatform = level.level_objects.movers.filter(func(n): return n is SwingPlatform)[0]
+	check(swing.target_at(700).distance_to(swing.anchor) > 3, "cuerda oscilante define un arco estable")
+	var yarn: RollingYarn = level.level_objects.objects.get_children().filter(func(n): return n is RollingYarn)[0]
+	var x0 := yarn.position.x; await frames(30)
+	check(absf(yarn.position.x-x0)>10, "ovillo rodante se desplaza")
+	var cloud: SleepCloud = level.level_objects.objects.get_children().filter(func(n): return n is SleepCloud)[0]
+	cloud.apply(level.player)
+	check(level.player.sleepy_until > level.now and not level.player.frozen, "nube de sueño ralentiza sin quitar control")
+	var button: MagicButton = level.level_objects.objects.get_children().filter(func(n): return n is MagicButton)[0]
+	var target: MovingPlatform = level.level_objects.movers[4]
+	check(not target.active, "mecanismo empieza dormido")
+	button.trigger(); await frames(1)
+	check(target.active and target.visible, "botón mágico activa la plataforma por señal")
+
+func test_w3_enemies() -> void:
+	await load_level("World3")
+	await settle(); _clear_spawner()
+	for type in ["rabbit","wool","pillow"]:
+		var scene: PackedScene = EnemySpawner.SCENES[type]
+		var e: Enemy = scene.instantiate()
+		e.setup(level,{"id":"test_"+type,"x":level.player.position.x+70,"y":level.player.position.y,"patrol":[level.player.position.x+20,level.player.position.x+120]})
+		level.enemies_root.add_child(e); await frames(2)
+		check(e.def != null and e.hp > 0 and e.is_alive(), "%s usa Enemy y recibe definición" % type)
+		e.fsm.set_state(Enemy.ATTACK); await frames(35)
+		check(e.fsm.current == Enemy.ATTACK or e.fsm.current == Enemy.ALERT, "%s ejecuta ataque con anticipación" % type)
+		e.queue_free(); await get_tree().process_frame
+
+func test_w3_boss() -> void:
+	await load_level("Boss3", func(): GameState.set_v("weapon","sling"))
+	await settle(); place(12,14); await frames(130)
+	var boss: ReySieston = level.boss
+	check(boss != null and boss.max_hp == 50 and not boss.invulnerable, "Rey Siestón entra vulnerable con 50 HP")
+	var p: Projectile = level.spawn_projectile("player",{"x":boss.position.x,"y":boss.position.y-20,"vx":0,"vy":0,"kind":"sling","frame":"pellet","lifespan":100})
+	p.weapon=Assets.weapon("sling"); boss.hp=34; boss.hit_by(p)
+	check(boss.phase == 2, "cambia a fase 2 al 65%")
+	boss.invulnerable=false; boss.hp=16; boss.hit_by(p)
+	check(boss.phase == 3, "cambia a fase 3 al 30%")
+	boss.invulnerable=false; boss.hp=1; boss.hit_by(p)
+	check(boss.is_defeated(), "puede ser derrotado y entra en sueño final")
+
+func test_w3_progression() -> void:
+	SaveManager.reset_progress(); SaveManager.mark_world_completed(1,1,1); SaveManager.mark_world_completed(2,1,1)
+	check(WorldRegistry.is_playable(3), "completar Mundo 2 desbloquea Mundo 3")
+	var key := WorldRegistry.start_run(3)
+	check(key == "World3" and GameState.get_v("dreamTotal") == 6, "nueva partida conserva sistemas y coleccionables de Mundo 3")
+	SaveManager.mark_world_completed(3,10,138,true,1000,[],["moon_1","moon_2","moon_3"])
+	check(SaveManager.unlocked_world() == 4 and SaveManager.is_world_completed(3), "victoria guarda el Mundo 3 y desbloquea Mundo 4")
+	check(SaveManager.get_world(3).dreamCollectibles.size() == 3, "lunas mágicas persistidas")
 	SaveManager.reset_progress()

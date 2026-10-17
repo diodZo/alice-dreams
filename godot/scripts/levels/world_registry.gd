@@ -7,7 +7,7 @@ class_name WorldRegistry
 ##   3. su entrada en esta tabla y en Router.SCENES.
 ## Cada mundo define en sus datos: tileset, fondo, longitud, secciones, enemigos, obstáculos,
 ## coleccionables, checkpoints, jefe, música y portal de salida.
-## Implementados: Mundo 1 y Mundo 2; el resto queda reservado.
+## Implementados: Mundos 1, 2 y 3; el resto queda reservado.
 ## Campos de presentación (menú y pantalla de victoria): victoryTitle, victorySub, bossFrames,
 ## bossFrame (fotograma del jefe vencido), nextPortal, victoryMusic.
 
@@ -19,8 +19,11 @@ const WORLDS := [
 	{"id": 2, "name": "El Reino de los Crayones Encantados", "scene": "World2", "data": "res://data/world2/world2.json", "boss_data": "res://data/world2/world2_boss.json", "implemented": true,
 		"victoryTitle": "¡Mundo 2 completado!", "victorySub": "Garabato devuelve los colores al lienzo",
 		"bossFrames": "garabato", "bossAnim": "idle", "bossFrame": 1, "bossScale": 0.5,
-		"nextPortal": "Portal al Mundo 3: abierto (próximamente)", "victoryMusic": "world2_victory"},
-	{"id": 3, "name": "Mundo 3", "scene": "", "data": "", "boss_data": "", "implemented": false},
+		"nextPortal": "Portal al Mundo 3: abierto", "victoryMusic": "world2_victory"},
+	{"id": 3, "name": "El Reino de los Peluches Dormilones", "scene": "World3", "data": "res://data/world3/world3.json", "boss_data": "res://data/world3/world3_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 3 completado!", "victorySub": "El Rey Siestón duerme feliz otra vez",
+		"bossFrames": "sieston", "bossAnim": "defeated", "bossFrame": 2, "bossScale": 0.5,
+		"nextPortal": "Portal al Mundo 4: preparado (próximamente)", "victoryMusic": "world3_victory"},
 	{"id": 4, "name": "Mundo 4", "scene": "", "data": "", "boss_data": "", "implemented": false},
 	{"id": 5, "name": "Mundo 5", "scene": "", "data": "", "boss_data": "", "implemented": false},
 	{"id": 6, "name": "Mundo 6", "scene": "", "data": "", "boss_data": "", "implemented": false},

@@ -9,6 +9,7 @@ var music_btn: CloudButton
 var sfx_btn: CloudButton
 var reset_btn: CloudButton
 var world2_btn: CloudButton
+var world3_btn: CloudButton
 
 
 func _ready() -> void:
@@ -61,7 +62,7 @@ func _ready() -> void:
 
 	# progreso guardado
 	var done_lines: PackedStringArray = []
-	for id in [1, 2]:
+	for id in [1, 2, 3]:
 		var wd := SaveManager.get_world(id)
 		if wd.get("completed", false):
 			done_lines.append("Mundo %d: %d estrellas" % [id, int(wd.bestStars)])
@@ -80,6 +81,8 @@ func _ready() -> void:
 	play.activated.connect(func(_b): start_game(1))
 	world2_btn = CloudButton.make(_world2_label(), 150)
 	world2_btn.activated.connect(func(_b): start_game(2))
+	world3_btn = CloudButton.make(_world3_label(), 150)
+	world3_btn.activated.connect(func(_b): start_game(3))
 	music_btn = CloudButton.make(_music_label(), 150)
 	music_btn.activated.connect(func(b):
 		AudioManager.set_music_enabled(not AudioManager.music_on)
@@ -92,7 +95,8 @@ func _ready() -> void:
 		AudioManager.play("ui_select"))
 	reset_btn = CloudButton.make("Borrar progreso", 150)
 	reset_btn.activated.connect(confirm_reset)
-	var buttons: Array[CloudButton] = [play, world2_btn, music_btn, sfx_btn, reset_btn]
+	# Conserva el orden histórico de las opciones de audio (también para usuarios de teclado).
+	var buttons: Array[CloudButton] = [play, world2_btn, music_btn, sfx_btn, world3_btn, reset_btn]
 	for b in buttons:
 		box.add_child(b)
 	add_child(MenuList.new().setup(buttons))
@@ -157,6 +161,10 @@ func confirm_reset(btn: CloudButton) -> void:
 
 func _world2_label() -> String:
 	return "Mundo 2: Crayones" if WorldRegistry.is_playable(2) else "Mundo 2 (bloqueado)"
+
+
+func _world3_label() -> String:
+	return "Mundo 3: Peluches" if WorldRegistry.is_playable(3) else "Mundo 3 (bloqueado)"
 
 
 func start_game(id := 1) -> void:

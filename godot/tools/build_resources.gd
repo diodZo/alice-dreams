@@ -18,9 +18,11 @@ const CHAR_OUT := {
 }
 ## Mundo 2 (data/world2, generado por tools/world2/prepare_world2_assets.py).
 const WORLD2_FRAMES_DIR := "res://resources/world2/frames"
+const WORLD3_FRAMES_DIR := "res://resources/world3/frames"
 const TILESET_OUT := {
 	"world1_tiles": "res://resources/tilesets/world1/world1_tileset.tres",
 	"world2_tiles": "res://resources/world2/terrain/world2_tileset.tres",
+	"world3_tiles": "res://resources/world3/terrain/world3_tileset.tres",
 }
 
 var errors := 0
@@ -41,6 +43,11 @@ func _init() -> void:
 		_build_sprite_frames(a2.atlases, _json("res://data/world2/characters.json"), WORLD2_FRAMES_DIR)
 		_build_tileset(a2.tileset)
 		_build_enemies(_json("res://data/world2/enemies.json"), "res://resources/world2/enemies")
+	if FileAccess.file_exists("res://data/world3/atlases.json"):
+		var a3: Dictionary = _json("res://data/world3/atlases.json")
+		_build_sprite_frames(a3.atlases, _json("res://data/world3/characters.json"), WORLD3_FRAMES_DIR)
+		_build_tileset(a3.tileset)
+		_build_enemies(_json("res://data/world3/enemies.json"), "res://resources/world3/enemies")
 	print("[build_resources] terminado con %d errores" % errors)
 	quit(1 if errors > 0 else 0)
 

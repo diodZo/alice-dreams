@@ -41,6 +41,8 @@ var world_width := 0.0
 ## en cada fotograma según la pintura que se pisa y vuelven a 1 al salir del área.
 var surface_speed := 1.0
 var surface_friction := 1.0
+## Somnolencia temporal del Mundo 3: conserva el control, sólo reduce la velocidad.
+var sleepy_until := 0.0
 ## Velocidad vertical con la que se aterrizó en el último paso (para la pintura elástica).
 var landed_speed := 0.0
 
@@ -97,7 +99,8 @@ func _control(time: float, dt: float) -> void:
 
 	# --- horizontal: aceleración y desaceleración ---
 	var axis: int = controls.axis if can_control else 0
-	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed
+	var sleepy_speed := 0.72 if time < sleepy_until else 1.0
+	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed * sleepy_speed
 	var vx := velocity.x
 	var rate: float
 	if grounded:
@@ -196,6 +199,10 @@ func play_attack(weapon_id: String, recoil := 0.0) -> void:
 
 func push(vx: float) -> void:
 	push_x += vx
+
+
+func apply_sleep(duration_ms: float) -> void:
+	sleepy_until = maxf(sleepy_until, now + duration_ms)
 
 
 ## Recibe daño. Devuelve true si el golpe se aplicó.

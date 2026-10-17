@@ -12,6 +12,10 @@ const SCENES := {
 	"eraser": preload("res://scenes/enemies/world2/Eraser.tscn"),
 	"crayon": preload("res://scenes/enemies/world2/Crayon.tscn"),
 	"brush": preload("res://scenes/enemies/world2/Brush.tscn"),
+	# Mundo 3
+	"rabbit": preload("res://scenes/enemies/world3/Rabbit.tscn"),
+	"wool": preload("res://scenes/enemies/world3/Wool.tscn"),
+	"pillow": preload("res://scenes/enemies/world3/Pillow.tscn"),
 }
 
 var level: Node

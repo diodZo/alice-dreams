@@ -1,0 +1,288 @@
+{
+ "rabbit": {
+  "frameWidth": 54,
+  "frameHeight": 34,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3",
+     "walk_4"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "jump": {
+    "frames": [
+     "jump_0",
+     "jump_1",
+     "jump_2"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2"
+    ],
+    "fps": 9,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Conejito saltarín"
+ },
+ "wool": {
+  "frameWidth": 70,
+  "frameHeight": 26,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3"
+    ],
+    "fps": 10,
+    "loop": true,
+    "derived": false
+   },
+   "jump": {
+    "frames": [
+     "jump_0",
+     "jump_1",
+     "jump_2"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2"
+    ],
+    "fps": 9,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Bola de lana viviente"
+ },
+ "pillow": {
+  "frameWidth": 58,
+  "frameHeight": 32,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "dash": {
+    "frames": [
+     "dash_0",
+     "dash_1",
+     "dash_2"
+    ],
+    "fps": 10,
+    "loop": false,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Almohada voladora"
+ },
+ "sieston": {
+  "frameWidth": 130,
+  "frameHeight": 76,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "move": {
+    "frames": [
+     "move_0",
+     "move_1",
+     "move_2",
+     "move_3",
+     "move_4",
+     "move_5"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "pillow": {
+    "frames": [
+     "pillow_0",
+     "pillow_1",
+     "pillow_2",
+     "pillow_3"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "jump": {
+    "frames": [
+     "jump_0",
+     "jump_1",
+     "jump_2"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "special": {
+    "frames": [
+     "special_0",
+     "special_1",
+     "special_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2"
+    ],
+    "fps": 3,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Rey Siestón"
+ }
+}

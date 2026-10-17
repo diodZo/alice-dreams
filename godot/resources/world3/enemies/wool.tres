@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_21b57"]
+
+[resource]
+script = ExtResource("1_21b57")
+key = "wool"
+display_name = "Bola de lana viviente"
+hp = 3
+speed = 46.0
+body_size = Vector2(21, 20)
+detect_range = 170.0
+detect_height = 55.0
+reaction_time = 400.0
+attack_cooldown = 1600.0
+attack_range = 125.0

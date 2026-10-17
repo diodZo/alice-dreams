@@ -57,6 +57,8 @@ func new_run(world: Dictionary, boss: Dictionary = {}) -> void:
 		# Mundo 2: crayones mágicos recogidos (rojo, azul, amarillo)
 		"magicCrayons": [],
 		"magicTotal": world.get("magicCrayons", []).size(),
+		"dreamCollectibles": [],
+		"dreamTotal": world.get("dreamCollectibles", []).size(),
 		"world": int(world.get("id", 1)),
 	}
 	for k in run:

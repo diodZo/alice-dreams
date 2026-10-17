@@ -20,14 +20,19 @@ const FRAMES_PATHS := {
 	"crayon": "res://resources/world2/frames/crayon_frames.tres",
 	"brush": "res://resources/world2/frames/brush_frames.tres",
 	"garabato": "res://resources/world2/frames/garabato_frames.tres",
+	"rabbit": "res://resources/world3/frames/rabbit_frames.tres",
+	"wool": "res://resources/world3/frames/wool_frames.tres",
+	"pillow": "res://resources/world3/frames/pillow_frames.tres",
+	"sieston": "res://resources/world3/frames/sieston_frames.tres",
 }
 const TILESET_PATHS := {
 	"world1_tiles": "res://resources/tilesets/world1/world1_tileset.tres",
 	"world2_tiles": "res://resources/world2/terrain/world2_tileset.tres",
+	"world3_tiles": "res://resources/world3/terrain/world3_tileset.tres",
 }
 ## Paquetes de datos por mundo (atlases.json + characters.json). El primero es obligatorio.
-const PACKS := ["res://data", "res://data/world2"]
-const ENEMY_DIRS := ["res://resources/enemies", "res://resources/world2/enemies"]
+const PACKS := ["res://data", "res://data/world2", "res://data/world3"]
+const ENEMY_DIRS := ["res://resources/enemies", "res://resources/world2/enemies", "res://resources/world3/enemies"]
 
 var atlases: Dictionary = {}
 var images: Dictionary = {}

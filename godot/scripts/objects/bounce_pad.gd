@@ -13,7 +13,7 @@ var ready_at := 0.0
 func setup(owner_level: Node, def: Dictionary, atlas: String) -> BouncePad:
 	level = owner_level
 	sprite = Sprite2D.new()
-	sprite.texture = Assets.frame(atlas, "jump_pad")
+	sprite.texture = Assets.frame(atlas, def.get("frame", "jump_pad"))
 	var size := sprite.texture.get_size()
 	Anim.set_origin(sprite, size, 0.5, 1.0)
 	add_child(sprite)

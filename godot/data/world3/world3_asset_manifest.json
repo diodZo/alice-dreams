@@ -1,0 +1,3618 @@
+{
+ "version": 1,
+ "generatedBy": "tools/world3/prepare_world3_assets.py",
+ "sources": {
+  "scene": "imagenes/word_3.png",
+  "tiles": "imagenes/tilesets_world_3.png",
+  "enemies": "imagenes/enemies_world_3.png",
+  "boss": "imagenes/jefemundo3.png"
+ },
+ "resources": [
+  {
+   "name": "rabbit/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    358,
+    66,
+    423,
+    172
+   ],
+   "trimmed": [
+    360,
+    68,
+    421,
+    170
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    18,
+    2
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    448,
+    66,
+    515,
+    172
+   ],
+   "trimmed": [
+    450,
+    68,
+    513,
+    170
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    19,
+    2
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    535,
+    66,
+    601,
+    173
+   ],
+   "trimmed": [
+    537,
+    68,
+    599,
+    171
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    19,
+    2
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    619,
+    70,
+    686,
+    173
+   ],
+   "trimmed": [
+    621,
+    72,
+    684,
+    171
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    19,
+    3
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    737,
+    70,
+    793,
+    172
+   ],
+   "trimmed": [
+    739,
+    72,
+    791,
+    170
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    3
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": "La hoja rotula 4 pero contiene 5 poses recuperables."
+  },
+  {
+   "name": "rabbit/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    812,
+    70,
+    871,
+    172
+   ],
+   "trimmed": [
+    814,
+    72,
+    869,
+    170
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    19,
+    3
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": "La hoja rotula 4 pero contiene 5 poses recuperables."
+  },
+  {
+   "name": "rabbit/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    886,
+    70,
+    941,
+    172
+   ],
+   "trimmed": [
+    888,
+    72,
+    939,
+    170
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    3
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": "La hoja rotula 4 pero contiene 5 poses recuperables."
+  },
+  {
+   "name": "rabbit/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    955,
+    69,
+    1009,
+    172
+   ],
+   "trimmed": [
+    957,
+    71,
+    1007,
+    170
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    21,
+    3
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": "La hoja rotula 4 pero contiene 5 poses recuperables."
+  },
+  {
+   "name": "rabbit/walk_4",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1025,
+    70,
+    1082,
+    172
+   ],
+   "trimmed": [
+    1027,
+    72,
+    1080,
+    170
+   ],
+   "animation": "walk",
+   "frame": 4,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    3
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": "La hoja rotula 4 pero contiene 5 poses recuperables."
+  },
+  {
+   "name": "rabbit/jump_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1125,
+    97,
+    1211,
+    172
+   ],
+   "trimmed": [
+    1127,
+    99,
+    1209,
+    170
+   ],
+   "animation": "jump",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    17,
+    11
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/jump_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1233,
+    66,
+    1319,
+    150
+   ],
+   "trimmed": [
+    1235,
+    68,
+    1317,
+    148
+   ],
+   "animation": "jump",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    16,
+    9
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/jump_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1336,
+    91,
+    1415,
+    172
+   ],
+   "trimmed": [
+    1338,
+    93,
+    1413,
+    170
+   ],
+   "animation": "jump",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    20,
+    10
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    360,
+    236,
+    448,
+    341
+   ],
+   "trimmed": [
+    362,
+    238,
+    446,
+    339
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    16,
+    2
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    477,
+    235,
+    592,
+    341
+   ],
+   "trimmed": [
+    479,
+    237,
+    590,
+    339
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    19,
+    2
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/attack_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    603,
+    235,
+    729,
+    341
+   ],
+   "trimmed": [
+    605,
+    237,
+    727,
+    339
+   ],
+   "animation": "attack",
+   "frame": 2,
+   "duration_ms": 111,
+   "offset": [
+    15,
+    2
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    799,
+    235,
+    888,
+    341
+   ],
+   "trimmed": [
+    801,
+    237,
+    886,
+    339
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    2
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    904,
+    259,
+    1007,
+    341
+   ],
+   "trimmed": [
+    918,
+    261,
+    1005,
+    339
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    9
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1061,
+    273,
+    1165,
+    339
+   ],
+   "trimmed": [
+    1063,
+    275,
+    1163,
+    337
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    15,
+    14
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1181,
+    262,
+    1288,
+    339
+   ],
+   "trimmed": [
+    1183,
+    284,
+    1286,
+    337
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 250,
+   "offset": [
+    12,
+    17
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit/defeated_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1308,
+    282,
+    1414,
+    339
+   ],
+   "trimmed": [
+    1310,
+    284,
+    1412,
+    337
+   ],
+   "animation": "defeated",
+   "frame": 2,
+   "duration_ms": 250,
+   "offset": [
+    13,
+    17
+   ],
+   "origin": [
+    27,
+    33
+   ],
+   "cell": [
+    54,
+    34
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    366,
+    444,
+    453,
+    537
+   ],
+   "trimmed": [
+    366,
+    454,
+    441,
+    528
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    25,
+    3
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    464,
+    444,
+    551,
+    537
+   ],
+   "trimmed": [
+    464,
+    451,
+    534,
+    527
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    26,
+    2
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    563,
+    444,
+    650,
+    537
+   ],
+   "trimmed": [
+    563,
+    450,
+    627,
+    527
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    27,
+    2
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    660,
+    444,
+    733,
+    537
+   ],
+   "trimmed": [
+    660,
+    450,
+    718,
+    526
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    28,
+    2
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    748,
+    444,
+    833,
+    537
+   ],
+   "trimmed": [
+    751,
+    455,
+    820,
+    526
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    26,
+    3
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    840,
+    444,
+    925,
+    537
+   ],
+   "trimmed": [
+    840,
+    457,
+    911,
+    526
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    25,
+    4
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    933,
+    444,
+    1018,
+    537
+   ],
+   "trimmed": [
+    933,
+    456,
+    1008,
+    526
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    25,
+    4
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1026,
+    444,
+    1112,
+    537
+   ],
+   "trimmed": [
+    1027,
+    457,
+    1104,
+    525
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 100,
+   "offset": [
+    24,
+    4
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/jump_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1140,
+    450,
+    1222,
+    537
+   ],
+   "trimmed": [
+    1149,
+    467,
+    1219,
+    534
+   ],
+   "animation": "jump",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    27,
+    5
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/jump_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1233,
+    420,
+    1325,
+    520
+   ],
+   "trimmed": [
+    1233,
+    420,
+    1325,
+    498
+   ],
+   "animation": "jump",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    21,
+    1
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/jump_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1333,
+    449,
+    1420,
+    537
+   ],
+   "trimmed": [
+    1349,
+    467,
+    1415,
+    534
+   ],
+   "animation": "jump",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    26,
+    5
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    361,
+    607,
+    472,
+    687
+   ],
+   "trimmed": [
+    363,
+    609,
+    470,
+    685
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    21,
+    2
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    486,
+    607,
+    638,
+    686
+   ],
+   "trimmed": [
+    488,
+    609,
+    635,
+    685
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    25,
+    2
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/attack_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    650,
+    608,
+    766,
+    686
+   ],
+   "trimmed": [
+    656,
+    610,
+    764,
+    685
+   ],
+   "animation": "attack",
+   "frame": 2,
+   "duration_ms": 111,
+   "offset": [
+    24,
+    2
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    803,
+    608,
+    903,
+    696
+   ],
+   "trimmed": [
+    811,
+    619,
+    901,
+    694
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    25,
+    2
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    914,
+    612,
+    1014,
+    700
+   ],
+   "trimmed": [
+    916,
+    625,
+    1005,
+    698
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    21,
+    3
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1056,
+    620,
+    1164,
+    696
+   ],
+   "trimmed": [
+    1058,
+    622,
+    1162,
+    694
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    19,
+    3
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1177,
+    627,
+    1290,
+    695
+   ],
+   "trimmed": [
+    1179,
+    629,
+    1288,
+    694
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 250,
+   "offset": [
+    18,
+    5
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wool/defeated_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1303,
+    649,
+    1422,
+    695
+   ],
+   "trimmed": [
+    1305,
+    651,
+    1419,
+    694
+   ],
+   "animation": "defeated",
+   "frame": 2,
+   "duration_ms": 250,
+   "offset": [
+    18,
+    12
+   ],
+   "origin": [
+    35,
+    25
+   ],
+   "cell": [
+    70,
+    26
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    365,
+    800,
+    454,
+    892
+   ],
+   "trimmed": [
+    365,
+    807,
+    453,
+    892
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    16,
+    5
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    464,
+    806,
+    550,
+    894
+   ],
+   "trimmed": [
+    464,
+    819,
+    544,
+    892
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    19,
+    9
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    556,
+    785,
+    646,
+    887
+   ],
+   "trimmed": [
+    556,
+    789,
+    646,
+    861
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    3,
+    9
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    650,
+    808,
+    734,
+    895
+   ],
+   "trimmed": [
+    650,
+    815,
+    722,
+    892
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    20,
+    8
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    748,
+    798,
+    829,
+    894
+   ],
+   "trimmed": [
+    753,
+    806,
+    829,
+    892
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    19,
+    5
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    837,
+    811,
+    918,
+    900
+   ],
+   "trimmed": [
+    837,
+    823,
+    913,
+    892
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    18,
+    10
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    927,
+    790,
+    1014,
+    886
+   ],
+   "trimmed": [
+    927,
+    793,
+    1014,
+    865
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    5,
+    9
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1020,
+    800,
+    1110,
+    896
+   ],
+   "trimmed": [
+    1020,
+    808,
+    1083,
+    892
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    24,
+    5
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/dash_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1130,
+    810,
+    1221,
+    900
+   ],
+   "trimmed": [
+    1130,
+    815,
+    1212,
+    892
+   ],
+   "animation": "dash",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    18,
+    8
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/dash_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1230,
+    790,
+    1320,
+    885
+   ],
+   "trimmed": [
+    1230,
+    798,
+    1320,
+    874
+   ],
+   "animation": "dash",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    10,
+    8
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/dash_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1330,
+    811,
+    1420,
+    899
+   ],
+   "trimmed": [
+    1333,
+    811,
+    1420,
+    892
+   ],
+   "animation": "dash",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    15,
+    6
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    360,
+    960,
+    470,
+    1044
+   ],
+   "trimmed": [
+    360,
+    963,
+    460,
+    1033
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    17,
+    10
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    485,
+    960,
+    610,
+    1045
+   ],
+   "trimmed": [
+    485,
+    966,
+    610,
+    1039
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    12,
+    9
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/attack_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    640,
+    958,
+    773,
+    1044
+   ],
+   "trimmed": [
+    647,
+    968,
+    770,
+    1038
+   ],
+   "animation": "attack",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    19,
+    10
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    801,
+    972,
+    915,
+    1064
+   ],
+   "trimmed": [
+    804,
+    979,
+    910,
+    1060
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    14,
+    6
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    924,
+    967,
+    1032,
+    1077
+   ],
+   "trimmed": [
+    928,
+    972,
+    1029,
+    1060
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    14,
+    4
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1058,
+    994,
+    1177,
+    1059
+   ],
+   "trimmed": [
+    1062,
+    998,
+    1170,
+    1055
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    13,
+    14
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1181,
+    995,
+    1303,
+    1061
+   ],
+   "trimmed": [
+    1184,
+    998,
+    1298,
+    1055
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 250,
+   "offset": [
+    13,
+    14
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow/defeated_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    1303,
+    952,
+    1430,
+    1059
+   ],
+   "trimmed": [
+    1309,
+    956,
+    1421,
+    1054
+   ],
+   "animation": "defeated",
+   "frame": 2,
+   "duration_ms": 250,
+   "offset": [
+    13,
+    1
+   ],
+   "origin": [
+    29,
+    31
+   ],
+   "cell": [
+    58,
+    32
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/idle_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    55,
+    6,
+    288,
+    192
+   ],
+   "trimmed": [
+    57,
+    8,
+    286,
+    190
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    25,
+    5
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/idle_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    298,
+    6,
+    536,
+    192
+   ],
+   "trimmed": [
+    300,
+    8,
+    534,
+    190
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    24,
+    5
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/idle_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    545,
+    7,
+    773,
+    192
+   ],
+   "trimmed": [
+    547,
+    9,
+    771,
+    190
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    23,
+    6
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/idle_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    790,
+    7,
+    1030,
+    192
+   ],
+   "trimmed": [
+    792,
+    9,
+    1028,
+    190
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    24,
+    6
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/move_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    12,
+    203,
+    250,
+    373
+   ],
+   "trimmed": [
+    14,
+    205,
+    248,
+    371
+   ],
+   "animation": "move",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    19,
+    12
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/move_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    259,
+    205,
+    504,
+    373
+   ],
+   "trimmed": [
+    261,
+    207,
+    502,
+    371
+   ],
+   "animation": "move",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    25,
+    12
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/move_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    508,
+    204,
+    725,
+    373
+   ],
+   "trimmed": [
+    510,
+    206,
+    723,
+    371
+   ],
+   "animation": "move",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    25,
+    12
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/move_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    725,
+    202,
+    958,
+    373
+   ],
+   "trimmed": [
+    727,
+    204,
+    956,
+    371
+   ],
+   "animation": "move",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    18,
+    11
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/move_4",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    964,
+    206,
+    1182,
+    373
+   ],
+   "trimmed": [
+    966,
+    208,
+    1180,
+    371
+   ],
+   "animation": "move",
+   "frame": 4,
+   "duration_ms": 125,
+   "offset": [
+    23,
+    13
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/move_5",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    1200,
+    199,
+    1440,
+    373
+   ],
+   "trimmed": [
+    1202,
+    201,
+    1438,
+    371
+   ],
+   "animation": "move",
+   "frame": 5,
+   "duration_ms": 125,
+   "offset": [
+    18,
+    10
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/pillow_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    33,
+    382,
+    252,
+    543
+   ],
+   "trimmed": [
+    35,
+    384,
+    250,
+    541
+   ],
+   "animation": "pillow",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    28,
+    15
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/pillow_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    299,
+    382,
+    544,
+    539
+   ],
+   "trimmed": [
+    301,
+    384,
+    542,
+    537
+   ],
+   "animation": "pillow",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    21,
+    16
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/pillow_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    559,
+    383,
+    775,
+    544
+   ],
+   "trimmed": [
+    561,
+    385,
+    773,
+    542
+   ],
+   "animation": "pillow",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    35,
+    15
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/pillow_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    923,
+    384,
+    1168,
+    551
+   ],
+   "trimmed": [
+    925,
+    386,
+    1166,
+    549
+   ],
+   "animation": "pillow",
+   "frame": 3,
+   "duration_ms": 143,
+   "offset": [
+    36,
+    13
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/jump_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    15,
+    577,
+    263,
+    737
+   ],
+   "trimmed": [
+    17,
+    579,
+    261,
+    735
+   ],
+   "animation": "jump",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    18,
+    15
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/jump_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    298,
+    545,
+    538,
+    739
+   ],
+   "trimmed": [
+    300,
+    547,
+    538,
+    737
+   ],
+   "animation": "jump",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    23,
+    2
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: El cuerpo y la nube se conservan completos; el contacto con el borde pertenece al efecto oficial."
+  },
+  {
+   "name": "sieston/jump_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    607,
+    539,
+    868,
+    735
+   ],
+   "trimmed": [
+    609,
+    541,
+    866,
+    733
+   ],
+   "animation": "jump",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    29,
+    2
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/special_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    9,
+    556,
+    280,
+    742
+   ],
+   "trimmed": [
+    17,
+    579,
+    261,
+    735
+   ],
+   "animation": "special",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    18,
+    15
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/special_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    500,
+    556,
+    800,
+    742
+   ],
+   "trimmed": [
+    500,
+    556,
+    800,
+    733
+   ],
+   "animation": "special",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    1,
+    7
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, izquierda, derecha | revisado a mano: El cuerpo del jefe se separó manualmente de la nube extensa para mantener un pivote estable."
+  },
+  {
+   "name": "sieston/special_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    1030,
+    585,
+    1320,
+    742
+   ],
+   "trimmed": [
+    1030,
+    585,
+    1320,
+    742
+   ],
+   "animation": "special",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    10,
+    15
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, izquierda, derecha | revisado a mano: El cuerpo del jefe se separó manualmente del remolino extenso para mantener un pivote estable."
+  },
+  {
+   "name": "sieston/hurt_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    16,
+    932,
+    209,
+    1077
+   ],
+   "trimmed": [
+    18,
+    934,
+    207,
+    1075
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    32,
+    21
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/hurt_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    228,
+    935,
+    404,
+    1077
+   ],
+   "trimmed": [
+    230,
+    958,
+    402,
+    1075
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    35,
+    30
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/defeated_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    421,
+    950,
+    732,
+    1075
+   ],
+   "trimmed": [
+    423,
+    952,
+    730,
+    1073
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 333,
+   "offset": [
+    5,
+    29
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/defeated_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    749,
+    973,
+    1047,
+    1076
+   ],
+   "trimmed": [
+    751,
+    975,
+    1045,
+    1074
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 333,
+   "offset": [
+    10,
+    37
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sieston/defeated_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    1062,
+    965,
+    1394,
+    1076
+   ],
+   "trimmed": [
+    1064,
+    967,
+    1392,
+    1074
+   ],
+   "animation": "defeated",
+   "frame": 2,
+   "duration_ms": 333,
+   "offset": [
+    4,
+    34
+   ],
+   "origin": [
+    65,
+    75
+   ],
+   "cell": [
+    130,
+    76
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "soft_star",
+   "type": "fx",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    603,
+    250,
+    729,
+    330
+   ],
+   "trimmed": [
+    605,
+    250,
+    727,
+    330
+   ],
+   "size": [
+    22,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "yarn_thread",
+   "type": "fx",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    486,
+    607,
+    638,
+    686
+   ],
+   "trimmed": [
+    488,
+    609,
+    635,
+    685
+   ],
+   "size": [
+    36,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sleep_z",
+   "type": "fx",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    1062,
+    965,
+    1190,
+    1030
+   ],
+   "trimmed": [
+    1081,
+    965,
+    1190,
+    1030
+   ],
+   "size": [
+    31,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, derecha | revisado a mano: Recorte manual de las letras Z oficiales."
+  },
+  {
+   "name": "pillow_shot",
+   "type": "fx",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    769,
+    426,
+    906,
+    537
+   ],
+   "trimmed": [
+    769,
+    427,
+    905,
+    535
+   ],
+   "size": [
+    38,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: Recorte manual del proyectil oficial con su estela."
+  },
+  {
+   "name": "sleep_cloud",
+   "type": "fx",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    832,
+    570,
+    1437,
+    748
+   ],
+   "trimmed": [
+    832,
+    570,
+    1436,
+    747
+   ],
+   "size": [
+    121,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: Recorte manual del efecto de nube oficial."
+  },
+  {
+   "name": "cotton_wave",
+   "type": "fx",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    470,
+    640,
+    750,
+    735
+   ],
+   "trimmed": [
+    470,
+    640,
+    750,
+    734
+   ],
+   "size": [
+    67,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, izquierda, derecha | revisado a mano: Recorte manual de la onda de algodón oficial."
+  },
+  {
+   "name": "pillow_pink",
+   "type": "object",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    365,
+    800,
+    454,
+    892
+   ],
+   "trimmed": [
+    365,
+    807,
+    453,
+    892
+   ],
+   "size": [
+    30,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pillow_blue",
+   "type": "object",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    769,
+    426,
+    906,
+    537
+   ],
+   "trimmed": [
+    769,
+    427,
+    905,
+    535
+   ],
+   "size": [
+    38,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: Elemento rectangular completo verificado visualmente."
+  },
+  {
+   "name": "yarn_pink",
+   "type": "object",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    366,
+    444,
+    453,
+    537
+   ],
+   "trimmed": [
+    366,
+    454,
+    441,
+    528
+   ],
+   "size": [
+    24,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rabbit_plush",
+   "type": "object",
+   "source": "imagenes/enemies_world_3.png",
+   "crop": [
+    358,
+    66,
+    423,
+    172
+   ],
+   "trimmed": [
+    360,
+    68,
+    421,
+    170
+   ],
+   "size": [
+    17,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_plush",
+   "type": "object",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    1190,
+    55,
+    1315,
+    150
+   ],
+   "trimmed": [
+    1190,
+    55,
+    1315,
+    149
+   ],
+   "size": [
+    38,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, izquierda | revisado a mano: Nube decorativa completa verificada visualmente."
+  },
+  {
+   "name": "button_pink",
+   "type": "object",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    517,
+    420,
+    615,
+    515
+   ],
+   "trimmed": [
+    517,
+    420,
+    615,
+    515
+   ],
+   "size": [
+    42,
+    40
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "button_blue",
+   "type": "object",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    623,
+    475,
+    730,
+    560
+   ],
+   "trimmed": [
+    623,
+    475,
+    730,
+    560
+   ],
+   "size": [
+    43,
+    34
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rope_mid",
+   "type": "object",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    670,
+    520,
+    970,
+    604
+   ],
+   "trimmed": [
+    670,
+    520,
+    970,
+    604
+   ],
+   "size": [
+    105,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "flag_w3",
+   "type": "object",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    25,
+    285,
+    125,
+    390
+   ],
+   "trimmed": [
+    25,
+    285,
+    125,
+    390
+   ],
+   "size": [
+    36,
+    38
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_w3",
+   "type": "object",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    1020,
+    35,
+    1085,
+    120
+   ],
+   "trimmed": [
+    1020,
+    35,
+    1053,
+    120
+   ],
+   "size": [
+    11,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "moon_w3",
+   "type": "object",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    845,
+    45,
+    1080,
+    280
+   ],
+   "trimmed": [
+    845,
+    45,
+    1080,
+    280
+   ],
+   "size": [
+    54,
+    54
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "portal_w3",
+   "type": "object",
+   "source": "imagenes/jefemundo3.png",
+   "crop": [
+    733,
+    752,
+    1438,
+    944
+   ],
+   "trimmed": [
+    734,
+    754,
+    1437,
+    944
+   ],
+   "size": [
+    99,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_reference",
+   "type": "background",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    0,
+    0,
+    1671,
+    940
+   ],
+   "trimmed": [
+    0,
+    0,
+    1671,
+    940
+   ],
+   "size": [
+    485,
+    273
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_moon",
+   "type": "background",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    835,
+    35,
+    1090,
+    290
+   ],
+   "trimmed": [
+    835,
+    35,
+    1090,
+    290
+   ],
+   "size": [
+    61,
+    61
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_mobile",
+   "type": "background",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    1120,
+    0,
+    1450,
+    320
+   ],
+   "trimmed": [
+    1120,
+    0,
+    1450,
+    320
+   ],
+   "size": [
+    83,
+    80
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_teddy",
+   "type": "background",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    20,
+    15,
+    520,
+    440
+   ],
+   "trimmed": [
+    20,
+    15,
+    520,
+    440
+   ],
+   "size": [
+    110,
+    94
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_window",
+   "type": "background",
+   "source": "imagenes/word_3.png",
+   "crop": [
+    520,
+    0,
+    1120,
+    360
+   ],
+   "trimmed": [
+    520,
+    0,
+    1120,
+    360
+   ],
+   "size": [
+    168,
+    101
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "w3_sky",
+   "type": "generated_background",
+   "source": "imagenes/word_3.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_3.png (cielo ['#4B72ED', '#FDF2C4', '#E8C8FB', '#557AF9'], nubes ['#A2AFFD', '#E4B8FA', '#FAD0F8', '#92E2F9'])"
+  },
+  {
+   "name": "w3_clouds_far",
+   "type": "generated_background",
+   "source": "imagenes/word_3.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_3.png (cielo ['#4B72ED', '#FDF2C4', '#E8C8FB', '#557AF9'], nubes ['#A2AFFD', '#E4B8FA', '#FAD0F8', '#92E2F9'])"
+  },
+  {
+   "name": "w3_clouds_near",
+   "type": "generated_background",
+   "source": "imagenes/word_3.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_3.png (cielo ['#4B72ED', '#FDF2C4', '#E8C8FB', '#557AF9'], nubes ['#A2AFFD', '#E4B8FA', '#FAD0F8', '#92E2F9'])"
+  },
+  {
+   "name": "block_blue",
+   "type": "block",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    18,
+    218,
+    124,
+    322
+   ],
+   "trimmed": [
+    18,
+    218,
+    124,
+    322
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, izquierda, derecha | revisado a mano: Muestra de terreno rectangular diseñada para repetición."
+  },
+  {
+   "name": "block_pink",
+   "type": "block",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    136,
+    218,
+    242,
+    322
+   ],
+   "trimmed": [
+    136,
+    218,
+    242,
+    322
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, izquierda, derecha | revisado a mano: Muestra de terreno rectangular diseñada para repetición."
+  },
+  {
+   "name": "block_check_blue",
+   "type": "block",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    255,
+    218,
+    361,
+    322
+   ],
+   "trimmed": [
+    255,
+    218,
+    361,
+    322
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, izquierda, derecha | revisado a mano: Muestra de terreno rectangular diseñada para repetición."
+  },
+  {
+   "name": "block_check_pink",
+   "type": "block",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    376,
+    218,
+    482,
+    322
+   ],
+   "trimmed": [
+    376,
+    218,
+    482,
+    322
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, izquierda | revisado a mano: Muestra de terreno rectangular diseñada para repetición."
+  },
+  {
+   "name": "block_button",
+   "type": "block",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    495,
+    218,
+    601,
+    322
+   ],
+   "trimmed": [
+    495,
+    218,
+    601,
+    322
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, izquierda | revisado a mano: Muestra de terreno rectangular diseñada para repetición."
+  },
+  {
+   "name": "block_heart",
+   "type": "block",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    970,
+    218,
+    1075,
+    322
+   ],
+   "trimmed": [
+    970,
+    218,
+    1075,
+    322
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, izquierda, derecha | revisado a mano: Muestra de terreno rectangular diseñada para repetición."
+  },
+  {
+   "name": "block_star",
+   "type": "block",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    1210,
+    218,
+    1315,
+    322
+   ],
+   "trimmed": [
+    1210,
+    218,
+    1315,
+    322
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "toca el borde de la caja: arriba, abajo, izquierda | revisado a mano: Muestra de terreno rectangular diseñada para repetición."
+  },
+  {
+   "name": "ground_top",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    18,
+    51,
+    125,
+    150
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "textura reducida; bordes laterales y base generados por el script"
+  },
+  {
+   "name": "ground_fill",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_3.png",
+   "crop": [
+    18,
+    218,
+    124,
+    322
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": "textura reducida; bordes laterales y base generados por el script"
+  }
+ ],
+ "summary": {
+  "total": 118,
+  "pending": []
+ }
+}

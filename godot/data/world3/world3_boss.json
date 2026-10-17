@@ -1,0 +1,204 @@
+{
+ "key": "world3_boss",
+ "worldId": 3,
+ "widthTiles": 60,
+ "heightTiles": 17,
+ "music": "world3",
+ "bossMusic": "sieston",
+ "tileset": "world3_tiles",
+ "objectsAtlas": "world3_objects",
+ "backgroundAtlas": "world3_bg",
+ "background": {
+  "sky": "w3_sky",
+  "far": "w3_clouds_far",
+  "near": "w3_clouds_near",
+  "atlas": "world3_bg",
+  "objectsAtlas": "world3_objects",
+  "sparkles": true,
+  "drifters": [
+   "cloud_plush"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.01,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_reference",
+      "x": 240,
+      "y": 135,
+      "scale": 1.0,
+      "alpha": 0.7
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.04,
+     0.04
+    ],
+    "depth": 3,
+    "frames": [
+     "bg_moon",
+     "bg_window"
+    ],
+    "step": 760,
+    "y": [
+     30,
+     75
+    ],
+    "alpha": 0.9
+   },
+   {
+    "scroll": [
+     0.13,
+     0.05
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_mobile",
+     "bg_teddy"
+    ],
+    "step": 420,
+    "y": [
+     20,
+     160
+    ],
+    "alpha": 0.85,
+    "sway": true
+   }
+  ]
+ },
+ "frames": {
+  "flag": "flag_w3",
+  "signpost": "rabbit_plush",
+  "star": [
+   "world3_objects",
+   "star_w3"
+  ]
+ },
+ "progress": {
+  "total": 10000,
+  "offset": 9040,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 2,
+  "y": 14
+ },
+ "sections": [
+  {
+   "id": "E",
+   "name": "El castillo de los sueños",
+   "from": 7800
+  }
+ ],
+ "terrain": [
+  {
+   "x": 0,
+   "y": 14,
+   "w": 60,
+   "h": 3
+  }
+ ],
+ "blocks": [],
+ "clouds": [
+  {
+   "x": 15,
+   "y": 10,
+   "frame": "pillow_pink"
+  },
+  {
+   "x": 44,
+   "y": 10,
+   "frame": "pillow_blue"
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [],
+ "swings": [],
+ "crumbles": [],
+ "pads": [],
+ "winds": [],
+ "hazards": [],
+ "stars": [
+  {
+   "x": 12,
+   "y": 13
+  },
+  {
+   "x": 13,
+   "y": 13
+  },
+  {
+   "x": 14,
+   "y": 13
+  },
+  {
+   "x": 45,
+   "y": 13
+  },
+  {
+   "x": 46,
+   "y": 13
+  },
+  {
+   "x": 47,
+   "y": 13
+  }
+ ],
+ "enemies": [],
+ "checkpoints": [],
+ "pickups": [],
+ "signs": [],
+ "decor": [
+  {
+   "x": 3,
+   "y": 14,
+   "frame": "rabbit_plush"
+  },
+  {
+   "x": 30,
+   "y": 14,
+   "frame": "yarn_pink",
+   "front": true
+  },
+  {
+   "x": 57,
+   "y": 14,
+   "frame": "pillow_blue"
+  }
+ ],
+ "gate": {
+  "x": 5,
+  "rows": [
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": "block_star"
+ },
+ "triggerX": 9,
+ "boss": {
+  "homeX": 34,
+  "minX": 8,
+  "maxX": 58,
+  "floorY": 224,
+  "frameBoth": true,
+  "scene": "res://scenes/bosses/ReySieston.tscn",
+  "name": "Rey Siestón",
+  "introBanner": "¡Rey Siestón, el Rey de los Peluches Dormilones!",
+  "defeatBanner": "¡El reino vuelve a dormir en paz!",
+  "portalToast": "El portal al Mundo 4 está preparado",
+  "afterMusic": "world3"
+ },
+ "portal": {
+  "x": 57,
+  "y": 14
+ }
+}

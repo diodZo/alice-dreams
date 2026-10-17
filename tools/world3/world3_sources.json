@@ -1,0 +1,129 @@
+{
+ "_doc": [
+  "Fuentes del Mundo 3. Cajas inclusivas [x0,y0,x1,y1], corregibles a mano.",
+  "La hoja de enemigos no tiene alfa: mode panel elimina sólo el fondo pastel conectado al borde.",
+  "La hoja del jefe sí tiene alfa. La hoja de tiles sólo trae terreno; los objetos adicionales se extraen de las otras referencias oficiales.",
+  "word_3.png se usa como referencia y capa lejana; ninguna colisión se deriva de la ilustración completa."
+ ],
+ "sources": {
+  "scene": "imagenes/word_3.png",
+  "tiles": "imagenes/tilesets_world_3.png",
+  "enemies": "imagenes/enemies_world_3.png",
+  "boss": "imagenes/jefemundo3.png"
+ },
+ "characters": {
+  "rabbit": {
+   "name": "Conejito saltarín", "src": "enemies", "mode": "panel", "scale": 0.30,
+   "anchor": "feet", "colors": 28, "distance": 42, "keep": 0.08,
+   "anims": {
+    "idle": {"fps": 5, "loop": true, "boxes": [[358,66,423,172],[448,66,515,172],[535,66,601,173],[619,70,686,173]]},
+    "walk": {"fps": 8, "loop": true, "note": "La hoja rotula 4 pero contiene 5 poses recuperables.", "boxes": [[737,70,793,172],[812,70,871,172],[886,70,941,172],[955,69,1009,172],[1025,70,1082,172]]},
+    "jump": {"fps": 7, "loop": false, "boxes": [[1125,97,1211,172],[1233,66,1319,150],[1336,91,1415,172]]},
+    "attack": {"fps": 9, "loop": false, "boxes": [[360,236,448,341],[477,235,592,341],[603,235,729,341]]},
+    "hurt": {"fps": 8, "loop": false, "boxes": [[799,235,888,341],[904,259,1007,341]]},
+    "defeated": {"fps": 4, "loop": false, "boxes": [[1061,273,1165,339],[1181,262,1288,339],[1308,282,1414,339]]}
+   }
+  },
+  "wool": {
+   "name": "Bola de lana viviente", "src": "enemies", "mode": "panel", "scale": 0.30,
+   "anchor": "feet", "colors": 28, "distance": 36, "keep": 0.05,
+   "anims": {
+    "idle": {"fps": 5, "loop": true, "boxes": [[366,444,453,537],[464,444,551,537],[563,444,650,537],[660,444,733,537]]},
+    "walk": {"fps": 10, "loop": true, "label": "rodar", "boxes": [[748,444,833,537],[840,444,925,537],[933,444,1018,537],[1026,444,1112,537]]},
+    "jump": {"fps": 7, "loop": false, "boxes": [[1140,450,1222,537],[1233,420,1325,520],[1333,449,1420,537]]},
+    "attack": {"fps": 9, "loop": false, "boxes": [[361,607,472,687],[486,607,638,686],[650,608,766,686]]},
+    "hurt": {"fps": 8, "loop": false, "boxes": [[803,608,903,696],[914,612,1014,700]]},
+    "defeated": {"fps": 4, "loop": false, "boxes": [[1056,620,1164,696],[1177,627,1290,695],[1303,649,1422,695]]}
+   }
+  },
+  "pillow": {
+   "name": "Almohada voladora", "src": "enemies", "mode": "panel", "scale": 0.30,
+   "anchor": "feet", "colors": 30, "distance": 38, "keep": 0.05,
+   "anims": {
+    "idle": {"fps": 5, "loop": true, "boxes": [[365,800,454,892],[464,806,550,894],[556,785,646,887],[650,808,734,895]]},
+    "walk": {"fps": 8, "loop": true, "label": "volar", "boxes": [[748,798,829,894],[837,811,918,900],[927,790,1014,886],[1020,800,1110,896]]},
+    "dash": {"fps": 10, "loop": false, "boxes": [[1130,810,1221,900],[1230,790,1320,885],[1330,811,1420,899]]},
+    "attack": {"fps": 8, "loop": false, "boxes": [[360,960,470,1044],[485,960,610,1045],[640,958,773,1044]]},
+    "hurt": {"fps": 8, "loop": false, "boxes": [[801,972,915,1064],[924,967,1032,1077]]},
+    "defeated": {"fps": 4, "loop": false, "boxes": [[1058,994,1177,1059],[1181,995,1303,1061],[1303,952,1430,1059]]}
+   }
+  },
+  "sieston": {
+   "name": "Rey Siestón", "src": "boss", "mode": "alpha", "alpha_min": 220,
+   "scale": 0.38, "anchor": "feet", "colors": 52, "keep": 0.06,
+   "anims": {
+    "idle": {"fps": 5, "loop": true, "boxes": [[55,6,288,192],[298,6,536,192],[545,7,773,192],[790,7,1030,192]]},
+    "move": {"fps": 8, "loop": true, "boxes": [[12,203,250,373],[259,205,504,373],[508,204,725,373],[725,202,958,373],[964,206,1182,373],[1200,199,1440,373]]},
+    "pillow": {"fps": 7, "loop": false, "boxes": [[33,382,252,543],[299,382,544,539],[559,383,775,544],[923,384,1168,551]]},
+    "jump": {"fps": 7, "loop": false, "boxes": [[15,577,263,737],[298,545,538,739],[607,539,868,735]]},
+    "special": {"fps": 8, "loop": false, "boxes": [[9,556,280,742],[500,556,800,742],[1030,585,1320,742]]},
+    "hurt": {"fps": 7, "loop": false, "boxes": [[16,932,209,1077],[228,935,404,1077]]},
+    "defeated": {"fps": 3, "loop": false, "boxes": [[421,950,732,1075],[749,973,1047,1076],[1062,965,1394,1076]]}
+   }
+  }
+ },
+ "fx": {
+  "soft_star": {"src":"enemies","mode":"panel","box":[603,250,729,330],"scale":0.18,"distance":36,"keep":0.02},
+  "yarn_thread": {"src":"enemies","mode":"panel","box":[486,607,638,686],"scale":0.24,"distance":36,"keep":0.03},
+  "sleep_z": {"src":"boss","mode":"alpha","alpha_min":180,"box":[1062,965,1190,1030],"scale":0.28,"keep":0.02},
+  "pillow_shot": {"src":"boss","mode":"alpha","alpha_min":180,"box":[769,426,906,537],"scale":0.28,"keep":0.04},
+  "sleep_cloud": {"src":"boss","mode":"alpha","alpha_min":120,"box":[832,570,1437,748],"scale":0.20,"keep":0.01,"nocomp":true},
+  "cotton_wave": {"src":"boss","mode":"alpha","alpha_min":150,"box":[470,640,750,735],"scale":0.24,"keep":0.02,"nocomp":true}
+ },
+ "objects": {
+  "pillow_pink": {"src":"enemies","mode":"panel","box":[365,800,454,892],"scale":0.34,"distance":38,"keep":0.04},
+  "pillow_blue": {"src":"boss","mode":"alpha","alpha_min":180,"box":[769,426,906,537],"scale":0.28,"keep":0.04},
+  "yarn_pink": {"src":"enemies","mode":"panel","box":[366,444,453,537],"scale":0.31,"distance":36,"keep":0.04},
+  "rabbit_plush": {"src":"enemies","mode":"panel","box":[358,66,423,172],"scale":0.28,"distance":42,"keep":0.05},
+  "cloud_plush": {"src":"tiles","mode":"cream","box":[1190,55,1315,150],"scale":0.30,"keep":0.05},
+  "button_pink": {"src":"scene","mode":"panel","box":[517,420,615,515],"scale":0.42,"distance":48,"keep":0.04},
+  "button_blue": {"src":"scene","mode":"panel","box":[623,475,730,560],"scale":0.40,"distance":48,"keep":0.04},
+  "rope_mid": {"src":"scene","mode":"panel","box":[670,520,970,604],"scale":0.35,"distance":55,"keep":0.01,"nocomp":true},
+  "flag_w3": {"src":"scene","mode":"panel","box":[25,285,125,390],"scale":0.36,"distance":55,"keep":0.03},
+  "star_w3": {"src":"scene","mode":"panel","box":[1020,35,1085,120],"scale":0.32,"distance":55,"keep":0.04},
+  "moon_w3": {"src":"scene","mode":"panel","box":[845,45,1080,280],"scale":0.23,"distance":55,"keep":0.02},
+  "portal_w3": {"src":"boss","mode":"alpha","alpha_min":140,"box":[733,752,1438,944],"scale":0.14,"keep":0.01,"nocomp":true}
+ },
+ "blocks": {
+  "block_blue": [18,218,124,322],
+  "block_pink": [136,218,242,322],
+  "block_check_blue": [255,218,361,322],
+  "block_check_pink": [376,218,482,322],
+  "block_button": [495,218,601,322],
+  "block_heart": [970,218,1075,322],
+  "block_star": [1210,218,1315,322]
+ },
+ "ground": {
+  "top_sample": [18,51,125,150], "top_column": 4,
+  "fill_sample": [18,218,124,322], "outline": [53,57,126]
+ },
+ "background": {
+  "bg_reference": {"src":"scene","mode":"opaque","box":[0,0,1671,940],"scale":0.29,"nocomp":true},
+  "bg_moon": {"src":"scene","mode":"panel","box":[835,35,1090,290],"scale":0.24,"distance":60,"keep":0.02},
+  "bg_mobile": {"src":"scene","mode":"panel","box":[1120,0,1450,320],"scale":0.25,"distance":60,"keep":0.01,"nocomp":true},
+  "bg_teddy": {"src":"scene","mode":"panel","box":[20,15,520,440],"scale":0.22,"distance":60,"keep":0.02},
+  "bg_window": {"src":"scene","mode":"opaque","box":[520,0,1120,360],"scale":0.28,"nocomp":true}
+ },
+ "scene_palette": {
+  "sky_points": [[830,40],[900,180],[780,260],[1150,300]],
+  "cloud_points": [[920,250],[1120,250],[1260,320],[700,500]]
+ },
+ "reviewed": {
+   "sieston/jump_1": "El cuerpo y la nube se conservan completos; el contacto con el borde pertenece al efecto oficial.",
+   "sieston/special_1": "El cuerpo del jefe se separó manualmente de la nube extensa para mantener un pivote estable.",
+   "sieston/special_2": "El cuerpo del jefe se separó manualmente del remolino extenso para mantener un pivote estable.",
+   "sleep_z": "Recorte manual de las letras Z oficiales.",
+   "pillow_shot": "Recorte manual del proyectil oficial con su estela.",
+   "sleep_cloud": "Recorte manual del efecto de nube oficial.",
+   "cotton_wave": "Recorte manual de la onda de algodón oficial.",
+   "pillow_blue": "Elemento rectangular completo verificado visualmente.",
+   "cloud_plush": "Nube decorativa completa verificada visualmente.",
+   "block_pink": "Muestra de terreno rectangular diseñada para repetición.",
+   "block_blue": "Muestra de terreno rectangular diseñada para repetición.",
+   "block_check_pink": "Muestra de terreno rectangular diseñada para repetición.",
+   "block_check_blue": "Muestra de terreno rectangular diseñada para repetición.",
+   "block_button": "Muestra de terreno rectangular diseñada para repetición.",
+   "block_star": "Muestra de terreno rectangular diseñada para repetición.",
+   "block_heart": "Muestra de terreno rectangular diseñada para repetición."
+ }
+}
