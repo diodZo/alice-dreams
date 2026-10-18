@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_c8x0q"]
+
+[resource]
+script = ExtResource("1_c8x0q")
+key = "estrellita"
+display_name = "Estrellita Fugaz"
+speed = 70.0
+body_size = Vector2(16, 16)
+detect_range = 210.0
+detect_height = 100.0
+attack_cooldown = 1700.0
+keep_distance = Vector2(70, 150)

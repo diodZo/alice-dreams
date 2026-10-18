@@ -45,6 +45,21 @@ var surface_friction := 1.0
 var sleepy_until := 0.0
 ## Velocidad vertical con la que se aterrizó en el último paso (para la pintura elástica).
 var landed_speed := 0.0
+## Agua del Mundo 4: altura (y) de la superficie del agua en la que nada, o INF fuera del agua.
+## La fija el nivel en cada fotograma. Dentro: menos gravedad, caída lenta y brazadas con salto.
+var water_surface := INF
+var swim_ready_at := 0.0
+const WATER_GRAVITY := 0.32
+const WATER_MAX_FALL := 80.0
+const WATER_MAX_RISE := -340.0
+const SWIM_STROKE := -150.0
+const SWIM_SPEED := 0.72
+## Tobogán arcoíris del Mundo 5: velocidad horizontal (px/s, con signo) hacia la que se desliza
+## Alice mientras lo pisa. La fija el nivel en cada fotograma; 0 = comportamiento normal.
+## Las flechas siguen acelerando o frenando un poco el deslizamiento.
+var slide_speed := 0.0
+const SLIDE_CONTROL := 55.0
+const SLIDE_ACCEL := 520.0
 
 
 func setup(owner_level: Node, input: InputController) -> void:
@@ -100,7 +115,8 @@ func _control(time: float, dt: float) -> void:
 	# --- horizontal: aceleración y desaceleración ---
 	var axis: int = controls.axis if can_control else 0
 	var sleepy_speed := 0.72 if time < sleepy_until else 1.0
-	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed * sleepy_speed
+	var swim := SWIM_SPEED if in_water() else 1.0
+	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed * sleepy_speed * swim
 	var vx := velocity.x
 	var rate: float
 	if grounded:
@@ -117,6 +133,9 @@ func _control(time: float, dt: float) -> void:
 		push_x *= pow(0.02, dt)
 		if absf(push_x) < 5:
 			push_x = 0
+	if slide_speed != 0 and grounded and time >= stunned_until:
+		# deslizamiento rápido con algo de control (no se para del todo ni sube el tobogán)
+		next = move_toward(vx, slide_speed + axis * SLIDE_CONTROL, SLIDE_ACCEL * dt)
 	if time >= stunned_until or grounded:
 		velocity.x = next
 	if axis != 0 and can_control and time >= attack_until:
@@ -128,7 +147,9 @@ func _control(time: float, dt: float) -> void:
 		last_jump_press_at = time
 	var buffered := time - last_jump_press_at <= float(T.jumpBuffer)
 	var coyote := time - last_grounded_at <= float(T.coyoteTime)
-	if can_control and buffered and coyote and not jumping:
+	if in_water():
+		_swim(time, can_control and buffered)
+	elif can_control and buffered and coyote and not jumping:
 		velocity.y = T.jumpVelocity
 		jumping = true
 		last_jump_press_at = -9999
@@ -141,6 +162,8 @@ func _control(time: float, dt: float) -> void:
 	# velocidad máxima de caída (la subida no se limita: rebotes y cojines la superan)
 	if velocity.y > T.maxFallSpeed:
 		velocity.y = T.maxFallSpeed
+	if in_water():
+		velocity.y = clampf(velocity.y, WATER_MAX_RISE, WATER_MAX_FALL)
 
 	# parpadeo durante la invulnerabilidad
 	if time < invulnerable_until:
@@ -151,7 +174,7 @@ func _control(time: float, dt: float) -> void:
 
 func _integrate(delta: float) -> void:
 	if gravity_enabled:
-		velocity.y += C.GRAVITY * delta
+		velocity.y += C.GRAVITY * delta * (WATER_GRAVITY if in_water() else 1.0)
 	var was_grounded := grounded
 	var vy_before := velocity.y
 	move_and_slide()
@@ -177,6 +200,41 @@ func _integrate(delta: float) -> void:
 				var other := col.get_collider()
 				if other != null and other.has_method("on_player_contact"):
 					level.on_platform_contact(other)
+
+
+func in_water() -> bool:
+	return water_surface < INF
+
+
+## Entra o sale del agua (lo llama el nivel en cada fotograma). Devuelve true al zambullirse.
+func set_water(surface: float) -> bool:
+	var entering := surface < INF and not in_water()
+	# al asomar fuera del agua se puede saltar como desde el suelo (mismo coyote time)
+	if surface == INF and in_water() and not dead:
+		last_grounded_at = now
+	water_surface = surface
+	sprite.self_modulate = C.rgb(0xc8e6ff) if in_water() else Color.WHITE
+	if entering:
+		jumping = false
+		velocity.y = minf(velocity.y, 110.0)
+	return entering
+
+
+## Brazada: con la cabeza en la superficie, el salto saca a Alice del agua; si no, sube un poco.
+func _swim(time: float, pressed: bool) -> void:
+	if not pressed or time < swim_ready_at:
+		return
+	last_jump_press_at = -9999
+	swim_ready_at = time + 220
+	if position.y - 31 <= water_surface + 6:
+		# salto fuera del agua: a toques también sale (no se le aplica el corte del salto variable)
+		velocity.y = float(T.jumpVelocity) * 0.92
+		jumping = false
+		AudioManager.play("jump")
+	else:
+		velocity.y = SWIM_STROKE
+		AudioManager.play("swim")
+	level.effects.bubble_pop(position.x, position.y - 30)
 
 
 ## Impulso hacia arriba al pisar a un enemigo o una plataforma elástica.
@@ -237,6 +295,7 @@ func heal(full := true) -> void:
 
 func respawn_at(x: float, y: float) -> void:
 	dead = false
+	set_water(INF)
 	push_x = 0
 	position = Vector2(x, y)
 	velocity = Vector2.ZERO

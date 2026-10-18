@@ -19,10 +19,14 @@ const CHAR_OUT := {
 ## Mundo 2 (data/world2, generado por tools/world2/prepare_world2_assets.py).
 const WORLD2_FRAMES_DIR := "res://resources/world2/frames"
 const WORLD3_FRAMES_DIR := "res://resources/world3/frames"
+const WORLD4_FRAMES_DIR := "res://resources/world4/frames"
+const WORLD5_FRAMES_DIR := "res://resources/world5/frames"
 const TILESET_OUT := {
 	"world1_tiles": "res://resources/tilesets/world1/world1_tileset.tres",
 	"world2_tiles": "res://resources/world2/terrain/world2_tileset.tres",
 	"world3_tiles": "res://resources/world3/terrain/world3_tileset.tres",
+	"world4_tiles": "res://resources/world4/terrain/world4_tileset.tres",
+	"world5_tiles": "res://resources/world5/terrain/world5_tileset.tres",
 }
 
 var errors := 0
@@ -48,6 +52,16 @@ func _init() -> void:
 		_build_sprite_frames(a3.atlases, _json("res://data/world3/characters.json"), WORLD3_FRAMES_DIR)
 		_build_tileset(a3.tileset)
 		_build_enemies(_json("res://data/world3/enemies.json"), "res://resources/world3/enemies")
+	if FileAccess.file_exists("res://data/world4/atlases.json"):
+		var a4: Dictionary = _json("res://data/world4/atlases.json")
+		_build_sprite_frames(a4.atlases, _json("res://data/world4/characters.json"), WORLD4_FRAMES_DIR)
+		_build_tileset(a4.tileset)
+		_build_enemies(_json("res://data/world4/enemies.json"), "res://resources/world4/enemies")
+	if FileAccess.file_exists("res://data/world5/atlases.json"):
+		var a5: Dictionary = _json("res://data/world5/atlases.json")
+		_build_sprite_frames(a5.atlases, _json("res://data/world5/characters.json"), WORLD5_FRAMES_DIR)
+		_build_tileset(a5.tileset)
+		_build_enemies(_json("res://data/world5/enemies.json"), "res://resources/world5/enemies")
 	print("[build_resources] terminado con %d errores" % errors)
 	quit(1 if errors > 0 else 0)
 
@@ -121,20 +135,41 @@ func _build_tileset(info: Dictionary) -> void:
 	ts.add_source(src, 0)
 	# Se crean todas las teselas usadas por el terreno (autotiling) y por los bloques.
 	var used := {}
-	for set_name in info.terrain:
-		for idx in info.terrain[set_name]:
-			used[int(idx)] = true
+	_collect_tiles(info.terrain, used)
+	# Mundo 4: materiales (esponja, azulejo) con variantes por paridad
+	_collect_tiles(info.get("materials", {}), used)
 	for b in info.blocks:
 		used[int(info.blocks[b])] = true
 	var cols := tex.get_width() / size
 	var h := size / 2.0
+	var square := PackedVector2Array([Vector2(-h, -h), Vector2(h, -h), Vector2(h, h), Vector2(-h, h)])
+	# rampas de 45 grados: colisión triangular (sube hacia la derecha "_up" o hacia la izquierda "_down")
+	var slopes: Dictionary = info.get("slopes", {})
+	for key in slopes:
+		used[int(slopes[key])] = true
 	for idx in used:
 		var coords := Vector2i(idx % cols, idx / cols)
 		src.create_tile(coords)
 		var td := src.get_tile_data(coords, 0)
 		td.add_collision_polygon(0)
-		td.set_collision_polygon_points(0, 0, PackedVector2Array([Vector2(-h, -h), Vector2(h, -h), Vector2(h, h), Vector2(-h, h)]))
+		var points := square
+		for key in slopes:
+			if int(slopes[key]) == idx:
+				points = PackedVector2Array([Vector2(-h, h), Vector2(h, -h), Vector2(h, h)]) if String(key).ends_with("_up") 					else PackedVector2Array([Vector2(-h, -h), Vector2(h, h), Vector2(-h, h)])
+		td.set_collision_polygon_points(0, 0, points)
 	_save(ts, TILESET_OUT[info.key])
+
+
+## Índices de teselas de un diccionario o lista anidados (terrain y materials).
+func _collect_tiles(v: Variant, used: Dictionary) -> void:
+	if v is Dictionary:
+		for k in v:
+			_collect_tiles(v[k], used)
+	elif v is Array:
+		for x in v:
+			_collect_tiles(x, used)
+	elif v is float or v is int:
+		used[int(v)] = true
 
 
 func _build_weapons(data: Dictionary) -> void:

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/ai/meteorito.gd" id="1"]
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(20, 18)
+[node name="Meteorito" type="CharacterBody2D"]
+script = ExtResource("1")
+enemy_type = "meteorito"
+[node name="Body" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+centered = false
+[node name="Hitbox" type="Area2D" parent="."]
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("1")

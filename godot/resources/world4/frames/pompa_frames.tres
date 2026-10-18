@@ -1,0 +1,112 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://resources/world4/enemies/pompa.png" id="1_75kcx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mms0x"]
+resource_name = "attack_0"
+atlas = ExtResource("1_75kcx")
+region = Rect2(2, 2, 44, 42)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k0x6"]
+resource_name = "attack_1"
+atlas = ExtResource("1_75kcx")
+region = Rect2(48, 2, 44, 42)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kplr"]
+resource_name = "defeated_0"
+atlas = ExtResource("1_75kcx")
+region = Rect2(94, 2, 44, 42)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hunmw"]
+resource_name = "hurt_0"
+atlas = ExtResource("1_75kcx")
+region = Rect2(140, 2, 44, 42)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2af1e"]
+resource_name = "idle_0"
+atlas = ExtResource("1_75kcx")
+region = Rect2(186, 2, 44, 42)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmp2m"]
+resource_name = "idle_1"
+atlas = ExtResource("1_75kcx")
+region = Rect2(232, 2, 44, 42)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50e4b"]
+resource_name = "walk_0"
+atlas = ExtResource("1_75kcx")
+region = Rect2(278, 2, 44, 42)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy5hp"]
+resource_name = "walk_1"
+atlas = ExtResource("1_75kcx")
+region = Rect2(324, 2, 44, 42)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhvkv"]
+resource_name = "walk_2"
+atlas = ExtResource("1_75kcx")
+region = Rect2(370, 2, 44, 42)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mms0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k0x6")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kplr")
+}],
+"loop": 0,
+"name": &"defeated",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hunmw")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2af1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmp2m")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50e4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy5hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhvkv")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 7.0
+}]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_6h31p"]
+
+[resource]
+script = ExtResource("1_6h31p")
+key = "bubble_fish"
+display_name = "Pez Burbuja"
+speed = 40.0
+body_size = Vector2(20, 16)
+detect_range = 200.0
+detect_height = 90.0
+reaction_time = 500.0
+attack_cooldown = 1900.0
+keep_distance = Vector2(80, 160)

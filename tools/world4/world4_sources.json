@@ -1,0 +1,1695 @@
+{
+ "_doc": [
+  "Fuentes del Mundo 4 - Reino de las Burbujas. Cajas inclusivas [x0,y0,x1,y1] en píxeles de la hoja original, corregibles a mano.",
+  "Una caja puede ser una lista o un objeto {box, only}: 'only' limita el recorte a zonas (rectángulos o polígonos) para separar un dibujo de lo que lo toca (chorros, flechas, cepillos solapados).",
+  "La hoja del jefe tiene alfa (mode alpha). Las de enemigos y teselas no: mode panel elimina sólo el fondo pastel conectado con el borde del recorte.",
+  "El pivote de los personajes es estable: 'anchor' = feet (centro de los pies), centroid (centro del dibujo) o yellow (centro del cuerpo amarillo del pato, ignora chorros y olas).",
+  "word_4.png se usa como capa lejana de parallax (ciudad, cascadas, bañera y gran pato); ninguna colisión sale de la ilustración."
+ ],
+ "sources": {
+  "scene": "imagenes/word_4.png",
+  "tiles": "imagenes/tilesets_world_4.png",
+  "enemies": "imagenes/enemies_world_4.png",
+  "boss": "imagenes/jefemundo4.png"
+ },
+ "characters": {
+  "bubble_fish": {
+   "name": "Pez Burbuja",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.28,
+   "anchor": "centroid",
+   "colors": 28,
+   "distance": 40,
+   "keep": 0.15,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       33,
+       286,
+       130,
+       402
+      ],
+      [
+       131,
+       286,
+       231,
+       402
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 8,
+     "loop": true,
+     "label": "nadar",
+     "boxes": [
+      [
+       244,
+       286,
+       349,
+       402
+      ],
+      [
+       350,
+       286,
+       458,
+       402
+      ],
+      [
+       459,
+       286,
+       558,
+       402
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: mejillas infladas (aviso); 1: lanza la burbuja",
+     "boxes": [
+      [
+       570,
+       286,
+       669,
+       402
+      ],
+      [
+       722,
+       286,
+       833,
+       402
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       886,
+       286,
+       996,
+       402
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "boxes": [
+      [
+       1008,
+       328,
+       1095,
+       404
+      ],
+      [
+       1096,
+       328,
+       1189,
+       404
+      ]
+     ]
+    }
+   }
+  },
+  "sponge_crab": {
+   "name": "Cangrejito Esponja",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.27,
+   "anchor": "feet",
+   "colors": 28,
+   "distance": 40,
+   "keep": 0.12,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       30,
+       558,
+       135,
+       684
+      ],
+      [
+       136,
+       558,
+       236,
+       684
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 9,
+     "loop": true,
+     "boxes": [
+      [
+       246,
+       556,
+       347,
+       684
+      ],
+      [
+       348,
+       556,
+       449,
+       684
+      ],
+      [
+       450,
+       556,
+       556,
+       684
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 9,
+     "loop": false,
+     "note": "0: pinza en alto (aviso); 1: pinzazo con estela de espuma",
+     "boxes": [
+      [
+       568,
+       556,
+       684,
+       684
+      ],
+      [
+       684,
+       556,
+       836,
+       684
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       850,
+       556,
+       998,
+       684
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "boxes": [
+      [
+       1008,
+       598,
+       1188,
+       686
+      ]
+     ]
+    }
+   }
+  },
+  "pompa": {
+   "name": "Pompa Traviesa",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.27,
+   "anchor": "centroid",
+   "colors": 30,
+   "distance": 34,
+   "keep": 0.12,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       36,
+       852,
+       146,
+       992
+      ],
+      [
+       147,
+       852,
+       236,
+       992
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 7,
+     "loop": true,
+     "label": "flotar",
+     "boxes": [
+      [
+       250,
+       848,
+       353,
+       996
+      ],
+      [
+       354,
+       848,
+       449,
+       996
+      ],
+      [
+       450,
+       848,
+       548,
+       996
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: se hincha (aviso); 1: ráfaga de burbujas",
+     "boxes": [
+      [
+       568,
+       840,
+       716,
+       1000
+      ],
+      [
+       716,
+       840,
+       872,
+       1000
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       885,
+       840,
+       1022,
+       1000
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "boxes": [
+      [
+       1034,
+       920,
+       1188,
+       1000
+      ]
+     ]
+    }
+   }
+  },
+  "patoburbuja": {
+   "name": "Rey Patoburbuja",
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "scale": 0.4,
+   "anchor": "yellow",
+   "colors": 52,
+   "keep": 0.06,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       41,
+       13,
+       267,
+       172
+      ],
+      [
+       293,
+       12,
+       528,
+       172
+      ],
+      [
+       553,
+       13,
+       780,
+       172
+      ],
+      [
+       799,
+       12,
+       1024,
+       172
+      ]
+     ]
+    },
+    "move": {
+     "fps": 8,
+     "loop": true,
+     "boxes": [
+      [
+       38,
+       184,
+       248,
+       338
+      ],
+      [
+       264,
+       184,
+       479,
+       339
+      ],
+      [
+       493,
+       183,
+       716,
+       338
+      ],
+      [
+       734,
+       185,
+       960,
+       339
+      ],
+      [
+       980,
+       184,
+       1184,
+       338
+      ],
+      [
+       1203,
+       184,
+       1428,
+       339
+      ]
+     ]
+    },
+    "spit": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: mejillas infladas (aviso); 1-3: escupe burbujas. El chorro se corta en el pico: lo dibujan los proyectiles.",
+     "boxes": [
+      [
+       34,
+       349,
+       255,
+       516
+      ],
+      {
+       "box": [
+        281,
+        351,
+        561,
+        516
+       ],
+       "only": [
+        [
+         281,
+         340,
+         500,
+         520
+        ]
+       ]
+      },
+      {
+       "box": [
+        651,
+        351,
+        885,
+        515
+       ],
+       "only": [
+        [
+         651,
+         340,
+         848,
+         520
+        ]
+       ]
+      },
+      {
+       "box": [
+        1002,
+        351,
+        1424,
+        515
+       ],
+       "only": [
+        [
+         1002,
+         340,
+         1190,
+         520
+        ]
+       ]
+      }
+     ]
+    },
+    "wave": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: grito (aviso); 1-3: ola de espuma",
+     "boxes": [
+      [
+       17,
+       528,
+       277,
+       707
+      ],
+      [
+       304,
+       534,
+       637,
+       707
+      ],
+      [
+       682,
+       529,
+       1016,
+       707
+      ],
+      [
+       1037,
+       517,
+       1431,
+       709
+      ]
+     ]
+    },
+    "whirl": {
+     "fps": 9,
+     "loop": true,
+     "note": "remolino: giro sobre sí mismo entre burbujas y estrellas",
+     "boxes": [
+      [
+       24,
+       722,
+       306,
+       899
+      ],
+      [
+       325,
+       718,
+       665,
+       907
+      ],
+      [
+       683,
+       723,
+       1023,
+       918
+      ],
+      [
+       1045,
+       719,
+       1428,
+       925
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 6,
+     "loop": false,
+     "note": "0: mareado; 1: corona ladeada",
+     "boxes": [
+      [
+       20,
+       904,
+       258,
+       1068
+      ],
+      [
+       291,
+       916,
+       543,
+       1065
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 3,
+     "loop": false,
+     "note": "0: dormido con la corona caída; 1-2: se hunde en la espuma",
+     "boxes": [
+      [
+       574,
+       911,
+       834,
+       1068
+      ],
+      [
+       848,
+       943,
+       1122,
+       1067
+      ],
+      [
+       1137,
+       984,
+       1417,
+       1066
+      ]
+     ]
+    }
+   }
+  }
+ },
+ "fx": {
+  "bubble_s": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1209,
+    330,
+    1241,
+    368
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "bubble_m": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1240,
+    324,
+    1285,
+    372
+   ],
+   "scale": 0.3,
+   "colors": 16
+  },
+  "bubble_l": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1285,
+    308,
+    1348,
+    378
+   ],
+   "scale": 0.3,
+   "colors": 18
+  },
+  "bubble_pop": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1346,
+    294,
+    1418,
+    394
+   ],
+   "scale": 0.3,
+   "colors": 16,
+   "nocomp": true
+  },
+  "crab_foam": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1206,
+    563,
+    1281,
+    628
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "crab_splash": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1280,
+    558,
+    1380,
+    662
+   ],
+   "scale": 0.3,
+   "colors": 16
+  },
+  "foam_pile": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1278,
+    634,
+    1374,
+    688
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "spark_star": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1372,
+    628,
+    1420,
+    674
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "pompa_burst": {
+   "src": "enemies",
+   "mode": "panel",
+   "box": [
+    1200,
+    838,
+    1424,
+    1002
+   ],
+   "scale": 0.3,
+   "colors": 24,
+   "nocomp": true,
+   "distance": 30
+  },
+  "boss_spray": {
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 200,
+   "box": [
+    1188,
+    365,
+    1447,
+    505
+   ],
+   "scale": 0.4,
+   "colors": 24,
+   "nocomp": true,
+   "note": "chorro de burbujas del pico (fila 3 del jefe)"
+  },
+  "splash_0": {
+   "src": "tiles",
+   "mode": "panel",
+   "box": [
+    374,
+    805,
+    422,
+    884
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "splash_1": {
+   "src": "tiles",
+   "mode": "panel",
+   "box": [
+    432,
+    805,
+    484,
+    884
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "splash_2": {
+   "src": "tiles",
+   "mode": "panel",
+   "box": [
+    488,
+    805,
+    542,
+    884
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "splash_3": {
+   "src": "tiles",
+   "mode": "panel",
+   "box": [
+    552,
+    805,
+    654,
+    886
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "splash_4": {
+   "src": "tiles",
+   "mode": "panel",
+   "box": [
+    655,
+    800,
+    772,
+    886
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  }
+ },
+ "objects": {
+  "bubble_plat_2": {
+   "box": [
+    687,
+    179,
+    797,
+    247
+   ],
+   "scale": 0.42,
+   "colors": 20
+  },
+  "bubble_plat_3": {
+   "box": [
+    812,
+    179,
+    948,
+    242
+   ],
+   "scale": 0.42,
+   "colors": 20
+  },
+  "bubble_plat_s": {
+   "box": [
+    965,
+    185,
+    1074,
+    238
+   ],
+   "scale": 0.42,
+   "colors": 20
+  },
+  "foam_plat_a": {
+   "box": [
+    683,
+    282,
+    813,
+    362
+   ],
+   "scale": 0.4,
+   "colors": 16
+  },
+  "foam_plat_b": {
+   "box": [
+    827,
+    280,
+    958,
+    347
+   ],
+   "scale": 0.4,
+   "colors": 16
+  },
+  "foam_plat_c": {
+   "box": [
+    972,
+    280,
+    1067,
+    362
+   ],
+   "scale": 0.4,
+   "colors": 16
+  },
+  "boat_plat": {
+   "box": [
+    680,
+    390,
+    802,
+    510
+   ],
+   "scale": 0.42,
+   "colors": 24
+  },
+  "sponge_plat": {
+   "box": [
+    821,
+    398,
+    938,
+    446
+   ],
+   "scale": 0.42,
+   "colors": 16
+  },
+  "sponge_plat_b": {
+   "box": [
+    825,
+    447,
+    944,
+    501
+   ],
+   "scale": 0.42,
+   "colors": 16
+  },
+  "tile_plat": {
+   "box": [
+    953,
+    398,
+    1072,
+    445
+   ],
+   "scale": 0.42,
+   "colors": 16
+  },
+  "tile_plat_b": {
+   "box": [
+    957,
+    447,
+    1069,
+    500
+   ],
+   "scale": 0.42,
+   "colors": 16
+  },
+  "star_w4": {
+   "box": [
+    1115,
+    180,
+    1165,
+    229
+   ],
+   "scale": 0.28,
+   "colors": 12
+  },
+  "star_blue": {
+   "box": [
+    1181,
+    182,
+    1229,
+    229
+   ],
+   "scale": 0.28,
+   "colors": 12
+  },
+  "star_pink": {
+   "box": [
+    1246,
+    181,
+    1295,
+    229
+   ],
+   "scale": 0.28,
+   "colors": 12
+  },
+  "shell_token": {
+   "box": [
+    1346,
+    174,
+    1409,
+    233
+   ],
+   "scale": 0.27,
+   "colors": 14
+  },
+  "flag_w4": {
+   "box": [
+    1103,
+    275,
+    1188,
+    383
+   ],
+   "scale": 0.3,
+   "colors": 16
+  },
+  "sign_w4": {
+   "box": [
+    1218,
+    280,
+    1309,
+    383
+   ],
+   "scale": 0.28,
+   "colors": 16
+  },
+  "portal_w4": {
+   "box": [
+    1323,
+    278,
+    1430,
+    384
+   ],
+   "scale": 0.45,
+   "colors": 24
+  },
+  "duck_a": {
+   "box": [
+    1098,
+    431,
+    1184,
+    514
+   ],
+   "scale": 0.3,
+   "colors": 16
+  },
+  "duck_b": {
+   "box": [
+    1182,
+    444,
+    1259,
+    510
+   ],
+   "scale": 0.3,
+   "colors": 16
+  },
+  "duck_c": {
+   "box": [
+    1260,
+    432,
+    1346,
+    510
+   ],
+   "scale": 0.3,
+   "colors": 16
+  },
+  "duck_king": {
+   "box": [
+    1347,
+    427,
+    1429,
+    514
+   ],
+   "scale": 0.27,
+   "colors": 16
+  },
+  "water_top_0": {
+   "box": [
+    24,
+    596,
+    134,
+    671
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "water_top_1": {
+   "box": [
+    137,
+    596,
+    249,
+    671
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "water_top_2": {
+   "box": [
+    253,
+    596,
+    364,
+    671
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "water_deep_0": {
+   "box": [
+    27,
+    716,
+    131,
+    880
+   ],
+   "mode": "opaque",
+   "scale": 0.3,
+   "colors": 14,
+   "nocomp": true
+  },
+  "water_deep_1": {
+   "box": [
+    139,
+    716,
+    247,
+    880
+   ],
+   "mode": "opaque",
+   "scale": 0.3,
+   "colors": 14,
+   "nocomp": true
+  },
+  "water_deep_2": {
+   "box": [
+    256,
+    716,
+    362,
+    880
+   ],
+   "mode": "opaque",
+   "scale": 0.3,
+   "colors": 14,
+   "nocomp": true
+  },
+  "bubble_col_0": {
+   "box": [
+    378,
+    583,
+    446,
+    758
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "bubble_col_1": {
+   "box": [
+    446,
+    583,
+    513,
+    758
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "bubble_col_2": {
+   "box": [
+    513,
+    583,
+    588,
+    758
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "jump_bubble_s": {
+   "box": [
+    596,
+    608,
+    658,
+    672
+   ],
+   "scale": 0.35,
+   "colors": 16
+  },
+  "jump_bubble_big": {
+   "box": [
+    666,
+    586,
+    778,
+    680
+   ],
+   "scale": 0.35,
+   "colors": 18
+  },
+  "jump_bubble_pair": {
+   "box": [
+    596,
+    676,
+    780,
+    752
+   ],
+   "scale": 0.35,
+   "colors": 18
+  },
+  "brush_pink": {
+   "box": [
+    814,
+    600,
+    880,
+    692
+   ],
+   "only": [
+    [
+     [
+      820,
+      600
+     ],
+     [
+      879,
+      600
+     ],
+     [
+      879,
+      655
+     ],
+     [
+      871,
+      692
+     ],
+     [
+      820,
+      692
+     ]
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 16
+  },
+  "brush_orange": {
+   "box": [
+    870,
+    600,
+    948,
+    692
+   ],
+   "only": [
+    [
+     [
+      879,
+      600
+     ],
+     [
+      946,
+      600
+     ],
+     [
+      946,
+      648
+     ],
+     [
+      925,
+      660
+     ],
+     [
+      905,
+      692
+     ],
+     [
+      872,
+      692
+     ],
+     [
+      872,
+      662
+     ]
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 16
+  },
+  "brush_blue": {
+   "box": [
+    918,
+    600,
+    1006,
+    692
+   ],
+   "only": [
+    [
+     [
+      945,
+      600
+     ],
+     [
+      1006,
+      600
+     ],
+     [
+      1006,
+      692
+     ],
+     [
+      921,
+      692
+     ],
+     [
+      921,
+      672
+     ],
+     [
+      945,
+      648
+     ]
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 16
+  },
+  "coral_pink": {
+   "box": [
+    1022,
+    597,
+    1153,
+    692
+   ],
+   "scale": 0.33,
+   "colors": 18
+  },
+  "coral_green": {
+   "box": [
+    1158,
+    587,
+    1270,
+    692
+   ],
+   "scale": 0.33,
+   "colors": 18
+  },
+  "coral_mix": {
+   "box": [
+    1274,
+    581,
+    1431,
+    692
+   ],
+   "scale": 0.33,
+   "colors": 20
+  },
+  "starfish_gold": {
+   "box": [
+    815,
+    726,
+    866,
+    776
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "starfish_pink": {
+   "box": [
+    867,
+    728,
+    916,
+    776
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "starfish_blue": {
+   "box": [
+    918,
+    729,
+    964,
+    774
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "shell_blue": {
+   "box": [
+    973,
+    725,
+    1023,
+    782
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "shell_purple": {
+   "box": [
+    1021,
+    719,
+    1070,
+    783
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "shell_conch": {
+   "box": [
+    1067,
+    725,
+    1143,
+    780
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "bottle_pink": {
+   "box": [
+    1203,
+    709,
+    1254,
+    786
+   ],
+   "scale": 0.33,
+   "colors": 14
+  },
+  "bottle_blue": {
+   "box": [
+    1256,
+    691,
+    1314,
+    786
+   ],
+   "scale": 0.33,
+   "colors": 14
+  },
+  "bottle_star": {
+   "box": [
+    1325,
+    691,
+    1384,
+    786
+   ],
+   "scale": 0.33,
+   "colors": 14
+  },
+  "bottle_small": {
+   "box": [
+    1386,
+    715,
+    1431,
+    786
+   ],
+   "scale": 0.33,
+   "colors": 12
+  },
+  "seaweed": {
+   "box": [
+    806,
+    810,
+    997,
+    900
+   ],
+   "scale": 0.33,
+   "colors": 20
+  },
+  "bubble_float_m": {
+   "box": [
+    1008,
+    827,
+    1057,
+    877
+   ],
+   "scale": 0.33,
+   "colors": 14
+  },
+  "bubble_float_l": {
+   "box": [
+    1075,
+    825,
+    1146,
+    896
+   ],
+   "scale": 0.33,
+   "colors": 16
+  },
+  "waterfall_a": {
+   "box": [
+    1192,
+    811,
+    1311,
+    901
+   ],
+   "scale": 0.5,
+   "colors": 16,
+   "distance": 22
+  },
+  "waterfall_b": {
+   "box": [
+    1311,
+    811,
+    1431,
+    901
+   ],
+   "scale": 0.5,
+   "colors": 16,
+   "distance": 22
+  },
+  "foam_slip": {
+   "box": [
+    18,
+    974,
+    328,
+    1037
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "soap_pink": {
+   "box": [
+    343,
+    969,
+    506,
+    1037
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "soap_purple": {
+   "box": [
+    506,
+    966,
+    675,
+    1037
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "geyser_0": {
+   "box": [
+    688,
+    1003,
+    741,
+    1041
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "geyser_1": {
+   "box": [
+    746,
+    960,
+    805,
+    1042
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "geyser_2": {
+   "box": [
+    807,
+    952,
+    866,
+    1039
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "geyser_3": {
+   "box": [
+    866,
+    945,
+    925,
+    1039
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "geyser_4": {
+   "box": [
+    925,
+    938,
+    998,
+    1041
+   ],
+   "scale": 0.35,
+   "colors": 12,
+   "nocomp": true
+  },
+  "roller_a": {
+   "box": [
+    1013,
+    962,
+    1153,
+    1024
+   ],
+   "only": [
+    [
+     1013,
+     965,
+     1153,
+     1024
+    ]
+   ],
+   "scale": 0.38,
+   "colors": 16
+  },
+  "roller_b": {
+   "box": [
+    1154,
+    962,
+    1281,
+    1024
+   ],
+   "scale": 0.38,
+   "colors": 16
+  },
+  "roller_c": {
+   "box": [
+    1283,
+    958,
+    1431,
+    1039
+   ],
+   "only": [
+    [
+     1283,
+     966,
+     1431,
+     1028
+    ]
+   ],
+   "scale": 0.38,
+   "colors": 16
+  }
+ },
+ "blocks": {
+  "block_sponge": [
+   25,
+   183,
+   91,
+   247
+  ],
+  "block_glass": [
+   92,
+   183,
+   150,
+   247
+  ],
+  "block_tile": [
+   153,
+   183,
+   211,
+   247
+  ]
+ },
+ "ground": {
+  "_doc": "Cada material se reduce a bloques de 32x32 (2x2 teselas): la fila superior usa el bloque con espuma y debajo se repite el bloque base, como las pilas de bloques de la ilustración.",
+  "materials": {
+   "sponge": {
+    "base": [
+     25,
+     183,
+     91,
+     247
+    ],
+    "foam": [
+     229,
+     181,
+     288,
+     248
+    ],
+    "outline": [
+     92,
+     58,
+     40
+    ]
+   },
+   "tile": {
+    "base": [
+     153,
+     183,
+     211,
+     247
+    ],
+    "foam": [
+     361,
+     181,
+     418,
+     248
+    ],
+    "outline": [
+     36,
+     58,
+     140
+    ]
+   }
+  }
+ },
+ "background": {
+  "bg_city": {
+   "src": "scene",
+   "mode": "opaque",
+   "box": [
+    210,
+    0,
+    1500,
+    352
+   ],
+   "scale": 0.37,
+   "nocomp": true,
+   "fade_bottom": 30,
+   "colors": 64,
+   "note": "Franja alta de word_4.png: ciudad acuática, cascadas, arcoíris, bañera y el gran pato de goma. Sin las plataformas pintadas de la parte baja."
+  },
+  "bg_waterfall_a": {
+   "src": "tiles",
+   "box": [
+    1192,
+    811,
+    1311,
+    901
+   ],
+   "scale": 0.8,
+   "colors": 16,
+   "distance": 22,
+   "note": "cascada de la hoja de teselas, ampliada para la capa media"
+  },
+  "bg_waterfall_b": {
+   "src": "tiles",
+   "box": [
+    1311,
+    811,
+    1431,
+    901
+   ],
+   "scale": 0.8,
+   "colors": 16,
+   "distance": 22
+  },
+  "bg_bubble": {
+   "src": "tiles",
+   "box": [
+    1075,
+    825,
+    1146,
+    896
+   ],
+   "scale": 0.45,
+   "colors": 16
+  }
+ },
+ "scene_palette": {
+  "sky_points": [
+   [
+    560,
+    15
+   ],
+   [
+    1000,
+    40
+   ],
+   [
+    700,
+    330
+   ],
+   [
+    620,
+    560
+   ]
+  ],
+  "foam_points": [
+   [
+    760,
+    300
+   ],
+   [
+    1000,
+    280
+   ],
+   [
+    600,
+    470
+   ],
+   [
+    1300,
+    560
+   ]
+  ]
+ },
+ "reviewed": {
+  "boss_spray": "el chorro llega al borde derecho de la hoja; el recorte conserva todas sus burbujas"
+ }
+}

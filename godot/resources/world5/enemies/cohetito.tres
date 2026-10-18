@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_wiq7l"]
+
+[resource]
+script = ExtResource("1_wiq7l")
+key = "cohetito"
+display_name = "Cohetito Centinela"
+hp = 3
+speed = 45.0
+body_size = Vector2(24, 16)
+detect_range = 200.0
+detect_height = 70.0
+reaction_time = 550.0
+attack_cooldown = 2000.0

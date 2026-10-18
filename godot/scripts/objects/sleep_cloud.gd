@@ -4,16 +4,23 @@ extends Area2D
 
 var duration := 2400.0
 
-func setup(def: Dictionary, atlas := "world3_objects") -> SleepCloud:
+## def: { x, y (teselas, centro de la nube), w, h (teselas), duration (ms), atlas, frame }
+func setup(def: Dictionary, _atlas := "") -> SleepCloud:
 	position = Vector2(float(def.x) * C.TILE + 8, float(def.y) * C.TILE)
 	duration = float(def.get("duration", 2400))
+	var size := Vector2(float(def.get("w", 3)), float(def.get("h", 2))) * C.TILE
 	var spr := Sprite2D.new()
-	spr.texture = Assets.frame(atlas, def.get("frame", "cloud_plush"))
-	spr.modulate = Color(0.78, 0.62, 1.0, 0.82)
+	spr.texture = Assets.frame(def.get("atlas", "w3_fx"), def.get("frame", "sleep_cloud"))
+	# el dibujo cubre la zona que adormece, así se ve exactamente dónde está
+	spr.scale = size / spr.texture.get_size() * 1.15
+	spr.modulate = Color(1, 1, 1, 0.78)
 	add_child(spr)
+	var tw := spr.create_tween().set_loops()
+	tw.tween_property(spr, "modulate:a", 0.55, 1.1).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(spr, "modulate:a", 0.78, 1.1).set_trans(Tween.TRANS_SINE)
 	var cs := CollisionShape2D.new()
 	var shape := RectangleShape2D.new()
-	shape.size = Vector2(float(def.get("w", 3)) * C.TILE, float(def.get("h", 2)) * C.TILE)
+	shape.size = size
 	cs.shape = shape
 	add_child(cs)
 	Trigger.configure(self, "sleep_cloud")

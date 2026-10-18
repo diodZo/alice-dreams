@@ -4,6 +4,7 @@ class_name Router
 const SCENES := {
 	"Boot": "res://scenes/main/Main.tscn",
 	"Menu": "res://scenes/menus/Menu.tscn",
+	"WorldMap": "res://scenes/menus/WorldMap.tscn",
 	"World1": "res://scenes/worlds/World1.tscn",
 	"Boss": "res://scenes/bosses/World1Boss.tscn",
 	"Victory": "res://scenes/menus/Victory.tscn",
@@ -11,6 +12,10 @@ const SCENES := {
 	"Boss2": "res://scenes/bosses/World2Boss.tscn",
 	"World3": "res://scenes/worlds/World3.tscn",
 	"Boss3": "res://scenes/bosses/World3Boss.tscn",
+	"World4": "res://scenes/worlds/World4.tscn",
+	"Boss4": "res://scenes/bosses/World4Boss.tscn",
+	"World5": "res://scenes/worlds/World5.tscn",
+	"Boss5": "res://scenes/bosses/World5Boss.tscn",
 }
 
 

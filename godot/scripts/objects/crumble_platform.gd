@@ -8,6 +8,8 @@ var sprite: Sprite2D
 var shape: CollisionShape2D
 var base_x := 0.0
 var crumbling := false
+## Burbuja del Mundo 4: revienta (en lugar de deshacerse en vapor) y vuelve a inflarse.
+var pop := false
 
 
 ## def: { x, y, frame? } en teselas
@@ -23,6 +25,9 @@ func setup(owner_level: Node, def: Dictionary, atlas: String) -> CrumblePlatform
 	position.x = float(def.x) * C.TILE
 	shape = CloudPlatform.add_cloud_shape(self, sprite, sprite.texture.get_size(), float(def.y) * C.TILE, float(def.get("top", 3)))
 	base_x = sprite.position.x
+	pop = bool(def.get("pop", false))
+	if pop:
+		sprite.modulate = Color.WHITE
 	return self
 
 
@@ -48,7 +53,11 @@ func step_on() -> void:
 
 func _vanish() -> void:
 	shape.set_deferred("disabled", true)
-	level.effects.poof(position.x, position.y + 6, 10)
+	if pop:
+		level.effects.bubble_pop(position.x, position.y + 8)
+		AudioManager.play("bubble_pop")
+	else:
+		level.effects.poof(position.x, position.y + 6, 10)
 	var fade := sprite.create_tween().set_parallel()
 	fade.tween_property(sprite, "modulate:a", 0.0, 0.22)
 	fade.tween_property(sprite, "scale:y", 0.4, 0.22)

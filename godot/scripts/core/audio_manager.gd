@@ -53,7 +53,7 @@ func _ready() -> void:
 			_music_pending[track] = true
 	if not _music_pending.is_empty():
 		# el orden prioriza la música que suena primero
-		var order := ["menu", "world1", "boss", "world2", "garabato", "world2_victory", "world3", "sieston", "world3_victory"].filter(func(t): return _music_pending.has(t))
+		var order := ["menu", "world1", "boss", "world2", "garabato", "world2_victory", "world3", "sieston", "world3_victory", "world4", "patoburbuja", "world4_victory", "world5", "luna_estelar", "world5_victory"].filter(func(t): return _music_pending.has(t))
 		_music_task = WorkerThreadPool.add_task(_render_music_tracks.bind(order), false, "Música provisional")
 
 
@@ -80,7 +80,11 @@ func _load_file(path: String) -> AudioStream:
 		if path != "":
 			push_warning("[AudioManager] No existe %s: se usa el sonido provisional" % path)
 		return null
-	return load(path) as AudioStream
+	var stream := load(path) as AudioStream
+	# la música grabada (ogg/mp3) se importa sin bucle: se repite como la sintetizada
+	if stream is AudioStreamMP3 or stream is AudioStreamOggVorbis:
+		stream.loop = true
+	return stream
 
 
 func _render_music_tracks(order: Array) -> void:
@@ -134,6 +138,8 @@ func play_music(track: String) -> void:
 		return
 	stop_music()
 	current_track = track
+	# cada pista puede ser grabada o sintetizada: el volumen depende de cuál suena
+	_apply_music_volume()
 	if music_on:
 		_start_current()
 
@@ -172,7 +178,8 @@ func duck(on: bool) -> void:
 
 
 func _apply_music_volume() -> void:
-	var file_music: bool = AudioConfig.MUSIC_FILES.get(current_track, "") != "" or _music_streams.get(current_track) is AudioStreamOggVorbis
+	var stream: Variant = _music_streams.get(current_track)
+	var file_music: bool = stream is AudioStreamOggVorbis or stream is AudioStreamMP3
 	var vol := 1.0 if not file_music else 0.5
 	if ducked:
 		vol = 0.35 if not file_music else 0.2

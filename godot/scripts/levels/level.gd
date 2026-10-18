@@ -112,6 +112,10 @@ func _ready() -> void:
 		}
 		if e.has("patrol"):
 			s.patrol = [float(e.patrol[0]) * C.TILE, float(e.patrol[1]) * C.TILE + C.TILE]
+		# opciones propias de cada monstruo (Mundo 5: eje de patrulla, grupo, ruta...)
+		for k in e:
+			if not s.has(k) and k != "patrol":
+				s[k] = e[k]
 		spawns.append(s)
 	spawner = EnemySpawner.new(self, spawns, enemies_root, 6)
 
@@ -183,6 +187,7 @@ func _physics_process(delta: float) -> void:
 ## Arcade Physics registrados en LevelScene.setupCollisions).
 func _process_overlaps(delta: float) -> void:
 	var paint: Dictionary = {}
+	var water: WaterZone = null
 	for area in player.sensor.get_overlapping_areas():
 		if player.dead and not leaving:
 			return
@@ -219,9 +224,26 @@ func _process_overlaps(delta: float) -> void:
 				entity.apply(player)
 			"dream_collectible":
 				on_dream_collectible(entity)
+			# Mundo 4
+			"water":
+				if water == null or entity.surface_y < water.surface_y:
+					water = entity
+			"geyser":
+				entity.apply(player, delta)
+			"roller":
+				entity.push(player)
 			var kind:
 				on_custom_overlap(kind, entity)
 	apply_paint(paint)
+	apply_water(water)
+
+
+## Agua (Mundo 4): nadar mientras el cuerpo toca el agua; salpicadura al zambullirse.
+func apply_water(water: WaterZone) -> void:
+	if water == null and not player.in_water():
+		return
+	if player.set_water(water.surface_y if water != null else INF) and water != null:
+		water.splash(player.position.x)
 
 
 ## Superficies pintadas: los efectos sólo actúan mientras se pisa la pintura y se restauran
@@ -255,6 +277,8 @@ func on_magic_crayon(m: MagicCrayon) -> void:
 	GameState.show_banner("¡Crayón mágico %s!" % names.get(m.color, m.color))
 
 
+## Coleccionables especiales. El tipo principal (data.dreamMain: lunas en el Mundo 3, conchas en
+## el Mundo 4) da una estrella extra al reunirlos todos; los nombres salen de data.dreamNames.
 func on_dream_collectible(item: DreamCollectible) -> void:
 	if not item.collect():
 		return
@@ -263,12 +287,21 @@ func on_dream_collectible(item: DreamCollectible) -> void:
 		list.append(item.id)
 	GameState.set_v("dreamCollectibles", list)
 	AudioManager.play("pickup")
-	if item.kind == "moon" and list.filter(func(x): return str(x).begins_with("moon")).size() == 3:
+	var kind_count := func(k: String) -> int:
+		return data.get("dreamCollectibles", []).filter(func(d): return d.get("kind", "moon") == k and str(d.id) in list).size()
+	var kind_total := func(k: String) -> int:
+		return data.get("dreamCollectibles", []).filter(func(d): return d.get("kind", "moon") == k).size()
+	var main_kind: String = data.get("dreamMain", "moon")
+	var names: Dictionary = data.get("dreamNames", {"moon": "Luna mágica", "button": "Botón dorado"})
+	var label: String = names.get(item.kind, "Tesoro")
+	var have: int = kind_count.call(item.kind)
+	var total: int = kind_total.call(item.kind)
+	if item.kind == main_kind and have == total:
 		GameState.inc("stars", 1)
 		effects.confetti(player.position.x, player.position.y - 20, 36)
-		GameState.show_banner("¡Las tres lunas mágicas! Estrella extra")
+		GameState.show_banner(data.get("dreamBanner", "¡Las %d lunas mágicas! Estrella extra") % total)
 	else:
-		GameState.show_toast("¡%s encontrado!" % item.kind.capitalize())
+		GameState.show_toast("¡%s %d de %d!" % [label, have, total])
 
 
 ## Puerta de salida del nivel (castillo de Nubarrón, Gran Lienzo de Garabato...).
@@ -417,6 +450,17 @@ func on_projectile_expired(proj: Projectile) -> void:
 		"drop", "brushpaint":
 			effects.paint_splat(x, y, proj.tint_color if proj.kind == "drop" else C.rgb(0xf7489a))
 		"rainbow", "swirl", "crayon", "splash":
+			effects.poof(x, y, 6)
+			effects.sparkle(x, y, 4)
+		# Mundo 4
+		"bubble_w4", "boss_bubble", "rain_bubble", "pompa_bubble":
+			effects.bubble_pop(x, y)
+		"wave", "whirl", "foam":
+			effects.poof(x, y, 8)
+		# Mundo 5
+		"mini_star", "star_beam", "boss_star", "falling_star", "orbit_star":
+			effects.sparkle(x, y, 6)
+		"cosmic_wave", "moon_blade":
 			effects.poof(x, y, 6)
 			effects.sparkle(x, y, 4)
 

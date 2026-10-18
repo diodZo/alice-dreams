@@ -205,7 +205,7 @@
   "name": "Almohada voladora"
  },
  "sieston": {
-  "frameWidth": 130,
+  "frameWidth": 156,
   "frameHeight": 76,
   "anims": {
    "idle": {

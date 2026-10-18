@@ -28,6 +28,7 @@ var dir := -1
 var invulnerable := true
 var body_enabled := false
 var flash: ShaderMaterial
+var hop_tween: Tween
 
 func setup(owner_level: Node, boss_cfg: Dictionary) -> void:
 	level = owner_level
@@ -121,13 +122,19 @@ func _pillow_shot(i:int)->void:
 	AudioManager.play("shoot_sling")
 
 func _enter_HOP(_p:String,_d:Variant)->void:
-	velocity.x=0; anim("jump",false); warn(520)
+	velocity.x=0; face_player(); anim("jump",false); warn(520)
 	after(520,func():
 		var target:=clampf(player.position.x,min_x,max_x)
 		var start:=position
-		var tw:=create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-		tw.tween_method(func(k): position=Vector2(lerpf(start.x,target,k),floor_y-sin(k*PI)*90),0.0,1.0,0.85)
-		tw.tween_callback(func(): level.camera.shake(200,0.004); _wave_both(); fsm.set_state("REST")))
+		hop_tween=create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		hop_tween.tween_method(func(k): position=Vector2(lerpf(start.x,target,k),floor_y-sin(k*PI)*90),0.0,1.0,0.85)
+		hop_tween.tween_callback(func():
+			if not fsm.is_state("HOP"): return
+			level.camera.shake(200,0.004); _wave_both(); fsm.set_state("REST")))
+## El salto se interrumpe (cambio de fase o derrota): vuelve al suelo sin onda ni descanso.
+func _exit_HOP(_n:String)->void:
+	if hop_tween and hop_tween.is_valid(): hop_tween.kill()
+	position.y=floor_y
 
 func _enter_WAVE(_p:String,_d:Variant)->void:
 	velocity.x=0; anim("jump",false); warn(650)
@@ -144,7 +151,7 @@ func _enter_CLOUD(_p:String,_d:Variant)->void:
 	after(1900,func(): fsm.set_state("REST"))
 
 func _enter_SPIN(_p:String,_d:Variant)->void:
-	anim("special",false); warn(550)
+	velocity.x=0; face_player(); anim("special",false); warn(550)
 	after(550,func(): velocity.x=facing()*165)
 	after(1350,func(): velocity.x=0; _wave_both(); fsm.set_state("REST"))
 

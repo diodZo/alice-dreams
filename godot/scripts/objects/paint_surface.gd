@@ -4,12 +4,14 @@ extends Area2D
 ##  - blue   (azul, resbaladiza): menos fricción, la protagonista patina
 ##  - yellow (amarilla, elástica): al aterrizar encima rebota
 ##  - pink   (rosa, pegajosa): reduce la velocidad
+##  - foam   (espuma del Mundo 4, resbaladiza): menos fricción, Alice sigue al mando
 ## def: {x, y (superficie), w (teselas), color}. También la crea Garabato durante el combate.
 
 const EFFECTS := {
 	"blue": {"speed": 1.0, "friction": 0.22},
 	"yellow": {"speed": 1.0, "friction": 1.0, "bounce": -470.0},
 	"pink": {"speed": 0.5, "friction": 1.0},
+	"foam": {"speed": 1.0, "friction": 0.32},
 }
 
 var color := "blue"
@@ -23,7 +25,7 @@ func setup(def: Dictionary, atlas := "world2_objects") -> PaintSurface:
 	var surface := float(def.y) * C.TILE
 	position = Vector2(x0, surface)
 	z_index = C.Z_PLATFORM + 1
-	var tex := Assets.frame(atlas, "paint_%s_surface" % color)
+	var tex := Assets.frame(atlas, def.get("frame", "paint_%s_surface" % color))
 	strip = TiledSprite.new().setup(tex, Vector2(w, tex.get_height()))
 	strip.position = Vector2(0, -3)
 	add_child(strip)

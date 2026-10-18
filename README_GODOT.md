@@ -138,12 +138,16 @@ Desde la raíz del repositorio (`G` = ruta a `Godot_v4.7.2-stable_win64_console.
 REM 1. todos los scripts compilan y todas las escenas/recursos cargan
 %G% --headless --path godot res://tests/CheckAll.tscn
 
-REM 2. pruebas automáticas (321 comprobaciones de los Mundos 1 y 2)
+REM 2. pruebas automáticas (comprobaciones de los Mundos 1 a 5)
 %G% --headless --path godot --fixed-fps 60 res://tests/Tests.tscn
 
 REM 3. piloto automático: recorre un mundo con los controles normales hasta la puerta del jefe
 %G% --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn -- world=1 godmode max_frames=15000
 %G% --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn -- world=2 godmode max_frames=20000
+%G% --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn -- world=3 godmode max_frames=25000
+%G% --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn -- world=4 max_frames=30000
+%G% --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn -- world=5 max_frames=30000
+REM    "hits" añade dónde se produce cada golpe o caída
 
 REM 4. capturas para revisión visual (ventana)
 %G% --path godot res://tests/Capture.tscn -- scene=World1 x=186 y=12 frames=60 out=C:/tmp/c.png
@@ -169,3 +173,25 @@ python tools/world3/world3_level.py
 ```
 
 Consulta `WORLD3_REPORT.md` para el inventario de contenido y validaciones.
+
+# Mundo 4
+
+El Reino de las Burbujas se abre desde el mapa de mundos al completar el Mundo 3. Incluye cinco secciones, agua con natación, géiseres, columnas de burbujas, rodillos, jabones, tres enemigos y el Rey Patoburbuja. Los recursos se regeneran con:
+
+```powershell
+python tools/world4/prepare_world4_assets.py --debug
+python tools/world4/world4_level.py
+```
+
+Música opcional: `world4_theme.ogg`, `rey_patoburbuja_boss.ogg` y `world4_victory.ogg` en `godot/resources/audio/`. Consulta `WORLD4_REPORT.md` para el detalle por etapas y las validaciones.
+
+# Mundo 5
+
+Sueños Cósmicos — Islas en el Cielo se abre desde el mapa de mundos al completar el Mundo 4. Incluye cinco secciones, plataformas de estrella (sólidas y trampolines), lunas crecientes (fijas, móviles y en órbita), toboganes arcoíris, cohetes móviles, cascadas de luz que suben, estrellas que caen, nubes explosivas, tres enemigos (Estrellita Fugaz, Meteorito Travieso y Cohetito Centinela) y Luna Estelar. Los recursos se regeneran con:
+
+```powershell
+python tools/world5/prepare_world5_assets.py --debug
+python tools/world5/world5_level.py
+```
+
+Música opcional: `world5_theme.ogg`, `luna_estelar_boss.ogg` y `world5_victory.ogg` en `godot/resources/audio/`. Consulta `WORLD5_REPORT.md` para el detalle por etapas y las validaciones.

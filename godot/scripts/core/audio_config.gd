@@ -30,18 +30,26 @@ const SFX_FILES := {
 	"pause": "",
 	"no_weapon": "",
 	"portal": "",
+	"swim": "",
+	"splash": "",
 }
 
 const MUSIC_FILES := {
-	"menu": "",
-	"world1": "",
-	"boss": "",
+	"menu": "res://resources/audio/menu_principal.mp3",
+	"world1": "res://resources/audio/mundo_1.mp3",
+	"boss": "res://resources/audio/jefe_mundo_1.mp3",
 	"world2": "",
 	"garabato": "",
 	"world2_victory": "",
 	"world3": "",
 	"sieston": "",
 	"world3_victory": "",
+	"world4": "",
+	"patoburbuja": "",
+	"world4_victory": "",
+	"world5": "",
+	"luna_estelar": "",
+	"world5_victory": "",
 }
 
 ## Música del Mundo 2: si se copian estos archivos a res://resources/audio/, se usan en lugar de
@@ -53,4 +61,10 @@ const OPTIONAL_MUSIC := {
 	"world3": "res://resources/audio/world3_theme.ogg",
 	"sieston": "res://resources/audio/rey_sieston_boss.ogg",
 	"world3_victory": "res://resources/audio/world3_victory.ogg",
+	"world4": "res://resources/audio/world4_theme.ogg",
+	"patoburbuja": "res://resources/audio/rey_patoburbuja_boss.ogg",
+	"world4_victory": "res://resources/audio/world4_victory.ogg",
+	"world5": "res://resources/audio/world5_theme.ogg",
+	"luna_estelar": "res://resources/audio/luna_estelar_boss.ogg",
+	"world5_victory": "res://resources/audio/world5_victory.ogg",
 }

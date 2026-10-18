@@ -16,6 +16,14 @@ const SCENES := {
 	"rabbit": preload("res://scenes/enemies/world3/Rabbit.tscn"),
 	"wool": preload("res://scenes/enemies/world3/Wool.tscn"),
 	"pillow": preload("res://scenes/enemies/world3/Pillow.tscn"),
+	# Mundo 4
+	"bubble_fish": preload("res://scenes/enemies/world4/BubbleFish.tscn"),
+	"sponge_crab": preload("res://scenes/enemies/world4/SpongeCrab.tscn"),
+	"pompa": preload("res://scenes/enemies/world4/Pompa.tscn"),
+	# Mundo 5
+	"estrellita": preload("res://scenes/enemies/world5/Estrellita.tscn"),
+	"meteorito": preload("res://scenes/enemies/world5/Meteorito.tscn"),
+	"cohetito": preload("res://scenes/enemies/world5/Cohetito.tscn"),
 }
 
 var level: Node

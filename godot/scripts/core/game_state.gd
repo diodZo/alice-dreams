@@ -59,6 +59,8 @@ func new_run(world: Dictionary, boss: Dictionary = {}) -> void:
 		"magicTotal": world.get("magicCrayons", []).size(),
 		"dreamCollectibles": [],
 		"dreamTotal": world.get("dreamCollectibles", []).size(),
+		# icono del HUD para el coleccionable principal: [atlas, fotograma, prefijo de id]
+		"dreamHud": world.get("dreamHud", ["world3_objects", "moon_w3", "moon_"]),
 		"world": int(world.get("id", 1)),
 	}
 	for k in run:

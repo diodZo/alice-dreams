@@ -1,0 +1,5 @@
+{
+ "estrellita": {"key":"estrellita","name":"Estrellita Fugaz","hp":2,"speed":70,"body":{"width":16,"height":16},"detectRange":210,"detectHeight":100,"reactionTime":450,"keepDistance":[70,150],"attackCooldown":1700,"trapTime":3500},
+ "meteorito": {"key":"meteorito","name":"Meteorito Travieso","hp":3,"speed":40,"body":{"width":20,"height":20},"detectRange":170,"detectHeight":36,"reactionTime":500,"attackRange":120,"attackCooldown":1800,"trapTime":3500},
+ "cohetito": {"key":"cohetito","name":"Cohetito Centinela","hp":3,"speed":45,"body":{"width":24,"height":16},"detectRange":200,"detectHeight":70,"reactionTime":550,"attackCooldown":2000,"trapTime":3500}
+}

@@ -28,7 +28,8 @@ func setup(def: Dictionary, atlas: String) -> MovingPlatform:
 	duration = float(def.get("duration", 3000))
 	phase = float(def.get("delay", 0)) / duration
 	active = bool(def.get("active", true))
-	visible = active
+	# dormida: se ve translúcida (para que se entienda qué despierta el botón) pero no se pisa
+	modulate.a = 1.0 if active else 0.35
 	for child in get_children():
 		if child is CollisionShape2D:
 			child.disabled = not active
@@ -56,8 +57,11 @@ func on_player_contact() -> void:
 
 
 func activate() -> void:
+	if active:
+		return
 	active = true
 	visible = true
+	create_tween().tween_property(self, "modulate:a", 1.0, 0.35)
 	for child in get_children():
 		if child is CollisionShape2D:
 			child.set_deferred("disabled", false)

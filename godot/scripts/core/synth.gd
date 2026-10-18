@@ -36,6 +36,13 @@ const SFX := {
 	"pause": [["arp", ["G5", "C5"], 0.06, "square", 0.06, 0.07]],
 	"no_weapon": [["tone", "square", 200, 180, 0, 0.08, 0.06]],
 	"portal": [["tone", "sine", 300, 1200, 0, 0.7, 0.12, 0.05], ["arp", ["C6", "G6", "E6", "C7"], 0.09, "triangle", 0.06, 0.12]],
+	# Mundo 4: brazada bajo el agua y chapuzón
+	"swim": [["tone", "sine", 300, 520, 0, 0.12, 0.09], ["tone", "sine", 900, 1400, 0.03, 0.05, 0.05]],
+	"splash": [["noise", 0, 0.25, 0.1, 2200, 0.8], ["tone", "sine", 600, 200, 0, 0.15, 0.08]],
+	# Mundo 5: tintineo de estrella que cae, motor de cohete y nube que estalla en luz
+	"twinkle": [["arp", ["E6", "B6", "G6"], 0.05, "triangle", 0.07, 0.07]],
+	"rocket": [["noise", 0, 0.35, 0.07, 1200, 0.9], ["tone", "square", 120, 260, 0, 0.3, 0.05]],
+	"cloud_boom": [["noise", 0, 0.3, 0.1, 900, 0.8], ["arp", ["C6", "G5", "E6"], 0.04, "sine", 0.08, 0.06]],
 }
 
 ## Pistas de música (8 corcheas por compás). Token = nota, "-" = mantener, "." = silencio.
@@ -82,10 +89,42 @@ const MUSIC := {
 		"melody": "C5 C5 . E5 G5 . C6 . | B5 . G5 . E5 . D5 . | F5 F5 . A5 C6 . A5 . | G5 - F5 - E5 - D5 - | C5 . E5 . G5 . C6 . | A5 . C6 . E6 . C6 . | D6 . B5 . G5 . D5 . | C5 - - - . . . .",
 		"bassline": "C3 C3 . C3 G2 . C3 . | G2 G2 . G2 D3 . G2 . | F2 F2 . F2 C3 . F2 . | G2 G2 . G2 D3 . G2 . | C3 C3 . C3 G2 . C3 . | A2 A2 . A2 E3 . A2 . | G2 G2 . G2 D3 . G2 . | C3 C3 . C3 G2 . C3 .",
 	},
+	# Mundo 4: melodía saltarina y acuática (pulso + triángulo, arpegios como burbujas).
+	"world4": {
+		"bpm": 132, "lead": ["square", 0.045], "bass": ["triangle", 0.1],
+		"melody": "G5 . C6 . E6 . C6 . | D6 . B5 . G5 - . . | A5 . C6 . F6 . E6 . | D6 - C6 - B5 - . . | G5 . C6 . E6 . G6 . | F6 . D6 . B5 . G5 . | A5 . B5 . C6 . D6 . | C6 - - - . . G5 . | E5 G5 C6 . E5 G5 C6 . | F5 A5 C6 . F5 A5 D6 . | G5 B5 D6 . G5 B5 E6 . | C6 - - . G5 - - . | A5 . G5 . F5 . E5 . | D5 . F5 . A5 . C6 . | B5 . A5 . G5 . F5 . | E5 - D5 - C5 - . .",
+		"bassline": "C3 . G3 . C3 . G3 . | G2 . D3 . G2 . D3 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . B2 . | C3 . G3 . C3 . G3 . | G2 . D3 . G2 . D3 . | F2 . C3 . G2 . D3 . | C3 . G2 . C3 . . . | C3 . E3 . G3 . E3 . | F2 . A2 . C3 . A2 . | G2 . B2 . D3 . B2 . | C3 . G2 . C3 . G2 . | F2 . C3 . F2 . C3 . | D3 . A2 . D3 . A2 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . . .",
+	},
+	"patoburbuja": {
+		"bpm": 156, "lead": ["square", 0.05], "bass": ["triangle", 0.09],
+		"melody": "E5 . G5 . C6 . G5 . | E5 . G5 C6 E6 - D6 . | F5 . A5 . D6 . A5 . | F5 . A5 D6 F6 - E6 . | G5 . B5 . D6 . G6 . | F6 . D6 . B5 . G5 . | C6 . E6 . D6 . B5 . | C6 - - - . . . .",
+		"bassline": "C3 C3 . C3 G2 . C3 . | C3 C3 . C3 G2 . E3 . | D3 D3 . D3 A2 . D3 . | D3 D3 . D3 A2 . F3 . | G2 G2 . G2 D3 . G2 . | G2 G2 . G2 D3 . B2 . | A2 A2 . F2 F2 . G2 . | C3 C3 . C3 G2 . C3 .",
+	},
+	"world4_victory": {
+		"bpm": 116, "lead": ["square", 0.05], "bass": ["triangle", 0.1],
+		"melody": "C6 . G5 . E5 . G5 . | C6 . E6 . G6 - - . | F6 . E6 . D6 . C6 . | D6 - - - G5 . . . | C6 . G5 . E5 . G5 . | A5 . C6 . F6 - E6 . | D6 . B5 . G5 . B5 . | C6 - - - . . . .",
+		"bassline": "C3 . G3 . C3 . G3 . | A2 . E3 . A2 . E3 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . D3 . | C3 . G3 . C3 . G3 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . . .",
+	},
 	"world3_victory": {
 		"bpm": 104, "lead": ["triangle", 0.075], "bass": ["sine", 0.09],
 		"melody": "C5 . E5 . G5 . C6 - | E6 - D6 . C6 . G5 . | A5 . C6 . E6 - D6 . | C6 - - - . . . .",
 		"bassline": "C3 . G3 . C3 . G3 . | A2 . E3 . A2 . E3 . | F2 . C3 . G2 . D3 . | C3 . G2 . C3 . . .",
+	},
+	# Mundo 5: cielo nocturno; arpegios brillantes como estrellas sobre un bajo suave.
+	"world5": {
+		"bpm": 124, "lead": ["square", 0.045], "bass": ["triangle", 0.1],
+		"melody": "E5 . G5 . B5 . E6 . | D6 - B5 . G5 . A5 . | C6 . E6 . G6 - E6 . | D6 - - - B5 . . . | A5 . C6 . E6 . A6 . | G6 . E6 . C6 . E6 . | F#6 . D6 . A5 . D6 . | B5 - - - . . E5 . | G5 B5 E6 . G5 B5 E6 . | A5 C6 E6 . A5 C6 F6 . | B5 D6 G6 . B5 D6 F#6 . | E6 - - . B5 - - . | C6 . B5 . A5 . G5 . | F#5 . A5 . C6 . E6 . | D6 . C6 . B5 . A5 . | G5 - F#5 - E5 - . .",
+		"bassline": "E3 . B3 . E3 . B3 . | G2 . D3 . G2 . D3 . | C3 . G3 . C3 . G3 . | G2 . D3 . G2 . B2 . | A2 . E3 . A2 . E3 . | C3 . G3 . C3 . G3 . | D3 . A3 . D3 . A3 . | G2 . D3 . G2 . . . | E3 . G3 . B3 . G3 . | A2 . C3 . E3 . C3 . | G2 . B2 . D3 . B2 . | E3 . B2 . E3 . B2 . | C3 . G3 . C3 . G3 . | D3 . A2 . D3 . A2 . | G2 . D3 . G2 . D3 . | E3 . B2 . E3 . . .",
+	},
+	"luna_estelar": {
+		"bpm": 150, "lead": ["square", 0.05], "bass": ["triangle", 0.09],
+		"melody": "A5 . C6 . E6 . C6 . | A5 . E6 A6 G6 - E6 . | F5 . A5 . C6 . A5 . | F5 . C6 F6 E6 - C6 . | G5 . B5 . D6 . G6 . | F6 . D6 . B5 . G5 . | E6 . G#6 . B6 . G#6 . | A6 - - - . . . .",
+		"bassline": "A2 A2 . A2 E3 . A2 . | A2 A2 . A2 E3 . G2 . | F2 F2 . F2 C3 . F2 . | F2 F2 . F2 C3 . E2 . | G2 G2 . G2 D3 . G2 . | G2 G2 . G2 D3 . B2 . | E2 E2 . E2 B2 . E2 . | A2 A2 . A2 E3 . A2 .",
+	},
+	"world5_victory": {
+		"bpm": 112, "lead": ["triangle", 0.075], "bass": ["sine", 0.09],
+		"melody": "G5 . B5 . D6 . G6 - | F#6 . D6 . B5 . D6 . | E6 . G6 . B6 - A6 . | G6 - - - . . . . | C6 . E6 . G6 . E6 . | D6 . F#6 . A6 . F#6 . | G6 . D6 . B5 . D6 . | G6 - - - . . . .",
+		"bassline": "G2 . D3 . G2 . D3 . | D3 . A2 . D3 . A2 . | E3 . B2 . E3 . B2 . | G2 . D3 . G2 . . . | C3 . G3 . C3 . G3 . | D3 . A3 . D3 . A3 . | G2 . D3 . G2 . D3 . | G2 . D3 . G2 . . .",
 	},
 }
 

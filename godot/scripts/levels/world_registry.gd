@@ -7,28 +7,34 @@ class_name WorldRegistry
 ##   3. su entrada en esta tabla y en Router.SCENES.
 ## Cada mundo define en sus datos: tileset, fondo, longitud, secciones, enemigos, obstáculos,
 ## coleccionables, checkpoints, jefe, música y portal de salida.
-## Implementados: Mundos 1, 2 y 3; el resto queda reservado.
+## Implementados: Mundos 1, 2, 3, 4 y 5; el resto queda reservado.
 ## Campos de presentación (menú y pantalla de victoria): victoryTitle, victorySub, bossFrames,
-## bossFrame (fotograma del jefe vencido), nextPortal, victoryMusic.
+## bossFrame (fotograma del jefe vencido), nextPortal, victoryMusic. "short": nombre del mapa de mundos.
 
 const WORLDS := [
-	{"id": 1, "name": "El Reino de las Nubes de Algodón", "scene": "World1", "data": "res://data/worlds/world1.json", "boss_data": "res://data/worlds/world1_boss.json", "implemented": true,
+	{"id": 1, "name": "El Reino de las Nubes de Algodón", "short": "Nubes de Algodón", "scene": "World1", "data": "res://data/worlds/world1.json", "boss_data": "res://data/worlds/world1_boss.json", "implemented": true,
 		"victoryTitle": "¡Mundo 1 completado!", "victorySub": "Nubarrón vuelve a ser una nube feliz",
 		"bossFrames": "nubarron", "bossAnim": "idle", "bossFrame": 1, "bossScale": 0.5,
 		"nextPortal": "Portal al Mundo 2: abierto", "victoryMusic": "menu"},
-	{"id": 2, "name": "El Reino de los Crayones Encantados", "scene": "World2", "data": "res://data/world2/world2.json", "boss_data": "res://data/world2/world2_boss.json", "implemented": true,
+	{"id": 2, "name": "El Reino de los Crayones Encantados", "short": "Crayones", "scene": "World2", "data": "res://data/world2/world2.json", "boss_data": "res://data/world2/world2_boss.json", "implemented": true,
 		"victoryTitle": "¡Mundo 2 completado!", "victorySub": "Garabato devuelve los colores al lienzo",
 		"bossFrames": "garabato", "bossAnim": "idle", "bossFrame": 1, "bossScale": 0.5,
 		"nextPortal": "Portal al Mundo 3: abierto", "victoryMusic": "world2_victory"},
-	{"id": 3, "name": "El Reino de los Peluches Dormilones", "scene": "World3", "data": "res://data/world3/world3.json", "boss_data": "res://data/world3/world3_boss.json", "implemented": true,
+	{"id": 3, "name": "El Reino de los Peluches Dormilones", "short": "Peluches", "scene": "World3", "data": "res://data/world3/world3.json", "boss_data": "res://data/world3/world3_boss.json", "implemented": true,
 		"victoryTitle": "¡Mundo 3 completado!", "victorySub": "El Rey Siestón duerme feliz otra vez",
 		"bossFrames": "sieston", "bossAnim": "defeated", "bossFrame": 2, "bossScale": 0.5,
-		"nextPortal": "Portal al Mundo 4: preparado (próximamente)", "victoryMusic": "world3_victory"},
-	{"id": 4, "name": "Mundo 4", "scene": "", "data": "", "boss_data": "", "implemented": false},
-	{"id": 5, "name": "Mundo 5", "scene": "", "data": "", "boss_data": "", "implemented": false},
-	{"id": 6, "name": "Mundo 6", "scene": "", "data": "", "boss_data": "", "implemented": false},
-	{"id": 7, "name": "Mundo 7", "scene": "", "data": "", "boss_data": "", "implemented": false},
-	{"id": 8, "name": "Mundo 8", "scene": "", "data": "", "boss_data": "", "implemented": false},
+		"nextPortal": "Portal al Mundo 4: abierto", "victoryMusic": "world3_victory"},
+	{"id": 4, "name": "Reino de las Burbujas", "short": "Reino de las Burbujas", "scene": "World4", "data": "res://data/world4/world4.json", "boss_data": "res://data/world4/world4_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 4 completado!", "victorySub": "El Rey Patoburbuja duerme feliz entre la espuma",
+		"bossFrames": "patoburbuja", "bossAnim": "defeated", "bossFrame": 0, "bossScale": 0.6,
+		"nextPortal": "Portal al Mundo 5: abierto", "victoryMusic": "world4_victory"},
+	{"id": 5, "name": "Sueños Cósmicos — Islas en el Cielo", "short": "Sueños Cósmicos", "scene": "World5", "data": "res://data/world5/world5.json", "boss_data": "res://data/world5/world5_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 5 completado!", "victorySub": "Luna Estelar duerme feliz entre las nubes",
+		"bossFrames": "luna_estelar", "bossAnim": "defeated", "bossFrame": 1, "bossScale": 0.6,
+		"nextPortal": "Portal al Mundo 6: preparado (próximamente)", "victoryMusic": "world5_victory"},
+	{"id": 6, "name": "El Parque de las Estrellas", "short": "Parque de las Estrellas", "scene": "", "data": "", "boss_data": "", "implemented": false},
+	{"id": 7, "name": "El Bosque de Caramelos", "short": "Bosque de Caramelos", "scene": "", "data": "", "boss_data": "", "implemented": false},
+	{"id": 8, "name": "El Castillo de los Sueños", "short": "Castillo de los Sueños", "scene": "", "data": "", "boss_data": "", "implemented": false},
 ]
 
 

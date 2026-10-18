@@ -1,0 +1,239 @@
+{
+ "bubble_fish": {
+  "frameWidth": 32,
+  "frameHeight": 34,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Pez Burbuja"
+ },
+ "sponge_crab": {
+  "frameWidth": 52,
+  "frameHeight": 34,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2"
+    ],
+    "fps": 9,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1"
+    ],
+    "fps": 9,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Cangrejito Esponja"
+ },
+ "pompa": {
+  "frameWidth": 44,
+  "frameHeight": 42,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2"
+    ],
+    "fps": 7,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Pompa Traviesa"
+ },
+ "patoburbuja": {
+  "frameWidth": 176,
+  "frameHeight": 84,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "move": {
+    "frames": [
+     "move_0",
+     "move_1",
+     "move_2",
+     "move_3",
+     "move_4",
+     "move_5"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "spit": {
+    "frames": [
+     "spit_0",
+     "spit_1",
+     "spit_2",
+     "spit_3"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "wave": {
+    "frames": [
+     "wave_0",
+     "wave_1",
+     "wave_2",
+     "wave_3"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "whirl": {
+    "frames": [
+     "whirl_0",
+     "whirl_1",
+     "whirl_2",
+     "whirl_3"
+    ],
+    "fps": 9,
+    "loop": true,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2"
+    ],
+    "fps": 3,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Rey Patoburbuja"
+ }
+}

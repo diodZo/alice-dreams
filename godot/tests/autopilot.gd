@@ -1,5 +1,5 @@
 extends Node
-## Piloto automático para comprobar que el Mundo 1 se puede recorrer de principio a fin con
+## Piloto automático para comprobar que un mundo (1-5) se puede recorrer de principio a fin con
 ## la física migrada (sin teletransportes). Sólo usa los mismos controles que un jugador:
 ## correr, saltar (manteniendo el botón), disparar y apuntar.
 ##   godot --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn [-- max_frames=40000]
@@ -25,6 +25,8 @@ var mover_prev := {}
 var target_mover: MovingPlatform = null
 ## Punto de aterrizaje elegido al saltar un hueco (NAN = ninguno).
 var target_x := NAN
+## Fotogramas seguidos sobre la misma plataforma móvil.
+var ride_frames := 0
 
 
 func _ready() -> void:
@@ -70,6 +72,8 @@ func _physics_process(_delta: float) -> void:
 	c.script_held.clear()
 	if p.hp < last_hp or (p.dead and last_hp > 0):
 		deaths += 1
+		if "hits" in OS.get_cmdline_user_args():
+			print("[autopilot] golpe/caída en x=%.0f (tesela %d) y=%.0f" % [p.position.x, int(p.position.x / 16), p.position.y])
 	last_hp = p.hp
 	best_x = maxf(best_x, p.position.x)
 	if frame % 600 == 0:
@@ -97,6 +101,11 @@ func _physics_process(_delta: float) -> void:
 	else:
 		stuck_frames = 0
 	last_x = p.position.x
+	if p.in_water():
+		# nadando (Mundo 4): brazadas a ritmo constante con los mismos controles que un jugador
+		if frame % 14 == 0:
+			c.script_pressed["jump"] = true
+		return
 	if not p.grounded:
 		# en el aire: si hay una nube móvil debajo, se orienta hacia su centro
 		if p.velocity.y < -400:
@@ -122,12 +131,19 @@ func _physics_process(_delta: float) -> void:
 	target_mover = null
 	target_x = NAN
 	var riding := _riding_mover(p)
+	ride_frames = ride_frames + 1 if riding != null else 0
+	if riding != null and ride_frames > 240:
+		# plataforma opcional sin suelo cerca (secretos del Mundo 3): se baja andando
+		return
 	if riding != null:
 		# se deja llevar por la nube móvil y salta cuando el suelo queda cerca
 		c.script_held.erase("move_right")
 		c.script_held.erase("run")
+		# también suelo más bajo (asientos de las cuerdas del Mundo 3, por encima del borde) o un
+		# saliente hasta dos teselas más alto (cohetes del Mundo 5)
 		for d in [20, 36, 52, 68, 84, 100]:
-			if level.terrain_solid_at(p.position + Vector2(d, 4)):
+			# sólo una superficie pisable (con hueco encima), no la cara de un muro
+			if [-28, -12, 4, 20, 36, 52, 68].any(func(dy): return level.terrain_solid_at(p.position + Vector2(d, dy)) and not level.terrain_solid_at(p.position + Vector2(d, dy - 20))):
 				c.script_held["move_right"] = true
 				c.script_held["run"] = true
 				c.script_pressed["jump"] = true
@@ -145,7 +161,10 @@ func _physics_process(_delta: float) -> void:
 			# salta cuando la nube está cerca y viene hacia la protagonista o se aleja despacio
 			var dx := mover.position.x - p.position.x
 			var mv: float = mover.position.x - float(mover_prev.get(mover, mover.position.x))
-			if dx < 30 or dx > 60 or mv > 1.2:
+			# una plataforma vertical se espera hasta que queda al alcance de un salto
+			var sy := _surface_y(mover)
+			var far_y: bool = _is_lift(mover) and (sy < p.position.y - 40 or sy > p.position.y + 12)
+			if dx < 30 or dx > 60 or mv > 1.2 or far_y:
 				wait_frames = 4
 				c.script_held.erase("move_right")
 				return
@@ -189,7 +208,8 @@ func _find_landing(p: Player) -> float:
 		var q := PhysicsRayQueryParameters2D.create(Vector2(x, p.position.y - 80), Vector2(x, p.position.y + 48), C.L_ONE_WAY)
 		q.hit_from_inside = true
 		var hit := space.intersect_ray(q)
-		if not hit.is_empty():
+		# sólo apoyos al alcance de un salto (las rutas altas opcionales no sirven de aterrizaje)
+		if not hit.is_empty() and hit.position.y >= p.position.y - 56:
 			return x + 12
 	return NAN
 
@@ -202,11 +222,28 @@ func _riding_mover(p: Player) -> MovingPlatform:
 	return null
 
 
+## Plataforma con recorrido vertical largo (ascensor), no un simple vaivén.
+func _is_lift(m: MovingPlatform) -> bool:
+	return absf(m.delta_px.y) > 2 * C.TILE
+
+
+## Altura de la superficie pisable de una plataforma (borde superior de su franja de colisión).
+func _surface_y(m: MovingPlatform) -> float:
+	for child in m.get_children():
+		if child is CollisionShape2D:
+			return m.position.y + child.position.y - 5.0
+	return m.position.y
+
+
 func _mover_in_gap(p: Player) -> MovingPlatform:
 	for m in level.level_objects.movers:
 		var span_l: float = m.start.x - 40
 		var span_r: float = m.start.x + m.delta_px.x + 40
-		if p.position.x > span_l - 60 and p.position.x < span_r and absf(m.position.y - p.position.y) < 40:
+		# plataformas verticales (cohete ascensor del Mundo 5): cuentan en todo su recorrido
+		var lo: float = minf(m.start.y, m.start.y + m.delta_px.y) - 40
+		var hi: float = maxf(m.start.y, m.start.y + m.delta_px.y) + 40
+		var near_y: bool = absf(m.position.y - p.position.y) < 40 or (_is_lift(m) and p.position.y > lo and p.position.y < hi)
+		if p.position.x > span_l - 60 and p.position.x < span_r and near_y:
 			if not level.terrain_solid_at(p.position + Vector2(18, 4)):
 				return m
 	return null

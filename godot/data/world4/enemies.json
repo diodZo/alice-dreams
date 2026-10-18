@@ -1,0 +1,5 @@
+{
+ "bubble_fish": {"key":"bubble_fish","name":"Pez Burbuja","hp":2,"speed":40,"body":{"width":20,"height":16},"detectRange":200,"detectHeight":90,"reactionTime":500,"keepDistance":[80,160],"attackCooldown":1900,"trapTime":3500},
+ "sponge_crab": {"key":"sponge_crab","name":"Cangrejito Esponja","hp":3,"speed":42,"body":{"width":22,"height":18},"detectRange":140,"detectHeight":40,"reactionTime":450,"attackRange":34,"attackCooldown":1300,"trapTime":3500},
+ "pompa": {"key":"pompa","name":"Pompa Traviesa","hp":2,"speed":26,"body":{"width":22,"height":22},"detectRange":170,"detectHeight":110,"reactionTime":600,"attackRange":56,"attackCooldown":2400,"trapTime":3500}
+}

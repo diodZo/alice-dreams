@@ -106,6 +106,19 @@ def extract(src_name, mode, box, opts):
             fg = np.ones(fg.shape, bool)
     if "crop_top" in opts:
         fg[: max(0, opts["crop_top"] - y0)] = False
+    if "only" in opts:
+        # zonas absolutas que contienen el objeto: separa el dibujo de elementos del fondo que
+        # lo tocan (arbustos, pilares) y que el relleno no distingue. Cada zona es un
+        # rectángulo [x0,y0,x1,y1] o un polígono [[x,y],[x,y],...].
+        canvas = Image.new("L", (fg.shape[1], fg.shape[0]), 0)
+        draw = ImageDraw.Draw(canvas)
+        for zone in opts["only"]:
+            if isinstance(zone[0], list):
+                draw.polygon([(px - x0, py - y0) for px, py in zone], fill=255)
+            else:
+                ax0, ay0, ax1, ay1 = zone
+                draw.rectangle((ax0 - x0, ay0 - y0, ax1 - x0, ay1 - y0), fill=255)
+        fg &= np.array(canvas) > 0
     if not opts.get("nocomp"):
         fg = keep_main(fg, opts.get("keep", 0.2))
     ys, xs = np.nonzero(fg)
@@ -212,6 +225,11 @@ def build_set(spec, default_src="tiles", default_mode="cream", kind="object"):
         ex, info = extract(s, mode, o["box"], o)
         im = P.downscale(ex, o["scale"])
         im = finish(im, o.get("colors", 20), 0.0 if kind == "background" else 0.8)
+        if o.get("fade_bottom"):
+            # funde el borde inferior con el cielo generado (sin línea dura en el fondo)
+            n = min(int(o["fade_bottom"]), im.shape[0])
+            ramp = np.linspace(1.0, 0.0, n)[:, None]
+            im[-n:, :, 3] = (im[-n:, :, 3] * ramp).astype(np.uint8)
         imgs[name] = im
         MANIFEST["resources"].append({
             "name": name, "type": kind, "source": CFG["sources"][s], "crop": o["box"], "trimmed": info["trim"],

@@ -57,6 +57,20 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		var p := SwingPlatform.new().setup(s, atlas)
 		platforms.add_child(p)
 		out.movers.append(p)
+	# Mundo 5: cohetes móviles, lunas en órbita y toboganes arcoíris.
+	for r in data.get("rockets", []):
+		var p := RocketPlatform.new().setup(r, atlas)
+		platforms.add_child(p)
+		out.movers.append(p)
+	for o in data.get("orbits", []):
+		var p := OrbitPlatform.new().setup(o, atlas)
+		platforms.add_child(p)
+		out.movers.append(p)
+	out.slides = []
+	for s in data.get("slides", []):
+		var sl := RainbowSlide.new().setup(s, atlas)
+		platforms.add_child(sl)
+		out.slides.append(sl)
 
 	var objects := Node2D.new()
 	objects.name = "Objects"
@@ -82,6 +96,27 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		objects.add_child(RollingYarn.new().setup(y, atlas))
 	for c in data.get("sleepClouds", []):
 		objects.add_child(SleepCloud.new().setup(c, atlas))
+	# Mundo 4: agua, géiseres, columnas de burbujas, rodillos de esponja y jabones móviles.
+	out.waters = []
+	for w in data.get("waters", []):
+		var wz := WaterZone.new().setup(level, w, atlas)
+		objects.add_child(wz)
+		out.waters.append(wz)
+	for g in data.get("geysers", []):
+		objects.add_child(BubbleGeyser.new().setup(level, g, atlas))
+	for c in data.get("bubbleColumns", []):
+		objects.add_child(BubbleColumn.new().setup_column(level, c, atlas))
+	for r in data.get("spongeRollers", []):
+		objects.add_child(SpongeRoller.new().setup(level, r, atlas))
+	for s in data.get("soaps", []):
+		objects.add_child(SlidingSoap.new().setup(level, s, atlas))
+	# Mundo 5: cascadas de luz (corriente ascendente), estrellas que caen y nubes explosivas.
+	for f in data.get("lightFalls", []):
+		objects.add_child(LightFall.new().setup_fall(level, f, atlas))
+	for f in data.get("fallingStars", []):
+		objects.add_child(FallingStar.new().setup(level, f, atlas))
+	for c in data.get("explosiveClouds", []):
+		objects.add_child(ExplosiveCloud.new().setup(level, c, atlas))
 	for c in data.get("dreamCollectibles", []):
 		if not (str(c.id) in GameState.get_v("dreamCollectibles", [])):
 			objects.add_child(DreamCollectible.new().setup(level, c, atlas))
@@ -159,12 +194,34 @@ func _check_frames(atlas: String) -> void:
 	if not data.get("rulers", []).is_empty():
 		frames += ["ruler_mid", "ruler_post", "ruler_hinge"]
 	for x in data.get("swings", []):
-		frames.append(x.get("frame", "rope_mid"))
+		frames += [x.get("frame", "button_blue"), x.get("knot", "yarn_ball_pink")]
 	for x in data.get("yarnRollers", []):
-		frames.append(x.get("frame", "yarn_pink"))
+		frames.append(x.get("frame", "yarn_ball_pink"))
+	for x in data.get("magicButtons", []):
+		frames.append(x.get("frame", "magic_button"))
+	for x in data.get("dreamCollectibles", []):
+		frames.append(x.get("frame", DreamCollectible.FRAMES.get(x.get("kind", "moon"), "moon_w3")))
+	for x in data.get("waters", []):
+		frames += ["water_top_0", "water_top_1", "water_top_2", "water_deep_0", "water_deep_1", "water_deep_2"]
+	for x in data.get("geysers", []) + data.get("bubbleColumns", []):
+		frames += ["geyser_0", "geyser_4", "bubble_col_0", "bubble_col_2"]
+	for x in data.get("spongeRollers", []) + data.get("soaps", []) + data.get("paints", []):
+		if x.has("frame"):
+			frames.append(x.frame)
+	if not data.get("slides", []).is_empty():
+		frames += ["rainbow_band", "cloud_s", "star_post_a"]
+	if not data.get("lightFalls", []).is_empty():
+		frames += ["light_fall_0", "light_fall_1", "star_w5"]
+	if not data.get("fallingStars", []).is_empty():
+		frames += ["fall_star_0", "fall_star_1", "fall_star_2", "fall_star_3"]
+	if not data.get("explosiveClouds", []).is_empty():
+		frames += ["boom_cloud", "boom_cloud_big", "boom_burst"]
 	for x in data.get("sleepClouds", []):
-		frames.append(x.get("frame", "cloud_plush"))
-	for list in [data.clouds, data.movers, data.hazards, data.decor, data.crumbles]:
+		var fx_atlas: String = x.get("atlas", "w3_fx")
+		var f: String = x.get("frame", "sleep_cloud")
+		if not Assets.has_frame(fx_atlas, f):
+			Assets.mark_placeholder("%s:%s" % [fx_atlas, f])
+	for list in [data.clouds, data.movers, data.hazards, data.decor, data.crumbles, data.get("rockets", []), data.get("orbits", [])]:
 		for x in list:
 			if x.has("frame"):
 				frames.append(x.frame)
@@ -176,15 +233,26 @@ func _check_frames(atlas: String) -> void:
 # ------------------------------------------------------------------- terreno
 func build_terrain() -> TileMapLayer:
 	var ts: Dictionary = Assets.tileset_data(data.get("tileset", "world1_tiles"))
+	# Mundo 4: varios materiales. El valor de la rejilla es 1 + índice del material.
+	var mats: Array = ts.get("materials", {}).keys()
+	var default_mat := maxi(0, mats.find(ts.get("defaultMaterial", "")))
 	grid = []
 	for y in rows:
 		var row := PackedByteArray()
 		row.resize(cols)
 		grid.append(row)
 	for r in data.terrain:
+		var m: int = mats.find(r.get("mat", "")) if r.has("mat") else default_mat
 		for y in range(int(r.y), mini(rows, int(r.y + r.h))):
 			for x in range(maxi(0, int(r.x)), mini(cols, int(r.x + r.w))):
-				grid[y][x] = 1
+				grid[y][x] = 1 + maxi(m, 0)
+	# rampas: cuentan como sólidas para el autotiling de sus vecinas
+	var slopes := {}
+	for sl in data.get("slopes", []):
+		var c := Vector2i(int(sl.x), int(sl.y))
+		slopes[c] = "%s_%s" % [sl.get("mat", ts.get("defaultMaterial", "sponge")), sl.get("dir", "up")]
+		if c.y >= 0 and c.y < rows and c.x >= 0 and c.x < cols:
+			grid[c.y][c.x] = 1 + default_mat
 	layer = TileMapLayer.new()
 	layer.name = "Terrain"
 	layer.tile_set = Assets.tileset(data.get("tileset", "world1_tiles"))
@@ -195,16 +263,36 @@ func build_terrain() -> TileMapLayer:
 
 	# el fondo del mundo cuenta como sólido (el terreno no muestra borde inferior)
 	var solid_below := func(x: int, y: int) -> bool:
-		return y >= rows or grid[y][x] == 1
+		return y >= rows or grid[y][x] != 0
+	# profundidad de cada celda bajo la superficie de su columna (bloques de 2x2 del Mundo 4)
+	var depth := PackedInt32Array()
+	depth.resize(cols)
 	for y in rows:
 		for x in cols:
 			if grid[y][x] == 0:
+				depth[x] = -1
 				continue
-			var up: bool = y > 0 and grid[y - 1][x] == 1
+			depth[x] = depth[x] + 1 if y > 0 and grid[y - 1][x] != 0 else 0
+			var cell := Vector2i(x, y)
+			if slopes.has(cell):
+				if ts.get("slopes", {}).has(slopes[cell]):
+					_put(x, y, int(ts.slopes[slopes[cell]]))
+				continue
+			var up: bool = y > 0 and grid[y - 1][x] != 0
 			var down: bool = solid_below.call(x, y + 1)
 			# en los extremos del mapa el terreno continúa (sin borde lateral visible)
-			var left: bool = true if x == 0 else grid[y][x - 1] == 1
-			var right: bool = true if x == cols - 1 else grid[y][x + 1] == 1
+			var left: bool = true if x == 0 else grid[y][x - 1] != 0
+			var right: bool = true if x == cols - 1 else grid[y][x + 1] != 0
+			var v := 2
+			if not left and not right:
+				v = 0
+			elif not left:
+				v = 1
+			elif not right:
+				v = 3
+			if not mats.is_empty():
+				_put(x, y, _material_tile(ts.materials[mats[grid[y][x] - 1]], x, depth[x], up, down, v))
+				continue
 			var set_tiles: Array
 			if not up and not down:
 				set_tiles = ts.terrain.plat
@@ -214,13 +302,6 @@ func build_terrain() -> TileMapLayer:
 				set_tiles = ts.terrain.bottom
 			else:
 				set_tiles = ts.terrain.fill
-			var v := 2
-			if not left and not right:
-				v = 0
-			elif not left:
-				v = 1
-			elif not right:
-				v = 3
 			_put(x, y, int(set_tiles[v]))
 	for b in data.blocks:
 		if not ts.blocks.has(b.type):
@@ -228,6 +309,21 @@ func build_terrain() -> TileMapLayer:
 			continue
 		_put(int(b.x), int(b.y), int(ts.blocks[b.type]))
 	return layer
+
+
+## Tesela de un material del Mundo 4: la superficie usa el bloque con espuma (dos filas) y
+## debajo se repite el bloque base; cada bloque ocupa 2x2 teselas (paridad de columna y fila).
+func _material_tile(m: Dictionary, x: int, d: int, up: bool, down: bool, v: int) -> int:
+	var px := x % 2
+	var role: String
+	var k := px
+	if not down:
+		role = "plat" if not up else ("cap1_bottom" if d == 1 else "bottom")
+	else:
+		role = "cap0" if not up else ("cap1" if d == 1 else "body")
+	if role == "body" or role == "bottom":
+		k = px + 2 * ((d - 2) % 2)
+	return int(m[role][v + 4 * k])
 
 
 func _put(x: int, y: int, idx: int) -> void:
@@ -254,10 +350,19 @@ func _build_decor(dec: Dictionary, atlas: String) -> Sprite2D:
 	img.position = Vector2(float(dec.x) * C.TILE + C.TILE / 2.0, float(dec.y) * C.TILE + 1)
 	if dec.get("front", false):
 		img.z_index = C.Z_DECOR_FRONT
+	elif dec.get("water", false):
+		# fondo submarino (Mundo 4): por delante del agua, por detrás de Alice y los monstruos
+		img.z_index = C.Z_PLATFORM
 	elif dec.get("back", false):
 		img.z_index = C.Z_DECOR_BACK - 1
 	else:
 		img.z_index = C.Z_DECOR_BACK
+	if dec.has("alpha"):
+		img.modulate.a = float(dec.alpha)
+	if dec.has("scale"):
+		img.scale = Vector2(float(dec.scale), float(dec.scale))
+	if dec.get("flip", false):
+		img.flip_h = true
 	if dec.get("sway", false):
 		var d := (1400 + randf() * 600) / 1000.0
 		img.rotation_degrees = -2.5

@@ -1,0 +1,2673 @@
+{
+ "id": 5,
+ "key": "world5",
+ "name": "Sueños Cósmicos — Islas en el Cielo",
+ "widthTiles": 597,
+ "heightTiles": 25,
+ "music": "world5",
+ "tileset": "world5_tiles",
+ "objectsAtlas": "world5_objects",
+ "backgroundAtlas": "world5_bg",
+ "progress": {
+  "total": 10496,
+  "offset": 0,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 4,
+  "y": 20
+ },
+ "nextScene": "Boss5",
+ "startWeapons": [
+  "bubble",
+  "paint",
+  "sling"
+ ],
+ "frames": {
+  "flag": "flag_w5",
+  "signpost": "sign_w5",
+  "star": [
+   "world5_objects",
+   "star_w5"
+  ]
+ },
+ "sections": [
+  {
+   "id": "A",
+   "name": "El observatorio de las nubes",
+   "from": 0
+  },
+  {
+   "id": "B",
+   "name": "El camino de la luna",
+   "from": 2000
+  },
+  {
+   "id": "C",
+   "name": "Los jardines planetarios",
+   "from": 4000
+  },
+  {
+   "id": "D",
+   "name": "La lluvia de meteoros",
+   "from": 6200
+  },
+  {
+   "id": "E",
+   "name": "El trono de la Luna",
+   "from": 8500
+  }
+ ],
+ "background": {
+  "sky": "w5_sky",
+  "far": "w5_clouds_far",
+  "near": "w5_clouds_near",
+  "atlas": "world5_bg",
+  "objectsAtlas": "world5_objects",
+  "sparkles": true,
+  "drifters": [
+   "cloud_s",
+   "cloud_m"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.02,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_ring_planet",
+      "x": 66,
+      "y": 46,
+      "alpha": 0.95
+     },
+     {
+      "frame": "bg_blue_planet",
+      "x": 430,
+      "y": 40,
+      "alpha": 0.9
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.03,
+     0.02
+    ],
+    "depth": 2,
+    "frames": [
+     "bg_trails"
+    ],
+    "step": 260,
+    "y": [
+     24,
+     70
+    ],
+    "alpha": 0.9
+   },
+   {
+    "scroll": [
+     0.05,
+     0.04
+    ],
+    "depth": 3,
+    "items": [
+     {
+      "frame": "bg_moon_castle",
+      "x": 268,
+      "y": 92
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.15,
+     0.08
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_island_small",
+     "bg_tower_island",
+     "bg_islet"
+    ],
+    "step": 210,
+    "y": [
+     130,
+     175
+    ],
+    "alpha": 0.8,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.28,
+     0.14
+    ],
+    "depth": 5,
+    "frames": [
+     "bg_ring_planet",
+     "bg_blue_planet",
+     "bg_moon_face"
+    ],
+    "step": 400,
+    "y": [
+     50,
+     110
+    ],
+    "alpha": 0.75,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.35,
+     0.18
+    ],
+    "depth": 6,
+    "frames": [
+     "bg_fog"
+    ],
+    "step": 320,
+    "y": [
+     195,
+     225
+    ],
+    "alpha": 0.5
+   }
+  ]
+ },
+ "terrain": [
+  {
+   "x": 0,
+   "y": 20,
+   "w": 22,
+   "h": 5,
+   "mat": "cosmic"
+  },
+  {
+   "x": 26,
+   "y": 20,
+   "w": 14,
+   "h": 5,
+   "mat": "cosmic"
+  },
+  {
+   "x": 40,
+   "y": 18,
+   "w": 12,
+   "h": 7,
+   "mat": "cosmic"
+  },
+  {
+   "x": 57,
+   "y": 19,
+   "w": 20,
+   "h": 6,
+   "mat": "cosmic"
+  },
+  {
+   "x": 77,
+   "y": 18,
+   "w": 16,
+   "h": 7,
+   "mat": "cosmic"
+  },
+  {
+   "x": 97,
+   "y": 19,
+   "w": 34,
+   "h": 6,
+   "mat": "cosmic"
+  },
+  {
+   "x": 140,
+   "y": 18,
+   "w": 10,
+   "h": 7,
+   "mat": "cosmic"
+  },
+  {
+   "x": 160,
+   "y": 19,
+   "w": 18,
+   "h": 6,
+   "mat": "cosmic"
+  },
+  {
+   "x": 178,
+   "y": 13,
+   "w": 14,
+   "h": 12,
+   "mat": "cosmic"
+  },
+  {
+   "x": 203,
+   "y": 16,
+   "w": 14,
+   "h": 9,
+   "mat": "cosmic"
+  },
+  {
+   "x": 217,
+   "y": 19,
+   "w": 8,
+   "h": 6,
+   "mat": "cosmic"
+  },
+  {
+   "x": 231,
+   "y": 19,
+   "w": 19,
+   "h": 6,
+   "mat": "cosmic"
+  },
+  {
+   "x": 257,
+   "y": 16,
+   "w": 15,
+   "h": 9,
+   "mat": "cosmic"
+  },
+  {
+   "x": 286,
+   "y": 20,
+   "w": 25,
+   "h": 5,
+   "mat": "cosmic"
+  },
+  {
+   "x": 314,
+   "y": 19,
+   "w": 13,
+   "h": 6,
+   "mat": "cosmic"
+  },
+  {
+   "x": 327,
+   "y": 17,
+   "w": 3,
+   "h": 8,
+   "mat": "cosmic"
+  },
+  {
+   "x": 330,
+   "y": 15,
+   "w": 5,
+   "h": 10,
+   "mat": "cosmic"
+  },
+  {
+   "x": 353,
+   "y": 21,
+   "w": 18,
+   "h": 4,
+   "mat": "cosmic"
+  },
+  {
+   "x": 376,
+   "y": 15,
+   "w": 11,
+   "h": 10,
+   "mat": "cosmic"
+  },
+  {
+   "x": 387,
+   "y": 16,
+   "w": 1,
+   "h": 9,
+   "mat": "cosmic"
+  },
+  {
+   "x": 388,
+   "y": 17,
+   "w": 22,
+   "h": 8,
+   "mat": "cosmic"
+  },
+  {
+   "x": 416,
+   "y": 18,
+   "w": 13,
+   "h": 7,
+   "mat": "cosmic"
+  },
+  {
+   "x": 431,
+   "y": 17,
+   "w": 5,
+   "h": 4,
+   "mat": "cosmic"
+  },
+  {
+   "x": 439,
+   "y": 16,
+   "w": 5,
+   "h": 4,
+   "mat": "cosmic"
+  },
+  {
+   "x": 447,
+   "y": 17,
+   "w": 6,
+   "h": 4,
+   "mat": "cosmic"
+  },
+  {
+   "x": 463,
+   "y": 18,
+   "w": 8,
+   "h": 7,
+   "mat": "cosmic"
+  },
+  {
+   "x": 471,
+   "y": 17,
+   "w": 14,
+   "h": 8,
+   "mat": "cosmic"
+  },
+  {
+   "x": 491,
+   "y": 18,
+   "w": 20,
+   "h": 7,
+   "mat": "cosmic"
+  },
+  {
+   "x": 517,
+   "y": 19,
+   "w": 14,
+   "h": 6,
+   "mat": "cosmic"
+  },
+  {
+   "x": 531,
+   "y": 19,
+   "w": 66,
+   "h": 6,
+   "mat": "cosmic"
+  },
+  {
+   "x": 547,
+   "y": 10,
+   "w": 7,
+   "h": 2,
+   "mat": "cosmic"
+  }
+ ],
+ "slopes": [
+  {
+   "x": 76,
+   "y": 18,
+   "dir": "up",
+   "mat": "cosmic"
+  },
+  {
+   "x": 387,
+   "y": 15,
+   "dir": "down",
+   "mat": "cosmic"
+  },
+  {
+   "x": 388,
+   "y": 16,
+   "dir": "down",
+   "mat": "cosmic"
+  },
+  {
+   "x": 470,
+   "y": 17,
+   "dir": "up",
+   "mat": "cosmic"
+  }
+ ],
+ "blocks": [
+  {
+   "x": 537,
+   "y": 18,
+   "type": "block_star"
+  }
+ ],
+ "clouds": [
+  {
+   "x": 24,
+   "y": 19,
+   "frame": "cloud_plat_m",
+   "top": 2
+  },
+  {
+   "x": 31.5,
+   "y": 16,
+   "frame": "star_plat",
+   "top": 4
+  },
+  {
+   "x": 41.5,
+   "y": 13,
+   "frame": "cloud_plat_l",
+   "top": 1
+  },
+  {
+   "x": 54.5,
+   "y": 17,
+   "frame": "cloud_plat_l",
+   "top": 1
+  },
+  {
+   "x": 95,
+   "y": 17,
+   "frame": "cloud_plat_m",
+   "top": 2
+  },
+  {
+   "x": 133.5,
+   "y": 17,
+   "frame": "moon_plat_a",
+   "top": 8
+  },
+  {
+   "x": 137,
+   "y": 15,
+   "frame": "moon_plat_b",
+   "top": 4
+  },
+  {
+   "x": 186,
+   "y": 10,
+   "frame": "islet_e",
+   "top": 1
+  },
+  {
+   "x": 312.5,
+   "y": 19,
+   "frame": "star_plat",
+   "top": 4
+  },
+  {
+   "x": 304.5,
+   "y": 11,
+   "frame": "cloud_plat_l",
+   "top": 1
+  },
+  {
+   "x": 309.5,
+   "y": 10,
+   "frame": "star_plat",
+   "top": 4
+  },
+  {
+   "x": 314.5,
+   "y": 10,
+   "frame": "moon_plat_c",
+   "top": 7
+  },
+  {
+   "x": 319.5,
+   "y": 10,
+   "frame": "islet_d",
+   "top": 1
+  },
+  {
+   "x": 413,
+   "y": 17,
+   "frame": "cloud_plat_m",
+   "top": 2
+  },
+  {
+   "x": 443.5,
+   "y": 11,
+   "frame": "islet_b",
+   "top": 1
+  },
+  {
+   "x": 488,
+   "y": 16,
+   "frame": "cloud_plat_m",
+   "top": 2
+  },
+  {
+   "x": 556,
+   "y": 13,
+   "frame": "islet_a",
+   "top": 1
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [
+  {
+   "x": 152,
+   "y": 18,
+   "frame": "moon_plat_d",
+   "top": 9,
+   "dx": 5,
+   "dy": 0,
+   "duration": 3200
+  },
+  {
+   "x": 228,
+   "y": 18,
+   "frame": "hang_plat",
+   "top": 18,
+   "dx": 0,
+   "dy": 0.6,
+   "duration": 1500
+  }
+ ],
+ "swings": [],
+ "crumbles": [],
+ "pads": [
+  {
+   "x": 37,
+   "y": 20,
+   "frame": "star_spring",
+   "power": -480
+  },
+  {
+   "x": 300,
+   "y": 20,
+   "frame": "launch_pad",
+   "power": -560
+  },
+  {
+   "x": 328,
+   "y": 17,
+   "frame": "star_spring",
+   "power": -400
+  },
+  {
+   "x": 440,
+   "y": 16,
+   "frame": "star_spring",
+   "power": -450
+  }
+ ],
+ "winds": [],
+ "hazards": [],
+ "paints": [],
+ "rollers": [],
+ "bouncers": [],
+ "drips": [],
+ "rivers": [],
+ "magicCrayons": [],
+ "yarnRollers": [],
+ "sleepClouds": [],
+ "magicButtons": [],
+ "rockets": [
+  {
+   "x": 251.5,
+   "y": 18,
+   "frame": "rocket_side",
+   "top": 2,
+   "dx": 4,
+   "dy": 0,
+   "duration": 2800
+  },
+  {
+   "x": 372.5,
+   "y": 21,
+   "frame": "rocket_lift",
+   "top": 2,
+   "dx": 0,
+   "dy": -6,
+   "duration": 3400
+  },
+  {
+   "x": 455.5,
+   "y": 17,
+   "frame": "rocket_side",
+   "top": 2,
+   "dx": 5,
+   "dy": 0,
+   "duration": 3000
+  }
+ ],
+ "orbits": [
+  {
+   "x": 197.5,
+   "y": 14,
+   "rx": 2.5,
+   "ry": 1.2,
+   "duration": 4600,
+   "frame": "moon_plat_a",
+   "top": 8
+  },
+  {
+   "x": 514,
+   "y": 17,
+   "rx": 2,
+   "ry": 1.5,
+   "duration": 4200,
+   "dir": -1,
+   "frame": "moon_plat_c",
+   "top": 7
+  }
+ ],
+ "slides": [
+  {
+   "x0": 271,
+   "y0": 16,
+   "x1": 286,
+   "y1": 20,
+   "speed": 190
+  },
+  {
+   "x0": 335,
+   "y0": 15,
+   "x1": 353,
+   "y1": 21,
+   "speed": 200
+  }
+ ],
+ "lightFalls": [
+  {
+   "x": 175,
+   "y": 7,
+   "w": 3,
+   "h": 12,
+   "force": 1500,
+   "maxUp": 200
+  },
+  {
+   "x": 544,
+   "y": 5,
+   "w": 2,
+   "h": 14,
+   "force": 1500,
+   "maxUp": 200
+  }
+ ],
+ "fallingStars": [
+  {
+   "x": 396,
+   "y": 17,
+   "height": 10,
+   "period": 3200
+  },
+  {
+   "x": 403,
+   "y": 17,
+   "height": 10,
+   "period": 3200,
+   "delay": 1600
+  },
+  {
+   "x": 426,
+   "y": 18,
+   "height": 10,
+   "period": 3000,
+   "delay": 800
+  },
+  {
+   "x": 495,
+   "y": 18,
+   "height": 10,
+   "period": 3000
+  },
+  {
+   "x": 500,
+   "y": 18,
+   "height": 10,
+   "period": 3000,
+   "delay": 1000
+  },
+  {
+   "x": 505,
+   "y": 18,
+   "height": 10,
+   "period": 3000,
+   "delay": 2000
+  }
+ ],
+ "explosiveClouds": [
+  {
+   "x": 411,
+   "y": 13
+  },
+  {
+   "x": 425,
+   "y": 14
+  },
+  {
+   "x": 486,
+   "y": 12
+  },
+  {
+   "x": 490,
+   "y": 13
+  },
+  {
+   "x": 525,
+   "y": 15
+  }
+ ],
+ "dreamCollectibles": [
+  {
+   "id": "moon_1",
+   "kind": "moon_token",
+   "x": 41,
+   "y": 10,
+   "frame": "moon_token"
+  },
+  {
+   "id": "moon_2",
+   "kind": "moon_token",
+   "x": 197,
+   "y": 9,
+   "frame": "moon_token"
+  },
+  {
+   "id": "moon_3",
+   "kind": "moon_token",
+   "x": 443,
+   "y": 8,
+   "frame": "moon_token"
+  },
+  {
+   "id": "special_1",
+   "kind": "special",
+   "x": 319,
+   "y": 7,
+   "frame": "special_star"
+  },
+  {
+   "id": "constellation_1",
+   "kind": "constellation",
+   "x": 550,
+   "y": 8,
+   "frame": "star_w5_b",
+   "tint": "#bfe8ff"
+  },
+  {
+   "id": "rocket_1",
+   "kind": "rocket",
+   "x": 514,
+   "y": 13,
+   "frame": "mini_rocket",
+   "tint": "#ffe28a"
+  }
+ ],
+ "dreamMain": "moon_token",
+ "dreamNames": {
+  "moon_token": "Ficha de luna",
+  "special": "Estrella especial",
+  "constellation": "Fragmento de constelación",
+  "rocket": "Mini cohete dorado"
+ },
+ "dreamBanner": "¡Las %d fichas de luna! Estrella extra",
+ "dreamHud": [
+  "world5_objects",
+  "moon_token",
+  "moon_"
+ ],
+ "stars": [
+  {
+   "x": 4,
+   "y": 19
+  },
+  {
+   "x": 8,
+   "y": 19
+  },
+  {
+   "x": 12,
+   "y": 19
+  },
+  {
+   "x": 16,
+   "y": 19
+  },
+  {
+   "x": 20,
+   "y": 19
+  },
+  {
+   "x": 22,
+   "y": 17
+  },
+  {
+   "x": 24,
+   "y": 15
+  },
+  {
+   "x": 26,
+   "y": 17
+  },
+  {
+   "x": 28,
+   "y": 19
+  },
+  {
+   "x": 30,
+   "y": 19
+  },
+  {
+   "x": 31,
+   "y": 14
+  },
+  {
+   "x": 32,
+   "y": 14
+  },
+  {
+   "x": 34,
+   "y": 19
+  },
+  {
+   "x": 38,
+   "y": 19
+  },
+  {
+   "x": 37,
+   "y": 13
+  },
+  {
+   "x": 37,
+   "y": 15
+  },
+  {
+   "x": 37,
+   "y": 17
+  },
+  {
+   "x": 40,
+   "y": 11
+  },
+  {
+   "x": 43,
+   "y": 11
+  },
+  {
+   "x": 44,
+   "y": 17
+  },
+  {
+   "x": 47,
+   "y": 17
+  },
+  {
+   "x": 50,
+   "y": 17
+  },
+  {
+   "x": 52,
+   "y": 15
+  },
+  {
+   "x": 54,
+   "y": 13
+  },
+  {
+   "x": 56,
+   "y": 14
+  },
+  {
+   "x": 59,
+   "y": 18
+  },
+  {
+   "x": 63,
+   "y": 18
+  },
+  {
+   "x": 67,
+   "y": 18
+  },
+  {
+   "x": 71,
+   "y": 18
+  },
+  {
+   "x": 75,
+   "y": 18
+  },
+  {
+   "x": 78,
+   "y": 17
+  },
+  {
+   "x": 81,
+   "y": 17
+  },
+  {
+   "x": 84,
+   "y": 17
+  },
+  {
+   "x": 87,
+   "y": 17
+  },
+  {
+   "x": 90,
+   "y": 17
+  },
+  {
+   "x": 93,
+   "y": 15
+  },
+  {
+   "x": 95,
+   "y": 13
+  },
+  {
+   "x": 97,
+   "y": 15
+  },
+  {
+   "x": 99,
+   "y": 18
+  },
+  {
+   "x": 102,
+   "y": 18
+  },
+  {
+   "x": 105,
+   "y": 18
+  },
+  {
+   "x": 108,
+   "y": 18
+  },
+  {
+   "x": 111,
+   "y": 18
+  },
+  {
+   "x": 114,
+   "y": 18
+  },
+  {
+   "x": 117,
+   "y": 18
+  },
+  {
+   "x": 120,
+   "y": 18
+  },
+  {
+   "x": 123,
+   "y": 18
+  },
+  {
+   "x": 126,
+   "y": 18
+  },
+  {
+   "x": 129,
+   "y": 18
+  },
+  {
+   "x": 133,
+   "y": 15
+  },
+  {
+   "x": 134,
+   "y": 15
+  },
+  {
+   "x": 136,
+   "y": 13
+  },
+  {
+   "x": 138,
+   "y": 13
+  },
+  {
+   "x": 141,
+   "y": 17
+  },
+  {
+   "x": 143,
+   "y": 17
+  },
+  {
+   "x": 145,
+   "y": 17
+  },
+  {
+   "x": 147,
+   "y": 17
+  },
+  {
+   "x": 149,
+   "y": 17
+  },
+  {
+   "x": 150,
+   "y": 16
+  },
+  {
+   "x": 153,
+   "y": 14
+  },
+  {
+   "x": 156,
+   "y": 14
+  },
+  {
+   "x": 159,
+   "y": 16
+  },
+  {
+   "x": 161,
+   "y": 18
+  },
+  {
+   "x": 164,
+   "y": 18
+  },
+  {
+   "x": 167,
+   "y": 18
+  },
+  {
+   "x": 170,
+   "y": 18
+  },
+  {
+   "x": 173,
+   "y": 18
+  },
+  {
+   "x": 176,
+   "y": 9
+  },
+  {
+   "x": 176,
+   "y": 11
+  },
+  {
+   "x": 176,
+   "y": 13
+  },
+  {
+   "x": 176,
+   "y": 15
+  },
+  {
+   "x": 176,
+   "y": 17
+  },
+  {
+   "x": 179,
+   "y": 12
+  },
+  {
+   "x": 182,
+   "y": 12
+  },
+  {
+   "x": 185,
+   "y": 12
+  },
+  {
+   "x": 188,
+   "y": 12
+  },
+  {
+   "x": 191,
+   "y": 12
+  },
+  {
+   "x": 185,
+   "y": 8
+  },
+  {
+   "x": 187,
+   "y": 8
+  },
+  {
+   "x": 193,
+   "y": 12
+  },
+  {
+   "x": 196,
+   "y": 10
+  },
+  {
+   "x": 199,
+   "y": 10
+  },
+  {
+   "x": 202,
+   "y": 12
+  },
+  {
+   "x": 204,
+   "y": 15
+  },
+  {
+   "x": 207,
+   "y": 15
+  },
+  {
+   "x": 210,
+   "y": 15
+  },
+  {
+   "x": 213,
+   "y": 15
+  },
+  {
+   "x": 216,
+   "y": 15
+  },
+  {
+   "x": 218,
+   "y": 18
+  },
+  {
+   "x": 221,
+   "y": 18
+  },
+  {
+   "x": 224,
+   "y": 18
+  },
+  {
+   "x": 225,
+   "y": 16
+  },
+  {
+   "x": 227,
+   "y": 14
+  },
+  {
+   "x": 229,
+   "y": 14
+  },
+  {
+   "x": 231,
+   "y": 16
+  },
+  {
+   "x": 232,
+   "y": 18
+  },
+  {
+   "x": 235,
+   "y": 18
+  },
+  {
+   "x": 238,
+   "y": 18
+  },
+  {
+   "x": 241,
+   "y": 18
+  },
+  {
+   "x": 244,
+   "y": 18
+  },
+  {
+   "x": 247,
+   "y": 18
+  },
+  {
+   "x": 250,
+   "y": 16
+  },
+  {
+   "x": 252,
+   "y": 14
+  },
+  {
+   "x": 254,
+   "y": 14
+  },
+  {
+   "x": 256,
+   "y": 15
+  },
+  {
+   "x": 259,
+   "y": 15
+  },
+  {
+   "x": 262,
+   "y": 15
+  },
+  {
+   "x": 265,
+   "y": 15
+  },
+  {
+   "x": 268,
+   "y": 15
+  },
+  {
+   "x": 273,
+   "y": 15
+  },
+  {
+   "x": 276,
+   "y": 16
+  },
+  {
+   "x": 279,
+   "y": 17
+  },
+  {
+   "x": 282,
+   "y": 18
+  },
+  {
+   "x": 287,
+   "y": 19
+  },
+  {
+   "x": 290,
+   "y": 19
+  },
+  {
+   "x": 293,
+   "y": 19
+  },
+  {
+   "x": 296,
+   "y": 19
+  },
+  {
+   "x": 299,
+   "y": 19
+  },
+  {
+   "x": 300,
+   "y": 13
+  },
+  {
+   "x": 300,
+   "y": 15
+  },
+  {
+   "x": 300,
+   "y": 17
+  },
+  {
+   "x": 302,
+   "y": 9
+  },
+  {
+   "x": 304,
+   "y": 9
+  },
+  {
+   "x": 306,
+   "y": 9
+  },
+  {
+   "x": 309,
+   "y": 8
+  },
+  {
+   "x": 312,
+   "y": 8
+  },
+  {
+   "x": 315,
+   "y": 8
+  },
+  {
+   "x": 301,
+   "y": 19
+  },
+  {
+   "x": 305,
+   "y": 19
+  },
+  {
+   "x": 309,
+   "y": 19
+  },
+  {
+   "x": 312,
+   "y": 17
+  },
+  {
+   "x": 313,
+   "y": 17
+  },
+  {
+   "x": 316,
+   "y": 18
+  },
+  {
+   "x": 319,
+   "y": 18
+  },
+  {
+   "x": 322,
+   "y": 18
+  },
+  {
+   "x": 325,
+   "y": 18
+  },
+  {
+   "x": 328,
+   "y": 14
+  },
+  {
+   "x": 331,
+   "y": 14
+  },
+  {
+   "x": 334,
+   "y": 14
+  },
+  {
+   "x": 337,
+   "y": 14
+  },
+  {
+   "x": 340,
+   "y": 15
+  },
+  {
+   "x": 343,
+   "y": 16
+  },
+  {
+   "x": 346,
+   "y": 17
+  },
+  {
+   "x": 349,
+   "y": 18
+  },
+  {
+   "x": 354,
+   "y": 20
+  },
+  {
+   "x": 357,
+   "y": 20
+  },
+  {
+   "x": 360,
+   "y": 20
+  },
+  {
+   "x": 363,
+   "y": 20
+  },
+  {
+   "x": 366,
+   "y": 20
+  },
+  {
+   "x": 369,
+   "y": 20
+  },
+  {
+   "x": 372,
+   "y": 14
+  },
+  {
+   "x": 372,
+   "y": 16
+  },
+  {
+   "x": 372,
+   "y": 18
+  },
+  {
+   "x": 377,
+   "y": 14
+  },
+  {
+   "x": 380,
+   "y": 14
+  },
+  {
+   "x": 383,
+   "y": 14
+  },
+  {
+   "x": 386,
+   "y": 14
+  },
+  {
+   "x": 390,
+   "y": 16
+  },
+  {
+   "x": 393,
+   "y": 16
+  },
+  {
+   "x": 396,
+   "y": 16
+  },
+  {
+   "x": 399,
+   "y": 16
+  },
+  {
+   "x": 402,
+   "y": 16
+  },
+  {
+   "x": 405,
+   "y": 16
+  },
+  {
+   "x": 408,
+   "y": 16
+  },
+  {
+   "x": 410,
+   "y": 16
+  },
+  {
+   "x": 412,
+   "y": 14
+  },
+  {
+   "x": 414,
+   "y": 14
+  },
+  {
+   "x": 416,
+   "y": 16
+  },
+  {
+   "x": 417,
+   "y": 17
+  },
+  {
+   "x": 420,
+   "y": 17
+  },
+  {
+   "x": 423,
+   "y": 17
+  },
+  {
+   "x": 426,
+   "y": 17
+  },
+  {
+   "x": 432,
+   "y": 16
+  },
+  {
+   "x": 433,
+   "y": 16
+  },
+  {
+   "x": 434,
+   "y": 16
+  },
+  {
+   "x": 435,
+   "y": 16
+  },
+  {
+   "x": 439,
+   "y": 15
+  },
+  {
+   "x": 441,
+   "y": 15
+  },
+  {
+   "x": 443,
+   "y": 15
+  },
+  {
+   "x": 441,
+   "y": 9
+  },
+  {
+   "x": 443,
+   "y": 9
+  },
+  {
+   "x": 445,
+   "y": 9
+  },
+  {
+   "x": 448,
+   "y": 16
+  },
+  {
+   "x": 450,
+   "y": 16
+  },
+  {
+   "x": 452,
+   "y": 16
+  },
+  {
+   "x": 453,
+   "y": 15
+  },
+  {
+   "x": 456,
+   "y": 13
+  },
+  {
+   "x": 459,
+   "y": 13
+  },
+  {
+   "x": 462,
+   "y": 14
+  },
+  {
+   "x": 464,
+   "y": 17
+  },
+  {
+   "x": 466,
+   "y": 17
+  },
+  {
+   "x": 468,
+   "y": 17
+  },
+  {
+   "x": 472,
+   "y": 16
+  },
+  {
+   "x": 475,
+   "y": 16
+  },
+  {
+   "x": 478,
+   "y": 16
+  },
+  {
+   "x": 481,
+   "y": 16
+  },
+  {
+   "x": 484,
+   "y": 16
+  },
+  {
+   "x": 486,
+   "y": 15
+  },
+  {
+   "x": 488,
+   "y": 15
+  },
+  {
+   "x": 490,
+   "y": 15
+  },
+  {
+   "x": 492,
+   "y": 17
+  },
+  {
+   "x": 495,
+   "y": 17
+  },
+  {
+   "x": 498,
+   "y": 17
+  },
+  {
+   "x": 501,
+   "y": 17
+  },
+  {
+   "x": 504,
+   "y": 17
+  },
+  {
+   "x": 507,
+   "y": 17
+  },
+  {
+   "x": 510,
+   "y": 17
+  },
+  {
+   "x": 511,
+   "y": 15
+  },
+  {
+   "x": 513,
+   "y": 13
+  },
+  {
+   "x": 515,
+   "y": 13
+  },
+  {
+   "x": 517,
+   "y": 15
+  },
+  {
+   "x": 518,
+   "y": 18
+  },
+  {
+   "x": 521,
+   "y": 18
+  },
+  {
+   "x": 524,
+   "y": 18
+  },
+  {
+   "x": 527,
+   "y": 18
+  },
+  {
+   "x": 530,
+   "y": 18
+  },
+  {
+   "x": 532,
+   "y": 18
+  },
+  {
+   "x": 535,
+   "y": 18
+  },
+  {
+   "x": 538,
+   "y": 18
+  },
+  {
+   "x": 541,
+   "y": 18
+  },
+  {
+   "x": 545,
+   "y": 7
+  },
+  {
+   "x": 545,
+   "y": 9
+  },
+  {
+   "x": 545,
+   "y": 11
+  },
+  {
+   "x": 545,
+   "y": 13
+  },
+  {
+   "x": 545,
+   "y": 15
+  },
+  {
+   "x": 545,
+   "y": 17
+  },
+  {
+   "x": 548,
+   "y": 9
+  },
+  {
+   "x": 550,
+   "y": 9
+  },
+  {
+   "x": 552,
+   "y": 9
+  },
+  {
+   "x": 555,
+   "y": 18
+  },
+  {
+   "x": 558,
+   "y": 18
+  },
+  {
+   "x": 561,
+   "y": 18
+  },
+  {
+   "x": 564,
+   "y": 18
+  },
+  {
+   "x": 567,
+   "y": 18
+  },
+  {
+   "x": 570,
+   "y": 18
+  },
+  {
+   "x": 573,
+   "y": 18
+  },
+  {
+   "x": 576,
+   "y": 18
+  },
+  {
+   "x": 579,
+   "y": 18
+  },
+  {
+   "x": 582,
+   "y": 18
+  },
+  {
+   "x": 585,
+   "y": 18
+  }
+ ],
+ "enemies": [
+  {
+   "type": "estrellita",
+   "x": 66,
+   "y": 15,
+   "patrol": [
+    60,
+    74
+   ]
+  },
+  {
+   "type": "estrellita",
+   "x": 108,
+   "y": 15,
+   "patrol": [
+    102,
+    116
+   ],
+   "wave_phase": 0.0
+  },
+  {
+   "type": "estrellita",
+   "x": 113,
+   "y": 14,
+   "patrol": [
+    107,
+    121
+   ],
+   "wave_phase": 0.5
+  },
+  {
+   "type": "estrellita",
+   "x": 168,
+   "y": 15,
+   "patrol": [
+    162,
+    176
+   ]
+  },
+  {
+   "type": "estrellita",
+   "x": 238,
+   "y": 15,
+   "patrol": [
+    233,
+    248
+   ]
+  },
+  {
+   "type": "estrellita",
+   "x": 292,
+   "y": 15,
+   "patrol": [
+    288,
+    304
+   ],
+   "wave_phase": 0.0
+  },
+  {
+   "type": "estrellita",
+   "x": 295,
+   "y": 14,
+   "patrol": [
+    290,
+    306
+   ],
+   "wave_phase": 0.33
+  },
+  {
+   "type": "estrellita",
+   "x": 298,
+   "y": 15,
+   "patrol": [
+    292,
+    308
+   ],
+   "wave_phase": 0.66
+  },
+  {
+   "type": "estrellita",
+   "x": 317,
+   "y": 15,
+   "patrol": [
+    314,
+    326
+   ],
+   "wave_phase": 0.0
+  },
+  {
+   "type": "estrellita",
+   "x": 320,
+   "y": 14,
+   "patrol": [
+    314,
+    326
+   ],
+   "wave_phase": 0.5
+  },
+  {
+   "type": "estrellita",
+   "x": 424,
+   "y": 14,
+   "patrol": [
+    418,
+    429
+   ]
+  },
+  {
+   "type": "estrellita",
+   "x": 500,
+   "y": 13,
+   "patrol": [
+    493,
+    509
+   ]
+  },
+  {
+   "type": "estrellita",
+   "x": 565,
+   "y": 14,
+   "patrol": [
+    558,
+    575
+   ],
+   "wave_phase": 0.25
+  },
+  {
+   "type": "cohetito",
+   "x": 170,
+   "y": 15,
+   "patrol": [
+    165,
+    176
+   ]
+  },
+  {
+   "type": "cohetito",
+   "x": 210,
+   "y": 12,
+   "patrol": [
+    210,
+    210
+   ],
+   "axis": "v",
+   "range": 2
+  },
+  {
+   "type": "cohetito",
+   "x": 244,
+   "y": 14,
+   "patrol": [
+    236,
+    249
+   ]
+  },
+  {
+   "type": "cohetito",
+   "x": 322,
+   "y": 14,
+   "patrol": [
+    317,
+    326
+   ]
+  },
+  {
+   "type": "cohetito",
+   "x": 357,
+   "y": 16,
+   "patrol": [
+    357,
+    357
+   ],
+   "axis": "v",
+   "range": 2
+  },
+  {
+   "type": "cohetito",
+   "x": 482,
+   "y": 14,
+   "patrol": [
+    477,
+    484
+   ]
+  },
+  {
+   "type": "cohetito",
+   "x": 508,
+   "y": 14,
+   "patrol": [
+    503,
+    510
+   ]
+  },
+  {
+   "type": "cohetito",
+   "x": 580,
+   "y": 14,
+   "patrol": [
+    572,
+    588
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 393,
+   "y": 17,
+   "patrol": [
+    389,
+    408
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 405,
+   "y": 17,
+   "patrol": [
+    398,
+    409
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 424,
+   "y": 18,
+   "patrol": [
+    419,
+    428
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 503,
+   "y": 18,
+   "patrol": [
+    498,
+    510
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 478,
+   "y": 17,
+   "patrol": [
+    472,
+    484
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 481,
+   "y": 17,
+   "patrol": [
+    474,
+    484
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 497,
+   "y": 18,
+   "patrol": [
+    492,
+    510
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 523,
+   "y": 19,
+   "patrol": [
+    518,
+    530
+   ]
+  },
+  {
+   "type": "meteorito",
+   "x": 560,
+   "y": 19,
+   "patrol": [
+    552,
+    570
+   ]
+  }
+ ],
+ "checkpoints": [
+  {
+   "x": 163,
+   "y": 19
+  },
+  {
+   "x": 419,
+   "y": 18
+  }
+ ],
+ "pickups": [],
+ "signs": [
+  {
+   "x": 3,
+   "y": 20,
+   "text": "Mundo 5: ¡Sueños Cósmicos! Explora las islas del cielo con tus tres armas"
+  },
+  {
+   "x": 28,
+   "y": 20,
+   "text": "La estrella sólida se pisa. La estrella con muelle es un trampolín"
+  },
+  {
+   "x": 59,
+   "y": 19,
+   "text": "La Estrellita Fugaz vuela rápido y lanza miniestrellas"
+  },
+  {
+   "x": 128,
+   "y": 19,
+   "text": "Las lunas crecientes forman un camino: ¡salta de una a otra!"
+  },
+  {
+   "x": 161,
+   "y": 19,
+   "text": "El Cohetito Centinela enciende el motor antes de disparar"
+  },
+  {
+   "x": 173,
+   "y": 19,
+   "text": "Métete en la cascada de luz dorada: te subirá hasta arriba"
+  },
+  {
+   "x": 248,
+   "y": 19,
+   "text": "Sube al cohete: te lleva sobre el vacío"
+  },
+  {
+   "x": 268,
+   "y": 16,
+   "text": "El tobogán arcoíris desliza rápido: las flechas frenan o aceleran un poco"
+  },
+  {
+   "x": 297,
+   "y": 20,
+   "text": "La plataforma de lanzamiento te lanza muy alto: arriba hay un tesoro"
+  },
+  {
+   "x": 369,
+   "y": 21,
+   "text": "El cohete ascensor sube y baja: espera a que llegue"
+  },
+  {
+   "x": 389,
+   "y": 17,
+   "text": "¡Lluvia de meteoros! Las estrellas que caen avisan con un destello"
+  },
+  {
+   "x": 408,
+   "y": 17,
+   "text": "Las nubes explosivas estallan si las tocas: ¡dispárales desde lejos!"
+  },
+  {
+   "x": 533,
+   "y": 19,
+   "text": "El Trono de la Luna: Luna Estelar te espera"
+  }
+ ],
+ "decor": [
+  {
+   "x": 7,
+   "y": 20,
+   "frame": "obs_dome",
+   "back": true
+  },
+  {
+   "x": 15,
+   "y": 20,
+   "frame": "telescope_tower",
+   "back": true
+  },
+  {
+   "x": 19,
+   "y": 20,
+   "frame": "fence"
+  },
+  {
+   "x": 11,
+   "y": 20,
+   "frame": "star_post_a"
+  },
+  {
+   "x": 29,
+   "y": 20,
+   "frame": "lantern"
+  },
+  {
+   "x": 34,
+   "y": 20,
+   "frame": "globe"
+  },
+  {
+   "x": 45,
+   "y": 18,
+   "frame": "fence"
+  },
+  {
+   "x": 49,
+   "y": 18,
+   "frame": "hang_star_a"
+  },
+  {
+   "x": 62,
+   "y": 19,
+   "frame": "obs_dome2",
+   "back": true
+  },
+  {
+   "x": 70,
+   "y": 19,
+   "frame": "small_telescope"
+  },
+  {
+   "x": 74,
+   "y": 19,
+   "frame": "star_post_b"
+  },
+  {
+   "x": 82,
+   "y": 18,
+   "frame": "tall_tower",
+   "back": true
+  },
+  {
+   "x": 88,
+   "y": 18,
+   "frame": "fence"
+  },
+  {
+   "x": 101,
+   "y": 19,
+   "frame": "armillary"
+  },
+  {
+   "x": 106,
+   "y": 19,
+   "frame": "lantern"
+  },
+  {
+   "x": 115,
+   "y": 19,
+   "frame": "tower_small",
+   "back": true
+  },
+  {
+   "x": 121,
+   "y": 19,
+   "frame": "fence"
+  },
+  {
+   "x": 126,
+   "y": 19,
+   "frame": "star_post_a"
+  },
+  {
+   "x": 143,
+   "y": 18,
+   "frame": "hang_star_b"
+  },
+  {
+   "x": 147,
+   "y": 18,
+   "frame": "lantern"
+  },
+  {
+   "x": 166,
+   "y": 19,
+   "frame": "hang_star_c"
+  },
+  {
+   "x": 172,
+   "y": 19,
+   "frame": "star_post_b"
+  },
+  {
+   "x": 182,
+   "y": 13,
+   "frame": "telescope_tower",
+   "back": true
+  },
+  {
+   "x": 189,
+   "y": 13,
+   "frame": "fence"
+  },
+  {
+   "x": 207,
+   "y": 16,
+   "frame": "small_dome",
+   "back": true
+  },
+  {
+   "x": 214,
+   "y": 16,
+   "frame": "hang_star_a"
+  },
+  {
+   "x": 220,
+   "y": 19,
+   "frame": "lantern"
+  },
+  {
+   "x": 235,
+   "y": 19,
+   "frame": "obs_dome2",
+   "back": true
+  },
+  {
+   "x": 241,
+   "y": 19,
+   "frame": "fence"
+  },
+  {
+   "x": 246,
+   "y": 19,
+   "frame": "star_post_a"
+  },
+  {
+   "x": 261,
+   "y": 16,
+   "frame": "globe"
+  },
+  {
+   "x": 265,
+   "y": 16,
+   "frame": "pink_dome",
+   "back": true
+  },
+  {
+   "x": 289,
+   "y": 20,
+   "frame": "armillary"
+  },
+  {
+   "x": 294,
+   "y": 20,
+   "frame": "gazebo"
+  },
+  {
+   "x": 306,
+   "y": 20,
+   "frame": "globe"
+  },
+  {
+   "x": 318,
+   "y": 19,
+   "frame": "pink_dome",
+   "back": true
+  },
+  {
+   "x": 324,
+   "y": 19,
+   "frame": "small_telescope"
+  },
+  {
+   "x": 332,
+   "y": 15,
+   "frame": "tiny_tower"
+  },
+  {
+   "x": 357,
+   "y": 21,
+   "frame": "obs_dome_small",
+   "back": true
+  },
+  {
+   "x": 364,
+   "y": 21,
+   "frame": "globe"
+  },
+  {
+   "x": 369,
+   "y": 21,
+   "frame": "lantern"
+  },
+  {
+   "x": 379,
+   "y": 15,
+   "frame": "armillary"
+  },
+  {
+   "x": 384,
+   "y": 15,
+   "frame": "star_post_b"
+  },
+  {
+   "x": 391,
+   "y": 17,
+   "frame": "meteor_l"
+  },
+  {
+   "x": 399,
+   "y": 17,
+   "frame": "meteor_s"
+  },
+  {
+   "x": 408,
+   "y": 17,
+   "frame": "meteor_m"
+  },
+  {
+   "x": 421,
+   "y": 18,
+   "frame": "lantern"
+  },
+  {
+   "x": 427,
+   "y": 18,
+   "frame": "meteor_l"
+  },
+  {
+   "x": 433,
+   "y": 17,
+   "frame": "meteor_m"
+  },
+  {
+   "x": 449,
+   "y": 17,
+   "frame": "meteor_s"
+  },
+  {
+   "x": 466,
+   "y": 18,
+   "frame": "tiny_tower"
+  },
+  {
+   "x": 478,
+   "y": 17,
+   "frame": "meteor_m"
+  },
+  {
+   "x": 494,
+   "y": 18,
+   "frame": "meteor_l"
+  },
+  {
+   "x": 507,
+   "y": 18,
+   "frame": "fence"
+  },
+  {
+   "x": 520,
+   "y": 19,
+   "frame": "meteor_m"
+  },
+  {
+   "x": 528,
+   "y": 19,
+   "frame": "star_post_a"
+  },
+  {
+   "x": 540,
+   "y": 19,
+   "frame": "tower_island",
+   "back": true,
+   "scale": 1.4
+  },
+  {
+   "x": 558,
+   "y": 19,
+   "frame": "obs_dome",
+   "back": true,
+   "scale": 1.5
+  },
+  {
+   "x": 566,
+   "y": 19,
+   "frame": "telescope_tower",
+   "back": true,
+   "scale": 1.4
+  },
+  {
+   "x": 572,
+   "y": 19,
+   "frame": "tall_tower",
+   "back": true,
+   "scale": 1.6
+  },
+  {
+   "x": 578,
+   "y": 19,
+   "frame": "obs_dome2",
+   "back": true,
+   "scale": 1.4
+  },
+  {
+   "x": 581,
+   "y": 19,
+   "frame": "fence"
+  },
+  {
+   "x": 585,
+   "y": 19,
+   "frame": "lantern"
+  },
+  {
+   "x": 550,
+   "y": 10,
+   "frame": "star_post_a"
+  },
+  {
+   "x": 535,
+   "y": 19,
+   "frame": "star_post_b"
+  },
+  {
+   "x": 22.5,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 52.5,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 131.5,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 156,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 193,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 225.5,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 255,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 311,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 371,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 413,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 437,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 445,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 461,
+   "y": 24,
+   "frame": "light_fall_0",
+   "back": true,
+   "alpha": 0.45
+  },
+  {
+   "x": 24,
+   "y": 23,
+   "frame": "islet_c",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 93,
+   "y": 24,
+   "frame": "islet_g",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 135,
+   "y": 23,
+   "frame": "islet_h",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 199,
+   "y": 23,
+   "frame": "islet_f",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 279,
+   "y": 24,
+   "frame": "islet_c",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 345,
+   "y": 24,
+   "frame": "islet_h",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 412,
+   "y": 23,
+   "frame": "islet_g",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 458,
+   "y": 24,
+   "frame": "islet_e",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 513,
+   "y": 24,
+   "frame": "islet_c",
+   "back": true,
+   "alpha": 0.8
+  },
+  {
+   "x": 2,
+   "y": 20,
+   "frame": "cloud_s",
+   "front": true
+  },
+  {
+   "x": 100,
+   "y": 19,
+   "frame": "cloud_s",
+   "front": true
+  },
+  {
+   "x": 232,
+   "y": 19,
+   "frame": "cloud_s",
+   "front": true
+  },
+  {
+   "x": 355,
+   "y": 21,
+   "frame": "cloud_s",
+   "front": true
+  },
+  {
+   "x": 532,
+   "y": 19,
+   "frame": "cloud_s",
+   "front": true
+  },
+  {
+   "x": 594,
+   "y": 19,
+   "frame": "cloud_s",
+   "front": true
+  }
+ ],
+ "door": {
+  "x": 590,
+  "y": 19,
+  "atlas": "world5_objects",
+  "frame": "portal_w5",
+  "scale": 1.0
+ }
+}

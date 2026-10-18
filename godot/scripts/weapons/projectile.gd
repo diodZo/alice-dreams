@@ -139,6 +139,10 @@ func _check_hits() -> void:
 			"boss":
 				if target.hit_by(self):
 					expire()
+			# objetos que reaccionan a los disparos (nubes explosivas del Mundo 5)
+			"shootable":
+				if target.hit_by(self):
+					expire()
 
 
 ## Fin natural (tiempo o impacto): avisa al nivel para el efecto visual.

@@ -5,151 +5,151 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_h21x5"]
 resource_name = "defeated_0"
 atlas = ExtResource("1_eepr3")
-region = Rect2(2, 2, 130, 76)
+region = Rect2(2, 2, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hjoy"]
 resource_name = "defeated_1"
 atlas = ExtResource("1_eepr3")
-region = Rect2(134, 2, 130, 76)
+region = Rect2(160, 2, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nchwh"]
 resource_name = "defeated_2"
 atlas = ExtResource("1_eepr3")
-region = Rect2(266, 2, 130, 76)
+region = Rect2(318, 2, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4g2bi"]
 resource_name = "hurt_0"
 atlas = ExtResource("1_eepr3")
-region = Rect2(398, 2, 130, 76)
+region = Rect2(476, 2, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05kj5"]
 resource_name = "hurt_1"
 atlas = ExtResource("1_eepr3")
-region = Rect2(530, 2, 130, 76)
+region = Rect2(634, 2, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1pkr"]
 resource_name = "idle_0"
 atlas = ExtResource("1_eepr3")
-region = Rect2(662, 2, 130, 76)
+region = Rect2(792, 2, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjcru"]
 resource_name = "idle_1"
 atlas = ExtResource("1_eepr3")
-region = Rect2(794, 2, 130, 76)
+region = Rect2(2, 80, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ec1cm"]
 resource_name = "idle_2"
 atlas = ExtResource("1_eepr3")
-region = Rect2(2, 80, 130, 76)
+region = Rect2(160, 80, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcgcu"]
 resource_name = "idle_3"
 atlas = ExtResource("1_eepr3")
-region = Rect2(134, 80, 130, 76)
+region = Rect2(318, 80, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ma1up"]
 resource_name = "jump_0"
 atlas = ExtResource("1_eepr3")
-region = Rect2(266, 80, 130, 76)
+region = Rect2(476, 80, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqbbd"]
 resource_name = "jump_1"
 atlas = ExtResource("1_eepr3")
-region = Rect2(398, 80, 130, 76)
+region = Rect2(634, 80, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7s42"]
 resource_name = "jump_2"
 atlas = ExtResource("1_eepr3")
-region = Rect2(530, 80, 130, 76)
+region = Rect2(792, 80, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikpbh"]
 resource_name = "move_0"
 atlas = ExtResource("1_eepr3")
-region = Rect2(662, 80, 130, 76)
+region = Rect2(2, 158, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wu1el"]
 resource_name = "move_1"
 atlas = ExtResource("1_eepr3")
-region = Rect2(794, 80, 130, 76)
+region = Rect2(160, 158, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n28w6"]
 resource_name = "move_2"
 atlas = ExtResource("1_eepr3")
-region = Rect2(2, 158, 130, 76)
+region = Rect2(318, 158, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0fvc"]
 resource_name = "move_3"
 atlas = ExtResource("1_eepr3")
-region = Rect2(134, 158, 130, 76)
+region = Rect2(476, 158, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28djh"]
 resource_name = "move_4"
 atlas = ExtResource("1_eepr3")
-region = Rect2(266, 158, 130, 76)
+region = Rect2(634, 158, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2ga6"]
 resource_name = "move_5"
 atlas = ExtResource("1_eepr3")
-region = Rect2(398, 158, 130, 76)
+region = Rect2(792, 158, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vde77"]
 resource_name = "pillow_0"
 atlas = ExtResource("1_eepr3")
-region = Rect2(530, 158, 130, 76)
+region = Rect2(2, 236, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgb08"]
 resource_name = "pillow_1"
 atlas = ExtResource("1_eepr3")
-region = Rect2(662, 158, 130, 76)
+region = Rect2(160, 236, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwb66"]
 resource_name = "pillow_2"
 atlas = ExtResource("1_eepr3")
-region = Rect2(794, 158, 130, 76)
+region = Rect2(318, 236, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1lya"]
 resource_name = "pillow_3"
 atlas = ExtResource("1_eepr3")
-region = Rect2(2, 236, 130, 76)
+region = Rect2(476, 236, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hlsp1"]
 resource_name = "special_0"
 atlas = ExtResource("1_eepr3")
-region = Rect2(134, 236, 130, 76)
+region = Rect2(634, 236, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn5d7"]
 resource_name = "special_1"
 atlas = ExtResource("1_eepr3")
-region = Rect2(266, 236, 130, 76)
+region = Rect2(792, 236, 156, 76)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bwad"]
 resource_name = "special_2"
 atlas = ExtResource("1_eepr3")
-region = Rect2(398, 236, 130, 76)
+region = Rect2(2, 314, 156, 76)
 filter_clip = true
 
 [resource]

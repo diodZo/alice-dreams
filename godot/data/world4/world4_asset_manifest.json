@@ -1,0 +1,4185 @@
+{
+ "version": 1,
+ "generatedBy": "tools/world4/prepare_world4_assets.py",
+ "sources": {
+  "scene": "imagenes/word_4.png",
+  "tiles": "imagenes/tilesets_world_4.png",
+  "enemies": "imagenes/enemies_world_4.png",
+  "boss": "imagenes/jefemundo4.png"
+ },
+ "resources": [
+  {
+   "name": "bubble_fish/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    33,
+    286,
+    130,
+    402
+   ],
+   "trimmed": [
+    36,
+    292,
+    127,
+    387
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    3,
+    6
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_fish/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    131,
+    286,
+    231,
+    402
+   ],
+   "trimmed": [
+    134,
+    306,
+    225,
+    384
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    3,
+    11
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_fish/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    244,
+    286,
+    349,
+    402
+   ],
+   "trimmed": [
+    251,
+    305,
+    345,
+    397
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    2,
+    7
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_fish/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    350,
+    286,
+    458,
+    402
+   ],
+   "trimmed": [
+    355,
+    297,
+    453,
+    386
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    2,
+    8
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_fish/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    459,
+    286,
+    558,
+    402
+   ],
+   "trimmed": [
+    464,
+    304,
+    558,
+    397
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    2,
+    7
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_fish/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    570,
+    286,
+    669,
+    402
+   ],
+   "trimmed": [
+    573,
+    292,
+    664,
+    400
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    3,
+    2
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: mejillas infladas (aviso); 1: lanza la burbuja"
+  },
+  {
+   "name": "bubble_fish/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    722,
+    286,
+    833,
+    402
+   ],
+   "trimmed": [
+    722,
+    298,
+    824,
+    395
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    1,
+    6
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: mejillas infladas (aviso); 1: lanza la burbuja"
+  },
+  {
+   "name": "bubble_fish/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    886,
+    286,
+    996,
+    402
+   ],
+   "trimmed": [
+    891,
+    314,
+    985,
+    396
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    2,
+    10
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_fish/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1008,
+    328,
+    1095,
+    404
+   ],
+   "trimmed": [
+    1008,
+    328,
+    1090,
+    399
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    5,
+    13
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_fish/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1096,
+    328,
+    1189,
+    404
+   ],
+   "trimmed": [
+    1099,
+    341,
+    1187,
+    399
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 250,
+   "offset": [
+    5,
+    16
+   ],
+   "origin": [
+    16,
+    33
+   ],
+   "cell": [
+    32,
+    34
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_crab/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    30,
+    558,
+    135,
+    684
+   ],
+   "trimmed": [
+    30,
+    581,
+    135,
+    675
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    13,
+    7
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_crab/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    136,
+    558,
+    236,
+    684
+   ],
+   "trimmed": [
+    139,
+    585,
+    236,
+    675
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    14,
+    8
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_crab/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    246,
+    556,
+    347,
+    684
+   ],
+   "trimmed": [
+    248,
+    563,
+    347,
+    675
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    11,
+    2
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_crab/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    348,
+    556,
+    449,
+    684
+   ],
+   "trimmed": [
+    360,
+    580,
+    449,
+    675
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    15,
+    7
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_crab/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    450,
+    556,
+    556,
+    684
+   ],
+   "trimmed": [
+    453,
+    566,
+    556,
+    675
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 111,
+   "offset": [
+    13,
+    3
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_crab/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    568,
+    556,
+    684,
+    684
+   ],
+   "trimmed": [
+    575,
+    575,
+    684,
+    675
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    15,
+    6
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: pinza en alto (aviso); 1: pinzazo con estela de espuma"
+  },
+  {
+   "name": "sponge_crab/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    684,
+    556,
+    836,
+    684
+   ],
+   "trimmed": [
+    691,
+    588,
+    811,
+    675
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    15,
+    9
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: pinza en alto (aviso); 1: pinzazo con estela de espuma"
+  },
+  {
+   "name": "sponge_crab/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    850,
+    556,
+    998,
+    684
+   ],
+   "trimmed": [
+    855,
+    582,
+    996,
+    676
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    8,
+    7
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_crab/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1008,
+    598,
+    1188,
+    686
+   ],
+   "trimmed": [
+    1012,
+    609,
+    1187,
+    678
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    2,
+    14
+   ],
+   "origin": [
+    26,
+    33
+   ],
+   "cell": [
+    52,
+    34
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pompa/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    36,
+    852,
+    146,
+    992
+   ],
+   "trimmed": [
+    41,
+    869,
+    138,
+    963
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    9,
+    15
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pompa/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    147,
+    852,
+    236,
+    992
+   ],
+   "trimmed": [
+    147,
+    862,
+    236,
+    969
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    11,
+    12
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pompa/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    250,
+    848,
+    353,
+    996
+   ],
+   "trimmed": [
+    254,
+    866,
+    346,
+    966
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    10,
+    14
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pompa/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    354,
+    848,
+    449,
+    996
+   ],
+   "trimmed": [
+    354,
+    869,
+    444,
+    956
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    10,
+    17
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pompa/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    450,
+    848,
+    548,
+    996
+   ],
+   "trimmed": [
+    450,
+    850,
+    545,
+    953
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    9,
+    13
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pompa/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    568,
+    840,
+    716,
+    1000
+   ],
+   "trimmed": [
+    571,
+    864,
+    712,
+    973
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    3,
+    11
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: se hincha (aviso); 1: ráfaga de burbujas"
+  },
+  {
+   "name": "pompa/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    716,
+    840,
+    872,
+    1000
+   ],
+   "trimmed": [
+    717,
+    848,
+    846,
+    993
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    5,
+    2
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: se hincha (aviso); 1: ráfaga de burbujas"
+  },
+  {
+   "name": "pompa/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    885,
+    840,
+    1022,
+    1000
+   ],
+   "trimmed": [
+    904,
+    875,
+    1016,
+    971
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    7,
+    15
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pompa/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1034,
+    920,
+    1188,
+    1000
+   ],
+   "trimmed": [
+    1037,
+    924,
+    1185,
+    989
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    2,
+    23
+   ],
+   "origin": [
+    22,
+    41
+   ],
+   "cell": [
+    44,
+    42
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/idle_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    41,
+    13,
+    267,
+    172
+   ],
+   "trimmed": [
+    42,
+    14,
+    266,
+    171
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    39,
+    20
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/idle_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    293,
+    12,
+    528,
+    172
+   ],
+   "trimmed": [
+    294,
+    13,
+    527,
+    171
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    37,
+    19
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/idle_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    553,
+    13,
+    780,
+    172
+   ],
+   "trimmed": [
+    554,
+    14,
+    779,
+    171
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    39,
+    20
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/idle_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    799,
+    12,
+    1024,
+    172
+   ],
+   "trimmed": [
+    800,
+    13,
+    1016,
+    171
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    42,
+    19
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/move_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    38,
+    184,
+    248,
+    338
+   ],
+   "trimmed": [
+    39,
+    185,
+    247,
+    337
+   ],
+   "animation": "move",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    37,
+    22
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/move_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    264,
+    184,
+    479,
+    339
+   ],
+   "trimmed": [
+    265,
+    185,
+    478,
+    338
+   ],
+   "animation": "move",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    36,
+    21
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/move_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    493,
+    183,
+    716,
+    338
+   ],
+   "trimmed": [
+    494,
+    184,
+    715,
+    337
+   ],
+   "animation": "move",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    37,
+    21
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/move_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    734,
+    185,
+    960,
+    339
+   ],
+   "trimmed": [
+    735,
+    186,
+    959,
+    338
+   ],
+   "animation": "move",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    35,
+    22
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/move_4",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    980,
+    184,
+    1184,
+    338
+   ],
+   "trimmed": [
+    981,
+    185,
+    1183,
+    337
+   ],
+   "animation": "move",
+   "frame": 4,
+   "duration_ms": 125,
+   "offset": [
+    42,
+    22
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/move_5",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    1203,
+    184,
+    1428,
+    339
+   ],
+   "trimmed": [
+    1204,
+    185,
+    1427,
+    338
+   ],
+   "animation": "move",
+   "frame": 5,
+   "duration_ms": 125,
+   "offset": [
+    34,
+    21
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "patoburbuja/spit_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    34,
+    349,
+    255,
+    516
+   ],
+   "trimmed": [
+    35,
+    350,
+    254,
+    515
+   ],
+   "animation": "spit",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    42,
+    17
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: mejillas infladas (aviso); 1-3: escupe burbujas. El chorro se corta en el pico: lo dibujan los proyectiles."
+  },
+  {
+   "name": "patoburbuja/spit_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    281,
+    351,
+    561,
+    516
+   ],
+   "trimmed": [
+    282,
+    352,
+    500,
+    515
+   ],
+   "animation": "spit",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    40,
+    17
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: mejillas infladas (aviso); 1-3: escupe burbujas. El chorro se corta en el pico: lo dibujan los proyectiles."
+  },
+  {
+   "name": "patoburbuja/spit_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    651,
+    351,
+    885,
+    515
+   ],
+   "trimmed": [
+    652,
+    352,
+    848,
+    514
+   ],
+   "animation": "spit",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    42,
+    18
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: mejillas infladas (aviso); 1-3: escupe burbujas. El chorro se corta en el pico: lo dibujan los proyectiles."
+  },
+  {
+   "name": "patoburbuja/spit_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    1002,
+    351,
+    1424,
+    515
+   ],
+   "trimmed": [
+    1003,
+    352,
+    1190,
+    514
+   ],
+   "animation": "spit",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    47,
+    18
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: mejillas infladas (aviso); 1-3: escupe burbujas. El chorro se corta en el pico: lo dibujan los proyectiles."
+  },
+  {
+   "name": "patoburbuja/wave_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    17,
+    528,
+    277,
+    707
+   ],
+   "trimmed": [
+    28,
+    529,
+    276,
+    706
+   ],
+   "animation": "wave",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    34,
+    12
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: grito (aviso); 1-3: ola de espuma"
+  },
+  {
+   "name": "patoburbuja/wave_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    304,
+    534,
+    637,
+    707
+   ],
+   "trimmed": [
+    305,
+    535,
+    636,
+    706
+   ],
+   "animation": "wave",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    35,
+    14
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: grito (aviso); 1-3: ola de espuma"
+  },
+  {
+   "name": "patoburbuja/wave_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    682,
+    529,
+    1016,
+    707
+   ],
+   "trimmed": [
+    683,
+    530,
+    1015,
+    706
+   ],
+   "animation": "wave",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    26,
+    12
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: grito (aviso); 1-3: ola de espuma"
+  },
+  {
+   "name": "patoburbuja/wave_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    1037,
+    517,
+    1431,
+    709
+   ],
+   "trimmed": [
+    1038,
+    518,
+    1430,
+    708
+   ],
+   "animation": "wave",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    18,
+    7
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: grito (aviso); 1-3: ola de espuma"
+  },
+  {
+   "name": "patoburbuja/whirl_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    24,
+    722,
+    306,
+    899
+   ],
+   "trimmed": [
+    25,
+    723,
+    305,
+    898
+   ],
+   "animation": "whirl",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    28,
+    13
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "remolino: giro sobre sí mismo entre burbujas y estrellas"
+  },
+  {
+   "name": "patoburbuja/whirl_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    325,
+    718,
+    665,
+    907
+   ],
+   "trimmed": [
+    326,
+    719,
+    664,
+    906
+   ],
+   "animation": "whirl",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    17,
+    8
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "remolino: giro sobre sí mismo entre burbujas y estrellas"
+  },
+  {
+   "name": "patoburbuja/whirl_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    683,
+    723,
+    1023,
+    918
+   ],
+   "trimmed": [
+    684,
+    724,
+    1022,
+    917
+   ],
+   "animation": "whirl",
+   "frame": 2,
+   "duration_ms": 111,
+   "offset": [
+    14,
+    5
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "remolino: giro sobre sí mismo entre burbujas y estrellas"
+  },
+  {
+   "name": "patoburbuja/whirl_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    1045,
+    719,
+    1428,
+    925
+   ],
+   "trimmed": [
+    1046,
+    720,
+    1427,
+    924
+   ],
+   "animation": "whirl",
+   "frame": 3,
+   "duration_ms": 111,
+   "offset": [
+    10,
+    1
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "remolino: giro sobre sí mismo entre burbujas y estrellas"
+  },
+  {
+   "name": "patoburbuja/hurt_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    20,
+    904,
+    258,
+    1068
+   ],
+   "trimmed": [
+    21,
+    905,
+    257,
+    1067
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    38,
+    18
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: mareado; 1: corona ladeada"
+  },
+  {
+   "name": "patoburbuja/hurt_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    291,
+    916,
+    543,
+    1065
+   ],
+   "trimmed": [
+    292,
+    917,
+    542,
+    1064
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    37,
+    24
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: mareado; 1: corona ladeada"
+  },
+  {
+   "name": "patoburbuja/defeated_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    574,
+    911,
+    834,
+    1068
+   ],
+   "trimmed": [
+    575,
+    912,
+    833,
+    1067
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 333,
+   "offset": [
+    32,
+    21
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: dormido con la corona caída; 1-2: se hunde en la espuma"
+  },
+  {
+   "name": "patoburbuja/defeated_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    848,
+    943,
+    1122,
+    1067
+   ],
+   "trimmed": [
+    849,
+    944,
+    1121,
+    1066
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 333,
+   "offset": [
+    30,
+    34
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: dormido con la corona caída; 1-2: se hunde en la espuma"
+  },
+  {
+   "name": "patoburbuja/defeated_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    1137,
+    984,
+    1417,
+    1066
+   ],
+   "trimmed": [
+    1138,
+    985,
+    1416,
+    1065
+   ],
+   "animation": "defeated",
+   "frame": 2,
+   "duration_ms": 333,
+   "offset": [
+    26,
+    51
+   ],
+   "origin": [
+    88,
+    83
+   ],
+   "cell": [
+    176,
+    84
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: dormido con la corona caída; 1-2: se hunde en la espuma"
+  },
+  {
+   "name": "bubble_s",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1209,
+    330,
+    1241,
+    368
+   ],
+   "trimmed": [
+    1213,
+    338,
+    1237,
+    363
+   ],
+   "size": [
+    8,
+    8
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_m",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1240,
+    324,
+    1285,
+    372
+   ],
+   "trimmed": [
+    1243,
+    330,
+    1280,
+    367
+   ],
+   "size": [
+    11,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_l",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1285,
+    308,
+    1348,
+    378
+   ],
+   "trimmed": [
+    1288,
+    316,
+    1343,
+    371
+   ],
+   "size": [
+    17,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_pop",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1346,
+    294,
+    1418,
+    394
+   ],
+   "trimmed": [
+    1347,
+    294,
+    1416,
+    394
+   ],
+   "size": [
+    21,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crab_foam",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1206,
+    563,
+    1281,
+    628
+   ],
+   "trimmed": [
+    1214,
+    570,
+    1275,
+    621
+   ],
+   "size": [
+    19,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "crab_splash",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1280,
+    558,
+    1380,
+    662
+   ],
+   "trimmed": [
+    1288,
+    566,
+    1375,
+    654
+   ],
+   "size": [
+    26,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "foam_pile",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1278,
+    634,
+    1374,
+    688
+   ],
+   "trimmed": [
+    1285,
+    642,
+    1368,
+    680
+   ],
+   "size": [
+    25,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "spark_star",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1372,
+    628,
+    1420,
+    674
+   ],
+   "trimmed": [
+    1377,
+    633,
+    1415,
+    669
+   ],
+   "size": [
+    12,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pompa_burst",
+   "type": "object",
+   "source": "imagenes/enemies_world_4.png",
+   "crop": [
+    1200,
+    838,
+    1424,
+    1002
+   ],
+   "trimmed": [
+    1202,
+    844,
+    1424,
+    1002
+   ],
+   "size": [
+    67,
+    48
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "boss_spray",
+   "type": "object",
+   "source": "imagenes/jefemundo4.png",
+   "crop": [
+    1188,
+    365,
+    1447,
+    505
+   ],
+   "trimmed": [
+    1188,
+    365,
+    1423,
+    505
+   ],
+   "size": [
+    94,
+    56
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: el chorro llega al borde derecho de la hoja; el recorte conserva todas sus burbujas"
+  },
+  {
+   "name": "splash_0",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    374,
+    805,
+    422,
+    884
+   ],
+   "trimmed": [
+    377,
+    805,
+    422,
+    883
+   ],
+   "size": [
+    16,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "splash_1",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    432,
+    805,
+    484,
+    884
+   ],
+   "trimmed": [
+    434,
+    805,
+    482,
+    882
+   ],
+   "size": [
+    17,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "splash_2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    488,
+    805,
+    542,
+    884
+   ],
+   "trimmed": [
+    488,
+    805,
+    542,
+    882
+   ],
+   "size": [
+    19,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "splash_3",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    552,
+    805,
+    654,
+    886
+   ],
+   "trimmed": [
+    557,
+    805,
+    653,
+    884
+   ],
+   "size": [
+    34,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "splash_4",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    655,
+    800,
+    772,
+    886
+   ],
+   "trimmed": [
+    659,
+    800,
+    772,
+    885
+   ],
+   "size": [
+    40,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "whirl",
+   "type": "generated_fx",
+   "source": "imagenes/jefemundo4.png",
+   "crop": null,
+   "size": [
+    22,
+    22
+   ],
+   "status": "ok",
+   "notes": "remolino generado con los azules y blancos del agua de jefemundo4.png (la hoja no lo trae suelto)"
+  },
+  {
+   "name": "bubble_plat_2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    687,
+    179,
+    797,
+    247
+   ],
+   "trimmed": [
+    691,
+    183,
+    793,
+    244
+   ],
+   "size": [
+    43,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_plat_3",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    812,
+    179,
+    948,
+    242
+   ],
+   "trimmed": [
+    816,
+    183,
+    944,
+    238
+   ],
+   "size": [
+    54,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_plat_s",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    965,
+    185,
+    1074,
+    238
+   ],
+   "trimmed": [
+    968,
+    189,
+    1070,
+    234
+   ],
+   "size": [
+    43,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "foam_plat_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    683,
+    282,
+    813,
+    362
+   ],
+   "trimmed": [
+    687,
+    286,
+    809,
+    358
+   ],
+   "size": [
+    49,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "foam_plat_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    827,
+    280,
+    958,
+    347
+   ],
+   "trimmed": [
+    831,
+    284,
+    954,
+    343
+   ],
+   "size": [
+    50,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "foam_plat_c",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    972,
+    280,
+    1067,
+    362
+   ],
+   "trimmed": [
+    976,
+    284,
+    1063,
+    359
+   ],
+   "size": [
+    35,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "boat_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    680,
+    390,
+    802,
+    510
+   ],
+   "trimmed": [
+    684,
+    394,
+    802,
+    506
+   ],
+   "size": [
+    50,
+    47
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    821,
+    398,
+    938,
+    446
+   ],
+   "trimmed": [
+    825,
+    402,
+    934,
+    442
+   ],
+   "size": [
+    46,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sponge_plat_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    825,
+    447,
+    944,
+    501
+   ],
+   "trimmed": [
+    829,
+    451,
+    940,
+    497
+   ],
+   "size": [
+    47,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "tile_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    953,
+    398,
+    1072,
+    445
+   ],
+   "trimmed": [
+    957,
+    402,
+    1068,
+    441
+   ],
+   "size": [
+    47,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "tile_plat_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    957,
+    447,
+    1069,
+    500
+   ],
+   "trimmed": [
+    960,
+    450,
+    1065,
+    496
+   ],
+   "size": [
+    45,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_w4",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1115,
+    180,
+    1165,
+    229
+   ],
+   "trimmed": [
+    1119,
+    184,
+    1161,
+    225
+   ],
+   "size": [
+    12,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1181,
+    182,
+    1229,
+    229
+   ],
+   "trimmed": [
+    1185,
+    186,
+    1225,
+    225
+   ],
+   "size": [
+    11,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1246,
+    181,
+    1295,
+    229
+   ],
+   "trimmed": [
+    1250,
+    185,
+    1291,
+    225
+   ],
+   "size": [
+    12,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "shell_token",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1346,
+    174,
+    1409,
+    233
+   ],
+   "trimmed": [
+    1350,
+    178,
+    1405,
+    229
+   ],
+   "size": [
+    15,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "flag_w4",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1103,
+    275,
+    1188,
+    383
+   ],
+   "trimmed": [
+    1107,
+    279,
+    1184,
+    379
+   ],
+   "size": [
+    23,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sign_w4",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1218,
+    280,
+    1309,
+    383
+   ],
+   "trimmed": [
+    1222,
+    284,
+    1305,
+    379
+   ],
+   "size": [
+    24,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "portal_w4",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1323,
+    278,
+    1430,
+    384
+   ],
+   "trimmed": [
+    1327,
+    282,
+    1426,
+    381
+   ],
+   "size": [
+    45,
+    45
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "duck_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1098,
+    431,
+    1184,
+    514
+   ],
+   "trimmed": [
+    1102,
+    435,
+    1180,
+    511
+   ],
+   "size": [
+    24,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "duck_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1182,
+    444,
+    1259,
+    510
+   ],
+   "trimmed": [
+    1186,
+    448,
+    1256,
+    506
+   ],
+   "size": [
+    21,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "duck_c",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1260,
+    432,
+    1346,
+    510
+   ],
+   "trimmed": [
+    1264,
+    448,
+    1342,
+    506
+   ],
+   "size": [
+    24,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "duck_king",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1347,
+    427,
+    1429,
+    514
+   ],
+   "trimmed": [
+    1351,
+    431,
+    1425,
+    513
+   ],
+   "size": [
+    20,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "water_top_0",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    24,
+    596,
+    134,
+    671
+   ],
+   "trimmed": [
+    25,
+    609,
+    134,
+    670
+   ],
+   "size": [
+    33,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "water_top_1",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    137,
+    596,
+    249,
+    671
+   ],
+   "trimmed": [
+    137,
+    615,
+    249,
+    670
+   ],
+   "size": [
+    34,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "water_top_2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    253,
+    596,
+    364,
+    671
+   ],
+   "trimmed": [
+    255,
+    611,
+    364,
+    670
+   ],
+   "size": [
+    33,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "water_deep_0",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    27,
+    716,
+    131,
+    880
+   ],
+   "trimmed": [
+    27,
+    716,
+    131,
+    880
+   ],
+   "size": [
+    32,
+    50
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "water_deep_1",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    139,
+    716,
+    247,
+    880
+   ],
+   "trimmed": [
+    139,
+    716,
+    247,
+    880
+   ],
+   "size": [
+    33,
+    50
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "water_deep_2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    256,
+    716,
+    362,
+    880
+   ],
+   "trimmed": [
+    256,
+    716,
+    362,
+    880
+   ],
+   "size": [
+    32,
+    50
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_col_0",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    378,
+    583,
+    446,
+    758
+   ],
+   "trimmed": [
+    378,
+    583,
+    446,
+    758
+   ],
+   "size": [
+    24,
+    62
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_col_1",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    446,
+    583,
+    513,
+    758
+   ],
+   "trimmed": [
+    446,
+    583,
+    513,
+    758
+   ],
+   "size": [
+    24,
+    62
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_col_2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    513,
+    583,
+    588,
+    758
+   ],
+   "trimmed": [
+    513,
+    583,
+    588,
+    758
+   ],
+   "size": [
+    27,
+    62
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "jump_bubble_s",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    596,
+    608,
+    658,
+    672
+   ],
+   "trimmed": [
+    600,
+    613,
+    651,
+    662
+   ],
+   "size": [
+    18,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "jump_bubble_big",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    666,
+    586,
+    778,
+    680
+   ],
+   "trimmed": [
+    670,
+    592,
+    772,
+    674
+   ],
+   "size": [
+    36,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "jump_bubble_pair",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    596,
+    676,
+    780,
+    752
+   ],
+   "trimmed": [
+    600,
+    680,
+    772,
+    749
+   ],
+   "size": [
+    61,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    814,
+    600,
+    880,
+    692
+   ],
+   "trimmed": [
+    826,
+    607,
+    875,
+    686
+   ],
+   "size": [
+    18,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush_orange",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    870,
+    600,
+    948,
+    692
+   ],
+   "trimmed": [
+    874,
+    607,
+    939,
+    686
+   ],
+   "size": [
+    24,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "brush_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    918,
+    600,
+    1006,
+    692
+   ],
+   "trimmed": [
+    924,
+    607,
+    1006,
+    687
+   ],
+   "size": [
+    30,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "coral_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1022,
+    597,
+    1153,
+    692
+   ],
+   "trimmed": [
+    1026,
+    603,
+    1149,
+    687
+   ],
+   "size": [
+    41,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "coral_green",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1158,
+    587,
+    1270,
+    692
+   ],
+   "trimmed": [
+    1162,
+    593,
+    1266,
+    686
+   ],
+   "size": [
+    35,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "coral_mix",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1274,
+    581,
+    1431,
+    692
+   ],
+   "trimmed": [
+    1278,
+    585,
+    1425,
+    687
+   ],
+   "size": [
+    49,
+    34
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "starfish_gold",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    815,
+    726,
+    866,
+    776
+   ],
+   "trimmed": [
+    819,
+    730,
+    862,
+    772
+   ],
+   "size": [
+    13,
+    13
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "starfish_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    867,
+    728,
+    916,
+    776
+   ],
+   "trimmed": [
+    871,
+    732,
+    912,
+    772
+   ],
+   "size": [
+    13,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "starfish_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    918,
+    729,
+    964,
+    774
+   ],
+   "trimmed": [
+    922,
+    733,
+    960,
+    770
+   ],
+   "size": [
+    12,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "shell_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    973,
+    725,
+    1023,
+    782
+   ],
+   "trimmed": [
+    977,
+    729,
+    1019,
+    778
+   ],
+   "size": [
+    13,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "shell_purple",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1021,
+    719,
+    1070,
+    783
+   ],
+   "trimmed": [
+    1025,
+    723,
+    1066,
+    779
+   ],
+   "size": [
+    13,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "shell_conch",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1067,
+    725,
+    1143,
+    780
+   ],
+   "trimmed": [
+    1071,
+    729,
+    1139,
+    776
+   ],
+   "size": [
+    21,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bottle_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1203,
+    709,
+    1254,
+    786
+   ],
+   "trimmed": [
+    1207,
+    713,
+    1250,
+    782
+   ],
+   "size": [
+    15,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bottle_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1256,
+    691,
+    1314,
+    786
+   ],
+   "trimmed": [
+    1260,
+    695,
+    1310,
+    782
+   ],
+   "size": [
+    17,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bottle_star",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1325,
+    691,
+    1384,
+    786
+   ],
+   "trimmed": [
+    1329,
+    695,
+    1380,
+    782
+   ],
+   "size": [
+    17,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bottle_small",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1386,
+    715,
+    1431,
+    786
+   ],
+   "trimmed": [
+    1390,
+    719,
+    1427,
+    782
+   ],
+   "size": [
+    13,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "seaweed",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    806,
+    810,
+    997,
+    900
+   ],
+   "trimmed": [
+    806,
+    812,
+    993,
+    896
+   ],
+   "size": [
+    62,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_float_m",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1008,
+    827,
+    1057,
+    877
+   ],
+   "trimmed": [
+    1012,
+    831,
+    1053,
+    873
+   ],
+   "size": [
+    14,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bubble_float_l",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1075,
+    825,
+    1146,
+    896
+   ],
+   "trimmed": [
+    1079,
+    828,
+    1142,
+    893
+   ],
+   "size": [
+    21,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "waterfall_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1192,
+    811,
+    1311,
+    901
+   ],
+   "trimmed": [
+    1196,
+    815,
+    1307,
+    898
+   ],
+   "size": [
+    56,
+    42
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "waterfall_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1311,
+    811,
+    1431,
+    901
+   ],
+   "trimmed": [
+    1314,
+    815,
+    1427,
+    898
+   ],
+   "size": [
+    57,
+    42
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "foam_slip",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    18,
+    974,
+    328,
+    1037
+   ],
+   "trimmed": [
+    22,
+    978,
+    324,
+    1037
+   ],
+   "size": [
+    91,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "soap_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    343,
+    969,
+    506,
+    1037
+   ],
+   "trimmed": [
+    347,
+    973,
+    502,
+    1037
+   ],
+   "size": [
+    47,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "soap_purple",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    506,
+    966,
+    675,
+    1037
+   ],
+   "trimmed": [
+    510,
+    970,
+    671,
+    1037
+   ],
+   "size": [
+    49,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "geyser_0",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    688,
+    1003,
+    741,
+    1041
+   ],
+   "trimmed": [
+    691,
+    1003,
+    737,
+    1037
+   ],
+   "size": [
+    16,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "geyser_1",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    746,
+    960,
+    805,
+    1042
+   ],
+   "trimmed": [
+    750,
+    964,
+    801,
+    1042
+   ],
+   "size": [
+    18,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "geyser_2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    807,
+    952,
+    866,
+    1039
+   ],
+   "trimmed": [
+    811,
+    956,
+    862,
+    1035
+   ],
+   "size": [
+    18,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "geyser_3",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    866,
+    945,
+    925,
+    1039
+   ],
+   "trimmed": [
+    870,
+    948,
+    921,
+    1035
+   ],
+   "size": [
+    18,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "geyser_4",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    925,
+    938,
+    998,
+    1041
+   ],
+   "trimmed": [
+    929,
+    938,
+    994,
+    1037
+   ],
+   "size": [
+    23,
+    35
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "roller_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1013,
+    962,
+    1153,
+    1024
+   ],
+   "trimmed": [
+    1016,
+    968,
+    1149,
+    1019
+   ],
+   "size": [
+    51,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "roller_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1154,
+    962,
+    1281,
+    1024
+   ],
+   "trimmed": [
+    1158,
+    968,
+    1276,
+    1019
+   ],
+   "size": [
+    45,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "roller_c",
+   "type": "object",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1283,
+    958,
+    1431,
+    1039
+   ],
+   "trimmed": [
+    1286,
+    968,
+    1428,
+    1020
+   ],
+   "size": [
+    54,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_city",
+   "type": "background",
+   "source": "imagenes/word_4.png",
+   "crop": [
+    210,
+    0,
+    1500,
+    352
+   ],
+   "trimmed": [
+    210,
+    0,
+    1500,
+    352
+   ],
+   "size": [
+    478,
+    131
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "Franja alta de word_4.png: ciudad acuática, cascadas, arcoíris, bañera y el gran pato de goma. Sin las plataformas pintadas de la parte baja."
+  },
+  {
+   "name": "bg_waterfall_a",
+   "type": "background",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1192,
+    811,
+    1311,
+    901
+   ],
+   "trimmed": [
+    1196,
+    815,
+    1307,
+    898
+   ],
+   "size": [
+    90,
+    67
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "cascada de la hoja de teselas, ampliada para la capa media"
+  },
+  {
+   "name": "bg_waterfall_b",
+   "type": "background",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1311,
+    811,
+    1431,
+    901
+   ],
+   "trimmed": [
+    1314,
+    815,
+    1427,
+    898
+   ],
+   "size": [
+    91,
+    67
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_bubble",
+   "type": "background",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    1075,
+    825,
+    1146,
+    896
+   ],
+   "trimmed": [
+    1079,
+    828,
+    1142,
+    893
+   ],
+   "size": [
+    29,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "w4_sky",
+   "type": "generated_background",
+   "source": "imagenes/word_4.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_4.png (cielo ['#2984FC', '#3589FC', '#F9F9FB', '#FDFDFD'], espuma ['#84C8FD', '#DB96EE', '#E1C9F0', '#FED4AA'])"
+  },
+  {
+   "name": "w4_foam_far",
+   "type": "generated_background",
+   "source": "imagenes/word_4.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_4.png (cielo ['#2984FC', '#3589FC', '#F9F9FB', '#FDFDFD'], espuma ['#84C8FD', '#DB96EE', '#E1C9F0', '#FED4AA'])"
+  },
+  {
+   "name": "w4_foam_near",
+   "type": "generated_background",
+   "source": "imagenes/word_4.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_4.png (cielo ['#2984FC', '#3589FC', '#F9F9FB', '#FDFDFD'], espuma ['#84C8FD', '#DB96EE', '#E1C9F0', '#FED4AA'])"
+  },
+  {
+   "name": "sponge_base",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    25,
+    183,
+    91,
+    247
+   ],
+   "trimmed": [
+    25,
+    183,
+    91,
+    247
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "sponge_foam",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    229,
+    181,
+    288,
+    248
+   ],
+   "trimmed": [
+    229,
+    182,
+    288,
+    248
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "tile_base",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    153,
+    183,
+    211,
+    247
+   ],
+   "trimmed": [
+    153,
+    183,
+    211,
+    247
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "tile_foam",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    361,
+    181,
+    418,
+    248
+   ],
+   "trimmed": [
+    361,
+    182,
+    418,
+    247
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "block_sponge",
+   "type": "block",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    25,
+    183,
+    91,
+    247
+   ],
+   "trimmed": [
+    25,
+    183,
+    91,
+    247
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_glass",
+   "type": "block",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    92,
+    183,
+    150,
+    247
+   ],
+   "trimmed": [
+    92,
+    184,
+    149,
+    246
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_tile",
+   "type": "block",
+   "source": "imagenes/tilesets_world_4.png",
+   "crop": [
+    153,
+    183,
+    211,
+    247
+   ],
+   "trimmed": [
+    154,
+    184,
+    211,
+    246
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  }
+ ],
+ "summary": {
+  "total": 151,
+  "pending": []
+ }
+}

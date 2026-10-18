@@ -6,6 +6,11 @@ extends Node
 
 var buttons: Array[CloudButton] = []
 var index := 0
+## Izquierda/derecha (A/D, flechas) también recorren la lista: menús dispuestos en horizontal.
+var horizontal := false
+## > 0: los botones forman una rejilla de esa anchura y arriba/abajo saltan de fila. Un botón
+## sobrante al final (p. ej. «Volver») se alcanza saliendo de la rejilla por arriba o abajo.
+var columns := 0
 
 
 func setup(list: Array[CloudButton]) -> MenuList:
@@ -24,9 +29,15 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and (not event.pressed or event.echo):
 		return
-	if event.is_action_pressed("menu_up"):
+	if event.is_action_pressed("menu_up") or event.is_action_pressed("menu_down"):
+		var d := -1 if event.is_action_pressed("menu_up") else 1
+		if columns > 0:
+			move_row(d)
+		else:
+			move(d)
+	elif horizontal and event.is_action_pressed("move_left"):
 		move(-1)
-	elif event.is_action_pressed("menu_down"):
+	elif horizontal and event.is_action_pressed("move_right"):
 		move(1)
 	elif event.is_action_pressed("menu_accept"):
 		if index < buttons.size():
@@ -43,6 +54,19 @@ func move(d: int) -> void:
 		i = (i + d + n) % n
 		if buttons[i].visible:
 			break
+	select(i)
+
+
+## Arriba/abajo en una rejilla de `columns` botones por fila.
+func move_row(d: int) -> void:
+	var n := buttons.size()
+	var grid := n - n % columns if n % columns != 0 else n
+	var i := index + d * columns
+	if index >= grid:
+		# desde el botón sobrante: abajo entra por la primera fila, arriba por la última
+		i = 0 if d > 0 else grid - columns
+	elif i < 0 or i >= grid:
+		i = n - 1 if grid < n else (index + d * columns + grid) % grid
 	select(i)
 
 

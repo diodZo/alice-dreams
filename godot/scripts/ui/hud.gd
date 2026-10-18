@@ -19,6 +19,7 @@ var boss_bar: ColorRect
 var boss_label: PixelText
 ## Mundo 2: casillas de los crayones mágicos (rojo, azul, amarillo).
 var magic_icons: Array[TextureRect] = []
+var moon_icons: Array[TextureRect] = []
 var banner: PixelText
 var toast: PixelText
 var _banner_tween: Tween
@@ -81,6 +82,18 @@ func _ready() -> void:
 		m.visible = false
 		root.add_child(m)
 		magic_icons.append(m)
+	# Mundos 3 y 4: los tres coleccionables principales (lunas, conchas); el resto sólo cuenta
+	# en la victoria. El icono sale de los datos del mundo (GameState "dreamHud").
+	var dream_hud: Array = GameState.get_v("dreamHud", ["world3_objects", "moon_w3", "moon_"])
+	for i in 3:
+		var m := TextureRect.new()
+		m.texture = Assets.frame(dream_hud[0], dream_hud[1]) if Assets.has_frame(dream_hud[0], dream_hud[1]) else null
+		m.scale = Vector2(0.5, 0.5)
+		m.position = Vector2(W - 58 + i * 12, 20)
+		m.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		m.visible = false
+		root.add_child(m)
+		moon_icons.append(m)
 
 	# --- progreso del nivel ---
 	progress_x = W / 2.0 - 80
@@ -215,6 +228,13 @@ func refresh(key: String) -> void:
 			var c: String = ["red", "blue", "yellow"][i]
 			magic_icons[i].visible = shown
 			magic_icons[i].modulate = Color.WHITE if c in have else Color(0.25, 0.22, 0.4, 0.7)
+	if all or key in ["dreamCollectibles", "dreamTotal"]:
+		var dream: Array = GameState.get_v("dreamCollectibles", [])
+		var shown_moons := int(GameState.get_v("dreamTotal", 0)) > 0
+		for i in moon_icons.size():
+			moon_icons[i].visible = shown_moons
+			var prefix: String = GameState.get_v("dreamHud", ["", "", "moon_"])[2]
+			moon_icons[i].modulate = Color.WHITE if "%s%d" % [prefix, i + 1] in dream else Color(0.25, 0.22, 0.4, 0.7)
 	if all or key in ["bossVisible", "bossHp", "bossMaxHp"]:
 		boss_group.visible = bool(GameState.get_v("bossVisible", false))
 		var mx := float(GameState.get_v("bossMaxHp", 1))

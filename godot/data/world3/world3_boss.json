@@ -15,9 +15,7 @@
   "atlas": "world3_bg",
   "objectsAtlas": "world3_objects",
   "sparkles": true,
-  "drifters": [
-   "cloud_plush"
-  ],
+  "drifters": [],
   "layers": [
    {
     "scroll": [
@@ -29,52 +27,16 @@
      {
       "frame": "bg_reference",
       "x": 240,
-      "y": 135,
-      "scale": 1.0,
-      "alpha": 0.7
+      "y": 52,
+      "alpha": 0.95
      }
     ]
-   },
-   {
-    "scroll": [
-     0.04,
-     0.04
-    ],
-    "depth": 3,
-    "frames": [
-     "bg_moon",
-     "bg_window"
-    ],
-    "step": 760,
-    "y": [
-     30,
-     75
-    ],
-    "alpha": 0.9
-   },
-   {
-    "scroll": [
-     0.13,
-     0.05
-    ],
-    "depth": 4,
-    "frames": [
-     "bg_mobile",
-     "bg_teddy"
-    ],
-    "step": 420,
-    "y": [
-     20,
-     160
-    ],
-    "alpha": 0.85,
-    "sway": true
    }
   ]
  },
  "frames": {
   "flag": "flag_w3",
-  "signpost": "rabbit_plush",
+  "signpost": "sign_block",
   "star": [
    "world3_objects",
    "star_w3"
@@ -109,12 +71,12 @@
   {
    "x": 15,
    "y": 10,
-   "frame": "pillow_pink"
+   "frame": "cloud_pink"
   },
   {
    "x": 44,
    "y": 10,
-   "frame": "pillow_blue"
+   "frame": "cloud_blue"
   }
  ],
  "bridges": [],
@@ -127,28 +89,28 @@
  "hazards": [],
  "stars": [
   {
-   "x": 12,
-   "y": 13
-  },
-  {
-   "x": 13,
-   "y": 13
-  },
-  {
    "x": 14,
-   "y": 13
+   "y": 9
+  },
+  {
+   "x": 15,
+   "y": 9
+  },
+  {
+   "x": 16,
+   "y": 9
+  },
+  {
+   "x": 43,
+   "y": 9
+  },
+  {
+   "x": 44,
+   "y": 9
   },
   {
    "x": 45,
-   "y": 13
-  },
-  {
-   "x": 46,
-   "y": 13
-  },
-  {
-   "x": 47,
-   "y": 13
+   "y": 9
   }
  ],
  "enemies": [],
@@ -159,18 +121,19 @@
   {
    "x": 3,
    "y": 14,
-   "frame": "rabbit_plush"
+   "frame": "flower_pink",
+   "front": true
   },
   {
    "x": 30,
    "y": 14,
-   "frame": "yarn_pink",
-   "front": true
+   "frame": "yarn_ball_blue"
   },
   {
-   "x": 57,
+   "x": 55,
    "y": 14,
-   "frame": "pillow_blue"
+   "frame": "flower_pink",
+   "front": true
   }
  ],
  "gate": {

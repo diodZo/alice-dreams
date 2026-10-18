@@ -1,0 +1,248 @@
+{
+ "key": "world5_boss",
+ "worldId": 5,
+ "widthTiles": 59,
+ "heightTiles": 17,
+ "music": "world5",
+ "bossMusic": "luna_estelar",
+ "tileset": "world5_tiles",
+ "objectsAtlas": "world5_objects",
+ "backgroundAtlas": "world5_bg",
+ "background": {
+  "sky": "w5_sky",
+  "far": "w5_clouds_far",
+  "near": "w5_clouds_near",
+  "atlas": "world5_bg",
+  "objectsAtlas": "world5_objects",
+  "sparkles": true,
+  "drifters": [
+   "cloud_s",
+   "cloud_m"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.02,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_ring_planet",
+      "x": 66,
+      "y": 46,
+      "alpha": 0.95
+     },
+     {
+      "frame": "bg_blue_planet",
+      "x": 430,
+      "y": 40,
+      "alpha": 0.9
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.03,
+     0.02
+    ],
+    "depth": 2,
+    "frames": [
+     "bg_trails"
+    ],
+    "step": 260,
+    "y": [
+     24,
+     70
+    ],
+    "alpha": 0.9
+   },
+   {
+    "scroll": [
+     0.03,
+     0.03
+    ],
+    "depth": 3,
+    "items": [
+     {
+      "frame": "bg_moon_castle",
+      "x": 240,
+      "y": 88
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.15,
+     0.08
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_island_small",
+     "bg_tower_island",
+     "bg_islet"
+    ],
+    "step": 210,
+    "y": [
+     130,
+     175
+    ],
+    "alpha": 0.8,
+    "bob": true
+   }
+  ]
+ },
+ "frames": {
+  "flag": "flag_w5",
+  "signpost": "sign_w5",
+  "star": [
+   "world5_objects",
+   "star_w5"
+  ]
+ },
+ "progress": {
+  "total": 10496,
+  "offset": 9552,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 2,
+  "y": 14
+ },
+ "sections": [
+  {
+   "id": "E",
+   "name": "El trono de la Luna",
+   "from": 8500
+  }
+ ],
+ "terrain": [
+  {
+   "x": 0,
+   "y": 14,
+   "w": 59,
+   "h": 3,
+   "mat": "cosmic"
+  }
+ ],
+ "blocks": [],
+ "clouds": [
+  {
+   "x": 15,
+   "y": 10,
+   "frame": "cloud_plat_l",
+   "top": 1
+  },
+  {
+   "x": 44,
+   "y": 10,
+   "frame": "cloud_plat_l",
+   "top": 1
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [],
+ "swings": [],
+ "crumbles": [],
+ "pads": [],
+ "winds": [],
+ "hazards": [],
+ "stars": [
+  {
+   "x": 14,
+   "y": 8
+  },
+  {
+   "x": 15,
+   "y": 8
+  },
+  {
+   "x": 16,
+   "y": 8
+  },
+  {
+   "x": 43,
+   "y": 8
+  },
+  {
+   "x": 44,
+   "y": 8
+  },
+  {
+   "x": 45,
+   "y": 8
+  }
+ ],
+ "enemies": [],
+ "checkpoints": [],
+ "pickups": [],
+ "signs": [],
+ "decor": [
+  {
+   "x": 3,
+   "y": 14,
+   "frame": "lantern"
+  },
+  {
+   "x": 9,
+   "y": 14,
+   "frame": "obs_dome2",
+   "back": true
+  },
+  {
+   "x": 21,
+   "y": 14,
+   "frame": "star_post_a"
+  },
+  {
+   "x": 29,
+   "y": 14,
+   "frame": "fence"
+  },
+  {
+   "x": 37,
+   "y": 14,
+   "frame": "star_post_b"
+  },
+  {
+   "x": 50,
+   "y": 14,
+   "frame": "tall_tower",
+   "back": true
+  },
+  {
+   "x": 55,
+   "y": 14,
+   "frame": "lantern"
+  }
+ ],
+ "gate": {
+  "x": 5,
+  "rows": [
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": "block_star"
+ },
+ "triggerX": 9,
+ "boss": {
+  "homeX": 34,
+  "minX": 8,
+  "maxX": 57,
+  "floorY": 224,
+  "frameBoth": true,
+  "scene": "res://scenes/bosses/LunaEstelar.tscn",
+  "name": "Luna Estelar",
+  "introBanner": "¡Luna Estelar defiende el Trono de la Luna!",
+  "defeatBanner": "¡Luna Estelar se duerme entre las nubes!",
+  "portalToast": "El portal al Mundo 6 está preparado",
+  "afterMusic": "world5"
+ },
+ "portal": {
+  "x": 56,
+  "y": 14
+ }
+}

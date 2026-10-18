@@ -1,0 +1,2183 @@
+{
+ "id": 4,
+ "key": "world4",
+ "name": "Reino de las Burbujas",
+ "widthTiles": 565,
+ "heightTiles": 25,
+ "music": "world4",
+ "tileset": "world4_tiles",
+ "objectsAtlas": "world4_objects",
+ "backgroundAtlas": "world4_bg",
+ "progress": {
+  "total": 10000,
+  "offset": 0,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 3,
+  "y": 20
+ },
+ "nextScene": "Boss4",
+ "startWeapons": [
+  "bubble",
+  "paint",
+  "sling"
+ ],
+ "frames": {
+  "flag": "flag_w4",
+  "signpost": "sign_w4",
+  "star": [
+   "world4_objects",
+   "star_w4"
+  ]
+ },
+ "sections": [
+  {
+   "id": "A",
+   "name": "Las bañeras de espuma",
+   "from": 0
+  },
+  {
+   "id": "B",
+   "name": "Los jardines del jabón",
+   "from": 1800
+  },
+  {
+   "id": "C",
+   "name": "El canal de los patitos",
+   "from": 3600
+  },
+  {
+   "id": "D",
+   "name": "Las cataratas de burbujas",
+   "from": 5600
+  },
+  {
+   "id": "E",
+   "name": "El trono de Patoburbuja",
+   "from": 7900
+  }
+ ],
+ "background": {
+  "sky": "w4_sky",
+  "far": "w4_foam_far",
+  "near": "w4_foam_near",
+  "atlas": "world4_bg",
+  "objectsAtlas": "world4_objects",
+  "sparkles": true,
+  "drifters": [
+   "bubble_float_m",
+   "bubble_float_l"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.03,
+     0.03
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_city",
+      "x": 250,
+      "y": 66,
+      "alpha": 0.96
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.15,
+     0.08
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_waterfall_a",
+     "bg_waterfall_b"
+    ],
+    "step": 240,
+    "y": [
+     150,
+     172
+    ],
+    "alpha": 0.55
+   },
+   {
+    "scroll": [
+     0.3,
+     0.15
+    ],
+    "depth": 6,
+    "frames": [
+     "bg_bubble"
+    ],
+    "step": 170,
+    "y": [
+     50,
+     140
+    ],
+    "alpha": 0.75,
+    "bob": true
+   }
+  ]
+ },
+ "terrain": [
+  {
+   "x": 407,
+   "y": 24,
+   "w": 40,
+   "h": 1,
+   "mat": "sponge"
+  },
+  {
+   "x": 235,
+   "y": 23,
+   "w": 40,
+   "h": 2,
+   "mat": "tile"
+  },
+  {
+   "x": 150,
+   "y": 23,
+   "w": 12,
+   "h": 2,
+   "mat": "tile"
+  },
+  {
+   "x": 86,
+   "y": 24,
+   "w": 10,
+   "h": 1,
+   "mat": "tile"
+  },
+  {
+   "x": 30,
+   "y": 23,
+   "w": 10,
+   "h": 2,
+   "mat": "tile"
+  },
+  {
+   "x": 0,
+   "y": 20,
+   "w": 30,
+   "h": 5,
+   "mat": "tile"
+  },
+  {
+   "x": 18,
+   "y": 19,
+   "w": 4,
+   "h": 6,
+   "mat": "sponge"
+  },
+  {
+   "x": 40,
+   "y": 20,
+   "w": 30,
+   "h": 5,
+   "mat": "sponge"
+  },
+  {
+   "x": 74,
+   "y": 20,
+   "w": 12,
+   "h": 5,
+   "mat": "tile"
+  },
+  {
+   "x": 96,
+   "y": 20,
+   "w": 16,
+   "h": 5,
+   "mat": "sponge"
+  },
+  {
+   "x": 112,
+   "y": 20,
+   "w": 26,
+   "h": 5,
+   "mat": "sponge"
+  },
+  {
+   "x": 138,
+   "y": 15,
+   "w": 12,
+   "h": 10,
+   "mat": "tile"
+  },
+  {
+   "x": 162,
+   "y": 17,
+   "w": 10,
+   "h": 8,
+   "mat": "sponge"
+  },
+  {
+   "x": 172,
+   "y": 20,
+   "w": 18,
+   "h": 5,
+   "mat": "tile"
+  },
+  {
+   "x": 206,
+   "y": 20,
+   "w": 19,
+   "h": 5,
+   "mat": "tile"
+  },
+  {
+   "x": 225,
+   "y": 20,
+   "w": 10,
+   "h": 5,
+   "mat": "sponge"
+  },
+  {
+   "x": 253,
+   "y": 19,
+   "w": 6,
+   "h": 6,
+   "mat": "sponge"
+  },
+  {
+   "x": 275,
+   "y": 20,
+   "w": 16,
+   "h": 5,
+   "mat": "sponge"
+  },
+  {
+   "x": 291,
+   "y": 14,
+   "w": 14,
+   "h": 11,
+   "mat": "tile"
+  },
+  {
+   "x": 305,
+   "y": 17,
+   "w": 14,
+   "h": 8,
+   "mat": "sponge"
+  },
+  {
+   "x": 333,
+   "y": 19,
+   "w": 17,
+   "h": 6,
+   "mat": "tile"
+  },
+  {
+   "x": 350,
+   "y": 20,
+   "w": 16,
+   "h": 5,
+   "mat": "tile"
+  },
+  {
+   "x": 373,
+   "y": 13,
+   "w": 14,
+   "h": 12,
+   "mat": "sponge"
+  },
+  {
+   "x": 387,
+   "y": 14,
+   "w": 20,
+   "h": 11,
+   "mat": "tile"
+  },
+  {
+   "x": 447,
+   "y": 14,
+   "w": 15,
+   "h": 11,
+   "mat": "tile"
+  },
+  {
+   "x": 476,
+   "y": 17,
+   "w": 18,
+   "h": 8,
+   "mat": "sponge"
+  },
+  {
+   "x": 494,
+   "y": 18,
+   "w": 4,
+   "h": 7,
+   "mat": "sponge"
+  },
+  {
+   "x": 498,
+   "y": 19,
+   "w": 67,
+   "h": 6,
+   "mat": "tile"
+  }
+ ],
+ "slopes": [
+  {
+   "x": 17,
+   "y": 19,
+   "dir": "up",
+   "mat": "sponge"
+  },
+  {
+   "x": 22,
+   "y": 19,
+   "dir": "down",
+   "mat": "sponge"
+  }
+ ],
+ "blocks": [
+  {
+   "x": 58,
+   "y": 16,
+   "type": "block_glass"
+  },
+  {
+   "x": 59,
+   "y": 16,
+   "type": "block_glass"
+  },
+  {
+   "x": 520,
+   "y": 15,
+   "type": "block_glass"
+  },
+  {
+   "x": 521,
+   "y": 15,
+   "type": "block_glass"
+  }
+ ],
+ "clouds": [
+  {
+   "x": 50,
+   "y": 17,
+   "frame": "bubble_plat_2",
+   "top": 4
+  },
+  {
+   "x": 55,
+   "y": 15,
+   "frame": "bubble_plat_3",
+   "top": 4
+  },
+  {
+   "x": 62,
+   "y": 13,
+   "frame": "bubble_plat_s",
+   "top": 4
+  },
+  {
+   "x": 194,
+   "y": 19,
+   "frame": "sponge_plat",
+   "top": 3
+  },
+  {
+   "x": 199,
+   "y": 18,
+   "frame": "sponge_plat_b",
+   "top": 3
+  },
+  {
+   "x": 204,
+   "y": 19,
+   "frame": "sponge_plat",
+   "top": 3
+  },
+  {
+   "x": 196,
+   "y": 14,
+   "frame": "bubble_plat_s",
+   "top": 4
+  },
+  {
+   "x": 201,
+   "y": 12,
+   "frame": "bubble_plat_s",
+   "top": 4
+  },
+  {
+   "x": 259,
+   "y": 10,
+   "frame": "bubble_plat_3",
+   "top": 4
+  },
+  {
+   "x": 264,
+   "y": 9,
+   "frame": "bubble_plat_2",
+   "top": 4
+  },
+  {
+   "x": 269,
+   "y": 10,
+   "frame": "bubble_plat_3",
+   "top": 4
+  },
+  {
+   "x": 470,
+   "y": 11,
+   "frame": "tile_plat",
+   "top": 3
+  },
+  {
+   "x": 522,
+   "y": 11,
+   "frame": "bubble_plat_3",
+   "top": 4
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [
+  {
+   "x": 72,
+   "y": 19,
+   "frame": "bubble_plat_2",
+   "top": 4,
+   "dx": 0,
+   "dy": -0.5,
+   "duration": 1600
+  },
+  {
+   "x": 152,
+   "y": 15,
+   "frame": "soap_pink",
+   "top": 4,
+   "dx": 7,
+   "dy": 0,
+   "duration": 3200
+  },
+  {
+   "x": 237.5,
+   "y": 20,
+   "frame": "boat_plat",
+   "top": 23,
+   "dx": 12,
+   "dy": 0,
+   "duration": 5200
+  },
+  {
+   "x": 260,
+   "y": 20,
+   "frame": "boat_plat",
+   "top": 23,
+   "dx": 12,
+   "dy": 0,
+   "duration": 5200,
+   "delay": 2600
+  },
+  {
+   "x": 289.5,
+   "y": 19,
+   "frame": "bubble_plat_2",
+   "top": 4,
+   "dx": 0,
+   "dy": -5,
+   "duration": 3000
+  },
+  {
+   "x": 464,
+   "y": 14,
+   "frame": "bubble_plat_3",
+   "top": 4,
+   "dx": 8,
+   "dy": 0,
+   "duration": 3400
+  },
+  {
+   "x": 537,
+   "y": 15,
+   "frame": "soap_purple",
+   "top": 4,
+   "dx": 5,
+   "dy": 0,
+   "duration": 3000
+  }
+ ],
+ "swings": [],
+ "crumbles": [
+  {
+   "x": 322,
+   "y": 17,
+   "frame": "bubble_plat_s",
+   "top": 4,
+   "pop": true
+  },
+  {
+   "x": 326,
+   "y": 16,
+   "frame": "bubble_plat_s",
+   "top": 4,
+   "pop": true
+  },
+  {
+   "x": 330,
+   "y": 17,
+   "frame": "bubble_plat_s",
+   "top": 4,
+   "pop": true
+  }
+ ],
+ "pads": [
+  {
+   "x": 520,
+   "y": 19,
+   "frame": "jump_bubble_big",
+   "power": -500
+  },
+  {
+   "x": 302,
+   "y": 14,
+   "frame": "jump_bubble_s",
+   "power": -470
+  }
+ ],
+ "winds": [],
+ "hazards": [],
+ "paints": [
+  {
+   "x": 116,
+   "y": 20,
+   "w": 8,
+   "color": "foam",
+   "frame": "foam_slip"
+  },
+  {
+   "x": 352,
+   "y": 20,
+   "w": 4,
+   "color": "foam",
+   "frame": "foam_slip"
+  },
+  {
+   "x": 505,
+   "y": 19,
+   "w": 7,
+   "color": "foam",
+   "frame": "foam_slip"
+  }
+ ],
+ "rollers": [],
+ "bouncers": [],
+ "drips": [],
+ "rivers": [],
+ "magicCrayons": [],
+ "yarnRollers": [],
+ "sleepClouds": [],
+ "magicButtons": [],
+ "waters": [
+  {
+   "x": 30,
+   "y": 21,
+   "w": 10,
+   "h": 2
+  },
+  {
+   "x": 86,
+   "y": 21,
+   "w": 10,
+   "h": 3
+  },
+  {
+   "x": 150,
+   "y": 21,
+   "w": 12,
+   "h": 2
+  },
+  {
+   "x": 235,
+   "y": 21,
+   "w": 40,
+   "h": 2
+  },
+  {
+   "x": 407,
+   "y": 15,
+   "w": 40,
+   "h": 9
+  }
+ ],
+ "geysers": [
+  {
+   "x": 137,
+   "y": 20,
+   "h": 7,
+   "period": 3000,
+   "power": 330
+  },
+  {
+   "x": 214,
+   "y": 20,
+   "h": 6,
+   "period": 3400,
+   "delay": 900,
+   "power": 330
+  },
+  {
+   "x": 430,
+   "y": 24,
+   "h": 6,
+   "period": 3000,
+   "power": 260
+  }
+ ],
+ "bubbleColumns": [
+  {
+   "x": 159,
+   "y": 14,
+   "w": 2,
+   "h": 9,
+   "force": 1500,
+   "maxUp": 190
+  },
+  {
+   "x": 255,
+   "y": 9,
+   "w": 2,
+   "h": 10,
+   "force": 1500,
+   "maxUp": 190
+  },
+  {
+   "x": 367,
+   "y": 8,
+   "w": 4,
+   "h": 17,
+   "force": 1600,
+   "maxUp": 200
+  },
+  {
+   "x": 444,
+   "y": 10,
+   "w": 2,
+   "h": 14,
+   "force": 1500,
+   "maxUp": 200
+  }
+ ],
+ "spongeRollers": [
+  {
+   "x": 360,
+   "y": 20,
+   "range": [
+    357,
+    364
+   ],
+   "speed": 45,
+   "frame": "roller_a"
+  },
+  {
+   "x": 391,
+   "y": 14,
+   "range": [
+    389,
+    396
+   ],
+   "speed": 50,
+   "frame": "roller_b"
+  },
+  {
+   "x": 401,
+   "y": 14,
+   "range": [
+    399,
+    405
+   ],
+   "speed": 65,
+   "frame": "roller_a"
+  },
+  {
+   "x": 488,
+   "y": 17,
+   "range": [
+    485,
+    492
+   ],
+   "speed": 40,
+   "frame": "roller_c"
+  }
+ ],
+ "soaps": [
+  {
+   "x": 180,
+   "y": 20,
+   "range": [
+    178,
+    188
+   ],
+   "speed": 60,
+   "frame": "soap_purple"
+  },
+  {
+   "x": 540,
+   "y": 19,
+   "range": [
+    532,
+    546
+   ],
+   "speed": 55,
+   "frame": "soap_pink"
+  }
+ ],
+ "dreamCollectibles": [
+  {
+   "id": "shell_1",
+   "kind": "shell",
+   "x": 62,
+   "y": 10
+  },
+  {
+   "id": "shell_2",
+   "kind": "shell",
+   "x": 264,
+   "y": 6
+  },
+  {
+   "id": "shell_3",
+   "kind": "shell",
+   "x": 470,
+   "y": 8
+  },
+  {
+   "id": "starfish_1",
+   "kind": "starfish",
+   "x": 214,
+   "y": 9
+  },
+  {
+   "id": "rainbow_1",
+   "kind": "rainbow",
+   "x": 426,
+   "y": 22
+  },
+  {
+   "id": "duck_1",
+   "kind": "duck",
+   "x": 522,
+   "y": 8
+  }
+ ],
+ "dreamMain": "shell",
+ "dreamNames": {
+  "shell": "Concha token",
+  "starfish": "Estrella marina mágica",
+  "rainbow": "Burbuja arcoíris",
+  "duck": "Patito real"
+ },
+ "dreamBanner": "¡Las %d conchas token! Estrella extra",
+ "dreamHud": [
+  "world4_objects",
+  "shell_token",
+  "shell_"
+ ],
+ "stars": [
+  {
+   "x": 5,
+   "y": 19
+  },
+  {
+   "x": 9,
+   "y": 19
+  },
+  {
+   "x": 13,
+   "y": 19
+  },
+  {
+   "x": 14,
+   "y": 18
+  },
+  {
+   "x": 17,
+   "y": 16
+  },
+  {
+   "x": 20,
+   "y": 16
+  },
+  {
+   "x": 23,
+   "y": 17
+  },
+  {
+   "x": 26,
+   "y": 19
+  },
+  {
+   "x": 29,
+   "y": 19
+  },
+  {
+   "x": 31,
+   "y": 20
+  },
+  {
+   "x": 33,
+   "y": 20
+  },
+  {
+   "x": 35,
+   "y": 20
+  },
+  {
+   "x": 37,
+   "y": 20
+  },
+  {
+   "x": 39,
+   "y": 20
+  },
+  {
+   "x": 42,
+   "y": 19
+  },
+  {
+   "x": 46,
+   "y": 19
+  },
+  {
+   "x": 49,
+   "y": 16
+  },
+  {
+   "x": 51,
+   "y": 16
+  },
+  {
+   "x": 54,
+   "y": 14
+  },
+  {
+   "x": 56,
+   "y": 14
+  },
+  {
+   "x": 66,
+   "y": 18
+  },
+  {
+   "x": 69,
+   "y": 16
+  },
+  {
+   "x": 72,
+   "y": 16
+  },
+  {
+   "x": 75,
+   "y": 17
+  },
+  {
+   "x": 78,
+   "y": 19
+  },
+  {
+   "x": 81,
+   "y": 19
+  },
+  {
+   "x": 84,
+   "y": 19
+  },
+  {
+   "x": 87,
+   "y": 22
+  },
+  {
+   "x": 89,
+   "y": 22
+  },
+  {
+   "x": 91,
+   "y": 22
+  },
+  {
+   "x": 93,
+   "y": 22
+  },
+  {
+   "x": 95,
+   "y": 22
+  },
+  {
+   "x": 98,
+   "y": 19
+  },
+  {
+   "x": 102,
+   "y": 19
+  },
+  {
+   "x": 106,
+   "y": 19
+  },
+  {
+   "x": 110,
+   "y": 19
+  },
+  {
+   "x": 114,
+   "y": 19
+  },
+  {
+   "x": 116,
+   "y": 19
+  },
+  {
+   "x": 118,
+   "y": 19
+  },
+  {
+   "x": 120,
+   "y": 19
+  },
+  {
+   "x": 122,
+   "y": 19
+  },
+  {
+   "x": 124,
+   "y": 19
+  },
+  {
+   "x": 127,
+   "y": 19
+  },
+  {
+   "x": 131,
+   "y": 19
+  },
+  {
+   "x": 137,
+   "y": 13
+  },
+  {
+   "x": 137,
+   "y": 15
+  },
+  {
+   "x": 137,
+   "y": 17
+  },
+  {
+   "x": 140,
+   "y": 14
+  },
+  {
+   "x": 144,
+   "y": 14
+  },
+  {
+   "x": 148,
+   "y": 14
+  },
+  {
+   "x": 151,
+   "y": 13
+  },
+  {
+   "x": 153,
+   "y": 13
+  },
+  {
+   "x": 155,
+   "y": 13
+  },
+  {
+   "x": 157,
+   "y": 13
+  },
+  {
+   "x": 159,
+   "y": 13
+  },
+  {
+   "x": 163,
+   "y": 16
+  },
+  {
+   "x": 166,
+   "y": 16
+  },
+  {
+   "x": 169,
+   "y": 16
+  },
+  {
+   "x": 174,
+   "y": 18
+  },
+  {
+   "x": 178,
+   "y": 18
+  },
+  {
+   "x": 182,
+   "y": 18
+  },
+  {
+   "x": 186,
+   "y": 18
+  },
+  {
+   "x": 193,
+   "y": 17
+  },
+  {
+   "x": 195,
+   "y": 17
+  },
+  {
+   "x": 197,
+   "y": 17
+  },
+  {
+   "x": 199,
+   "y": 17
+  },
+  {
+   "x": 201,
+   "y": 17
+  },
+  {
+   "x": 203,
+   "y": 17
+  },
+  {
+   "x": 205,
+   "y": 17
+  },
+  {
+   "x": 195,
+   "y": 12
+  },
+  {
+   "x": 197,
+   "y": 12
+  },
+  {
+   "x": 200,
+   "y": 10
+  },
+  {
+   "x": 202,
+   "y": 10
+  },
+  {
+   "x": 208,
+   "y": 19
+  },
+  {
+   "x": 210,
+   "y": 19
+  },
+  {
+   "x": 212,
+   "y": 19
+  },
+  {
+   "x": 214,
+   "y": 11
+  },
+  {
+   "x": 214,
+   "y": 13
+  },
+  {
+   "x": 214,
+   "y": 15
+  },
+  {
+   "x": 214,
+   "y": 17
+  },
+  {
+   "x": 216,
+   "y": 19
+  },
+  {
+   "x": 220,
+   "y": 19
+  },
+  {
+   "x": 224,
+   "y": 19
+  },
+  {
+   "x": 226,
+   "y": 19
+  },
+  {
+   "x": 230,
+   "y": 19
+  },
+  {
+   "x": 234,
+   "y": 19
+  },
+  {
+   "x": 236,
+   "y": 18
+  },
+  {
+   "x": 240,
+   "y": 17
+  },
+  {
+   "x": 244,
+   "y": 16
+  },
+  {
+   "x": 248,
+   "y": 17
+  },
+  {
+   "x": 252,
+   "y": 18
+  },
+  {
+   "x": 255,
+   "y": 11
+  },
+  {
+   "x": 255,
+   "y": 13
+  },
+  {
+   "x": 255,
+   "y": 15
+  },
+  {
+   "x": 255,
+   "y": 17
+  },
+  {
+   "x": 258,
+   "y": 8
+  },
+  {
+   "x": 261,
+   "y": 8
+  },
+  {
+   "x": 264,
+   "y": 8
+  },
+  {
+   "x": 267,
+   "y": 8
+  },
+  {
+   "x": 270,
+   "y": 8
+  },
+  {
+   "x": 261,
+   "y": 18
+  },
+  {
+   "x": 265,
+   "y": 16
+  },
+  {
+   "x": 269,
+   "y": 16
+  },
+  {
+   "x": 273,
+   "y": 18
+  },
+  {
+   "x": 277,
+   "y": 19
+  },
+  {
+   "x": 280,
+   "y": 19
+  },
+  {
+   "x": 283,
+   "y": 19
+  },
+  {
+   "x": 286,
+   "y": 19
+  },
+  {
+   "x": 288,
+   "y": 13
+  },
+  {
+   "x": 288,
+   "y": 15
+  },
+  {
+   "x": 288,
+   "y": 17
+  },
+  {
+   "x": 293,
+   "y": 13
+  },
+  {
+   "x": 296,
+   "y": 13
+  },
+  {
+   "x": 299,
+   "y": 13
+  },
+  {
+   "x": 302,
+   "y": 13
+  },
+  {
+   "x": 306,
+   "y": 16
+  },
+  {
+   "x": 310,
+   "y": 16
+  },
+  {
+   "x": 314,
+   "y": 16
+  },
+  {
+   "x": 318,
+   "y": 16
+  },
+  {
+   "x": 321,
+   "y": 14
+  },
+  {
+   "x": 323,
+   "y": 14
+  },
+  {
+   "x": 325,
+   "y": 14
+  },
+  {
+   "x": 327,
+   "y": 14
+  },
+  {
+   "x": 329,
+   "y": 14
+  },
+  {
+   "x": 331,
+   "y": 14
+  },
+  {
+   "x": 335,
+   "y": 18
+  },
+  {
+   "x": 338,
+   "y": 18
+  },
+  {
+   "x": 341,
+   "y": 18
+  },
+  {
+   "x": 344,
+   "y": 18
+  },
+  {
+   "x": 347,
+   "y": 18
+  },
+  {
+   "x": 354,
+   "y": 19
+  },
+  {
+   "x": 359,
+   "y": 19
+  },
+  {
+   "x": 364,
+   "y": 19
+  },
+  {
+   "x": 369,
+   "y": 9
+  },
+  {
+   "x": 369,
+   "y": 11
+  },
+  {
+   "x": 369,
+   "y": 13
+  },
+  {
+   "x": 369,
+   "y": 15
+  },
+  {
+   "x": 369,
+   "y": 17
+  },
+  {
+   "x": 374,
+   "y": 12
+  },
+  {
+   "x": 377,
+   "y": 12
+  },
+  {
+   "x": 380,
+   "y": 12
+  },
+  {
+   "x": 383,
+   "y": 12
+  },
+  {
+   "x": 389,
+   "y": 13
+  },
+  {
+   "x": 393,
+   "y": 13
+  },
+  {
+   "x": 397,
+   "y": 13
+  },
+  {
+   "x": 401,
+   "y": 13
+  },
+  {
+   "x": 405,
+   "y": 13
+  },
+  {
+   "x": 409,
+   "y": 21
+  },
+  {
+   "x": 413,
+   "y": 21
+  },
+  {
+   "x": 417,
+   "y": 21
+  },
+  {
+   "x": 421,
+   "y": 21
+  },
+  {
+   "x": 425,
+   "y": 21
+  },
+  {
+   "x": 429,
+   "y": 21
+  },
+  {
+   "x": 433,
+   "y": 21
+  },
+  {
+   "x": 437,
+   "y": 21
+  },
+  {
+   "x": 441,
+   "y": 21
+  },
+  {
+   "x": 412,
+   "y": 18
+  },
+  {
+   "x": 419,
+   "y": 18
+  },
+  {
+   "x": 426,
+   "y": 18
+  },
+  {
+   "x": 433,
+   "y": 18
+  },
+  {
+   "x": 440,
+   "y": 18
+  },
+  {
+   "x": 448,
+   "y": 13
+  },
+  {
+   "x": 452,
+   "y": 13
+  },
+  {
+   "x": 456,
+   "y": 13
+  },
+  {
+   "x": 460,
+   "y": 13
+  },
+  {
+   "x": 463,
+   "y": 13
+  },
+  {
+   "x": 465,
+   "y": 13
+  },
+  {
+   "x": 467,
+   "y": 13
+  },
+  {
+   "x": 469,
+   "y": 13
+  },
+  {
+   "x": 471,
+   "y": 13
+  },
+  {
+   "x": 473,
+   "y": 13
+  },
+  {
+   "x": 477,
+   "y": 16
+  },
+  {
+   "x": 480,
+   "y": 16
+  },
+  {
+   "x": 483,
+   "y": 16
+  },
+  {
+   "x": 486,
+   "y": 16
+  },
+  {
+   "x": 489,
+   "y": 16
+  },
+  {
+   "x": 492,
+   "y": 16
+  },
+  {
+   "x": 494,
+   "y": 17
+  },
+  {
+   "x": 497,
+   "y": 15
+  },
+  {
+   "x": 501,
+   "y": 18
+  },
+  {
+   "x": 504,
+   "y": 18
+  },
+  {
+   "x": 507,
+   "y": 18
+  },
+  {
+   "x": 510,
+   "y": 18
+  },
+  {
+   "x": 513,
+   "y": 18
+  },
+  {
+   "x": 516,
+   "y": 18
+  },
+  {
+   "x": 520,
+   "y": 12
+  },
+  {
+   "x": 520,
+   "y": 14
+  },
+  {
+   "x": 520,
+   "y": 16
+  },
+  {
+   "x": 524,
+   "y": 18
+  },
+  {
+   "x": 528,
+   "y": 18
+  },
+  {
+   "x": 532,
+   "y": 18
+  },
+  {
+   "x": 536,
+   "y": 18
+  },
+  {
+   "x": 540,
+   "y": 18
+  },
+  {
+   "x": 544,
+   "y": 18
+  },
+  {
+   "x": 548,
+   "y": 18
+  },
+  {
+   "x": 552,
+   "y": 18
+  },
+  {
+   "x": 556,
+   "y": 18
+  }
+ ],
+ "enemies": [
+  {
+   "type": "bubble_fish",
+   "x": 35,
+   "y": 22.6,
+   "patrol": [
+    31,
+    39
+   ]
+  },
+  {
+   "type": "bubble_fish",
+   "x": 64,
+   "y": 16,
+   "patrol": [
+    58,
+    68
+   ]
+  },
+  {
+   "type": "bubble_fish",
+   "x": 91,
+   "y": 22.8,
+   "patrol": [
+    87,
+    95
+   ]
+  },
+  {
+   "type": "bubble_fish",
+   "x": 266,
+   "y": 22.6,
+   "patrol": [
+    262,
+    273
+   ]
+  },
+  {
+   "type": "bubble_fish",
+   "x": 395,
+   "y": 10,
+   "patrol": [
+    389,
+    404
+   ]
+  },
+  {
+   "type": "bubble_fish",
+   "x": 418,
+   "y": 20,
+   "patrol": [
+    409,
+    428
+   ]
+  },
+  {
+   "type": "bubble_fish",
+   "x": 436,
+   "y": 22,
+   "patrol": [
+    430,
+    443
+   ]
+  },
+  {
+   "type": "bubble_fish",
+   "x": 488,
+   "y": 13,
+   "patrol": [
+    480,
+    492
+   ]
+  },
+  {
+   "type": "bubble_fish",
+   "x": 545,
+   "y": 15,
+   "patrol": [
+    540,
+    552
+   ]
+  },
+  {
+   "type": "sponge_crab",
+   "x": 128,
+   "y": 20,
+   "patrol": [
+    125,
+    134
+   ]
+  },
+  {
+   "type": "sponge_crab",
+   "x": 184,
+   "y": 20,
+   "patrol": [
+    178,
+    189
+   ]
+  },
+  {
+   "type": "sponge_crab",
+   "x": 220,
+   "y": 20,
+   "patrol": [
+    215,
+    224
+   ]
+  },
+  {
+   "type": "sponge_crab",
+   "x": 298,
+   "y": 14,
+   "patrol": [
+    292,
+    303
+   ]
+  },
+  {
+   "type": "sponge_crab",
+   "x": 344,
+   "y": 19,
+   "patrol": [
+    335,
+    348
+   ]
+  },
+  {
+   "type": "sponge_crab",
+   "x": 480,
+   "y": 17,
+   "patrol": [
+    477,
+    484
+   ]
+  },
+  {
+   "type": "sponge_crab",
+   "x": 530,
+   "y": 19,
+   "patrol": [
+    526,
+    531
+   ]
+  },
+  {
+   "type": "pompa",
+   "x": 246,
+   "y": 16,
+   "patrol": [
+    240,
+    252
+   ]
+  },
+  {
+   "type": "pompa",
+   "x": 283,
+   "y": 16,
+   "patrol": [
+    277,
+    289
+   ]
+  },
+  {
+   "type": "pompa",
+   "x": 312,
+   "y": 13,
+   "patrol": [
+    307,
+    317
+   ]
+  },
+  {
+   "type": "pompa",
+   "x": 341,
+   "y": 15,
+   "patrol": [
+    335,
+    347
+   ]
+  },
+  {
+   "type": "pompa",
+   "x": 452,
+   "y": 10,
+   "patrol": [
+    448,
+    460
+   ]
+  },
+  {
+   "type": "pompa",
+   "x": 512,
+   "y": 15,
+   "patrol": [
+    506,
+    518
+   ]
+  }
+ ],
+ "checkpoints": [
+  {
+   "x": 173,
+   "y": 20
+  },
+  {
+   "x": 352,
+   "y": 20
+  }
+ ],
+ "pickups": [],
+ "signs": [
+  {
+   "x": 7,
+   "y": 20,
+   "text": "Mundo 4: ¡El Reino de las Burbujas! Tus tres armas te acompañan"
+  },
+  {
+   "x": 44,
+   "y": 20,
+   "text": "Las plataformas de burbujas flotan: ¡súbete a ellas!"
+  },
+  {
+   "x": 82,
+   "y": 20,
+   "text": "En el agua pulsa salto para nadar. Cerca de la superficie, ¡salta fuera!"
+  },
+  {
+   "x": 113,
+   "y": 20,
+   "text": "La espuma resbala: frena con tiempo"
+  },
+  {
+   "x": 132,
+   "y": 20,
+   "text": "El géiser de burbujas te lanza muy alto: espera a que estalle"
+  },
+  {
+   "x": 226,
+   "y": 20,
+   "text": "El Canal de los Patitos: sube a los barquitos"
+  },
+  {
+   "x": 254,
+   "y": 19,
+   "text": "Las columnas de burbujas te elevan"
+  },
+  {
+   "x": 317,
+   "y": 17,
+   "text": "Las burbujas frágiles revientan: ¡no te pares!"
+  },
+  {
+   "x": 364,
+   "y": 20,
+   "text": "Salta a la cascada de burbujas: te subirá hasta arriba"
+  },
+  {
+   "x": 388,
+   "y": 14,
+   "text": "Los rodillos de esponja empujan: pasa cuando se alejen"
+  },
+  {
+   "x": 405,
+   "y": 14,
+   "text": "Bajo el agua flotas: pulsa salto para nadar hacia arriba"
+  },
+  {
+   "x": 550,
+   "y": 19,
+   "text": "El Trono de Patoburbuja: ¡el Rey te espera!"
+  }
+ ],
+ "decor": [
+  {
+   "x": 8,
+   "y": 20,
+   "frame": "brush_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 12,
+   "y": 20,
+   "frame": "bottle_blue",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 26,
+   "y": 20,
+   "frame": "coral_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 33,
+   "y": 21,
+   "frame": "duck_a",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 46,
+   "y": 20,
+   "frame": "bottle_star",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 66,
+   "y": 20,
+   "frame": "coral_green",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 78,
+   "y": 20,
+   "frame": "brush_blue",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 89,
+   "y": 21,
+   "frame": "duck_b",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 100,
+   "y": 20,
+   "frame": "seaweed",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 106,
+   "y": 20,
+   "frame": "starfish_gold",
+   "front": true,
+   "water": false
+  },
+  {
+   "x": 120,
+   "y": 20,
+   "frame": "coral_mix",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 126,
+   "y": 20,
+   "frame": "bottle_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 142,
+   "y": 15,
+   "frame": "brush_orange",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 146,
+   "y": 15,
+   "frame": "bottle_small",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 166,
+   "y": 17,
+   "frame": "coral_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 176,
+   "y": 20,
+   "frame": "seaweed",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 186,
+   "y": 20,
+   "frame": "shell_conch",
+   "front": true,
+   "water": false
+  },
+  {
+   "x": 210,
+   "y": 20,
+   "frame": "bottle_star",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 218,
+   "y": 20,
+   "frame": "coral_green",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 229,
+   "y": 20,
+   "frame": "brush_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 243,
+   "y": 21,
+   "frame": "duck_c",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 249,
+   "y": 21,
+   "frame": "duck_a",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 256,
+   "y": 19,
+   "frame": "shell_blue",
+   "front": true,
+   "water": false
+  },
+  {
+   "x": 268,
+   "y": 21,
+   "frame": "duck_b",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 279,
+   "y": 20,
+   "frame": "coral_mix",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 296,
+   "y": 14,
+   "frame": "bottle_blue",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 308,
+   "y": 17,
+   "frame": "seaweed",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 337,
+   "y": 19,
+   "frame": "brush_blue",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 346,
+   "y": 19,
+   "frame": "starfish_pink",
+   "front": true,
+   "water": false
+  },
+  {
+   "x": 356,
+   "y": 20,
+   "frame": "coral_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 378,
+   "y": 13,
+   "frame": "coral_green",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 383,
+   "y": 13,
+   "frame": "bottle_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 412,
+   "y": 24,
+   "frame": "seaweed",
+   "front": false,
+   "water": true
+  },
+  {
+   "x": 420,
+   "y": 24,
+   "frame": "coral_mix",
+   "front": false,
+   "water": true
+  },
+  {
+   "x": 433,
+   "y": 24,
+   "frame": "coral_pink",
+   "front": false,
+   "water": true
+  },
+  {
+   "x": 440,
+   "y": 24,
+   "frame": "shell_purple",
+   "front": false,
+   "water": true
+  },
+  {
+   "x": 450,
+   "y": 14,
+   "frame": "brush_orange",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 458,
+   "y": 14,
+   "frame": "bottle_small",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 480,
+   "y": 17,
+   "frame": "coral_green",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 500,
+   "y": 19,
+   "frame": "coral_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 508,
+   "y": 19,
+   "frame": "duck_a",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 514,
+   "y": 19,
+   "frame": "bottle_star",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 527,
+   "y": 19,
+   "frame": "brush_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 534,
+   "y": 19,
+   "frame": "coral_mix",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 548,
+   "y": 19,
+   "frame": "bottle_pink",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 554,
+   "y": 19,
+   "frame": "duck_c",
+   "front": false,
+   "water": false
+  },
+  {
+   "x": 562,
+   "y": 19,
+   "frame": "bottle_blue",
+   "front": false,
+   "water": false
+  }
+ ],
+ "door": {
+  "x": 558,
+  "y": 19,
+  "atlas": "world4_objects",
+  "frame": "portal_w4",
+  "scale": 1.0
+ }
+}

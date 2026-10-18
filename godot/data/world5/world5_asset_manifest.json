@@ -1,0 +1,5389 @@
+{
+ "version": 1,
+ "generatedBy": "tools/world5/prepare_world5_assets.py",
+ "sources": {
+  "scene": "imagenes/word_5.png",
+  "tiles": "imagenes/tilesets_world_5.png",
+  "enemies": "imagenes/enemies_world_5.png",
+  "boss": "imagenes/jefemundo5.png"
+ },
+ "resources": [
+  {
+   "name": "estrellita/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    29,
+    241,
+    99,
+    297
+   ],
+   "trimmed": [
+    31,
+    243,
+    97,
+    295
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    15,
+    8
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    109,
+    241,
+    174,
+    297
+   ],
+   "trimmed": [
+    111,
+    243,
+    172,
+    295
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    17,
+    8
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    183,
+    242,
+    247,
+    296
+   ],
+   "trimmed": [
+    185,
+    244,
+    244,
+    294
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 167,
+   "offset": [
+    17,
+    9
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    257,
+    243,
+    319,
+    295
+   ],
+   "trimmed": [
+    259,
+    245,
+    315,
+    293
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 167,
+   "offset": [
+    18,
+    9
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    343,
+    238,
+    425,
+    297
+   ],
+   "trimmed": [
+    345,
+    243,
+    423,
+    294
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    9,
+    8
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    430,
+    238,
+    528,
+    297
+   ],
+   "trimmed": [
+    437,
+    242,
+    526,
+    293
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    5,
+    8
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    532,
+    236,
+    643,
+    298
+   ],
+   "trimmed": [
+    543,
+    240,
+    641,
+    294
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    2,
+    7
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    652,
+    233,
+    767,
+    298
+   ],
+   "trimmed": [
+    662,
+    236,
+    764,
+    295
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 100,
+   "offset": [
+    1,
+    5
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    790,
+    236,
+    882,
+    298
+   ],
+   "trimmed": [
+    792,
+    238,
+    880,
+    296
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    6,
+    6
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: se encoge y brilla (aviso); 1: lanza la miniestrella"
+  },
+  {
+   "name": "estrellita/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    892,
+    238,
+    974,
+    296
+   ],
+   "trimmed": [
+    894,
+    242,
+    972,
+    292
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    9,
+    9
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "0: se encoge y brilla (aviso); 1: lanza la miniestrella"
+  },
+  {
+   "name": "estrellita/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    29,
+    346,
+    103,
+    415
+   ],
+   "trimmed": [
+    31,
+    352,
+    98,
+    411
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    15,
+    5
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    112,
+    340,
+    180,
+    416
+   ],
+   "trimmed": [
+    119,
+    344,
+    178,
+    413
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    18,
+    2
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "estrellita/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    366,
+    341,
+    454,
+    411
+   ],
+   "trimmed": [
+    374,
+    345,
+    450,
+    407
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    14,
+    4
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "ojos en espiral, se encoge, se deshace en estrellitas y en polvo de luz"
+  },
+  {
+   "name": "estrellita/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    468,
+    352,
+    548,
+    409
+   ],
+   "trimmed": [
+    478,
+    357,
+    535,
+    405
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    19,
+    9
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "ojos en espiral, se encoge, se deshace en estrellitas y en polvo de luz"
+  },
+  {
+   "name": "estrellita/defeated_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    562,
+    343,
+    635,
+    410
+   ],
+   "trimmed": [
+    568,
+    349,
+    629,
+    405
+   ],
+   "animation": "defeated",
+   "frame": 2,
+   "duration_ms": 167,
+   "offset": [
+    19,
+    6
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "ojos en espiral, se encoge, se deshace en estrellitas y en polvo de luz"
+  },
+  {
+   "name": "estrellita/defeated_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    650,
+    352,
+    724,
+    412
+   ],
+   "trimmed": [
+    655,
+    352,
+    719,
+    407
+   ],
+   "animation": "defeated",
+   "frame": 3,
+   "duration_ms": 167,
+   "offset": [
+    17,
+    7
+   ],
+   "origin": [
+    28,
+    27
+   ],
+   "cell": [
+    56,
+    28
+   ],
+   "anchor": "yellow",
+   "status": "ok",
+   "notes": "ojos en espiral, se encoge, se deshace en estrellitas y en polvo de luz"
+  },
+  {
+   "name": "meteorito/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    31,
+    545,
+    94,
+    601
+   ],
+   "trimmed": [
+    33,
+    547,
+    92,
+    599
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    24,
+    8
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    113,
+    545,
+    171,
+    601
+   ],
+   "trimmed": [
+    115,
+    547,
+    169,
+    599
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    26,
+    8
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    184,
+    545,
+    244,
+    601
+   ],
+   "trimmed": [
+    186,
+    547,
+    242,
+    599
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    25,
+    8
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    258,
+    545,
+    320,
+    601
+   ],
+   "trimmed": [
+    264,
+    547,
+    318,
+    599
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    26,
+    8
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    370,
+    538,
+    438,
+    604
+   ],
+   "trimmed": [
+    376,
+    542,
+    434,
+    601
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    24,
+    5
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    458,
+    538,
+    528,
+    604
+   ],
+   "trimmed": [
+    464,
+    543,
+    522,
+    601
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    24,
+    5
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    554,
+    538,
+    624,
+    604
+   ],
+   "trimmed": [
+    560,
+    544,
+    618,
+    601
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    25,
+    6
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    630,
+    538,
+    726,
+    605
+   ],
+   "trimmed": [
+    664,
+    544,
+    722,
+    601
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 100,
+   "offset": [
+    25,
+    6
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    756,
+    537,
+    873,
+    607
+   ],
+   "trimmed": [
+    767,
+    541,
+    869,
+    604
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    10,
+    3
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": "embestida con estela: 0 aviso, 1-2 carga"
+  },
+  {
+   "name": "meteorito/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    880,
+    540,
+    993,
+    606
+   ],
+   "trimmed": [
+    884,
+    544,
+    989,
+    603
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    7,
+    5
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": "embestida con estela: 0 aviso, 1-2 carga"
+  },
+  {
+   "name": "meteorito/attack_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    995,
+    534,
+    1140,
+    607
+   ],
+   "trimmed": [
+    1009,
+    538,
+    1132,
+    604
+   ],
+   "animation": "attack",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    1,
+    2
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": "embestida con estela: 0 aviso, 1-2 carga"
+  },
+  {
+   "name": "meteorito/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    29,
+    652,
+    102,
+    718
+   ],
+   "trimmed": [
+    40,
+    657,
+    98,
+    714
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    25,
+    6
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    114,
+    641,
+    188,
+    719
+   ],
+   "trimmed": [
+    118,
+    646,
+    184,
+    715
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    24,
+    1
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteorito/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    363,
+    642,
+    436,
+    719
+   ],
+   "trimmed": [
+    367,
+    647,
+    432,
+    715
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    23,
+    1
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": "se agrieta, se parte y queda en fragmentos y polvo"
+  },
+  {
+   "name": "meteorito/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    454,
+    645,
+    538,
+    718
+   ],
+   "trimmed": [
+    458,
+    650,
+    534,
+    714
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    28,
+    3
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": "se agrieta, se parte y queda en fragmentos y polvo"
+  },
+  {
+   "name": "meteorito/defeated_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    548,
+    640,
+    640,
+    719
+   ],
+   "trimmed": [
+    553,
+    650,
+    640,
+    715
+   ],
+   "animation": "defeated",
+   "frame": 2,
+   "duration_ms": 167,
+   "offset": [
+    28,
+    3
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": "se agrieta, se parte y queda en fragmentos y polvo"
+  },
+  {
+   "name": "meteorito/defeated_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    642,
+    640,
+    730,
+    719
+   ],
+   "trimmed": [
+    649,
+    646,
+    720,
+    715
+   ],
+   "animation": "defeated",
+   "frame": 3,
+   "duration_ms": 167,
+   "offset": [
+    24,
+    1
+   ],
+   "origin": [
+    36,
+    29
+   ],
+   "cell": [
+    72,
+    30
+   ],
+   "anchor": "dark",
+   "status": "ok",
+   "notes": "se agrieta, se parte y queda en fragmentos y polvo"
+  },
+  {
+   "name": "cohetito/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    26,
+    844,
+    101,
+    911
+   ],
+   "trimmed": [
+    30,
+    854,
+    99,
+    908
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    12,
+    19
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    101,
+    844,
+    179,
+    911
+   ],
+   "trimmed": [
+    109,
+    855,
+    175,
+    907
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    11,
+    20
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    181,
+    844,
+    260,
+    912
+   ],
+   "trimmed": [
+    185,
+    855,
+    254,
+    908
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    12,
+    20
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/idle_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    257,
+    851,
+    331,
+    912
+   ],
+   "trimmed": [
+    260,
+    855,
+    327,
+    908
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    10,
+    20
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    344,
+    842,
+    446,
+    914
+   ],
+   "trimmed": [
+    348,
+    846,
+    443,
+    910
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    2,
+    16
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    446,
+    845,
+    544,
+    909
+   ],
+   "trimmed": [
+    448,
+    849,
+    542,
+    905
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    2,
+    18
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    542,
+    849,
+    638,
+    910
+   ],
+   "trimmed": [
+    545,
+    853,
+    635,
+    906
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    4,
+    20
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/walk_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    639,
+    851,
+    741,
+    912
+   ],
+   "trimmed": [
+    642,
+    855,
+    737,
+    908
+   ],
+   "animation": "walk",
+   "frame": 3,
+   "duration_ms": 100,
+   "offset": [
+    2,
+    20
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    757,
+    849,
+    859,
+    909
+   ],
+   "trimmed": [
+    761,
+    853,
+    856,
+    905
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    2,
+    20
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": "0: enciende el motor (aviso); 1: dispara (el rayo estelar es un proyectil aparte)"
+  },
+  {
+   "name": "cohetito/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    858,
+    844,
+    1088,
+    907
+   ],
+   "trimmed": [
+    861,
+    853,
+    962,
+    903
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    2,
+    21
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": "0: enciende el motor (aviso); 1: dispara (el rayo estelar es un proyectil aparte)"
+  },
+  {
+   "name": "cohetito/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    24,
+    964,
+    120,
+    1041
+   ],
+   "trimmed": [
+    27,
+    970,
+    116,
+    1035
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    7,
+    15
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    114,
+    946,
+    222,
+    1044
+   ],
+   "trimmed": [
+    118,
+    949,
+    218,
+    1040
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    4,
+    6
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cohetito/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    360,
+    945,
+    462,
+    1049
+   ],
+   "trimmed": [
+    360,
+    945,
+    462,
+    1046
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    5,
+    2
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": "se desarma, queda abollado y se convierte en una nube con estrellas"
+  },
+  {
+   "name": "cohetito/defeated_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    465,
+    955,
+    566,
+    1043
+   ],
+   "trimmed": [
+    470,
+    968,
+    557,
+    1035
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    8,
+    15
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": "se desarma, queda abollado y se convierte en una nube con estrellas"
+  },
+  {
+   "name": "cohetito/defeated_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    570,
+    948,
+    655,
+    1046
+   ],
+   "trimmed": [
+    576,
+    959,
+    655,
+    1041
+   ],
+   "animation": "defeated",
+   "frame": 2,
+   "duration_ms": 167,
+   "offset": [
+    10,
+    9
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": "se desarma, queda abollado y se convierte en una nube con estrellas"
+  },
+  {
+   "name": "cohetito/defeated_3",
+   "type": "frame",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    656,
+    950,
+    746,
+    1046
+   ],
+   "trimmed": [
+    663,
+    958,
+    739,
+    1040
+   ],
+   "animation": "defeated",
+   "frame": 3,
+   "duration_ms": 167,
+   "offset": [
+    9,
+    9
+   ],
+   "origin": [
+    23,
+    39
+   ],
+   "cell": [
+    46,
+    40
+   ],
+   "anchor": "white",
+   "status": "ok",
+   "notes": "se desarma, queda abollado y se convierte en una nube con estrellas"
+  },
+  {
+   "name": "luna_estelar/idle_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    95,
+    0,
+    314,
+    171
+   ],
+   "trimmed": [
+    99,
+    3,
+    306,
+    165
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    40,
+    22
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/idle_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    346,
+    2,
+    560,
+    172
+   ],
+   "trimmed": [
+    352,
+    6,
+    555,
+    166
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    42,
+    23
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/idle_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    595,
+    1,
+    809,
+    172
+   ],
+   "trimmed": [
+    599,
+    6,
+    805,
+    166
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    41,
+    23
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/idle_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    844,
+    1,
+    1061,
+    169
+   ],
+   "trimmed": [
+    849,
+    6,
+    1057,
+    165
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    41,
+    23
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/move_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    70,
+    178,
+    274,
+    343
+   ],
+   "trimmed": [
+    74,
+    182,
+    274,
+    339
+   ],
+   "animation": "move",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    36,
+    24
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/move_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    275,
+    180,
+    494,
+    343
+   ],
+   "trimmed": [
+    276,
+    184,
+    483,
+    339
+   ],
+   "animation": "move",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    26,
+    25
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/move_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    495,
+    178,
+    718,
+    342
+   ],
+   "trimmed": [
+    498,
+    182,
+    696,
+    337
+   ],
+   "animation": "move",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    31,
+    25
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/move_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    719,
+    180,
+    941,
+    343
+   ],
+   "trimmed": [
+    724,
+    184,
+    936,
+    338
+   ],
+   "animation": "move",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    33,
+    25
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/move_4",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    942,
+    181,
+    1190,
+    344
+   ],
+   "trimmed": [
+    946,
+    186,
+    1168,
+    338
+   ],
+   "animation": "move",
+   "frame": 4,
+   "duration_ms": 125,
+   "offset": [
+    26,
+    26
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/move_5",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    1191,
+    183,
+    1447,
+    348
+   ],
+   "trimmed": [
+    1196,
+    187,
+    1444,
+    344
+   ],
+   "animation": "move",
+   "frame": 5,
+   "duration_ms": 125,
+   "offset": [
+    25,
+    24
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/shoot_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    98,
+    348,
+    339,
+    507
+   ],
+   "trimmed": [
+    102,
+    352,
+    335,
+    503
+   ],
+   "animation": "shoot",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    35,
+    26
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "0: carga una estrella (aviso); 1-3 dispara. Las estelas de estrellas se cortan: son proyectiles del juego"
+  },
+  {
+   "name": "luna_estelar/shoot_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    363,
+    356,
+    600,
+    507
+   ],
+   "trimmed": [
+    367,
+    360,
+    572,
+    503
+   ],
+   "animation": "shoot",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    34,
+    29
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "0: carga una estrella (aviso); 1-3 dispara. Las estelas de estrellas se cortan: son proyectiles del juego"
+  },
+  {
+   "name": "luna_estelar/shoot_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    700,
+    354,
+    1015,
+    507
+   ],
+   "trimmed": [
+    705,
+    358,
+    895,
+    502
+   ],
+   "animation": "shoot",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    42,
+    29
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "0: carga una estrella (aviso); 1-3 dispara. Las estelas de estrellas se cortan: son proyectiles del juego"
+  },
+  {
+   "name": "luna_estelar/shoot_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    1015,
+    349,
+    1345,
+    507
+   ],
+   "trimmed": [
+    1024,
+    353,
+    1197,
+    502
+   ],
+   "animation": "shoot",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    46,
+    27
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "0: carga una estrella (aviso); 1-3 dispara. Las estelas de estrellas se cortan: son proyectiles del juego"
+  },
+  {
+   "name": "luna_estelar/spin_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    67,
+    517,
+    372,
+    682
+   ],
+   "trimmed": [
+    71,
+    521,
+    368,
+    678
+   ],
+   "animation": "spin",
+   "frame": 0,
+   "duration_ms": 100,
+   "offset": [
+    22,
+    24
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "giro lunar con órbita de energía; la media luna de energía es el efecto moon_blade"
+  },
+  {
+   "name": "luna_estelar/spin_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    415,
+    517,
+    690,
+    679
+   ],
+   "trimmed": [
+    420,
+    522,
+    683,
+    673
+   ],
+   "animation": "spin",
+   "frame": 1,
+   "duration_ms": 100,
+   "offset": [
+    27,
+    26
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "giro lunar con órbita de energía; la media luna de energía es el efecto moon_blade"
+  },
+  {
+   "name": "luna_estelar/spin_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    707,
+    519,
+    1033,
+    680
+   ],
+   "trimmed": [
+    714,
+    524,
+    925,
+    676
+   ],
+   "animation": "spin",
+   "frame": 2,
+   "duration_ms": 100,
+   "offset": [
+    34,
+    26
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "giro lunar con órbita de energía; la media luna de energía es el efecto moon_blade"
+  },
+  {
+   "name": "luna_estelar/spin_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    1052,
+    516,
+    1270,
+    684
+   ],
+   "trimmed": [
+    1058,
+    520,
+    1266,
+    678
+   ],
+   "animation": "spin",
+   "frame": 3,
+   "duration_ms": 100,
+   "offset": [
+    36,
+    23
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "giro lunar con órbita de energía; la media luna de energía es el efecto moon_blade"
+  },
+  {
+   "name": "luna_estelar/cosmic_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    25,
+    689,
+    349,
+    901
+   ],
+   "trimmed": [
+    29,
+    693,
+    349,
+    897
+   ],
+   "animation": "cosmic",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    14,
+    5
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "fase cósmica: aura ampliada con estrellas y planetas"
+  },
+  {
+   "name": "luna_estelar/cosmic_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    350,
+    683,
+    691,
+    905
+   ],
+   "trimmed": [
+    352,
+    687,
+    686,
+    901
+   ],
+   "animation": "cosmic",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    12,
+    1
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "fase cósmica: aura ampliada con estrellas y planetas"
+  },
+  {
+   "name": "luna_estelar/cosmic_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    692,
+    689,
+    1080,
+    910
+   ],
+   "trimmed": [
+    697,
+    693,
+    1077,
+    906
+   ],
+   "animation": "cosmic",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    21,
+    1
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "fase cósmica: aura ampliada con estrellas y planetas"
+  },
+  {
+   "name": "luna_estelar/cosmic_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    1081,
+    692,
+    1432,
+    911
+   ],
+   "trimmed": [
+    1083,
+    696,
+    1428,
+    907
+   ],
+   "animation": "cosmic",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    14,
+    2
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "fase cósmica: aura ampliada con estrellas y planetas"
+  },
+  {
+   "name": "luna_estelar/hurt_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    73,
+    920,
+    288,
+    1083
+   ],
+   "trimmed": [
+    77,
+    924,
+    284,
+    1079
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    39,
+    25
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/hurt_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    303,
+    913,
+    513,
+    1082
+   ],
+   "trimmed": [
+    309,
+    919,
+    509,
+    1078
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    45,
+    23
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "luna_estelar/defeated_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    527,
+    938,
+    802,
+    1072
+   ],
+   "trimmed": [
+    531,
+    942,
+    796,
+    1068
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 333,
+   "offset": [
+    31,
+    36
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "0: expresión suave, ojos cerrados; 1: recostada entre nubes, dormida"
+  },
+  {
+   "name": "luna_estelar/defeated_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    831,
+    976,
+    1100,
+    1074
+   ],
+   "trimmed": [
+    835,
+    980,
+    1098,
+    1070
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 333,
+   "offset": [
+    38,
+    51
+   ],
+   "origin": [
+    87,
+    87
+   ],
+   "cell": [
+    174,
+    88
+   ],
+   "anchor": "pale",
+   "status": "ok",
+   "notes": "0: expresión suave, ojos cerrados; 1: recostada entre nubes, dormida"
+  },
+  {
+   "name": "mini_star",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    950,
+    355,
+    1000,
+    404
+   ],
+   "trimmed": [
+    955,
+    360,
+    998,
+    402
+   ],
+   "size": [
+    13,
+    13
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "mini_star_b",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    1009,
+    368,
+    1059,
+    415
+   ],
+   "trimmed": [
+    1016,
+    371,
+    1051,
+    406
+   ],
+   "size": [
+    11,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_trail",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    869,
+    348,
+    941,
+    410
+   ],
+   "trimmed": [
+    875,
+    362,
+    939,
+    397
+   ],
+   "size": [
+    20,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "comet",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    1061,
+    343,
+    1201,
+    418
+   ],
+   "trimmed": [
+    1063,
+    345,
+    1199,
+    417
+   ],
+   "size": [
+    41,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_bolt",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    755,
+    345,
+    866,
+    412
+   ],
+   "trimmed": [
+    759,
+    348,
+    864,
+    410
+   ],
+   "size": [
+    32,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pebble",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    768,
+    648,
+    796,
+    677
+   ],
+   "trimmed": [
+    770,
+    649,
+    795,
+    675
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rock_bits",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    762,
+    644,
+    928,
+    722
+   ],
+   "trimmed": [
+    765,
+    649,
+    923,
+    718
+   ],
+   "size": [
+    48,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteor_burst",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    938,
+    642,
+    1013,
+    722
+   ],
+   "trimmed": [
+    942,
+    646,
+    1009,
+    718
+   ],
+   "size": [
+    20,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "flash_burst",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    1021,
+    642,
+    1097,
+    720
+   ],
+   "trimmed": [
+    1024,
+    646,
+    1093,
+    716
+   ],
+   "size": [
+    21,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "dust_ring",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    1106,
+    643,
+    1186,
+    721
+   ],
+   "trimmed": [
+    1110,
+    647,
+    1182,
+    717
+   ],
+   "size": [
+    22,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_beam",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    764,
+    951,
+    932,
+    998
+   ],
+   "trimmed": [
+    766,
+    953,
+    932,
+    998
+   ],
+   "size": [
+    50,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "beam_small",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    1086,
+    860,
+    1147,
+    911
+   ],
+   "trimmed": [
+    1087,
+    864,
+    1144,
+    902
+   ],
+   "size": [
+    17,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_ring",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    952,
+    955,
+    1021,
+    1045
+   ],
+   "trimmed": [
+    955,
+    959,
+    1021,
+    1042
+   ],
+   "size": [
+    20,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "blue_flash",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    1013,
+    954,
+    1101,
+    1044
+   ],
+   "trimmed": [
+    1020,
+    958,
+    1096,
+    1041
+   ],
+   "size": [
+    23,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_puff_w5",
+   "type": "object",
+   "source": "imagenes/enemies_world_5.png",
+   "crop": [
+    1093,
+    947,
+    1206,
+    1050
+   ],
+   "trimmed": [
+    1093,
+    951,
+    1202,
+    1047
+   ],
+   "size": [
+    33,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "moon_blade",
+   "type": "object",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    1277,
+    556,
+    1387,
+    676
+   ],
+   "trimmed": [
+    1281,
+    560,
+    1383,
+    672
+   ],
+   "size": [
+    41,
+    45
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "media luna de energía del giro lunar (fila 4 del jefe)"
+  },
+  {
+   "name": "sleep_cloud",
+   "type": "object",
+   "source": "imagenes/jefemundo5.png",
+   "crop": [
+    1128,
+    977,
+    1380,
+    1075
+   ],
+   "trimmed": [
+    1128,
+    982,
+    1373,
+    1070
+   ],
+   "size": [
+    98,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: nube suelta junto a la luna recostada; el recorte conserva toda la nube"
+  },
+  {
+   "name": "spark_gold",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    31,
+    585,
+    62,
+    620
+   ],
+   "trimmed": [
+    33,
+    587,
+    60,
+    618
+   ],
+   "size": [
+    10,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "spark_blue",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    148,
+    583,
+    186,
+    624
+   ],
+   "trimmed": [
+    154,
+    584,
+    184,
+    622
+   ],
+   "size": [
+    11,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "spark_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    123,
+    620,
+    162,
+    664
+   ],
+   "trimmed": [
+    125,
+    622,
+    160,
+    662
+   ],
+   "size": [
+    13,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "spark_purple",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    30,
+    629,
+    59,
+    662
+   ],
+   "trimmed": [
+    32,
+    631,
+    57,
+    660
+   ],
+   "size": [
+    9,
+    10
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_plat_l",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    747,
+    163,
+    819,
+    220
+   ],
+   "trimmed": [
+    749,
+    165,
+    817,
+    218
+   ],
+   "size": [
+    43,
+    33
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_plat_m",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    834,
+    160,
+    892,
+    209
+   ],
+   "trimmed": [
+    836,
+    162,
+    890,
+    207
+   ],
+   "size": [
+    34,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_puff_s",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    815,
+    201,
+    842,
+    228
+   ],
+   "trimmed": [
+    817,
+    203,
+    840,
+    226
+   ],
+   "size": [
+    15,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    903,
+    160,
+    972,
+    232
+   ],
+   "trimmed": [
+    905,
+    170,
+    972,
+    225
+   ],
+   "size": [
+    29,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_spring",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    985,
+    152,
+    1050,
+    232
+   ],
+   "trimmed": [
+    985,
+    156,
+    1047,
+    226
+   ],
+   "size": [
+    26,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "moon_plat_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1070,
+    156,
+    1159,
+    218
+   ],
+   "trimmed": [
+    1072,
+    165,
+    1157,
+    216
+   ],
+   "size": [
+    43,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "moon_plat_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1167,
+    173,
+    1240,
+    223
+   ],
+   "trimmed": [
+    1169,
+    185,
+    1238,
+    221
+   ],
+   "size": [
+    35,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "moon_plat_c",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1243,
+    153,
+    1328,
+    210
+   ],
+   "trimmed": [
+    1245,
+    155,
+    1326,
+    208
+   ],
+   "size": [
+    41,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "moon_plat_d",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1331,
+    147,
+    1423,
+    214
+   ],
+   "trimmed": [
+    1333,
+    155,
+    1421,
+    212
+   ],
+   "size": [
+    44,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "hang_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    741,
+    266,
+    902,
+    400
+   ],
+   "trimmed": [
+    743,
+    268,
+    900,
+    398
+   ],
+   "size": [
+    57,
+    47
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rocket_lift",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    920,
+    278,
+    1012,
+    350
+   ],
+   "trimmed": [
+    920,
+    281,
+    1009,
+    350
+   ],
+   "size": [
+    38,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rocket_lift_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1020,
+    285,
+    1108,
+    352
+   ],
+   "trimmed": [
+    1020,
+    289,
+    1105,
+    352
+   ],
+   "size": [
+    36,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rocket_side",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1017,
+    357,
+    1140,
+    403
+   ],
+   "trimmed": [
+    1022,
+    360,
+    1138,
+    403
+   ],
+   "size": [
+    49,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rocket_side_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    920,
+    353,
+    1015,
+    402
+   ],
+   "trimmed": [
+    921,
+    356,
+    1013,
+    402
+   ],
+   "size": [
+    39,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "obs_island",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1140,
+    278,
+    1300,
+    392
+   ],
+   "trimmed": [
+    1141,
+    279,
+    1297,
+    392
+   ],
+   "size": [
+    71,
+    51
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "tower_island",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1305,
+    228,
+    1429,
+    431
+   ],
+   "trimmed": [
+    1307,
+    229,
+    1427,
+    429
+   ],
+   "size": [
+    54,
+    90
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "slide_island",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1140,
+    380,
+    1320,
+    503
+   ],
+   "trimmed": [
+    1144,
+    380,
+    1317,
+    501
+   ],
+   "size": [
+    78,
+    55
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "obs_dome_small",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1316,
+    436,
+    1409,
+    503
+   ],
+   "trimmed": [
+    1318,
+    438,
+    1407,
+    501
+   ],
+   "size": [
+    40,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "slide_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    750,
+    430,
+    918,
+    512
+   ],
+   "trimmed": [
+    752,
+    434,
+    918,
+    512
+   ],
+   "size": [
+    75,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "slide_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    918,
+    440,
+    1095,
+    512
+   ],
+   "trimmed": [
+    918,
+    455,
+    1095,
+    512
+   ],
+   "size": [
+    80,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "light_pillar",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1098,
+    452,
+    1124,
+    512
+   ],
+   "trimmed": [
+    1098,
+    462,
+    1122,
+    512
+   ],
+   "size": [
+    11,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "islet_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    315,
+    295,
+    388,
+    382
+   ],
+   "trimmed": [
+    315,
+    295,
+    388,
+    382
+   ],
+   "size": [
+    33,
+    40
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "islet_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    392,
+    295,
+    478,
+    395
+   ],
+   "trimmed": [
+    392,
+    295,
+    478,
+    395
+   ],
+   "size": [
+    39,
+    45
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "islet_c",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    482,
+    295,
+    538,
+    355
+   ],
+   "trimmed": [
+    482,
+    295,
+    538,
+    355
+   ],
+   "size": [
+    26,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "islet_d",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    542,
+    295,
+    630,
+    400
+   ],
+   "trimmed": [
+    542,
+    295,
+    630,
+    400
+   ],
+   "size": [
+    40,
+    48
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "islet_e",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    635,
+    295,
+    708,
+    368
+   ],
+   "trimmed": [
+    635,
+    295,
+    707,
+    368
+   ],
+   "size": [
+    33,
+    33
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "islet_f",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    630,
+    375,
+    708,
+    470
+   ],
+   "trimmed": [
+    630,
+    375,
+    706,
+    469
+   ],
+   "size": [
+    35,
+    43
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "islet_g",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    347,
+    382,
+    412,
+    464
+   ],
+   "trimmed": [
+    349,
+    384,
+    410,
+    462
+   ],
+   "size": [
+    28,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "islet_h",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    439,
+    410,
+    514,
+    471
+   ],
+   "trimmed": [
+    441,
+    412,
+    512,
+    469
+   ],
+   "size": [
+    32,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteor_l",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    890,
+    578,
+    961,
+    651
+   ],
+   "trimmed": [
+    892,
+    580,
+    959,
+    649
+   ],
+   "size": [
+    24,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteor_m",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    967,
+    587,
+    1016,
+    641
+   ],
+   "trimmed": [
+    969,
+    589,
+    1014,
+    639
+   ],
+   "size": [
+    17,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "meteor_s",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1018,
+    621,
+    1047,
+    651
+   ],
+   "trimmed": [
+    1020,
+    623,
+    1045,
+    649
+   ],
+   "size": [
+    9,
+    10
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rocket_mov_0",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1100,
+    580,
+    1172,
+    665
+   ],
+   "trimmed": [
+    1100,
+    596,
+    1169,
+    663
+   ],
+   "size": [
+    29,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rocket_mov_1",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1175,
+    580,
+    1255,
+    665
+   ],
+   "trimmed": [
+    1175,
+    593,
+    1255,
+    657
+   ],
+   "size": [
+    34,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rocket_mov_2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1256,
+    580,
+    1344,
+    665
+   ],
+   "trimmed": [
+    1256,
+    586,
+    1343,
+    647
+   ],
+   "size": [
+    37,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rocket_mov_3",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1346,
+    580,
+    1428,
+    665
+   ],
+   "trimmed": [
+    1346,
+    582,
+    1424,
+    619
+   ],
+   "size": [
+    33,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fall_star_0",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    893,
+    691,
+    929,
+    761
+   ],
+   "trimmed": [
+    895,
+    692,
+    927,
+    759
+   ],
+   "size": [
+    14,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fall_star_1",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    942,
+    691,
+    976,
+    779
+   ],
+   "trimmed": [
+    944,
+    693,
+    974,
+    777
+   ],
+   "size": [
+    13,
+    36
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fall_star_2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    989,
+    692,
+    1022,
+    795
+   ],
+   "trimmed": [
+    991,
+    699,
+    1020,
+    793
+   ],
+   "size": [
+    13,
+    40
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fall_star_3",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1035,
+    694,
+    1069,
+    795
+   ],
+   "trimmed": [
+    1037,
+    699,
+    1067,
+    793
+   ],
+   "size": [
+    13,
+    40
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "boom_cloud",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1129,
+    705,
+    1189,
+    769
+   ],
+   "trimmed": [
+    1131,
+    707,
+    1187,
+    767
+   ],
+   "size": [
+    26,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "boom_cloud_big",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1195,
+    698,
+    1267,
+    768
+   ],
+   "trimmed": [
+    1197,
+    700,
+    1265,
+    766
+   ],
+   "size": [
+    31,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "boom_burst",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1083,
+    705,
+    1132,
+    777
+   ],
+   "trimmed": [
+    1085,
+    713,
+    1132,
+    775
+   ],
+   "size": [
+    22,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "launch_pad",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1274,
+    690,
+    1423,
+    789
+   ],
+   "trimmed": [
+    1276,
+    690,
+    1421,
+    787
+   ],
+   "size": [
+    47,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "light_fall_0",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    197,
+    578,
+    250,
+    679
+   ],
+   "trimmed": [
+    199,
+    578,
+    248,
+    677
+   ],
+   "size": [
+    22,
+    45
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "light_fall_1",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    257,
+    578,
+    305,
+    680
+   ],
+   "trimmed": [
+    260,
+    580,
+    305,
+    679
+   ],
+   "size": [
+    21,
+    45
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_l",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    20,
+    792,
+    137,
+    846
+   ],
+   "trimmed": [
+    22,
+    794,
+    135,
+    844
+   ],
+   "size": [
+    46,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_m",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    205,
+    772,
+    281,
+    819
+   ],
+   "trimmed": [
+    207,
+    772,
+    279,
+    817
+   ],
+   "size": [
+    29,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_s",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    145,
+    798,
+    201,
+    836
+   ],
+   "trimmed": [
+    147,
+    800,
+    200,
+    834
+   ],
+   "size": [
+    22,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cloud_big",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    325,
+    775,
+    413,
+    846
+   ],
+   "trimmed": [
+    327,
+    777,
+    411,
+    844
+   ],
+   "size": [
+    34,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "obs_dome",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    443,
+    576,
+    583,
+    719
+   ],
+   "trimmed": [
+    445,
+    578,
+    581,
+    717
+   ],
+   "size": [
+    58,
+    59
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "obs_dome2",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    588,
+    585,
+    692,
+    718
+   ],
+   "trimmed": [
+    588,
+    585,
+    689,
+    715
+   ],
+   "size": [
+    43,
+    55
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "telescope_tower",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    690,
+    575,
+    800,
+    718
+   ],
+   "trimmed": [
+    690,
+    575,
+    795,
+    713
+   ],
+   "size": [
+    45,
+    58
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "tall_tower",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    799,
+    579,
+    864,
+    718
+   ],
+   "trimmed": [
+    801,
+    581,
+    862,
+    716
+   ],
+   "size": [
+    26,
+    57
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "small_dome",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    743,
+    658,
+    798,
+    716
+   ],
+   "trimmed": [
+    745,
+    660,
+    796,
+    715
+   ],
+   "size": [
+    22,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fence",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    445,
+    751,
+    574,
+    802
+   ],
+   "trimmed": [
+    447,
+    753,
+    572,
+    800
+   ],
+   "size": [
+    45,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_post_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    593,
+    749,
+    625,
+    812
+   ],
+   "trimmed": [
+    595,
+    750,
+    623,
+    810
+   ],
+   "size": [
+    12,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_post_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    634,
+    748,
+    666,
+    812
+   ],
+   "trimmed": [
+    636,
+    750,
+    664,
+    810
+   ],
+   "size": [
+    12,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "lantern",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    681,
+    740,
+    719,
+    812
+   ],
+   "trimmed": [
+    683,
+    742,
+    717,
+    810
+   ],
+   "size": [
+    14,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "hang_star_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    730,
+    743,
+    763,
+    811
+   ],
+   "trimmed": [
+    732,
+    745,
+    761,
+    809
+   ],
+   "size": [
+    12,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "hang_star_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    785,
+    743,
+    819,
+    806
+   ],
+   "trimmed": [
+    787,
+    745,
+    817,
+    804
+   ],
+   "size": [
+    12,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "hang_star_c",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    837,
+    743,
+    866,
+    812
+   ],
+   "trimmed": [
+    839,
+    745,
+    864,
+    810
+   ],
+   "size": [
+    10,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "tower_small",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    440,
+    838,
+    502,
+    905
+   ],
+   "trimmed": [
+    440,
+    838,
+    501,
+    905
+   ],
+   "size": [
+    26,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "globe",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    498,
+    838,
+    569,
+    905
+   ],
+   "trimmed": [
+    500,
+    838,
+    567,
+    905
+   ],
+   "size": [
+    29,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "tiny_tower",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    574,
+    841,
+    600,
+    905
+   ],
+   "trimmed": [
+    576,
+    843,
+    598,
+    905
+   ],
+   "size": [
+    10,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gazebo",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    603,
+    857,
+    653,
+    905
+   ],
+   "trimmed": [
+    605,
+    859,
+    651,
+    905
+   ],
+   "size": [
+    20,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "armillary",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    655,
+    838,
+    709,
+    905
+   ],
+   "trimmed": [
+    657,
+    840,
+    707,
+    905
+   ],
+   "size": [
+    21,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "pink_dome",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    707,
+    844,
+    808,
+    905
+   ],
+   "trimmed": [
+    709,
+    846,
+    808,
+    900
+   ],
+   "size": [
+    42,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "small_telescope",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    808,
+    850,
+    862,
+    905
+   ],
+   "trimmed": [
+    810,
+    859,
+    859,
+    900
+   ],
+   "size": [
+    21,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_w5",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    36,
+    944,
+    73,
+    980
+   ],
+   "trimmed": [
+    38,
+    946,
+    71,
+    978
+   ],
+   "size": [
+    11,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_w5_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    72,
+    953,
+    119,
+    1000
+   ],
+   "trimmed": [
+    74,
+    955,
+    117,
+    998
+   ],
+   "size": [
+    12,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "moon_token",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    135,
+    942,
+    186,
+    1001
+   ],
+   "trimmed": [
+    137,
+    944,
+    184,
+    999
+   ],
+   "size": [
+    15,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "moon_token_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    192,
+    944,
+    240,
+    998
+   ],
+   "trimmed": [
+    194,
+    946,
+    238,
+    996
+   ],
+   "size": [
+    14,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "special_star",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    254,
+    930,
+    340,
+    1015
+   ],
+   "trimmed": [
+    256,
+    932,
+    340,
+    1015
+   ],
+   "size": [
+    21,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "flag_w5",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    355,
+    930,
+    429,
+    1022
+   ],
+   "trimmed": [
+    357,
+    932,
+    427,
+    1020
+   ],
+   "size": [
+    23,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sign_w5",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    460,
+    934,
+    536,
+    1019
+   ],
+   "trimmed": [
+    462,
+    936,
+    534,
+    1017
+   ],
+   "size": [
+    22,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "portal_w5",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    556,
+    932,
+    649,
+    1021
+   ],
+   "trimmed": [
+    558,
+    934,
+    647,
+    1019
+   ],
+   "size": [
+    40,
+    39
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "mini_rocket",
+   "type": "object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    680,
+    943,
+    829,
+    1014
+   ],
+   "trimmed": [
+    680,
+    945,
+    827,
+    1012
+   ],
+   "size": [
+    30,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "rainbow_band",
+   "type": "generated_object",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": null,
+   "size": [
+    8,
+    12
+   ],
+   "status": "ok",
+   "notes": "banda del tobogán arcoíris con los colores muestreados de 'segmentos de tobogán arcoíris' (se repite a lo largo de la rampa)"
+  },
+  {
+   "name": "bg_moon_castle",
+   "type": "background",
+   "source": "imagenes/word_5.png",
+   "crop": [
+    530,
+    40,
+    1015,
+    345
+   ],
+   "trimmed": [
+    530,
+    40,
+    1014,
+    345
+   ],
+   "size": [
+    204,
+    129
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "Luna sonriente y castillo celeste de word_5.png sin el cielo nocturno; sin las plataformas pintadas de la parte baja."
+  },
+  {
+   "name": "bg_moon_face",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    888,
+    878,
+    1000,
+    995
+   ],
+   "trimmed": [
+    891,
+    883,
+    992,
+    991
+   ],
+   "size": [
+    41,
+    44
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_ring_planet",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    958,
+    883,
+    1100,
+    965
+   ],
+   "trimmed": [
+    966,
+    883,
+    1082,
+    960
+   ],
+   "size": [
+    47,
+    31
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_blue_planet",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1100,
+    895,
+    1185,
+    962
+   ],
+   "trimmed": [
+    1104,
+    895,
+    1185,
+    962
+   ],
+   "size": [
+    33,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_island_small",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1104,
+    950,
+    1204,
+    1026
+   ],
+   "trimmed": [
+    1110,
+    950,
+    1204,
+    1023
+   ],
+   "size": [
+    43,
+    33
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_trails",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1310,
+    886,
+    1426,
+    948
+   ],
+   "trimmed": [
+    1310,
+    889,
+    1420,
+    948
+   ],
+   "size": [
+    56,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "estelas y constelaciones: sólo lo luminoso, sobre el cielo del juego"
+  },
+  {
+   "name": "bg_light_fall",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    197,
+    578,
+    250,
+    679
+   ],
+   "trimmed": [
+    199,
+    578,
+    248,
+    677
+   ],
+   "size": [
+    35,
+    70
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "cascada de luz decorativa (lejana, sin corriente)"
+  },
+  {
+   "name": "bg_tower_island",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    1305,
+    228,
+    1429,
+    431
+   ],
+   "trimmed": [
+    1307,
+    229,
+    1427,
+    429
+   ],
+   "size": [
+    44,
+    72
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_islet",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    542,
+    295,
+    630,
+    400
+   ],
+   "trimmed": [
+    542,
+    295,
+    630,
+    400
+   ],
+   "size": [
+    27,
+    32
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_fog",
+   "type": "background",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    291,
+    700,
+    419,
+    738
+   ],
+   "trimmed": [
+    293,
+    700,
+    417,
+    736
+   ],
+   "size": [
+    75,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "w5_sky",
+   "type": "generated_background",
+   "source": "imagenes/word_5.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_5.png (cielo ['#01238B', '#474ED5', '#A78AFC', '#F7CFFC'], nubes ['#A8B4FC', '#C5C3FD', '#F9E1F8', '#F7CFFC'])"
+  },
+  {
+   "name": "w5_clouds_far",
+   "type": "generated_background",
+   "source": "imagenes/word_5.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_5.png (cielo ['#01238B', '#474ED5', '#A78AFC', '#F7CFFC'], nubes ['#A8B4FC', '#C5C3FD', '#F9E1F8', '#F7CFFC'])"
+  },
+  {
+   "name": "w5_clouds_near",
+   "type": "generated_background",
+   "source": "imagenes/word_5.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_5.png (cielo ['#01238B', '#474ED5', '#A78AFC', '#F7CFFC'], nubes ['#A8B4FC', '#C5C3FD', '#F9E1F8', '#F7CFFC'])"
+  },
+  {
+   "name": "cosmic_base",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    127,
+    446,
+    197,
+    482
+   ],
+   "trimmed": [
+    127,
+    446,
+    197,
+    482
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "cosmic_foam",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    99,
+    154,
+    172,
+    240
+   ],
+   "trimmed": [
+    99,
+    154,
+    172,
+    240
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "block_star",
+   "type": "block",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    327,
+    154,
+    400,
+    247
+   ],
+   "trimmed": [
+    329,
+    156,
+    398,
+    246
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_planet",
+   "type": "block",
+   "source": "imagenes/tilesets_world_5.png",
+   "crop": [
+    404,
+    154,
+    478,
+    247
+   ],
+   "trimmed": [
+    406,
+    156,
+    476,
+    246
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  }
+ ],
+ "summary": {
+  "total": 192,
+  "pending": []
+ }
+}

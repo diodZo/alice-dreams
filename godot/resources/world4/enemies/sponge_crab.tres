@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_tp2rh"]
+
+[resource]
+script = ExtResource("1_tp2rh")
+key = "sponge_crab"
+display_name = "Cangrejito Esponja"
+hp = 3
+speed = 42.0
+body_size = Vector2(22, 18)
+detect_range = 140.0
+attack_cooldown = 1300.0
+attack_range = 34.0

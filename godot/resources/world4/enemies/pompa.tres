@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_o67ac"]
+
+[resource]
+script = ExtResource("1_o67ac")
+key = "pompa"
+display_name = "Pompa Traviesa"
+speed = 26.0
+body_size = Vector2(22, 22)
+detect_range = 170.0
+detect_height = 110.0
+reaction_time = 600.0
+attack_cooldown = 2400.0
+attack_range = 56.0

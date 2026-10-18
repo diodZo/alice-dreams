@@ -63,6 +63,8 @@ func _ready() -> void:
 	]
 	if int(stats.get("magicTotal", 0)) > 0:
 		lines.insert(2, "Crayones mágicos: %d de %d" % [stats.get("magic", []).size(), int(stats.magicTotal)])
+	if int(stats.get("dreamTotal", 0)) > 0:
+		lines.insert(2, "Tesoros del sueño: %d de %d" % [stats.get("dream", []).size(), int(stats.dreamTotal)])
 	var info := PixelText.make("\n".join(lines), {"origin": Vector2(0.5, 0), "tint": C.CREAM, "center": true})
 	info.position = Vector2(W / 2 + 10, 76)
 	add_child(info)
