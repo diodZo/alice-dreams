@@ -176,7 +176,7 @@ Consulta `WORLD3_REPORT.md` para el inventario de contenido y validaciones.
 
 # Mundo 4
 
-El Reino de las Burbujas se abre desde el mapa de mundos al completar el Mundo 3. Incluye cinco secciones, agua con natación, géiseres, columnas de burbujas, rodillos, jabones, tres enemigos y el Rey Patoburbuja. Los recursos se regeneran con:
+El Reino de las Burbujas se abre desde el carrusel del menú principal al completar el Mundo 3. Incluye cinco secciones, agua con natación, géiseres, columnas de burbujas, rodillos, jabones, tres enemigos y el Rey Patoburbuja. Los recursos se regeneran con:
 
 ```powershell
 python tools/world4/prepare_world4_assets.py --debug
@@ -187,7 +187,7 @@ Música opcional: `world4_theme.ogg`, `rey_patoburbuja_boss.ogg` y `world4_victo
 
 # Mundo 5
 
-Sueños Cósmicos — Islas en el Cielo se abre desde el mapa de mundos al completar el Mundo 4. Incluye cinco secciones, plataformas de estrella (sólidas y trampolines), lunas crecientes (fijas, móviles y en órbita), toboganes arcoíris, cohetes móviles, cascadas de luz que suben, estrellas que caen, nubes explosivas, tres enemigos (Estrellita Fugaz, Meteorito Travieso y Cohetito Centinela) y Luna Estelar. Los recursos se regeneran con:
+Sueños Cósmicos — Islas en el Cielo se abre desde el carrusel del menú principal al completar el Mundo 4. Incluye cinco secciones, plataformas de estrella (sólidas y trampolines), lunas crecientes (fijas, móviles y en órbita), toboganes arcoíris, cohetes móviles, cascadas de luz que suben, estrellas que caen, nubes explosivas, tres enemigos (Estrellita Fugaz, Meteorito Travieso y Cohetito Centinela) y Luna Estelar. Los recursos se regeneran con:
 
 ```powershell
 python tools/world5/prepare_world5_assets.py --debug

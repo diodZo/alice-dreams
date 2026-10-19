@@ -4,7 +4,6 @@ class_name Router
 const SCENES := {
 	"Boot": "res://scenes/main/Main.tscn",
 	"Menu": "res://scenes/menus/Menu.tscn",
-	"WorldMap": "res://scenes/menus/WorldMap.tscn",
 	"World1": "res://scenes/worlds/World1.tscn",
 	"Boss": "res://scenes/bosses/World1Boss.tscn",
 	"Victory": "res://scenes/menus/Victory.tscn",

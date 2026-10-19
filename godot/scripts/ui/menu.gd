@@ -1,16 +1,36 @@
 extends Control
 ## Pantalla de título sobre la ilustración imagenes/menu_principal.png (preparada por
-## tools/menu/prepare_menu_assets.py). Las islas de los tres mundos y los recuadros de audio
-## son zonas interactivas; el «SÍ/NO» del audio lo escribe el juego según la configuración.
-## Orden de navegación: Mundo 1, 2, 3, Música, Efectos, Mapa de mundos, Borrar progreso.
+## tools/menu/prepare_menu_assets.py). La selección de mundos es un carrusel de los ocho
+## mundos (WorldCarousel); los recuadros de audio son zonas interactivas y el «SÍ/NO» lo
+## escribe el juego según la configuración.
+## Orden de navegación (arriba/abajo): Carrusel, Música, Efectos, Borrar progreso. Con el carrusel seleccionado, izquierda/derecha cambian de mundo.
 
 const BG := preload("res://resources/menu/menu_bg.png")
-## Zonas en coordenadas de 480x270: [isla (clic), rótulo pintado (marco de selección)].
-const WORLD_ZONES := {
-	1: [Rect2(20, 50, 145, 128), Rect2(45, 146, 108, 30)],
-	2: [Rect2(172, 58, 130, 127), Rect2(196, 152, 90, 28)],
-	3: [Rect2(326, 56, 150, 124), Rect2(344, 147, 103, 30)],
+## Fondo definitivo sin las tres islas pintadas (aún no existe). Mientras falte, las islas de
+## la ilustración quedan detrás de un velo difuminado (CAROUSEL_BAND) bajo el carrusel.
+const CLEAN_BG_PATH := "res://resources/menu/menu_bg_clean.png"
+## Franja de la ilustración que ocupa el carrusel (filas de 480x270): entre el logo y Alice.
+const CAROUSEL_BAND := Vector2(48, 186)
+const VEIL_SHADER := """
+shader_type canvas_item;
+uniform float top;
+uniform float bottom;
+uniform float feather = 12.0;
+uniform vec4 tint : source_color = vec4(0.55, 0.62, 0.98, 1.0);
+uniform float tint_amount = 0.4;
+void fragment() {
+	vec2 px = TEXTURE_PIXEL_SIZE;
+	vec3 acc = vec3(0.0);
+	for (int x = -4; x <= 4; x++) {
+		for (int y = -4; y <= 4; y++) {
+			acc += texture(TEXTURE, UV + vec2(float(x), float(y)) * px * 2.0).rgb;
+		}
+	}
+	float row = UV.y / px.y;
+	float a = smoothstep(top, top + feather, row) * (1.0 - smoothstep(bottom - feather, bottom, row));
+	COLOR = vec4(mix(acc / 81.0, tint.rgb, tint_amount), a);
 }
+"""
 const MUSIC_ZONE := Rect2(276, 216, 79, 24)
 const SFX_ZONE := Rect2(362, 216, 84, 24)
 ## Centro del «SÍ/NO» dentro de cada recuadro (tras «MÚSICA:» / «EFECTOS:» pintados).
@@ -21,10 +41,9 @@ const TWINKLES := [Vector2(240, 13), Vector2(240, 46), Vector2(44, 22), Vector2(
 
 var starting := false
 var reset_armed := false
-var world_btns: Dictionary = {}
+var carousel: WorldCarousel
 var music_btn: HotspotButton
 var sfx_btn: HotspotButton
-var map_btn: CloudButton
 var reset_btn: CloudButton
 var list: MenuList
 
@@ -34,22 +53,24 @@ func _ready() -> void:
 	var W := float(C.GAME_W)
 	var H := float(C.GAME_H)
 	var bg := Sprite2D.new()
-	bg.texture = BG
 	bg.centered = false
-	add_child(bg)
+	if ResourceLoader.exists(CLEAN_BG_PATH):
+		bg.texture = load(CLEAN_BG_PATH)
+		add_child(bg)
+	else:
+		bg.texture = BG
+		add_child(bg)
+		_carousel_veil()
 	_twinkles()
 
-	for id in WORLD_ZONES:
-		var z: Array = WORLD_ZONES[id]
-		var b := HotspotButton.make_zone(z[0], z[1])
-		b.set_locked(not WorldRegistry.is_playable(id))
-		var wd := SaveManager.get_world(id)
-		if wd.get("completed", false):
-			b.set_badge("%d estrellas" % int(wd.get("bestStars", 0)))
-		var k: int = id
-		b.activated.connect(func(_b): start_game(k))
-		add_child(b)
-		world_btns[id] = b
+	# empieza en el mundo más avanzado que se puede jugar (como el mapa de mundos)
+	var worlds := WorldData.catalog()
+	var start := 0
+	for i in worlds.size():
+		if worlds[i].can_enter():
+			start = i
+	carousel = WorldCarousel.new().setup(worlds, start)
+	carousel.world_chosen.connect(func(d: WorldData): start_game(d.id))
 
 	music_btn = HotspotButton.make_zone(MUSIC_ZONE, MUSIC_ZONE, _music_label())
 	music_btn.label_pos = MUSIC_TEXT - MUSIC_ZONE.position
@@ -67,19 +88,17 @@ func _ready() -> void:
 	add_child(sfx_btn)
 
 	# opciones que no están en la ilustración: en el cielo, entre Alice y el audio
-	map_btn = CloudButton.make("Mapa de mundos", 100, 18)
-	map_btn.position = Vector2(168, 191)
-	map_btn.activated.connect(func(_b): open_map())
-	add_child(map_btn)
 	reset_btn = CloudButton.make("Borrar progreso", 100, 18)
-	reset_btn.position = Vector2(168, 211)
+	reset_btn.position = Vector2(168, 196)
 	reset_btn.activated.connect(confirm_reset)
 	add_child(reset_btn)
 
-	var buttons: Array[CloudButton] = [world_btns[1], world_btns[2], world_btns[3], music_btn, sfx_btn, map_btn, reset_btn]
+	var buttons: Array[CloudButton] = [carousel.focus_slot, music_btn, sfx_btn, reset_btn]
 	list = MenuList.new().setup(buttons)
 	list.horizontal = true
 	add_child(list)
+	# después de la lista: con el foco, el carrusel recibe antes izquierda/derecha
+	add_child(carousel)
 
 	var strip := ColorRect.new()
 	strip.color = Color(C.INK, 0.55)
@@ -102,10 +121,32 @@ func _ready() -> void:
 	Fader.fade_in(400)
 
 
+## Provisional (sin menu_bg_clean.png): copia difuminada de la franja central de la
+## ilustración sobre las islas pintadas, para que no compitan con las del carrusel.
+func _carousel_veil() -> void:
+	var shader := Shader.new()
+	shader.code = VEIL_SHADER
+	var mat := ShaderMaterial.new()
+	mat.shader = shader
+	mat.set_shader_parameter("top", CAROUSEL_BAND.x)
+	mat.set_shader_parameter("bottom", CAROUSEL_BAND.y)
+	var veil := Sprite2D.new()
+	veil.name = "CarouselVeil"
+	veil.texture = BG
+	veil.centered = false
+	veil.region_enabled = true
+	veil.region_rect = Rect2(0, CAROUSEL_BAND.x, C.GAME_W, CAROUSEL_BAND.y - CAROUSEL_BAND.x)
+	veil.position = Vector2(0, CAROUSEL_BAND.x)
+	veil.material = mat
+	add_child(veil)
+
+
 func _twinkles() -> void:
 	var rnd := RandomNumberGenerator.new()
 	rnd.seed = 7
 	for p in TWINKLES:
+		if p.y > CAROUSEL_BAND.x:
+			continue # sobre el carrusel distraerían de las islas
 		var s := Sprite2D.new()
 		s.texture = Assets.frame("fx", "sparkle")
 		s.position = p
@@ -141,15 +182,6 @@ func confirm_reset(btn: CloudButton) -> void:
 	get_tree().reload_current_scene()
 
 
-func open_map() -> void:
-	if starting:
-		return
-	starting = true
-	AudioManager.play("ui_select")
-	await Fader.fade_out(300)
-	Router.go("WorldMap")
-
-
 func start_game(id := 1) -> void:
 	if starting:
 		return
@@ -159,6 +191,7 @@ func start_game(id := 1) -> void:
 		return
 	starting = true
 	AudioManager.play("ui_select")
+	carousel.play_enter()
 	var key := WorldRegistry.start_run(id)
 	GameState.entry = {"introBanner": true}
 	await Fader.fade_out(400)

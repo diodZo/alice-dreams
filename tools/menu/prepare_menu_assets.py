@@ -6,12 +6,12 @@ Uso (desde la raíz del repositorio):
 
 Fuentes oficiales (no se modifican):
     imagenes/menu_principal.png   pantalla de título con los tres primeros mundos y el audio
-    imagenes/mapa_mundos.png      mapa con los ocho mundos
+    imagenes/mapa_mundos.png      ocho mundos (el carrusel del menú recorta de aquí sus islas)
 
 Las ilustraciones se reducen a la resolución lógica del juego (480x270). En el menú se borra
 el "SÍ" de "MÚSICA: SÍ" / "EFECTOS: SÍ": el juego escribe SÍ o NO según la configuración real (el resto de rótulos de la ilustración son fijos y se conservan).
-Las zonas interactivas (islas, recuadros) se describen en scripts/ui/menu.gd y world_map.gd
-en coordenadas de 480x270.
+Las zonas interactivas (recuadros) se describen en scripts/ui/menu.gd y los recortes de las islas
+en scripts/ui/world_data.gd, en coordenadas de 480x270.
 """
 import os
 

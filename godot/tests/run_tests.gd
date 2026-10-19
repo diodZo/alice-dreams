@@ -23,7 +23,7 @@ func _ready() -> void:
 		"test_fall_respawn_checkpoint", "test_star_and_pickup", "test_weapons",
 		"test_bubble_traps_and_star", "test_paint_and_sling_damage", "test_stomp", "test_scratch_ai",
 		"test_spit_ai", "test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory",
-		"test_menu_keyboard", "test_menu_art", "test_world_map", "test_pause_resume",
+		"test_menu_keyboard", "test_menu_art", "test_world_carousel", "test_pause_resume",
 		# Mundo 2
 		"test_w2_data", "test_w2_sprites", "test_w2_level_loads", "test_w2_paint", "test_w2_rulers",
 		"test_w2_switch_and_temporary", "test_w2_hazards", "test_w2_magic_and_checkpoint",
@@ -652,8 +652,11 @@ func test_menu_art() -> void:
 	var menu: Control = load(Router.SCENES.Menu).instantiate()
 	add_child(menu)
 	await frames(2)
-	check(not menu.world_btns[1].locked and not menu.world_btns[2].locked and menu.world_btns[3].locked, "islas: Mundo 1 y 2 abiertos, Mundo 3 con candado")
-	check(menu.world_btns[1].badge != null and menu.world_btns[1].badge.text == "97 estrellas", "el mundo completado muestra sus estrellas")
+	var cards: Array[WorldCard] = menu.carousel.cards
+	check(cards[0].data.state() == WorldData.State.COMPLETED and cards[1].data.state() == WorldData.State.UNLOCKED and cards[2].data.state() == WorldData.State.LOCKED, "carrusel: Mundo 1 completado, Mundo 2 abierto, Mundo 3 con candado")
+	check(menu.carousel.index == 1, "el carrusel empieza en el mundo más avanzado que se puede jugar")
+	check(cards[0].data.describe().ends_with("97 estrellas"), "el mundo completado muestra sus estrellas")
+	check(cards[2].island.self_modulate == WorldCard.LOCKED_TINT and cards[1].island.self_modulate == Color.WHITE, "el mundo bloqueado se atenúa")
 	var music_before := AudioManager.music_on
 	menu.music_btn.activate()
 	check(menu.music_btn.label.text == ("NO" if music_before else "SÍ"), "el recuadro de música escribe SÍ/NO según la configuración")
@@ -672,41 +675,48 @@ func test_menu_art() -> void:
 	SaveManager.reset_progress()
 
 
-func test_world_map() -> void:
+func test_world_carousel() -> void:
 	SaveManager.reset_progress()
-	var wm: Control = load(Router.SCENES.WorldMap).instantiate()
-	add_child(wm)
+	var names := ["Nubes de Algodón", "Crayones", "Peluches", "Océano de Burbujas", "Juguetes", "Parque de las Estrellas", "Bosque de Caramelos", "Castillo de los Sueños"]
+	var c := WorldCarousel.new().setup(WorldData.catalog(), 0)
+	var chosen: Array = []
+	var refused: Array = []
+	c.world_chosen.connect(func(d): chosen.append(d.id))
+	c.world_refused.connect(func(d): refused.append(d.id))
+	add_child(c)
 	await frames(2)
-	var list: MenuList = wm.list
-	check(list.buttons.size() == 9 and list.index == 0, "mapa con ocho mundos y «Volver»; empieza en el Mundo 1")
-	check(wm.world_btns[2].locked and wm.world_btns[5].locked and not wm.world_btns[1].locked, "sólo el Mundo 1 abierto al empezar")
-	check(wm.info.text.begins_with("Mundo 1: Nubes de Algodón"), "la barra describe el mundo seleccionado")
-	await _action("menu_down")
-	check(list.index == 4, "abajo baja de fila (Mundo 5)")
-	await frames(1)
-	check(wm.info.text.ends_with("Completa el Mundo 4"), "el Mundo 5 (implementado) explica cómo abrirlo")
-	await _action("move_right")
-	check(list.index == 5, "derecha avanza al Mundo 6")
-	await frames(1)
-	check(wm.info.text.ends_with("Completa el Mundo 5"), "el Mundo 6 (implementado) explica cómo abrirlo")
-	await _action("move_right")
-	await frames(1)
-	check(list.index == 6 and wm.info.text.ends_with("Próximamente"), "los mundos sin implementar dicen «Próximamente»")
-	await _action("menu_down")
-	check(list.index == 8, "saliendo de la rejilla se llega a «Volver»")
-	await _action("menu_down")
-	check(list.index == 0, "y desde «Volver» se entra por la primera fila")
-	await _action("move_right")
-	await frames(1)
-	check(wm.info.text.contains("Completa el Mundo 1"), "un mundo bloqueado explica cómo abrirlo")
-	wm.queue_free()
-	await get_tree().process_frame
-	SaveManager.mark_world_completed(1, 10, 144); SaveManager.mark_world_completed(2, 10, 144)
-	var wm2: Control = load(Router.SCENES.WorldMap).instantiate()
-	add_child(wm2)
-	await frames(2)
-	check(wm2.list.index == 2 and not wm2.world_btns[3].locked, "con progreso empieza en el mundo más avanzado")
-	wm2.queue_free()
+	check(c.cards.size() == 8 and c.cards.map(func(k): return k.data.title) == names, "ocho mundos en el orden fijado")
+	var shown := func() -> Array: return range(8).filter(func(i): return c.cards[i].visible)
+	check(shown.call() == [0, 1, 7], "tres islas a la vista: la central y una a cada lado")
+	var mid := c.cards[0]
+	var right := c.cards[1]
+	check(mid.scale == Vector2.ONE and mid.modulate.a == 1.0 and right.scale == Vector2.ONE * 0.75 and is_equal_approx(right.modulate.a, 0.8), "centro 1.0/opaca, laterales 0.75/0.8")
+	check(mid.floating and not right.floating, "sólo la isla central flota")
+	near(mid.position.x + mid.size.x / 2.0, c.center.x, 1, "la isla seleccionada está centrada")
+	await _action("ui_right")
+	check(c.index == 1 and c.busy, "derecha avanza al Mundo 2 con animación")
+	await _action("ui_right")
+	check(c.index == 1, "durante la animación se ignora la entrada")
+	await frames(32)
+	check(not c.busy and shown.call() == [0, 1, 2], "al terminar se aceptan órdenes y se ven los mundos 1-2-3")
+	near(right.position.x + right.size.x / 2.0, c.center.x, 1, "el Mundo 2 llega al centro")
+	check(right.scale == Vector2.ONE and is_equal_approx(c.cards[0].scale.x, 0.75) and is_equal_approx(c.cards[0].modulate.a, 0.8), "las escalas y opacidades se intercambian")
+	await _action("ui_accept")
+	check(refused == [2] and chosen.is_empty(), "un mundo bloqueado no se abre")
+	await frames(20)
+	await _action("ui_left")
+	await frames(32)
+	await _action("ui_left")
+	await frames(32)
+	check(c.index == 7 and shown.call() == [0, 6, 7], "la lista es circular (del 1 se pasa al 8)")
+	c.cards[0].clicked.emit(c.cards[0])
+	check(c.index == 0, "clic en una isla lateral la lleva al centro")
+	await frames(32)
+	c.cards[0].clicked.emit(c.cards[0])
+	check(chosen == [1], "clic en la isla central entra en el mundo")
+	await _action("ui_accept")
+	check(chosen == [1, 1], "Enter también entra")
+	c.queue_free()
 	await get_tree().process_frame
 	SaveManager.reset_progress()
 
@@ -716,22 +726,28 @@ func test_menu_keyboard() -> void:
 	add_child(menu)
 	await frames(2)
 	var list: MenuList = menu.get_children().filter(func(n): return n is MenuList)[0]
-	check(list.index == 0 and list.buttons[0].selected, "el menú empieza en Mundo 1")
+	var carousel: WorldCarousel = menu.carousel
+	check(list.index == 0 and list.buttons[0] == carousel.focus_slot and carousel.focused, "el menú empieza en el carrusel de mundos")
+	var world_before := carousel.index
+	await _action("ui_right")
+	check(list.index == 0 and carousel.index == (world_before + 1) % 8, "derecha cambia de mundo sin salir del carrusel")
+	await frames(32)
 	await _action("menu_down")
-	check(list.index == 1, "flecha abajo selecciona la opción siguiente (Mundo 2)")
-	await _action("menu_down")
-	check(list.index == 2, "y después Mundo 3")
-	await _action("menu_down")
-	check(list.index == 3, "y después Música")
+	check(list.index == 1 and not carousel.focused, "flecha abajo pasa a Música")
+	await _action("move_right")
+	check(list.index == 2 and carousel.index == (world_before + 1) % 8, "fuera del carrusel, derecha recorre las opciones y no cambia de mundo")
+	await _action("menu_up")
 	var music_before := AudioManager.music_on
 	await _action("menu_accept")
 	check(AudioManager.music_on != music_before, "Enter activa la opción (música)")
 	await _action("menu_accept")
 	check(AudioManager.music_on == music_before, "y vuelve a cambiarla")
 	await _action("menu_up")
-	check(list.index == 2, "flecha arriba vuelve a la opción anterior")
+	check(list.index == 0 and carousel.focused, "flecha arriba vuelve al carrusel")
 	list.buttons[3].hovered.emit(list.buttons[3])
 	check(list.index == 3, "pasar el ratón por encima selecciona")
+	carousel.cards[carousel.index].hovered.emit(carousel.cards[carousel.index])
+	check(list.index == 0 and carousel.focused, "pasar el ratón por una isla devuelve el foco al carrusel")
 	menu.queue_free()
 	await get_tree().process_frame
 
@@ -1711,12 +1727,13 @@ func test_w4_progression() -> void:
 	var list: MenuList = v.get_children().filter(func(n): return n is MenuList)[0]
 	check(v.world_id == 4 and list.buttons[0].label.text == "Ir al Mundo 5", "la victoria del Mundo 4 ofrece ir al Mundo 5")
 	v.queue_free()
-	# el mapa de mundos abre el Mundo 4
-	var wm: Control = load(Router.SCENES.WorldMap).instantiate()
-	add_child(wm)
+	# el carrusel del menú abre el Mundo 4
+	var menu: Control = load(Router.SCENES.Menu).instantiate()
+	add_child(menu)
 	await frames(2)
-	check(not wm.world_btns[4].locked and not wm.world_btns[5].locked and wm.world_btns[6].locked, "el mapa abre los Mundos 4 y 5 y mantiene cerrado el 6")
-	wm.queue_free()
+	var cards: Array[WorldCard] = menu.carousel.cards
+	check(cards[3].data.can_enter() and cards[4].data.can_enter() and not cards[5].data.can_enter(), "el carrusel abre los Mundos 4 y 5 y mantiene cerrado el 6")
+	menu.queue_free()
 	await get_tree().process_frame
 	SaveManager.reset_progress()
 
@@ -2189,12 +2206,13 @@ func test_w5_progression() -> void:
 	var list: MenuList = v.get_children().filter(func(n): return n is MenuList)[0]
 	check(v.world_id == 5 and list.buttons[0].label.text == "Ir al Mundo 6", "la pantalla de victoria ofrece ir al Mundo 6")
 	v.queue_free()
-	var wm: Control = load(Router.SCENES.WorldMap).instantiate()
-	add_child(wm)
+	var menu: Control = load(Router.SCENES.Menu).instantiate()
+	add_child(menu)
 	await frames(2)
-	check(not wm.world_btns[5].locked and not wm.world_btns[6].locked and wm.world_btns[7].locked, "el mapa abre los Mundos 5 y 6 y mantiene cerrado el 7")
-	check(wm.describe(5).begins_with("Mundo 5: Sueños Cósmicos"), "el mapa nombra el Mundo 5")
-	wm.queue_free()
+	var cards: Array[WorldCard] = menu.carousel.cards
+	check(cards[4].data.can_enter() and cards[5].data.can_enter() and not cards[6].data.can_enter(), "el carrusel abre los Mundos 5 y 6 y mantiene cerrado el 7")
+	check(menu.carousel.index == 5, "el carrusel empieza en el Mundo 6")
+	menu.queue_free()
 	await get_tree().process_frame
 	SaveManager.reset_progress()
 
@@ -2884,16 +2902,18 @@ func test_w6_progression() -> void:
 	var list: MenuList = v.get_children().filter(func(n): return n is MenuList)[0]
 	check(v.world_id == 6 and list.buttons[0].label.text == "Jugar otra vez", "pantalla de victoria sin botón a un Mundo 7 inexistente")
 	v.queue_free()
-	var wm: Control = load(Router.SCENES.WorldMap).instantiate()
-	add_child(wm)
+	var menu: Control = load(Router.SCENES.Menu).instantiate()
+	add_child(menu)
 	await frames(2)
-	check(not wm.world_btns[6].locked and wm.describe(6).begins_with("Mundo 6: Tren de Juguete"), "el mapa abre y nombra el Mundo 6")
-	check(not wm.world_btns[7].locked and wm.is_pending(7) and wm.describe(7).ends_with("Desbloqueado: próximamente"), "el Mundo 7 aparece desbloqueado pero pendiente")
-	check(wm.world_btns[8].locked, "el Mundo 8 sigue cerrado")
-	wm.start_game(7)
+	var cards: Array[WorldCard] = menu.carousel.cards
+	check(cards[5].data.state() == WorldData.State.COMPLETED, "el carrusel muestra el Mundo 6 completado")
+	check(not cards[6].data.can_enter() and cards[6].data.describe().ends_with("Próximamente"), "el Mundo 7 aparece como próximamente")
+	check(cards[7].data.state() == WorldData.State.LOCKED, "el Mundo 8 sigue cerrado")
+	menu.carousel.select(6, false)
+	menu.carousel.activate_center()
 	await frames(2)
-	check(not wm.starting, "elegir el Mundo 7 no intenta abrir ninguna escena")
-	wm.queue_free()
+	check(not menu.starting, "elegir el Mundo 7 no intenta abrir ninguna escena")
+	menu.queue_free()
 	await get_tree().process_frame
 	SaveManager.reset_progress()
 
