@@ -185,9 +185,9 @@ python tools/world4/world4_level.py
 
 Música opcional: `world4_theme.ogg`, `rey_patoburbuja_boss.ogg` y `world4_victory.ogg` en `godot/resources/audio/`. Consulta `WORLD4_REPORT.md` para el detalle por etapas y las validaciones.
 
-# Mundo 5
+# Mundo 6 — Parque de las Estrellas
 
-Sueños Cósmicos — Islas en el Cielo se abre desde el carrusel del menú principal al completar el Mundo 4. Incluye cinco secciones, plataformas de estrella (sólidas y trampolines), lunas crecientes (fijas, móviles y en órbita), toboganes arcoíris, cohetes móviles, cascadas de luz que suben, estrellas que caen, nubes explosivas, tres enemigos (Estrellita Fugaz, Meteorito Travieso y Cohetito Centinela) y Luna Estelar. Los recursos se regeneran con:
+Sueños Cósmicos — Islas en el Cielo es el Mundo 6 (isla «Parque de las Estrellas»; sus archivos conservan el nombre world5) y se abre desde el carrusel del menú principal al completar el Mundo 5 (Juguetes, el Reino del Tren de Juguete, archivos world6). Incluye cinco secciones, plataformas de estrella (sólidas y trampolines), lunas crecientes (fijas, móviles y en órbita), toboganes arcoíris, cohetes móviles, cascadas de luz que suben, estrellas que caen, nubes explosivas, tres enemigos (Estrellita Fugaz, Meteorito Travieso y Cohetito Centinela) y Luna Estelar. Los recursos se regeneran con:
 
 ```powershell
 python tools/world5/prepare_world5_assets.py --debug

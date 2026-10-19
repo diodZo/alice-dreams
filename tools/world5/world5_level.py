@@ -236,7 +236,7 @@ enemies = (
 checkpoints = [{"x": 163, "y": 19}, {"x": 419, "y": 18}]
 
 signs = [
-    {"x": 3, "y": 20, "text": "Mundo 5: ¡Sueños Cósmicos! Explora las islas del cielo con tus tres armas"},
+    {"x": 3, "y": 20, "text": "Mundo 6: ¡Sueños Cósmicos! Explora las islas del cielo con tus tres armas"},
     {"x": 28, "y": 20, "text": "La estrella sólida se pisa. La estrella con muelle es un trampolín"},
     {"x": 59, "y": 19, "text": "La Estrellita Fugaz vuela rápido y lanza miniestrellas"},
     {"x": 128, "y": 19, "text": "Las lunas crecientes forman un camino: ¡salta de una a otra!"},
@@ -303,7 +303,7 @@ for x, y, f in [(2, 20, "cloud_s"), (100, 19, "cloud_s"), (232, 19, "cloud_s"), 
 dream_names = {"moon_token": "Ficha de luna", "special": "Estrella especial", "constellation": "Fragmento de constelación", "rocket": "Mini cohete dorado"}
 
 level = {
-    "id": 5, "key": "world5", "name": "Sueños Cósmicos — Islas en el Cielo", "widthTiles": LEVEL_W, "heightTiles": ROWS,
+    "id": 6, "key": "world5", "name": "Sueños Cósmicos — Islas en el Cielo", "widthTiles": LEVEL_W, "heightTiles": ROWS,
     "music": "world5", "tileset": "world5_tiles", "objectsAtlas": "world5_objects", "backgroundAtlas": "world5_bg",
     "progress": {"total": TOTAL, "offset": 0, "scale": 1}, "playerStart": {"x": 4, "y": 20}, "nextScene": "Boss5",
     "startWeapons": ["bubble", "paint", "sling"],
@@ -337,7 +337,7 @@ arena_bg["layers"] = [
 ]
 
 boss = {
-    "key": "world5_boss", "worldId": 5, "widthTiles": ARENA_W, "heightTiles": 17, "music": "world5", "bossMusic": "luna_estelar",
+    "key": "world5_boss", "worldId": 6, "widthTiles": ARENA_W, "heightTiles": 17, "music": "world5", "bossMusic": "luna_estelar",
     "tileset": "world5_tiles", "objectsAtlas": "world5_objects", "backgroundAtlas": "world5_bg", "background": arena_bg,
     "frames": level["frames"], "progress": {"total": TOTAL, "offset": LEVEL_W * 16, "scale": 1}, "playerStart": {"x": 2, "y": 14},
     "sections": [{"id": "E", "name": "El trono de la Luna", "from": 8500}],
@@ -354,7 +354,7 @@ boss = {
     "gate": {"x": 5, "rows": [10, 11, 12, 13], "tile": "block_star"}, "triggerX": 9,
     "boss": {"homeX": 34, "minX": 8, "maxX": 57, "floorY": 224, "frameBoth": True, "scene": "res://scenes/bosses/LunaEstelar.tscn",
              "name": "Luna Estelar", "introBanner": "¡Luna Estelar defiende el Trono de la Luna!",
-             "defeatBanner": "¡Luna Estelar se duerme entre las nubes!", "portalToast": "El portal al Mundo 6 está preparado",
+             "defeatBanner": "¡Luna Estelar se duerme entre las nubes!", "portalToast": "El portal al Mundo 7 está preparado",
              "afterMusic": "world5"},
     "portal": {"x": 56, "y": 14},
 }

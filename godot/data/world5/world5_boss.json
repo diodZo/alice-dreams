@@ -1,6 +1,6 @@
 {
  "key": "world5_boss",
- "worldId": 5,
+ "worldId": 6,
  "widthTiles": 59,
  "heightTiles": 17,
  "music": "world5",
@@ -238,7 +238,7 @@
   "name": "Luna Estelar",
   "introBanner": "¡Luna Estelar defiende el Trono de la Luna!",
   "defeatBanner": "¡Luna Estelar se duerme entre las nubes!",
-  "portalToast": "El portal al Mundo 6 está preparado",
+  "portalToast": "El portal al Mundo 7 está preparado",
   "afterMusic": "world5"
  },
  "portal": {

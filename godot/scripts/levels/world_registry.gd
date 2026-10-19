@@ -8,8 +8,11 @@ class_name WorldRegistry
 ## Cada mundo define en sus datos: tileset, fondo, longitud, secciones, enemigos, obstáculos,
 ## coleccionables, checkpoints, jefe, música y portal de salida.
 ## Implementados: Mundos 1 a 6; el resto queda reservado.
+## El número de mundo (id) sigue la ilustración del menú y el orden de juego; los archivos
+## conservan el nombre con que se crearon: el Mundo 5 (Juguetes) usa World6 / data/world6 y
+## el Mundo 6 (Parque de las Estrellas) usa World5 / data/world5.
 ## Campos de presentación (menú y pantalla de victoria): victoryTitle, victorySub, bossFrames,
-## bossFrame (fotograma del jefe vencido), nextPortal, victoryMusic. "short": nombre del mapa de mundos.
+## bossFrame (fotograma del jefe vencido), nextPortal, victoryMusic. "short": nombre corto.
 
 const WORLDS := [
 	{"id": 1, "name": "El Reino de las Nubes de Algodón", "short": "Nubes de Algodón", "scene": "World1", "data": "res://data/worlds/world1.json", "boss_data": "res://data/worlds/world1_boss.json", "implemented": true,
@@ -28,14 +31,14 @@ const WORLDS := [
 		"victoryTitle": "¡Mundo 4 completado!", "victorySub": "El Rey Patoburbuja duerme feliz entre la espuma",
 		"bossFrames": "patoburbuja", "bossAnim": "defeated", "bossFrame": 0, "bossScale": 0.6,
 		"nextPortal": "Portal al Mundo 5: abierto", "victoryMusic": "world4_victory"},
-	{"id": 5, "name": "Sueños Cósmicos — Islas en el Cielo", "short": "Sueños Cósmicos", "scene": "World5", "data": "res://data/world5/world5.json", "boss_data": "res://data/world5/world5_boss.json", "implemented": true,
-		"victoryTitle": "¡Mundo 5 completado!", "victorySub": "Luna Estelar duerme feliz entre las nubes",
-		"bossFrames": "luna_estelar", "bossAnim": "defeated", "bossFrame": 1, "bossScale": 0.6,
-		"nextPortal": "Portal al Mundo 6: abierto", "victoryMusic": "world5_victory"},
-	{"id": 6, "name": "El Reino del Tren de Juguete", "short": "Tren de Juguete", "scene": "World6", "data": "res://data/world6/world6.json", "boss_data": "res://data/world6/world6_boss.json", "implemented": true,
-		"victoryTitle": "¡Mundo 6 completado!", "victorySub": "Locomostro duerme feliz en la Gran Estación",
+	{"id": 5, "name": "El Reino del Tren de Juguete", "short": "Juguetes", "scene": "World6", "data": "res://data/world6/world6.json", "boss_data": "res://data/world6/world6_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 5 completado!", "victorySub": "Locomostro duerme feliz en la Gran Estación",
 		"bossFrames": "locomostro", "bossAnim": "defeated", "bossFrame": 2, "bossScale": 0.5,
-		"nextPortal": "Portal al Mundo 7: preparado (próximamente)", "victoryMusic": "world6_victory"},
+		"nextPortal": "Portal al Mundo 6: abierto", "victoryMusic": "world6_victory"},
+	{"id": 6, "name": "Sueños Cósmicos — Islas en el Cielo", "short": "Parque de las Estrellas", "scene": "World5", "data": "res://data/world5/world5.json", "boss_data": "res://data/world5/world5_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 6 completado!", "victorySub": "Luna Estelar duerme feliz entre las nubes",
+		"bossFrames": "luna_estelar", "bossAnim": "defeated", "bossFrame": 1, "bossScale": 0.6,
+		"nextPortal": "Portal al Mundo 7: preparado (próximamente)", "victoryMusic": "world5_victory"},
 	{"id": 7, "name": "El Bosque de Caramelos", "short": "Bosque de Caramelos", "scene": "", "data": "", "boss_data": "", "implemented": false},
 	{"id": 8, "name": "El Castillo de los Sueños", "short": "Castillo de los Sueños", "scene": "", "data": "", "boss_data": "", "implemented": false},
 ]
@@ -61,6 +64,15 @@ static func start_run(id: int) -> String:
 		GameState.set_v("weaponsOwned", data.startWeapons.duplicate())
 		GameState.set_v("weapon", data.startWeapons[0])
 	return w.scene
+
+
+## Número de mundo de una escena de Router ("World6" -> 5, "Boss6" -> 5, "Boss" -> 1).
+static func id_for_scene(key: String) -> int:
+	var scene := "World1" if key == "Boss" else key.replace("Boss", "World")
+	for w in WORLDS:
+		if w.scene == scene:
+			return w.id
+	return 1
 
 
 ## ¿Se puede jugar? (implementado y desbloqueado en el guardado)

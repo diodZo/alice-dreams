@@ -258,7 +258,7 @@ enemies = (
 checkpoints = [{"x": 118, "y": 19}, {"x": 398, "y": 19}]
 
 signs = [
-    {"x": 3, "y": 20, "text": "Mundo 6: ¡El Reino del Tren de Juguete! Viaja en los trenes mágicos entre las nubes"},
+    {"x": 3, "y": 20, "text": "Mundo 5: ¡El Reino del Tren de Juguete! Viaja en los trenes mágicos entre las nubes"},
     {"x": 9, "y": 20, "text": "Toca la campana de la estación: ¡Din don!"},
     {"x": 21, "y": 20, "text": "Sube al vagón cuando el tren pare en la estación. Puedes andar y saltar encima"},
     {"x": 46, "y": 20, "text": "Golpea los bloques de estrella desde abajo: ¡sueltan estrellas!"},
@@ -331,7 +331,7 @@ for x, y, f in [(2, 20, "cloud_s"), (85, 19, "bush_s"), (189, 15, "bush_s"), (30
 dream_names = {"ticket": "Billete mágico"}
 
 level = {
-    "id": 6, "key": "world6", "name": "El Reino del Tren de Juguete", "widthTiles": LEVEL_W, "heightTiles": ROWS,
+    "id": 5, "key": "world6", "name": "El Reino del Tren de Juguete", "widthTiles": LEVEL_W, "heightTiles": ROWS,
     "music": "world6", "tileset": "world6_tiles", "objectsAtlas": "world6_objects", "backgroundAtlas": "world6_bg",
     "progress": {"total": TOTAL, "offset": 0, "scale": 1}, "playerStart": {"x": 4, "y": 20}, "nextScene": "Boss6",
     "startWeapons": ["bubble", "paint", "sling"],
@@ -390,7 +390,7 @@ arena_bg["layers"] = [
 ]
 
 boss = {
-    "key": "world6_boss", "worldId": 6, "widthTiles": ARENA_W, "heightTiles": 17, "music": "world6", "bossMusic": "locomostro",
+    "key": "world6_boss", "worldId": 5, "widthTiles": ARENA_W, "heightTiles": 17, "music": "world6", "bossMusic": "locomostro",
     "tileset": "world6_tiles", "objectsAtlas": "world6_objects", "backgroundAtlas": "world6_bg", "background": arena_bg,
     "frames": level["frames"], "progress": {"total": TOTAL, "offset": LEVEL_W * 16, "scale": 1}, "playerStart": {"x": 2, "y": 14},
     "sections": [{"id": "E", "name": "La Gran Estación Real", "from": 8600}],
@@ -410,7 +410,7 @@ boss = {
     "gate": {"x": 5, "rows": [10, 11, 12, 13], "tile": "block_red"}, "triggerX": 9,
     "boss": {"homeX": 40, "minX": 6, "maxX": 57, "floorY": 224, "frameBoth": True, "scene": "res://scenes/bosses/Locomostro.tscn",
              "name": "Locomostro", "introBanner": "¡Locomostro llega a la Gran Estación Real!",
-             "defeatBanner": "¡Locomostro se queda dormido!", "portalToast": "El portal al Mundo 7 está preparado",
+             "defeatBanner": "¡Locomostro se queda dormido!", "portalToast": "El portal al Mundo 6 está preparado",
              "afterMusic": "world6_victory"},
     "portal": {"x": 54, "y": 14},
 }

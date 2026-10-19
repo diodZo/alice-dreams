@@ -91,8 +91,7 @@ func load_level(scene_key := "World1", setup := Callable()) -> Level:
 	if is_instance_valid(level):
 		level.queue_free()
 		await get_tree().process_frame
-	var world_id := int(scene_key.right(1)) if scene_key.right(1).is_valid_int() else 1
-	WorldRegistry.start_run(world_id)
+	WorldRegistry.start_run(WorldRegistry.id_for_scene(scene_key))
 	if setup.is_valid():
 		setup.call()
 	level = load(Router.SCENES[scene_key]).instantiate()
@@ -2182,36 +2181,43 @@ func test_w5_boss_victory() -> void:
 		if level.portal:
 			level.player.position = level.portal.position
 			await frames(5)
-			check(level.leaving and SaveManager.is_world_completed(5), "cruza el portal y guarda el Mundo 5")
-			check(SaveManager.unlocked_world() == 6, "desbloquea el Mundo 6")
+			check(level.leaving and SaveManager.is_world_completed(6), "cruza el portal y guarda el Mundo 6 (Parque de las Estrellas)")
+			check(SaveManager.unlocked_world() == 7, "desbloquea el Mundo 7")
 	SaveManager.reset_progress()
 
 
 func test_w5_progression() -> void:
+	# Sueños Cósmicos (escena World5) es el Mundo 6: Parque de las Estrellas
 	SaveManager.reset_progress()
-	for i in [1, 2, 3]:
+	for i in [1, 2, 3, 4]:
 		SaveManager.mark_world_completed(i, 1, 1)
-	check(not WorldRegistry.is_playable(5), "el Mundo 5 empieza bloqueado")
-	SaveManager.mark_world_completed(4, 1, 1)
-	check(WorldRegistry.is_playable(5), "completar el Mundo 4 desbloquea el Mundo 5")
-	var key := WorldRegistry.start_run(5)
-	check(key == "World5" and GameState.get_v("dreamTotal") == 6 and GameState.get_v("weaponsOwned").size() == 3, "partida nueva del Mundo 5")
-	SaveManager.mark_world_completed(5, 180, 246, true, 1000, [], ["moon_1", "moon_2", "moon_3", "special_1"])
-	check(SaveManager.unlocked_world() == 6 and SaveManager.get_world(5).dreamCollectibles.size() == 4 and SaveManager.get_world(5).bestStars == 180, "victoria guarda estrellas y coleccionables del Mundo 5")
-	check(WorldRegistry.is_playable(6), "la victoria del Mundo 5 abre el Mundo 6")
+	check(not WorldRegistry.is_playable(6), "el Mundo 6 empieza bloqueado")
+	SaveManager.mark_world_completed(5, 1, 1)
+	check(WorldRegistry.is_playable(6), "completar el Mundo 5 desbloquea el Mundo 6")
+	var key := WorldRegistry.start_run(6)
+	check(key == "World5" and GameState.get_v("dreamTotal") == 6 and GameState.get_v("weaponsOwned").size() == 3, "partida nueva del Mundo 6 (Sueños Cósmicos)")
+	check(WorldRegistry.id_for_scene("World5") == 6 and WorldRegistry.id_for_scene("Boss5") == 6, "la escena World5 corresponde al Mundo 6")
+	SaveManager.mark_world_completed(6, 180, 246, true, 1000, [], ["moon_1", "moon_2", "moon_3", "special_1"])
+	check(SaveManager.unlocked_world() == 7 and SaveManager.get_world(6).dreamCollectibles.size() == 4 and SaveManager.get_world(6).bestStars == 180, "victoria guarda estrellas y coleccionables del Mundo 6")
+	check(not WorldRegistry.is_playable(7) and WorldRegistry.start_run(7) == "", "el Mundo 7 aún no existe: no se carga ninguna escena")
 	var v: Control = load(Router.SCENES.Victory).instantiate()
-	GameState.entry = {"world": 5, "stars": 180, "total": 246, "dream": ["moon_1"], "dreamTotal": 6}
+	GameState.entry = {"world": 6, "stars": 180, "total": 246, "dream": ["moon_1"], "dreamTotal": 6}
 	add_child(v)
 	await frames(2)
 	var list: MenuList = v.get_children().filter(func(n): return n is MenuList)[0]
-	check(v.world_id == 5 and list.buttons[0].label.text == "Ir al Mundo 6", "la pantalla de victoria ofrece ir al Mundo 6")
+	check(v.world_id == 6 and list.buttons[0].label.text == "Jugar otra vez", "pantalla de victoria sin botón a un Mundo 7 inexistente")
 	v.queue_free()
 	var menu: Control = load(Router.SCENES.Menu).instantiate()
 	add_child(menu)
 	await frames(2)
 	var cards: Array[WorldCard] = menu.carousel.cards
-	check(cards[4].data.can_enter() and cards[5].data.can_enter() and not cards[6].data.can_enter(), "el carrusel abre los Mundos 5 y 6 y mantiene cerrado el 7")
-	check(menu.carousel.index == 5, "el carrusel empieza en el Mundo 6")
+	check(cards[5].data.title == "Parque de las Estrellas" and cards[5].data.state() == WorldData.State.COMPLETED, "la isla Parque de las Estrellas muestra el Mundo 6 completado")
+	check(not cards[6].data.can_enter() and cards[6].data.describe().ends_with("Próximamente"), "el Mundo 7 aparece como próximamente")
+	check(cards[7].data.state() == WorldData.State.LOCKED, "el Mundo 8 sigue cerrado")
+	menu.carousel.select(6, false)
+	menu.carousel.activate_center()
+	await frames(2)
+	check(not menu.starting, "elegir el Mundo 7 no intenta abrir ninguna escena")
 	menu.queue_free()
 	await get_tree().process_frame
 	SaveManager.reset_progress()
@@ -2878,42 +2884,47 @@ func test_w6_boss_victory() -> void:
 		if level.portal:
 			level.player.position = level.portal.position
 			await frames(5)
-			check(level.leaving and SaveManager.is_world_completed(6), "cruza el portal y guarda el Mundo 6")
-			check(SaveManager.unlocked_world() == 7, "desbloquea el Mundo 7")
+			check(level.leaving and SaveManager.is_world_completed(5), "cruza el portal y guarda el Mundo 5 (Juguetes)")
+			check(SaveManager.unlocked_world() == 6, "desbloquea el Mundo 6")
 	SaveManager.reset_progress()
 
 
 func test_w6_progression() -> void:
+	# El Reino del Tren de Juguete (escena World6) es el Mundo 5: Juguetes
 	SaveManager.reset_progress()
-	for i in [1, 2, 3, 4]:
+	for i in [1, 2, 3]:
 		SaveManager.mark_world_completed(i, 1, 1)
-	check(not WorldRegistry.is_playable(6), "el Mundo 6 empieza bloqueado")
-	SaveManager.mark_world_completed(5, 1, 1)
-	check(WorldRegistry.is_playable(6), "completar el Mundo 5 desbloquea el Mundo 6")
-	var key := WorldRegistry.start_run(6)
-	check(key == "World6" and GameState.get_v("dreamTotal") == 3 and GameState.get_v("weaponsOwned").size() == 3, "partida nueva del Mundo 6")
-	SaveManager.mark_world_completed(6, 200, 237, true, 1000, [], ["ticket_1", "ticket_3"])
-	check(SaveManager.unlocked_world() == 7 and SaveManager.get_world(6).dreamCollectibles.size() == 2 and SaveManager.get_world(6).bestStars == 200, "victoria guarda estrellas y billetes del Mundo 6")
-	check(not WorldRegistry.is_playable(7) and WorldRegistry.start_run(7) == "", "el Mundo 7 aún no existe: no se carga ninguna escena")
+	check(not WorldRegistry.is_playable(5), "el Mundo 5 empieza bloqueado")
+	SaveManager.mark_world_completed(4, 1, 1)
+	check(WorldRegistry.is_playable(5), "completar el Mundo 4 desbloquea el Mundo 5")
+	var key := WorldRegistry.start_run(5)
+	check(key == "World6" and GameState.get_v("dreamTotal") == 3 and GameState.get_v("weaponsOwned").size() == 3, "partida nueva del Mundo 5 (Tren de Juguete)")
+	check(WorldRegistry.id_for_scene("World6") == 5 and WorldRegistry.id_for_scene("Boss6") == 5, "la escena World6 corresponde al Mundo 5")
+	SaveManager.mark_world_completed(5, 200, 237, true, 1000, [], ["ticket_1", "ticket_3"])
+	check(SaveManager.unlocked_world() == 6 and SaveManager.get_world(5).dreamCollectibles.size() == 2 and SaveManager.get_world(5).bestStars == 200, "victoria guarda estrellas y billetes del Mundo 5")
+	check(WorldRegistry.is_playable(6), "la victoria del Mundo 5 abre el Mundo 6")
 	var v: Control = load(Router.SCENES.Victory).instantiate()
-	GameState.entry = {"world": 6, "stars": 200, "total": 237, "dream": ["ticket_1"], "dreamTotal": 3}
+	GameState.entry = {"world": 5, "stars": 200, "total": 237, "dream": ["ticket_1"], "dreamTotal": 3}
 	add_child(v)
 	await frames(2)
 	var list: MenuList = v.get_children().filter(func(n): return n is MenuList)[0]
-	check(v.world_id == 6 and list.buttons[0].label.text == "Jugar otra vez", "pantalla de victoria sin botón a un Mundo 7 inexistente")
+	check(v.world_id == 5 and list.buttons[0].label.text == "Ir al Mundo 6", "la pantalla de victoria ofrece ir al Mundo 6")
 	v.queue_free()
 	var menu: Control = load(Router.SCENES.Menu).instantiate()
 	add_child(menu)
 	await frames(2)
 	var cards: Array[WorldCard] = menu.carousel.cards
-	check(cards[5].data.state() == WorldData.State.COMPLETED, "el carrusel muestra el Mundo 6 completado")
-	check(not cards[6].data.can_enter() and cards[6].data.describe().ends_with("Próximamente"), "el Mundo 7 aparece como próximamente")
-	check(cards[7].data.state() == WorldData.State.LOCKED, "el Mundo 8 sigue cerrado")
-	menu.carousel.select(6, false)
-	menu.carousel.activate_center()
-	await frames(2)
-	check(not menu.starting, "elegir el Mundo 7 no intenta abrir ninguna escena")
+	check(cards[4].data.title == "Juguetes" and cards[4].data.state() == WorldData.State.COMPLETED, "la isla Juguetes muestra el Mundo 5 completado")
+	check(cards[5].data.can_enter() and not cards[6].data.can_enter(), "el carrusel abre el Mundo 6 y mantiene cerrado el 7")
+	check(menu.carousel.index == 5, "el carrusel empieza en el Mundo 6")
 	menu.queue_free()
 	await get_tree().process_frame
+	# guardado antiguo (versión 1): el 5 era Sueños Cósmicos y el 6 el Tren
+	var f := FileAccess.open(SaveManager.save_path, FileAccess.WRITE)
+	f.store_string(JSON.stringify({"version": 1, "unlockedWorld": 6, "worlds": {"5": {"completed": true, "bestStars": 77}}}))
+	f.close()
+	SaveManager.load_state()
+	check(SaveManager.is_world_completed(6) and SaveManager.get_world(6).bestStars == 77 and not SaveManager.is_world_completed(5), "un guardado antiguo pasa Sueños Cósmicos al Mundo 6")
+	check(WorldRegistry.is_playable(5) and WorldRegistry.is_playable(6), "y conserva abiertos el Tren (5) y Sueños Cósmicos (6)")
 	SaveManager.reset_progress()
 

@@ -7,7 +7,9 @@ extends Node
 ## (el archivo dañado se conserva como save.json.bad) y el juego sigue funcionando.
 
 const SAVE_PATH := "user://save.json"
-const VERSION := 1
+## 2: los Mundos 5 y 6 intercambiaron su número (Juguetes pasó a ser el 5 y Parque de las
+## Estrellas el 6, como en la ilustración); un guardado de la versión 1 se convierte al cargarlo.
+const VERSION := 2
 const WORLD_COUNT := 8
 
 var state: Dictionary = {}
@@ -55,10 +57,14 @@ func _merge(p: Dictionary) -> void:
 	if p.get("unlockedWorld") is float or p.get("unlockedWorld") is int:
 		state.unlockedWorld = clampi(int(p.unlockedWorld), 1, WORLD_COUNT)
 	if p.get("worlds") is Dictionary:
+		var old_numbering := int(p.get("version", 1)) < 2
 		for k in p.worlds:
 			var w: Variant = p.worlds[k]
 			if w is Dictionary and str(k).is_valid_int():
-				state.worlds[str(k)] = {
+				var key := str(k)
+				if old_numbering and key in ["5", "6"]:
+					key = "6" if key == "5" else "5"
+				state.worlds[key] = {
 					"completed": bool(w.get("completed", false)),
 					"bestStars": int(w.get("bestStars", 0)),
 					"totalStars": int(w.get("totalStars", 0)),
@@ -67,9 +73,9 @@ func _merge(p: Dictionary) -> void:
 					"completedAt": str(w.get("completedAt", "")),
 				}
 				if w.get("magicCrayons") is Array:
-					state.worlds[str(k)]["magicCrayons"] = w.magicCrayons.filter(func(c): return c is String)
+					state.worlds[key]["magicCrayons"] = w.magicCrayons.filter(func(c): return c is String)
 				if w.get("dreamCollectibles") is Array:
-					state.worlds[str(k)]["dreamCollectibles"] = w.dreamCollectibles.filter(func(c): return c is String)
+					state.worlds[key]["dreamCollectibles"] = w.dreamCollectibles.filter(func(c): return c is String)
 	if p.get("settings") is Dictionary:
 		for k in ["music", "sfx"]:
 			if p.settings.get(k) is bool:

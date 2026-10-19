@@ -1,6 +1,6 @@
 {
  "key": "world6_boss",
- "worldId": 6,
+ "worldId": 5,
  "widthTiles": 58,
  "heightTiles": 17,
  "music": "world6",
@@ -275,7 +275,7 @@
   "name": "Locomostro",
   "introBanner": "¡Locomostro llega a la Gran Estación Real!",
   "defeatBanner": "¡Locomostro se queda dormido!",
-  "portalToast": "El portal al Mundo 7 está preparado",
+  "portalToast": "El portal al Mundo 6 está preparado",
   "afterMusic": "world6_victory"
  },
  "portal": {
