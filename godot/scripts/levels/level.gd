@@ -463,6 +463,11 @@ func on_projectile_expired(proj: Projectile) -> void:
 		"cosmic_wave", "moon_blade":
 			effects.poof(x, y, 6)
 			effects.sparkle(x, y, 4)
+		# Mundo 6
+		"clown_star", "spark", "boss_spark":
+			effects.sparkle(x, y, 6)
+		"toy_block", "smoke_whirl":
+			effects.poof(x, y, 7)
 
 
 func on_enemy_finished(enemy: Enemy) -> void:

@@ -32,6 +32,10 @@ const FRAMES_PATHS := {
 	"meteorito": "res://resources/world5/frames/meteorito_frames.tres",
 	"cohetito": "res://resources/world5/frames/cohetito_frames.tres",
 	"luna_estelar": "res://resources/world5/frames/luna_estelar_frames.tres",
+	"payasito": "res://resources/world6/frames/payasito_frames.tres",
+	"bloquecito": "res://resources/world6/frames/bloquecito_frames.tres",
+	"vagoncito": "res://resources/world6/frames/vagoncito_frames.tres",
+	"locomostro": "res://resources/world6/frames/locomostro_frames.tres",
 }
 const TILESET_PATHS := {
 	"world1_tiles": "res://resources/tilesets/world1/world1_tileset.tres",
@@ -39,10 +43,11 @@ const TILESET_PATHS := {
 	"world3_tiles": "res://resources/world3/terrain/world3_tileset.tres",
 	"world4_tiles": "res://resources/world4/terrain/world4_tileset.tres",
 	"world5_tiles": "res://resources/world5/terrain/world5_tileset.tres",
+	"world6_tiles": "res://resources/world6/terrain/world6_tileset.tres",
 }
 ## Paquetes de datos por mundo (atlases.json + characters.json). El primero es obligatorio.
-const PACKS := ["res://data", "res://data/world2", "res://data/world3", "res://data/world4", "res://data/world5"]
-const ENEMY_DIRS := ["res://resources/enemies", "res://resources/world2/enemies", "res://resources/world3/enemies", "res://resources/world4/enemies", "res://resources/world5/enemies"]
+const PACKS := ["res://data", "res://data/world2", "res://data/world3", "res://data/world4", "res://data/world5", "res://data/world6"]
+const ENEMY_DIRS := ["res://resources/enemies", "res://resources/world2/enemies", "res://resources/world3/enemies", "res://resources/world4/enemies", "res://resources/world5/enemies", "res://resources/world6/enemies"]
 
 var atlases: Dictionary = {}
 var images: Dictionary = {}

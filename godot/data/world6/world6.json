@@ -1,0 +1,2787 @@
+{
+ "id": 6,
+ "key": "world6",
+ "name": "El Reino del Tren de Juguete",
+ "widthTiles": 630,
+ "heightTiles": 25,
+ "music": "world6",
+ "tileset": "world6_tiles",
+ "objectsAtlas": "world6_objects",
+ "backgroundAtlas": "world6_bg",
+ "progress": {
+  "total": 11008,
+  "offset": 0,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 4,
+  "y": 20
+ },
+ "nextScene": "Boss6",
+ "startWeapons": [
+  "bubble",
+  "paint",
+  "sling"
+ ],
+ "frames": {
+  "flag": "flag_w6",
+  "signpost": "sign_w6",
+  "star": [
+   "world6_objects",
+   "star_w6"
+  ]
+ },
+ "sections": [
+  {
+   "id": "A",
+   "name": "La Estación de los Sueños",
+   "from": 0
+  },
+  {
+   "id": "B",
+   "name": "Los Puentes del Arcoíris",
+   "from": 1800
+  },
+  {
+   "id": "C",
+   "name": "El Ferrocarril de las Nubes",
+   "from": 4000
+  },
+  {
+   "id": "D",
+   "name": "La Fábrica de Juguetes",
+   "from": 6300
+  },
+  {
+   "id": "E",
+   "name": "La Gran Estación Real",
+   "from": 8600
+  }
+ ],
+ "background": {
+  "sky": "w6_sky",
+  "far": "w6_clouds_far",
+  "near": "w6_clouds_near",
+  "atlas": "world6_bg",
+  "objectsAtlas": "world6_objects",
+  "sparkles": true,
+  "drifters": [
+   "cloud_s",
+   "cloud_m"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.02,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_castle_isle",
+      "x": 300,
+      "y": 96
+     },
+     {
+      "frame": "bg_balloon",
+      "x": 84,
+      "y": 52
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.05,
+     0.03
+    ],
+    "depth": 3,
+    "frames": [
+     "bg_castles",
+     "bg_balloons"
+    ],
+    "step": 330,
+    "y": [
+     70,
+     130
+    ],
+    "alpha": 0.85,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.12,
+     0.07
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_hills",
+     "bg_falls",
+     "bg_rainbow"
+    ],
+    "step": 250,
+    "y": [
+     150,
+     178
+    ],
+    "alpha": 0.85,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.22,
+     0.12
+    ],
+    "depth": 5,
+    "frames": [
+     "bg_viaduct"
+    ],
+    "step": 420,
+    "y": [
+     176,
+     196
+    ],
+    "alpha": 0.9
+   },
+   {
+    "scroll": [
+     0.3,
+     0.16
+    ],
+    "depth": 6,
+    "frames": [
+     "bg_near_clouds"
+    ],
+    "step": 300,
+    "y": [
+     212,
+     232
+    ],
+    "alpha": 0.7
+   }
+  ]
+ },
+ "terrain": [
+  {
+   "x": 0,
+   "y": 20,
+   "w": 30,
+   "h": 5,
+   "mat": "cloud"
+  },
+  {
+   "x": 44,
+   "y": 20,
+   "w": 24,
+   "h": 5,
+   "mat": "cloud"
+  },
+  {
+   "x": 79,
+   "y": 19,
+   "w": 47,
+   "h": 6,
+   "mat": "cloud"
+  },
+  {
+   "x": 138,
+   "y": 19,
+   "w": 14,
+   "h": 6,
+   "mat": "cloud"
+  },
+  {
+   "x": 176,
+   "y": 18,
+   "w": 8,
+   "h": 2,
+   "mat": "cloud"
+  },
+  {
+   "x": 186,
+   "y": 15,
+   "w": 20,
+   "h": 10,
+   "mat": "cloud"
+  },
+  {
+   "x": 206,
+   "y": 16,
+   "w": 1,
+   "h": 9,
+   "mat": "cloud"
+  },
+  {
+   "x": 207,
+   "y": 17,
+   "w": 13,
+   "h": 8,
+   "mat": "cloud"
+  },
+  {
+   "x": 236,
+   "y": 18,
+   "w": 24,
+   "h": 7,
+   "mat": "cloud"
+  },
+  {
+   "x": 279,
+   "y": 18,
+   "w": 7,
+   "h": 3,
+   "mat": "cloud"
+  },
+  {
+   "x": 300,
+   "y": 18,
+   "w": 14,
+   "h": 7,
+   "mat": "cloud"
+  },
+  {
+   "x": 328,
+   "y": 19,
+   "w": 20,
+   "h": 6,
+   "mat": "cloud"
+  },
+  {
+   "x": 386,
+   "y": 19,
+   "w": 30,
+   "h": 6,
+   "mat": "cloud"
+  },
+  {
+   "x": 416,
+   "y": 20,
+   "w": 1,
+   "h": 5,
+   "mat": "cloud"
+  },
+  {
+   "x": 417,
+   "y": 21,
+   "w": 13,
+   "h": 4,
+   "mat": "cloud"
+  },
+  {
+   "x": 430,
+   "y": 17,
+   "w": 16,
+   "h": 8,
+   "mat": "cloud"
+  },
+  {
+   "x": 457,
+   "y": 21,
+   "w": 10,
+   "h": 2,
+   "mat": "cloud"
+  },
+  {
+   "x": 470,
+   "y": 17,
+   "w": 22,
+   "h": 8,
+   "mat": "cloud"
+  },
+  {
+   "x": 499,
+   "y": 18,
+   "w": 18,
+   "h": 7,
+   "mat": "cloud"
+  },
+  {
+   "x": 524,
+   "y": 19,
+   "w": 13,
+   "h": 6,
+   "mat": "cloud"
+  },
+  {
+   "x": 537,
+   "y": 19,
+   "w": 23,
+   "h": 6,
+   "mat": "cloud"
+  },
+  {
+   "x": 584,
+   "y": 19,
+   "w": 46,
+   "h": 6,
+   "mat": "cloud"
+  }
+ ],
+ "slopes": [
+  {
+   "x": 206,
+   "y": 15,
+   "dir": "down",
+   "mat": "cloud"
+  },
+  {
+   "x": 207,
+   "y": 16,
+   "dir": "down",
+   "mat": "cloud"
+  },
+  {
+   "x": 416,
+   "y": 19,
+   "dir": "down",
+   "mat": "cloud"
+  },
+  {
+   "x": 417,
+   "y": 20,
+   "dir": "down",
+   "mat": "cloud"
+  }
+ ],
+ "blocks": [
+  {
+   "x": 394,
+   "y": 18,
+   "type": "block_yellow"
+  },
+  {
+   "x": 395,
+   "y": 18,
+   "type": "block_blue"
+  },
+  {
+   "x": 394,
+   "y": 17,
+   "type": "block_red"
+  },
+  {
+   "x": 426,
+   "y": 20,
+   "type": "block_green"
+  },
+  {
+   "x": 427,
+   "y": 20,
+   "type": "block_pink"
+  },
+  {
+   "x": 491,
+   "y": 16,
+   "type": "block_blue_b"
+  },
+  {
+   "x": 629,
+   "y": 18,
+   "type": "block_yellow"
+  },
+  {
+   "x": 629,
+   "y": 17,
+   "type": "block_pink"
+  }
+ ],
+ "clouds": [
+  {
+   "x": 100,
+   "y": 16,
+   "frame": "station_plat",
+   "top": 7
+  },
+  {
+   "x": 224,
+   "y": 17,
+   "frame": "wood_bridge_s",
+   "top": 6
+  },
+  {
+   "x": 229,
+   "y": 16,
+   "frame": "wood_post",
+   "top": 5
+  },
+  {
+   "x": 233.5,
+   "y": 17,
+   "frame": "wood_bridge_s",
+   "top": 6
+  },
+  {
+   "x": 336,
+   "y": 10,
+   "frame": "cloud_plat_m",
+   "top": 3
+  },
+  {
+   "x": 341,
+   "y": 8,
+   "frame": "cloud_plat_b",
+   "top": 3
+  },
+  {
+   "x": 346,
+   "y": 8,
+   "frame": "cloud_plat_l",
+   "top": 3
+  },
+  {
+   "x": 352,
+   "y": 11,
+   "frame": "cloud_plat_c",
+   "top": 3
+  },
+  {
+   "x": 367,
+   "y": 13,
+   "frame": "wood_bridge_l",
+   "top": 6
+  },
+  {
+   "x": 436,
+   "y": 13,
+   "frame": "block_bridge",
+   "top": 3
+  },
+  {
+   "x": 442,
+   "y": 9,
+   "frame": "cloud_plat_m",
+   "top": 3
+  },
+  {
+   "x": 548,
+   "y": 15,
+   "frame": "station_plat",
+   "top": 7
+  },
+  {
+   "x": 612,
+   "y": 15,
+   "frame": "wood_bridge_l",
+   "top": 6
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [
+  {
+   "x": 317,
+   "y": 19,
+   "frame": "block_bridge",
+   "top": 3,
+   "dx": 5,
+   "dy": 0,
+   "duration": 2600
+  },
+  {
+   "x": 519.5,
+   "y": 18,
+   "frame": "block_bridge",
+   "top": 3,
+   "dx": 2,
+   "dy": 0,
+   "duration": 2200
+  }
+ ],
+ "swings": [],
+ "crumbles": [],
+ "pads": [
+  {
+   "x": 182,
+   "y": 18,
+   "frame": "toy_spring",
+   "power": -470,
+   "surface": "top"
+  },
+  {
+   "x": 429,
+   "y": 21,
+   "frame": "toy_spring",
+   "power": -480,
+   "surface": "top"
+  },
+  {
+   "x": 464,
+   "y": 21,
+   "frame": "toy_spring",
+   "power": -480,
+   "surface": "top"
+  }
+ ],
+ "winds": [],
+ "hazards": [
+  {
+   "x": 479,
+   "y": 10,
+   "frame": "heli_hazard",
+   "dy": 2,
+   "duration": 1300,
+   "spin": true
+  },
+  {
+   "x": 532,
+   "y": 15,
+   "frame": "heli_hazard_b",
+   "dx": 2,
+   "duration": 1500,
+   "spin": true
+  }
+ ],
+ "paints": [],
+ "rollers": [],
+ "bouncers": [],
+ "drips": [],
+ "rivers": [],
+ "magicCrayons": [],
+ "yarnRollers": [],
+ "sleepClouds": [],
+ "magicButtons": [],
+ "trains": [
+  {
+   "points": [
+    [
+     24,
+     20
+    ],
+    [
+     49,
+     20
+    ]
+   ],
+   "cars": [
+    "train_loco",
+    "train_yellow"
+   ],
+   "speed": 38,
+   "accel": 30,
+   "wait": 2200,
+   "delay": 1200
+  },
+  {
+   "points": [
+    [
+     146,
+     19
+    ],
+    [
+     158,
+     19
+    ],
+    [
+     168,
+     15
+    ],
+    [
+     171,
+     15
+    ]
+   ],
+   "branches": [
+    [
+     [
+      171,
+      15
+     ],
+     [
+      190,
+      15
+     ]
+    ],
+    [
+     [
+      171,
+      15
+     ],
+     [
+      177,
+      18
+     ],
+     [
+      184,
+      18
+     ]
+    ]
+   ],
+   "cars": [
+    "train_loco",
+    "train_red",
+    "train_star"
+   ],
+   "speed": 50,
+   "accel": 40,
+   "wait": 2000,
+   "delay": 800
+  },
+  {
+   "points": [
+    [
+     256,
+     18
+    ],
+    [
+     280,
+     18
+    ]
+   ],
+   "cars": [
+    "train_loco",
+    "train_red"
+   ],
+   "speed": 46,
+   "accel": 40,
+   "wait": 1800
+  },
+  {
+   "points": [
+    [
+     283,
+     18
+    ],
+    [
+     303,
+     18
+    ]
+   ],
+   "cars": [
+    "train_loco",
+    "train_star"
+   ],
+   "speed": 84,
+   "accel": 70,
+   "wait": 1500,
+   "bellWait": true
+  },
+  {
+   "points": [
+    [
+     344,
+     19
+    ],
+    [
+     354,
+     19
+    ],
+    [
+     360,
+     15
+    ],
+    [
+     374,
+     15
+    ],
+    [
+     380,
+     19
+    ],
+    [
+     391,
+     19
+    ]
+   ],
+   "cars": [
+    "train_loco",
+    "train_yellow",
+    "train_red"
+   ],
+   "speed": 68,
+   "accel": 50,
+   "wait": 1500,
+   "stops": [
+    367
+   ]
+  },
+  {
+   "points": [
+    [
+     442,
+     17
+    ],
+    [
+     453,
+     17
+    ]
+   ],
+   "branches": [
+    [
+     [
+      453,
+      17
+     ],
+     [
+      473,
+      17
+     ]
+    ],
+    [
+     [
+      453,
+      17
+     ],
+     [
+      458,
+      21
+     ],
+     [
+      466,
+      21
+     ]
+    ]
+   ],
+   "cars": [
+    "train_loco",
+    "train_star"
+   ],
+   "speed": 56,
+   "accel": 45,
+   "wait": 1800,
+   "delay": 400
+  },
+  {
+   "points": [
+    [
+     553,
+     19
+    ],
+    [
+     591,
+     19
+    ]
+   ],
+   "cars": [
+    "train_loco",
+    "train_red",
+    "train_yellow",
+    "train_star"
+   ],
+   "speed": 60,
+   "accel": 40,
+   "wait": 2000
+  }
+ ],
+ "levers": [
+  {
+   "x": 143,
+   "y": 19,
+   "train": 1
+  },
+  {
+   "x": 438,
+   "y": 17,
+   "train": 5
+  }
+ ],
+ "bells": [
+  {
+   "x": 12,
+   "y": 15,
+   "train": -1,
+   "gift": true
+  },
+  {
+   "x": 282,
+   "y": 16,
+   "train": 3
+  },
+  {
+   "x": 544,
+   "y": 15,
+   "train": -1,
+   "gift": true
+  }
+ ],
+ "helis": [
+  {
+   "x": 71,
+   "y": 18
+  },
+  {
+   "x": 74.5,
+   "y": 17,
+   "variant": "b",
+   "dx": 2.5,
+   "duration": 2600
+  },
+  {
+   "x": 331,
+   "y": 18,
+   "variant": "c",
+   "dy": -7,
+   "duration": 3600
+  },
+  {
+   "x": 431,
+   "y": 16,
+   "variant": "c",
+   "dy": -5,
+   "duration": 3000
+  },
+  {
+   "x": 494,
+   "y": 17,
+   "variant": "b",
+   "dx": 2.5,
+   "duration": 2200
+  }
+ ],
+ "rainbowArches": [
+  {
+   "x0": 126,
+   "x1": 138,
+   "y": 19,
+   "h": 2
+  },
+  {
+   "x0": 592,
+   "x1": 608,
+   "y": 18,
+   "h": 3
+  }
+ ],
+ "fallingBlocks": [
+  {
+   "x": 404,
+   "y": 12,
+   "ground": 19,
+   "frame": "fall_block_orange"
+  },
+  {
+   "x": 409,
+   "y": 12,
+   "ground": 19,
+   "frame": "fall_block_blue"
+  },
+  {
+   "x": 508,
+   "y": 11,
+   "ground": 18,
+   "frame": "fall_block_orange"
+  },
+  {
+   "x": 512,
+   "y": 11,
+   "ground": 18,
+   "frame": "fall_block_blue"
+  }
+ ],
+ "rollingWheels": [
+  {
+   "points": [
+    [
+     427,
+     21
+    ],
+    [
+     418,
+     21
+    ]
+   ],
+   "speed": 62,
+   "frame": "wheel_l",
+   "mode": "loop"
+  },
+  {
+   "points": [
+    [
+     427,
+     21
+    ],
+    [
+     418,
+     21
+    ]
+   ],
+   "speed": 62,
+   "frame": "wheel_s",
+   "mode": "loop",
+   "delay": 1300
+  },
+  {
+   "points": [
+    [
+     503,
+     18
+    ],
+    [
+     516,
+     18
+    ]
+   ],
+   "speed": 50,
+   "frame": "wheel_l",
+   "mode": "pingpong"
+  }
+ ],
+ "bumpers": [
+  {
+   "x": 486,
+   "y": 17
+  },
+  {
+   "x": 557,
+   "y": 19
+  }
+ ],
+ "hazardTrains": [
+  {
+   "x0": 596,
+   "x1": 604,
+   "y": 19,
+   "period": 6200,
+   "speed": 190,
+   "dir": 1,
+   "delay": 0
+  }
+ ],
+ "starBlocks": [
+  {
+   "x": 52,
+   "y": 16,
+   "count": 2
+  },
+  {
+   "x": 53,
+   "y": 16,
+   "count": 1
+  },
+  {
+   "x": 54,
+   "y": 16,
+   "count": 2
+  },
+  {
+   "x": 459,
+   "y": 17,
+   "count": 2
+  },
+  {
+   "x": 461,
+   "y": 17,
+   "count": 3
+  },
+  {
+   "x": 541,
+   "y": 15,
+   "count": 2
+  }
+ ],
+ "dreamCollectibles": [
+  {
+   "id": "ticket_1",
+   "kind": "ticket",
+   "x": 179,
+   "y": 16,
+   "frame": "ticket"
+  },
+  {
+   "id": "ticket_2",
+   "kind": "ticket",
+   "x": 346,
+   "y": 5,
+   "frame": "ticket"
+  },
+  {
+   "id": "ticket_3",
+   "kind": "ticket",
+   "x": 442,
+   "y": 6,
+   "frame": "ticket"
+  }
+ ],
+ "dreamMain": "ticket",
+ "dreamNames": {
+  "ticket": "Billete mágico"
+ },
+ "dreamBanner": "¡Los %d billetes mágicos! Estrella extra",
+ "dreamHud": [
+  "world6_objects",
+  "ticket",
+  "ticket_"
+ ],
+ "stars": [
+  {
+   "x": 3,
+   "y": 19
+  },
+  {
+   "x": 6,
+   "y": 19
+  },
+  {
+   "x": 9,
+   "y": 19
+  },
+  {
+   "x": 12,
+   "y": 19
+  },
+  {
+   "x": 15,
+   "y": 19
+  },
+  {
+   "x": 18,
+   "y": 19
+  },
+  {
+   "x": 21,
+   "y": 19
+  },
+  {
+   "x": 31,
+   "y": 17
+  },
+  {
+   "x": 34,
+   "y": 17
+  },
+  {
+   "x": 37,
+   "y": 17
+  },
+  {
+   "x": 40,
+   "y": 17
+  },
+  {
+   "x": 45,
+   "y": 19
+  },
+  {
+   "x": 48,
+   "y": 19
+  },
+  {
+   "x": 52,
+   "y": 14
+  },
+  {
+   "x": 53,
+   "y": 14
+  },
+  {
+   "x": 54,
+   "y": 14
+  },
+  {
+   "x": 56,
+   "y": 19
+  },
+  {
+   "x": 59,
+   "y": 19
+  },
+  {
+   "x": 62,
+   "y": 19
+  },
+  {
+   "x": 65,
+   "y": 19
+  },
+  {
+   "x": 69,
+   "y": 15
+  },
+  {
+   "x": 71,
+   "y": 14
+  },
+  {
+   "x": 73,
+   "y": 13
+  },
+  {
+   "x": 75,
+   "y": 13
+  },
+  {
+   "x": 77,
+   "y": 14
+  },
+  {
+   "x": 79,
+   "y": 15
+  },
+  {
+   "x": 83,
+   "y": 18
+  },
+  {
+   "x": 86,
+   "y": 18
+  },
+  {
+   "x": 89,
+   "y": 18
+  },
+  {
+   "x": 92,
+   "y": 18
+  },
+  {
+   "x": 95,
+   "y": 18
+  },
+  {
+   "x": 98,
+   "y": 14
+  },
+  {
+   "x": 100,
+   "y": 14
+  },
+  {
+   "x": 102,
+   "y": 14
+  },
+  {
+   "x": 104,
+   "y": 18
+  },
+  {
+   "x": 107,
+   "y": 18
+  },
+  {
+   "x": 110,
+   "y": 18
+  },
+  {
+   "x": 113,
+   "y": 18
+  },
+  {
+   "x": 116,
+   "y": 18
+  },
+  {
+   "x": 119,
+   "y": 18
+  },
+  {
+   "x": 122,
+   "y": 18
+  },
+  {
+   "x": 126,
+   "y": 16
+  },
+  {
+   "x": 128,
+   "y": 15
+  },
+  {
+   "x": 130,
+   "y": 14
+  },
+  {
+   "x": 132,
+   "y": 14
+  },
+  {
+   "x": 134,
+   "y": 14
+  },
+  {
+   "x": 136,
+   "y": 15
+  },
+  {
+   "x": 138,
+   "y": 16
+  },
+  {
+   "x": 140,
+   "y": 18
+  },
+  {
+   "x": 143,
+   "y": 18
+  },
+  {
+   "x": 146,
+   "y": 18
+  },
+  {
+   "x": 149,
+   "y": 18
+  },
+  {
+   "x": 152,
+   "y": 15
+  },
+  {
+   "x": 155,
+   "y": 14
+  },
+  {
+   "x": 158,
+   "y": 12
+  },
+  {
+   "x": 161,
+   "y": 12
+  },
+  {
+   "x": 164,
+   "y": 12
+  },
+  {
+   "x": 167,
+   "y": 13
+  },
+  {
+   "x": 170,
+   "y": 15
+  },
+  {
+   "x": 177,
+   "y": 17
+  },
+  {
+   "x": 179,
+   "y": 17
+  },
+  {
+   "x": 181,
+   "y": 17
+  },
+  {
+   "x": 183,
+   "y": 17
+  },
+  {
+   "x": 188,
+   "y": 14
+  },
+  {
+   "x": 191,
+   "y": 14
+  },
+  {
+   "x": 194,
+   "y": 14
+  },
+  {
+   "x": 197,
+   "y": 14
+  },
+  {
+   "x": 200,
+   "y": 14
+  },
+  {
+   "x": 203,
+   "y": 14
+  },
+  {
+   "x": 208,
+   "y": 16
+  },
+  {
+   "x": 211,
+   "y": 16
+  },
+  {
+   "x": 214,
+   "y": 16
+  },
+  {
+   "x": 217,
+   "y": 16
+  },
+  {
+   "x": 222,
+   "y": 15
+  },
+  {
+   "x": 224,
+   "y": 15
+  },
+  {
+   "x": 226,
+   "y": 15
+  },
+  {
+   "x": 228,
+   "y": 15
+  },
+  {
+   "x": 230,
+   "y": 15
+  },
+  {
+   "x": 232,
+   "y": 15
+  },
+  {
+   "x": 234,
+   "y": 15
+  },
+  {
+   "x": 238,
+   "y": 17
+  },
+  {
+   "x": 241,
+   "y": 17
+  },
+  {
+   "x": 244,
+   "y": 17
+  },
+  {
+   "x": 247,
+   "y": 17
+  },
+  {
+   "x": 250,
+   "y": 17
+  },
+  {
+   "x": 253,
+   "y": 17
+  },
+  {
+   "x": 256,
+   "y": 17
+  },
+  {
+   "x": 261,
+   "y": 15
+  },
+  {
+   "x": 264,
+   "y": 14
+  },
+  {
+   "x": 267,
+   "y": 13
+  },
+  {
+   "x": 270,
+   "y": 13
+  },
+  {
+   "x": 273,
+   "y": 13
+  },
+  {
+   "x": 276,
+   "y": 14
+  },
+  {
+   "x": 280,
+   "y": 17
+  },
+  {
+   "x": 282,
+   "y": 17
+  },
+  {
+   "x": 284,
+   "y": 17
+  },
+  {
+   "x": 287,
+   "y": 15
+  },
+  {
+   "x": 290,
+   "y": 14
+  },
+  {
+   "x": 293,
+   "y": 13
+  },
+  {
+   "x": 296,
+   "y": 14
+  },
+  {
+   "x": 299,
+   "y": 15
+  },
+  {
+   "x": 302,
+   "y": 17
+  },
+  {
+   "x": 305,
+   "y": 17
+  },
+  {
+   "x": 308,
+   "y": 17
+  },
+  {
+   "x": 311,
+   "y": 17
+  },
+  {
+   "x": 331,
+   "y": 9
+  },
+  {
+   "x": 331,
+   "y": 11
+  },
+  {
+   "x": 331,
+   "y": 13
+  },
+  {
+   "x": 331,
+   "y": 15
+  },
+  {
+   "x": 336,
+   "y": 6
+  },
+  {
+   "x": 339,
+   "y": 6
+  },
+  {
+   "x": 342,
+   "y": 6
+  },
+  {
+   "x": 345,
+   "y": 6
+  },
+  {
+   "x": 348,
+   "y": 6
+  },
+  {
+   "x": 351,
+   "y": 6
+  },
+  {
+   "x": 316,
+   "y": 16
+  },
+  {
+   "x": 319,
+   "y": 16
+  },
+  {
+   "x": 322,
+   "y": 16
+  },
+  {
+   "x": 325,
+   "y": 16
+  },
+  {
+   "x": 329,
+   "y": 18
+  },
+  {
+   "x": 332,
+   "y": 18
+  },
+  {
+   "x": 335,
+   "y": 18
+  },
+  {
+   "x": 338,
+   "y": 18
+  },
+  {
+   "x": 341,
+   "y": 18
+  },
+  {
+   "x": 344,
+   "y": 18
+  },
+  {
+   "x": 348,
+   "y": 12
+  },
+  {
+   "x": 351,
+   "y": 11
+  },
+  {
+   "x": 354,
+   "y": 10
+  },
+  {
+   "x": 357,
+   "y": 10
+  },
+  {
+   "x": 360,
+   "y": 11
+  },
+  {
+   "x": 363,
+   "y": 12
+  },
+  {
+   "x": 366,
+   "y": 11
+  },
+  {
+   "x": 367,
+   "y": 11
+  },
+  {
+   "x": 368,
+   "y": 11
+  },
+  {
+   "x": 369,
+   "y": 11
+  },
+  {
+   "x": 372,
+   "y": 12
+  },
+  {
+   "x": 375,
+   "y": 11
+  },
+  {
+   "x": 378,
+   "y": 10
+  },
+  {
+   "x": 381,
+   "y": 10
+  },
+  {
+   "x": 384,
+   "y": 10
+  },
+  {
+   "x": 387,
+   "y": 11
+  },
+  {
+   "x": 390,
+   "y": 12
+  },
+  {
+   "x": 392,
+   "y": 18
+  },
+  {
+   "x": 398,
+   "y": 18
+  },
+  {
+   "x": 401,
+   "y": 18
+  },
+  {
+   "x": 404,
+   "y": 18
+  },
+  {
+   "x": 407,
+   "y": 18
+  },
+  {
+   "x": 410,
+   "y": 18
+  },
+  {
+   "x": 413,
+   "y": 18
+  },
+  {
+   "x": 418,
+   "y": 20
+  },
+  {
+   "x": 421,
+   "y": 20
+  },
+  {
+   "x": 424,
+   "y": 20
+  },
+  {
+   "x": 431,
+   "y": 16
+  },
+  {
+   "x": 434,
+   "y": 16
+  },
+  {
+   "x": 437,
+   "y": 16
+  },
+  {
+   "x": 440,
+   "y": 16
+  },
+  {
+   "x": 443,
+   "y": 16
+  },
+  {
+   "x": 434,
+   "y": 11
+  },
+  {
+   "x": 436,
+   "y": 11
+  },
+  {
+   "x": 438,
+   "y": 11
+  },
+  {
+   "x": 441,
+   "y": 7
+  },
+  {
+   "x": 442,
+   "y": 7
+  },
+  {
+   "x": 443,
+   "y": 7
+  },
+  {
+   "x": 447,
+   "y": 14
+  },
+  {
+   "x": 450,
+   "y": 13
+  },
+  {
+   "x": 453,
+   "y": 12
+  },
+  {
+   "x": 456,
+   "y": 12
+  },
+  {
+   "x": 459,
+   "y": 12
+  },
+  {
+   "x": 462,
+   "y": 12
+  },
+  {
+   "x": 465,
+   "y": 13
+  },
+  {
+   "x": 468,
+   "y": 14
+  },
+  {
+   "x": 458,
+   "y": 19
+  },
+  {
+   "x": 460,
+   "y": 19
+  },
+  {
+   "x": 462,
+   "y": 19
+  },
+  {
+   "x": 464,
+   "y": 19
+  },
+  {
+   "x": 472,
+   "y": 16
+  },
+  {
+   "x": 475,
+   "y": 16
+  },
+  {
+   "x": 478,
+   "y": 16
+  },
+  {
+   "x": 481,
+   "y": 16
+  },
+  {
+   "x": 484,
+   "y": 16
+  },
+  {
+   "x": 487,
+   "y": 16
+  },
+  {
+   "x": 490,
+   "y": 16
+  },
+  {
+   "x": 492,
+   "y": 15
+  },
+  {
+   "x": 494,
+   "y": 13
+  },
+  {
+   "x": 496,
+   "y": 13
+  },
+  {
+   "x": 498,
+   "y": 14
+  },
+  {
+   "x": 501,
+   "y": 17
+  },
+  {
+   "x": 504,
+   "y": 17
+  },
+  {
+   "x": 507,
+   "y": 17
+  },
+  {
+   "x": 510,
+   "y": 17
+  },
+  {
+   "x": 513,
+   "y": 17
+  },
+  {
+   "x": 516,
+   "y": 17
+  },
+  {
+   "x": 518,
+   "y": 16
+  },
+  {
+   "x": 520,
+   "y": 16
+  },
+  {
+   "x": 522,
+   "y": 16
+  },
+  {
+   "x": 526,
+   "y": 18
+  },
+  {
+   "x": 529,
+   "y": 18
+  },
+  {
+   "x": 532,
+   "y": 18
+  },
+  {
+   "x": 535,
+   "y": 18
+  },
+  {
+   "x": 539,
+   "y": 18
+  },
+  {
+   "x": 542,
+   "y": 18
+  },
+  {
+   "x": 545,
+   "y": 18
+  },
+  {
+   "x": 548,
+   "y": 18
+  },
+  {
+   "x": 551,
+   "y": 18
+  },
+  {
+   "x": 554,
+   "y": 18
+  },
+  {
+   "x": 557,
+   "y": 18
+  },
+  {
+   "x": 546,
+   "y": 13
+  },
+  {
+   "x": 548,
+   "y": 13
+  },
+  {
+   "x": 550,
+   "y": 13
+  },
+  {
+   "x": 560,
+   "y": 15
+  },
+  {
+   "x": 563,
+   "y": 14
+  },
+  {
+   "x": 566,
+   "y": 13
+  },
+  {
+   "x": 569,
+   "y": 12
+  },
+  {
+   "x": 572,
+   "y": 12
+  },
+  {
+   "x": 575,
+   "y": 12
+  },
+  {
+   "x": 578,
+   "y": 13
+  },
+  {
+   "x": 581,
+   "y": 14
+  },
+  {
+   "x": 584,
+   "y": 15
+  },
+  {
+   "x": 586,
+   "y": 18
+  },
+  {
+   "x": 589,
+   "y": 18
+  },
+  {
+   "x": 592,
+   "y": 18
+  },
+  {
+   "x": 595,
+   "y": 18
+  },
+  {
+   "x": 597,
+   "y": 15
+  },
+  {
+   "x": 599,
+   "y": 15
+  },
+  {
+   "x": 601,
+   "y": 15
+  },
+  {
+   "x": 603,
+   "y": 15
+  },
+  {
+   "x": 608,
+   "y": 18
+  },
+  {
+   "x": 611,
+   "y": 18
+  },
+  {
+   "x": 614,
+   "y": 18
+  },
+  {
+   "x": 611,
+   "y": 13
+  },
+  {
+   "x": 612,
+   "y": 13
+  },
+  {
+   "x": 613,
+   "y": 13
+  },
+  {
+   "x": 614,
+   "y": 13
+  },
+  {
+   "x": 618,
+   "y": 18
+  },
+  {
+   "x": 620,
+   "y": 18
+  },
+  {
+   "x": 622,
+   "y": 18
+  },
+  {
+   "x": 624,
+   "y": 18
+  }
+ ],
+ "enemies": [
+  {
+   "type": "bloquecito",
+   "x": 58,
+   "y": 20,
+   "patrol": [
+    50,
+    66
+   ]
+  },
+  {
+   "type": "bloquecito",
+   "x": 96,
+   "y": 19,
+   "patrol": [
+    90,
+    110
+   ]
+  },
+  {
+   "type": "bloquecito",
+   "x": 101,
+   "y": 19,
+   "patrol": [
+    91,
+    110
+   ]
+  },
+  {
+   "type": "bloquecito",
+   "x": 244,
+   "y": 18,
+   "patrol": [
+    238,
+    251
+   ]
+  },
+  {
+   "type": "bloquecito",
+   "x": 411,
+   "y": 19,
+   "patrol": [
+    401,
+    415
+   ]
+  },
+  {
+   "type": "bloquecito",
+   "x": 476,
+   "y": 17,
+   "patrol": [
+    472,
+    482
+   ]
+  },
+  {
+   "type": "bloquecito",
+   "x": 484,
+   "y": 17,
+   "patrol": [
+    474,
+    490
+   ]
+  },
+  {
+   "type": "bloquecito",
+   "x": 592,
+   "y": 19,
+   "patrol": [
+    586,
+    594
+   ]
+  },
+  {
+   "type": "bloquecito",
+   "x": 612,
+   "y": 19,
+   "patrol": [
+    608,
+    620
+   ]
+  },
+  {
+   "type": "payasito",
+   "x": 195,
+   "y": 15,
+   "patrol": [
+    195,
+    195
+   ]
+  },
+  {
+   "type": "payasito",
+   "x": 200,
+   "y": 15,
+   "patrol": [
+    200,
+    200
+   ]
+  },
+  {
+   "type": "payasito",
+   "x": 241,
+   "y": 18,
+   "patrol": [
+    241,
+    241
+   ]
+  },
+  {
+   "type": "payasito",
+   "x": 330,
+   "y": 19,
+   "patrol": [
+    330,
+    330
+   ]
+  },
+  {
+   "type": "payasito",
+   "x": 506,
+   "y": 18,
+   "patrol": [
+    506,
+    506
+   ]
+  },
+  {
+   "type": "payasito",
+   "x": 514,
+   "y": 18,
+   "patrol": [
+    514,
+    514
+   ]
+  },
+  {
+   "type": "payasito",
+   "x": 540,
+   "y": 19,
+   "patrol": [
+    540,
+    540
+   ]
+  },
+  {
+   "type": "vagoncito",
+   "x": 307,
+   "y": 18,
+   "patrol": [
+    302,
+    311
+   ]
+  },
+  {
+   "type": "vagoncito",
+   "x": 336,
+   "y": 19,
+   "patrol": [
+    333,
+    339
+   ]
+  },
+  {
+   "type": "vagoncito",
+   "x": 433,
+   "y": 17,
+   "patrol": [
+    431,
+    437
+   ]
+  },
+  {
+   "type": "vagoncito",
+   "x": 530,
+   "y": 19,
+   "patrol": [
+    525,
+    536
+   ]
+  }
+ ],
+ "checkpoints": [
+  {
+   "x": 118,
+   "y": 19
+  },
+  {
+   "x": 398,
+   "y": 19
+  }
+ ],
+ "pickups": [],
+ "signs": [
+  {
+   "x": 3,
+   "y": 20,
+   "text": "Mundo 6: ¡El Reino del Tren de Juguete! Viaja en los trenes mágicos entre las nubes"
+  },
+  {
+   "x": 9,
+   "y": 20,
+   "text": "Toca la campana de la estación: ¡Din don!"
+  },
+  {
+   "x": 21,
+   "y": 20,
+   "text": "Sube al vagón cuando el tren pare en la estación. Puedes andar y saltar encima"
+  },
+  {
+   "x": 46,
+   "y": 20,
+   "text": "Golpea los bloques de estrella desde abajo: ¡sueltan estrellas!"
+  },
+  {
+   "x": 66,
+   "y": 20,
+   "text": "Las plataformas con hélice flotan. Sus hélices no hacen daño"
+  },
+  {
+   "x": 120,
+   "y": 19,
+   "text": "El puente arcoíris une las islas: ¡crúzalo!"
+  },
+  {
+   "x": 141,
+   "y": 19,
+   "text": "Toca la palanca para cambiar el desvío. El tren lo toma al volver a la estación"
+  },
+  {
+   "x": 189,
+   "y": 15,
+   "text": "El Payasito Resorte salta de su caja y lanza estrellas: ¡apártate!"
+  },
+  {
+   "x": 238,
+   "y": 18,
+   "text": "Hay tres billetes dorados escondidos en el reino"
+  },
+  {
+   "x": 279,
+   "y": 18,
+   "text": "Este tren rápido espera en la estación: toca la campana para llamarlo"
+  },
+  {
+   "x": 302,
+   "y": 18,
+   "text": "El Vagoncito Chispa lanza chispas y suelta humo. El humo no hace daño"
+  },
+  {
+   "x": 329,
+   "y": 19,
+   "text": "La hélice que sube lleva a la ruta del cielo"
+  },
+  {
+   "x": 342,
+   "y": 19,
+   "text": "Este tren para a mitad de camino: ¡hay estrellas en la pasarela!"
+  },
+  {
+   "x": 392,
+   "y": 19,
+   "text": "La Fábrica de Juguetes: los bloques tiemblan antes de caer"
+  },
+  {
+   "x": 419,
+   "y": 21,
+   "text": "Las ruedas ruedan siempre igual: ¡sáltalas! El resorte te sube a la meseta"
+  },
+  {
+   "x": 472,
+   "y": 17,
+   "text": "Las barreras de estrella te empujan sin hacer daño"
+  },
+  {
+   "x": 586,
+   "y": 19,
+   "text": "¡Cuidado! Cuando la señal se pone roja y suena el silbato, sale un tren del túnel"
+  },
+  {
+   "x": 620,
+   "y": 19,
+   "text": "La Gran Estación Real: Locomostro te espera"
+  }
+ ],
+ "decor": [
+  {
+   "x": 6,
+   "y": 20,
+   "frame": "station_house",
+   "back": true
+  },
+  {
+   "x": 14,
+   "y": 20,
+   "frame": "station_bell",
+   "back": true
+  },
+  {
+   "x": 12,
+   "y": 20,
+   "frame": "bell_post",
+   "back": true
+  },
+  {
+   "x": 18,
+   "y": 20,
+   "frame": "toy_train_big",
+   "back": true
+  },
+  {
+   "x": 25,
+   "y": 20,
+   "frame": "sign_arrow"
+  },
+  {
+   "x": 1,
+   "y": 20,
+   "frame": "tree_green"
+  },
+  {
+   "x": 28,
+   "y": 20,
+   "frame": "tree_blue"
+  },
+  {
+   "x": 27,
+   "y": 20,
+   "frame": "fence_w6",
+   "back": true
+  },
+  {
+   "x": 36,
+   "y": 25,
+   "frame": "wood_trestle",
+   "back": true
+  },
+  {
+   "x": 42,
+   "y": 25,
+   "frame": "wood_trestle",
+   "back": true
+  },
+  {
+   "x": 47,
+   "y": 20,
+   "frame": "bush_flowers"
+  },
+  {
+   "x": 60,
+   "y": 20,
+   "frame": "deco_blocks",
+   "back": true
+  },
+  {
+   "x": 64,
+   "y": 20,
+   "frame": "pennants"
+  },
+  {
+   "x": 67,
+   "y": 20,
+   "frame": "tree_blue_b"
+  },
+  {
+   "x": 83,
+   "y": 19,
+   "frame": "sign_dir"
+  },
+  {
+   "x": 88,
+   "y": 19,
+   "frame": "tree_green_b"
+  },
+  {
+   "x": 93,
+   "y": 19,
+   "frame": "bush_b"
+  },
+  {
+   "x": 100,
+   "y": 19,
+   "frame": "station_fence",
+   "back": true
+  },
+  {
+   "x": 106,
+   "y": 19,
+   "frame": "castle_pair",
+   "back": true,
+   "scale": 1.2
+  },
+  {
+   "x": 112,
+   "y": 19,
+   "frame": "pennants"
+  },
+  {
+   "x": 116,
+   "y": 19,
+   "frame": "bush_flowers"
+  },
+  {
+   "x": 123,
+   "y": 19,
+   "frame": "tree_blue"
+  },
+  {
+   "x": 140,
+   "y": 19,
+   "frame": "fence_w6"
+  },
+  {
+   "x": 149,
+   "y": 19,
+   "frame": "sign_star"
+  },
+  {
+   "x": 162,
+   "y": 25,
+   "frame": "wood_trestle",
+   "back": true
+  },
+  {
+   "x": 166,
+   "y": 24,
+   "frame": "wood_trestle",
+   "back": true
+  },
+  {
+   "x": 186,
+   "y": 15,
+   "frame": "tree_green"
+  },
+  {
+   "x": 190,
+   "y": 15,
+   "frame": "deco_blocks",
+   "back": true
+  },
+  {
+   "x": 203,
+   "y": 15,
+   "frame": "bush_b"
+  },
+  {
+   "x": 212,
+   "y": 17,
+   "frame": "tree_blue_b"
+  },
+  {
+   "x": 217,
+   "y": 17,
+   "frame": "pennants"
+  },
+  {
+   "x": 229,
+   "y": 23,
+   "frame": "wood_post",
+   "back": true
+  },
+  {
+   "x": 246,
+   "y": 18,
+   "frame": "castle_pair",
+   "back": true
+  },
+  {
+   "x": 252,
+   "y": 18,
+   "frame": "station_bell",
+   "back": true
+  },
+  {
+   "x": 257,
+   "y": 18,
+   "frame": "sign_dir"
+  },
+  {
+   "x": 283,
+   "y": 18,
+   "frame": "station_house",
+   "back": true
+  },
+  {
+   "x": 285,
+   "y": 18,
+   "frame": "tree_green_b"
+  },
+  {
+   "x": 305,
+   "y": 18,
+   "frame": "station_fence",
+   "back": true
+  },
+  {
+   "x": 311,
+   "y": 18,
+   "frame": "rainbow_tunnel",
+   "back": true
+  },
+  {
+   "x": 330,
+   "y": 19,
+   "frame": "bush_flowers"
+  },
+  {
+   "x": 345,
+   "y": 19,
+   "frame": "deco_blocks",
+   "back": true
+  },
+  {
+   "x": 367,
+   "y": 16,
+   "frame": "rainbow_tunnel",
+   "back": true,
+   "scale": 1.5
+  },
+  {
+   "x": 358,
+   "y": 25,
+   "frame": "wood_trestle",
+   "back": true
+  },
+  {
+   "x": 377,
+   "y": 25,
+   "frame": "wood_trestle",
+   "back": true
+  },
+  {
+   "x": 392,
+   "y": 19,
+   "frame": "deco_blocks",
+   "back": true,
+   "scale": 1.6
+  },
+  {
+   "x": 400,
+   "y": 19,
+   "frame": "wheel_deco"
+  },
+  {
+   "x": 413,
+   "y": 19,
+   "frame": "deco_blocks",
+   "back": true
+  },
+  {
+   "x": 421,
+   "y": 21,
+   "frame": "wheel_deco",
+   "back": true
+  },
+  {
+   "x": 432,
+   "y": 17,
+   "frame": "deco_blocks",
+   "back": true,
+   "scale": 1.3
+  },
+  {
+   "x": 445,
+   "y": 17,
+   "frame": "wheel_deco"
+  },
+  {
+   "x": 474,
+   "y": 17,
+   "frame": "deco_blocks",
+   "back": true,
+   "scale": 1.5
+  },
+  {
+   "x": 481,
+   "y": 17,
+   "frame": "wheel_deco",
+   "back": true
+  },
+  {
+   "x": 489,
+   "y": 17,
+   "frame": "deco_blocks",
+   "back": true
+  },
+  {
+   "x": 502,
+   "y": 18,
+   "frame": "deco_blocks",
+   "back": true,
+   "scale": 1.4
+  },
+  {
+   "x": 516,
+   "y": 18,
+   "frame": "wheel_deco"
+  },
+  {
+   "x": 527,
+   "y": 19,
+   "frame": "sign_arrow"
+  },
+  {
+   "x": 534,
+   "y": 19,
+   "frame": "deco_blocks",
+   "back": true
+  },
+  {
+   "x": 539,
+   "y": 19,
+   "frame": "castle_pair",
+   "back": true,
+   "scale": 1.5
+  },
+  {
+   "x": 544,
+   "y": 19,
+   "frame": "bell_post",
+   "back": true
+  },
+  {
+   "x": 548,
+   "y": 19,
+   "frame": "station_house",
+   "back": true,
+   "scale": 1.3
+  },
+  {
+   "x": 554,
+   "y": 19,
+   "frame": "pennants"
+  },
+  {
+   "x": 557,
+   "y": 19,
+   "frame": "tree_blue"
+  },
+  {
+   "x": 586,
+   "y": 19,
+   "frame": "station_fence",
+   "back": true
+  },
+  {
+   "x": 590,
+   "y": 19,
+   "frame": "tree_green"
+  },
+  {
+   "x": 610,
+   "y": 19,
+   "frame": "pennants"
+  },
+  {
+   "x": 616,
+   "y": 19,
+   "frame": "castle_pair",
+   "back": true,
+   "scale": 1.6
+  },
+  {
+   "x": 622,
+   "y": 19,
+   "frame": "rainbow_tunnel",
+   "back": true,
+   "scale": 1.7
+  },
+  {
+   "x": 627,
+   "y": 19,
+   "frame": "pennants"
+  },
+  {
+   "x": 566,
+   "y": 25,
+   "frame": "wood_trestle",
+   "back": true
+  },
+  {
+   "x": 578,
+   "y": 25,
+   "frame": "wood_trestle",
+   "back": true
+  },
+  {
+   "x": 37,
+   "y": 24,
+   "frame": "isle_cone_a",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 74,
+   "y": 24,
+   "frame": "mini_isle",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 131,
+   "y": 24,
+   "frame": "isle_cone_b",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 162,
+   "y": 22,
+   "frame": "tiny_isle",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 180,
+   "y": 23,
+   "frame": "isle_cone_c",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 228,
+   "y": 24,
+   "frame": "mini_isle",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 268,
+   "y": 24,
+   "frame": "isle_cone_a",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 292,
+   "y": 24,
+   "frame": "isle_cone_b",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 322,
+   "y": 24,
+   "frame": "mini_isle",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 362,
+   "y": 24,
+   "frame": "isle_cone_c",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 461,
+   "y": 25,
+   "frame": "isle_cone_b",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 496,
+   "y": 24,
+   "frame": "tiny_isle",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 520,
+   "y": 24,
+   "frame": "mini_isle",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 572,
+   "y": 24,
+   "frame": "isle_cone_a",
+   "back": true,
+   "alpha": 0.85
+  },
+  {
+   "x": 2,
+   "y": 20,
+   "frame": "cloud_s",
+   "front": true
+  },
+  {
+   "x": 85,
+   "y": 19,
+   "frame": "bush_s",
+   "front": true
+  },
+  {
+   "x": 189,
+   "y": 15,
+   "frame": "bush_s",
+   "front": true
+  },
+  {
+   "x": 302,
+   "y": 18,
+   "frame": "cloud_s",
+   "front": true
+  },
+  {
+   "x": 393,
+   "y": 19,
+   "frame": "bush_s",
+   "front": true
+  },
+  {
+   "x": 538,
+   "y": 19,
+   "frame": "cloud_s",
+   "front": true
+  },
+  {
+   "x": 626,
+   "y": 19,
+   "frame": "bush_s",
+   "front": true
+  }
+ ],
+ "door": {
+  "x": 626,
+  "y": 19,
+  "atlas": "world6_objects",
+  "frame": "portal_w6",
+  "scale": 1.0
+ }
+}

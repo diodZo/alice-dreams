@@ -5,7 +5,8 @@ extends Area2D
 ## especial, fragmento de constelación y mini cohete dorado).
 
 const FRAMES := {"moon": "moon_w3", "button": "button_gold", "shell": "shell_token", "starfish": "starfish_pink", "rainbow": "bubble_float_l", "duck": "duck_king",
-	"moon_token": "moon_token", "special": "special_star", "constellation": "star_w5_b", "rocket": "mini_rocket"}
+	"moon_token": "moon_token", "special": "special_star", "constellation": "star_w5_b", "rocket": "mini_rocket",
+	"ticket": "ticket"}
 
 var level: Node
 var id := ""

@@ -1,5 +1,5 @@
 extends Node
-## Piloto automático para comprobar que un mundo (1-5) se puede recorrer de principio a fin con
+## Piloto automático para comprobar que un mundo (1-6) se puede recorrer de principio a fin con
 ## la física migrada (sin teletransportes). Sólo usa los mismos controles que un jugador:
 ## correr, saltar (manteniendo el botón), disparar y apuntar.
 ##   godot --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn [-- max_frames=40000]
@@ -78,6 +78,12 @@ func _physics_process(_delta: float) -> void:
 	best_x = maxf(best_x, p.position.x)
 	if frame % 600 == 0:
 		print("[autopilot] f=%d x=%.0f (tesela %d) mejor=%d hp=%d golpes=%d estrellas=%d" % [frame, p.position.x, int(p.position.x / 16), int(best_x / 16), p.hp, deaths, int(GameState.get_v("stars", 0))])
+	if "trace_train" in OS.get_cmdline_user_args() and frame % 5 == 0 and not level.level_objects.get("trains", []).is_empty():
+		var tl: TrainLine = level.level_objects.trains[0]
+		for cand in level.level_objects.trains:
+			if absf(cand.cars[0].position.x - p.position.x) < absf(tl.cars[0].position.x - p.position.x):
+				tl = cand
+		print("  f=%d p=(%.1f,%.1f) v=(%.0f,%.0f) g=%s ride=%s train s=%.1f wait=%.0f car0=(%.1f,%.1f) hold=%s press=%s" % [frame, p.position.x, p.position.y, p.velocity.x, p.velocity.y, p.grounded, _riding_mover(p) != null, tl.s, tl.wait_left, tl.cars[0].position.x, tl.cars[0].position.y, str(c.script_held.keys()), str(c.script_pressed.keys())])
 	if "trace" in OS.get_cmdline_user_args() and frame % 5 == 0:
 		var m: MovingPlatform = level.level_objects.movers[0]
 		print("  f=%d p=(%.1f,%.1f) v=(%.0f,%.0f) g=%s mover=(%.1f,%.1f) ride=%s wait=%d hold=%s" % [frame, p.position.x, p.position.y, p.velocity.x, p.velocity.y, p.grounded, m.position.x, m.position.y, _riding_mover(p) != null, wait_frames, str(c.script_held.keys())])
@@ -132,6 +138,27 @@ func _physics_process(_delta: float) -> void:
 	target_x = NAN
 	var riding := _riding_mover(p)
 	ride_frames = ride_frames + 1 if riding != null else 0
+	if riding is TrainCar:
+		# tren del Mundo 6: espera montada mientras el tren está parado en su primera estación;
+		# al llegar al final (o con suelo cerca mientras avanza) se baja hacia delante
+		var line: TrainLine = riding.line
+		c.script_held.erase("move_right")
+		c.script_held.erase("run")
+		if line.is_waiting() and line.s <= line.s_min() + 1:
+			# se coloca sobre la locomotora (delante) para bajarse en cuanto haya suelo
+			if p.position.x < line.cars[0].position.x - 6:
+				c.script_held["move_right"] = true
+			return
+		if line.is_waiting() and line.s >= line.s_max() - 1:
+			c.script_held["move_right"] = true
+			c.script_held["run"] = true
+			if not _support_ahead(p.position + Vector2(18, 4)) or level.terrain_solid_at(p.position + Vector2(14, -10)):
+				c.script_pressed["jump"] = true
+				c.script_held["jump"] = true
+				jump_hold = 40
+			return
+		# en marcha (o en una parada intermedia): se queda en el vagón
+		return
 	if riding != null and ride_frames > 240:
 		# plataforma opcional sin suelo cerca (secretos del Mundo 3): se baja andando
 		return
@@ -151,11 +178,24 @@ func _physics_process(_delta: float) -> void:
 				jump_hold = 40
 				break
 		return
+	var board := _train_to_board(p)
+	if board != null:
+		# sube al vagón de un tren parado en su estación
+		target_mover = board
+		c.script_pressed["jump"] = true
+		c.script_held["jump"] = true
+		jump_hold = 20
+		return
 	var gap := not _support_ahead(p.position + Vector2(18, 4))
 	var wall := level.terrain_solid_at(p.position + Vector2(14, -10))
 	var enemy := _enemy_ahead(p)
 	if gap:
 		var mover := _mover_in_gap(p)
+		if mover is TrainCar or (mover == null and _track_over_gap(p)):
+			# a un tren sólo se sube cuando está parado en su estación (ver _train_to_board)
+			wait_frames = 4
+			c.script_held.erase("move_right")
+			return
 		if mover != null:
 			# espera a que la nube móvil esté cerca antes de saltar
 			# salta cuando la nube está cerca y viene hacia la protagonista o se aleja despacio
@@ -186,7 +226,11 @@ func _support_ahead(pos: Vector2) -> bool:
 	var space := level.get_world_2d().direct_space_state
 	var q := PhysicsRayQueryParameters2D.create(pos + Vector2(0, -6), pos + Vector2(0, 40), C.L_ONE_WAY)
 	q.hit_from_inside = true
-	return not space.intersect_ray(q).is_empty() and _mover_in_gap(level.player) == null
+	var hit := space.intersect_ray(q)
+	if hit.is_empty():
+		return false
+	# una plataforma fija es apoyo; una móvil en el hueco no (hay que esperarla)
+	return not (hit.collider is MovingPlatform and not _is_static(hit.collider)) or _mover_in_gap(level.player) == null
 
 
 func _process(_delta: float) -> void:
@@ -217,9 +261,14 @@ func _find_landing(p: Player) -> float:
 func _riding_mover(p: Player) -> MovingPlatform:
 	for i in p.get_slide_collision_count():
 		var col := p.get_slide_collision(i)
-		if col.get_collider() is MovingPlatform:
+		if col.get_collider() is MovingPlatform and not _is_static(col.get_collider()):
 			return col.get_collider()
 	return null
+
+
+## Plataforma que no se mueve (hélice fija del Mundo 6): cuenta como suelo.
+func _is_static(m: Object) -> bool:
+	return m.has_method("is_static") and m.is_static()
 
 
 ## Plataforma con recorrido vertical largo (ascensor), no un simple vaivén.
@@ -237,6 +286,8 @@ func _surface_y(m: MovingPlatform) -> float:
 
 func _mover_in_gap(p: Player) -> MovingPlatform:
 	for m in level.level_objects.movers:
+		if _is_static(m):
+			continue
 		var span_l: float = m.start.x - 40
 		var span_r: float = m.start.x + m.delta_px.x + 40
 		# plataformas verticales (cohete ascensor del Mundo 5): cuentan en todo su recorrido
@@ -249,7 +300,44 @@ func _mover_in_gap(p: Player) -> MovingPlatform:
 	return null
 
 
+## ¿Cruza el hueco de delante la vía de un tren del Mundo 6? (aunque el tren esté lejos)
+func _track_over_gap(p: Player) -> bool:
+	for line in level.level_objects.get("trains", []):
+		var pts: PackedVector2Array = line.common
+		var lo := Vector2(INF, INF)
+		var hi := Vector2(-INF, -INF)
+		for q in pts:
+			lo = Vector2(minf(lo.x, q.x), minf(lo.y, q.y))
+			hi = Vector2(maxf(hi.x, q.x), maxf(hi.y, q.y))
+		var x := p.position.x + 24
+		if x > lo.x - 8 and x < hi.x and p.position.y > lo.y - 80 and p.position.y < hi.y + 60:
+			return true
+	return false
+
+
+## Vagón al que subir: un tren del Mundo 6 parado en su primera estación justo delante.
+func _train_to_board(p: Player) -> TrainCar:
+	for line in level.level_objects.get("trains", []):
+		if not line.is_waiting() or line.s > line.s_min() + 1:
+			continue
+		var best: TrainCar = null
+		for car in line.cars:
+			var dx: float = car.position.x - p.position.x
+			if dx > -64 and dx < 70 and absf(car.position.y - p.position.y) < 40 and (best == null or absf(dx) < absf(best.position.x - p.position.x)):
+				best = car
+		if best != null:
+			return best
+	return null
+
+
 func _enemy_ahead(p: Player) -> bool:
+	# barreras de estrella del Mundo 6: se saltan como un monstruo
+	for o in level.level_objects.objects.get_children():
+		if o is StarBumper and o.position.x - p.position.x > 0 and o.position.x - p.position.x < 40 and absf(o.position.y - p.position.y) < 24:
+			return true
+		# ruedas rodantes que vienen hacia Alice: también se saltan
+		if o is RollingWheel and o.visible and o.position.x - p.position.x > 0 and o.position.x - p.position.x < 46 and absf(o.position.y - p.position.y) < 30:
+			return true
 	for e in level.enemies_root.get_children():
 		if is_instance_valid(e) and not e.finished and e.is_alive() and not e.is_trapped():
 			var dx: float = e.position.x - p.position.x

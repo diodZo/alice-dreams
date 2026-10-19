@@ -1,0 +1,157 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://resources/world6/enemies/vagoncito.png" id="1_i323r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7ikh"]
+resource_name = "attack_0"
+atlas = ExtResource("1_i323r")
+region = Rect2(2, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx6f1"]
+resource_name = "attack_1"
+atlas = ExtResource("1_i323r")
+region = Rect2(48, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb1ch"]
+resource_name = "attack_2"
+atlas = ExtResource("1_i323r")
+region = Rect2(94, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dppcx"]
+resource_name = "defeated_0"
+atlas = ExtResource("1_i323r")
+region = Rect2(140, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8cd7"]
+resource_name = "defeated_1"
+atlas = ExtResource("1_i323r")
+region = Rect2(186, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk5b1"]
+resource_name = "defeated_2"
+atlas = ExtResource("1_i323r")
+region = Rect2(232, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knief"]
+resource_name = "hurt_0"
+atlas = ExtResource("1_i323r")
+region = Rect2(278, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmq2q"]
+resource_name = "hurt_1"
+atlas = ExtResource("1_i323r")
+region = Rect2(324, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_535qv"]
+resource_name = "idle_0"
+atlas = ExtResource("1_i323r")
+region = Rect2(370, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eujis"]
+resource_name = "idle_1"
+atlas = ExtResource("1_i323r")
+region = Rect2(416, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcyhg"]
+resource_name = "idle_2"
+atlas = ExtResource("1_i323r")
+region = Rect2(462, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w715v"]
+resource_name = "walk_0"
+atlas = ExtResource("1_i323r")
+region = Rect2(508, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrimu"]
+resource_name = "walk_1"
+atlas = ExtResource("1_i323r")
+region = Rect2(554, 2, 44, 34)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8spox"]
+resource_name = "walk_2"
+atlas = ExtResource("1_i323r")
+region = Rect2(600, 2, 44, 34)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7ikh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx6f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb1ch")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dppcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8cd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk5b1")
+}],
+"loop": 0,
+"name": &"defeated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knief")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmq2q")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_535qv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eujis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcyhg")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w715v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrimu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8spox")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 9.0
+}]

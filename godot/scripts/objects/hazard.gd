@@ -30,6 +30,13 @@ func setup(def: Dictionary, atlas: String) -> Hazard:
 		create_tween().tween_interval(delay).finished.connect(start)
 	else:
 		start.call()
+	if def.get("spin", false):
+		# hélice giratoria (Mundo 6): se estrecha y cambia de lado, como un giro visto de lado
+		var sp := spr.create_tween().set_loops()
+		sp.tween_property(spr, "scale:x", 0.2, 0.09)
+		sp.tween_callback(func(): spr.flip_h = not spr.flip_h)
+		sp.tween_property(spr, "scale:x", 1.0, 0.09)
+		return self
 	spr.rotation_degrees = -8
 	var wobble := spr.create_tween().set_loops()
 	wobble.tween_property(spr, "rotation_degrees", 8.0, 0.6)

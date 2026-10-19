@@ -113,6 +113,10 @@ func _physics_process(delta: float) -> void:
 ## Choque con el escenario. Devuelve true si el proyectil desaparece.
 func _hit_world(col: KinematicCollision2D) -> bool:
 	var n := col.get_normal()
+	# objetos sólidos que reaccionan a los disparos de Alice (bloques de estrella del Mundo 6)
+	var other := col.get_collider()
+	if owner_kind == "player" and other != null and other.has_method("shot_by"):
+		other.shot_by(self)
 	if kind == "wind":
 		# la ráfaga se detiene contra la pared pero no desaparece
 		velocity = velocity.slide(n)

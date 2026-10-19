@@ -71,6 +71,28 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		var sl := RainbowSlide.new().setup(s, atlas)
 		platforms.add_child(sl)
 		out.slides.append(sl)
+	# Mundo 6: trenes de juguete (cada vagón es una plataforma móvil), plataformas con hélice,
+	# puentes arcoíris en arco y bloques que caen.
+	out.trains = []
+	for t in data.get("trains", []):
+		var line := TrainLine.new().setup(level, t, atlas)
+		platforms.add_child(line)
+		out.trains.append(line)
+		for car in line.cars:
+			out.movers.append(car)
+	for h in data.get("helis", []):
+		var p := HeliPlatform.new().setup(h, atlas)
+		platforms.add_child(p)
+		out.movers.append(p)
+	for a in data.get("rainbowArches", []):
+		platforms.add_child(RainbowArch.new().setup(a, atlas))
+	for b in data.get("fallingBlocks", []):
+		platforms.add_child(FallingBlock.new().setup(level, b, atlas))
+	out.star_blocks = []
+	for b in data.get("starBlocks", []):
+		var sb := StarBlock.new().setup(level, b, atlas)
+		platforms.add_child(sb)
+		out.star_blocks.append(sb)
 
 	var objects := Node2D.new()
 	objects.name = "Objects"
@@ -117,6 +139,25 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		objects.add_child(FallingStar.new().setup(level, f, atlas))
 	for c in data.get("explosiveClouds", []):
 		objects.add_child(ExplosiveCloud.new().setup(level, c, atlas))
+	# Mundo 6: ruedas rodantes, barreras de estrella, trenes enemigos, palancas y campanas.
+	for w in data.get("rollingWheels", []):
+		objects.add_child(RollingWheel.new().setup(level, w, atlas))
+	for b in data.get("bumpers", []):
+		objects.add_child(StarBumper.new().setup(level, b, atlas))
+	for t in data.get("hazardTrains", []):
+		objects.add_child(HazardTrain.new().setup(level, t, atlas))
+	out.levers = []
+	for l in data.get("levers", []):
+		var ti := int(l.get("train", -1))
+		var lever := RailLever.new().setup(level, l, atlas, out.trains[ti] if ti >= 0 and ti < out.trains.size() else null)
+		objects.add_child(lever)
+		out.levers.append(lever)
+	out.bells = []
+	for b in data.get("bells", []):
+		var ti := int(b.get("train", -1))
+		var bell := StationBell.new().setup(level, b, atlas, out.trains[ti] if ti >= 0 and ti < out.trains.size() else null)
+		objects.add_child(bell)
+		out.bells.append(bell)
 	for c in data.get("dreamCollectibles", []):
 		if not (str(c.id) in GameState.get_v("dreamCollectibles", [])):
 			objects.add_child(DreamCollectible.new().setup(level, c, atlas))
@@ -216,6 +257,25 @@ func _check_frames(atlas: String) -> void:
 		frames += ["fall_star_0", "fall_star_1", "fall_star_2", "fall_star_3"]
 	if not data.get("explosiveClouds", []).is_empty():
 		frames += ["boom_cloud", "boom_cloud_big", "boom_burst"]
+	if not data.get("trains", []).is_empty() or not data.get("hazardTrains", []).is_empty():
+		frames += ["rail_strip", "rail_stop", "rail_cross", "hazard_train", "rainbow_tunnel"]
+	for x in data.get("trains", []):
+		frames += x.get("cars", [])
+	if not data.get("rainbowArches", []).is_empty():
+		frames += ["rainbow_band_w6", "cloud_s"]
+	if not data.get("helis", []).is_empty():
+		frames += ["heli_plat", "heli_prop", "heli_plat_b", "heli_prop_b", "heli_plat_c", "heli_prop_c"]
+	for x in data.get("fallingBlocks", []) + data.get("rollingWheels", []):
+		if x.has("frame"):
+			frames.append(x.frame)
+	if not data.get("bumpers", []).is_empty():
+		frames += ["bumper", "bumper_hit"]
+	if not data.get("levers", []).is_empty():
+		frames.append("rail_lever")
+	if not data.get("bells", []).is_empty():
+		frames.append("bell")
+	if not data.get("starBlocks", []).is_empty():
+		frames.append("star_block")
 	for x in data.get("sleepClouds", []):
 		var fx_atlas: String = x.get("atlas", "w3_fx")
 		var f: String = x.get("frame", "sleep_cloud")

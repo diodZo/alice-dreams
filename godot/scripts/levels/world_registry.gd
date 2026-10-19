@@ -7,7 +7,7 @@ class_name WorldRegistry
 ##   3. su entrada en esta tabla y en Router.SCENES.
 ## Cada mundo define en sus datos: tileset, fondo, longitud, secciones, enemigos, obstáculos,
 ## coleccionables, checkpoints, jefe, música y portal de salida.
-## Implementados: Mundos 1, 2, 3, 4 y 5; el resto queda reservado.
+## Implementados: Mundos 1 a 6; el resto queda reservado.
 ## Campos de presentación (menú y pantalla de victoria): victoryTitle, victorySub, bossFrames,
 ## bossFrame (fotograma del jefe vencido), nextPortal, victoryMusic. "short": nombre del mapa de mundos.
 
@@ -31,8 +31,11 @@ const WORLDS := [
 	{"id": 5, "name": "Sueños Cósmicos — Islas en el Cielo", "short": "Sueños Cósmicos", "scene": "World5", "data": "res://data/world5/world5.json", "boss_data": "res://data/world5/world5_boss.json", "implemented": true,
 		"victoryTitle": "¡Mundo 5 completado!", "victorySub": "Luna Estelar duerme feliz entre las nubes",
 		"bossFrames": "luna_estelar", "bossAnim": "defeated", "bossFrame": 1, "bossScale": 0.6,
-		"nextPortal": "Portal al Mundo 6: preparado (próximamente)", "victoryMusic": "world5_victory"},
-	{"id": 6, "name": "El Parque de las Estrellas", "short": "Parque de las Estrellas", "scene": "", "data": "", "boss_data": "", "implemented": false},
+		"nextPortal": "Portal al Mundo 6: abierto", "victoryMusic": "world5_victory"},
+	{"id": 6, "name": "El Reino del Tren de Juguete", "short": "Tren de Juguete", "scene": "World6", "data": "res://data/world6/world6.json", "boss_data": "res://data/world6/world6_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 6 completado!", "victorySub": "Locomostro duerme feliz en la Gran Estación",
+		"bossFrames": "locomostro", "bossAnim": "defeated", "bossFrame": 2, "bossScale": 0.5,
+		"nextPortal": "Portal al Mundo 7: preparado (próximamente)", "victoryMusic": "world6_victory"},
 	{"id": 7, "name": "El Bosque de Caramelos", "short": "Bosque de Caramelos", "scene": "", "data": "", "boss_data": "", "implemented": false},
 	{"id": 8, "name": "El Castillo de los Sueños", "short": "Castillo de los Sueños", "scene": "", "data": "", "boss_data": "", "implemented": false},
 ]

@@ -50,6 +50,9 @@ const MUSIC_FILES := {
 	"world5": "",
 	"luna_estelar": "",
 	"world5_victory": "",
+	"world6": "",
+	"locomostro": "",
+	"world6_victory": "",
 }
 
 ## Música del Mundo 2: si se copian estos archivos a res://resources/audio/, se usan en lugar de
@@ -67,4 +70,7 @@ const OPTIONAL_MUSIC := {
 	"world5": "res://resources/audio/world5_theme.ogg",
 	"luna_estelar": "res://resources/audio/luna_estelar_boss.ogg",
 	"world5_victory": "res://resources/audio/world5_victory.ogg",
+	"world6": "res://resources/audio/world6_theme.ogg",
+	"locomostro": "res://resources/audio/locomostro_boss.ogg",
+	"world6_victory": "res://resources/audio/world6_victory.ogg",
 }

@@ -1,0 +1,285 @@
+{
+ "key": "world6_boss",
+ "worldId": 6,
+ "widthTiles": 58,
+ "heightTiles": 17,
+ "music": "world6",
+ "bossMusic": "locomostro",
+ "tileset": "world6_tiles",
+ "objectsAtlas": "world6_objects",
+ "backgroundAtlas": "world6_bg",
+ "background": {
+  "sky": "w6_sky",
+  "far": "w6_clouds_far",
+  "near": "w6_clouds_near",
+  "atlas": "world6_bg",
+  "objectsAtlas": "world6_objects",
+  "sparkles": true,
+  "drifters": [
+   "cloud_s",
+   "cloud_m"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.02,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_castle_isle",
+      "x": 300,
+      "y": 96
+     },
+     {
+      "frame": "bg_balloon",
+      "x": 84,
+      "y": 52
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.03,
+     0.03
+    ],
+    "depth": 3,
+    "items": [
+     {
+      "frame": "bg_castles",
+      "x": 120,
+      "y": 120
+     },
+     {
+      "frame": "bg_castles",
+      "x": 380,
+      "y": 116
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.12,
+     0.07
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_hills",
+     "bg_falls",
+     "bg_rainbow"
+    ],
+    "step": 250,
+    "y": [
+     150,
+     178
+    ],
+    "alpha": 0.85,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.22,
+     0.12
+    ],
+    "depth": 5,
+    "frames": [
+     "bg_viaduct"
+    ],
+    "step": 420,
+    "y": [
+     176,
+     196
+    ],
+    "alpha": 0.9
+   }
+  ]
+ },
+ "frames": {
+  "flag": "flag_w6",
+  "signpost": "sign_w6",
+  "star": [
+   "world6_objects",
+   "star_w6"
+  ]
+ },
+ "progress": {
+  "total": 11008,
+  "offset": 10080,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 2,
+  "y": 14
+ },
+ "sections": [
+  {
+   "id": "E",
+   "name": "La Gran Estación Real",
+   "from": 8600
+  }
+ ],
+ "terrain": [
+  {
+   "x": 0,
+   "y": 14,
+   "w": 58,
+   "h": 3,
+   "mat": "cloud"
+  }
+ ],
+ "blocks": [],
+ "clouds": [
+  {
+   "x": 13,
+   "y": 11,
+   "frame": "cloud_plat_l",
+   "top": 3
+  },
+  {
+   "x": 29,
+   "y": 10,
+   "frame": "cloud_plat_m",
+   "top": 3
+  },
+  {
+   "x": 45,
+   "y": 11,
+   "frame": "cloud_plat_l",
+   "top": 3
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [],
+ "swings": [],
+ "crumbles": [],
+ "pads": [],
+ "winds": [],
+ "hazards": [],
+ "stars": [
+  {
+   "x": 12,
+   "y": 8
+  },
+  {
+   "x": 13,
+   "y": 8
+  },
+  {
+   "x": 14,
+   "y": 8
+  },
+  {
+   "x": 28,
+   "y": 8
+  },
+  {
+   "x": 29,
+   "y": 8
+  },
+  {
+   "x": 30,
+   "y": 8
+  },
+  {
+   "x": 44,
+   "y": 8
+  },
+  {
+   "x": 45,
+   "y": 8
+  },
+  {
+   "x": 46,
+   "y": 8
+  }
+ ],
+ "enemies": [],
+ "checkpoints": [],
+ "pickups": [],
+ "signs": [],
+ "decor": [
+  {
+   "x": 3,
+   "y": 14,
+   "frame": "pennants"
+  },
+  {
+   "x": 8,
+   "y": 14,
+   "frame": "station_house",
+   "back": true
+  },
+  {
+   "x": 20,
+   "y": 14,
+   "frame": "rainbow_tunnel",
+   "back": true,
+   "scale": 1.6
+  },
+  {
+   "x": 29,
+   "y": 14,
+   "frame": "station_plat",
+   "back": true
+  },
+  {
+   "x": 38,
+   "y": 14,
+   "frame": "rainbow_tunnel",
+   "back": true,
+   "scale": 1.6
+  },
+  {
+   "x": 50,
+   "y": 14,
+   "frame": "castle_pair",
+   "back": true,
+   "scale": 1.3
+  },
+  {
+   "x": 55,
+   "y": 14,
+   "frame": "pennants"
+  },
+  {
+   "x": 25,
+   "y": 14,
+   "frame": "sign_star"
+  },
+  {
+   "x": 33,
+   "y": 14,
+   "frame": "wheel_deco"
+  }
+ ],
+ "gate": {
+  "x": 5,
+  "rows": [
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": "block_red"
+ },
+ "triggerX": 9,
+ "boss": {
+  "homeX": 40,
+  "minX": 6,
+  "maxX": 57,
+  "floorY": 224,
+  "frameBoth": true,
+  "scene": "res://scenes/bosses/Locomostro.tscn",
+  "name": "Locomostro",
+  "introBanner": "¡Locomostro llega a la Gran Estación Real!",
+  "defeatBanner": "¡Locomostro se queda dormido!",
+  "portalToast": "El portal al Mundo 7 está preparado",
+  "afterMusic": "world6_victory"
+ },
+ "portal": {
+  "x": 54,
+  "y": 14
+ }
+}

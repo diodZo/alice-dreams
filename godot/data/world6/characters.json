@@ -1,0 +1,273 @@
+{
+ "payasito": {
+  "frameWidth": 54,
+  "frameHeight": 44,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "jump": {
+    "frames": [
+     "jump_0",
+     "jump_1",
+     "jump_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": true
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1",
+     "hurt_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Payasito Resorte"
+ },
+ "bloquecito": {
+  "frameWidth": 42,
+  "frameHeight": 32,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3"
+    ],
+    "fps": 9,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2",
+     "attack_3"
+    ],
+    "fps": 10,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1",
+     "hurt_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2"
+    ],
+    "fps": 5,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Bloquecito Travieso"
+ },
+ "vagoncito": {
+  "frameWidth": 44,
+  "frameHeight": 34,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2"
+    ],
+    "fps": 9,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2"
+    ],
+    "fps": 5,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Vagoncito Chispa"
+ },
+ "locomostro": {
+  "frameWidth": 210,
+  "frameHeight": 84,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "move": {
+    "frames": [
+     "move_0",
+     "move_1",
+     "move_2",
+     "move_3",
+     "move_4",
+     "move_5"
+    ],
+    "fps": 9,
+    "loop": true,
+    "derived": false
+   },
+   "wind_attack": {
+    "frames": [
+     "wind_attack_0",
+     "wind_attack_1",
+     "wind_attack_2",
+     "wind_attack_3"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "block_attack": {
+    "frames": [
+     "block_attack_0",
+     "block_attack_1",
+     "block_attack_2",
+     "block_attack_3"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "charge": {
+    "frames": [
+     "charge_0",
+     "charge_1",
+     "charge_2",
+     "charge_3"
+    ],
+    "fps": 10,
+    "loop": true,
+    "derived": false
+   },
+   "stunned": {
+    "frames": [
+     "stunned_0",
+     "stunned_1"
+    ],
+    "fps": 4,
+    "loop": true,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": true
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2"
+    ],
+    "fps": 3,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Locomostro"
+ }
+}

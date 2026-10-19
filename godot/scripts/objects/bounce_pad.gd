@@ -24,6 +24,10 @@ func setup(owner_level: Node, def: Dictionary, atlas: String) -> BouncePad:
 	var cs := CollisionShape2D.new()
 	cs.shape = shape
 	cs.position = Vector2(-round(size.x / 2.0) + 2 + shape.size.x / 2.0, -4)
+	if def.get("surface", "") == "top":
+		# resorte de juguete (Mundo 6): se pisa por arriba, sobre la cabeza del muelle
+		shape.size = Vector2(size.x - 8, size.y - 4)
+		cs.position = Vector2(-round(size.x / 2.0) + 4 + shape.size.x / 2.0, -size.y / 2.0 - 2)
 	add_child(cs)
 	Trigger.configure(self, "pad")
 	power = float(def.get("power", -520))

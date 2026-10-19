@@ -1,0 +1,2235 @@
+{
+ "_doc": [
+  "Fuentes del Mundo 6 - El Reino del Tren de Juguete. Cajas inclusivas [x0,y0,x1,y1] en píxeles de la hoja original, corregibles a mano (tools/world6/detect_world6.py dibuja las candidatas).",
+  "Una caja puede ser una lista o un objeto {box, only, pivot, keep, nocomp}: 'only' limita el recorte a zonas (rectángulos o polígonos) para separar un dibujo de lo que lo toca (estrellas lanzadas, humo del jefe, polvo y estelas); 'pivot' fija a mano la x (en la hoja) del pivote de ese fotograma.",
+  "La hoja del jefe tiene alfa (mode alpha, umbral 240: descarta el halo rojo semitransparente). Las de enemigos y teselas no: mode panel elimina sólo el fondo pastel conectado con el borde del recorte. En word_6.png mode panel con tolerancia alta elimina el cielo conectado con el borde.",
+  "Pivote estable: 'anchor' = feet, centroid, white (mancha blanca mayor: la cara del payasito) o blue (mancha azul intenso mayor: la cabina de Locomostro, ignora humo y bloques).",
+  "Cuadros reutilizados (la hoja no tiene cuadro propio): payasito 'walk' = cuadros 1-2 de SALTAR/MOVERSE; Locomostro 'hurt' = aturdido 1. El manifiesto los marca con 'reused'."
+ ],
+ "sources": {
+  "scene": "imagenes/word_6.png",
+  "tiles": "imagenes/tilesets_world_6.png",
+  "enemies": "imagenes/enemies_world_6.png",
+  "boss": "imagenes/jefemundo6.png"
+ },
+ "characters": {
+  "payasito": {
+   "name": "Payasito Resorte",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.36,
+   "anchor": "white",
+   "colors": 30,
+   "distance": 40,
+   "keep": 0.2,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "note": "medio escondido en su caja",
+     "boxes": [
+      [
+       403,
+       200,
+       488,
+       303
+      ],
+      [
+       492,
+       200,
+       574,
+       303
+      ],
+      [
+       576,
+       200,
+       656,
+       303
+      ]
+     ]
+    },
+    "jump": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: la caja tiembla (aviso); 1-2: salta con el resorte estirado",
+     "boxes": [
+      [
+       688,
+       194,
+       782,
+       303
+      ],
+      [
+       795,
+       204,
+       880,
+       294
+      ],
+      [
+       895,
+       194,
+       995,
+       294
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 8,
+     "loop": true,
+     "reused": "jump 1-2",
+     "note": "moverse = cuadros 1-2 de SALTAR/MOVERSE (la hoja los agrupa)",
+     "boxes": [
+      [
+       795,
+       204,
+       880,
+       294
+      ],
+      [
+       895,
+       194,
+       995,
+       294
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 8,
+     "loop": false,
+     "note": "lanza estrellas; las estrellas se separan: son proyectiles del juego",
+     "boxes": [
+      {
+       "box": [
+        1033,
+        198,
+        1150,
+        312
+       ],
+       "only": [
+        [
+         1033,
+         198,
+         1093,
+         312
+        ]
+       ]
+      },
+      {
+       "box": [
+        1140,
+        198,
+        1270,
+        312
+       ],
+       "only": [
+        [
+         1140,
+         198,
+         1228,
+         312
+        ]
+       ]
+      },
+      {
+       "box": [
+        1255,
+        198,
+        1425,
+        312
+       ],
+       "only": [
+        [
+         1255,
+         198,
+         1347,
+         312
+        ]
+       ]
+      }
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "note": "2: se esconde en la caja",
+     "boxes": [
+      [
+       403,
+       372,
+       506,
+       472
+      ],
+      [
+       511,
+       372,
+       599,
+       472
+      ],
+      [
+       601,
+       372,
+       678,
+       472
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "note": "0: el resorte salta fuera de la caja; 1: tumbado junto a la caja volcada",
+     "boxes": [
+      {
+       "box": [
+        716,
+        368,
+        832,
+        474
+       ],
+       "pivot": 770
+      },
+      {
+       "box": [
+        833,
+        368,
+        978,
+        478
+       ],
+       "pivot": 905
+      }
+     ]
+    }
+   }
+  },
+  "bloquecito": {
+   "name": "Bloquecito Travieso",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.36,
+   "anchor": "feet",
+   "colors": 28,
+   "distance": 40,
+   "keep": 0.2,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       400,
+       555,
+       466,
+       617
+      ],
+      [
+       474,
+       555,
+       545,
+       617
+      ],
+      [
+       554,
+       555,
+       628,
+       617
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 9,
+     "loop": true,
+     "note": "el polvo de los pies se separa (efecto dust)",
+     "boxes": [
+      [
+       660,
+       552,
+       729,
+       618
+      ],
+      {
+       "box": [
+        729,
+        549,
+        815,
+        618
+       ],
+       "only": [
+        [
+         761,
+         549,
+         815,
+         618
+        ]
+       ]
+      },
+      [
+       819,
+       551,
+       893,
+       618
+      ],
+      {
+       "box": [
+        895,
+        552,
+        982,
+        618
+       ],
+       "only": [
+        [
+         923,
+         552,
+         982,
+         618
+        ]
+       ]
+      }
+     ]
+    },
+    "attack": {
+     "fps": 10,
+     "loop": false,
+     "note": "0: retrocede (aviso); 1-3: embestida. Las estelas se dibujan en el juego",
+     "boxes": [
+      {
+       "box": [
+        1003,
+        543,
+        1101,
+        616
+       ],
+       "only": [
+        [
+         1033,
+         543,
+         1101,
+         616
+        ]
+       ]
+      },
+      {
+       "box": [
+        1105,
+        548,
+        1226,
+        616
+       ],
+       "only": [
+        [
+         1155,
+         548,
+         1226,
+         616
+        ]
+       ]
+      },
+      {
+       "box": [
+        1228,
+        549,
+        1327,
+        616
+       ],
+       "only": [
+        [
+         1259,
+         549,
+         1327,
+         616
+        ]
+       ]
+      },
+      {
+       "box": [
+        1329,
+        546,
+        1426,
+        616
+       ],
+       "only": [
+        [
+         1358,
+         546,
+         1426,
+         616
+        ]
+       ]
+      }
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       404,
+       680,
+       484,
+       761
+      ],
+      [
+       494,
+       684,
+       581,
+       764
+      ],
+      [
+       580,
+       690,
+       666,
+       760
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 5,
+     "loop": false,
+     "note": "ojos en cruz, se desmonta en piezas de colores",
+     "boxes": [
+      [
+       699,
+       688,
+       776,
+       761
+      ],
+      {
+       "box": [
+        777,
+        690,
+        881,
+        763
+       ],
+       "keep": 0.08
+      },
+      {
+       "box": [
+        887,
+        680,
+        986,
+        762
+       ],
+       "nocomp": true
+      }
+     ]
+    }
+   }
+  },
+  "vagoncito": {
+   "name": "Vagoncito Chispa",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.36,
+   "anchor": "feet",
+   "colors": 30,
+   "distance": 40,
+   "keep": 0.35,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "note": "el humo de la chimenea se dibuja en el juego (efecto smoke)",
+     "boxes": [
+      [
+       400,
+       829,
+       476,
+       926
+      ],
+      [
+       478,
+       832,
+       558,
+       926
+      ],
+      [
+       559,
+       828,
+       639,
+       926
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 9,
+     "loop": true,
+     "label": "moverse",
+     "boxes": [
+      [
+       666,
+       831,
+       752,
+       926
+      ],
+      {
+       "box": [
+        758,
+        829,
+        863,
+        926
+       ],
+       "only": [
+        [
+         788,
+         829,
+         863,
+         926
+        ]
+       ]
+      },
+      {
+       "box": [
+        870,
+        828,
+        978,
+        926
+       ],
+       "only": [
+        [
+         899,
+         828,
+         978,
+         926
+        ]
+       ]
+      }
+     ]
+    },
+    "attack": {
+     "fps": 8,
+     "loop": false,
+     "note": "chispas estelares; las chispas se separan (proyectiles)",
+     "boxes": [
+      [
+       1026,
+       836,
+       1106,
+       926
+      ],
+      {
+       "box": [
+        1166,
+        836,
+        1252,
+        926
+       ],
+       "only": [
+        [
+         1166,
+         836,
+         1250,
+         926
+        ]
+       ]
+      },
+      [
+       1296,
+       836,
+       1378,
+       926
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      {
+       "box": [
+        401,
+        968,
+        557,
+        1066
+       ],
+       "only": [
+        [
+         401,
+         968,
+         503,
+         1066
+        ]
+       ]
+      },
+      [
+       556,
+       974,
+       653,
+       1066
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 5,
+     "loop": false,
+     "note": "se para, se tambalea y vuelca sin romperse",
+     "boxes": [
+      [
+       677,
+       975,
+       777,
+       1065
+      ],
+      {
+       "box": [
+        780,
+        973,
+        882,
+        1068
+       ],
+       "keep": 0.1
+      },
+      {
+       "box": [
+        882,
+        973,
+        981,
+        1068
+       ],
+       "keep": 0.1
+      }
+     ]
+    }
+   }
+  },
+  "locomostro": {
+   "name": "Locomostro",
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 240,
+   "scale": 0.42,
+   "anchor": "blue",
+   "colors": 60,
+   "keep": 0.04,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "note": "0: cara traviesa; 1-3: amistosa",
+     "boxes": [
+      [
+       51,
+       9,
+       314,
+       202
+      ],
+      [
+       333,
+       9,
+       581,
+       202
+      ],
+      [
+       601,
+       9,
+       850,
+       202
+      ],
+      [
+       884,
+       9,
+       1147,
+       202
+      ]
+     ]
+    },
+    "move": {
+     "fps": 9,
+     "loop": true,
+     "boxes": [
+      [
+       17,
+       218,
+       260,
+       378
+      ],
+      [
+       267,
+       219,
+       489,
+       378
+      ],
+      [
+       496,
+       216,
+       717,
+       378
+      ],
+      [
+       727,
+       218,
+       951,
+       378
+      ],
+      [
+       961,
+       216,
+       1182,
+       378
+      ],
+      [
+       1190,
+       217,
+       1417,
+       378
+      ]
+     ]
+    },
+    "wind_attack": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: toma aire (aviso); 1-3 sopla. La ráfaga de humo se separa (efecto wind_swirl, proyectil del juego)",
+     "boxes": [
+      [
+       13,
+       392,
+       281,
+       559
+      ],
+      {
+       "box": [
+        293,
+        391,
+        694,
+        559
+       ],
+       "only": [
+        [
+         293,
+         391,
+         558,
+         559
+        ]
+       ]
+      },
+      {
+       "box": [
+        702,
+        392,
+        1083,
+        560
+       ],
+       "only": [
+        [
+         702,
+         392,
+         958,
+         560
+        ]
+       ]
+      },
+      {
+       "box": [
+        1080,
+        396,
+        1436,
+        560
+       ],
+       "only": [
+        [
+         1080,
+         396,
+         1358,
+         560
+        ]
+       ]
+      }
+     ]
+    },
+    "block_attack": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: inclina el vagón (aviso); 1-3 lanza bloques (los bloques sueltos son proyectiles)",
+     "boxes": [
+      [
+       14,
+       578,
+       296,
+       723
+      ],
+      [
+       324,
+       578,
+       626,
+       722
+      ],
+      [
+       704,
+       578,
+       984,
+       722
+      ],
+      [
+       1070,
+       575,
+       1333,
+       722
+      ]
+     ]
+    },
+    "charge": {
+     "fps": 10,
+     "loop": true,
+     "note": "0: se prepara (aviso); 1-3: embestida con estela estelar",
+     "boxes": [
+      [
+       13,
+       742,
+       337,
+       883
+      ],
+      [
+       354,
+       733,
+       675,
+       886
+      ],
+      [
+       709,
+       735,
+       1058,
+       890
+      ],
+      [
+       1085,
+       734,
+       1419,
+       894
+      ]
+     ]
+    },
+    "stunned": {
+     "fps": 4,
+     "loop": true,
+     "note": "ojos en espiral: vulnerable",
+     "boxes": [
+      [
+       58,
+       932,
+       286,
+       1071
+      ],
+      [
+       319,
+       917,
+       558,
+       1069
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 6,
+     "loop": false,
+     "reused": "stunned 1",
+     "note": "la hoja no tiene cuadro de daño: se reutiliza aturdido 1",
+     "boxes": [
+      [
+       319,
+       917,
+       558,
+       1069
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 3,
+     "loop": false,
+     "note": "0: frena y se inclina; 1: caen los bloques y peluches; 2: dormido",
+     "boxes": [
+      [
+       594,
+       939,
+       868,
+       1068
+      ],
+      [
+       898,
+       946,
+       1156,
+       1063
+      ],
+      [
+       1172,
+       971,
+       1411,
+       1065
+      ]
+     ]
+    }
+   }
+  }
+ },
+ "fx": {
+  "clown_star": {
+   "box": [
+    1017,
+    375,
+    1064,
+    422
+   ],
+   "scale": 0.26,
+   "colors": 10
+  },
+  "clown_star_s": {
+   "box": [
+    1145,
+    380,
+    1175,
+    410
+   ],
+   "scale": 0.26,
+   "colors": 8
+  },
+  "star_outline": {
+   "box": [
+    1070,
+    383,
+    1099,
+    415
+   ],
+   "scale": 0.3,
+   "colors": 8
+  },
+  "pop_cloud": {
+   "box": [
+    1218,
+    405,
+    1320,
+    481
+   ],
+   "scale": 0.32,
+   "colors": 12
+  },
+  "pink_puff": {
+   "box": [
+    1326,
+    366,
+    1428,
+    478
+   ],
+   "scale": 0.32,
+   "colors": 14
+  },
+  "dust": {
+   "box": [
+    1013,
+    687,
+    1081,
+    753
+   ],
+   "scale": 0.26,
+   "colors": 8
+  },
+  "dust_s": {
+   "box": [
+    1087,
+    732,
+    1115,
+    759
+   ],
+   "scale": 0.3,
+   "colors": 6
+  },
+  "cube_red": {
+   "box": [
+    1234,
+    688,
+    1259,
+    715
+   ],
+   "scale": 0.3,
+   "colors": 6
+  },
+  "cube_green": {
+   "box": [
+    1210,
+    714,
+    1238,
+    743
+   ],
+   "scale": 0.3,
+   "colors": 6
+  },
+  "cube_blue": {
+   "box": [
+    1246,
+    728,
+    1274,
+    758
+   ],
+   "scale": 0.3,
+   "colors": 6
+  },
+  "cube_orange": {
+   "box": [
+    1187,
+    732,
+    1214,
+    760
+   ],
+   "scale": 0.3,
+   "colors": 6
+  },
+  "smoke_puff": {
+   "box": [
+    1013,
+    984,
+    1064,
+    1042
+   ],
+   "scale": 0.36,
+   "colors": 8
+  },
+  "smoke_s": {
+   "box": [
+    1065,
+    1016,
+    1097,
+    1048
+   ],
+   "scale": 0.36,
+   "colors": 6
+  },
+  "smoke_big": {
+   "box": [
+    1013,
+    984,
+    1064,
+    1042
+   ],
+   "scale": 1.0,
+   "colors": 10,
+   "note": "nube de humo del Vagoncito (grande y translúcida en el juego: nunca oculta del todo a Alice)"
+  },
+  "spark_star": {
+   "box": [
+    1272,
+    1020,
+    1311,
+    1058
+   ],
+   "scale": 0.26,
+   "colors": 8
+  },
+  "spark_big": {
+   "box": [
+    1170,
+    1004,
+    1213,
+    1046
+   ],
+   "scale": 0.3,
+   "colors": 8
+  },
+  "smoke_pink": {
+   "box": [
+    1325,
+    978,
+    1423,
+    1057
+   ],
+   "scale": 0.32,
+   "colors": 12
+  },
+  "toy_block_pink": {
+   "src": "boss",
+   "mode": "alpha",
+   "box": [
+    1011,
+    583,
+    1082,
+    656
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "toy_block_blue": {
+   "src": "boss",
+   "mode": "alpha",
+   "box": [
+    1342,
+    590,
+    1407,
+    654
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "toy_block_green": {
+   "src": "boss",
+   "mode": "alpha",
+   "box": [
+    652,
+    596,
+    718,
+    664
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "wind_swirl": {
+   "src": "boss",
+   "mode": "alpha",
+   "box": [
+    556,
+    405,
+    696,
+    559
+   ],
+   "only": [
+    [
+     562,
+     405,
+     696,
+     559
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 12,
+   "note": "ráfaga de humo de Locomostro separada del cuadro 1 de wind_attack"
+  },
+  "boss_cloud": {
+   "src": "boss",
+   "mode": "alpha",
+   "box": [
+    1080,
+    396,
+    1436,
+    560
+   ],
+   "only": [
+    [
+     1360,
+     396,
+     1436,
+     560
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 12,
+   "note": "nube del soplido (cuadro 3 de wind_attack): nubecitas blancas de la derrota"
+  }
+ },
+ "objects": {
+  "wood_bridge_l": {
+   "box": [
+    511,
+    182,
+    698,
+    233
+   ],
+   "scale": 0.55,
+   "colors": 18
+  },
+  "wood_bridge_s": {
+   "box": [
+    707,
+    175,
+    803,
+    236
+   ],
+   "scale": 0.55,
+   "colors": 16
+  },
+  "wood_trestle": {
+   "box": [
+    817,
+    175,
+    922,
+    235
+   ],
+   "scale": 0.55,
+   "colors": 16
+  },
+  "wood_post": {
+   "box": [
+    930,
+    175,
+    989,
+    236
+   ],
+   "scale": 0.55,
+   "colors": 14
+  },
+  "block_bridge": {
+   "box": [
+    513,
+    259,
+    733,
+    334
+   ],
+   "scale": 0.45,
+   "colors": 20
+  },
+  "cloud_plat_a": {
+   "box": [
+    748,
+    263,
+    839,
+    301
+   ],
+   "scale": 0.5,
+   "colors": 10
+  },
+  "cloud_plat_b": {
+   "box": [
+    843,
+    263,
+    913,
+    301
+   ],
+   "scale": 0.5,
+   "colors": 10
+  },
+  "cloud_plat_c": {
+   "box": [
+    915,
+    263,
+    994,
+    301
+   ],
+   "scale": 0.5,
+   "colors": 10
+  },
+  "cloud_plat_l": {
+   "box": [
+    838,
+    305,
+    940,
+    345
+   ],
+   "scale": 0.5,
+   "colors": 10
+  },
+  "cloud_plat_m": {
+   "box": [
+    748,
+    306,
+    834,
+    345
+   ],
+   "scale": 0.5,
+   "colors": 10
+  },
+  "cloud_puff_s": {
+   "box": [
+    944,
+    306,
+    994,
+    345
+   ],
+   "scale": 0.5,
+   "colors": 10
+  },
+  "heli_prop": {
+   "box": [
+    513,
+    362,
+    618,
+    411
+   ],
+   "scale": 0.46,
+   "colors": 14,
+   "note": "hélice de la plataforma (gira en el juego estrechándose en horizontal)"
+  },
+  "heli_plat": {
+   "box": [
+    520,
+    411,
+    612,
+    458
+   ],
+   "scale": 0.46,
+   "colors": 14
+  },
+  "heli_prop_b": {
+   "box": [
+    628,
+    362,
+    735,
+    411
+   ],
+   "scale": 0.46,
+   "colors": 14
+  },
+  "heli_plat_b": {
+   "box": [
+    632,
+    411,
+    733,
+    464
+   ],
+   "scale": 0.46,
+   "colors": 14
+  },
+  "heli_prop_c": {
+   "box": [
+    745,
+    357,
+    852,
+    407
+   ],
+   "scale": 0.46,
+   "colors": 14
+  },
+  "heli_plat_c": {
+   "box": [
+    748,
+    407,
+    852,
+    466
+   ],
+   "scale": 0.46,
+   "colors": 14
+  },
+  "rainbow_curve": {
+   "box": [
+    862,
+    372,
+    995,
+    447
+   ],
+   "only": [
+    [
+     862,
+     372,
+     995,
+     419
+    ],
+    [
+     862,
+     419,
+     921,
+     447
+    ]
+   ],
+   "scale": 0.4,
+   "colors": 16
+  },
+  "rainbow_piece": {
+   "box": [
+    920,
+    421,
+    995,
+    463
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "station_bell": {
+   "box": [
+    509,
+    483,
+    617,
+    552
+   ],
+   "scale": 0.5,
+   "colors": 18
+  },
+  "station_fence": {
+   "box": [
+    620,
+    485,
+    721,
+    552
+   ],
+   "scale": 0.5,
+   "colors": 14
+  },
+  "station_house": {
+   "box": [
+    726,
+    480,
+    797,
+    552
+   ],
+   "scale": 0.5,
+   "colors": 16
+  },
+  "station_plat": {
+   "box": [
+    803,
+    480,
+    994,
+    552
+   ],
+   "scale": 0.5,
+   "colors": 18
+  },
+  "rail_a": {
+   "box": [
+    1029,
+    189,
+    1130,
+    233
+   ],
+   "scale": 0.38,
+   "colors": 10
+  },
+  "rail_b": {
+   "box": [
+    1140,
+    189,
+    1245,
+    233
+   ],
+   "scale": 0.38,
+   "colors": 10
+  },
+  "rail_s": {
+   "box": [
+    1253,
+    192,
+    1305,
+    233
+   ],
+   "scale": 0.38,
+   "colors": 10
+  },
+  "rail_slope": {
+   "box": [
+    1315,
+    178,
+    1427,
+    240
+   ],
+   "scale": 0.38,
+   "colors": 10
+  },
+  "rail_curve": {
+   "box": [
+    1029,
+    265,
+    1131,
+    356
+   ],
+   "scale": 0.38,
+   "colors": 10
+  },
+  "rail_curve_b": {
+   "box": [
+    1148,
+    258,
+    1203,
+    326
+   ],
+   "scale": 0.38,
+   "colors": 10
+  },
+  "rail_arc": {
+   "box": [
+    1092,
+    314,
+    1181,
+    356
+   ],
+   "scale": 0.38,
+   "colors": 10
+  },
+  "rail_cross": {
+   "box": [
+    1212,
+    277,
+    1296,
+    339
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "rail_lever": {
+   "box": [
+    1305,
+    273,
+    1386,
+    339
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "rail_stop": {
+   "box": [
+    1395,
+    282,
+    1427,
+    339
+   ],
+   "scale": 0.4,
+   "colors": 10
+  },
+  "train_loco": {
+   "box": [
+    1025,
+    385,
+    1138,
+    466
+   ],
+   "scale": 0.42,
+   "colors": 22
+  },
+  "train_red": {
+   "box": [
+    1143,
+    410,
+    1223,
+    466
+   ],
+   "scale": 0.42,
+   "colors": 16
+  },
+  "train_yellow": {
+   "box": [
+    1238,
+    424,
+    1321,
+    466
+   ],
+   "scale": 0.42,
+   "colors": 16
+  },
+  "train_star": {
+   "box": [
+    1338,
+    395,
+    1432,
+    466
+   ],
+   "scale": 0.42,
+   "colors": 18
+  },
+  "conn_block": {
+   "box": [
+    1027,
+    506,
+    1061,
+    538
+   ],
+   "scale": 0.4,
+   "colors": 8
+  },
+  "conn_chain": {
+   "box": [
+    1060,
+    514,
+    1090,
+    531
+   ],
+   "scale": 0.4,
+   "colors": 6
+  },
+  "conn_wheel": {
+   "box": [
+    1206,
+    498,
+    1264,
+    554
+   ],
+   "scale": 0.4,
+   "colors": 10
+  },
+  "conn_star": {
+   "box": [
+    1290,
+    504,
+    1340,
+    541
+   ],
+   "scale": 0.4,
+   "colors": 10
+  },
+  "deco_blocks": {
+   "box": [
+    14,
+    602,
+    100,
+    717
+   ],
+   "scale": 0.4,
+   "colors": 16
+  },
+  "bush_flowers": {
+   "box": [
+    83,
+    601,
+    168,
+    668
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "bush_b": {
+   "box": [
+    104,
+    672,
+    171,
+    731
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "bush_s": {
+   "box": [
+    332,
+    694,
+    374,
+    724
+   ],
+   "scale": 0.45,
+   "colors": 10
+  },
+  "tree_blue": {
+   "box": [
+    173,
+    616,
+    211,
+    681
+   ],
+   "scale": 0.45,
+   "colors": 10
+  },
+  "tree_green": {
+   "box": [
+    210,
+    618,
+    249,
+    681
+   ],
+   "scale": 0.45,
+   "colors": 10
+  },
+  "tree_blue_b": {
+   "box": [
+    252,
+    606,
+    294,
+    681
+   ],
+   "scale": 0.45,
+   "colors": 10
+  },
+  "tree_green_b": {
+   "box": [
+    293,
+    616,
+    326,
+    681
+   ],
+   "scale": 0.45,
+   "colors": 10
+  },
+  "castle_pair": {
+   "box": [
+    330,
+    602,
+    452,
+    725
+   ],
+   "scale": 0.45,
+   "colors": 18
+  },
+  "fence_w6": {
+   "box": [
+    178,
+    676,
+    326,
+    730
+   ],
+   "scale": 0.35,
+   "colors": 10
+  },
+  "bell_post": {
+   "box": [
+    20,
+    722,
+    116,
+    818
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "bell": {
+   "box": [
+    86,
+    734,
+    135,
+    786
+   ],
+   "scale": 0.36,
+   "colors": 10,
+   "note": "campana interactiva de las estaciones"
+  },
+  "sign_arrow": {
+   "box": [
+    137,
+    734,
+    209,
+    814
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "sign_star": {
+   "box": [
+    214,
+    734,
+    279,
+    814
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "sign_dir": {
+   "box": [
+    285,
+    729,
+    347,
+    814
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "pennants": {
+   "box": [
+    360,
+    728,
+    448,
+    806
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "rainbow_tunnel": {
+   "box": [
+    279,
+    820,
+    412,
+    912
+   ],
+   "scale": 0.6,
+   "colors": 22,
+   "note": "túnel arcoíris con su base de nube"
+  },
+  "wheel_deco": {
+   "box": [
+    377,
+    795,
+    451,
+    853
+   ],
+   "scale": 0.36,
+   "colors": 10
+  },
+  "hazard_train": {
+   "box": [
+    703,
+    640,
+    818,
+    738
+   ],
+   "scale": 0.42,
+   "colors": 20,
+   "note": "tren enemigo (obstáculo que cruza su vía tras un silbato)"
+  },
+  "toy_train_big": {
+   "box": [
+    492,
+    620,
+    692,
+    744
+   ],
+   "scale": 0.3,
+   "colors": 22,
+   "note": "tren decorativo de la estación"
+  },
+  "heli_hazard": {
+   "box": [
+    481,
+    773,
+    578,
+    852
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "heli_hazard_b": {
+   "box": [
+    592,
+    786,
+    683,
+    853
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "toy_spring": {
+   "box": [
+    704,
+    771,
+    784,
+    858
+   ],
+   "scale": 0.36,
+   "colors": 14,
+   "note": "resorte de juguete (se comprime al pisarlo)"
+  },
+  "fall_block_orange": {
+   "box": [
+    805,
+    806,
+    852,
+    847
+   ],
+   "scale": 0.64,
+   "colors": 10
+  },
+  "fall_block_blue": {
+   "box": [
+    852,
+    791,
+    887,
+    826
+   ],
+   "scale": 0.86,
+   "colors": 10
+  },
+  "fall_block_pink": {
+   "box": [
+    880,
+    817,
+    924,
+    857
+   ],
+   "scale": 0.7,
+   "colors": 10
+  },
+  "wheel_s": {
+   "box": [
+    533,
+    889,
+    578,
+    935
+   ],
+   "scale": 0.42,
+   "colors": 10
+  },
+  "wheel_l": {
+   "box": [
+    629,
+    869,
+    698,
+    935
+   ],
+   "scale": 0.42,
+   "colors": 12
+  },
+  "bumper": {
+   "box": [
+    753,
+    887,
+    803,
+    935
+   ],
+   "scale": 0.4,
+   "colors": 10
+  },
+  "bumper_hit": {
+   "box": [
+    808,
+    877,
+    925,
+    935
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "star_w6": {
+   "box": [
+    959,
+    641,
+    1004,
+    685
+   ],
+   "scale": 0.28,
+   "colors": 10
+  },
+  "star_w6_b": {
+   "box": [
+    1097,
+    639,
+    1144,
+    685
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "ticket": {
+   "box": [
+    1154,
+    652,
+    1231,
+    710
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "star_block": {
+   "box": [
+    1253,
+    648,
+    1315,
+    712
+   ],
+   "scale": 0.28,
+   "colors": 12
+  },
+  "flag_w6": {
+   "box": [
+    1345,
+    637,
+    1421,
+    735
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "sign_w6": {
+   "box": [
+    968,
+    773,
+    1037,
+    853
+   ],
+   "scale": 0.32,
+   "colors": 12
+  },
+  "sign_dir_b": {
+   "box": [
+    1054,
+    755,
+    1130,
+    853
+   ],
+   "scale": 0.32,
+   "colors": 12
+  },
+  "portal_w6": {
+   "box": [
+    1225,
+    760,
+    1432,
+    862
+   ],
+   "scale": 0.42,
+   "colors": 24
+  },
+  "cloud_s": {
+   "box": [
+    944,
+    306,
+    994,
+    345
+   ],
+   "scale": 0.4,
+   "colors": 8
+  },
+  "cloud_m": {
+   "box": [
+    843,
+    263,
+    913,
+    301
+   ],
+   "scale": 0.4,
+   "colors": 8
+  },
+  "isle_cone_a": {
+   "box": [
+    20,
+    458,
+    113,
+    541
+   ],
+   "scale": 0.45,
+   "colors": 14
+  },
+  "isle_cone_b": {
+   "box": [
+    118,
+    458,
+    210,
+    541
+   ],
+   "scale": 0.45,
+   "colors": 14
+  },
+  "isle_cone_c": {
+   "box": [
+    215,
+    458,
+    302,
+    541
+   ],
+   "scale": 0.45,
+   "colors": 14
+  },
+  "mini_isle": {
+   "box": [
+    409,
+    459,
+    473,
+    523
+   ],
+   "scale": 0.45,
+   "colors": 12
+  },
+  "tiny_isle": {
+   "box": [
+    385,
+    501,
+    424,
+    540
+   ],
+   "scale": 0.45,
+   "colors": 10
+  }
+ },
+ "blocks": {
+  "block_yellow": [
+   515,
+   262,
+   556,
+   297
+  ],
+  "block_blue": [
+   557,
+   262,
+   598,
+   297
+  ],
+  "block_red": [
+   609,
+   262,
+   650,
+   297
+  ],
+  "block_blue_b": [
+   650,
+   262,
+   690,
+   297
+  ],
+  "block_pink": [
+   515,
+   298,
+   557,
+   332
+  ],
+  "block_green": [
+   609,
+   298,
+   650,
+   332
+  ]
+ },
+ "ground": {
+  "_doc": "Un material: bloques de nube azul con nube rosada encima. La nube de 'tiles superiores' (sin los bloques) se reduce a 32x11 y se apoya sobre el bloque azul de 'tiles centrales' (reducido a 32x32 sin las esquinas del panel), como las islas de word_6.png.",
+  "materials": {
+   "cloud": {
+    "base": [
+     24,
+     273,
+     93,
+     321
+    ],
+    "base_stack": 1,
+    "foam": [
+     170,
+     182,
+     258,
+     247
+    ],
+    "outline": [
+     36,
+     52,
+     140
+    ],
+    "cap": [
+     170,
+     182,
+     258,
+     229
+    ],
+    "cap_h": 11
+   }
+  }
+ },
+ "background": {
+  "bg_castle_isle": {
+   "src": "scene",
+   "mode": "panel",
+   "box": [
+    700,
+    25,
+    1060,
+    300
+   ],
+   "scale": 0.36,
+   "distance": 88,
+   "fade_bottom": 22,
+   "colors": 56,
+   "note": "castillo rosado sobre la isla flotante con cascadas de word_6.png sin el cielo"
+  },
+  "bg_balloon": {
+   "src": "scene",
+   "mode": "panel",
+   "box": [
+    336,
+    14,
+    455,
+    180
+   ],
+   "scale": 0.3,
+   "distance": 60,
+   "colors": 20
+  },
+  "bg_near_clouds": {
+   "src": "tiles",
+   "box": [
+    16,
+    995,
+    168,
+    1075
+   ],
+   "scale": 0.6,
+   "colors": 12
+  },
+  "bg_hills": {
+   "src": "tiles",
+   "box": [
+    173,
+    995,
+    313,
+    1075
+   ],
+   "scale": 0.6,
+   "colors": 16
+  },
+  "bg_castles": {
+   "src": "tiles",
+   "box": [
+    318,
+    995,
+    556,
+    1075
+   ],
+   "scale": 0.55,
+   "colors": 18
+  },
+  "bg_viaduct": {
+   "src": "tiles",
+   "box": [
+    560,
+    990,
+    768,
+    1068
+   ],
+   "scale": 0.6,
+   "colors": 16
+  },
+  "bg_rainbow": {
+   "src": "tiles",
+   "box": [
+    770,
+    995,
+    918,
+    1075
+   ],
+   "scale": 0.6,
+   "colors": 14
+  },
+  "bg_falls": {
+   "src": "tiles",
+   "box": [
+    922,
+    995,
+    1090,
+    1075
+   ],
+   "scale": 0.55,
+   "colors": 16
+  },
+  "bg_balloons": {
+   "src": "tiles",
+   "box": [
+    1116,
+    995,
+    1240,
+    1075
+   ],
+   "scale": 0.5,
+   "colors": 16
+  },
+  "bg_smile_cloud": {
+   "src": "tiles",
+   "box": [
+    1250,
+    1010,
+    1330,
+    1068
+   ],
+   "only": [
+    [
+     1290,
+     1010,
+     1330,
+     1068
+    ],
+    [
+     1250,
+     1030,
+     1290,
+     1068
+    ]
+   ],
+   "scale": 0.5,
+   "colors": 10
+  }
+ },
+ "scene_palette": {
+  "sky_points": [
+   [
+    600,
+    12
+   ],
+   [
+    560,
+    120
+   ],
+   [
+    1300,
+    330
+   ],
+   [
+    80,
+    600
+   ]
+  ],
+  "cloud_points": [
+   [
+    200,
+    840
+   ],
+   [
+    1500,
+    780
+   ],
+   [
+    60,
+    900
+   ],
+   [
+    860,
+    920
+   ]
+  ]
+ },
+ "reviewed": {
+  "toy_block_green": "el bloque verde toca el borde porque vuela junto al vagón en el cuadro 1 de block_attack; la caja lo encierra entero (revisado sobre detected_boss.png)"
+ }
+}

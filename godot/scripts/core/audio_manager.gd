@@ -53,7 +53,7 @@ func _ready() -> void:
 			_music_pending[track] = true
 	if not _music_pending.is_empty():
 		# el orden prioriza la música que suena primero
-		var order := ["menu", "world1", "boss", "world2", "garabato", "world2_victory", "world3", "sieston", "world3_victory", "world4", "patoburbuja", "world4_victory", "world5", "luna_estelar", "world5_victory"].filter(func(t): return _music_pending.has(t))
+		var order := ["menu", "world1", "boss", "world2", "garabato", "world2_victory", "world3", "sieston", "world3_victory", "world4", "patoburbuja", "world4_victory", "world5", "luna_estelar", "world5_victory", "world6", "locomostro", "world6_victory"].filter(func(t): return _music_pending.has(t))
 		_music_task = WorkerThreadPool.add_task(_render_music_tracks.bind(order), false, "Música provisional")
 
 

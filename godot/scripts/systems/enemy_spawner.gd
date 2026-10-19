@@ -24,6 +24,10 @@ const SCENES := {
 	"estrellita": preload("res://scenes/enemies/world5/Estrellita.tscn"),
 	"meteorito": preload("res://scenes/enemies/world5/Meteorito.tscn"),
 	"cohetito": preload("res://scenes/enemies/world5/Cohetito.tscn"),
+	# Mundo 6
+	"payasito": preload("res://scenes/enemies/world6/Payasito.tscn"),
+	"bloquecito": preload("res://scenes/enemies/world6/Bloquecito.tscn"),
+	"vagoncito": preload("res://scenes/enemies/world6/Vagoncito.tscn"),
 }
 
 var level: Node

@@ -43,6 +43,15 @@ const SFX := {
 	"twinkle": [["arp", ["E6", "B6", "G6"], 0.05, "triangle", 0.07, 0.07]],
 	"rocket": [["noise", 0, 0.35, 0.07, 1200, 0.9], ["tone", "square", 120, 260, 0, 0.3, 0.05]],
 	"cloud_boom": [["noise", 0, 0.3, 0.1, 900, 0.8], ["arp", ["C6", "G5", "E6"], 0.04, "sine", 0.08, 0.06]],
+	# Mundo 6: campana de estación, silbatos de tren, palanca, resorte y bloques de juguete
+	"train_bell": [["tone", "triangle", 1568, 1568, 0, 0.5, 0.12, 0.003], ["tone", "sine", 2093, 2093, 0.0, 0.35, 0.06, 0.003], ["tone", "triangle", 1568, 1568, 0.22, 0.4, 0.08, 0.003]],
+	"whistle": [["tone", "square", 880, 880, 0, 0.18, 0.06, 0.02], ["tone", "square", 1046, 1046, 0, 0.18, 0.05, 0.02], ["tone", "square", 880, 860, 0.22, 0.45, 0.06, 0.02], ["tone", "square", 1046, 1020, 0.22, 0.45, 0.05, 0.02]],
+	"whistle_small": [["tone", "square", 1318, 1318, 0, 0.12, 0.05, 0.01], ["tone", "square", 1568, 1568, 0.13, 0.12, 0.05, 0.01]],
+	"lever": [["noise", 0, 0.05, 0.1, 2500, 1.5], ["tone", "square", 300, 180, 0.03, 0.08, 0.08], ["noise", 0.12, 0.05, 0.08, 3500, 1.5]],
+	"spring": [["tone", "square", 220, 880, 0, 0.18, 0.08], ["tone", "triangle", 440, 1320, 0.05, 0.14, 0.06]],
+	"block_warn": [["noise", 0, 0.12, 0.07, 1400, 1], ["tone", "square", 520, 500, 0, 0.1, 0.05]],
+	"block_land": [["noise", 0, 0.18, 0.12, 500, 0.8], ["tone", "triangle", 160, 90, 0, 0.16, 0.12]],
+	"block_dash": [["noise", 0, 0.3, 0.08, 900, 0.9], ["tone", "square", 200, 330, 0, 0.2, 0.05]],
 }
 
 ## Pistas de música (8 corcheas por compás). Token = nota, "-" = mantener, "." = silencio.
@@ -120,6 +129,22 @@ const MUSIC := {
 		"bpm": 150, "lead": ["square", 0.05], "bass": ["triangle", 0.09],
 		"melody": "A5 . C6 . E6 . C6 . | A5 . E6 A6 G6 - E6 . | F5 . A5 . C6 . A5 . | F5 . C6 F6 E6 - C6 . | G5 . B5 . D6 . G6 . | F6 . D6 . B5 . G5 . | E6 . G#6 . B6 . G#6 . | A6 - - - . . . .",
 		"bassline": "A2 A2 . A2 E3 . A2 . | A2 A2 . A2 E3 . G2 . | F2 F2 . F2 C3 . F2 . | F2 F2 . F2 C3 . E2 . | G2 G2 . G2 D3 . G2 . | G2 G2 . G2 D3 . B2 . | E2 E2 . E2 B2 . E2 . | A2 A2 . A2 E3 . A2 .",
+	},
+	# Mundo 6: chiptune NES de tren de juguete (pulso con arpegios, bajo de traqueteo en corcheas).
+	"world6": {
+		"bpm": 136, "lead": ["square", 0.045], "bass": ["triangle", 0.1],
+		"melody": "C5 . E5 . G5 . C6 . | B5 . G5 . A5 - G5 . | F5 . A5 . C6 . F6 . | E6 - D6 - C6 - . . | D5 . F5 . A5 . D6 . | C6 . A5 . B5 - A5 . | G5 . B5 . D6 . G6 . | F6 - E6 - D6 - . G5 | C6 E6 G6 . C6 E6 G6 . | A5 C6 F6 . A5 C6 F6 . | B5 D6 G6 . B5 D6 F6 . | E6 - - . C6 - - . | F5 . G5 . A5 . B5 . | C6 . B5 . A5 . G5 . | F5 . E5 . D5 . G5 . | C5 - - - . . . .",
+		"bassline": "C3 C3 G2 G2 C3 C3 G2 G2 | E2 E2 B2 B2 E2 E2 B2 B2 | F2 F2 C3 C3 F2 F2 C3 C3 | G2 G2 D3 D3 G2 G2 D3 D3 | D3 D3 A2 A2 D3 D3 A2 A2 | A2 A2 E3 E3 A2 A2 E3 E3 | G2 G2 D3 D3 G2 G2 D3 D3 | G2 G2 B2 B2 G2 G2 B2 B2 | C3 C3 G2 G2 C3 C3 G2 G2 | F2 F2 C3 C3 F2 F2 C3 C3 | G2 G2 D3 D3 G2 G2 D3 D3 | C3 C3 G2 G2 C3 C3 G2 G2 | F2 F2 C3 C3 F2 F2 C3 C3 | A2 A2 E3 E3 A2 A2 E3 E3 | D3 D3 A2 A2 G2 G2 D3 D3 | C3 C3 G2 G2 C3 . . .",
+	},
+	"locomostro": {
+		"bpm": 158, "lead": ["square", 0.05], "bass": ["triangle", 0.09],
+		"melody": "D5 . F5 . A5 . D6 . | C6 . A5 . F5 . A5 . | A#5 . D6 . F6 . D6 . | C6 - A5 - F5 - E5 - | D5 . F5 . A5 . D6 . | E6 . D6 . C6 . A5 . | A#5 . A5 . G5 . E5 . | D5 - - - A5 - - - | F5 F5 . F5 G5 . A5 . | G5 G5 . G5 F5 . E5 . | D5 D5 . D5 E5 . F5 . | E5 - D5 - C#5 - A4 - | D5 . F5 . A5 . D6 . | A#5 . A5 . G5 . F5 . | E5 . F5 . G5 . E5 . | D5 - - - . . . .",
+		"bassline": "D2 D2 A2 A2 D2 D2 A2 A2 | F2 F2 C3 C3 F2 F2 C3 C3 | A#1 A#1 F2 F2 A#1 A#1 F2 F2 | A1 A1 E2 E2 A1 A1 C#2 C#2 | D2 D2 A2 A2 D2 D2 A2 A2 | C2 C2 G2 G2 C2 C2 G2 G2 | A#1 A#1 F2 F2 A1 A1 E2 E2 | D2 D2 A2 A2 D2 D2 A2 A2 | D2 D2 A2 A2 D2 D2 A2 A2 | C2 C2 G2 G2 C2 C2 G2 G2 | A#1 A#1 F2 F2 A#1 A#1 F2 F2 | A1 A1 E2 E2 A1 A1 C#2 C#2 | D2 D2 A2 A2 D2 D2 A2 A2 | G2 G2 D3 D3 G2 G2 D3 D3 | A1 A1 E2 E2 A1 A1 C#2 C#2 | D2 D2 A2 A2 D2 . . .",
+	},
+	"world6_victory": {
+		"bpm": 118, "lead": ["square", 0.05], "bass": ["triangle", 0.1],
+		"melody": "C5 . E5 . G5 . C6 - | E6 . D6 . C6 . G5 . | A5 . C6 . F6 - E6 . | D6 - - - G5 . . . | C6 . G5 . E5 . G5 . | F5 . A5 . D6 - C6 . | B5 . D6 . G6 . F6 . | E6 - C6 - - - . .",
+		"bassline": "C3 . G2 . C3 . G2 . | C3 . G2 . E3 . G2 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . G2 . | F2 . C3 . D3 . A2 . | G2 . D3 . G2 . B2 . | C3 . G2 . C3 . . .",
 	},
 	"world5_victory": {
 		"bpm": 112, "lead": ["triangle", 0.075], "bass": ["sine", 0.09],

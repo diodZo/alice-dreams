@@ -39,7 +39,10 @@ func _ready() -> void:
 	for id in ZONES:
 		var z: Array = ZONES[id]
 		var b := HotspotButton.make_zone(z[0], z[1])
-		b.set_locked(not WorldRegistry.is_playable(id))
+		b.set_locked(not WorldRegistry.is_playable(id) and not is_pending(id))
+		if is_pending(id):
+			# desbloqueado pero aún sin escena (Mundo 7 al completar el 6): sin candado, "Pronto"
+			b.set_badge("Pronto")
 		var wd := SaveManager.get_world(id)
 		if wd.get("completed", false):
 			b.set_badge("%d" % int(wd.get("bestStars", 0)))
@@ -87,6 +90,8 @@ func _process(_delta: float) -> void:
 func describe(id: int) -> String:
 	var w := WorldRegistry.get_world(id)
 	var title := "Mundo %d: %s" % [id, w.get("short", w.get("name", ""))]
+	if is_pending(id):
+		return title + " - Desbloqueado: próximamente"
 	if not w.get("implemented", false):
 		return title + " - Próximamente"
 	if not WorldRegistry.is_playable(id):
@@ -95,6 +100,12 @@ func describe(id: int) -> String:
 	if wd.get("completed", false):
 		return title + " - Completado: %d estrellas" % int(wd.get("bestStars", 0))
 	return title + " - ¡A jugar!"
+
+
+## Desbloqueado en el guardado pero todavía sin implementar: no se intenta abrir ninguna escena.
+func is_pending(id: int) -> bool:
+	var w := WorldRegistry.get_world(id)
+	return not w.is_empty() and not w.get("implemented", false) and id <= SaveManager.unlocked_world()
 
 
 func _unhandled_input(event: InputEvent) -> void:
