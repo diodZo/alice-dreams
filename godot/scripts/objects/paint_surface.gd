@@ -5,6 +5,8 @@ extends Area2D
 ##  - yellow (amarilla, elástica): al aterrizar encima rebota
 ##  - pink   (rosa, pegajosa): reduce la velocidad
 ##  - foam   (espuma del Mundo 4, resbaladiza): menos fricción, Alice sigue al mando
+##  - caramel (caramelo del Mundo 7, resbaladizo): menos fricción; frena despacio pero frena
+##  - choco   (chocolate del Mundo 7, pegajoso): reduce la velocidad mientras se pisa
 ## def: {x, y (superficie), w (teselas), color}. También la crea Garabato durante el combate.
 
 const EFFECTS := {
@@ -12,6 +14,8 @@ const EFFECTS := {
 	"yellow": {"speed": 1.0, "friction": 1.0, "bounce": -470.0},
 	"pink": {"speed": 0.5, "friction": 1.0},
 	"foam": {"speed": 1.0, "friction": 0.32},
+	"caramel": {"speed": 1.0, "friction": 0.28},
+	"choco": {"speed": 0.5, "friction": 1.0},
 }
 
 var color := "blue"

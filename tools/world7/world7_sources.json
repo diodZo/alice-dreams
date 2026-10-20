@@ -1,0 +1,2153 @@
+{
+ "_doc": [
+  "Fuentes del Mundo 7 - El Valle de Caramelo. Cajas inclusivas [x0,y0,x1,y1] en píxeles de la hoja original, corregibles a mano (tools/world7/detect_world7.py dibuja las candidatas).",
+  "Una caja puede ser una lista o un objeto {box, only, pivot, scale, keep, nocomp}: 'only' limita el recorte a zonas para separar un dibujo de lo que lo toca (caramelos lanzados, chorros de glaseado, polvo); 'scale' sustituye la escala del personaje en ese cuadro (los cuadros de daño y derrota están dibujados más grandes en la hoja).",
+  "La hoja del jefe (jefemundo7.png) tiene alfa: mode alpha con umbral 240 descarta el halo rojo semitransparente. enemies_world_7.png y tilesets_world_7.png no: mode panel elimina sólo el fondo pastel conectado con el borde del recorte.",
+  "La mitad inferior de enemies_world_7.png es una segunda hoja de teselas: de ahí salen postes de bastón, caramelo resbaladizo, chorros de chocolate, gomas elásticas, láminas de caramelo, el corazón y el portal.",
+  "tilesets_world_7.png incluye un panel '5. Enemigos del Mundo 7' con otros nombres (Pastelito Travieso, Gomita Saltarina, Bombón Alado): no se usa; los enemigos oficiales son los de enemies_world_7.png.",
+  "Cuadros reutilizados (la hoja no tiene cuadro propio): gomilito 'walk' 1 = idle 0; gomilito 'attack' = salto; piruleta 'fly' 0 = idle 0; Don Chupetón 'hurt' 2 = daño de la fila de derrota. El manifiesto los marca con 'reused'."
+ ],
+ "sources": {
+  "scene": "imagenes/word_7.png",
+  "tiles": "imagenes/tilesets_world_7.png",
+  "enemies": "imagenes/enemies_world_7.png",
+  "boss": "imagenes/jefemundo7.png"
+ },
+ "characters": {
+  "cuppy": {
+   "name": "Cuppy Dulzón",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.34,
+   "anchor": "feet",
+   "colors": 34,
+   "distance": 34,
+   "keep": 0.2,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       23,
+       354,
+       103,
+       417
+      ],
+      [
+       113,
+       353,
+       190,
+       415
+      ],
+      [
+       201,
+       226,
+       294,
+       303
+      ]
+     ]
+    },
+    "walk": {
+     "fps": 8,
+     "loop": true,
+     "note": "rueda sobre sus galletas; el polvo de los pies se descarta",
+     "boxes": [
+      [
+       195,
+       358,
+       267,
+       417
+      ],
+      {
+       "box": [
+        296,
+        232,
+        387,
+        307
+       ],
+       "only": [
+        [
+         296,
+         232,
+         387,
+         302
+        ]
+       ]
+      },
+      [
+       346,
+       354,
+       423,
+       417
+      ]
+     ]
+    },
+    "jump": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: en el aire con el remolino; 1: caída",
+     "boxes": [
+      {
+       "box": [
+        395,
+        220,
+        478,
+        310
+       ],
+       "only": [
+        [
+         395,
+         220,
+         478,
+         296
+        ]
+       ]
+      },
+      [
+       274,
+       350,
+       343,
+       404
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: levanta la piruleta (preparación); 1: dispara. Los caramelos se separan: son proyectiles",
+     "boxes": [
+      [
+       479,
+       225,
+       583,
+       308
+      ],
+      {
+       "box": [
+        428,
+        355,
+        581,
+        418
+       ],
+       "only": [
+        [
+         428,
+         355,
+         503,
+         418
+        ]
+       ]
+      }
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "note": "dibujados más grandes en la hoja: escala propia",
+     "boxes": [
+      {
+       "box": [
+        24,
+        447,
+        166,
+        540
+       ],
+       "scale": 0.24
+      },
+      {
+       "box": [
+        166,
+        455,
+        329,
+        540
+       ],
+       "scale": 0.24
+      }
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "note": "derretido y dormido",
+     "boxes": [
+      {
+       "box": [
+        340,
+        466,
+        580,
+        537
+       ],
+       "scale": 0.24
+      }
+     ]
+    }
+   }
+  },
+  "gomilito": {
+   "name": "Gomilito Saltarín",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.3,
+   "anchor": "feet",
+   "colors": 26,
+   "distance": 34,
+   "keep": 0.2,
+   "anims": {
+    "idle": {
+     "fps": 4,
+     "loop": true,
+     "boxes": [
+      [
+       611,
+       356,
+       698,
+       433
+      ],
+      {
+       "box": [
+        745,
+        249,
+        828,
+        312
+       ],
+       "scale": 0.33
+      }
+     ]
+    },
+    "jump": {
+     "fps": 8,
+     "loop": false,
+     "note": "0: se agacha (aviso); 1: en el aire",
+     "boxes": [
+      {
+       "box": [
+        700,
+        357,
+        801,
+        432
+       ],
+       "only": [
+        [
+         700,
+         382,
+         754,
+         432
+        ]
+       ],
+       "scale": 0.42
+      },
+      {
+       "box": [
+        700,
+        357,
+        801,
+        432
+       ],
+       "only": [
+        [
+         752,
+         357,
+         801,
+         404
+        ]
+       ],
+       "scale": 0.42
+      }
+     ]
+    },
+    "walk": {
+     "fps": 6,
+     "loop": true,
+     "reused": "idle 0 (cuadro 1)",
+     "note": "avanza a saltitos",
+     "boxes": [
+      {
+       "box": [
+        800,
+        360,
+        928,
+        433
+       ],
+       "only": [
+        [
+         800,
+         360,
+         892,
+         433
+        ]
+       ]
+      },
+      [
+       611,
+       356,
+       698,
+       433
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 8,
+     "loop": false,
+     "reused": "jump 0-1",
+     "note": "salto en plancha hacia Alice",
+     "boxes": [
+      {
+       "box": [
+        700,
+        357,
+        801,
+        432
+       ],
+       "only": [
+        [
+         700,
+         382,
+         754,
+         432
+        ]
+       ],
+       "scale": 0.42
+      },
+      {
+       "box": [
+        700,
+        357,
+        801,
+        432
+       ],
+       "only": [
+        [
+         752,
+         357,
+         801,
+         404
+        ]
+       ],
+       "scale": 0.42
+      }
+     ]
+    },
+    "split": {
+     "fps": 6,
+     "loop": false,
+     "note": "0: se estira; 1: estalla en gomitas pequeñas",
+     "boxes": [
+      {
+       "box": [
+        613,
+        478,
+        661,
+        533
+       ],
+       "scale": 0.48
+      },
+      {
+       "box": [
+        902,
+        358,
+        1032,
+        435
+       ],
+       "scale": 0.3,
+       "keep": 0.05
+      }
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       795,
+       471,
+       894,
+       533
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "boxes": [
+      [
+       904,
+       475,
+       1032,
+       534
+      ]
+     ]
+    }
+   }
+  },
+  "gomilito_mini": {
+   "name": "Gomita",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.36,
+   "anchor": "feet",
+   "colors": 24,
+   "distance": 34,
+   "keep": 0.2,
+   "anims": {
+    "pink": {
+     "fps": 1,
+     "loop": true,
+     "boxes": [
+      [
+       666,
+       470,
+       707,
+       510
+      ]
+     ]
+    },
+    "blue": {
+     "fps": 1,
+     "loop": true,
+     "boxes": [
+      [
+       662,
+       507,
+       701,
+       535
+      ]
+     ]
+    },
+    "yellow": {
+     "fps": 1,
+     "loop": true,
+     "boxes": [
+      [
+       706,
+       471,
+       737,
+       499
+      ]
+     ]
+    },
+    "green": {
+     "fps": 1,
+     "loop": true,
+     "boxes": [
+      {
+       "box": [
+        738,
+        481,
+        784,
+        533
+       ],
+       "scale": 0.3
+      }
+     ]
+    }
+   }
+  },
+  "piruleta": {
+   "name": "Piruleta Voladora",
+   "src": "enemies",
+   "mode": "panel",
+   "scale": 0.3,
+   "anchor": "centroid",
+   "colors": 26,
+   "distance": 34,
+   "keep": 0.25,
+   "anims": {
+    "idle": {
+     "fps": 4,
+     "loop": true,
+     "boxes": [
+      [
+       1058,
+       362,
+       1137,
+       426
+      ]
+     ]
+    },
+    "fly": {
+     "fps": 6,
+     "loop": true,
+     "reused": "idle 0 (cuadro 0)",
+     "note": "aleteo: alterna las dos posturas de las alas",
+     "boxes": [
+      [
+       1058,
+       362,
+       1137,
+       426
+      ],
+      [
+       1145,
+       362,
+       1226,
+       424
+      ]
+     ]
+    },
+    "attack": {
+     "fps": 6,
+     "loop": false,
+     "note": "se inclina hacia Alice (aviso); la estela de caramelos se separa",
+     "boxes": [
+      {
+       "box": [
+        1232,
+        362,
+        1371,
+        428
+       ],
+       "only": [
+        [
+         1232,
+         362,
+         1300,
+         428
+        ]
+       ]
+      }
+     ]
+    },
+    "shoot": {
+     "fps": 6,
+     "loop": false,
+     "boxes": [
+      {
+       "box": [
+        1338,
+        353,
+        1414,
+        411
+       ],
+       "only": [
+        [
+         1338,
+         353,
+         1414,
+         404
+        ]
+       ]
+      }
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      {
+       "box": [
+        1082,
+        458,
+        1202,
+        537
+       ],
+       "scale": 0.26
+      }
+     ]
+    },
+    "defeated": {
+     "fps": 4,
+     "loop": false,
+     "boxes": [
+      {
+       "box": [
+        1240,
+        466,
+        1418,
+        539
+       ],
+       "only": [
+        [
+         1240,
+         466,
+         1362,
+         539
+        ]
+       ],
+       "scale": 0.26
+      }
+     ]
+    }
+   }
+  },
+  "don_chupeton": {
+   "name": "Don Chupetón",
+   "src": "boss",
+   "mode": "alpha",
+   "alpha_min": 240,
+   "scale": 0.4,
+   "anchor": "centroid",
+   "colors": 60,
+   "keep": 0.04,
+   "anims": {
+    "idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       32,
+       19,
+       273,
+       184
+      ],
+      [
+       293,
+       18,
+       528,
+       185
+      ],
+      [
+       550,
+       17,
+       776,
+       186
+      ],
+      [
+       802,
+       21,
+       1039,
+       186
+      ]
+     ]
+    },
+    "move": {
+     "fps": 8,
+     "loop": true,
+     "boxes": [
+      [
+       30,
+       197,
+       261,
+       364
+      ],
+      [
+       264,
+       197,
+       481,
+       363
+      ],
+      [
+       495,
+       201,
+       710,
+       364
+      ],
+      [
+       728,
+       197,
+       948,
+       362
+      ],
+      [
+       962,
+       200,
+       1188,
+       363
+      ],
+      [
+       1205,
+       199,
+       1417,
+       362
+      ]
+     ]
+    },
+    "candy_attack": {
+     "fps": 7,
+     "loop": false,
+     "note": "0: abre la boca (aviso); 1: dispara (los caramelos se separan); 2: sonrisa traviesa",
+     "boxes": [
+      [
+       289,
+       372,
+       531,
+       535
+      ],
+      {
+       "box": [
+        643,
+        373,
+        928,
+        536
+       ],
+       "only": [
+        [
+         643,
+         373,
+         838,
+         536
+        ]
+       ]
+      },
+      [
+       1204,
+       374,
+       1423,
+       536
+      ]
+     ]
+    },
+    "frosting_attack": {
+     "fps": 7,
+     "loop": false,
+     "note": "0-1: expulsa glaseado (el chorro se separa); 2: levanta la piruleta",
+     "boxes": [
+      {
+       "box": [
+        286,
+        547,
+        620,
+        709
+       ],
+       "only": [
+        [
+         286,
+         547,
+         484,
+         709
+        ]
+       ]
+      },
+      {
+       "box": [
+        679,
+        558,
+        1076,
+        712
+       ],
+       "only": [
+        [
+         688,
+         576,
+         870,
+         712
+        ]
+       ]
+      },
+      [
+       1157,
+       550,
+       1403,
+       707
+      ]
+     ]
+    },
+    "spin_attack": {
+     "fps": 9,
+     "loop": true,
+     "note": "remolino de piruleta multicolor",
+     "boxes": [
+      [
+       39,
+       716,
+       307,
+       921
+      ],
+      [
+       329,
+       719,
+       547,
+       924
+      ],
+      [
+       681,
+       725,
+       872,
+       927
+      ],
+      [
+       1174,
+       717,
+       1407,
+       933
+      ]
+     ]
+    },
+    "hurt": {
+     "fps": 8,
+     "loop": false,
+     "reused": "2 = cuadro de daño con estrellas de la fila de derrota",
+     "boxes": [
+      [
+       36,
+       370,
+       273,
+       533
+      ],
+      [
+       33,
+       547,
+       256,
+       707
+      ],
+      [
+       27,
+       938,
+       253,
+       1076
+      ]
+     ]
+    },
+    "stunned": {
+     "fps": 4,
+     "loop": true,
+     "note": "ojos en espiral",
+     "boxes": [
+      [
+       287,
+       931,
+       513,
+       1076
+      ]
+     ]
+    },
+    "defeated": {
+     "fps": 3,
+     "loop": false,
+     "note": "0: se derrite sorprendido; 1: pastelito dormido",
+     "boxes": [
+      [
+       551,
+       942,
+       917,
+       1071
+      ],
+      [
+       935,
+       961,
+       1338,
+       1071
+      ]
+     ]
+    }
+   }
+  }
+ },
+ "fx": {
+  "cuppy_candy": {
+   "box": [
+    540,
+    365,
+    582,
+    395
+   ],
+   "scale": 0.3,
+   "colors": 12,
+   "src": "enemies",
+   "mode": "panel",
+   "distance": 34,
+   "note": "caramelo redondo que dispara Cuppy"
+  },
+  "piru_candy": {
+   "box": [
+    1401,
+    402,
+    1427,
+    428
+   ],
+   "scale": 0.4,
+   "colors": 12,
+   "src": "enemies",
+   "mode": "panel",
+   "distance": 34,
+   "note": "caramelito que lanza la Piruleta Voladora"
+  },
+  "boss_candy": {
+   "box": [
+    1119,
+    445,
+    1187,
+    487
+   ],
+   "only": [
+    [
+     1143,
+     445,
+     1187,
+     487
+    ]
+   ],
+   "scale": 0.32,
+   "colors": 14,
+   "src": "boss",
+   "mode": "alpha",
+   "note": "caramelo de menta de Don Chupetón (sin la estela)"
+  },
+  "wrapped_pink": {
+   "box": [
+    560,
+    739,
+    609,
+    781
+   ],
+   "scale": 0.32,
+   "colors": 14,
+   "src": "boss",
+   "mode": "alpha"
+  },
+  "wrapped_orange": {
+   "box": [
+    1051,
+    754,
+    1119,
+    804
+   ],
+   "scale": 0.28,
+   "colors": 14,
+   "src": "boss",
+   "mode": "alpha"
+  },
+  "wrapped_blue": {
+   "box": [
+    979,
+    812,
+    1035,
+    859
+   ],
+   "scale": 0.3,
+   "colors": 14,
+   "src": "boss",
+   "mode": "alpha"
+  },
+  "candy_star": {
+   "box": [
+    910,
+    809,
+    952,
+    852
+   ],
+   "scale": 0.3,
+   "colors": 12,
+   "src": "boss",
+   "mode": "alpha"
+  },
+  "frosting_blob": {
+   "box": [
+    634,
+    564,
+    717,
+    604
+   ],
+   "scale": 0.3,
+   "colors": 12,
+   "src": "boss",
+   "mode": "alpha",
+   "note": "gota de glaseado rosa"
+  },
+  "frosting_drop": {
+   "box": [
+    1081,
+    615,
+    1142,
+    654
+   ],
+   "scale": 0.3,
+   "colors": 12,
+   "src": "boss",
+   "mode": "alpha"
+  },
+  "frosting_jet": {
+   "box": [
+    679,
+    558,
+    1076,
+    712
+   ],
+   "only": [
+    [
+     880,
+     570,
+     1076,
+     705
+    ]
+   ],
+   "scale": 0.34,
+   "colors": 16,
+   "src": "boss",
+   "mode": "alpha",
+   "keep": 0.3,
+   "note": "chorro de glaseado (ráfaga del jefe)"
+  },
+  "boss_lollipop": {
+   "box": [
+    13,
+    718,
+    78,
+    841
+   ],
+   "scale": 0.22,
+   "colors": 14,
+   "src": "tiles",
+   "mode": "panel",
+   "distance": 30,
+   "note": "piruleta que lanza en horizontal"
+  },
+  "launcher_ball": {
+   "box": [
+    472,
+    903,
+    504,
+    936
+   ],
+   "scale": 0.34,
+   "colors": 10,
+   "src": "tiles",
+   "mode": "panel",
+   "distance": 30
+  },
+  "sweet_heart": {
+   "box": [
+    195,
+    1025,
+    233,
+    1060
+   ],
+   "scale": 0.36,
+   "colors": 10,
+   "src": "enemies",
+   "mode": "panel",
+   "distance": 30
+  }
+ },
+ "objects": {
+  "cookie_plat_s": {
+   "box": [
+    519,
+    229,
+    592,
+    280
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "cookie_plat_l": {
+   "box": [
+    604,
+    228,
+    709,
+    280
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "cookie_bar": {
+   "box": [
+    721,
+    229,
+    817,
+    269
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "cookie_tall": {
+   "box": [
+    829,
+    225,
+    908,
+    280
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "cookie_block": {
+   "box": [
+    925,
+    229,
+    963,
+    269
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "candy_pink": {
+   "box": [
+    518,
+    309,
+    616,
+    346
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "candy_purple": {
+   "box": [
+    633,
+    308,
+    730,
+    346
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "candy_orange": {
+   "box": [
+    518,
+    357,
+    616,
+    397
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "candy_red": {
+   "box": [
+    632,
+    357,
+    747,
+    397
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "cream_l": {
+   "box": [
+    757,
+    310,
+    886,
+    372
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "cream_s": {
+   "box": [
+    894,
+    310,
+    964,
+    362
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "cream_m": {
+   "box": [
+    764,
+    380,
+    876,
+    435
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "cream_xs": {
+   "box": [
+    894,
+    373,
+    963,
+    416
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "jelly_red": {
+   "box": [
+    515,
+    446,
+    724,
+    494
+   ],
+   "only": [
+    [
+     515,
+     446,
+     587,
+     494
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "jelly_orange": {
+   "box": [
+    515,
+    446,
+    724,
+    494
+   ],
+   "only": [
+    [
+     588,
+     446,
+     655,
+     494
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "jelly_green": {
+   "box": [
+    515,
+    446,
+    724,
+    494
+   ],
+   "only": [
+    [
+     656,
+     446,
+     724,
+     494
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "jelly_small": {
+   "box": [
+    724,
+    465,
+    768,
+    497
+   ],
+   "scale": 0.36,
+   "colors": 10
+  },
+  "candy_bar": {
+   "box": [
+    517,
+    505,
+    742,
+    560
+   ],
+   "scale": 0.36,
+   "colors": 16
+  },
+  "cupcake_plat": {
+   "box": [
+    775,
+    461,
+    847,
+    542
+   ],
+   "scale": 0.36,
+   "colors": 16
+  },
+  "choco_drip_plat": {
+   "box": [
+    852,
+    477,
+    964,
+    550
+   ],
+   "scale": 0.4,
+   "colors": 16
+  },
+  "cake_bridge": {
+   "box": [
+    521,
+    579,
+    770,
+    645
+   ],
+   "scale": 0.36,
+   "colors": 18
+  },
+  "spike_cake": {
+   "box": [
+    781,
+    582,
+    962,
+    645
+   ],
+   "scale": 0.36,
+   "colors": 16
+  },
+  "candy_glass": {
+   "box": [
+    923,
+    830,
+    1001,
+    870
+   ],
+   "scale": 0.4,
+   "colors": 10,
+   "src": "enemies",
+   "note": "lámina de caramelo"
+  },
+  "rope_bridge": {
+   "box": [
+    989,
+    580,
+    1439,
+    649
+   ],
+   "only": [
+    [
+     989,
+     578,
+     1170,
+     650
+    ]
+   ],
+   "scale": 0.4,
+   "colors": 16
+  },
+  "donut_a": {
+   "box": [
+    989,
+    580,
+    1439,
+    649
+   ],
+   "only": [
+    [
+     1182,
+     590,
+     1236,
+     645
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "donut_b": {
+   "box": [
+    989,
+    580,
+    1439,
+    649
+   ],
+   "only": [
+    [
+     1246,
+     585,
+     1298,
+     645
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "cake_piece": {
+   "box": [
+    989,
+    580,
+    1439,
+    649
+   ],
+   "only": [
+    [
+     1312,
+     590,
+     1408,
+     649
+    ]
+   ],
+   "scale": 0.36,
+   "colors": 16
+  },
+  "lolli_spin": {
+   "box": [
+    13,
+    718,
+    78,
+    841
+   ],
+   "scale": 0.32,
+   "colors": 14,
+   "distance": 30,
+   "note": "piruleta giratoria: el palo gira alrededor de su base"
+  },
+  "lolli_spin_b": {
+   "box": [
+    66,
+    718,
+    168,
+    849
+   ],
+   "only": [
+    [
+     118,
+     760,
+     168,
+     849
+    ]
+   ],
+   "scale": 0.34,
+   "colors": 14,
+   "distance": 30
+  },
+  "choco_belt": {
+   "box": [
+    343,
+    732,
+    516,
+    835
+   ],
+   "scale": 0.4,
+   "colors": 18,
+   "note": "correa de chocolate con flechas (se refleja para el otro sentido)"
+  },
+  "prize_block": {
+   "box": [
+    186,
+    735,
+    333,
+    828
+   ],
+   "only": [
+    [
+     234,
+     735,
+     285,
+     792
+    ]
+   ],
+   "scale": 0.32,
+   "colors": 12
+  },
+  "cookie_blocks": {
+   "box": [
+    186,
+    735,
+    333,
+    828
+   ],
+   "scale": 0.32,
+   "colors": 14
+  },
+  "caramel_jet_a": {
+   "box": [
+    12,
+    884,
+    178,
+    1062
+   ],
+   "only": [
+    [
+     12,
+     884,
+     96,
+     1062
+    ]
+   ],
+   "scale": 0.34,
+   "colors": 16
+  },
+  "caramel_jet_b": {
+   "box": [
+    12,
+    884,
+    178,
+    1062
+   ],
+   "only": [
+    [
+     96,
+     884,
+     178,
+     1062
+    ]
+   ],
+   "scale": 0.34,
+   "colors": 16
+  },
+  "fall_jelly_red": {
+   "box": [
+    192,
+    913,
+    266,
+    962
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "fall_jelly_orange": {
+   "box": [
+    271,
+    930,
+    335,
+    973
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "fall_jelly_green": {
+   "box": [
+    184,
+    998,
+    257,
+    1062
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "fall_jelly_purple": {
+   "box": [
+    263,
+    983,
+    339,
+    1062
+   ],
+   "scale": 0.36,
+   "colors": 12
+  },
+  "launcher_a": {
+   "box": [
+    363,
+    894,
+    463,
+    952
+   ],
+   "scale": 0.34,
+   "colors": 14
+  },
+  "launcher_b": {
+   "box": [
+    355,
+    964,
+    440,
+    1048
+   ],
+   "scale": 0.34,
+   "colors": 14
+  },
+  "cane_post": {
+   "box": [
+    766,
+    635,
+    797,
+    699
+   ],
+   "scale": 0.4,
+   "colors": 10,
+   "src": "enemies"
+  },
+  "cane_hook": {
+   "box": [
+    882,
+    634,
+    918,
+    699
+   ],
+   "scale": 0.4,
+   "colors": 10,
+   "src": "enemies"
+  },
+  "cane_slant": {
+   "box": [
+    825,
+    637,
+    870,
+    697
+   ],
+   "scale": 0.4,
+   "colors": 10,
+   "src": "enemies"
+  },
+  "caramel_slab": {
+   "box": [
+    764,
+    724,
+    850,
+    800
+   ],
+   "scale": 0.36,
+   "colors": 12,
+   "src": "enemies"
+  },
+  "paint_caramel_surface": {
+   "box": [
+    766,
+    724,
+    848,
+    742
+   ],
+   "scale": 0.4,
+   "colors": 10,
+   "src": "enemies",
+   "note": "franja superior del caramelo resbaladizo (se repite)"
+  },
+  "choco_jet_a": {
+   "box": [
+    925,
+    725,
+    980,
+    800
+   ],
+   "scale": 0.4,
+   "colors": 14,
+   "src": "enemies"
+  },
+  "choco_jet_b": {
+   "box": [
+    985,
+    725,
+    1040,
+    800
+   ],
+   "scale": 0.4,
+   "colors": 14,
+   "src": "enemies"
+  },
+  "choco_drip": {
+   "box": [
+    1042,
+    730,
+    1095,
+    800
+   ],
+   "scale": 0.4,
+   "colors": 12,
+   "src": "enemies"
+  },
+  "gum_red": {
+   "box": [
+    764,
+    816,
+    840,
+    868
+   ],
+   "scale": 0.36,
+   "colors": 12,
+   "src": "enemies",
+   "note": "goma elástica (trampolín)"
+  },
+  "gum_purple": {
+   "box": [
+    840,
+    816,
+    911,
+    868
+   ],
+   "scale": 0.36,
+   "colors": 12,
+   "src": "enemies"
+  },
+  "gumdrops": {
+   "box": [
+    939,
+    877,
+    1054,
+    891
+   ],
+   "scale": 0.4,
+   "colors": 14,
+   "src": "enemies",
+   "note": "confites de obstáculo/decoración"
+  },
+  "paint_choco_surface": {
+   "box": [
+    440,
+    838,
+    700,
+    860
+   ],
+   "scale": 0.3,
+   "colors": 12,
+   "src": "scene",
+   "mode": "opaque",
+   "note": "superficie del río de chocolate de word_7.png (chocolate pegajoso, se repite)"
+  },
+  "tree_big": {
+   "box": [
+    989,
+    230,
+    1125,
+    392
+   ],
+   "scale": 0.4,
+   "colors": 18
+  },
+  "tree_m": {
+   "box": [
+    1123,
+    231,
+    1194,
+    339
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "tree_s": {
+   "box": [
+    1108,
+    333,
+    1156,
+    395
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "cone_tree": {
+   "box": [
+    1160,
+    341,
+    1198,
+    395
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "giant_sweets": {
+   "box": [
+    1208,
+    225,
+    1440,
+    400
+   ],
+   "scale": 0.36,
+   "colors": 28
+  },
+  "cake_strawberry": {
+   "box": [
+    992,
+    425,
+    1158,
+    498
+   ],
+   "only": [
+    [
+     992,
+     425,
+     1085,
+     500
+    ]
+   ],
+   "scale": 0.4,
+   "colors": 16
+  },
+  "gum_mound": {
+   "box": [
+    992,
+    425,
+    1158,
+    498
+   ],
+   "only": [
+    [
+     1088,
+     430,
+     1158,
+     498
+    ]
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "swirl_cone": {
+   "box": [
+    1161,
+    432,
+    1204,
+    492
+   ],
+   "scale": 0.4,
+   "colors": 12
+  },
+  "choco_dome": {
+   "box": [
+    990,
+    488,
+    1074,
+    548
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "cupcake": {
+   "box": [
+    1070,
+    483,
+    1130,
+    548
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "gum_cake": {
+   "box": [
+    1128,
+    498,
+    1205,
+    551
+   ],
+   "scale": 0.4,
+   "colors": 14
+  },
+  "choco_falls": {
+   "box": [
+    1210,
+    412,
+    1440,
+    555
+   ],
+   "scale": 0.42,
+   "colors": 24
+  },
+  "lolli_giant_a": {
+   "box": [
+    764,
+    878,
+    1100,
+    945
+   ],
+   "only": [
+    [
+     764,
+     878,
+     820,
+     945
+    ]
+   ],
+   "scale": 0.4,
+   "colors": 12,
+   "src": "enemies"
+  },
+  "bush_candy": {
+   "box": [
+    1114,
+    749,
+    1246,
+    800
+   ],
+   "scale": 0.4,
+   "colors": 14,
+   "src": "enemies"
+  },
+  "fence_cane": {
+   "box": [
+    1251,
+    754,
+    1431,
+    800
+   ],
+   "scale": 0.4,
+   "colors": 14,
+   "src": "enemies"
+  },
+  "mushroom_candy": {
+   "box": [
+    1289,
+    636,
+    1434,
+    726
+   ],
+   "scale": 0.4,
+   "colors": 14,
+   "src": "enemies"
+  },
+  "star_w7": {
+   "box": [
+    1125,
+    726,
+    1167,
+    768
+   ],
+   "scale": 0.3,
+   "colors": 10
+  },
+  "star_w7_b": {
+   "box": [
+    1165,
+    722,
+    1221,
+    769
+   ],
+   "scale": 0.26,
+   "colors": 12
+  },
+  "candy_lolli": {
+   "box": [
+    1247,
+    725,
+    1298,
+    795
+   ],
+   "scale": 0.26,
+   "colors": 12,
+   "note": "caramelo especial 1"
+  },
+  "candy_heart": {
+   "box": [
+    1303,
+    732,
+    1348,
+    777
+   ],
+   "scale": 0.3,
+   "colors": 10,
+   "note": "caramelo especial 2"
+  },
+  "candy_bean": {
+   "box": [
+    1356,
+    722,
+    1425,
+    786
+   ],
+   "scale": 0.24,
+   "colors": 12,
+   "note": "caramelo especial 3"
+  },
+  "golden_cherry": {
+   "box": [
+    1045,
+    826,
+    1107,
+    917
+   ],
+   "scale": 0.22,
+   "colors": 12
+  },
+  "cake_slice": {
+   "box": [
+    1214,
+    833,
+    1285,
+    919
+   ],
+   "scale": 0.22,
+   "colors": 14
+  },
+  "heart_w7": {
+   "box": [
+    195,
+    1025,
+    233,
+    1060
+   ],
+   "scale": 0.36,
+   "colors": 10,
+   "src": "enemies"
+  },
+  "star_block": {
+   "box": [
+    1123,
+    840,
+    1203,
+    920
+   ],
+   "scale": 0.3,
+   "colors": 12,
+   "note": "bloque de premio"
+  },
+  "portal_w7": {
+   "box": [
+    1295,
+    820,
+    1430,
+    930
+   ],
+   "scale": 0.42,
+   "colors": 22
+  },
+  "flag_w7": {
+   "box": [
+    1230,
+    955,
+    1362,
+    1070
+   ],
+   "scale": 0.3,
+   "colors": 14
+  },
+  "sign_w7": {
+   "box": [
+    1045,
+    963,
+    1137,
+    1058
+   ],
+   "scale": 0.3,
+   "colors": 12
+  },
+  "sign_dir_w7": {
+   "box": [
+    1132,
+    965,
+    1211,
+    1058
+   ],
+   "scale": 0.3,
+   "colors": 12
+  }
+ },
+ "blocks": {
+  "block_cookie": [
+   927,
+   231,
+   961,
+   267
+  ],
+  "block_prize": [
+   238,
+   738,
+   282,
+   788
+  ]
+ },
+ "ground": {
+  "_doc": "Materiales: tierra de chocolate (centro de 'tiles centrales' reducido a 32x32) con glaseado rosa ('tiles superiores', sólo la cobertura) o con caramelo dorado (último bloque de 'tiles centrales').",
+  "materials": {
+   "frosting": {
+    "base": [
+     24,
+     333,
+     95,
+     386
+    ],
+    "base_stack": 1,
+    "foam": [
+     17,
+     240,
+     99,
+     300
+    ],
+    "cap": [
+     17,
+     240,
+     99,
+     284
+    ],
+    "cap_h": 13,
+    "outline": [
+     72,
+     34,
+     38
+    ]
+   },
+   "caramel": {
+    "base": [
+     24,
+     333,
+     95,
+     386
+    ],
+    "base_stack": 1,
+    "foam": [
+     394,
+     328,
+     483,
+     392
+    ],
+    "cap": [
+     394,
+     328,
+     483,
+     360
+    ],
+    "cap_h": 12,
+    "outline": [
+     72,
+     34,
+     38
+    ]
+   }
+  }
+ },
+ "background": {
+  "bg_castle": {
+   "src": "scene",
+   "mode": "sky",
+   "box": [
+    900,
+    0,
+    1260,
+    250
+   ],
+   "scale": 0.34,
+   "fade_bottom": 18,
+   "colors": 48,
+   "note": "castillo de dulces sobre su colina (word_7.png) sin el cielo"
+  },
+  "bg_sweets": {
+   "src": "tiles",
+   "box": [
+    1208,
+    225,
+    1440,
+    400
+   ],
+   "scale": 0.42,
+   "colors": 24
+  },
+  "bg_trees": {
+   "src": "tiles",
+   "box": [
+    989,
+    230,
+    1125,
+    392
+   ],
+   "scale": 0.5,
+   "colors": 16
+  },
+  "bg_falls": {
+   "src": "tiles",
+   "box": [
+    1210,
+    412,
+    1440,
+    555
+   ],
+   "scale": 0.5,
+   "colors": 20
+  },
+  "bg_mushroom": {
+   "src": "enemies",
+   "box": [
+    1289,
+    636,
+    1434,
+    726
+   ],
+   "scale": 0.45,
+   "colors": 16
+  },
+  "bg_hills": {
+   "src": "enemies",
+   "box": [
+    1113,
+    837,
+    1299,
+    933
+   ],
+   "scale": 0.5,
+   "colors": 18
+  }
+ },
+ "scene_palette": {
+  "sky_points": [
+   [
+    700,
+    15
+   ],
+   [
+    520,
+    120
+   ],
+   [
+    1300,
+    90
+   ],
+   [
+    60,
+    600
+   ]
+  ],
+  "cloud_points": [
+   [
+    470,
+    110
+   ],
+   [
+    380,
+    140
+   ],
+   [
+    1480,
+    50
+   ],
+   [
+    600,
+    700
+   ]
+  ]
+ },
+ "reviewed": {
+  "frosting_blob": "la gota toca el borde de la caja porque el chorro continúa: el recorte conserva la gota entera"
+ }
+}

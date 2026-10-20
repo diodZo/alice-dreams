@@ -1,0 +1,4763 @@
+{
+ "version": 1,
+ "generatedBy": "tools/world7/prepare_world7_assets.py",
+ "sources": {
+  "scene": "imagenes/word_7.png",
+  "tiles": "imagenes/tilesets_world_7.png",
+  "enemies": "imagenes/enemies_world_7.png",
+  "boss": "imagenes/jefemundo7.png"
+ },
+ "resources": [
+  {
+   "name": "cuppy/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    23,
+    354,
+    103,
+    417
+   ],
+   "trimmed": [
+    23,
+    354,
+    103,
+    417
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    20,
+    7
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cuppy/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    113,
+    353,
+    190,
+    415
+   ],
+   "trimmed": [
+    113,
+    353,
+    190,
+    415
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    19,
+    8
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cuppy/idle_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    201,
+    226,
+    294,
+    303
+   ],
+   "trimmed": [
+    203,
+    228,
+    292,
+    301
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    18,
+    4
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cuppy/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    195,
+    358,
+    267,
+    417
+   ],
+   "trimmed": [
+    195,
+    358,
+    267,
+    417
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    9
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "rueda sobre sus galletas; el polvo de los pies se descarta"
+  },
+  {
+   "name": "cuppy/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    296,
+    232,
+    387,
+    307
+   ],
+   "trimmed": [
+    299,
+    234,
+    385,
+    302
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    18,
+    6
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "rueda sobre sus galletas; el polvo de los pies se descarta"
+  },
+  {
+   "name": "cuppy/walk_2",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    346,
+    354,
+    423,
+    417
+   ],
+   "trimmed": [
+    346,
+    354,
+    423,
+    417
+   ],
+   "animation": "walk",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    19,
+    7
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "rueda sobre sus galletas; el polvo de los pies se descarta"
+  },
+  {
+   "name": "cuppy/jump_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    395,
+    220,
+    478,
+    310
+   ],
+   "trimmed": [
+    397,
+    222,
+    476,
+    293
+   ],
+   "animation": "jump",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    16,
+    5
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: en el aire con el remolino; 1: caída"
+  },
+  {
+   "name": "cuppy/jump_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    274,
+    350,
+    343,
+    404
+   ],
+   "trimmed": [
+    274,
+    350,
+    343,
+    404
+   ],
+   "animation": "jump",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    19,
+    10
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: en el aire con el remolino; 1: caída"
+  },
+  {
+   "name": "cuppy/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    479,
+    225,
+    583,
+    308
+   ],
+   "trimmed": [
+    482,
+    227,
+    581,
+    306
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    17,
+    2
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: levanta la piruleta (preparación); 1: dispara. Los caramelos se separan: son proyectiles"
+  },
+  {
+   "name": "cuppy/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    428,
+    355,
+    581,
+    418
+   ],
+   "trimmed": [
+    428,
+    355,
+    503,
+    418
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    7
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: levanta la piruleta (preparación); 1: dispara. Los caramelos se separan: son proyectiles"
+  },
+  {
+   "name": "cuppy/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    24,
+    447,
+    166,
+    540
+   ],
+   "trimmed": [
+    26,
+    449,
+    156,
+    535
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    17,
+    8
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "dibujados más grandes en la hoja: escala propia"
+  },
+  {
+   "name": "cuppy/hurt_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    166,
+    455,
+    329,
+    540
+   ],
+   "trimmed": [
+    169,
+    460,
+    322,
+    536
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    15,
+    11
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "dibujados más grandes en la hoja: escala propia"
+  },
+  {
+   "name": "cuppy/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    340,
+    466,
+    580,
+    537
+   ],
+   "trimmed": [
+    342,
+    468,
+    571,
+    535
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    6,
+    13
+   ],
+   "origin": [
+    31,
+    29
+   ],
+   "cell": [
+    62,
+    30
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "derretido y dormido"
+  },
+  {
+   "name": "gomilito/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    611,
+    356,
+    698,
+    433
+   ],
+   "trimmed": [
+    613,
+    358,
+    696,
+    431
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    13,
+    5
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gomilito/idle_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    745,
+    249,
+    828,
+    312
+   ],
+   "trimmed": [
+    745,
+    249,
+    828,
+    312
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 250,
+   "offset": [
+    10,
+    6
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gomilito/jump_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    700,
+    357,
+    801,
+    432
+   ],
+   "trimmed": [
+    702,
+    382,
+    754,
+    430
+   ],
+   "animation": "jump",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    14,
+    6
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: se agacha (aviso); 1: en el aire"
+  },
+  {
+   "name": "gomilito/jump_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    700,
+    357,
+    801,
+    432
+   ],
+   "trimmed": [
+    752,
+    359,
+    799,
+    402
+   ],
+   "animation": "jump",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    15,
+    9
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: se agacha (aviso); 1: en el aire"
+  },
+  {
+   "name": "gomilito/walk_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    800,
+    360,
+    928,
+    433
+   ],
+   "trimmed": [
+    802,
+    362,
+    891,
+    431
+   ],
+   "animation": "walk",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    12,
+    6
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "avanza a saltitos",
+   "reused": "idle 0 (cuadro 1)"
+  },
+  {
+   "name": "gomilito/walk_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    611,
+    356,
+    698,
+    433
+   ],
+   "trimmed": [
+    613,
+    358,
+    696,
+    431
+   ],
+   "animation": "walk",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    13,
+    5
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "avanza a saltitos",
+   "reused": "idle 0 (cuadro 1)"
+  },
+  {
+   "name": "gomilito/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    700,
+    357,
+    801,
+    432
+   ],
+   "trimmed": [
+    702,
+    382,
+    754,
+    430
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    14,
+    6
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "salto en plancha hacia Alice",
+   "reused": "jump 0-1"
+  },
+  {
+   "name": "gomilito/attack_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    700,
+    357,
+    801,
+    432
+   ],
+   "trimmed": [
+    752,
+    359,
+    799,
+    402
+   ],
+   "animation": "attack",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    15,
+    9
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "salto en plancha hacia Alice",
+   "reused": "jump 0-1"
+  },
+  {
+   "name": "gomilito/split_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    613,
+    478,
+    661,
+    533
+   ],
+   "trimmed": [
+    615,
+    480,
+    660,
+    531
+   ],
+   "animation": "split",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    15,
+    2
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: se estira; 1: estalla en gomitas pequeñas"
+  },
+  {
+   "name": "gomilito/split_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    902,
+    358,
+    1032,
+    435
+   ],
+   "trimmed": [
+    902,
+    360,
+    1031,
+    433
+   ],
+   "animation": "split",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    9,
+    5
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": "0: se estira; 1: estalla en gomitas pequeñas"
+  },
+  {
+   "name": "gomilito/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    795,
+    471,
+    894,
+    533
+   ],
+   "trimmed": [
+    796,
+    473,
+    892,
+    531
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    11,
+    9
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gomilito/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    904,
+    475,
+    1032,
+    534
+   ],
+   "trimmed": [
+    906,
+    477,
+    1030,
+    532
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    5,
+    10
+   ],
+   "origin": [
+    25,
+    27
+   ],
+   "cell": [
+    50,
+    28
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gomilito_mini/pink_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    666,
+    470,
+    707,
+    510
+   ],
+   "trimmed": [
+    668,
+    472,
+    696,
+    497
+   ],
+   "animation": "pink",
+   "frame": 0,
+   "duration_ms": 1000,
+   "offset": [
+    4,
+    8
+   ],
+   "origin": [
+    8,
+    17
+   ],
+   "cell": [
+    16,
+    18
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gomilito_mini/blue_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    662,
+    507,
+    701,
+    535
+   ],
+   "trimmed": [
+    664,
+    509,
+    699,
+    534
+   ],
+   "animation": "blue",
+   "frame": 0,
+   "duration_ms": 1000,
+   "offset": [
+    2,
+    8
+   ],
+   "origin": [
+    8,
+    17
+   ],
+   "cell": [
+    16,
+    18
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gomilito_mini/yellow_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    706,
+    471,
+    737,
+    499
+   ],
+   "trimmed": [
+    708,
+    473,
+    735,
+    497
+   ],
+   "animation": "yellow",
+   "frame": 0,
+   "duration_ms": 1000,
+   "offset": [
+    3,
+    8
+   ],
+   "origin": [
+    8,
+    17
+   ],
+   "cell": [
+    16,
+    18
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gomilito_mini/green_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    738,
+    481,
+    784,
+    533
+   ],
+   "trimmed": [
+    740,
+    483,
+    782,
+    531
+   ],
+   "animation": "green",
+   "frame": 0,
+   "duration_ms": 1000,
+   "offset": [
+    2,
+    2
+   ],
+   "origin": [
+    8,
+    17
+   ],
+   "cell": [
+    16,
+    18
+   ],
+   "anchor": "feet",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "piruleta/idle_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1058,
+    362,
+    1137,
+    426
+   ],
+   "trimmed": [
+    1058,
+    362,
+    1137,
+    426
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    6,
+    1
+   ],
+   "origin": [
+    17,
+    21
+   ],
+   "cell": [
+    34,
+    22
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "piruleta/fly_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1058,
+    362,
+    1137,
+    426
+   ],
+   "trimmed": [
+    1058,
+    362,
+    1137,
+    426
+   ],
+   "animation": "fly",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    6,
+    1
+   ],
+   "origin": [
+    17,
+    21
+   ],
+   "cell": [
+    34,
+    22
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "aleteo: alterna las dos posturas de las alas",
+   "reused": "idle 0 (cuadro 0)"
+  },
+  {
+   "name": "piruleta/fly_1",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1145,
+    362,
+    1226,
+    424
+   ],
+   "trimmed": [
+    1145,
+    362,
+    1226,
+    424
+   ],
+   "animation": "fly",
+   "frame": 1,
+   "duration_ms": 167,
+   "offset": [
+    5,
+    2
+   ],
+   "origin": [
+    17,
+    21
+   ],
+   "cell": [
+    34,
+    22
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "aleteo: alterna las dos posturas de las alas",
+   "reused": "idle 0 (cuadro 0)"
+  },
+  {
+   "name": "piruleta/attack_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1232,
+    362,
+    1371,
+    428
+   ],
+   "trimmed": [
+    1232,
+    362,
+    1300,
+    419
+   ],
+   "animation": "attack",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    7,
+    4
+   ],
+   "origin": [
+    17,
+    21
+   ],
+   "cell": [
+    34,
+    22
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "se inclina hacia Alice (aviso); la estela de caramelos se separa"
+  },
+  {
+   "name": "piruleta/shoot_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1338,
+    353,
+    1414,
+    411
+   ],
+   "trimmed": [
+    1338,
+    353,
+    1414,
+    404
+   ],
+   "animation": "shoot",
+   "frame": 0,
+   "duration_ms": 167,
+   "offset": [
+    5,
+    5
+   ],
+   "origin": [
+    17,
+    21
+   ],
+   "cell": [
+    34,
+    22
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "piruleta/hurt_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1082,
+    458,
+    1202,
+    537
+   ],
+   "trimmed": [
+    1084,
+    469,
+    1188,
+    535
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    3,
+    4
+   ],
+   "origin": [
+    17,
+    21
+   ],
+   "cell": [
+    34,
+    22
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "piruleta/defeated_0",
+   "type": "frame",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1240,
+    466,
+    1418,
+    539
+   ],
+   "trimmed": [
+    1254,
+    481,
+    1362,
+    535
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    1,
+    7
+   ],
+   "origin": [
+    17,
+    21
+   ],
+   "cell": [
+    34,
+    22
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/idle_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    32,
+    19,
+    273,
+    184
+   ],
+   "trimmed": [
+    33,
+    20,
+    272,
+    183
+   ],
+   "animation": "idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    39,
+    21
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/idle_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    293,
+    18,
+    528,
+    185
+   ],
+   "trimmed": [
+    294,
+    19,
+    527,
+    183
+   ],
+   "animation": "idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    40,
+    21
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/idle_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    550,
+    17,
+    776,
+    186
+   ],
+   "trimmed": [
+    551,
+    18,
+    775,
+    185
+   ],
+   "animation": "idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    44,
+    20
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/idle_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    802,
+    21,
+    1039,
+    186
+   ],
+   "trimmed": [
+    803,
+    22,
+    1038,
+    185
+   ],
+   "animation": "idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    41,
+    21
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/move_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    30,
+    197,
+    261,
+    364
+   ],
+   "trimmed": [
+    31,
+    199,
+    260,
+    363
+   ],
+   "animation": "move",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    43,
+    21
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/move_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    264,
+    197,
+    481,
+    363
+   ],
+   "trimmed": [
+    265,
+    198,
+    480,
+    362
+   ],
+   "animation": "move",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    46,
+    21
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/move_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    495,
+    201,
+    710,
+    364
+   ],
+   "trimmed": [
+    496,
+    202,
+    709,
+    363
+   ],
+   "animation": "move",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    45,
+    22
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/move_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    728,
+    197,
+    948,
+    362
+   ],
+   "trimmed": [
+    729,
+    198,
+    947,
+    361
+   ],
+   "animation": "move",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    45,
+    21
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/move_4",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    962,
+    200,
+    1188,
+    363
+   ],
+   "trimmed": [
+    964,
+    202,
+    1187,
+    362
+   ],
+   "animation": "move",
+   "frame": 4,
+   "duration_ms": 125,
+   "offset": [
+    44,
+    23
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/move_5",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    1205,
+    199,
+    1417,
+    362
+   ],
+   "trimmed": [
+    1206,
+    200,
+    1416,
+    361
+   ],
+   "animation": "move",
+   "frame": 5,
+   "duration_ms": 125,
+   "offset": [
+    46,
+    22
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "don_chupeton/candy_attack_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    289,
+    372,
+    531,
+    535
+   ],
+   "trimmed": [
+    290,
+    373,
+    530,
+    534
+   ],
+   "animation": "candy_attack",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    40,
+    22
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: abre la boca (aviso); 1: dispara (los caramelos se separan); 2: sonrisa traviesa"
+  },
+  {
+   "name": "don_chupeton/candy_attack_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    643,
+    373,
+    928,
+    536
+   ],
+   "trimmed": [
+    644,
+    374,
+    838,
+    535
+   ],
+   "animation": "candy_attack",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    44,
+    22
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: abre la boca (aviso); 1: dispara (los caramelos se separan); 2: sonrisa traviesa"
+  },
+  {
+   "name": "don_chupeton/candy_attack_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    1204,
+    374,
+    1423,
+    536
+   ],
+   "trimmed": [
+    1205,
+    376,
+    1422,
+    535
+   ],
+   "animation": "candy_attack",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    44,
+    23
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: abre la boca (aviso); 1: dispara (los caramelos se separan); 2: sonrisa traviesa"
+  },
+  {
+   "name": "don_chupeton/frosting_attack_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    286,
+    547,
+    620,
+    709
+   ],
+   "trimmed": [
+    287,
+    548,
+    484,
+    706
+   ],
+   "animation": "frosting_attack",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    43,
+    23
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0-1: expulsa glaseado (el chorro se separa); 2: levanta la piruleta"
+  },
+  {
+   "name": "don_chupeton/frosting_attack_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    679,
+    558,
+    1076,
+    712
+   ],
+   "trimmed": [
+    688,
+    576,
+    870,
+    711
+   ],
+   "animation": "frosting_attack",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    47,
+    33
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0-1: expulsa glaseado (el chorro se separa); 2: levanta la piruleta"
+  },
+  {
+   "name": "don_chupeton/frosting_attack_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    1157,
+    550,
+    1403,
+    707
+   ],
+   "trimmed": [
+    1158,
+    551,
+    1402,
+    706
+   ],
+   "animation": "frosting_attack",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    36,
+    25
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0-1: expulsa glaseado (el chorro se separa); 2: levanta la piruleta"
+  },
+  {
+   "name": "don_chupeton/spin_attack_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    39,
+    716,
+    307,
+    921
+   ],
+   "trimmed": [
+    40,
+    717,
+    306,
+    920
+   ],
+   "animation": "spin_attack",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    36,
+    5
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "remolino de piruleta multicolor"
+  },
+  {
+   "name": "don_chupeton/spin_attack_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    329,
+    719,
+    547,
+    924
+   ],
+   "trimmed": [
+    331,
+    720,
+    546,
+    923
+   ],
+   "animation": "spin_attack",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    46,
+    5
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "remolino de piruleta multicolor"
+  },
+  {
+   "name": "don_chupeton/spin_attack_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    681,
+    725,
+    872,
+    927
+   ],
+   "trimmed": [
+    682,
+    726,
+    871,
+    926
+   ],
+   "animation": "spin_attack",
+   "frame": 2,
+   "duration_ms": 111,
+   "offset": [
+    48,
+    7
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "remolino de piruleta multicolor"
+  },
+  {
+   "name": "don_chupeton/spin_attack_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    1174,
+    717,
+    1407,
+    933
+   ],
+   "trimmed": [
+    1175,
+    718,
+    1406,
+    931
+   ],
+   "animation": "spin_attack",
+   "frame": 3,
+   "duration_ms": 111,
+   "offset": [
+    39,
+    1
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "remolino de piruleta multicolor"
+  },
+  {
+   "name": "don_chupeton/hurt_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    36,
+    370,
+    273,
+    533
+   ],
+   "trimmed": [
+    37,
+    372,
+    272,
+    532
+   ],
+   "animation": "hurt",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    41,
+    23
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "",
+   "reused": "2 = cuadro de daño con estrellas de la fila de derrota"
+  },
+  {
+   "name": "don_chupeton/hurt_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    33,
+    547,
+    256,
+    707
+   ],
+   "trimmed": [
+    34,
+    548,
+    255,
+    706
+   ],
+   "animation": "hurt",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    44,
+    23
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "",
+   "reused": "2 = cuadro de daño con estrellas de la fila de derrota"
+  },
+  {
+   "name": "don_chupeton/hurt_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    27,
+    938,
+    253,
+    1076
+   ],
+   "trimmed": [
+    28,
+    939,
+    252,
+    1075
+   ],
+   "animation": "hurt",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    41,
+    32
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "",
+   "reused": "2 = cuadro de daño con estrellas de la fila de derrota"
+  },
+  {
+   "name": "don_chupeton/stunned_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    287,
+    931,
+    513,
+    1076
+   ],
+   "trimmed": [
+    288,
+    932,
+    512,
+    1075
+   ],
+   "animation": "stunned",
+   "frame": 0,
+   "duration_ms": 250,
+   "offset": [
+    43,
+    29
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "ojos en espiral"
+  },
+  {
+   "name": "don_chupeton/defeated_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    551,
+    942,
+    917,
+    1071
+   ],
+   "trimmed": [
+    552,
+    943,
+    916,
+    1070
+   ],
+   "animation": "defeated",
+   "frame": 0,
+   "duration_ms": 333,
+   "offset": [
+    15,
+    36
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: se derrite sorprendido; 1: pastelito dormido"
+  },
+  {
+   "name": "don_chupeton/defeated_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    935,
+    961,
+    1338,
+    1071
+   ],
+   "trimmed": [
+    937,
+    963,
+    1335,
+    1070
+   ],
+   "animation": "defeated",
+   "frame": 1,
+   "duration_ms": 333,
+   "offset": [
+    10,
+    44
+   ],
+   "origin": [
+    86,
+    87
+   ],
+   "cell": [
+    172,
+    88
+   ],
+   "anchor": "centroid",
+   "status": "ok",
+   "notes": "0: se derrite sorprendido; 1: pastelito dormido"
+  },
+  {
+   "name": "cuppy_candy",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    540,
+    365,
+    582,
+    395
+   ],
+   "trimmed": [
+    540,
+    367,
+    581,
+    395
+   ],
+   "size": [
+    13,
+    9
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "caramelo redondo que dispara Cuppy"
+  },
+  {
+   "name": "piru_candy",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1401,
+    402,
+    1427,
+    428
+   ],
+   "trimmed": [
+    1401,
+    402,
+    1427,
+    428
+   ],
+   "size": [
+    11,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "caramelito que lanza la Piruleta Voladora"
+  },
+  {
+   "name": "boss_candy",
+   "type": "object",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    1119,
+    445,
+    1187,
+    487
+   ],
+   "trimmed": [
+    1143,
+    445,
+    1187,
+    487
+   ],
+   "size": [
+    14,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "caramelo de menta de Don Chupetón (sin la estela)"
+  },
+  {
+   "name": "wrapped_pink",
+   "type": "object",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    560,
+    739,
+    609,
+    781
+   ],
+   "trimmed": [
+    560,
+    739,
+    609,
+    781
+   ],
+   "size": [
+    16,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wrapped_orange",
+   "type": "object",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    1051,
+    754,
+    1119,
+    804
+   ],
+   "trimmed": [
+    1051,
+    754,
+    1119,
+    804
+   ],
+   "size": [
+    19,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "wrapped_blue",
+   "type": "object",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    979,
+    812,
+    1035,
+    859
+   ],
+   "trimmed": [
+    979,
+    812,
+    1035,
+    859
+   ],
+   "size": [
+    17,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "candy_star",
+   "type": "object",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    910,
+    809,
+    952,
+    852
+   ],
+   "trimmed": [
+    910,
+    809,
+    952,
+    852
+   ],
+   "size": [
+    13,
+    13
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "frosting_blob",
+   "type": "object",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    634,
+    564,
+    717,
+    604
+   ],
+   "trimmed": [
+    634,
+    564,
+    717,
+    604
+   ],
+   "size": [
+    25,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: la gota toca el borde de la caja porque el chorro continúa: el recorte conserva la gota entera"
+  },
+  {
+   "name": "frosting_drop",
+   "type": "object",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    1081,
+    615,
+    1142,
+    654
+   ],
+   "trimmed": [
+    1081,
+    615,
+    1142,
+    654
+   ],
+   "size": [
+    19,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "frosting_jet",
+   "type": "object",
+   "source": "imagenes/jefemundo7.png",
+   "crop": [
+    679,
+    558,
+    1076,
+    712
+   ],
+   "trimmed": [
+    880,
+    599,
+    1075,
+    693
+   ],
+   "size": [
+    67,
+    32
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "chorro de glaseado (ráfaga del jefe)"
+  },
+  {
+   "name": "boss_lollipop",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    13,
+    718,
+    78,
+    841
+   ],
+   "trimmed": [
+    15,
+    720,
+    76,
+    839
+   ],
+   "size": [
+    14,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "piruleta que lanza en horizontal"
+  },
+  {
+   "name": "launcher_ball",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    472,
+    903,
+    504,
+    936
+   ],
+   "trimmed": [
+    474,
+    905,
+    502,
+    934
+   ],
+   "size": [
+    10,
+    10
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sweet_heart",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    195,
+    1025,
+    233,
+    1060
+   ],
+   "trimmed": [
+    195,
+    1025,
+    233,
+    1058
+   ],
+   "size": [
+    14,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cookie_plat_s",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    519,
+    229,
+    592,
+    280
+   ],
+   "trimmed": [
+    521,
+    231,
+    590,
+    278
+   ],
+   "size": [
+    28,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cookie_plat_l",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    604,
+    228,
+    709,
+    280
+   ],
+   "trimmed": [
+    606,
+    230,
+    707,
+    278
+   ],
+   "size": [
+    41,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cookie_bar",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    721,
+    229,
+    817,
+    269
+   ],
+   "trimmed": [
+    723,
+    231,
+    815,
+    267
+   ],
+   "size": [
+    37,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cookie_tall",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    829,
+    225,
+    908,
+    280
+   ],
+   "trimmed": [
+    831,
+    225,
+    906,
+    278
+   ],
+   "size": [
+    30,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cookie_block",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    925,
+    229,
+    963,
+    269
+   ],
+   "trimmed": [
+    927,
+    231,
+    961,
+    267
+   ],
+   "size": [
+    14,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "candy_pink",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    518,
+    309,
+    616,
+    346
+   ],
+   "trimmed": [
+    520,
+    311,
+    614,
+    344
+   ],
+   "size": [
+    38,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "candy_purple",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    633,
+    308,
+    730,
+    346
+   ],
+   "trimmed": [
+    635,
+    310,
+    728,
+    344
+   ],
+   "size": [
+    38,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "candy_orange",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    518,
+    357,
+    616,
+    397
+   ],
+   "trimmed": [
+    520,
+    359,
+    614,
+    395
+   ],
+   "size": [
+    38,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "candy_red",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    632,
+    357,
+    747,
+    397
+   ],
+   "trimmed": [
+    634,
+    359,
+    744,
+    395
+   ],
+   "size": [
+    44,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cream_l",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    757,
+    310,
+    886,
+    372
+   ],
+   "trimmed": [
+    759,
+    312,
+    884,
+    370
+   ],
+   "size": [
+    50,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cream_s",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    894,
+    310,
+    964,
+    362
+   ],
+   "trimmed": [
+    896,
+    312,
+    962,
+    360
+   ],
+   "size": [
+    27,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cream_m",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    764,
+    380,
+    876,
+    435
+   ],
+   "trimmed": [
+    766,
+    382,
+    874,
+    434
+   ],
+   "size": [
+    44,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cream_xs",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    894,
+    373,
+    963,
+    416
+   ],
+   "trimmed": [
+    896,
+    375,
+    961,
+    414
+   ],
+   "size": [
+    26,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "jelly_red",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    515,
+    446,
+    724,
+    494
+   ],
+   "trimmed": [
+    517,
+    449,
+    583,
+    492
+   ],
+   "size": [
+    24,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "jelly_orange",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    515,
+    446,
+    724,
+    494
+   ],
+   "trimmed": [
+    588,
+    448,
+    652,
+    491
+   ],
+   "size": [
+    23,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "jelly_green",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    515,
+    446,
+    724,
+    494
+   ],
+   "trimmed": [
+    657,
+    448,
+    722,
+    490
+   ],
+   "size": [
+    24,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "jelly_small",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    724,
+    465,
+    768,
+    497
+   ],
+   "trimmed": [
+    728,
+    468,
+    766,
+    497
+   ],
+   "size": [
+    14,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "candy_bar",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    517,
+    505,
+    742,
+    560
+   ],
+   "trimmed": [
+    519,
+    506,
+    740,
+    560
+   ],
+   "size": [
+    80,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cupcake_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    775,
+    461,
+    847,
+    542
+   ],
+   "trimmed": [
+    777,
+    463,
+    845,
+    540
+   ],
+   "size": [
+    25,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "choco_drip_plat",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    852,
+    477,
+    964,
+    550
+   ],
+   "trimmed": [
+    854,
+    479,
+    962,
+    550
+   ],
+   "size": [
+    44,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cake_bridge",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    521,
+    579,
+    770,
+    645
+   ],
+   "trimmed": [
+    523,
+    581,
+    770,
+    643
+   ],
+   "size": [
+    89,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "spike_cake",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    781,
+    582,
+    962,
+    645
+   ],
+   "trimmed": [
+    783,
+    584,
+    960,
+    645
+   ],
+   "size": [
+    64,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "candy_glass",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    923,
+    830,
+    1001,
+    870
+   ],
+   "trimmed": [
+    925,
+    832,
+    999,
+    868
+   ],
+   "size": [
+    30,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "lámina de caramelo"
+  },
+  {
+   "name": "rope_bridge",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    989,
+    580,
+    1439,
+    649
+   ],
+   "trimmed": [
+    991,
+    580,
+    1170,
+    647
+   ],
+   "size": [
+    72,
+    27
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "donut_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    989,
+    580,
+    1439,
+    649
+   ],
+   "trimmed": [
+    1182,
+    590,
+    1236,
+    640
+   ],
+   "size": [
+    20,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "donut_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    989,
+    580,
+    1439,
+    649
+   ],
+   "trimmed": [
+    1246,
+    585,
+    1298,
+    640
+   ],
+   "size": [
+    19,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cake_piece",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    989,
+    580,
+    1439,
+    649
+   ],
+   "trimmed": [
+    1312,
+    590,
+    1408,
+    644
+   ],
+   "size": [
+    35,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "lolli_spin",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    13,
+    718,
+    78,
+    841
+   ],
+   "trimmed": [
+    15,
+    720,
+    76,
+    839
+   ],
+   "size": [
+    20,
+    38
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "piruleta giratoria: el palo gira alrededor de su base"
+  },
+  {
+   "name": "lolli_spin_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    66,
+    718,
+    168,
+    849
+   ],
+   "trimmed": [
+    118,
+    767,
+    168,
+    843
+   ],
+   "size": [
+    17,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "choco_belt",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    343,
+    732,
+    516,
+    835
+   ],
+   "trimmed": [
+    345,
+    734,
+    514,
+    835
+   ],
+   "size": [
+    68,
+    41
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "correa de chocolate con flechas (se refleja para el otro sentido)"
+  },
+  {
+   "name": "prize_block",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    186,
+    735,
+    333,
+    828
+   ],
+   "trimmed": [
+    234,
+    736,
+    285,
+    792
+   ],
+   "size": [
+    17,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cookie_blocks",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    186,
+    735,
+    333,
+    828
+   ],
+   "trimmed": [
+    188,
+    735,
+    331,
+    826
+   ],
+   "size": [
+    46,
+    29
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "caramel_jet_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    12,
+    884,
+    178,
+    1062
+   ],
+   "trimmed": [
+    14,
+    886,
+    96,
+    1062
+   ],
+   "size": [
+    28,
+    60
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "caramel_jet_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    12,
+    884,
+    178,
+    1062
+   ],
+   "trimmed": [
+    96,
+    900,
+    176,
+    1062
+   ],
+   "size": [
+    28,
+    55
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fall_jelly_red",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    192,
+    913,
+    266,
+    962
+   ],
+   "trimmed": [
+    194,
+    915,
+    264,
+    960
+   ],
+   "size": [
+    26,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fall_jelly_orange",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    271,
+    930,
+    335,
+    973
+   ],
+   "trimmed": [
+    273,
+    932,
+    333,
+    971
+   ],
+   "size": [
+    22,
+    14
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fall_jelly_green",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    184,
+    998,
+    257,
+    1062
+   ],
+   "trimmed": [
+    186,
+    1000,
+    255,
+    1043
+   ],
+   "size": [
+    25,
+    16
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fall_jelly_purple",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    263,
+    983,
+    339,
+    1062
+   ],
+   "trimmed": [
+    265,
+    985,
+    337,
+    1057
+   ],
+   "size": [
+    26,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "launcher_a",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    363,
+    894,
+    463,
+    952
+   ],
+   "trimmed": [
+    365,
+    896,
+    461,
+    950
+   ],
+   "size": [
+    33,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "launcher_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    355,
+    964,
+    440,
+    1048
+   ],
+   "trimmed": [
+    357,
+    966,
+    438,
+    1048
+   ],
+   "size": [
+    28,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cane_post",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    766,
+    635,
+    797,
+    699
+   ],
+   "trimmed": [
+    768,
+    637,
+    795,
+    697
+   ],
+   "size": [
+    11,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cane_hook",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    882,
+    634,
+    918,
+    699
+   ],
+   "trimmed": [
+    884,
+    636,
+    916,
+    697
+   ],
+   "size": [
+    13,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cane_slant",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    825,
+    637,
+    870,
+    697
+   ],
+   "trimmed": [
+    827,
+    639,
+    868,
+    695
+   ],
+   "size": [
+    17,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "caramel_slab",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    764,
+    724,
+    850,
+    800
+   ],
+   "trimmed": [
+    766,
+    726,
+    845,
+    796
+   ],
+   "size": [
+    29,
+    26
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "paint_caramel_surface",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    766,
+    724,
+    848,
+    742
+   ],
+   "trimmed": [
+    766,
+    726,
+    845,
+    742
+   ],
+   "size": [
+    32,
+    7
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "franja superior del caramelo resbaladizo (se repite)"
+  },
+  {
+   "name": "choco_jet_a",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    925,
+    725,
+    980,
+    800
+   ],
+   "trimmed": [
+    925,
+    726,
+    980,
+    800
+   ],
+   "size": [
+    22,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "choco_jet_b",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    985,
+    725,
+    1040,
+    800
+   ],
+   "trimmed": [
+    985,
+    726,
+    1040,
+    800
+   ],
+   "size": [
+    22,
+    30
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "choco_drip",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1042,
+    730,
+    1095,
+    800
+   ],
+   "trimmed": [
+    1045,
+    732,
+    1093,
+    800
+   ],
+   "size": [
+    20,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gum_red",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    764,
+    816,
+    840,
+    868
+   ],
+   "trimmed": [
+    766,
+    824,
+    835,
+    866
+   ],
+   "size": [
+    25,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "goma elástica (trampolín)"
+  },
+  {
+   "name": "gum_purple",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    840,
+    816,
+    911,
+    868
+   ],
+   "trimmed": [
+    840,
+    833,
+    909,
+    866
+   ],
+   "size": [
+    25,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gumdrops",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    939,
+    877,
+    1054,
+    891
+   ],
+   "trimmed": [
+    948,
+    879,
+    1052,
+    889
+   ],
+   "size": [
+    42,
+    4
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "confites de obstáculo/decoración"
+  },
+  {
+   "name": "paint_choco_surface",
+   "type": "object",
+   "source": "imagenes/word_7.png",
+   "crop": [
+    440,
+    838,
+    700,
+    860
+   ],
+   "trimmed": [
+    440,
+    838,
+    700,
+    860
+   ],
+   "size": [
+    78,
+    7
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "superficie del río de chocolate de word_7.png (chocolate pegajoso, se repite)"
+  },
+  {
+   "name": "tree_big",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    989,
+    230,
+    1125,
+    392
+   ],
+   "trimmed": [
+    991,
+    232,
+    1116,
+    390
+   ],
+   "size": [
+    50,
+    64
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "tree_m",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1123,
+    231,
+    1194,
+    339
+   ],
+   "trimmed": [
+    1125,
+    235,
+    1192,
+    337
+   ],
+   "size": [
+    27,
+    41
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "tree_s",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1108,
+    333,
+    1156,
+    395
+   ],
+   "trimmed": [
+    1110,
+    337,
+    1154,
+    395
+   ],
+   "size": [
+    18,
+    24
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cone_tree",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1160,
+    341,
+    1198,
+    395
+   ],
+   "trimmed": [
+    1162,
+    343,
+    1196,
+    395
+   ],
+   "size": [
+    14,
+    21
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "giant_sweets",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1208,
+    225,
+    1440,
+    400
+   ],
+   "trimmed": [
+    1210,
+    225,
+    1439,
+    398
+   ],
+   "size": [
+    83,
+    63
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cake_strawberry",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    992,
+    425,
+    1158,
+    498
+   ],
+   "trimmed": [
+    997,
+    427,
+    1085,
+    480
+   ],
+   "size": [
+    36,
+    22
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gum_mound",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    992,
+    425,
+    1158,
+    498
+   ],
+   "trimmed": [
+    1088,
+    430,
+    1156,
+    498
+   ],
+   "size": [
+    28,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "swirl_cone",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1161,
+    432,
+    1204,
+    492
+   ],
+   "trimmed": [
+    1163,
+    434,
+    1202,
+    490
+   ],
+   "size": [
+    16,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "choco_dome",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    990,
+    488,
+    1074,
+    548
+   ],
+   "trimmed": [
+    992,
+    490,
+    1072,
+    546
+   ],
+   "size": [
+    32,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cupcake",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1070,
+    483,
+    1130,
+    548
+   ],
+   "trimmed": [
+    1072,
+    485,
+    1128,
+    546
+   ],
+   "size": [
+    23,
+    25
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "gum_cake",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1128,
+    498,
+    1205,
+    551
+   ],
+   "trimmed": [
+    1130,
+    500,
+    1205,
+    549
+   ],
+   "size": [
+    30,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "choco_falls",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1210,
+    412,
+    1440,
+    555
+   ],
+   "trimmed": [
+    1210,
+    414,
+    1439,
+    555
+   ],
+   "size": [
+    97,
+    60
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "lolli_giant_a",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    764,
+    878,
+    1100,
+    945
+   ],
+   "trimmed": [
+    764,
+    894,
+    820,
+    943
+   ],
+   "size": [
+    23,
+    20
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bush_candy",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1114,
+    749,
+    1246,
+    800
+   ],
+   "trimmed": [
+    1116,
+    751,
+    1244,
+    798
+   ],
+   "size": [
+    52,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "fence_cane",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1251,
+    754,
+    1431,
+    800
+   ],
+   "trimmed": [
+    1253,
+    756,
+    1429,
+    798
+   ],
+   "size": [
+    71,
+    17
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "mushroom_candy",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1289,
+    636,
+    1434,
+    726
+   ],
+   "trimmed": [
+    1291,
+    638,
+    1432,
+    724
+   ],
+   "size": [
+    57,
+    35
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_w7",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1125,
+    726,
+    1167,
+    768
+   ],
+   "trimmed": [
+    1127,
+    728,
+    1165,
+    766
+   ],
+   "size": [
+    12,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_w7_b",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1165,
+    722,
+    1221,
+    769
+   ],
+   "trimmed": [
+    1167,
+    724,
+    1219,
+    767
+   ],
+   "size": [
+    14,
+    11
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "candy_lolli",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1247,
+    725,
+    1298,
+    795
+   ],
+   "trimmed": [
+    1249,
+    727,
+    1296,
+    795
+   ],
+   "size": [
+    12,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "caramelo especial 1"
+  },
+  {
+   "name": "candy_heart",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1303,
+    732,
+    1348,
+    777
+   ],
+   "trimmed": [
+    1305,
+    734,
+    1346,
+    775
+   ],
+   "size": [
+    13,
+    13
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "caramelo especial 2"
+  },
+  {
+   "name": "candy_bean",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1356,
+    722,
+    1425,
+    786
+   ],
+   "trimmed": [
+    1358,
+    724,
+    1423,
+    784
+   ],
+   "size": [
+    16,
+    15
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "caramelo especial 3"
+  },
+  {
+   "name": "golden_cherry",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1045,
+    826,
+    1107,
+    917
+   ],
+   "trimmed": [
+    1047,
+    828,
+    1105,
+    915
+   ],
+   "size": [
+    13,
+    19
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "cake_slice",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1214,
+    833,
+    1285,
+    919
+   ],
+   "trimmed": [
+    1216,
+    835,
+    1283,
+    917
+   ],
+   "size": [
+    15,
+    18
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "heart_w7",
+   "type": "object",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    195,
+    1025,
+    233,
+    1060
+   ],
+   "trimmed": [
+    195,
+    1025,
+    233,
+    1058
+   ],
+   "size": [
+    14,
+    12
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "star_block",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1123,
+    840,
+    1203,
+    920
+   ],
+   "trimmed": [
+    1125,
+    842,
+    1201,
+    919
+   ],
+   "size": [
+    23,
+    23
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "bloque de premio"
+  },
+  {
+   "name": "portal_w7",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1295,
+    820,
+    1430,
+    930
+   ],
+   "trimmed": [
+    1295,
+    822,
+    1430,
+    930
+   ],
+   "size": [
+    57,
+    46
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "flag_w7",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1230,
+    955,
+    1362,
+    1070
+   ],
+   "trimmed": [
+    1230,
+    957,
+    1360,
+    1069
+   ],
+   "size": [
+    39,
+    34
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sign_w7",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1045,
+    963,
+    1137,
+    1058
+   ],
+   "trimmed": [
+    1049,
+    965,
+    1135,
+    1058
+   ],
+   "size": [
+    26,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "sign_dir_w7",
+   "type": "object",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1132,
+    965,
+    1211,
+    1058
+   ],
+   "trimmed": [
+    1139,
+    967,
+    1209,
+    1058
+   ],
+   "size": [
+    21,
+    28
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_castle",
+   "type": "background",
+   "source": "imagenes/word_7.png",
+   "crop": [
+    900,
+    0,
+    1260,
+    250
+   ],
+   "trimmed": [
+    900,
+    7,
+    1260,
+    250
+   ],
+   "size": [
+    123,
+    83
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": "castillo de dulces sobre su colina (word_7.png) sin el cielo"
+  },
+  {
+   "name": "bg_sweets",
+   "type": "background",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1208,
+    225,
+    1440,
+    400
+   ],
+   "trimmed": [
+    1210,
+    225,
+    1439,
+    398
+   ],
+   "size": [
+    97,
+    73
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_trees",
+   "type": "background",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    989,
+    230,
+    1125,
+    392
+   ],
+   "trimmed": [
+    991,
+    232,
+    1116,
+    390
+   ],
+   "size": [
+    63,
+    80
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_falls",
+   "type": "background",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    1210,
+    412,
+    1440,
+    555
+   ],
+   "trimmed": [
+    1210,
+    414,
+    1439,
+    555
+   ],
+   "size": [
+    115,
+    71
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_mushroom",
+   "type": "background",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1289,
+    636,
+    1434,
+    726
+   ],
+   "trimmed": [
+    1291,
+    638,
+    1432,
+    724
+   ],
+   "size": [
+    64,
+    39
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "bg_hills",
+   "type": "background",
+   "source": "imagenes/enemies_world_7.png",
+   "crop": [
+    1113,
+    837,
+    1299,
+    933
+   ],
+   "trimmed": [
+    1115,
+    839,
+    1297,
+    931
+   ],
+   "size": [
+    92,
+    46
+   ],
+   "origin": "según la escena (centro o pies)",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "w7_sky",
+   "type": "generated_background",
+   "source": "imagenes/word_7.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_7.png (cielo ['#2D84FC', '#FEDEED', '#F79AD3', '#320A06'], nubes ['#FCCCF3', '#D5B9FD', '#F7BCF8', '#FEC8E9'])"
+  },
+  {
+   "name": "w7_clouds_far",
+   "type": "generated_background",
+   "source": "imagenes/word_7.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_7.png (cielo ['#2D84FC', '#FEDEED', '#F79AD3', '#320A06'], nubes ['#FCCCF3', '#D5B9FD', '#F7BCF8', '#FEC8E9'])"
+  },
+  {
+   "name": "w7_clouds_near",
+   "type": "generated_background",
+   "source": "imagenes/word_7.png",
+   "crop": null,
+   "status": "ok",
+   "notes": "generado con colores muestreados de word_7.png (cielo ['#2D84FC', '#FEDEED', '#F79AD3', '#320A06'], nubes ['#FCCCF3', '#D5B9FD', '#F7BCF8', '#FEC8E9'])"
+  },
+  {
+   "name": "frosting_base",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    24,
+    333,
+    95,
+    386
+   ],
+   "trimmed": [
+    24,
+    333,
+    95,
+    386
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "frosting_foam",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    17,
+    240,
+    99,
+    300
+   ],
+   "trimmed": [
+    17,
+    240,
+    99,
+    284
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "caramel_base",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    24,
+    333,
+    95,
+    386
+   ],
+   "trimmed": [
+    24,
+    333,
+    95,
+    386
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "caramel_foam",
+   "type": "terrain_sample",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    394,
+    328,
+    483,
+    392
+   ],
+   "trimmed": [
+    395,
+    329,
+    482,
+    360
+   ],
+   "size": [
+    32,
+    32
+   ],
+   "origin": "bloque de 2x2 teselas",
+   "status": "ok",
+   "notes": "bloque reducido a 32x32; bordes laterales, base y rampas generados por el script"
+  },
+  {
+   "name": "block_cookie",
+   "type": "block",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    927,
+    231,
+    961,
+    267
+   ],
+   "trimmed": [
+    927,
+    231,
+    961,
+    267
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "block_prize",
+   "type": "block",
+   "source": "imagenes/tilesets_world_7.png",
+   "crop": [
+    238,
+    738,
+    282,
+    788
+   ],
+   "trimmed": [
+    238,
+    738,
+    282,
+    788
+   ],
+   "size": [
+    16,
+    16
+   ],
+   "origin": "tesela",
+   "status": "ok",
+   "notes": ""
+  }
+ ],
+ "summary": {
+  "total": 171,
+  "pending": []
+ }
+}

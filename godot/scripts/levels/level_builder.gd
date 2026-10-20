@@ -93,6 +93,12 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		var sb := StarBlock.new().setup(level, b, atlas)
 		platforms.add_child(sb)
 		out.star_blocks.append(sb)
+	# Mundo 7: correas de chocolate (arrastran a lo que se apoya encima).
+	out.belts = []
+	for b in data.get("belts", []):
+		var belt := ConveyorBelt.new().setup(b, atlas)
+		platforms.add_child(belt)
+		out.belts.append(belt)
 
 	var objects := Node2D.new()
 	objects.name = "Objects"
@@ -158,6 +164,24 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		var bell := StationBell.new().setup(level, b, atlas, out.trains[ti] if ti >= 0 and ti < out.trains.size() else null)
 		objects.add_child(bell)
 		out.bells.append(bell)
+	# Mundo 7: piruletas giratorias, lanzadores de caramelos, chorros de chocolate y corazones.
+	out.lollipops = []
+	for l in data.get("lollipops", []):
+		var lp := SpinningLollipop.new().setup(l, atlas)
+		objects.add_child(lp)
+		out.lollipops.append(lp)
+	out.launchers = []
+	for l in data.get("launchers", []):
+		var ln := CandyLauncher.new().setup(level, l, atlas)
+		objects.add_child(ln)
+		out.launchers.append(ln)
+	out.choco_jets = []
+	for j in data.get("chocoJets", []):
+		var jet := ChocoJet.new().setup(level, j, atlas)
+		objects.add_child(jet)
+		out.choco_jets.append(jet)
+	for h in data.get("hearts", []):
+		objects.add_child(HeartPickup.new().setup(level, h, atlas))
 	for c in data.get("dreamCollectibles", []):
 		if not (str(c.id) in GameState.get_v("dreamCollectibles", [])):
 			objects.add_child(DreamCollectible.new().setup(level, c, atlas))
@@ -276,6 +300,16 @@ func _check_frames(atlas: String) -> void:
 		frames.append("bell")
 	if not data.get("starBlocks", []).is_empty():
 		frames.append("star_block")
+	for x in data.get("belts", []):
+		frames.append(x.get("frame", "choco_belt"))
+	for x in data.get("lollipops", []):
+		frames.append(x.get("frame", "lolli_spin"))
+	for x in data.get("launchers", []):
+		frames.append(x.get("frame", "launcher_a"))
+	for x in data.get("chocoJets", []):
+		frames += [x.get("frame", "choco_jet_a"), "choco_drip"]
+	for x in data.get("hearts", []):
+		frames.append(x.get("frame", "heart_w7"))
 	for x in data.get("sleepClouds", []):
 		var fx_atlas: String = x.get("atlas", "w3_fx")
 		var f: String = x.get("frame", "sleep_cloud")

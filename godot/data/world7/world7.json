@@ -1,0 +1,3051 @@
+{
+ "id": 7,
+ "key": "world7",
+ "name": "El Valle de Caramelo",
+ "widthTiles": 656,
+ "heightTiles": 25,
+ "music": "world7",
+ "tileset": "world7_tiles",
+ "objectsAtlas": "world7_objects",
+ "backgroundAtlas": "world7_bg",
+ "progress": {
+  "total": 11504,
+  "offset": 0,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 4,
+  "y": 20
+ },
+ "nextScene": "Boss7",
+ "startWeapons": [
+  "bubble",
+  "paint",
+  "sling"
+ ],
+ "frames": {
+  "flag": "flag_w7",
+  "signpost": "sign_w7",
+  "star": [
+   "world7_objects",
+   "star_w7"
+  ]
+ },
+ "sections": [
+  {
+   "id": "A",
+   "name": "Jardines de Algodón de Azúcar",
+   "from": 0
+  },
+  {
+   "id": "B",
+   "name": "Los Puentes de Caramelo",
+   "from": 2000
+  },
+  {
+   "id": "C",
+   "name": "El Río de Chocolate",
+   "from": 4200
+  },
+  {
+   "id": "D",
+   "name": "La Fábrica de Caramelos",
+   "from": 6500
+  },
+  {
+   "id": "E",
+   "name": "El Castillo del Gran Pastel",
+   "from": 9000
+  }
+ ],
+ "background": {
+  "sky": "w7_sky",
+  "far": "w7_clouds_far",
+  "near": "w7_clouds_near",
+  "atlas": "world7_bg",
+  "objectsAtlas": "world7_objects",
+  "sparkles": true,
+  "drifters": [
+   "cream_s",
+   "cream_xs"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.02,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_castle",
+      "x": 310,
+      "y": 112
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.06,
+     0.04
+    ],
+    "depth": 3,
+    "frames": [
+     "bg_sweets",
+     "bg_trees",
+     "bg_mushroom",
+     "bg_hills"
+    ],
+    "step": 270,
+    "y": [
+     128,
+     160
+    ],
+    "alpha": 0.85,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.15,
+     0.08
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_falls",
+     "bg_hills",
+     "bg_trees"
+    ],
+    "step": 300,
+    "y": [
+     176,
+     200
+    ],
+    "alpha": 0.9
+   },
+   {
+    "scroll": [
+     0.24,
+     0.12
+    ],
+    "depth": 5,
+    "frames": [
+     "bg_mushroom",
+     "bg_trees"
+    ],
+    "step": 380,
+    "y": [
+     198,
+     216
+    ],
+    "alpha": 0.85
+   },
+   {
+    "scroll": [
+     0.32,
+     0.16
+    ],
+    "depth": 6,
+    "frames": [
+     "bg_hills"
+    ],
+    "step": 440,
+    "y": [
+     216,
+     236
+    ],
+    "alpha": 0.7
+   }
+  ]
+ },
+ "terrain": [
+  {
+   "x": 0,
+   "y": 20,
+   "w": 34,
+   "h": 5,
+   "mat": "frosting"
+  },
+  {
+   "x": 38,
+   "y": 20,
+   "w": 16,
+   "h": 5,
+   "mat": "frosting"
+  },
+  {
+   "x": 54,
+   "y": 19,
+   "w": 6,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 65,
+   "y": 20,
+   "w": 26,
+   "h": 5,
+   "mat": "frosting"
+  },
+  {
+   "x": 80,
+   "y": 15,
+   "w": 9,
+   "h": 3,
+   "mat": "frosting"
+  },
+  {
+   "x": 96,
+   "y": 20,
+   "w": 30,
+   "h": 5,
+   "mat": "frosting"
+  },
+  {
+   "x": 126,
+   "y": 20,
+   "w": 14,
+   "h": 5,
+   "mat": "frosting"
+  },
+  {
+   "x": 147,
+   "y": 19,
+   "w": 18,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 175,
+   "y": 19,
+   "w": 2,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 177,
+   "y": 18,
+   "w": 20,
+   "h": 7,
+   "mat": "frosting"
+  },
+  {
+   "x": 202,
+   "y": 18,
+   "w": 24,
+   "h": 7,
+   "mat": "frosting"
+  },
+  {
+   "x": 232,
+   "y": 15,
+   "w": 8,
+   "h": 3,
+   "mat": "frosting"
+  },
+  {
+   "x": 240,
+   "y": 19,
+   "w": 22,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 262,
+   "y": 20,
+   "w": 30,
+   "h": 5,
+   "mat": "frosting"
+  },
+  {
+   "x": 300,
+   "y": 21,
+   "w": 26,
+   "h": 4,
+   "mat": "frosting"
+  },
+  {
+   "x": 342,
+   "y": 14,
+   "w": 7,
+   "h": 2,
+   "mat": "frosting"
+  },
+  {
+   "x": 334,
+   "y": 20,
+   "w": 24,
+   "h": 5,
+   "mat": "frosting"
+  },
+  {
+   "x": 366,
+   "y": 19,
+   "w": 40,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 406,
+   "y": 19,
+   "w": 16,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 433,
+   "y": 19,
+   "w": 20,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 460,
+   "y": 17,
+   "w": 22,
+   "h": 8,
+   "mat": "frosting"
+  },
+  {
+   "x": 491,
+   "y": 18,
+   "w": 18,
+   "h": 7,
+   "mat": "frosting"
+  },
+  {
+   "x": 509,
+   "y": 17,
+   "w": 4,
+   "h": 8,
+   "mat": "caramel"
+  },
+  {
+   "x": 513,
+   "y": 18,
+   "w": 1,
+   "h": 7,
+   "mat": "caramel"
+  },
+  {
+   "x": 514,
+   "y": 19,
+   "w": 1,
+   "h": 6,
+   "mat": "caramel"
+  },
+  {
+   "x": 515,
+   "y": 20,
+   "w": 1,
+   "h": 5,
+   "mat": "caramel"
+  },
+  {
+   "x": 516,
+   "y": 21,
+   "w": 1,
+   "h": 4,
+   "mat": "caramel"
+  },
+  {
+   "x": 517,
+   "y": 22,
+   "w": 15,
+   "h": 3,
+   "mat": "caramel"
+  },
+  {
+   "x": 527,
+   "y": 19,
+   "w": 4,
+   "h": 1,
+   "mat": "caramel"
+  },
+  {
+   "x": 532,
+   "y": 19,
+   "w": 30,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 562,
+   "y": 19,
+   "w": 18,
+   "h": 6,
+   "mat": "frosting"
+  },
+  {
+   "x": 586,
+   "y": 17,
+   "w": 10,
+   "h": 3,
+   "mat": "frosting"
+  },
+  {
+   "x": 602,
+   "y": 19,
+   "w": 54,
+   "h": 6,
+   "mat": "frosting"
+  }
+ ],
+ "slopes": [
+  {
+   "x": 53,
+   "y": 19,
+   "dir": "up",
+   "mat": "frosting"
+  },
+  {
+   "x": 176,
+   "y": 18,
+   "dir": "up",
+   "mat": "frosting"
+  },
+  {
+   "x": 513,
+   "y": 17,
+   "dir": "down",
+   "mat": "caramel"
+  },
+  {
+   "x": 514,
+   "y": 18,
+   "dir": "down",
+   "mat": "caramel"
+  },
+  {
+   "x": 515,
+   "y": 19,
+   "dir": "down",
+   "mat": "caramel"
+  },
+  {
+   "x": 516,
+   "y": 20,
+   "dir": "down",
+   "mat": "caramel"
+  },
+  {
+   "x": 517,
+   "y": 21,
+   "dir": "down",
+   "mat": "caramel"
+  }
+ ],
+ "blocks": [
+  {
+   "x": 418,
+   "y": 18,
+   "type": "block_cookie"
+  },
+  {
+   "x": 419,
+   "y": 18,
+   "type": "block_cookie"
+  },
+  {
+   "x": 419,
+   "y": 17,
+   "type": "block_cookie"
+  },
+  {
+   "x": 444,
+   "y": 18,
+   "type": "block_cookie"
+  },
+  {
+   "x": 480,
+   "y": 16,
+   "type": "block_cookie"
+  },
+  {
+   "x": 481,
+   "y": 16,
+   "type": "block_cookie"
+  },
+  {
+   "x": 655,
+   "y": 18,
+   "type": "block_cookie"
+  },
+  {
+   "x": 655,
+   "y": 17,
+   "type": "block_cookie"
+  }
+ ],
+ "clouds": [
+  {
+   "x": 36,
+   "y": 19,
+   "frame": "jelly_red",
+   "top": 3,
+   "bouncy": -470
+  },
+  {
+   "x": 62.5,
+   "y": 19,
+   "frame": "cookie_bar",
+   "top": 2
+  },
+  {
+   "x": 72,
+   "y": 16,
+   "frame": "cookie_plat_l",
+   "top": 2
+  },
+  {
+   "x": 93.5,
+   "y": 19,
+   "frame": "cream_m",
+   "top": 4
+  },
+  {
+   "x": 104,
+   "y": 16,
+   "frame": "cream_l",
+   "top": 4
+  },
+  {
+   "x": 110,
+   "y": 14,
+   "frame": "cream_s",
+   "top": 4
+  },
+  {
+   "x": 143.5,
+   "y": 20,
+   "frame": "cake_bridge",
+   "top": 6
+  },
+  {
+   "x": 199.5,
+   "y": 17,
+   "frame": "candy_pink",
+   "top": 2
+  },
+  {
+   "x": 236,
+   "y": 12,
+   "frame": "cookie_bar",
+   "top": 2
+  },
+  {
+   "x": 295,
+   "y": 19,
+   "frame": "cream_l",
+   "top": 4
+  },
+  {
+   "x": 298,
+   "y": 20,
+   "frame": "cream_s",
+   "top": 4
+  },
+  {
+   "x": 315,
+   "y": 16,
+   "frame": "jelly_orange",
+   "top": 3,
+   "bouncy": -470
+  },
+  {
+   "x": 327,
+   "y": 15,
+   "frame": "cream_m",
+   "top": 4
+  },
+  {
+   "x": 331.5,
+   "y": 13,
+   "frame": "cream_s",
+   "top": 4
+  },
+  {
+   "x": 336,
+   "y": 14,
+   "frame": "cream_l",
+   "top": 4
+  },
+  {
+   "x": 328.6,
+   "y": 20,
+   "frame": "cream_l",
+   "top": 4
+  },
+  {
+   "x": 332.6,
+   "y": 20,
+   "frame": "cream_m",
+   "top": 4
+  },
+  {
+   "x": 312,
+   "y": 13,
+   "frame": "jelly_green",
+   "top": 3,
+   "bouncy": -440
+  },
+  {
+   "x": 361,
+   "y": 19,
+   "frame": "cream_s",
+   "top": 4
+  },
+  {
+   "x": 364,
+   "y": 18,
+   "frame": "cream_xs",
+   "top": 3
+  },
+  {
+   "x": 380,
+   "y": 15,
+   "frame": "cream_l",
+   "top": 4
+  },
+  {
+   "x": 465,
+   "y": 13,
+   "frame": "cookie_plat_l",
+   "top": 2
+  },
+  {
+   "x": 471,
+   "y": 10,
+   "frame": "cookie_bar",
+   "top": 2
+  },
+  {
+   "x": 529,
+   "y": 19,
+   "frame": "cookie_plat_s",
+   "top": 2
+  },
+  {
+   "x": 583,
+   "y": 19,
+   "frame": "jelly_red",
+   "top": 3,
+   "bouncy": -470
+  },
+  {
+   "x": 599,
+   "y": 18,
+   "frame": "cake_bridge",
+   "top": 6
+  },
+  {
+   "x": 616,
+   "y": 15,
+   "frame": "choco_drip_plat",
+   "top": 3
+  },
+  {
+   "x": 636,
+   "y": 15,
+   "frame": "cupcake_plat",
+   "top": 5
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [
+  {
+   "x": 168,
+   "y": 19,
+   "frame": "candy_bar",
+   "top": 3,
+   "dx": 4,
+   "dy": 0,
+   "duration": 2600
+  },
+  {
+   "x": 229,
+   "y": 18,
+   "frame": "candy_purple",
+   "top": 2,
+   "dx": 0,
+   "dy": -3,
+   "duration": 2400
+  },
+  {
+   "x": 577,
+   "y": 18,
+   "frame": "candy_red",
+   "top": 2,
+   "dx": 0,
+   "dy": -3,
+   "duration": 2600
+  }
+ ],
+ "swings": [],
+ "crumbles": [
+  {
+   "x": 455,
+   "y": 18,
+   "frame": "fall_jelly_red",
+   "top": 3
+  },
+  {
+   "x": 458,
+   "y": 17,
+   "frame": "fall_jelly_orange",
+   "top": 3
+  },
+  {
+   "x": 486,
+   "y": 17,
+   "frame": "fall_jelly_green",
+   "top": 3
+  },
+  {
+   "x": 530.5,
+   "y": 17,
+   "frame": "fall_jelly_purple",
+   "top": 4
+  },
+  {
+   "x": 593,
+   "y": 15,
+   "frame": "fall_jelly_red",
+   "top": 3
+  }
+ ],
+ "pads": [
+  {
+   "x": 77,
+   "y": 20,
+   "frame": "gum_red",
+   "power": -560
+  },
+  {
+   "x": 322,
+   "y": 21,
+   "frame": "gum_purple",
+   "power": -560
+  },
+  {
+   "x": 462,
+   "y": 17,
+   "frame": "gum_red",
+   "power": -540
+  },
+  {
+   "x": 520,
+   "y": 22,
+   "frame": "gum_purple",
+   "power": -520
+  }
+ ],
+ "winds": [],
+ "hazards": [
+  {
+   "x": 449,
+   "y": 19,
+   "frame": "spike_cake",
+   "shape": "spikes"
+  },
+  {
+   "x": 611,
+   "y": 19,
+   "frame": "spike_cake",
+   "shape": "spikes"
+  }
+ ],
+ "paints": [
+  {
+   "x": 180,
+   "y": 18,
+   "w": 9,
+   "color": "caramel"
+  },
+  {
+   "x": 209,
+   "y": 18,
+   "w": 10,
+   "color": "caramel"
+  },
+  {
+   "x": 268,
+   "y": 20,
+   "w": 10,
+   "color": "choco"
+  },
+  {
+   "x": 305,
+   "y": 21,
+   "w": 14,
+   "color": "choco"
+  },
+  {
+   "x": 340,
+   "y": 20,
+   "w": 12,
+   "color": "choco"
+  },
+  {
+   "x": 372,
+   "y": 19,
+   "w": 9,
+   "color": "choco"
+  },
+  {
+   "x": 509,
+   "y": 17,
+   "w": 4,
+   "color": "caramel"
+  },
+  {
+   "x": 518,
+   "y": 22,
+   "w": 8,
+   "color": "caramel"
+  },
+  {
+   "x": 604,
+   "y": 19,
+   "w": 6,
+   "color": "choco"
+  }
+ ],
+ "rollers": [],
+ "bouncers": [],
+ "drips": [],
+ "rivers": [
+  {
+   "x": 292,
+   "w": 8,
+   "color": "choco"
+  },
+  {
+   "x": 326,
+   "w": 8,
+   "color": "choco"
+  },
+  {
+   "x": 358,
+   "w": 8,
+   "color": "choco"
+  }
+ ],
+ "magicCrayons": [],
+ "yarnRollers": [],
+ "sleepClouds": [],
+ "magicButtons": [],
+ "belts": [
+  {
+   "x": 422.5,
+   "y": 18,
+   "dir": 1,
+   "speed": 45
+  },
+  {
+   "x": 427.5,
+   "y": 18,
+   "dir": 1,
+   "speed": 45
+  },
+  {
+   "x": 482.5,
+   "y": 17,
+   "dir": -1,
+   "speed": 32
+  },
+  {
+   "x": 541,
+   "y": 16,
+   "dir": 1,
+   "speed": 40
+  }
+ ],
+ "lollipops": [
+  {
+   "x": 447,
+   "y": 19,
+   "speed": 80,
+   "angle": 0
+  },
+  {
+   "x": 500,
+   "y": 18,
+   "speed": 70,
+   "swing": 60,
+   "angle": 0,
+   "frame": "lolli_spin"
+  },
+  {
+   "x": 548,
+   "y": 19,
+   "speed": -75,
+   "angle": 180
+  },
+  {
+   "x": 628,
+   "y": 19,
+   "speed": 70,
+   "swing": 55,
+   "angle": 0
+  }
+ ],
+ "launchers": [
+  {
+   "x": 441,
+   "y": 19,
+   "dir": -1,
+   "period": 2800,
+   "speed": 90
+  },
+  {
+   "x": 506,
+   "y": 18,
+   "dir": -1,
+   "period": 3000,
+   "speed": 90,
+   "delay": 900,
+   "frame": "launcher_b"
+  },
+  {
+   "x": 559,
+   "y": 19,
+   "dir": -1,
+   "period": 2600,
+   "speed": 95
+  },
+  {
+   "x": 646,
+   "y": 19,
+   "dir": -1,
+   "period": 3200,
+   "speed": 85,
+   "delay": 600
+  }
+ ],
+ "chocoJets": [
+  {
+   "x": 285,
+   "y": 20,
+   "period": 3400,
+   "up": 1300
+  },
+  {
+   "x": 496,
+   "y": 18,
+   "period": 3200,
+   "up": 1200,
+   "delay": 600,
+   "frame": "choco_jet_b"
+  },
+  {
+   "x": 555,
+   "y": 19,
+   "period": 3000,
+   "up": 1100,
+   "delay": 1500
+  }
+ ],
+ "hearts": [
+  {
+   "x": 130,
+   "y": 18
+  },
+  {
+   "x": 288,
+   "y": 16
+  },
+  {
+   "x": 425,
+   "y": 14
+  },
+  {
+   "x": 566,
+   "y": 17
+  }
+ ],
+ "starBlocks": [
+  {
+   "x": 69,
+   "y": 13,
+   "count": 2
+  },
+  {
+   "x": 70,
+   "y": 13,
+   "count": 1
+  },
+  {
+   "x": 71,
+   "y": 13,
+   "count": 2
+  },
+  {
+   "x": 213,
+   "y": 14,
+   "count": 2
+  },
+  {
+   "x": 538,
+   "y": 15,
+   "count": 3
+  },
+  {
+   "x": 621,
+   "y": 15,
+   "count": 2
+  },
+  {
+   "x": 622,
+   "y": 15,
+   "count": 2
+  }
+ ],
+ "dreamCollectibles": [
+  {
+   "id": "candy_1",
+   "kind": "candy",
+   "x": 85,
+   "y": 12,
+   "frame": "candy_lolli"
+  },
+  {
+   "id": "candy_2",
+   "kind": "candy",
+   "x": 337,
+   "y": 11,
+   "frame": "candy_heart"
+  },
+  {
+   "id": "candy_3",
+   "kind": "candy",
+   "x": 471,
+   "y": 7,
+   "frame": "candy_bean"
+  },
+  {
+   "id": "cherry_1",
+   "kind": "cherry",
+   "x": 235,
+   "y": 9,
+   "frame": "golden_cherry"
+  },
+  {
+   "id": "cake_1",
+   "kind": "cake",
+   "x": 591,
+   "y": 14,
+   "frame": "cake_slice"
+  }
+ ],
+ "dreamMain": "candy",
+ "dreamNames": {
+  "candy": "Caramelo especial",
+  "cherry": "Cereza dorada",
+  "cake": "Trozo de pastel"
+ },
+ "dreamBanner": "¡Los %d caramelos especiales! Estrella extra",
+ "dreamHud": [
+  "world7_objects",
+  "candy_heart",
+  "candy_"
+ ],
+ "stars": [
+  {
+   "x": 3,
+   "y": 19
+  },
+  {
+   "x": 6,
+   "y": 19
+  },
+  {
+   "x": 9,
+   "y": 19
+  },
+  {
+   "x": 12,
+   "y": 19
+  },
+  {
+   "x": 15,
+   "y": 19
+  },
+  {
+   "x": 18,
+   "y": 19
+  },
+  {
+   "x": 21,
+   "y": 19
+  },
+  {
+   "x": 24,
+   "y": 19
+  },
+  {
+   "x": 27,
+   "y": 19
+  },
+  {
+   "x": 30,
+   "y": 19
+  },
+  {
+   "x": 34,
+   "y": 16
+  },
+  {
+   "x": 35,
+   "y": 15
+  },
+  {
+   "x": 36,
+   "y": 14
+  },
+  {
+   "x": 37,
+   "y": 15
+  },
+  {
+   "x": 38,
+   "y": 16
+  },
+  {
+   "x": 40,
+   "y": 19
+  },
+  {
+   "x": 43,
+   "y": 19
+  },
+  {
+   "x": 46,
+   "y": 19
+  },
+  {
+   "x": 49,
+   "y": 19
+  },
+  {
+   "x": 52,
+   "y": 19
+  },
+  {
+   "x": 55,
+   "y": 18
+  },
+  {
+   "x": 57,
+   "y": 18
+  },
+  {
+   "x": 59,
+   "y": 18
+  },
+  {
+   "x": 60,
+   "y": 17
+  },
+  {
+   "x": 61,
+   "y": 16
+  },
+  {
+   "x": 62,
+   "y": 15
+  },
+  {
+   "x": 63,
+   "y": 15
+  },
+  {
+   "x": 64,
+   "y": 16
+  },
+  {
+   "x": 65,
+   "y": 17
+  },
+  {
+   "x": 67,
+   "y": 19
+  },
+  {
+   "x": 70,
+   "y": 19
+  },
+  {
+   "x": 73,
+   "y": 19
+  },
+  {
+   "x": 81,
+   "y": 14
+  },
+  {
+   "x": 83,
+   "y": 14
+  },
+  {
+   "x": 85,
+   "y": 14
+  },
+  {
+   "x": 87,
+   "y": 14
+  },
+  {
+   "x": 90,
+   "y": 17
+  },
+  {
+   "x": 92,
+   "y": 17
+  },
+  {
+   "x": 94,
+   "y": 17
+  },
+  {
+   "x": 98,
+   "y": 19
+  },
+  {
+   "x": 101,
+   "y": 19
+  },
+  {
+   "x": 104,
+   "y": 19
+  },
+  {
+   "x": 107,
+   "y": 19
+  },
+  {
+   "x": 110,
+   "y": 19
+  },
+  {
+   "x": 113,
+   "y": 19
+  },
+  {
+   "x": 116,
+   "y": 19
+  },
+  {
+   "x": 119,
+   "y": 19
+  },
+  {
+   "x": 122,
+   "y": 19
+  },
+  {
+   "x": 102,
+   "y": 12
+  },
+  {
+   "x": 104,
+   "y": 11
+  },
+  {
+   "x": 106,
+   "y": 10
+  },
+  {
+   "x": 108,
+   "y": 10
+  },
+  {
+   "x": 110,
+   "y": 11
+  },
+  {
+   "x": 112,
+   "y": 12
+  },
+  {
+   "x": 127,
+   "y": 19
+  },
+  {
+   "x": 130,
+   "y": 19
+  },
+  {
+   "x": 133,
+   "y": 19
+  },
+  {
+   "x": 136,
+   "y": 19
+  },
+  {
+   "x": 139,
+   "y": 19
+  },
+  {
+   "x": 140,
+   "y": 17
+  },
+  {
+   "x": 141,
+   "y": 16
+  },
+  {
+   "x": 142,
+   "y": 15
+  },
+  {
+   "x": 143,
+   "y": 15
+  },
+  {
+   "x": 144,
+   "y": 15
+  },
+  {
+   "x": 145,
+   "y": 15
+  },
+  {
+   "x": 146,
+   "y": 16
+  },
+  {
+   "x": 147,
+   "y": 17
+  },
+  {
+   "x": 149,
+   "y": 18
+  },
+  {
+   "x": 152,
+   "y": 18
+  },
+  {
+   "x": 155,
+   "y": 18
+  },
+  {
+   "x": 158,
+   "y": 18
+  },
+  {
+   "x": 161,
+   "y": 18
+  },
+  {
+   "x": 165,
+   "y": 16
+  },
+  {
+   "x": 167,
+   "y": 15
+  },
+  {
+   "x": 169,
+   "y": 14
+  },
+  {
+   "x": 171,
+   "y": 14
+  },
+  {
+   "x": 173,
+   "y": 15
+  },
+  {
+   "x": 175,
+   "y": 16
+  },
+  {
+   "x": 177,
+   "y": 17
+  },
+  {
+   "x": 180,
+   "y": 17
+  },
+  {
+   "x": 183,
+   "y": 17
+  },
+  {
+   "x": 186,
+   "y": 17
+  },
+  {
+   "x": 189,
+   "y": 17
+  },
+  {
+   "x": 192,
+   "y": 17
+  },
+  {
+   "x": 195,
+   "y": 17
+  },
+  {
+   "x": 197,
+   "y": 14
+  },
+  {
+   "x": 198,
+   "y": 13
+  },
+  {
+   "x": 199,
+   "y": 12
+  },
+  {
+   "x": 200,
+   "y": 12
+  },
+  {
+   "x": 201,
+   "y": 13
+  },
+  {
+   "x": 202,
+   "y": 14
+  },
+  {
+   "x": 204,
+   "y": 17
+  },
+  {
+   "x": 207,
+   "y": 17
+  },
+  {
+   "x": 210,
+   "y": 17
+  },
+  {
+   "x": 213,
+   "y": 17
+  },
+  {
+   "x": 216,
+   "y": 17
+  },
+  {
+   "x": 219,
+   "y": 17
+  },
+  {
+   "x": 222,
+   "y": 17
+  },
+  {
+   "x": 229,
+   "y": 12
+  },
+  {
+   "x": 229,
+   "y": 14
+  },
+  {
+   "x": 229,
+   "y": 16
+  },
+  {
+   "x": 233,
+   "y": 14
+  },
+  {
+   "x": 235,
+   "y": 14
+  },
+  {
+   "x": 237,
+   "y": 14
+  },
+  {
+   "x": 239,
+   "y": 14
+  },
+  {
+   "x": 242,
+   "y": 18
+  },
+  {
+   "x": 245,
+   "y": 18
+  },
+  {
+   "x": 248,
+   "y": 18
+  },
+  {
+   "x": 251,
+   "y": 18
+  },
+  {
+   "x": 254,
+   "y": 18
+  },
+  {
+   "x": 257,
+   "y": 18
+  },
+  {
+   "x": 260,
+   "y": 18
+  },
+  {
+   "x": 264,
+   "y": 19
+  },
+  {
+   "x": 267,
+   "y": 19
+  },
+  {
+   "x": 270,
+   "y": 19
+  },
+  {
+   "x": 273,
+   "y": 19
+  },
+  {
+   "x": 276,
+   "y": 19
+  },
+  {
+   "x": 279,
+   "y": 19
+  },
+  {
+   "x": 282,
+   "y": 19
+  },
+  {
+   "x": 285,
+   "y": 19
+  },
+  {
+   "x": 288,
+   "y": 19
+  },
+  {
+   "x": 292,
+   "y": 16
+  },
+  {
+   "x": 294,
+   "y": 15
+  },
+  {
+   "x": 296,
+   "y": 14
+  },
+  {
+   "x": 298,
+   "y": 15
+  },
+  {
+   "x": 300,
+   "y": 16
+  },
+  {
+   "x": 302,
+   "y": 20
+  },
+  {
+   "x": 305,
+   "y": 20
+  },
+  {
+   "x": 308,
+   "y": 20
+  },
+  {
+   "x": 311,
+   "y": 20
+  },
+  {
+   "x": 314,
+   "y": 20
+  },
+  {
+   "x": 317,
+   "y": 20
+  },
+  {
+   "x": 320,
+   "y": 20
+  },
+  {
+   "x": 323,
+   "y": 20
+  },
+  {
+   "x": 326,
+   "y": 11
+  },
+  {
+   "x": 328,
+   "y": 11
+  },
+  {
+   "x": 330,
+   "y": 11
+  },
+  {
+   "x": 332,
+   "y": 11
+  },
+  {
+   "x": 334,
+   "y": 11
+  },
+  {
+   "x": 336,
+   "y": 11
+  },
+  {
+   "x": 343,
+   "y": 12
+  },
+  {
+   "x": 344,
+   "y": 12
+  },
+  {
+   "x": 345,
+   "y": 12
+  },
+  {
+   "x": 346,
+   "y": 12
+  },
+  {
+   "x": 347,
+   "y": 12
+  },
+  {
+   "x": 348,
+   "y": 12
+  },
+  {
+   "x": 326,
+   "y": 18
+  },
+  {
+   "x": 328,
+   "y": 17
+  },
+  {
+   "x": 330,
+   "y": 16
+  },
+  {
+   "x": 332,
+   "y": 17
+  },
+  {
+   "x": 334,
+   "y": 18
+  },
+  {
+   "x": 336,
+   "y": 19
+  },
+  {
+   "x": 339,
+   "y": 19
+  },
+  {
+   "x": 342,
+   "y": 19
+  },
+  {
+   "x": 345,
+   "y": 19
+  },
+  {
+   "x": 348,
+   "y": 19
+  },
+  {
+   "x": 351,
+   "y": 19
+  },
+  {
+   "x": 354,
+   "y": 19
+  },
+  {
+   "x": 358,
+   "y": 16
+  },
+  {
+   "x": 360,
+   "y": 15
+  },
+  {
+   "x": 362,
+   "y": 14
+  },
+  {
+   "x": 364,
+   "y": 15
+  },
+  {
+   "x": 366,
+   "y": 16
+  },
+  {
+   "x": 368,
+   "y": 18
+  },
+  {
+   "x": 371,
+   "y": 18
+  },
+  {
+   "x": 374,
+   "y": 18
+  },
+  {
+   "x": 377,
+   "y": 18
+  },
+  {
+   "x": 380,
+   "y": 18
+  },
+  {
+   "x": 383,
+   "y": 18
+  },
+  {
+   "x": 386,
+   "y": 18
+  },
+  {
+   "x": 389,
+   "y": 18
+  },
+  {
+   "x": 392,
+   "y": 18
+  },
+  {
+   "x": 395,
+   "y": 18
+  },
+  {
+   "x": 398,
+   "y": 18
+  },
+  {
+   "x": 401,
+   "y": 18
+  },
+  {
+   "x": 404,
+   "y": 18
+  },
+  {
+   "x": 378,
+   "y": 13
+  },
+  {
+   "x": 380,
+   "y": 13
+  },
+  {
+   "x": 382,
+   "y": 13
+  },
+  {
+   "x": 408,
+   "y": 18
+  },
+  {
+   "x": 411,
+   "y": 18
+  },
+  {
+   "x": 414,
+   "y": 18
+  },
+  {
+   "x": 417,
+   "y": 18
+  },
+  {
+   "x": 420,
+   "y": 18
+  },
+  {
+   "x": 423,
+   "y": 15
+  },
+  {
+   "x": 425,
+   "y": 15
+  },
+  {
+   "x": 427,
+   "y": 15
+  },
+  {
+   "x": 429,
+   "y": 15
+  },
+  {
+   "x": 431,
+   "y": 15
+  },
+  {
+   "x": 435,
+   "y": 18
+  },
+  {
+   "x": 438,
+   "y": 18
+  },
+  {
+   "x": 441,
+   "y": 18
+  },
+  {
+   "x": 447,
+   "y": 18
+  },
+  {
+   "x": 450,
+   "y": 18
+  },
+  {
+   "x": 453,
+   "y": 15
+  },
+  {
+   "x": 454,
+   "y": 14
+  },
+  {
+   "x": 455,
+   "y": 13
+  },
+  {
+   "x": 456,
+   "y": 13
+  },
+  {
+   "x": 457,
+   "y": 13
+  },
+  {
+   "x": 458,
+   "y": 13
+  },
+  {
+   "x": 459,
+   "y": 14
+  },
+  {
+   "x": 460,
+   "y": 15
+  },
+  {
+   "x": 462,
+   "y": 16
+  },
+  {
+   "x": 465,
+   "y": 16
+  },
+  {
+   "x": 468,
+   "y": 16
+  },
+  {
+   "x": 471,
+   "y": 16
+  },
+  {
+   "x": 474,
+   "y": 16
+  },
+  {
+   "x": 477,
+   "y": 16
+  },
+  {
+   "x": 463,
+   "y": 11
+  },
+  {
+   "x": 465,
+   "y": 11
+  },
+  {
+   "x": 467,
+   "y": 11
+  },
+  {
+   "x": 469,
+   "y": 8
+  },
+  {
+   "x": 471,
+   "y": 8
+  },
+  {
+   "x": 473,
+   "y": 8
+  },
+  {
+   "x": 482,
+   "y": 14
+  },
+  {
+   "x": 484,
+   "y": 13
+  },
+  {
+   "x": 486,
+   "y": 12
+  },
+  {
+   "x": 488,
+   "y": 12
+  },
+  {
+   "x": 490,
+   "y": 13
+  },
+  {
+   "x": 493,
+   "y": 17
+  },
+  {
+   "x": 496,
+   "y": 17
+  },
+  {
+   "x": 499,
+   "y": 17
+  },
+  {
+   "x": 502,
+   "y": 17
+  },
+  {
+   "x": 505,
+   "y": 17
+  },
+  {
+   "x": 508,
+   "y": 17
+  },
+  {
+   "x": 509,
+   "y": 15
+  },
+  {
+   "x": 510,
+   "y": 15
+  },
+  {
+   "x": 511,
+   "y": 15
+  },
+  {
+   "x": 512,
+   "y": 15
+  },
+  {
+   "x": 513,
+   "y": 15
+  },
+  {
+   "x": 514,
+   "y": 15
+  },
+  {
+   "x": 515,
+   "y": 15
+  },
+  {
+   "x": 516,
+   "y": 15
+  },
+  {
+   "x": 518,
+   "y": 21
+  },
+  {
+   "x": 521,
+   "y": 21
+  },
+  {
+   "x": 524,
+   "y": 21
+  },
+  {
+   "x": 527,
+   "y": 21
+  },
+  {
+   "x": 530,
+   "y": 21
+  },
+  {
+   "x": 533,
+   "y": 18
+  },
+  {
+   "x": 536,
+   "y": 18
+  },
+  {
+   "x": 539,
+   "y": 18
+  },
+  {
+   "x": 542,
+   "y": 18
+  },
+  {
+   "x": 545,
+   "y": 18
+  },
+  {
+   "x": 548,
+   "y": 18
+  },
+  {
+   "x": 551,
+   "y": 18
+  },
+  {
+   "x": 554,
+   "y": 18
+  },
+  {
+   "x": 557,
+   "y": 18
+  },
+  {
+   "x": 560,
+   "y": 18
+  },
+  {
+   "x": 541,
+   "y": 14
+  },
+  {
+   "x": 543,
+   "y": 14
+  },
+  {
+   "x": 545,
+   "y": 14
+  },
+  {
+   "x": 563,
+   "y": 18
+  },
+  {
+   "x": 566,
+   "y": 18
+  },
+  {
+   "x": 569,
+   "y": 18
+  },
+  {
+   "x": 572,
+   "y": 18
+  },
+  {
+   "x": 575,
+   "y": 18
+  },
+  {
+   "x": 578,
+   "y": 18
+  },
+  {
+   "x": 580,
+   "y": 16
+  },
+  {
+   "x": 581,
+   "y": 15
+  },
+  {
+   "x": 582,
+   "y": 14
+  },
+  {
+   "x": 583,
+   "y": 14
+  },
+  {
+   "x": 584,
+   "y": 14
+  },
+  {
+   "x": 585,
+   "y": 15
+  },
+  {
+   "x": 586,
+   "y": 16
+  },
+  {
+   "x": 587,
+   "y": 16
+  },
+  {
+   "x": 589,
+   "y": 16
+  },
+  {
+   "x": 591,
+   "y": 16
+  },
+  {
+   "x": 593,
+   "y": 16
+  },
+  {
+   "x": 595,
+   "y": 16
+  },
+  {
+   "x": 596,
+   "y": 15
+  },
+  {
+   "x": 597,
+   "y": 14
+  },
+  {
+   "x": 598,
+   "y": 13
+  },
+  {
+   "x": 599,
+   "y": 13
+  },
+  {
+   "x": 600,
+   "y": 13
+  },
+  {
+   "x": 601,
+   "y": 14
+  },
+  {
+   "x": 602,
+   "y": 15
+  },
+  {
+   "x": 604,
+   "y": 18
+  },
+  {
+   "x": 607,
+   "y": 18
+  },
+  {
+   "x": 610,
+   "y": 18
+  },
+  {
+   "x": 613,
+   "y": 18
+  },
+  {
+   "x": 616,
+   "y": 18
+  },
+  {
+   "x": 619,
+   "y": 18
+  },
+  {
+   "x": 622,
+   "y": 18
+  },
+  {
+   "x": 625,
+   "y": 18
+  },
+  {
+   "x": 628,
+   "y": 18
+  },
+  {
+   "x": 631,
+   "y": 18
+  },
+  {
+   "x": 634,
+   "y": 18
+  },
+  {
+   "x": 637,
+   "y": 18
+  },
+  {
+   "x": 640,
+   "y": 18
+  },
+  {
+   "x": 643,
+   "y": 18
+  },
+  {
+   "x": 646,
+   "y": 18
+  },
+  {
+   "x": 649,
+   "y": 18
+  },
+  {
+   "x": 614,
+   "y": 13
+  },
+  {
+   "x": 616,
+   "y": 13
+  },
+  {
+   "x": 618,
+   "y": 13
+  },
+  {
+   "x": 634,
+   "y": 13
+  },
+  {
+   "x": 636,
+   "y": 13
+  },
+  {
+   "x": 638,
+   "y": 13
+  }
+ ],
+ "enemies": [
+  {
+   "type": "gomilito",
+   "x": 46,
+   "y": 20,
+   "patrol": [
+    40,
+    52
+   ]
+  },
+  {
+   "type": "gomilito",
+   "x": 112,
+   "y": 20,
+   "patrol": [
+    100,
+    122
+   ]
+  },
+  {
+   "type": "gomilito",
+   "x": 395,
+   "y": 19,
+   "patrol": [
+    388,
+    403
+   ]
+  },
+  {
+   "type": "gomilito",
+   "x": 474,
+   "y": 17,
+   "patrol": [
+    466,
+    480
+   ]
+  },
+  {
+   "type": "gomilito",
+   "x": 536,
+   "y": 19,
+   "patrol": [
+    533,
+    544
+   ]
+  },
+  {
+   "type": "gomilito",
+   "x": 632,
+   "y": 19,
+   "patrol": [
+    626,
+    640
+   ]
+  },
+  {
+   "type": "cuppy",
+   "x": 156,
+   "y": 19,
+   "patrol": [
+    149,
+    163
+   ]
+  },
+  {
+   "type": "cuppy",
+   "x": 190,
+   "y": 18,
+   "patrol": [
+    185,
+    195
+   ]
+  },
+  {
+   "type": "cuppy",
+   "x": 220,
+   "y": 18,
+   "patrol": [
+    214,
+    224
+   ]
+  },
+  {
+   "type": "cuppy",
+   "x": 252,
+   "y": 19,
+   "patrol": [
+    244,
+    259
+   ]
+  },
+  {
+   "type": "cuppy",
+   "x": 466,
+   "y": 17,
+   "patrol": [
+    462,
+    472
+   ]
+  },
+  {
+   "type": "cuppy",
+   "x": 542,
+   "y": 19,
+   "patrol": [
+    536,
+    546
+   ]
+  },
+  {
+   "type": "cuppy",
+   "x": 608,
+   "y": 19,
+   "patrol": [
+    604,
+    618
+   ]
+  },
+  {
+   "type": "cuppy",
+   "x": 624,
+   "y": 19,
+   "patrol": [
+    620,
+    630
+   ]
+  },
+  {
+   "type": "piruleta",
+   "x": 280,
+   "y": 15,
+   "patrol": [
+    272,
+    290
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "piruleta",
+   "x": 315,
+   "y": 16,
+   "patrol": [
+    306,
+    324
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "piruleta",
+   "x": 353,
+   "y": 16,
+   "patrol": [
+    344,
+    358
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "piruleta",
+   "x": 386,
+   "y": 14,
+   "patrol": [
+    376,
+    398
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "piruleta",
+   "x": 550,
+   "y": 14,
+   "patrol": [
+    544,
+    558
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "piruleta",
+   "x": 642,
+   "y": 14,
+   "patrol": [
+    636,
+    650
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  }
+ ],
+ "checkpoints": [
+  {
+   "x": 205,
+   "y": 18
+  },
+  {
+   "x": 468,
+   "y": 17
+  }
+ ],
+ "pickups": [],
+ "signs": [
+  {
+   "x": 3,
+   "y": 20,
+   "text": "Mundo 7: ¡El Valle de Caramelo! Un reino de chocolate, glaseado y gominolas"
+  },
+  {
+   "x": 30,
+   "y": 20,
+   "text": "Las gelatinas son elásticas: ¡salta encima y rebotarás muy alto!"
+  },
+  {
+   "x": 41,
+   "y": 20,
+   "text": "El Gomilito Saltarín se mueve a saltitos. Si le das, ¡se divide en gomitas!"
+  },
+  {
+   "x": 74,
+   "y": 20,
+   "text": "Pisa la goma elástica para subir a la cornisa. Hay tres caramelos especiales"
+  },
+  {
+   "x": 66,
+   "y": 20,
+   "text": "Golpea los bloques de premio desde abajo: ¡sueltan estrellas!"
+  },
+  {
+   "x": 128,
+   "y": 20,
+   "text": "¡Un corazón dulce! Recupera un corazón de vida"
+  },
+  {
+   "x": 150,
+   "y": 19,
+   "text": "Cuppy Dulzón levanta su piruleta antes de disparar: ¡salta el caramelo!"
+  },
+  {
+   "x": 177,
+   "y": 18,
+   "text": "El caramelo dorado resbala: frena con tiempo"
+  },
+  {
+   "x": 224,
+   "y": 18,
+   "text": "El bastón que sube lleva a una cereza dorada"
+  },
+  {
+   "x": 264,
+   "y": 20,
+   "text": "El Río de Chocolate: el chocolate es pegajoso y te frena"
+  },
+  {
+   "x": 282,
+   "y": 20,
+   "text": "Los chorros de chocolate burbujean antes de salir"
+  },
+  {
+   "x": 302,
+   "y": 21,
+   "text": "La Piruleta Voladora lanza caramelitos en abanico: busca el hueco"
+  },
+  {
+   "x": 320,
+   "y": 21,
+   "text": "La goma te sube a los malvaviscos: ¡ruta de estrellas!"
+  },
+  {
+   "x": 408,
+   "y": 19,
+   "text": "La Fábrica de Caramelos: las correas de chocolate te llevan"
+  },
+  {
+   "x": 438,
+   "y": 19,
+   "text": "El lanzador brilla antes de disparar. Las piruletas giran siempre igual"
+  },
+  {
+   "x": 452,
+   "y": 19,
+   "text": "Estas gelatinas tiemblan y desaparecen: ¡no te pares!"
+  },
+  {
+   "x": 479,
+   "y": 17,
+   "text": "Esta correa va hacia atrás: ¡corre!"
+  },
+  {
+   "x": 510,
+   "y": 17,
+   "text": "¡El tobogán de caramelo dorado!"
+  },
+  {
+   "x": 564,
+   "y": 19,
+   "text": "El Castillo del Gran Pastel"
+  },
+  {
+   "x": 645,
+   "y": 19,
+   "text": "Don Chupetón te espera dentro del castillo"
+  }
+ ],
+ "decor": [
+  {
+   "x": 1,
+   "y": 20,
+   "frame": "tree_big",
+   "back": true
+  },
+  {
+   "x": 8,
+   "y": 20,
+   "frame": "fence_cane",
+   "back": true
+  },
+  {
+   "x": 13,
+   "y": 20,
+   "frame": "mushroom_candy",
+   "back": true
+  },
+  {
+   "x": 19,
+   "y": 20,
+   "frame": "tree_m"
+  },
+  {
+   "x": 24,
+   "y": 20,
+   "frame": "lolli_giant_a",
+   "back": true
+  },
+  {
+   "x": 27,
+   "y": 20,
+   "frame": "bush_candy"
+  },
+  {
+   "x": 33,
+   "y": 20,
+   "frame": "cane_post"
+  },
+  {
+   "x": 43,
+   "y": 20,
+   "frame": "tree_big",
+   "back": true
+  },
+  {
+   "x": 49,
+   "y": 20,
+   "frame": "swirl_cone"
+  },
+  {
+   "x": 51,
+   "y": 20,
+   "frame": "tree_s"
+  },
+  {
+   "x": 57,
+   "y": 19,
+   "frame": "cupcake",
+   "back": true
+  },
+  {
+   "x": 68,
+   "y": 20,
+   "frame": "giant_sweets",
+   "back": true
+  },
+  {
+   "x": 79,
+   "y": 20,
+   "frame": "cane_hook"
+  },
+  {
+   "x": 84,
+   "y": 15,
+   "frame": "tree_m",
+   "back": true
+  },
+  {
+   "x": 87,
+   "y": 15,
+   "frame": "cone_tree"
+  },
+  {
+   "x": 99,
+   "y": 20,
+   "frame": "mushroom_candy",
+   "back": true
+  },
+  {
+   "x": 106,
+   "y": 20,
+   "frame": "tree_big",
+   "back": true
+  },
+  {
+   "x": 115,
+   "y": 20,
+   "frame": "fence_cane",
+   "back": true
+  },
+  {
+   "x": 119,
+   "y": 20,
+   "frame": "cake_strawberry"
+  },
+  {
+   "x": 123,
+   "y": 20,
+   "frame": "tree_s"
+  },
+  {
+   "x": 127,
+   "y": 20,
+   "frame": "cane_post"
+  },
+  {
+   "x": 133,
+   "y": 20,
+   "frame": "choco_falls",
+   "back": true
+  },
+  {
+   "x": 139,
+   "y": 20,
+   "frame": "cane_post"
+  },
+  {
+   "x": 147,
+   "y": 19,
+   "frame": "cane_post"
+  },
+  {
+   "x": 152,
+   "y": 19,
+   "frame": "tree_m",
+   "back": true
+  },
+  {
+   "x": 160,
+   "y": 19,
+   "frame": "gum_mound",
+   "back": true
+  },
+  {
+   "x": 164,
+   "y": 19,
+   "frame": "cane_hook"
+  },
+  {
+   "x": 176,
+   "y": 18,
+   "frame": "cane_post"
+  },
+  {
+   "x": 186,
+   "y": 18,
+   "frame": "choco_falls",
+   "back": true
+  },
+  {
+   "x": 194,
+   "y": 18,
+   "frame": "bush_candy"
+  },
+  {
+   "x": 203,
+   "y": 18,
+   "frame": "fence_cane",
+   "back": true
+  },
+  {
+   "x": 216,
+   "y": 18,
+   "frame": "tree_big",
+   "back": true
+  },
+  {
+   "x": 224,
+   "y": 18,
+   "frame": "cane_slant"
+  },
+  {
+   "x": 234,
+   "y": 15,
+   "frame": "cone_tree"
+  },
+  {
+   "x": 243,
+   "y": 19,
+   "frame": "giant_sweets",
+   "back": true
+  },
+  {
+   "x": 249,
+   "y": 19,
+   "frame": "choco_dome"
+  },
+  {
+   "x": 257,
+   "y": 19,
+   "frame": "tree_m"
+  },
+  {
+   "x": 263,
+   "y": 20,
+   "frame": "choco_falls",
+   "back": true
+  },
+  {
+   "x": 271,
+   "y": 20,
+   "frame": "caramel_jet_a",
+   "back": true
+  },
+  {
+   "x": 279,
+   "y": 20,
+   "frame": "choco_dome"
+  },
+  {
+   "x": 290,
+   "y": 20,
+   "frame": "cane_post"
+  },
+  {
+   "x": 301,
+   "y": 21,
+   "frame": "caramel_jet_b",
+   "back": true
+  },
+  {
+   "x": 311,
+   "y": 21,
+   "frame": "choco_falls",
+   "back": true
+  },
+  {
+   "x": 319,
+   "y": 21,
+   "frame": "gum_cake"
+  },
+  {
+   "x": 335,
+   "y": 20,
+   "frame": "choco_falls",
+   "back": true
+  },
+  {
+   "x": 344,
+   "y": 14,
+   "frame": "cupcake"
+  },
+  {
+   "x": 352,
+   "y": 20,
+   "frame": "caramel_slab",
+   "back": true
+  },
+  {
+   "x": 369,
+   "y": 19,
+   "frame": "choco_falls",
+   "back": true
+  },
+  {
+   "x": 377,
+   "y": 19,
+   "frame": "mushroom_candy",
+   "back": true
+  },
+  {
+   "x": 390,
+   "y": 19,
+   "frame": "caramel_jet_a",
+   "back": true
+  },
+  {
+   "x": 398,
+   "y": 19,
+   "frame": "tree_big",
+   "back": true
+  },
+  {
+   "x": 404,
+   "y": 19,
+   "frame": "cane_post"
+  },
+  {
+   "x": 409,
+   "y": 19,
+   "frame": "cookie_blocks",
+   "back": true
+  },
+  {
+   "x": 414,
+   "y": 19,
+   "frame": "caramel_jet_b",
+   "back": true
+  },
+  {
+   "x": 436,
+   "y": 19,
+   "frame": "cookie_blocks",
+   "back": true
+  },
+  {
+   "x": 452,
+   "y": 19,
+   "frame": "cane_post"
+  },
+  {
+   "x": 461,
+   "y": 17,
+   "frame": "cane_hook"
+  },
+  {
+   "x": 477,
+   "y": 17,
+   "frame": "cookie_blocks",
+   "back": true
+  },
+  {
+   "x": 493,
+   "y": 18,
+   "frame": "caramel_slab",
+   "back": true
+  },
+  {
+   "x": 503,
+   "y": 18,
+   "frame": "cookie_blocks",
+   "back": true
+  },
+  {
+   "x": 511,
+   "y": 17,
+   "frame": "cane_post"
+  },
+  {
+   "x": 523,
+   "y": 22,
+   "frame": "caramel_jet_a",
+   "back": true
+  },
+  {
+   "x": 534,
+   "y": 19,
+   "frame": "cookie_blocks",
+   "back": true
+  },
+  {
+   "x": 546,
+   "y": 19,
+   "frame": "gum_mound",
+   "back": true
+  },
+  {
+   "x": 553,
+   "y": 19,
+   "frame": "cane_slant"
+  },
+  {
+   "x": 563,
+   "y": 19,
+   "frame": "cake_strawberry"
+  },
+  {
+   "x": 568,
+   "y": 19,
+   "frame": "giant_sweets",
+   "back": true
+  },
+  {
+   "x": 575,
+   "y": 19,
+   "frame": "cupcake"
+  },
+  {
+   "x": 588,
+   "y": 17,
+   "frame": "tree_s"
+  },
+  {
+   "x": 594,
+   "y": 17,
+   "frame": "cake_strawberry",
+   "back": true
+  },
+  {
+   "x": 603,
+   "y": 19,
+   "frame": "cane_post"
+  },
+  {
+   "x": 607,
+   "y": 19,
+   "frame": "gum_cake",
+   "back": true
+  },
+  {
+   "x": 619,
+   "y": 19,
+   "frame": "choco_dome",
+   "back": true
+  },
+  {
+   "x": 626,
+   "y": 19,
+   "frame": "giant_sweets",
+   "back": true
+  },
+  {
+   "x": 633,
+   "y": 19,
+   "frame": "cake_strawberry"
+  },
+  {
+   "x": 640,
+   "y": 19,
+   "frame": "lolli_giant_a",
+   "back": true
+  },
+  {
+   "x": 648,
+   "y": 19,
+   "frame": "cupcake",
+   "back": true
+  },
+  {
+   "x": 653,
+   "y": 19,
+   "frame": "cane_hook"
+  },
+  {
+   "x": 5,
+   "y": 20,
+   "frame": "gumdrops",
+   "front": true
+  },
+  {
+   "x": 88,
+   "y": 20,
+   "frame": "gumdrops",
+   "front": true
+  },
+  {
+   "x": 200,
+   "y": 18,
+   "frame": "gumdrops",
+   "front": true
+  },
+  {
+   "x": 318,
+   "y": 21,
+   "frame": "gumdrops",
+   "front": true
+  },
+  {
+   "x": 412,
+   "y": 19,
+   "frame": "gumdrops",
+   "front": true
+  },
+  {
+   "x": 565,
+   "y": 19,
+   "frame": "gumdrops",
+   "front": true
+  },
+  {
+   "x": 642,
+   "y": 19,
+   "frame": "gumdrops",
+   "front": true
+  }
+ ],
+ "door": {
+  "x": 650,
+  "y": 19,
+  "atlas": "world7_objects",
+  "frame": "portal_w7",
+  "scale": 1.0
+ }
+}

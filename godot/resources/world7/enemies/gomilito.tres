@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_hrbde"]
+
+[resource]
+script = ExtResource("1_hrbde")
+key = "gomilito"
+display_name = "Gomilito Saltarín"
+hp = 4
+speed = 38.0
+body_size = Vector2(22, 18)
+detect_range = 150.0
+detect_height = 60.0
+attack_cooldown = 1700.0
+attack_range = 96.0

@@ -28,6 +28,11 @@ const SCENES := {
 	"payasito": preload("res://scenes/enemies/world6/Payasito.tscn"),
 	"bloquecito": preload("res://scenes/enemies/world6/Bloquecito.tscn"),
 	"vagoncito": preload("res://scenes/enemies/world6/Vagoncito.tscn"),
+	# Mundo 7
+	"cuppy": preload("res://scenes/enemies/world7/Cuppy.tscn"),
+	"gomilito": preload("res://scenes/enemies/world7/Gomilito.tscn"),
+	"gomilito_mini": preload("res://scenes/enemies/world7/GomilitoMini.tscn"),
+	"piruleta": preload("res://scenes/enemies/world7/Piruleta.tscn"),
 }
 
 var level: Node
@@ -75,7 +80,8 @@ func update() -> void:
 			spawn(s)
 	started = true
 	for id in active.keys():
-		var e: Enemy = active[id]
+		# sin tipo: la entrada puede ser un nodo ya liberado (gomitas añadidas al vuelo)
+		var e = active[id]
 		if not is_instance_valid(e) or e.finished:
 			active.erase(id)
 			continue

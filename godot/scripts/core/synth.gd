@@ -52,6 +52,13 @@ const SFX := {
 	"block_warn": [["noise", 0, 0.12, 0.07, 1400, 1], ["tone", "square", 520, 500, 0, 0.1, 0.05]],
 	"block_land": [["noise", 0, 0.18, 0.12, 500, 0.8], ["tone", "triangle", 160, 90, 0, 0.16, 0.12]],
 	"block_dash": [["noise", 0, 0.3, 0.08, 900, 0.9], ["tone", "square", 200, 330, 0, 0.2, 0.05]],
+	# Mundo 7: lanzador de caramelos, chocolate que burbujea, gelatina, glaseado, giro y división
+	"candy_pop": [["tone", "square", 520, 900, 0, 0.08, 0.07], ["noise", 0, 0.05, 0.05, 3000, 1]],
+	"choco_bubble": [["tone", "sine", 180, 260, 0, 0.12, 0.1], ["tone", "sine", 220, 320, 0.14, 0.12, 0.09], ["tone", "sine", 200, 300, 0.3, 0.12, 0.08]],
+	"jelly": [["tone", "sine", 200, 520, 0, 0.16, 0.14], ["tone", "triangle", 400, 700, 0.04, 0.1, 0.06]],
+	"frosting": [["noise", 0, 0.35, 0.08, 1500, 0.8], ["tone", "triangle", 600, 300, 0, 0.3, 0.06]],
+	"candy_spin": [["arp", ["C6", "E6", "G6", "C7", "G6", "E6"], 0.04, "square", 0.05, 0.06]],
+	"gummy_split": [["tone", "sine", 300, 700, 0, 0.1, 0.12], ["tone", "sine", 300, 900, 0.08, 0.1, 0.1]],
 }
 
 ## Pistas de música (8 corcheas por compás). Token = nota, "-" = mantener, "." = silencio.
@@ -145,6 +152,22 @@ const MUSIC := {
 		"bpm": 118, "lead": ["square", 0.05], "bass": ["triangle", 0.1],
 		"melody": "C5 . E5 . G5 . C6 - | E6 . D6 . C6 . G5 . | A5 . C6 . F6 - E6 . | D6 - - - G5 . . . | C6 . G5 . E5 . G5 . | F5 . A5 . D6 - C6 . | B5 . D6 . G6 . F6 . | E6 - C6 - - - . .",
 		"bassline": "C3 . G2 . C3 . G2 . | C3 . G2 . E3 . G2 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . G2 . | F2 . C3 . D3 . A2 . | G2 . D3 . G2 . B2 . | C3 . G2 . C3 . . .",
+	},
+	# Mundo 7: chiptune NES dulce y saltarín (pulso con arpegios, bajo triangular rítmico).
+	"world7": {
+		"bpm": 140, "lead": ["square", 0.045], "bass": ["triangle", 0.1],
+		"melody": "F5 . A5 . C6 . A5 . | G5 . A#5 . D6 - C6 . | A5 . C6 . F6 . C6 . | D6 - C6 - A5 - . . | G5 . A#5 . D6 . A#5 . | A5 . C6 . F6 - E6 . | D6 . C6 . A#5 . G5 . | A5 - - - . . C5 . | F5 A5 C6 . F5 A5 C6 . | G5 A#5 D6 . G5 A#5 D6 . | A5 C6 F6 . A5 C6 E6 . | F6 - - . C6 - - . | D6 . C6 . A#5 . A5 . | G5 . A5 . A#5 . C6 . | A5 . G5 . E5 . G5 . | F5 - - - . . . .",
+		"bassline": "F2 F2 C3 C3 F2 F2 C3 C3 | G2 G2 D3 D3 C2 C2 G2 G2 | F2 F2 C3 C3 F2 F2 C3 C3 | A#1 A#1 F2 F2 C2 C2 G2 G2 | G2 G2 D3 D3 G2 G2 D3 D3 | F2 F2 C3 C3 A2 A2 E3 E3 | A#1 A#1 F2 F2 C2 C2 G2 G2 | F2 F2 C3 C3 F2 . . . | F2 F2 C3 C3 F2 F2 C3 C3 | G2 G2 D3 D3 G2 G2 D3 D3 | A2 A2 E3 E3 C2 C2 G2 G2 | F2 F2 C3 C3 F2 F2 C3 C3 | A#1 A#1 F2 F2 A#1 A#1 F2 F2 | C2 C2 G2 G2 C2 C2 G2 G2 | C2 C2 G2 G2 C2 C2 E2 E2 | F2 F2 C3 C3 F2 . . .",
+	},
+	"don_chupeton": {
+		"bpm": 160, "lead": ["square", 0.05], "bass": ["triangle", 0.09],
+		"melody": "E5 . G5 . B5 . E6 . | D6 . B5 . G5 . B5 . | C6 . E6 . G6 . E6 . | D6 - B5 - G5 - F#5 - | E5 . G5 . B5 . E6 . | F#6 . E6 . D6 . B5 . | C6 . B5 . A5 . F#5 . | E5 - - - B5 - - - | G5 G5 . G5 A5 . B5 . | A5 A5 . A5 G5 . F#5 . | E5 E5 . E5 F#5 . G5 . | F#5 - E5 - D#5 - B4 - | E5 . G5 . B5 . E6 . | C6 . B5 . A5 . G5 . | F#5 . G5 . A5 . F#5 . | E5 - - - . . . .",
+		"bassline": "E2 E2 B2 B2 E2 E2 B2 B2 | G2 G2 D3 D3 G2 G2 D3 D3 | C2 C2 G2 G2 C2 C2 G2 G2 | B1 B1 F#2 F#2 B1 B1 D#2 D#2 | E2 E2 B2 B2 E2 E2 B2 B2 | D2 D2 A2 A2 D2 D2 A2 A2 | C2 C2 G2 G2 B1 B1 F#2 F#2 | E2 E2 B2 B2 E2 E2 B2 B2 | E2 E2 B2 B2 E2 E2 B2 B2 | D2 D2 A2 A2 D2 D2 A2 A2 | C2 C2 G2 G2 C2 C2 G2 G2 | B1 B1 F#2 F#2 B1 B1 D#2 D#2 | E2 E2 B2 B2 E2 E2 B2 B2 | A1 A1 E2 E2 A1 A1 E2 E2 | B1 B1 F#2 F#2 B1 B1 D#2 D#2 | E2 E2 B2 B2 E2 . . .",
+	},
+	"world7_victory": {
+		"bpm": 120, "lead": ["square", 0.05], "bass": ["triangle", 0.1],
+		"melody": "F5 . A5 . C6 . F6 - | E6 . D6 . C6 . A5 . | A#5 . D6 . F6 - E6 . | C6 - - - A5 . . . | F5 . A5 . C6 . A5 . | A#5 . D6 . G6 - F6 . | E6 . G6 . C6 . E6 . | F6 - - - . . . .",
+		"bassline": "F2 . C3 . F2 . C3 . | F2 . C3 . A2 . C3 . | A#1 . F2 . A#1 . F2 . | C2 . G2 . C2 . G2 . | F2 . C3 . F2 . C3 . | A#1 . F2 . G2 . D3 . | C2 . G2 . C2 . E2 . | F2 . C3 . F2 . . .",
 	},
 	"world5_victory": {
 		"bpm": 112, "lead": ["triangle", 0.075], "bass": ["sine", 0.09],

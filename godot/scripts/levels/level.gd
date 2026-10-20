@@ -468,6 +468,12 @@ func on_projectile_expired(proj: Projectile) -> void:
 			effects.sparkle(x, y, 6)
 		"toy_block", "smoke_whirl":
 			effects.poof(x, y, 7)
+		# Mundo 7
+		"candy", "candy_ball", "piru_candy", "boss_candy", "wrapped_candy", "lollipop":
+			effects.sparkle(x, y, 5)
+			effects.poof(x, y, 4)
+		"frosting":
+			effects.paint_splat(x, y, C.rgb(0xff8fc8))
 
 
 func on_enemy_finished(enemy: Enemy) -> void:

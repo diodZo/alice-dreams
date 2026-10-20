@@ -22,6 +22,7 @@ const WORLD3_FRAMES_DIR := "res://resources/world3/frames"
 const WORLD4_FRAMES_DIR := "res://resources/world4/frames"
 const WORLD5_FRAMES_DIR := "res://resources/world5/frames"
 const WORLD6_FRAMES_DIR := "res://resources/world6/frames"
+const WORLD7_FRAMES_DIR := "res://resources/world7/frames"
 const TILESET_OUT := {
 	"world1_tiles": "res://resources/tilesets/world1/world1_tileset.tres",
 	"world2_tiles": "res://resources/world2/terrain/world2_tileset.tres",
@@ -29,6 +30,7 @@ const TILESET_OUT := {
 	"world4_tiles": "res://resources/world4/terrain/world4_tileset.tres",
 	"world5_tiles": "res://resources/world5/terrain/world5_tileset.tres",
 	"world6_tiles": "res://resources/world6/terrain/world6_tileset.tres",
+	"world7_tiles": "res://resources/world7/terrain/world7_tileset.tres",
 }
 
 var errors := 0
@@ -69,6 +71,11 @@ func _init() -> void:
 		_build_sprite_frames(a6.atlases, _json("res://data/world6/characters.json"), WORLD6_FRAMES_DIR)
 		_build_tileset(a6.tileset)
 		_build_enemies(_json("res://data/world6/enemies.json"), "res://resources/world6/enemies")
+	if FileAccess.file_exists("res://data/world7/atlases.json"):
+		var a7: Dictionary = _json("res://data/world7/atlases.json")
+		_build_sprite_frames(a7.atlases, _json("res://data/world7/characters.json"), WORLD7_FRAMES_DIR)
+		_build_tileset(a7.tileset)
+		_build_enemies(_json("res://data/world7/enemies.json"), "res://resources/world7/enemies")
 	print("[build_resources] terminado con %d errores" % errors)
 	quit(1 if errors > 0 else 0)
 

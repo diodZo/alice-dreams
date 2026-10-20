@@ -1,0 +1,316 @@
+{
+ "cuppy": {
+  "frameWidth": 62,
+  "frameHeight": 30,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "jump": {
+    "frames": [
+     "jump_0",
+     "jump_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Cuppy Dulzón"
+ },
+ "gomilito": {
+  "frameWidth": 50,
+  "frameHeight": 28,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1"
+    ],
+    "fps": 4,
+    "loop": true,
+    "derived": false
+   },
+   "jump": {
+    "frames": [
+     "jump_0",
+     "jump_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1"
+    ],
+    "fps": 6,
+    "loop": true,
+    "derived": true
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": true
+   },
+   "split": {
+    "frames": [
+     "split_0",
+     "split_1"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Gomilito Saltarín"
+ },
+ "gomilito_mini": {
+  "frameWidth": 16,
+  "frameHeight": 18,
+  "anims": {
+   "pink": {
+    "frames": [
+     "pink_0"
+    ],
+    "fps": 1,
+    "loop": true,
+    "derived": false
+   },
+   "blue": {
+    "frames": [
+     "blue_0"
+    ],
+    "fps": 1,
+    "loop": true,
+    "derived": false
+   },
+   "yellow": {
+    "frames": [
+     "yellow_0"
+    ],
+    "fps": 1,
+    "loop": true,
+    "derived": false
+   },
+   "green": {
+    "frames": [
+     "green_0"
+    ],
+    "fps": 1,
+    "loop": true,
+    "derived": false
+   }
+  },
+  "name": "Gomita"
+ },
+ "piruleta": {
+  "frameWidth": 34,
+  "frameHeight": 22,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0"
+    ],
+    "fps": 4,
+    "loop": true,
+    "derived": false
+   },
+   "fly": {
+    "frames": [
+     "fly_0",
+     "fly_1"
+    ],
+    "fps": 6,
+    "loop": true,
+    "derived": true
+   },
+   "attack": {
+    "frames": [
+     "attack_0"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": false
+   },
+   "shoot": {
+    "frames": [
+     "shoot_0"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0"
+    ],
+    "fps": 4,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Piruleta Voladora"
+ },
+ "don_chupeton": {
+  "frameWidth": 172,
+  "frameHeight": 88,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "move": {
+    "frames": [
+     "move_0",
+     "move_1",
+     "move_2",
+     "move_3",
+     "move_4",
+     "move_5"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "candy_attack": {
+    "frames": [
+     "candy_attack_0",
+     "candy_attack_1",
+     "candy_attack_2"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "frosting_attack": {
+    "frames": [
+     "frosting_attack_0",
+     "frosting_attack_1",
+     "frosting_attack_2"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "spin_attack": {
+    "frames": [
+     "spin_attack_0",
+     "spin_attack_1",
+     "spin_attack_2",
+     "spin_attack_3"
+    ],
+    "fps": 9,
+    "loop": true,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1",
+     "hurt_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": true
+   },
+   "stunned": {
+    "frames": [
+     "stunned_0"
+    ],
+    "fps": 4,
+    "loop": true,
+    "derived": false
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1"
+    ],
+    "fps": 3,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Don Chupetón"
+ }
+}

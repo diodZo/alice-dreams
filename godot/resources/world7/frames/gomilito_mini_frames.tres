@@ -1,0 +1,62 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://resources/world7/enemies/gomilito_mini.png" id="1_11qlj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bc7y"]
+resource_name = "blue_0"
+atlas = ExtResource("1_11qlj")
+region = Rect2(2, 2, 16, 18)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex4ie"]
+resource_name = "green_0"
+atlas = ExtResource("1_11qlj")
+region = Rect2(20, 2, 16, 18)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqg7s"]
+resource_name = "pink_0"
+atlas = ExtResource("1_11qlj")
+region = Rect2(38, 2, 16, 18)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oudt"]
+resource_name = "yellow_0"
+atlas = ExtResource("1_11qlj")
+region = Rect2(56, 2, 16, 18)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bc7y")
+}],
+"loop": 1,
+"name": &"blue",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex4ie")
+}],
+"loop": 1,
+"name": &"green",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqg7s")
+}],
+"loop": 1,
+"name": &"pink",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oudt")
+}],
+"loop": 1,
+"name": &"yellow",
+"speed": 1.0
+}]

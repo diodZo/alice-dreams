@@ -53,6 +53,9 @@ const MUSIC_FILES := {
 	"world6": "",
 	"locomostro": "",
 	"world6_victory": "",
+	"world7": "",
+	"don_chupeton": "",
+	"world7_victory": "",
 }
 
 ## Música del Mundo 2: si se copian estos archivos a res://resources/audio/, se usan en lugar de
@@ -73,4 +76,7 @@ const OPTIONAL_MUSIC := {
 	"world6": "res://resources/audio/world6_theme.ogg",
 	"locomostro": "res://resources/audio/locomostro_boss.ogg",
 	"world6_victory": "res://resources/audio/world6_victory.ogg",
+	"world7": "res://resources/audio/world7_theme.ogg",
+	"don_chupeton": "res://resources/audio/don_chupeton_boss.ogg",
+	"world7_victory": "res://resources/audio/world7_victory.ogg",
 }

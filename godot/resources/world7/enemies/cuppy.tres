@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_huric"]
+
+[resource]
+script = ExtResource("1_huric")
+key = "cuppy"
+display_name = "Cuppy Dulzón"
+hp = 3
+speed = 40.0
+body_size = Vector2(20, 18)
+detect_range = 160.0
+detect_height = 50.0
+reaction_time = 500.0
+attack_cooldown = 2000.0
+attack_range = 150.0

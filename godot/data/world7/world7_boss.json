@@ -1,0 +1,256 @@
+{
+ "key": "world7_boss",
+ "worldId": 7,
+ "widthTiles": 63,
+ "heightTiles": 17,
+ "music": "world7",
+ "bossMusic": "don_chupeton",
+ "tileset": "world7_tiles",
+ "objectsAtlas": "world7_objects",
+ "backgroundAtlas": "world7_bg",
+ "background": {
+  "sky": "w7_sky",
+  "far": "w7_clouds_far",
+  "near": "w7_clouds_near",
+  "atlas": "world7_bg",
+  "objectsAtlas": "world7_objects",
+  "sparkles": true,
+  "drifters": [
+   "cream_s",
+   "cream_xs"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.02,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_castle",
+      "x": 310,
+      "y": 112
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.03,
+     0.03
+    ],
+    "depth": 3,
+    "items": [
+     {
+      "frame": "bg_sweets",
+      "x": 110,
+      "y": 130
+     },
+     {
+      "frame": "bg_mushroom",
+      "x": 390,
+      "y": 140
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.15,
+     0.08
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_falls",
+     "bg_hills",
+     "bg_trees"
+    ],
+    "step": 300,
+    "y": [
+     176,
+     200
+    ],
+    "alpha": 0.9
+   }
+  ]
+ },
+ "frames": {
+  "flag": "flag_w7",
+  "signpost": "sign_w7",
+  "star": [
+   "world7_objects",
+   "star_w7"
+  ]
+ },
+ "progress": {
+  "total": 11504,
+  "offset": 10496,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 2,
+  "y": 14
+ },
+ "sections": [
+  {
+   "id": "E",
+   "name": "El Castillo del Gran Pastel",
+   "from": 9000
+  }
+ ],
+ "terrain": [
+  {
+   "x": 0,
+   "y": 14,
+   "w": 63,
+   "h": 3,
+   "mat": "frosting"
+  }
+ ],
+ "blocks": [],
+ "clouds": [
+  {
+   "x": 15,
+   "y": 11,
+   "frame": "cream_l",
+   "top": 4
+  },
+  {
+   "x": 32,
+   "y": 11,
+   "frame": "cream_m",
+   "top": 4
+  },
+  {
+   "x": 49,
+   "y": 11,
+   "frame": "cream_l",
+   "top": 4
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [],
+ "swings": [],
+ "crumbles": [],
+ "pads": [],
+ "winds": [],
+ "hazards": [],
+ "stars": [
+  {
+   "x": 14,
+   "y": 8
+  },
+  {
+   "x": 15,
+   "y": 8
+  },
+  {
+   "x": 16,
+   "y": 8
+  },
+  {
+   "x": 31,
+   "y": 8
+  },
+  {
+   "x": 32,
+   "y": 8
+  },
+  {
+   "x": 33,
+   "y": 8
+  },
+  {
+   "x": 48,
+   "y": 8
+  },
+  {
+   "x": 49,
+   "y": 8
+  },
+  {
+   "x": 50,
+   "y": 8
+  }
+ ],
+ "enemies": [],
+ "checkpoints": [],
+ "pickups": [],
+ "signs": [],
+ "decor": [
+  {
+   "x": 3,
+   "y": 14,
+   "frame": "cane_post"
+  },
+  {
+   "x": 8,
+   "y": 14,
+   "frame": "giant_sweets",
+   "back": true
+  },
+  {
+   "x": 20,
+   "y": 14,
+   "frame": "cake_strawberry",
+   "back": true
+  },
+  {
+   "x": 27,
+   "y": 14,
+   "frame": "choco_falls",
+   "back": true
+  },
+  {
+   "x": 38,
+   "y": 14,
+   "frame": "cupcake",
+   "back": true
+  },
+  {
+   "x": 44,
+   "y": 14,
+   "frame": "giant_sweets",
+   "back": true
+  },
+  {
+   "x": 55,
+   "y": 14,
+   "frame": "mushroom_candy",
+   "back": true
+  },
+  {
+   "x": 61,
+   "y": 14,
+   "frame": "cane_hook"
+  }
+ ],
+ "gate": {
+  "x": 5,
+  "rows": [
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": "block_cookie"
+ },
+ "triggerX": 9,
+ "boss": {
+  "homeX": 44,
+  "minX": 6,
+  "maxX": 62,
+  "floorY": 224,
+  "frameBoth": true,
+  "scene": "res://scenes/bosses/DonChupeton.tscn",
+  "name": "Don Chupetón",
+  "introBanner": "¡Don Chupetón sale del Gran Pastel!",
+  "defeatBanner": "¡Don Chupetón se ha quedado dormido!",
+  "portalToast": "Se ha abierto el portal al Mundo 8",
+  "afterMusic": "world7_victory"
+ },
+ "portal": {
+  "x": 58,
+  "y": 14
+ }
+}

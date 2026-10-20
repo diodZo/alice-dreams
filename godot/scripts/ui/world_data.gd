@@ -66,12 +66,19 @@ func texture() -> Texture2D:
 func state() -> State:
 	if SaveManager.is_world_completed(id):
 		return State.COMPLETED
-	return State.UNLOCKED if can_enter() else State.LOCKED
+	return State.UNLOCKED if can_enter() or is_pending() else State.LOCKED
 
 
 ## Implementado y desbloqueado en el guardado.
 func can_enter() -> bool:
 	return WorldRegistry.is_playable(id)
+
+
+## Desbloqueado en el guardado pero todavía sin escena (Mundo 8 al completar el 7): se muestra
+## sin candado, pero no se intenta abrir ninguna escena.
+func is_pending() -> bool:
+	var w := WorldRegistry.get_world(id)
+	return not w.is_empty() and not w.get("implemented", false) and id <= SaveManager.unlocked_world()
 
 
 ## Texto bajo el carrusel para el mundo seleccionado.
@@ -81,7 +88,7 @@ func describe() -> String:
 		State.COMPLETED:
 			return head + " - %d estrellas" % int(SaveManager.get_world(id).get("bestStars", 0))
 		State.UNLOCKED:
-			return head + " - ¡A jugar!"
+			return head + (" - Desbloqueado: próximamente" if is_pending() else " - ¡A jugar!")
 	if not WorldRegistry.get_world(id).get("implemented", false):
 		return head + " - Próximamente"
 	return head + " - Completa el Mundo %d" % (id - 1)

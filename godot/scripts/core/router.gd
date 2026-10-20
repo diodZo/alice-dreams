@@ -17,6 +17,8 @@ const SCENES := {
 	"Boss5": "res://scenes/bosses/World5Boss.tscn",
 	"World6": "res://scenes/worlds/World6.tscn",
 	"Boss6": "res://scenes/bosses/World6Boss.tscn",
+	"World7": "res://scenes/worlds/World7.tscn",
+	"Boss7": "res://scenes/bosses/World7Boss.tscn",
 }
 
 

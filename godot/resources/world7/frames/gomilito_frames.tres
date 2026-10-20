@@ -1,0 +1,149 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://resources/world7/enemies/gomilito.png" id="1_7o80i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nark4"]
+resource_name = "attack_0"
+atlas = ExtResource("1_7o80i")
+region = Rect2(2, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54mb5"]
+resource_name = "attack_1"
+atlas = ExtResource("1_7o80i")
+region = Rect2(54, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wc1j"]
+resource_name = "defeated_0"
+atlas = ExtResource("1_7o80i")
+region = Rect2(106, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk5dt"]
+resource_name = "hurt_0"
+atlas = ExtResource("1_7o80i")
+region = Rect2(158, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seug3"]
+resource_name = "idle_0"
+atlas = ExtResource("1_7o80i")
+region = Rect2(210, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fn8r"]
+resource_name = "idle_1"
+atlas = ExtResource("1_7o80i")
+region = Rect2(262, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfmqi"]
+resource_name = "jump_0"
+atlas = ExtResource("1_7o80i")
+region = Rect2(314, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ot25"]
+resource_name = "jump_1"
+atlas = ExtResource("1_7o80i")
+region = Rect2(366, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvwi2"]
+resource_name = "split_0"
+atlas = ExtResource("1_7o80i")
+region = Rect2(418, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj5cb"]
+resource_name = "split_1"
+atlas = ExtResource("1_7o80i")
+region = Rect2(470, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rc0l"]
+resource_name = "walk_0"
+atlas = ExtResource("1_7o80i")
+region = Rect2(522, 2, 50, 28)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vob1q"]
+resource_name = "walk_1"
+atlas = ExtResource("1_7o80i")
+region = Rect2(574, 2, 50, 28)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nark4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54mb5")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wc1j")
+}],
+"loop": 0,
+"name": &"defeated",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk5dt")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seug3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fn8r")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfmqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ot25")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvwi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj5cb")
+}],
+"loop": 0,
+"name": &"split",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rc0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vob1q")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 6.0
+}]

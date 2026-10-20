@@ -195,3 +195,14 @@ python tools/world5/world5_level.py
 ```
 
 Música opcional: `world5_theme.ogg`, `luna_estelar_boss.ogg` y `world5_victory.ogg` en `godot/resources/audio/`. Consulta `WORLD5_REPORT.md` para el detalle por etapas y las validaciones.
+
+# Mundo 7 — El Valle de Caramelo
+
+El Valle de Caramelo (isla «Bosque de Caramelos») se abre desde el carrusel del menú principal al completar el Mundo 6. Incluye cinco secciones, gelatinas elásticas, gomas elásticas, caramelo resbaladizo, chocolate pegajoso, correas de chocolate, piruletas giratorias, lanzadores de caramelos, chorros de chocolate, gelatinas que desaparecen, plataformas con pinchos, un tobogán de caramelo, tres enemigos (Cuppy Dulzón, Gomilito Saltarín —que se divide en gomitas— y Piruleta Voladora) y Don Chupetón. Al completarlo se desbloquea el Mundo 8 (aún sin escena). Los recursos se regeneran con (requiere SciPy):
+
+```powershell
+python tools/world7/prepare_world7_assets.py --debug
+python tools/world7/world7_level.py
+```
+
+Música opcional: `world7_theme.ogg`, `don_chupeton_boss.ogg` y `world7_victory.ogg` en `godot/resources/audio/`. Consulta `WORLD7_REPORT.md` para el detalle por etapas y las validaciones.

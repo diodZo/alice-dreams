@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_epp1y"]
+
+[resource]
+script = ExtResource("1_epp1y")
+key = "gomilito_mini"
+display_name = "Gomita"
+hp = 1
+speed = 48.0
+body_size = Vector2(12, 11)
+reaction_time = 300.0
+attack_cooldown = 1400.0
+trap_time = 3000.0
+attack_range = 60.0

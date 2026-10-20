@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_4bslt"]
+
+[resource]
+script = ExtResource("1_4bslt")
+key = "piruleta"
+display_name = "Piruleta Voladora"
+speed = 42.0
+body_size = Vector2(18, 18)
+detect_range = 190.0
+detect_height = 130.0
+reaction_time = 550.0
+attack_cooldown = 2300.0
+attack_range = 170.0

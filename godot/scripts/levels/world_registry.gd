@@ -7,7 +7,7 @@ class_name WorldRegistry
 ##   3. su entrada en esta tabla y en Router.SCENES.
 ## Cada mundo define en sus datos: tileset, fondo, longitud, secciones, enemigos, obstáculos,
 ## coleccionables, checkpoints, jefe, música y portal de salida.
-## Implementados: Mundos 1 a 6; el resto queda reservado.
+## Implementados: Mundos 1 a 7; el 8 queda reservado.
 ## El número de mundo (id) sigue la ilustración del menú y el orden de juego; los archivos
 ## conservan el nombre con que se crearon: el Mundo 5 (Juguetes) usa World6 / data/world6 y
 ## el Mundo 6 (Parque de las Estrellas) usa World5 / data/world5.
@@ -38,8 +38,11 @@ const WORLDS := [
 	{"id": 6, "name": "Sueños Cósmicos — Islas en el Cielo", "short": "Parque de las Estrellas", "scene": "World5", "data": "res://data/world5/world5.json", "boss_data": "res://data/world5/world5_boss.json", "implemented": true,
 		"victoryTitle": "¡Mundo 6 completado!", "victorySub": "Luna Estelar duerme feliz entre las nubes",
 		"bossFrames": "luna_estelar", "bossAnim": "defeated", "bossFrame": 1, "bossScale": 0.6,
-		"nextPortal": "Portal al Mundo 7: preparado (próximamente)", "victoryMusic": "world5_victory"},
-	{"id": 7, "name": "El Bosque de Caramelos", "short": "Bosque de Caramelos", "scene": "", "data": "", "boss_data": "", "implemented": false},
+		"nextPortal": "Portal al Mundo 7: abierto", "victoryMusic": "world5_victory"},
+	{"id": 7, "name": "El Valle de Caramelo", "short": "Bosque de Caramelos", "scene": "World7", "data": "res://data/world7/world7.json", "boss_data": "res://data/world7/world7_boss.json", "implemented": true,
+		"victoryTitle": "¡Mundo 7 completado!", "victorySub": "Don Chupetón duerme feliz convertido en pastelito",
+		"bossFrames": "don_chupeton", "bossAnim": "defeated", "bossFrame": 1, "bossScale": 0.5,
+		"nextPortal": "Portal al Mundo 8: preparado (próximamente)", "victoryMusic": "world7_victory"},
 	{"id": 8, "name": "El Castillo de los Sueños", "short": "Castillo de los Sueños", "scene": "", "data": "", "boss_data": "", "implemented": false},
 ]
 
