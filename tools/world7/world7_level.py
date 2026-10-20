@@ -199,7 +199,7 @@ belts = [
 
 # piruletas giratorias (base del palo en la superficie)
 lollipops = [
-    {"x": 447, "y": 19, "speed": 80, "angle": 0},
+    {"x": 436, "y": 19, "speed": 80, "angle": 0},   # lejos de los pinchos: su cabeza no barre el salto
     {"x": 500, "y": 18, "speed": 70, "swing": 60, "angle": 0, "frame": "lolli_spin"},
     {"x": 548, "y": 19, "speed": -75, "angle": 180},
     {"x": 628, "y": 19, "speed": 70, "swing": 55, "angle": 0},
@@ -222,7 +222,7 @@ choco_jets = [
 
 hazards = [
     # plataformas con pinchos de caramelo (se saltan)
-    {"x": 449, "y": 19, "frame": "spike_cake", "shape": "spikes"},
+    {"x": 447, "y": 19, "frame": "spike_cake", "shape": "spikes"},  # deja tres teselas para aterrizar antes del hueco
     {"x": 611, "y": 19, "frame": "spike_cake", "shape": "spikes"},
 ]
 
