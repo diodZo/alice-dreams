@@ -1,0 +1,405 @@
+{
+ "key": "world8_boss",
+ "worldId": 8,
+ "widthTiles": 125,
+ "heightTiles": 17,
+ "music": "world8",
+ "bossMusic": "rey_pesadelo",
+ "furyMusic": "rey_pesadelo_fury",
+ "transformMusic": "transformation",
+ "tileset": "world8_tiles",
+ "objectsAtlas": "world8_objects",
+ "backgroundAtlas": "world8_bg",
+ "background": {
+  "sky": "w8_sky",
+  "far": "w8_clouds_far",
+  "near": "w8_clouds_near",
+  "atlas": "world8_bg",
+  "objectsAtlas": "world8_objects",
+  "sparkles": true,
+  "drifters": [
+   "ghost_bg",
+   "cloud_plat_s"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.0,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_castle",
+      "x": 240,
+      "y": 118
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.03,
+     0.03
+    ],
+    "depth": 3,
+    "items": [
+     {
+      "frame": "bg_isles",
+      "x": 90,
+      "y": 150
+     },
+     {
+      "frame": "bg_falls",
+      "x": 380,
+      "y": 156
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.24,
+     0.12
+    ],
+    "depth": 5,
+    "frames": [
+     "bg_shadows",
+     "bg_trees"
+    ],
+    "step": 360,
+    "y": [
+     204,
+     222
+    ],
+    "alpha": 0.8
+   }
+  ]
+ },
+ "frames": {
+  "flag": "flag_w8",
+  "signpost": "sign_w8",
+  "star": [
+   "world8_objects",
+   "star_w8"
+  ]
+ },
+ "progress": {
+  "total": 12000,
+  "offset": 10000,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 3,
+  "y": 14
+ },
+ "sections": [
+  {
+   "id": "F",
+   "name": "El Trono de las Pesadillas",
+   "from": 10000
+  }
+ ],
+ "terrain": [
+  {
+   "x": 0,
+   "y": 14,
+   "w": 125,
+   "h": 3,
+   "mat": "castle"
+  }
+ ],
+ "blocks": [],
+ "clouds": [
+  {
+   "x": 74,
+   "y": 11,
+   "frame": "stone_moon",
+   "top": 3
+  },
+  {
+   "x": 93,
+   "y": 11,
+   "frame": "stone_heart",
+   "top": 3
+  },
+  {
+   "x": 112,
+   "y": 11,
+   "frame": "stone_moon",
+   "top": 3
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [],
+ "swings": [],
+ "crumbles": [],
+ "pads": [],
+ "winds": [],
+ "hazards": [],
+ "stars": [
+  {
+   "x": 8,
+   "y": 12
+  },
+  {
+   "x": 12,
+   "y": 12
+  },
+  {
+   "x": 16,
+   "y": 12
+  },
+  {
+   "x": 20,
+   "y": 12
+  },
+  {
+   "x": 24,
+   "y": 12
+  },
+  {
+   "x": 28,
+   "y": 12
+  },
+  {
+   "x": 32,
+   "y": 12
+  },
+  {
+   "x": 36,
+   "y": 12
+  },
+  {
+   "x": 40,
+   "y": 12
+  },
+  {
+   "x": 44,
+   "y": 12
+  },
+  {
+   "x": 48,
+   "y": 12
+  },
+  {
+   "x": 52,
+   "y": 12
+  },
+  {
+   "x": 56,
+   "y": 12
+  },
+  {
+   "x": 73,
+   "y": 8
+  },
+  {
+   "x": 74,
+   "y": 8
+  },
+  {
+   "x": 75,
+   "y": 8
+  },
+  {
+   "x": 92,
+   "y": 8
+  },
+  {
+   "x": 93,
+   "y": 8
+  },
+  {
+   "x": 94,
+   "y": 8
+  },
+  {
+   "x": 111,
+   "y": 8
+  },
+  {
+   "x": 112,
+   "y": 8
+  },
+  {
+   "x": 113,
+   "y": 8
+  }
+ ],
+ "enemies": [],
+ "checkpoints": [],
+ "pickups": [],
+ "signs": [
+  {
+   "x": 4,
+   "y": 14,
+   "text": "El Trono de las Pesadillas. El Rey Pesadelo... ¿por qué estará tan enfadado?"
+  }
+ ],
+ "decor": [
+  {
+   "x": 2,
+   "y": 14,
+   "frame": "lamp_post",
+   "back": false
+  },
+  {
+   "x": 6,
+   "y": 14,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 12,
+   "y": 14,
+   "frame": "banner_heart",
+   "back": true
+  },
+  {
+   "x": 18,
+   "y": 14,
+   "frame": "gargoyle",
+   "back": true
+  },
+  {
+   "x": 24,
+   "y": 14,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 30,
+   "y": 14,
+   "frame": "banner_star",
+   "back": true
+  },
+  {
+   "x": 36,
+   "y": 14,
+   "frame": "lamp_post",
+   "back": false
+  },
+  {
+   "x": 42,
+   "y": 14,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 48,
+   "y": 14,
+   "frame": "banner_moon",
+   "back": true
+  },
+  {
+   "x": 54,
+   "y": 14,
+   "frame": "gargoyle_s",
+   "back": true
+  },
+  {
+   "x": 59,
+   "y": 14,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 70,
+   "y": 14,
+   "frame": "banner_heart",
+   "back": true
+  },
+  {
+   "x": 82,
+   "y": 14,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 94,
+   "y": 14,
+   "frame": "banner_star",
+   "back": true
+  },
+  {
+   "x": 106,
+   "y": 14,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 113,
+   "y": 14,
+   "frame": "throne",
+   "back": true
+  },
+  {
+   "x": 120,
+   "y": 14,
+   "frame": "banner_moon",
+   "back": true
+  },
+  {
+   "x": 123,
+   "y": 14,
+   "frame": "lamp_post",
+   "back": false
+  }
+ ],
+ "phaseStars": [
+  {
+   "frames": [
+    "star_trap_b"
+   ],
+   "warn_frame": "star_trap",
+   "x": 78,
+   "y": 14,
+   "height": 9,
+   "period": 3600
+  },
+  {
+   "frames": [
+    "star_trap_b"
+   ],
+   "warn_frame": "star_trap",
+   "x": 99,
+   "y": 14,
+   "height": 9,
+   "period": 3600,
+   "delay": 1800
+  },
+  {
+   "frames": [
+    "star_trap_b"
+   ],
+   "warn_frame": "star_trap",
+   "x": 118,
+   "y": 14,
+   "height": 9,
+   "period": 3600,
+   "delay": 900
+  }
+ ],
+ "gate": {
+  "x": 64,
+  "rows": [
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": "block_dark"
+ },
+ "triggerX": 68,
+ "boss": {
+  "homeX": 86,
+  "minX": 65,
+  "maxX": 124,
+  "floorY": 224,
+  "frameBoth": true,
+  "scene": "res://scenes/bosses/ReyPesadelo.tscn",
+  "name": "Rey Pesadelo",
+  "introBanner": "¡El Rey Pesadelo despierta!",
+  "defeatBanner": "El Rey Pesadelo está agotado..."
+ }
+}

@@ -1,0 +1,355 @@
+{
+ "fantasmita": {
+  "frameWidth": 48,
+  "frameHeight": 26,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3",
+     "idle_4"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "float": {
+    "frames": [
+     "float_0",
+     "float_1",
+     "float_2",
+     "float_3",
+     "float_4",
+     "float_5"
+    ],
+    "fps": 7,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0",
+     "attack_1",
+     "attack_2",
+     "attack_3"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1",
+     "hurt_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeat": {
+    "frames": [
+     "defeat_0",
+     "defeat_1"
+    ],
+    "fps": 5,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Fantasmita Farol"
+ },
+ "murcibola": {
+  "frameWidth": 44,
+  "frameHeight": 26,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "fly": {
+    "frames": [
+     "fly_0",
+     "fly_1",
+     "fly_2",
+     "fly_3",
+     "fly_4"
+    ],
+    "fps": 9,
+    "loop": true,
+    "derived": false
+   },
+   "dive_attack": {
+    "frames": [
+     "dive_attack_0",
+     "dive_attack_1",
+     "dive_attack_2",
+     "dive_attack_3"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1",
+     "hurt_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeat": {
+    "frames": [
+     "defeat_0",
+     "defeat_1"
+    ],
+    "fps": 5,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Murcibola de Trapo"
+ },
+ "bloquito": {
+  "frameWidth": 54,
+  "frameHeight": 24,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3",
+     "idle_4"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1",
+     "walk_2",
+     "walk_3"
+    ],
+    "fps": 8,
+    "loop": true,
+    "derived": false
+   },
+   "jump": {
+    "frames": [
+     "jump_0",
+     "jump_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "charge": {
+    "frames": [
+     "charge_0",
+     "charge_1",
+     "charge_2"
+    ],
+    "fps": 10,
+    "loop": true,
+    "derived": false
+   },
+   "attack": {
+    "frames": [
+     "attack_0"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1",
+     "hurt_2"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "defeat": {
+    "frames": [
+     "defeat_0",
+     "defeat_1"
+    ],
+    "fps": 5,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Bloquito Sombra"
+ },
+ "rey_pesadelo": {
+  "frameWidth": 148,
+  "frameHeight": 92,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1",
+     "idle_2",
+     "idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "move": {
+    "frames": [
+     "move_0",
+     "move_1",
+     "move_2",
+     "move_3"
+    ],
+    "fps": 7,
+    "loop": true,
+    "derived": false
+   },
+   "spit": {
+    "frames": [
+     "spit_0",
+     "spit_1",
+     "spit_2",
+     "spit_3"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "claw": {
+    "frames": [
+     "claw_0",
+     "claw_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "fart": {
+    "frames": [
+     "fart_0",
+     "fart_1",
+     "fart_2"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "fury": {
+    "frames": [
+     "fury_0",
+     "fury_1",
+     "fury_2"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": false
+   },
+   "hurt": {
+    "frames": [
+     "hurt_0",
+     "hurt_1"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   },
+   "stunned": {
+    "frames": [
+     "stunned_0"
+    ],
+    "fps": 4,
+    "loop": true,
+    "derived": true
+   },
+   "defeated": {
+    "frames": [
+     "defeated_0",
+     "defeated_1",
+     "defeated_2",
+     "defeated_3"
+    ],
+    "fps": 3,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Rey Pesadelo"
+ },
+ "gato_morado": {
+  "frameWidth": 46,
+  "frameHeight": 32,
+  "anims": {
+   "idle": {
+    "frames": [
+     "idle_0",
+     "idle_1"
+    ],
+    "fps": 2,
+    "loop": true,
+    "derived": false
+   },
+   "blink": {
+    "frames": [
+     "blink_0"
+    ],
+    "fps": 6,
+    "loop": false,
+    "derived": true
+   },
+   "sit": {
+    "frames": [
+     "sit_0"
+    ],
+    "fps": 2,
+    "loop": true,
+    "derived": true
+   },
+   "walk": {
+    "frames": [
+     "walk_0",
+     "walk_1"
+    ],
+    "fps": 4,
+    "loop": true,
+    "derived": true
+   },
+   "purr": {
+    "frames": [
+     "purr_0",
+     "purr_1"
+    ],
+    "fps": 3,
+    "loop": true,
+    "derived": false
+   },
+   "sleep": {
+    "frames": [
+     "sleep_0"
+    ],
+    "fps": 2,
+    "loop": true,
+    "derived": true
+   }
+  },
+  "name": "Gato morado"
+ }
+}

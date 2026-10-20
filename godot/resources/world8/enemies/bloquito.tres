@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_tkbnl"]
+
+[resource]
+script = ExtResource("1_tkbnl")
+key = "bloquito"
+display_name = "Bloquito Sombra"
+hp = 4
+speed = 34.0
+body_size = Vector2(20, 19)
+detect_range = 150.0
+reaction_time = 500.0
+attack_cooldown = 2200.0
+trap_time = 3200.0
+attack_range = 130.0

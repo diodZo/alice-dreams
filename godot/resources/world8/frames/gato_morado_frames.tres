@@ -1,0 +1,117 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://resources/world8/boss/gato_morado.png" id="1_4np1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rutmw"]
+resource_name = "blink_0"
+atlas = ExtResource("1_4np1o")
+region = Rect2(2, 2, 46, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2xq"]
+resource_name = "idle_0"
+atlas = ExtResource("1_4np1o")
+region = Rect2(50, 2, 46, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy5vv"]
+resource_name = "idle_1"
+atlas = ExtResource("1_4np1o")
+region = Rect2(98, 2, 46, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xs5b"]
+resource_name = "purr_0"
+atlas = ExtResource("1_4np1o")
+region = Rect2(146, 2, 46, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86may"]
+resource_name = "purr_1"
+atlas = ExtResource("1_4np1o")
+region = Rect2(194, 2, 46, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53h7j"]
+resource_name = "sit_0"
+atlas = ExtResource("1_4np1o")
+region = Rect2(242, 2, 46, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx5a7"]
+resource_name = "sleep_0"
+atlas = ExtResource("1_4np1o")
+region = Rect2(290, 2, 46, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7amvc"]
+resource_name = "walk_0"
+atlas = ExtResource("1_4np1o")
+region = Rect2(338, 2, 46, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm43m"]
+resource_name = "walk_1"
+atlas = ExtResource("1_4np1o")
+region = Rect2(386, 2, 46, 32)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rutmw")
+}],
+"loop": 0,
+"name": &"blink",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy5vv")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xs5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86may")
+}],
+"loop": 1,
+"name": &"purr",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53h7j")
+}],
+"loop": 1,
+"name": &"sit",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx5a7")
+}],
+"loop": 1,
+"name": &"sleep",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7amvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm43m")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 4.0
+}]

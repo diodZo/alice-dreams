@@ -53,7 +53,7 @@ func _ready() -> void:
 			_music_pending[track] = true
 	if not _music_pending.is_empty():
 		# el orden prioriza la música que suena primero
-		var order := ["menu", "world1", "boss", "world2", "garabato", "world2_victory", "world3", "sieston", "world3_victory", "world4", "patoburbuja", "world4_victory", "world5", "luna_estelar", "world5_victory", "world6", "locomostro", "world6_victory", "world7", "don_chupeton", "world7_victory"].filter(func(t): return _music_pending.has(t))
+		var order := ["menu", "world1", "boss", "world2", "garabato", "world2_victory", "world3", "sieston", "world3_victory", "world4", "patoburbuja", "world4_victory", "world5", "luna_estelar", "world5_victory", "world6", "locomostro", "world6_victory", "world7", "don_chupeton", "world7_victory", "world8", "rey_pesadelo", "rey_pesadelo_fury", "transformation", "alice_awakening", "alice_credits"].filter(func(t): return _music_pending.has(t))
 		_music_task = WorkerThreadPool.add_task(_render_music_tracks.bind(order), false, "Música provisional")
 
 
@@ -153,6 +153,17 @@ func _start_current() -> void:
 
 func stop_music() -> void:
 	_music.stop()
+
+
+## Baja la música poco a poco hasta silenciarla (derrota del Rey Pesadelo) y la detiene.
+func fade_out_music(ms: float) -> void:
+	var start := _music.volume_db
+	var tw := create_tween()
+	tw.tween_method(func(v: float): _music.volume_db = v, start, -40.0, ms / 1000.0)
+	tw.tween_callback(func():
+		stop_music()
+		current_track = ""
+		_music.volume_db = start)
 
 
 func set_music_enabled(on: bool) -> void:

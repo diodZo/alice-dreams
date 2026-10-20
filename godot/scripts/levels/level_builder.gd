@@ -99,6 +99,17 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		var belt := ConveyorBelt.new().setup(b, atlas)
 		platforms.add_child(belt)
 		out.belts.append(belt)
+	# Mundo 8: plataformas fantasma (ciclo con aviso) y puentes ocultos que revelan los faroles.
+	out.ghosts = []
+	for g in data.get("ghostPlatforms", []):
+		var gp := GhostPlatform.new().setup(level, g, atlas)
+		platforms.add_child(gp)
+		out.ghosts.append(gp)
+	out.hidden_bridges = []
+	for b in data.get("hiddenBridges", []):
+		var hb := HiddenBridge.new().setup_hidden(level, b, atlas)
+		platforms.add_child(hb)
+		out.hidden_bridges.append(hb)
 
 	var objects := Node2D.new()
 	objects.name = "Objects"
@@ -180,6 +191,30 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		var jet := ChocoJet.new().setup(level, j, atlas)
 		objects.add_child(jet)
 		out.choco_jets.append(jet)
+	# Mundo 8: sombras, ganchos en cadena, faroles mágicos (conectados a sus puentes por señal) y cofres.
+	out.shadows = []
+	for z in data.get("shadowZones", []):
+		var sz := ShadowZone.new().setup(z, atlas)
+		objects.add_child(sz)
+		out.shadows.append(sz)
+	out.hooks = []
+	for hk in data.get("hooks", []):
+		var ch := ChainHook.new().setup(level, hk, atlas)
+		objects.add_child(ch)
+		out.hooks.append(ch)
+	out.lanterns = []
+	for l in data.get("lanterns", []):
+		var lantern := MagicLantern.new().setup(level, l, atlas)
+		objects.add_child(lantern)
+		out.lanterns.append(lantern)
+		for hb in out.hidden_bridges:
+			if hb.id in lantern.bridges:
+				lantern.lit.connect(func(_l): hb.reveal(0))
+	out.chests = []
+	for c in data.get("chests", []):
+		var chest := TreasureChest.new().setup(level, c, atlas)
+		objects.add_child(chest)
+		out.chests.append(chest)
 	for h in data.get("hearts", []):
 		objects.add_child(HeartPickup.new().setup(level, h, atlas))
 	for c in data.get("dreamCollectibles", []):
@@ -277,8 +312,10 @@ func _check_frames(atlas: String) -> void:
 		frames += ["rainbow_band", "cloud_s", "star_post_a"]
 	if not data.get("lightFalls", []).is_empty():
 		frames += ["light_fall_0", "light_fall_1", "star_w5"]
-	if not data.get("fallingStars", []).is_empty():
-		frames += ["fall_star_0", "fall_star_1", "fall_star_2", "fall_star_3"]
+	for x in data.get("fallingStars", []):
+		frames += x.get("frames", ["fall_star_0", "fall_star_1", "fall_star_2", "fall_star_3"])
+		if x.has("warn_frame"):
+			frames.append(x.warn_frame)
 	if not data.get("explosiveClouds", []).is_empty():
 		frames += ["boom_cloud", "boom_cloud_big", "boom_burst"]
 	if not data.get("trains", []).is_empty() or not data.get("hazardTrains", []).is_empty():
@@ -310,6 +347,18 @@ func _check_frames(atlas: String) -> void:
 		frames += [x.get("frame", "choco_jet_a"), "choco_drip"]
 	for x in data.get("hearts", []):
 		frames.append(x.get("frame", "heart_w7"))
+	for x in data.get("ghostPlatforms", []):
+		frames += [x.get("frame", "ghost_plat_on"), x.get("frame_off", "ghost_plat_off")]
+	for x in data.get("shadowZones", []):
+		frames.append(x.get("frame", "shadow_pool" if x.get("kind", "pool") == "pool" else "shadow_mist"))
+	for x in data.get("hooks", []):
+		frames.append(x.get("frame", "hook_moon"))
+	for x in data.get("lanterns", []):
+		frames.append(x.get("frame", "lamp_post"))
+	for x in data.get("hiddenBridges", []) + data.get("chests", []):
+		frames.append(x.get("frame", "chest_w8"))
+	for x in data.get("swings", []):
+		frames.append(x.get("frame", "button_blue"))
 	for x in data.get("sleepClouds", []):
 		var fx_atlas: String = x.get("atlas", "w3_fx")
 		var f: String = x.get("frame", "sleep_cloud")

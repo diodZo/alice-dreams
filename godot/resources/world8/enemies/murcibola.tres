@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDef" format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/enemy_def.gd" id="1_6b2p8"]
+
+[resource]
+script = ExtResource("1_6b2p8")
+key = "murcibola"
+display_name = "Murcibola de Trapo"
+speed = 46.0
+body_size = Vector2(18, 15)
+detect_range = 170.0
+detect_height = 150.0
+reaction_time = 500.0
+attack_cooldown = 2600.0
+attack_range = 150.0

@@ -29,6 +29,10 @@ func defaults() -> Dictionary:
 		# { "1": { completed, bestStars, totalStars, specialStar, bestTime, completedAt } }
 		"worlds": {},
 		"settings": {"music": true, "sfx": true},
+		# Mundo 8: victoria final (desbloquea volver a ver el final desde el menú). Campos nuevos:
+		# un guardado anterior se carga igual (valores por defecto) y no pierde nada.
+		"adventureCompleted": false,
+		"adventureCompletedAt": "",
 	}
 
 
@@ -76,6 +80,9 @@ func _merge(p: Dictionary) -> void:
 					state.worlds[key]["magicCrayons"] = w.magicCrayons.filter(func(c): return c is String)
 				if w.get("dreamCollectibles") is Array:
 					state.worlds[key]["dreamCollectibles"] = w.dreamCollectibles.filter(func(c): return c is String)
+	if p.get("adventureCompleted") is bool:
+		state.adventureCompleted = p.adventureCompleted
+		state.adventureCompletedAt = str(p.get("adventureCompletedAt", ""))
 	if p.get("settings") is Dictionary:
 		for k in ["music", "sfx"]:
 			if p.settings.get(k) is bool:
@@ -149,6 +156,20 @@ func mark_world_completed(world_id: int, stars: int, total_stars: int, special_s
 		state.worlds[str(world_id)]["dreamCollectibles"] = all_dream
 	state.unlockedWorld = clampi(maxi(int(state.unlockedWorld), world_id + 1), 1, WORLD_COUNT)
 	persist()
+
+
+## Final de la aventura (al abrazar al gato morado): registra la victoria final. El progreso de
+## los mundos ya se guardó con mark_world_completed; no se desbloquea ningún mundo más.
+func mark_adventure_completed() -> void:
+	state.adventureCompleted = true
+	if str(state.get("adventureCompletedAt", "")) == "":
+		state.adventureCompletedAt = Time.get_datetime_string_from_system(true)
+	persist()
+
+
+## ¿Se ha terminado la aventura? (desbloquea "Ver el final" en el menú)
+func is_adventure_completed() -> bool:
+	return bool(state.get("adventureCompleted", false))
 
 
 ## Borra el progreso conservando los ajustes de audio (como en Phaser).

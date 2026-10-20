@@ -56,6 +56,12 @@ const MUSIC_FILES := {
 	"world7": "",
 	"don_chupeton": "",
 	"world7_victory": "",
+	"world8": "",
+	"rey_pesadelo": "",
+	"rey_pesadelo_fury": "",
+	"transformation": "",
+	"alice_awakening": "",
+	"alice_credits": "",
 }
 
 ## Música del Mundo 2: si se copian estos archivos a res://resources/audio/, se usan en lugar de
@@ -79,4 +85,11 @@ const OPTIONAL_MUSIC := {
 	"world7": "res://resources/audio/world7_theme.ogg",
 	"don_chupeton": "res://resources/audio/don_chupeton_boss.ogg",
 	"world7_victory": "res://resources/audio/world7_victory.ogg",
+	# Mundo 8 y final de la aventura
+	"world8": "res://resources/audio/world8_theme.ogg",
+	"rey_pesadelo": "res://resources/audio/rey_pesadelo_boss.ogg",
+	"rey_pesadelo_fury": "res://resources/audio/rey_pesadelo_fury.ogg",
+	"transformation": "res://resources/audio/transformation_theme.ogg",
+	"alice_awakening": "res://resources/audio/alice_awakening.ogg",
+	"alice_credits": "res://resources/audio/alice_credits.ogg",
 }

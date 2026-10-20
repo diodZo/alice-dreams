@@ -45,6 +45,8 @@ var carousel: WorldCarousel
 var music_btn: HotspotButton
 var sfx_btn: HotspotButton
 var reset_btn: CloudButton
+## Tras terminar la aventura (Mundo 8): volver a ver la cinemática final y los créditos.
+var ending_btn: CloudButton
 var list: MenuList
 
 
@@ -94,6 +96,12 @@ func _ready() -> void:
 	add_child(reset_btn)
 
 	var buttons: Array[CloudButton] = [carousel.focus_slot, music_btn, sfx_btn, reset_btn]
+	if SaveManager.is_adventure_completed():
+		ending_btn = CloudButton.make("Ver el final", 100, 18)
+		ending_btn.position = Vector2(168, 218)
+		ending_btn.activated.connect(func(_b): watch_ending())
+		add_child(ending_btn)
+		buttons.append(ending_btn)
 	list = MenuList.new().setup(buttons)
 	list.horizontal = true
 	add_child(list)
@@ -196,6 +204,16 @@ func start_game(id := 1) -> void:
 	GameState.entry = {"introBanner": true}
 	await Fader.fade_out(400)
 	Router.go(key)
+
+
+func watch_ending() -> void:
+	if starting:
+		return
+	starting = true
+	AudioManager.play("ui_select")
+	GameState.entry = {"replay": true}
+	await Fader.fade_out(500, Color8(255, 240, 250))
+	Router.go("Awakening")
 
 
 var _toast_label: PixelText

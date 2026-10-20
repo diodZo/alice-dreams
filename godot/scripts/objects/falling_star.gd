@@ -23,9 +23,14 @@ var falling := false
 var cycle_start := -1.0
 var anim_acc := 0.0
 var frame_i := 0
+## Fotogramas de la caída (Mundo 5: estrella con estela) y del aviso (Mundo 8: la estrella aún
+## colgada de su cadena). Se pueden cambiar en los datos con "frames" y "warn_frame".
+var fall_frames: Array = ["fall_star_0", "fall_star_1", "fall_star_2", "fall_star_3"]
+var warn_frame := ""
 
 
-## def: { x (tesela), y (fila de la superficie donde cae), height (teselas por encima), period, delay (ms) }
+## def: { x (tesela), y (fila de la superficie donde cae), height (teselas por encima), period, delay (ms),
+##        frames (fotogramas de la caída), warn_frame (fotograma durante el aviso) }
 func setup(owner_level: Node, def: Dictionary, atlas_name: String) -> FallingStar:
 	level = owner_level
 	atlas = atlas_name
@@ -34,6 +39,8 @@ func setup(owner_level: Node, def: Dictionary, atlas_name: String) -> FallingSta
 	top_y = ground_y - float(def.get("height", 9)) * C.TILE
 	period = float(def.get("period", 3200))
 	delay = float(def.get("delay", 0))
+	fall_frames = def.get("frames", fall_frames)
+	warn_frame = def.get("warn_frame", "")
 	z_index = C.Z_ENEMY
 	marker = Sprite2D.new()
 	marker.texture = Assets.generated("glow")
@@ -42,7 +49,7 @@ func setup(owner_level: Node, def: Dictionary, atlas_name: String) -> FallingSta
 	marker.position = Vector2(0, ground_y - 2)
 	add_child(marker)
 	star = Sprite2D.new()
-	star.texture = Assets.frame(atlas, "fall_star_0")
+	star.texture = Assets.frame(atlas, fall_frames[0])
 	# la estela queda por encima: el origen es la estrella (parte baja del dibujo)
 	Anim.set_origin(star, star.texture.get_size(), 0.5, 0.85)
 	star.position = Vector2(0, top_y)
@@ -87,6 +94,8 @@ func _physics_process(delta: float) -> void:
 				_stop()
 			star.visible = true
 			star.position.y = top_y
+			if warn_frame != "":
+				star.texture = Assets.frame(atlas, warn_frame)
 			# titila arriba y el destello del suelo crece: "¡aquí va a caer!"
 			var u := k / WARN_MS
 			star.modulate.a = 0.45 + 0.55 * absf(sin(u * PI * 5.0))
@@ -99,14 +108,15 @@ func _physics_process(delta: float) -> void:
 				falling = true
 				hit.set_deferred("monitorable", true)
 				star.modulate.a = 1.0
+				star.texture = Assets.frame(atlas, fall_frames[0])
 			star.visible = true
 			star.position.y = top_y + (k - WARN_MS) / 1000.0 * FALL_SPEED
 			marker.modulate.a = 0.8
 			anim_acc += delta
 			if anim_acc > 0.08:
 				anim_acc = 0
-				frame_i = (frame_i + 1) % 4
-				star.texture = Assets.frame(atlas, "fall_star_%d" % frame_i)
+				frame_i = (frame_i + 1) % fall_frames.size()
+				star.texture = Assets.frame(atlas, fall_frames[frame_i])
 		_:
 			if falling:
 				_impact()

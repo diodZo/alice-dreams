@@ -198,7 +198,7 @@ Música opcional: `world5_theme.ogg`, `luna_estelar_boss.ogg` y `world5_victory.
 
 # Mundo 7 — El Valle de Caramelo
 
-El Valle de Caramelo (isla «Bosque de Caramelos») se abre desde el carrusel del menú principal al completar el Mundo 6. Incluye cinco secciones, gelatinas elásticas, gomas elásticas, caramelo resbaladizo, chocolate pegajoso, correas de chocolate, piruletas giratorias, lanzadores de caramelos, chorros de chocolate, gelatinas que desaparecen, plataformas con pinchos, un tobogán de caramelo, tres enemigos (Cuppy Dulzón, Gomilito Saltarín —que se divide en gomitas— y Piruleta Voladora) y Don Chupetón. Al completarlo se desbloquea el Mundo 8 (aún sin escena). Los recursos se regeneran con (requiere SciPy):
+El Valle de Caramelo (isla «Bosque de Caramelos») se abre desde el carrusel del menú principal al completar el Mundo 6. Incluye cinco secciones, gelatinas elásticas, gomas elásticas, caramelo resbaladizo, chocolate pegajoso, correas de chocolate, piruletas giratorias, lanzadores de caramelos, chorros de chocolate, gelatinas que desaparecen, plataformas con pinchos, un tobogán de caramelo, tres enemigos (Cuppy Dulzón, Gomilito Saltarín —que se divide en gomitas— y Piruleta Voladora) y Don Chupetón. Al completarlo se desbloquea el Mundo 8. Los recursos se regeneran con (requiere SciPy):
 
 ```powershell
 python tools/world7/prepare_world7_assets.py --debug
@@ -206,3 +206,14 @@ python tools/world7/world7_level.py
 ```
 
 Música opcional: `world7_theme.ogg`, `don_chupeton_boss.ogg` y `world7_victory.ogg` en `godot/resources/audio/`. Consulta `WORLD7_REPORT.md` para el detalle por etapas y las validaciones.
+
+# Mundo 8 — El Castillo de las Pesadillas (final)
+
+El último mundo (isla «Castillo de los Sueños») se abre al completar el Mundo 7. Es el nivel más grande (12.000 px, seis secciones A-F): plataformas fantasma con aviso, plataformas colgantes, estrellas que caen, plataformas que desaparecen, setas fantasma elásticas, charcos y bruma de sombras, ganchos en cadena, faroles mágicos que revelan puentes ocultos, tres recuerdos mágicos, cofre con llave, tres enemigos (Fantasmita Farol, Murcibola de Trapo y Bloquito Sombra) y el Rey Pesadelo, que al ser derrotado se transforma en un gato morado. Al abrazarlo empieza el final: el castillo recupera la luz, Alice despierta en su habitación y aparecen los créditos. Terminar la aventura no desbloquea ningún mundo más y añade «Ver el final» al menú principal. Los recursos se regeneran con (requiere SciPy):
+
+```powershell
+python tools/world8/prepare_world8_assets.py --debug
+python tools/world8/world8_level.py
+```
+
+Música opcional: `world8_theme.ogg`, `rey_pesadelo_boss.ogg`, `rey_pesadelo_fury.ogg`, `transformation_theme.ogg`, `alice_awakening.ogg` y `alice_credits.ogg` en `godot/resources/audio/`. Los nombres de los créditos se editan en `godot/data/world8/credits.json` (sólo nombres confirmados). Consulta `WORLD8_REPORT.md` para el detalle por etapas y las validaciones.

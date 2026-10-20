@@ -1,5 +1,5 @@
 extends Node
-## Piloto automático para comprobar que un mundo (1-6) se puede recorrer de principio a fin con
+## Piloto automático para comprobar que un mundo (1-8) se puede recorrer de principio a fin con
 ## la física migrada (sin teletransportes). Sólo usa los mismos controles que un jugador:
 ## correr, saltar (manteniendo el botón), disparar y apuntar.
 ##   godot --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn [-- max_frames=40000]
@@ -229,6 +229,9 @@ func _support_ahead(pos: Vector2) -> bool:
 	var hit := space.intersect_ray(q)
 	if hit.is_empty():
 		return false
+	# plataforma fantasma del Mundo 8: desaparece con su ciclo, no es un apoyo seguro (se salta)
+	if hit.collider is GhostPlatform:
+		return false
 	# una plataforma fija es apoyo; una móvil en el hueco no (hay que esperarla)
 	return not (hit.collider is MovingPlatform and not _is_static(hit.collider)) or _mover_in_gap(level.player) == null
 
@@ -253,7 +256,7 @@ func _find_landing(p: Player) -> float:
 		q.hit_from_inside = true
 		var hit := space.intersect_ray(q)
 		# sólo apoyos al alcance de un salto (las rutas altas opcionales no sirven de aterrizaje)
-		if not hit.is_empty() and hit.position.y >= p.position.y - 56:
+		if not hit.is_empty() and hit.position.y >= p.position.y - 56 and not hit.collider is GhostPlatform:
 			return x + 12
 	return NAN
 

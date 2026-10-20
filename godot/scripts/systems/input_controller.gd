@@ -10,6 +10,9 @@ extends RefCounted
 ## (acciones mantenidas) y `script_pressed` (pulsaciones de un fotograma).
 
 var enabled := true
+## Mundo 8: durante la transformación del jefe y el final Alice puede moverse pero no disparar
+## ni cambiar de arma.
+var combat_enabled := true
 var left := false
 var right := false
 var up := false
@@ -45,6 +48,10 @@ func update() -> void:
 		jump_pressed = jp
 		fire_pressed = fp
 		switch_pressed = sp
+		if not combat_enabled:
+			fire_held = false
+			fire_pressed = false
+			switch_pressed = false
 
 
 func _held(action: String) -> bool:

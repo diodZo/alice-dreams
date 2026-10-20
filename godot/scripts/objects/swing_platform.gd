@@ -13,7 +13,8 @@ var rest := Vector2.ZERO
 var rope: Line2D
 
 
-## def: { x, y (teselas, punto de anclaje), length (px), amplitude (rad), duration (ms), delay (ms), frame }
+## def: { x, y (teselas, punto de anclaje), length (px), amplitude (rad), duration (ms), delay (ms), frame,
+##        knot (fotograma del adorno de la cuerda), rope (color de la cuerda: cadena en el Mundo 8) }
 func setup(def: Dictionary, atlas: String) -> MovingPlatform:
 	pivot = Vector2(float(def.x) * C.TILE, float(def.y) * C.TILE)
 	length = float(def.get("length", 64))
@@ -35,7 +36,7 @@ func setup(def: Dictionary, atlas: String) -> MovingPlatform:
 	delta_px = Vector2(reach * 2.0, 0)
 	rope = Line2D.new()
 	rope.width = 2.0
-	rope.default_color = C.rgb(0xd46fb0)
+	rope.default_color = Color(def.get("rope", "#d46fb0"))
 	rope.z_index = -1
 	rope.points = PackedVector2Array([Vector2.ZERO, Vector2.ZERO])
 	add_child(rope)

@@ -19,6 +19,11 @@ const SCENES := {
 	"Boss6": "res://scenes/bosses/World6Boss.tscn",
 	"World7": "res://scenes/worlds/World7.tscn",
 	"Boss7": "res://scenes/bosses/World7Boss.tscn",
+	"World8": "res://scenes/worlds/World8.tscn",
+	"Boss8": "res://scenes/bosses/World8Boss.tscn",
+	# final de la aventura (Mundo 8)
+	"Awakening": "res://scenes/cinematics/AliceAwakening.tscn",
+	"Credits": "res://scenes/cinematics/Credits.tscn",
 }
 
 

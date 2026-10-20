@@ -59,6 +59,21 @@ const SFX := {
 	"frosting": [["noise", 0, 0.35, 0.08, 1500, 0.8], ["tone", "triangle", 600, 300, 0, 0.3, 0.06]],
 	"candy_spin": [["arp", ["C6", "E6", "G6", "C7", "G6", "E6"], 0.04, "square", 0.05, 0.06]],
 	"gummy_split": [["tone", "sine", 300, 700, 0, 0.1, 0.12], ["tone", "sine", 300, 900, 0.08, 0.1, 0.1]],
+	# Mundo 8: fantasmas, murciélago, sombras, magia, recuerdos y el Rey Pesadelo (retro, sin sustos)
+	"ghost_warn": [["tone", "triangle", 660, 990, 0, 0.12, 0.05], ["tone", "triangle", 990, 660, 0.12, 0.12, 0.04]],
+	"ghost_shot": [["arp", ["E6", "G6", "B6"], 0.04, "triangle", 0.07, 0.06]],
+	"ghost_vanish": [["tone", "sine", 900, 300, 0, 0.45, 0.08], ["arp", ["C6", "E6", "G6"], 0.07, "triangle", 0.05, 0.08]],
+	"bat_dive": [["tone", "square", 900, 300, 0, 0.25, 0.05], ["noise", 0, 0.2, 0.05, 2500, 1]],
+	"shadow_charge": [["noise", 0, 0.35, 0.08, 700, 0.9], ["tone", "square", 160, 120, 0, 0.3, 0.06]],
+	"magic_reveal": [["arp", ["C5", "E5", "G5", "C6", "E6", "G6"], 0.05, "triangle", 0.08, 0.1]],
+	"memory": [["arp", ["G5", "B5", "D6", "G6"], 0.09, "triangle", 0.09, 0.2], ["tone", "sine", 392, 392, 0, 0.6, 0.05, 0.05]],
+	"spit": [["noise", 0, 0.18, 0.08, 1200, 1], ["tone", "square", 300, 520, 0, 0.14, 0.06]],
+	"claw": [["noise", 0, 0.16, 0.1, 3500, 0.8], ["tone", "sawtooth", 700, 200, 0, 0.18, 0.06]],
+	"fart": [["tone", "square", 90, 70, 0, 0.12, 0.08], ["tone", "square", 110, 80, 0.12, 0.1, 0.07], ["tone", "square", 140, 95, 0.22, 0.14, 0.07], ["arp", ["C6", "G5"], 0.06, "triangle", 0.06, 0.06]],
+	"fury_charge": [["tone", "sawtooth", 80, 140, 0, 1.2, 0.06, 0.4]],
+	"fury_scream": [["tone", "sawtooth", 220, 120, 0, 0.7, 0.09, 0.05], ["tone", "square", 330, 180, 0, 0.6, 0.05, 0.05], ["noise", 0, 0.5, 0.06, 900, 0.8]],
+	"meow": [["tone", "triangle", 700, 1100, 0, 0.12, 0.09], ["tone", "triangle", 1100, 760, 0.12, 0.22, 0.09]],
+	"purr": [["tone", "triangle", 70, 70, 0, 0.7, 0.07, 0.05], ["noise", 0, 0.7, 0.03, 300, 0.7]],
 }
 
 ## Pistas de música (8 corcheas por compás). Token = nota, "-" = mantener, "." = silencio.
@@ -168,6 +183,38 @@ const MUSIC := {
 		"bpm": 120, "lead": ["square", 0.05], "bass": ["triangle", 0.1],
 		"melody": "F5 . A5 . C6 . F6 - | E6 . D6 . C6 . A5 . | A#5 . D6 . F6 - E6 . | C6 - - - A5 . . . | F5 . A5 . C6 . A5 . | A#5 . D6 . G6 - F6 . | E6 . G6 . C6 . E6 . | F6 - - - . . . .",
 		"bassline": "F2 . C3 . F2 . C3 . | F2 . C3 . A2 . C3 . | A#1 . F2 . A#1 . F2 . | C2 . G2 . C2 . G2 . | F2 . C3 . F2 . C3 . | A#1 . F2 . G2 . D3 . | C2 . G2 . C2 . E2 . | F2 . C3 . F2 . . .",
+	},
+	# Mundo 8: chiptune NES nocturno y aventurero (pulso + triángulo); el jefe, épico; la furia,
+	# el mismo motivo más rápido; la transformación y el despertar, suaves; los créditos, cálidos.
+	"world8": {
+		"bpm": 128, "lead": ["square", 0.045], "bass": ["triangle", 0.1],
+		"melody": "D5 . F5 . A5 . D6 . | C6 - A5 . F5 . A5 . | A#5 . A5 . G5 . F5 . | E5 - - . C5 - - . | D5 . F5 . A5 . F5 . | G5 . A#5 . D6 - C6 . | A5 . G5 . F5 . E5 . | D5 - - - . . A4 . | F5 A5 D6 . F5 A5 D6 . | E5 G5 C6 . E5 G5 C6 . | D5 F5 A#5 . D5 F5 A#5 . | C#5 E5 A5 . A5 - - . | D6 . C6 . A#5 . A5 . | G5 . F5 . E5 . G5 . | F5 . E5 . D5 . C#5 . | D5 - - - . . . .",
+		"bassline": "D2 D2 A2 A2 D2 D2 A2 A2 | F2 F2 C3 C3 F2 F2 C3 C3 | A#1 A#1 F2 F2 A#1 A#1 F2 F2 | A1 A1 E2 E2 A1 A1 C#2 C#2 | D2 D2 A2 A2 D2 D2 A2 A2 | G2 G2 D3 D3 G2 G2 D3 D3 | A#1 A#1 F2 F2 A1 A1 E2 E2 | D2 D2 A2 A2 D2 . . . | D2 D2 A2 A2 D2 D2 A2 A2 | C2 C2 G2 G2 C2 C2 G2 G2 | A#1 A#1 F2 F2 A#1 A#1 F2 F2 | A1 A1 E2 E2 A1 A1 C#2 C#2 | A#1 A#1 F2 F2 A#1 A#1 F2 F2 | C2 C2 G2 G2 C2 C2 G2 G2 | A1 A1 E2 E2 A1 A1 C#2 C#2 | D2 D2 A2 A2 D2 . . .",
+	},
+	"rey_pesadelo": {
+		"bpm": 156, "lead": ["square", 0.05], "bass": ["triangle", 0.1],
+		"melody": "A4 . C5 . E5 . A5 . | G#5 - E5 - B4 - E5 . | F5 . A5 . C6 . A5 . | E5 - G#5 - B5 - . . | A5 . C6 . E6 . C6 . | D6 . B5 . G#5 . E5 . | F5 . E5 . D5 . C5 . | B4 - - - E5 - - - | A5 A5 . G5 F5 . E5 . | F5 F5 . E5 D5 . C5 . | D5 D5 . C5 B4 . A4 . | G#4 - B4 - E5 - . . | A4 . C5 . E5 . A5 . | C6 . B5 . A5 . G#5 . | A5 . E5 . C5 . B4 . | A4 - - - . . . .",
+		"bassline": "A1 A1 A2 A1 A1 A2 A1 A2 | E1 E1 E2 E1 E1 E2 E1 E2 | F1 F1 F2 F1 F1 F2 F1 F2 | E1 E1 E2 E1 E1 E2 G#1 B1 | A1 A1 A2 A1 A1 A2 A1 A2 | B1 B1 B2 B1 B1 B2 B1 B2 | F1 F1 F2 F1 D1 D1 D2 D1 | E1 E1 E2 E1 E1 E2 E1 E2 | F1 F1 F2 F1 F1 F2 F1 F2 | D1 D1 D2 D1 D1 D2 D1 D2 | B1 B1 B2 B1 B1 B2 B1 B2 | E1 E1 E2 E1 E1 E2 E1 E2 | A1 A1 A2 A1 A1 A2 A1 A2 | F1 F1 F2 F1 F1 F2 F1 F2 | E1 E1 E2 E1 E1 E2 E1 E2 | A1 A1 A2 A1 A1 . . .",
+	},
+	"rey_pesadelo_fury": {
+		"bpm": 178, "lead": ["square", 0.05], "bass": ["sawtooth", 0.045],
+		"melody": "A4 C5 E5 A5 E5 C5 A4 C5 | G#5 - E5 - B4 - E5 . | F5 A5 C6 A5 F5 A5 C6 A5 | E5 - G#5 - B5 - E6 . | A5 C6 E6 C6 A5 C6 E6 C6 | D6 . B5 . G#5 . E5 . | F5 E5 D5 C5 B4 C5 D5 E5 | B4 - - - E5 - - - | A5 A5 . G5 F5 . E5 . | F5 F5 . E5 D5 . C5 . | D5 D5 . C5 B4 . A4 . | G#4 B4 E5 G#5 B5 - . . | A4 C5 E5 A5 C6 . A5 . | C6 . B5 . A5 . G#5 . | A5 E5 C5 E5 A5 . E6 . | A5 - - - . . . .",
+		"bassline": "A1 A2 A1 A2 A1 A2 A1 A2 | E1 E2 E1 E2 E1 E2 E1 E2 | F1 F2 F1 F2 F1 F2 F1 F2 | E1 E2 E1 E2 G#1 B1 E1 E2 | A1 A2 A1 A2 A1 A2 A1 A2 | B1 B2 B1 B2 B1 B2 B1 B2 | F1 F2 F1 F2 D1 D2 D1 D2 | E1 E2 E1 E2 E1 E2 E1 E2 | F1 F2 F1 F2 F1 F2 F1 F2 | D1 D2 D1 D2 D1 D2 D1 D2 | B1 B2 B1 B2 B1 B2 B1 B2 | E1 E2 E1 E2 E1 E2 E1 E2 | A1 A2 A1 A2 A1 A2 A1 A2 | F1 F2 F1 F2 F1 F2 F1 F2 | E1 E2 E1 E2 E1 E2 E1 E2 | A1 A2 A1 A2 A1 . . .",
+	},
+	"transformation": {
+		"bpm": 84, "lead": ["triangle", 0.08], "bass": ["sine", 0.09],
+		"melody": "E5 - - . G5 - B5 . | A5 - - - G5 - . . | F5 - - . A5 - C6 . | B5 - - - - - . . | C6 - - . B5 - A5 . | G5 - - . E5 - G5 . | A5 - - . F#5 - D#5 . | E5 - - - - - . .",
+		"bassline": "C3 . G3 . E3 . G3 . | A2 . E3 . C3 . E3 . | F2 . C3 . A2 . C3 . | G2 . D3 . B2 . D3 . | A2 . E3 . C3 . E3 . | E2 . B2 . G2 . B2 . | B1 . F#2 . D#2 . F#2 . | E2 . B2 . E2 . . .",
+	},
+	"alice_awakening": {
+		"bpm": 70, "lead": ["triangle", 0.075], "bass": ["sine", 0.08],
+		"melody": "E5 - G5 - C6 - B5 - | A5 - G5 - E5 - - - | F5 - A5 - G5 - E5 - | D5 - - - . . . . | E5 - G5 - C6 - D6 - | E6 - D6 - C6 - A5 - | B5 - G5 - A5 - B5 - | C6 - - - . . . .",
+		"bassline": "C3 . G3 . E3 . G3 . | A2 . E3 . C3 . E3 . | F2 . C3 . A2 . C3 . | G2 . D3 . B2 . D3 . | C3 . G3 . E3 . G3 . | A2 . E3 . C3 . E3 . | G2 . D3 . B2 . D3 . | C3 . G3 . C3 . . .",
+	},
+	"alice_credits": {
+		"bpm": 112, "lead": ["square", 0.045], "bass": ["triangle", 0.1],
+		"melody": "C5 . E5 . G5 . C6 - | B5 . A5 . G5 . E5 . | F5 . A5 . C6 - B5 . | G5 - - - . . G5 . | A5 . C6 . F6 - E6 . | D6 . C6 . B5 . G5 . | A5 . B5 . C6 . D6 . | C6 - - - . . . . | E5 E5 . G5 C6 . E6 . | D6 D6 . C6 B5 . G5 . | A5 A5 . C6 F6 . A5 . | G5 - - - E5 - - . | F5 . A5 . C6 . F6 . | E6 . D6 . C6 . A5 . | B5 . G5 . A5 . B5 . | C6 - - - . . . .",
+		"bassline": "C3 . G2 . C3 . G2 . | G2 . D3 . G2 . D3 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . B2 . | F2 . C3 . F2 . C3 . | G2 . D3 . G2 . D3 . | F2 . C3 . G2 . D3 . | C3 . G2 . C3 . . . | C3 . E3 . G3 . E3 . | G2 . B2 . D3 . B2 . | F2 . A2 . C3 . A2 . | C3 . G2 . C3 . G2 . | F2 . C3 . F2 . C3 . | A2 . E3 . A2 . E3 . | G2 . D3 . G2 . D3 . | C3 . G2 . C3 . . .",
 	},
 	"world5_victory": {
 		"bpm": 112, "lead": ["triangle", 0.075], "bass": ["sine", 0.09],

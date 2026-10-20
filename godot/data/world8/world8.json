@@ -1,0 +1,2961 @@
+{
+ "id": 8,
+ "key": "world8",
+ "name": "El Castillo de las Pesadillas",
+ "widthTiles": 625,
+ "heightTiles": 25,
+ "music": "world8",
+ "tileset": "world8_tiles",
+ "objectsAtlas": "world8_objects",
+ "backgroundAtlas": "world8_bg",
+ "progress": {
+  "total": 12000,
+  "offset": 0,
+  "scale": 1
+ },
+ "playerStart": {
+  "x": 4,
+  "y": 20
+ },
+ "nextScene": "Boss8",
+ "startWeapons": [
+  "bubble",
+  "paint",
+  "sling"
+ ],
+ "frames": {
+  "flag": "flag_w8",
+  "signpost": "sign_w8",
+  "star": [
+   "world8_objects",
+   "star_w8"
+  ]
+ },
+ "sections": [
+  {
+   "id": "A",
+   "name": "El Bosque de los Susurros",
+   "from": 0
+  },
+  {
+   "id": "B",
+   "name": "Los Puentes de la Luna",
+   "from": 1800
+  },
+  {
+   "id": "C",
+   "name": "El Jardín de las Sombras",
+   "from": 3800
+  },
+  {
+   "id": "D",
+   "name": "Las Torres Encantadas",
+   "from": 5900
+  },
+  {
+   "id": "E",
+   "name": "El Corazón del Castillo",
+   "from": 8000
+  },
+  {
+   "id": "F",
+   "name": "El Trono de las Pesadillas",
+   "from": 10000
+  }
+ ],
+ "background": {
+  "sky": "w8_sky",
+  "far": "w8_clouds_far",
+  "near": "w8_clouds_near",
+  "atlas": "world8_bg",
+  "objectsAtlas": "world8_objects",
+  "sparkles": true,
+  "drifters": [
+   "ghost_bg",
+   "cloud_plat_s"
+  ],
+  "layers": [
+   {
+    "scroll": [
+     0.0,
+     0.02
+    ],
+    "depth": 2,
+    "items": [
+     {
+      "frame": "bg_castle",
+      "x": 240,
+      "y": 118
+     }
+    ]
+   },
+   {
+    "scroll": [
+     0.06,
+     0.04
+    ],
+    "depth": 3,
+    "frames": [
+     "bg_isles",
+     "bg_falls",
+     "bg_ghosts",
+     "bg_isles"
+    ],
+    "step": 260,
+    "y": [
+     150,
+     176
+    ],
+    "alpha": 0.85,
+    "bob": true
+   },
+   {
+    "scroll": [
+     0.14,
+     0.08
+    ],
+    "depth": 4,
+    "frames": [
+     "bg_falls",
+     "bg_shadows",
+     "bg_isles"
+    ],
+    "step": 300,
+    "y": [
+     186,
+     206
+    ],
+    "alpha": 0.9
+   },
+   {
+    "scroll": [
+     0.24,
+     0.12
+    ],
+    "depth": 5,
+    "frames": [
+     "bg_shadows",
+     "bg_trees"
+    ],
+    "step": 360,
+    "y": [
+     204,
+     222
+    ],
+    "alpha": 0.8
+   },
+   {
+    "scroll": [
+     0.32,
+     0.16
+    ],
+    "depth": 6,
+    "frames": [
+     "bg_trees",
+     "bg_ghosts"
+    ],
+    "step": 430,
+    "y": [
+     222,
+     240
+    ],
+    "alpha": 0.6
+   }
+  ]
+ },
+ "terrain": [
+  {
+   "x": 0,
+   "y": 20,
+   "w": 31,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 36,
+   "y": 20,
+   "w": 20,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 60,
+   "y": 19,
+   "w": 8,
+   "h": 6,
+   "mat": "lavender"
+  },
+  {
+   "x": 72,
+   "y": 20,
+   "w": 40,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 112,
+   "y": 20,
+   "w": 16,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 144,
+   "y": 19,
+   "w": 32,
+   "h": 6,
+   "mat": "lavender"
+  },
+  {
+   "x": 186,
+   "y": 18,
+   "w": 20,
+   "h": 7,
+   "mat": "lavender"
+  },
+  {
+   "x": 212,
+   "y": 19,
+   "w": 26,
+   "h": 6,
+   "mat": "lavender"
+  },
+  {
+   "x": 238,
+   "y": 20,
+   "w": 22,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 268,
+   "y": 20,
+   "w": 30,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 304,
+   "y": 19,
+   "w": 25,
+   "h": 6,
+   "mat": "lavender"
+  },
+  {
+   "x": 334,
+   "y": 20,
+   "w": 34,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 368,
+   "y": 20,
+   "w": 14,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 382,
+   "y": 18,
+   "w": 4,
+   "h": 7,
+   "mat": "lavender"
+  },
+  {
+   "x": 386,
+   "y": 16,
+   "w": 8,
+   "h": 9,
+   "mat": "lavender"
+  },
+  {
+   "x": 394,
+   "y": 18,
+   "w": 5,
+   "h": 7,
+   "mat": "lavender"
+  },
+  {
+   "x": 399,
+   "y": 15,
+   "w": 2,
+   "h": 10,
+   "mat": "castle"
+  },
+  {
+   "x": 401,
+   "y": 12,
+   "w": 10,
+   "h": 13,
+   "mat": "castle"
+  },
+  {
+   "x": 421,
+   "y": 13,
+   "w": 12,
+   "h": 12,
+   "mat": "castle"
+  },
+  {
+   "x": 447,
+   "y": 20,
+   "w": 20,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 467,
+   "y": 18,
+   "w": 8,
+   "h": 7,
+   "mat": "lavender"
+  },
+  {
+   "x": 475,
+   "y": 20,
+   "w": 25,
+   "h": 5,
+   "mat": "lavender"
+  },
+  {
+   "x": 500,
+   "y": 20,
+   "w": 34,
+   "h": 5,
+   "mat": "castle"
+  },
+  {
+   "x": 544,
+   "y": 20,
+   "w": 22,
+   "h": 5,
+   "mat": "castle"
+  },
+  {
+   "x": 566,
+   "y": 18,
+   "w": 6,
+   "h": 7,
+   "mat": "castle"
+  },
+  {
+   "x": 572,
+   "y": 20,
+   "w": 53,
+   "h": 5,
+   "mat": "castle"
+  }
+ ],
+ "slopes": [
+  {
+   "x": 59,
+   "y": 19,
+   "dir": "up",
+   "mat": "lavender"
+  },
+  {
+   "x": 381,
+   "y": 19,
+   "dir": "up",
+   "mat": "lavender"
+  },
+  {
+   "x": 466,
+   "y": 19,
+   "dir": "up",
+   "mat": "lavender"
+  },
+  {
+   "x": 475,
+   "y": 19,
+   "dir": "down",
+   "mat": "lavender"
+  }
+ ],
+ "blocks": [
+  {
+   "x": 18,
+   "y": 19,
+   "type": "block_dark"
+  },
+  {
+   "x": 50,
+   "y": 19,
+   "type": "block_dark"
+  },
+  {
+   "x": 200,
+   "y": 17,
+   "type": "block_moon"
+  },
+  {
+   "x": 201,
+   "y": 17,
+   "type": "block_moon"
+  },
+  {
+   "x": 340,
+   "y": 19,
+   "type": "block_dark"
+  },
+  {
+   "x": 341,
+   "y": 19,
+   "type": "block_dark"
+  },
+  {
+   "x": 341,
+   "y": 18,
+   "type": "block_dark"
+  },
+  {
+   "x": 490,
+   "y": 19,
+   "type": "block_heart"
+  },
+  {
+   "x": 491,
+   "y": 19,
+   "type": "block_heart"
+  },
+  {
+   "x": 520,
+   "y": 19,
+   "type": "block_moon"
+  },
+  {
+   "x": 596,
+   "y": 19,
+   "type": "block_heart"
+  },
+  {
+   "x": 597,
+   "y": 19,
+   "type": "block_heart"
+  }
+ ],
+ "clouds": [
+  {
+   "x": 76,
+   "y": 16,
+   "frame": "cloud_plat_l",
+   "top": 6
+  },
+  {
+   "x": 100,
+   "y": 15,
+   "frame": "cloud_plat_m",
+   "top": 6
+  },
+  {
+   "x": 209,
+   "y": 18,
+   "frame": "candy_rope",
+   "top": 6
+  },
+  {
+   "x": 217,
+   "y": 16,
+   "frame": "stone_moon",
+   "top": 3
+  },
+  {
+   "x": 221,
+   "y": 13,
+   "frame": "stone_star",
+   "top": 3
+  },
+  {
+   "x": 226,
+   "y": 11,
+   "frame": "cloud_plat_s",
+   "top": 5
+  },
+  {
+   "x": 264,
+   "y": 19,
+   "frame": "shroom_pink",
+   "top": 4,
+   "bouncy": -480
+  },
+  {
+   "x": 276,
+   "y": 20,
+   "frame": "shroom_blue",
+   "top": 4,
+   "bouncy": -480
+  },
+  {
+   "x": 301,
+   "y": 19,
+   "frame": "cloud_plat_l",
+   "top": 6
+  },
+  {
+   "x": 318,
+   "y": 19,
+   "frame": "shroom_violet",
+   "top": 4,
+   "bouncy": -520
+  },
+  {
+   "x": 322,
+   "y": 12,
+   "frame": "cloud_plat_m",
+   "top": 6
+  },
+  {
+   "x": 328,
+   "y": 10,
+   "frame": "cloud_plat_s",
+   "top": 5
+  },
+  {
+   "x": 348,
+   "y": 20,
+   "frame": "shroom_pink",
+   "top": 4,
+   "bouncy": -480
+  },
+  {
+   "x": 352,
+   "y": 16,
+   "frame": "cloud_plat_c",
+   "top": 6
+  },
+  {
+   "x": 455,
+   "y": 16,
+   "frame": "stone_moon",
+   "top": 3
+  },
+  {
+   "x": 486,
+   "y": 12,
+   "frame": "cloud_plat_s",
+   "top": 5
+  },
+  {
+   "x": 512,
+   "y": 16,
+   "frame": "stone_star",
+   "top": 3
+  },
+  {
+   "x": 556,
+   "y": 16,
+   "frame": "stone_moon",
+   "top": 3
+  },
+  {
+   "x": 560,
+   "y": 13,
+   "frame": "stone_heart",
+   "top": 3
+  },
+  {
+   "x": 586,
+   "y": 16,
+   "frame": "stone_star_s",
+   "top": 3
+  }
+ ],
+ "bridges": [],
+ "rulers": [],
+ "movers": [
+  {
+   "x": 414,
+   "y": 12,
+   "frame": "stone_heart",
+   "top": 3,
+   "dx": 4,
+   "dy": 0,
+   "duration": 2600
+  },
+  {
+   "x": 480,
+   "y": 18,
+   "frame": "stone_star",
+   "top": 3,
+   "dx": 0,
+   "dy": -4,
+   "duration": 2400
+  }
+ ],
+ "swings": [
+  {
+   "x": 131,
+   "y": 12,
+   "length": 112,
+   "amplitude": 0.42,
+   "duration": 3000,
+   "frame": "hang_plat",
+   "top": 3,
+   "knot": "lantern_hang",
+   "rope": "#5A3F2A"
+  },
+  {
+   "x": 136,
+   "y": 12,
+   "length": 112,
+   "amplitude": 0.42,
+   "duration": 3000,
+   "frame": "hang_plat_b",
+   "top": 3,
+   "knot": "lantern_hang",
+   "rope": "#5A3F2A"
+  },
+  {
+   "x": 141,
+   "y": 12,
+   "length": 112,
+   "amplitude": 0.42,
+   "duration": 3000,
+   "frame": "hang_plat",
+   "top": 3,
+   "knot": "lantern_hang",
+   "rope": "#5A3F2A"
+  }
+ ],
+ "crumbles": [
+  {
+   "x": 179,
+   "y": 18,
+   "frame": "small_plat_a",
+   "top": 6
+  },
+  {
+   "x": 183,
+   "y": 17,
+   "frame": "small_plat_b",
+   "top": 6
+  },
+  {
+   "x": 331,
+   "y": 18,
+   "frame": "small_plat_a",
+   "top": 6
+  },
+  {
+   "x": 436,
+   "y": 15,
+   "frame": "small_plat_b",
+   "top": 6
+  },
+  {
+   "x": 440,
+   "y": 17,
+   "frame": "small_plat_a",
+   "top": 6
+  },
+  {
+   "x": 444,
+   "y": 19,
+   "frame": "small_plat_b",
+   "top": 6
+  }
+ ],
+ "pads": [],
+ "winds": [],
+ "hazards": [
+  {
+   "x": 120,
+   "y": 20,
+   "frame": "spike_candy",
+   "shape": "spikes"
+  },
+  {
+   "x": 196,
+   "y": 18,
+   "frame": "spike_candy",
+   "shape": "spikes"
+  },
+  {
+   "x": 428,
+   "y": 13,
+   "frame": "spike_cone",
+   "shape": "spikes"
+  },
+  {
+   "x": 604,
+   "y": 20,
+   "frame": "spike_candy",
+   "shape": "spikes"
+  }
+ ],
+ "paints": [],
+ "rollers": [],
+ "bouncers": [],
+ "drips": [],
+ "rivers": [],
+ "magicCrayons": [],
+ "yarnRollers": [],
+ "sleepClouds": [],
+ "magicButtons": [],
+ "fallingStars": [
+  {
+   "x": 158,
+   "y": 19,
+   "height": 9,
+   "period": 3200,
+   "frames": [
+    "star_trap_b"
+   ],
+   "warn_frame": "star_trap"
+  },
+  {
+   "x": 165,
+   "y": 19,
+   "height": 9,
+   "period": 3200,
+   "delay": 1600,
+   "frames": [
+    "star_trap_b"
+   ],
+   "warn_frame": "star_trap"
+  },
+  {
+   "x": 223,
+   "y": 19,
+   "height": 10,
+   "period": 3400,
+   "delay": 800,
+   "frames": [
+    "star_trap_b"
+   ],
+   "warn_frame": "star_trap"
+  },
+  {
+   "x": 231,
+   "y": 19,
+   "height": 10,
+   "period": 3400,
+   "delay": 2400,
+   "frames": [
+    "star_trap_b"
+   ],
+   "warn_frame": "star_trap"
+  },
+  {
+   "x": 492,
+   "y": 20,
+   "height": 10,
+   "period": 3000,
+   "delay": 500,
+   "frames": [
+    "star_trap_b"
+   ],
+   "warn_frame": "star_trap"
+  }
+ ],
+ "ghostPlatforms": [
+  {
+   "x": 33,
+   "y": 19,
+   "period": 4200,
+   "visible": 2400,
+   "warn": 900,
+   "delay": 0
+  },
+  {
+   "x": 88,
+   "y": 16,
+   "period": 3600,
+   "visible": 1800,
+   "warn": 800,
+   "delay": 0
+  },
+  {
+   "x": 93,
+   "y": 13,
+   "period": 3600,
+   "visible": 1800,
+   "warn": 800,
+   "delay": 1800
+  },
+  {
+   "x": 484,
+   "y": 9,
+   "period": 3400,
+   "visible": 1700,
+   "warn": 800,
+   "delay": 0
+  },
+  {
+   "x": 489,
+   "y": 7,
+   "period": 3400,
+   "visible": 1700,
+   "warn": 800,
+   "delay": 1700
+  }
+ ],
+ "shadowZones": [
+  {
+   "x": 248,
+   "y": 20,
+   "w": 4,
+   "kind": "pool"
+  },
+  {
+   "x": 278,
+   "y": 20,
+   "w": 6,
+   "kind": "mist"
+  },
+  {
+   "x": 312,
+   "y": 19,
+   "w": 4,
+   "kind": "pool"
+  },
+  {
+   "x": 356,
+   "y": 20,
+   "w": 4,
+   "kind": "pool"
+  },
+  {
+   "x": 457,
+   "y": 20,
+   "w": 5,
+   "kind": "mist"
+  }
+ ],
+ "hooks": [
+  {
+   "x": 405,
+   "y": 5,
+   "length": 72,
+   "swing": 55,
+   "speed": 85,
+   "frame": "hook_moon"
+  },
+  {
+   "x": 452,
+   "y": 13,
+   "length": 64,
+   "swing": 50,
+   "speed": 95,
+   "frame": "hook_star"
+  },
+  {
+   "x": 462,
+   "y": 13,
+   "length": 64,
+   "swing": 50,
+   "speed": 95,
+   "angle": 40,
+   "frame": "hook_moon"
+  },
+  {
+   "x": 590,
+   "y": 13,
+   "length": 64,
+   "swing": 45,
+   "speed": 80,
+   "frame": "hook_star"
+  }
+ ],
+ "lanterns": [
+  {
+   "id": "lantern_1",
+   "x": 530,
+   "y": 20,
+   "bridges": [
+    "bridge_1"
+   ]
+  },
+  {
+   "id": "lantern_2",
+   "x": 548,
+   "y": 20,
+   "bridges": [
+    "bridge_2"
+   ]
+  }
+ ],
+ "hiddenBridges": [
+  {
+   "id": "bridge_1",
+   "x": 536,
+   "y": 20,
+   "frame": "candy_rope",
+   "top": 6
+  },
+  {
+   "id": "bridge_1",
+   "x": 541.5,
+   "y": 20,
+   "frame": "candy_rope_s",
+   "top": 6
+  },
+  {
+   "id": "bridge_2",
+   "x": 554,
+   "y": 11,
+   "frame": "cloud_plat_l",
+   "top": 6
+  }
+ ],
+ "chests": [
+  {
+   "x": 592,
+   "y": 20,
+   "frame": "chest_w8",
+   "stars": 8
+  }
+ ],
+ "hearts": [
+  {
+   "x": 70,
+   "y": 18,
+   "frame": "heart_dream"
+  },
+  {
+   "x": 160,
+   "y": 16,
+   "frame": "heart_dream"
+  },
+  {
+   "x": 286,
+   "y": 17,
+   "frame": "heart_dream_b"
+  },
+  {
+   "x": 426,
+   "y": 10,
+   "frame": "heart_dream"
+  },
+  {
+   "x": 540,
+   "y": 16,
+   "frame": "heart_dream_b"
+  },
+  {
+   "x": 612,
+   "y": 17,
+   "frame": "heart_dream"
+  }
+ ],
+ "dreamCollectibles": [
+  {
+   "id": "moon_1",
+   "kind": "moon",
+   "x": 96,
+   "y": 10,
+   "frame": "moon_gold"
+  },
+  {
+   "id": "moon_2",
+   "kind": "moon",
+   "x": 226,
+   "y": 8,
+   "frame": "moon_violet"
+  },
+  {
+   "id": "moon_3",
+   "kind": "moon",
+   "x": 406,
+   "y": 9,
+   "frame": "moon_blue"
+  },
+  {
+   "id": "orb_1",
+   "kind": "orb",
+   "x": 328,
+   "y": 7,
+   "frame": "dream_orb"
+  },
+  {
+   "id": "key_1",
+   "kind": "key",
+   "x": 492,
+   "y": 4,
+   "frame": "castle_key"
+  },
+  {
+   "id": "memory_courage",
+   "kind": "memory",
+   "x": 515,
+   "y": 13,
+   "frame": "dream_orb",
+   "tint": "#FFA657",
+   "memory": "courage"
+  },
+  {
+   "id": "memory_imagination",
+   "kind": "memory",
+   "x": 560,
+   "y": 10,
+   "frame": "dream_orb",
+   "tint": "#C8A5FF",
+   "memory": "imagination"
+  },
+  {
+   "id": "memory_friendship",
+   "kind": "memory",
+   "x": 600,
+   "y": 17,
+   "frame": "dream_orb",
+   "tint": "#F6B4E9",
+   "memory": "friendship"
+  }
+ ],
+ "dreamMain": "moon",
+ "dreamNames": {
+  "moon": "Fragmento de luna",
+  "orb": "Orbe especial",
+  "key": "Llave del castillo",
+  "memory": "Recuerdo mágico"
+ },
+ "dreamBanner": "¡Los %d fragmentos de luna! Estrella extra",
+ "dreamHud": [
+  "world8_objects",
+  "moon_gold",
+  "moon_"
+ ],
+ "stars": [
+  {
+   "x": 3,
+   "y": 19
+  },
+  {
+   "x": 6,
+   "y": 19
+  },
+  {
+   "x": 9,
+   "y": 19
+  },
+  {
+   "x": 12,
+   "y": 19
+  },
+  {
+   "x": 15,
+   "y": 19
+  },
+  {
+   "x": 21,
+   "y": 19
+  },
+  {
+   "x": 24,
+   "y": 19
+  },
+  {
+   "x": 27,
+   "y": 19
+  },
+  {
+   "x": 30,
+   "y": 16
+  },
+  {
+   "x": 31,
+   "y": 15
+  },
+  {
+   "x": 32,
+   "y": 14
+  },
+  {
+   "x": 33,
+   "y": 14
+  },
+  {
+   "x": 34,
+   "y": 14
+  },
+  {
+   "x": 35,
+   "y": 15
+  },
+  {
+   "x": 36,
+   "y": 16
+  },
+  {
+   "x": 38,
+   "y": 19
+  },
+  {
+   "x": 41,
+   "y": 19
+  },
+  {
+   "x": 44,
+   "y": 19
+  },
+  {
+   "x": 47,
+   "y": 19
+  },
+  {
+   "x": 53,
+   "y": 19
+  },
+  {
+   "x": 60,
+   "y": 18
+  },
+  {
+   "x": 62,
+   "y": 18
+  },
+  {
+   "x": 64,
+   "y": 18
+  },
+  {
+   "x": 66,
+   "y": 18
+  },
+  {
+   "x": 68,
+   "y": 16
+  },
+  {
+   "x": 69,
+   "y": 15
+  },
+  {
+   "x": 70,
+   "y": 14
+  },
+  {
+   "x": 71,
+   "y": 15
+  },
+  {
+   "x": 72,
+   "y": 16
+  },
+  {
+   "x": 74,
+   "y": 19
+  },
+  {
+   "x": 77,
+   "y": 19
+  },
+  {
+   "x": 80,
+   "y": 19
+  },
+  {
+   "x": 83,
+   "y": 19
+  },
+  {
+   "x": 86,
+   "y": 19
+  },
+  {
+   "x": 89,
+   "y": 19
+  },
+  {
+   "x": 92,
+   "y": 19
+  },
+  {
+   "x": 95,
+   "y": 19
+  },
+  {
+   "x": 98,
+   "y": 19
+  },
+  {
+   "x": 101,
+   "y": 19
+  },
+  {
+   "x": 104,
+   "y": 19
+  },
+  {
+   "x": 107,
+   "y": 19
+  },
+  {
+   "x": 110,
+   "y": 19
+  },
+  {
+   "x": 86,
+   "y": 12
+  },
+  {
+   "x": 88,
+   "y": 12
+  },
+  {
+   "x": 90,
+   "y": 12
+  },
+  {
+   "x": 92,
+   "y": 12
+  },
+  {
+   "x": 94,
+   "y": 12
+  },
+  {
+   "x": 98,
+   "y": 12
+  },
+  {
+   "x": 100,
+   "y": 12
+  },
+  {
+   "x": 102,
+   "y": 12
+  },
+  {
+   "x": 113,
+   "y": 19
+  },
+  {
+   "x": 116,
+   "y": 19
+  },
+  {
+   "x": 119,
+   "y": 19
+  },
+  {
+   "x": 122,
+   "y": 19
+  },
+  {
+   "x": 127,
+   "y": 15
+  },
+  {
+   "x": 129,
+   "y": 14
+  },
+  {
+   "x": 131,
+   "y": 14
+  },
+  {
+   "x": 133,
+   "y": 13
+  },
+  {
+   "x": 135,
+   "y": 13
+  },
+  {
+   "x": 137,
+   "y": 13
+  },
+  {
+   "x": 139,
+   "y": 13
+  },
+  {
+   "x": 141,
+   "y": 14
+  },
+  {
+   "x": 143,
+   "y": 14
+  },
+  {
+   "x": 145,
+   "y": 15
+  },
+  {
+   "x": 147,
+   "y": 18
+  },
+  {
+   "x": 150,
+   "y": 18
+  },
+  {
+   "x": 153,
+   "y": 18
+  },
+  {
+   "x": 156,
+   "y": 18
+  },
+  {
+   "x": 159,
+   "y": 18
+  },
+  {
+   "x": 162,
+   "y": 18
+  },
+  {
+   "x": 165,
+   "y": 18
+  },
+  {
+   "x": 168,
+   "y": 18
+  },
+  {
+   "x": 171,
+   "y": 18
+  },
+  {
+   "x": 174,
+   "y": 18
+  },
+  {
+   "x": 177,
+   "y": 15
+  },
+  {
+   "x": 179,
+   "y": 14
+  },
+  {
+   "x": 181,
+   "y": 13
+  },
+  {
+   "x": 183,
+   "y": 14
+  },
+  {
+   "x": 185,
+   "y": 15
+  },
+  {
+   "x": 187,
+   "y": 17
+  },
+  {
+   "x": 190,
+   "y": 17
+  },
+  {
+   "x": 193,
+   "y": 17
+  },
+  {
+   "x": 196,
+   "y": 17
+  },
+  {
+   "x": 199,
+   "y": 17
+  },
+  {
+   "x": 202,
+   "y": 17
+  },
+  {
+   "x": 205,
+   "y": 17
+  },
+  {
+   "x": 207,
+   "y": 15
+  },
+  {
+   "x": 208,
+   "y": 14
+  },
+  {
+   "x": 209,
+   "y": 13
+  },
+  {
+   "x": 210,
+   "y": 13
+  },
+  {
+   "x": 211,
+   "y": 14
+  },
+  {
+   "x": 212,
+   "y": 15
+  },
+  {
+   "x": 213,
+   "y": 18
+  },
+  {
+   "x": 216,
+   "y": 18
+  },
+  {
+   "x": 219,
+   "y": 18
+  },
+  {
+   "x": 222,
+   "y": 18
+  },
+  {
+   "x": 225,
+   "y": 18
+  },
+  {
+   "x": 228,
+   "y": 18
+  },
+  {
+   "x": 231,
+   "y": 18
+  },
+  {
+   "x": 234,
+   "y": 18
+  },
+  {
+   "x": 216,
+   "y": 11
+  },
+  {
+   "x": 218,
+   "y": 11
+  },
+  {
+   "x": 220,
+   "y": 11
+  },
+  {
+   "x": 222,
+   "y": 11
+  },
+  {
+   "x": 239,
+   "y": 19
+  },
+  {
+   "x": 242,
+   "y": 19
+  },
+  {
+   "x": 245,
+   "y": 19
+  },
+  {
+   "x": 248,
+   "y": 19
+  },
+  {
+   "x": 251,
+   "y": 19
+  },
+  {
+   "x": 254,
+   "y": 19
+  },
+  {
+   "x": 257,
+   "y": 19
+  },
+  {
+   "x": 261,
+   "y": 15
+  },
+  {
+   "x": 262,
+   "y": 14
+  },
+  {
+   "x": 263,
+   "y": 13
+  },
+  {
+   "x": 264,
+   "y": 13
+  },
+  {
+   "x": 265,
+   "y": 13
+  },
+  {
+   "x": 266,
+   "y": 13
+  },
+  {
+   "x": 267,
+   "y": 14
+  },
+  {
+   "x": 268,
+   "y": 15
+  },
+  {
+   "x": 269,
+   "y": 19
+  },
+  {
+   "x": 272,
+   "y": 19
+  },
+  {
+   "x": 275,
+   "y": 19
+  },
+  {
+   "x": 278,
+   "y": 19
+  },
+  {
+   "x": 281,
+   "y": 19
+  },
+  {
+   "x": 284,
+   "y": 19
+  },
+  {
+   "x": 287,
+   "y": 19
+  },
+  {
+   "x": 290,
+   "y": 19
+  },
+  {
+   "x": 293,
+   "y": 19
+  },
+  {
+   "x": 296,
+   "y": 19
+  },
+  {
+   "x": 275,
+   "y": 12
+  },
+  {
+   "x": 277,
+   "y": 10
+  },
+  {
+   "x": 279,
+   "y": 9
+  },
+  {
+   "x": 281,
+   "y": 9
+  },
+  {
+   "x": 283,
+   "y": 10
+  },
+  {
+   "x": 285,
+   "y": 12
+  },
+  {
+   "x": 298,
+   "y": 16
+  },
+  {
+   "x": 299,
+   "y": 15
+  },
+  {
+   "x": 300,
+   "y": 14
+  },
+  {
+   "x": 301,
+   "y": 14
+  },
+  {
+   "x": 302,
+   "y": 14
+  },
+  {
+   "x": 303,
+   "y": 15
+  },
+  {
+   "x": 304,
+   "y": 16
+  },
+  {
+   "x": 305,
+   "y": 18
+  },
+  {
+   "x": 308,
+   "y": 18
+  },
+  {
+   "x": 311,
+   "y": 18
+  },
+  {
+   "x": 314,
+   "y": 18
+  },
+  {
+   "x": 317,
+   "y": 18
+  },
+  {
+   "x": 320,
+   "y": 18
+  },
+  {
+   "x": 323,
+   "y": 18
+  },
+  {
+   "x": 326,
+   "y": 18
+  },
+  {
+   "x": 320,
+   "y": 9
+  },
+  {
+   "x": 322,
+   "y": 9
+  },
+  {
+   "x": 324,
+   "y": 9
+  },
+  {
+   "x": 326,
+   "y": 9
+  },
+  {
+   "x": 329,
+   "y": 15
+  },
+  {
+   "x": 330,
+   "y": 14
+  },
+  {
+   "x": 331,
+   "y": 13
+  },
+  {
+   "x": 332,
+   "y": 13
+  },
+  {
+   "x": 333,
+   "y": 14
+  },
+  {
+   "x": 334,
+   "y": 15
+  },
+  {
+   "x": 335,
+   "y": 19
+  },
+  {
+   "x": 338,
+   "y": 19
+  },
+  {
+   "x": 344,
+   "y": 19
+  },
+  {
+   "x": 347,
+   "y": 19
+  },
+  {
+   "x": 350,
+   "y": 19
+  },
+  {
+   "x": 353,
+   "y": 19
+  },
+  {
+   "x": 356,
+   "y": 19
+  },
+  {
+   "x": 359,
+   "y": 19
+  },
+  {
+   "x": 362,
+   "y": 19
+  },
+  {
+   "x": 365,
+   "y": 19
+  },
+  {
+   "x": 350,
+   "y": 12
+  },
+  {
+   "x": 352,
+   "y": 12
+  },
+  {
+   "x": 354,
+   "y": 12
+  },
+  {
+   "x": 369,
+   "y": 19
+  },
+  {
+   "x": 372,
+   "y": 19
+  },
+  {
+   "x": 375,
+   "y": 19
+  },
+  {
+   "x": 378,
+   "y": 19
+  },
+  {
+   "x": 383,
+   "y": 15
+  },
+  {
+   "x": 385,
+   "y": 15
+  },
+  {
+   "x": 387,
+   "y": 15
+  },
+  {
+   "x": 389,
+   "y": 15
+  },
+  {
+   "x": 391,
+   "y": 15
+  },
+  {
+   "x": 393,
+   "y": 15
+  },
+  {
+   "x": 398,
+   "y": 9
+  },
+  {
+   "x": 398,
+   "y": 11
+  },
+  {
+   "x": 398,
+   "y": 13
+  },
+  {
+   "x": 402,
+   "y": 11
+  },
+  {
+   "x": 404,
+   "y": 11
+  },
+  {
+   "x": 406,
+   "y": 11
+  },
+  {
+   "x": 408,
+   "y": 11
+  },
+  {
+   "x": 410,
+   "y": 11
+  },
+  {
+   "x": 411,
+   "y": 9
+  },
+  {
+   "x": 413,
+   "y": 8
+  },
+  {
+   "x": 415,
+   "y": 7
+  },
+  {
+   "x": 417,
+   "y": 7
+  },
+  {
+   "x": 419,
+   "y": 8
+  },
+  {
+   "x": 421,
+   "y": 9
+  },
+  {
+   "x": 422,
+   "y": 12
+  },
+  {
+   "x": 424,
+   "y": 12
+  },
+  {
+   "x": 426,
+   "y": 12
+  },
+  {
+   "x": 428,
+   "y": 12
+  },
+  {
+   "x": 430,
+   "y": 12
+  },
+  {
+   "x": 432,
+   "y": 12
+  },
+  {
+   "x": 434,
+   "y": 12
+  },
+  {
+   "x": 436,
+   "y": 11
+  },
+  {
+   "x": 438,
+   "y": 10
+  },
+  {
+   "x": 440,
+   "y": 10
+  },
+  {
+   "x": 442,
+   "y": 10
+  },
+  {
+   "x": 444,
+   "y": 11
+  },
+  {
+   "x": 446,
+   "y": 12
+  },
+  {
+   "x": 448,
+   "y": 19
+  },
+  {
+   "x": 451,
+   "y": 19
+  },
+  {
+   "x": 454,
+   "y": 19
+  },
+  {
+   "x": 457,
+   "y": 19
+  },
+  {
+   "x": 460,
+   "y": 19
+  },
+  {
+   "x": 463,
+   "y": 19
+  },
+  {
+   "x": 468,
+   "y": 17
+  },
+  {
+   "x": 470,
+   "y": 17
+  },
+  {
+   "x": 472,
+   "y": 17
+  },
+  {
+   "x": 474,
+   "y": 17
+  },
+  {
+   "x": 476,
+   "y": 19
+  },
+  {
+   "x": 479,
+   "y": 19
+  },
+  {
+   "x": 482,
+   "y": 19
+  },
+  {
+   "x": 485,
+   "y": 19
+  },
+  {
+   "x": 488,
+   "y": 19
+  },
+  {
+   "x": 494,
+   "y": 19
+  },
+  {
+   "x": 497,
+   "y": 19
+  },
+  {
+   "x": 480,
+   "y": 9
+  },
+  {
+   "x": 480,
+   "y": 11
+  },
+  {
+   "x": 480,
+   "y": 13
+  },
+  {
+   "x": 484,
+   "y": 4
+  },
+  {
+   "x": 486,
+   "y": 4
+  },
+  {
+   "x": 488,
+   "y": 4
+  },
+  {
+   "x": 490,
+   "y": 4
+  },
+  {
+   "x": 501,
+   "y": 19
+  },
+  {
+   "x": 504,
+   "y": 19
+  },
+  {
+   "x": 507,
+   "y": 19
+  },
+  {
+   "x": 510,
+   "y": 19
+  },
+  {
+   "x": 513,
+   "y": 19
+  },
+  {
+   "x": 516,
+   "y": 19
+  },
+  {
+   "x": 519,
+   "y": 19
+  },
+  {
+   "x": 522,
+   "y": 19
+  },
+  {
+   "x": 525,
+   "y": 19
+  },
+  {
+   "x": 528,
+   "y": 19
+  },
+  {
+   "x": 531,
+   "y": 19
+  },
+  {
+   "x": 534,
+   "y": 17
+  },
+  {
+   "x": 536,
+   "y": 16
+  },
+  {
+   "x": 538,
+   "y": 15
+  },
+  {
+   "x": 540,
+   "y": 15
+  },
+  {
+   "x": 542,
+   "y": 16
+  },
+  {
+   "x": 544,
+   "y": 17
+  },
+  {
+   "x": 545,
+   "y": 19
+  },
+  {
+   "x": 548,
+   "y": 19
+  },
+  {
+   "x": 551,
+   "y": 19
+  },
+  {
+   "x": 554,
+   "y": 19
+  },
+  {
+   "x": 557,
+   "y": 19
+  },
+  {
+   "x": 560,
+   "y": 19
+  },
+  {
+   "x": 563,
+   "y": 19
+  },
+  {
+   "x": 552,
+   "y": 8
+  },
+  {
+   "x": 554,
+   "y": 8
+  },
+  {
+   "x": 556,
+   "y": 8
+  },
+  {
+   "x": 558,
+   "y": 8
+  },
+  {
+   "x": 567,
+   "y": 17
+  },
+  {
+   "x": 569,
+   "y": 17
+  },
+  {
+   "x": 571,
+   "y": 17
+  },
+  {
+   "x": 573,
+   "y": 19
+  },
+  {
+   "x": 576,
+   "y": 19
+  },
+  {
+   "x": 579,
+   "y": 19
+  },
+  {
+   "x": 582,
+   "y": 19
+  },
+  {
+   "x": 585,
+   "y": 19
+  },
+  {
+   "x": 588,
+   "y": 19
+  },
+  {
+   "x": 591,
+   "y": 19
+  },
+  {
+   "x": 594,
+   "y": 19
+  },
+  {
+   "x": 600,
+   "y": 19
+  },
+  {
+   "x": 603,
+   "y": 19
+  },
+  {
+   "x": 606,
+   "y": 19
+  },
+  {
+   "x": 609,
+   "y": 19
+  },
+  {
+   "x": 612,
+   "y": 19
+  },
+  {
+   "x": 615,
+   "y": 19
+  },
+  {
+   "x": 618,
+   "y": 19
+  },
+  {
+   "x": 621,
+   "y": 19
+  },
+  {
+   "x": 624,
+   "y": 19
+  }
+ ],
+ "enemies": [
+  {
+   "type": "fantasmita",
+   "x": 46,
+   "y": 16,
+   "patrol": [
+    40,
+    54
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "fantasmita",
+   "x": 104,
+   "y": 15,
+   "patrol": [
+    96,
+    110
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "fantasmita",
+   "x": 226,
+   "y": 14,
+   "patrol": [
+    216,
+    234
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "fantasmita",
+   "x": 290,
+   "y": 15,
+   "patrol": [
+    280,
+    296
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "fantasmita",
+   "x": 322,
+   "y": 14,
+   "patrol": [
+    314,
+    328
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "fantasmita",
+   "x": 352,
+   "y": 13,
+   "patrol": [
+    344,
+    360
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "fantasmita",
+   "x": 478,
+   "y": 15,
+   "patrol": [
+    472,
+    486
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "fantasmita",
+   "x": 524,
+   "y": 15,
+   "patrol": [
+    516,
+    532
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "fantasmita",
+   "x": 582,
+   "y": 15,
+   "patrol": [
+    574,
+    590
+   ],
+   "fly": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "bloquito",
+   "x": 80,
+   "y": 20,
+   "patrol": [
+    74,
+    92
+   ]
+  },
+  {
+   "type": "bloquito",
+   "x": 194,
+   "y": 18,
+   "patrol": [
+    188,
+    204
+   ]
+  },
+  {
+   "type": "bloquito",
+   "x": 272,
+   "y": 20,
+   "patrol": [
+    269,
+    286
+   ]
+  },
+  {
+   "type": "bloquito",
+   "x": 346,
+   "y": 20,
+   "patrol": [
+    343,
+    354
+   ]
+  },
+  {
+   "type": "bloquito",
+   "x": 372,
+   "y": 20,
+   "patrol": [
+    369,
+    380
+   ]
+  },
+  {
+   "type": "bloquito",
+   "x": 452,
+   "y": 20,
+   "patrol": [
+    448,
+    465
+   ]
+  },
+  {
+   "type": "bloquito",
+   "x": 506,
+   "y": 20,
+   "patrol": [
+    502,
+    514
+   ]
+  },
+  {
+   "type": "bloquito",
+   "x": 578,
+   "y": 20,
+   "patrol": [
+    574,
+    588
+   ]
+  },
+  {
+   "type": "murcibola",
+   "x": 168,
+   "y": 14,
+   "patrol": [
+    160,
+    174
+   ],
+   "rest": [
+    168,
+    14
+   ]
+  },
+  {
+   "type": "murcibola",
+   "x": 232,
+   "y": 13,
+   "patrol": [
+    222,
+    236
+   ],
+   "rest": [
+    232,
+    13
+   ]
+  },
+  {
+   "type": "murcibola",
+   "x": 308,
+   "y": 14,
+   "patrol": [
+    304,
+    320
+   ],
+   "rest": [
+    308,
+    14
+   ]
+  },
+  {
+   "type": "murcibola",
+   "x": 362,
+   "y": 14,
+   "patrol": [
+    354,
+    366
+   ],
+   "rest": [
+    362,
+    14
+   ]
+  },
+  {
+   "type": "murcibola",
+   "x": 432,
+   "y": 9,
+   "patrol": [
+    424,
+    434
+   ],
+   "rest": [
+    432,
+    9
+   ]
+  },
+  {
+   "type": "murcibola",
+   "x": 496,
+   "y": 14,
+   "patrol": [
+    488,
+    499
+   ],
+   "rest": [
+    496,
+    14
+   ]
+  },
+  {
+   "type": "murcibola",
+   "x": 568,
+   "y": 13,
+   "patrol": [
+    562,
+    576
+   ],
+   "rest": [
+    568,
+    13
+   ]
+  }
+ ],
+ "checkpoints": [
+  {
+   "x": 150,
+   "y": 19
+  },
+  {
+   "x": 425,
+   "y": 13
+  },
+  {
+   "x": 610,
+   "y": 20
+  }
+ ],
+ "pickups": [],
+ "signs": [
+  {
+   "x": 3,
+   "y": 20,
+   "text": "Mundo 8: El Castillo de las Pesadillas. ¡La última aventura de Alice!"
+  },
+  {
+   "x": 27,
+   "y": 20,
+   "text": "Las plataformas fantasma brillan antes de desaparecer... ¡y siempre vuelven!"
+  },
+  {
+   "x": 39,
+   "y": 20,
+   "text": "El Fantasmita Farol levanta su farol antes de lanzar una estrellita"
+  },
+  {
+   "x": 74,
+   "y": 20,
+   "text": "El Bloquito Sombra embiste: después del golpe se queda quieto. ¡Ahora!"
+  },
+  {
+   "x": 84,
+   "y": 20,
+   "text": "Arriba hay un fragmento de luna. ¡Reúne los tres!"
+  },
+  {
+   "x": 114,
+   "y": 20,
+   "text": "Los Puentes de la Luna: salta a las plataformas colgantes cuando se acerquen"
+  },
+  {
+   "x": 152,
+   "y": 19,
+   "text": "Las estrellas titilan antes de caer: mira el destello del suelo"
+  },
+  {
+   "x": 166,
+   "y": 19,
+   "text": "El Murcibola de Trapo se encoge antes de lanzarse en picada"
+  },
+  {
+   "x": 174,
+   "y": 19,
+   "text": "Estas plataformas tiemblan y se caen: ¡no te pares!"
+  },
+  {
+   "x": 240,
+   "y": 20,
+   "text": "El Jardín de las Sombras: no pises los charcos de sombra"
+  },
+  {
+   "x": 258,
+   "y": 20,
+   "text": "Las setas fantasma son elásticas: ¡rebota!"
+  },
+  {
+   "x": 270,
+   "y": 20,
+   "text": "La bruma de sombras hace daño: salta por encima con la seta"
+  },
+  {
+   "x": 316,
+   "y": 19,
+   "text": "Esta seta te sube a una ruta secreta con el orbe especial"
+  },
+  {
+   "x": 370,
+   "y": 20,
+   "text": "Las Torres Encantadas: ¡salta de escalón en escalón!"
+  },
+  {
+   "x": 449,
+   "y": 20,
+   "text": "Los ganchos se balancean siempre igual: pasa cuando se alejen"
+  },
+  {
+   "x": 477,
+   "y": 20,
+   "text": "Arriba, entre plataformas fantasma, está la llave del castillo"
+  },
+  {
+   "x": 502,
+   "y": 20,
+   "text": "El Corazón del Castillo: busca los tres recuerdos mágicos"
+  },
+  {
+   "x": 528,
+   "y": 20,
+   "text": "Los faroles mágicos revelan puentes ocultos. ¡Tócalo!"
+  },
+  {
+   "x": 590,
+   "y": 20,
+   "text": "¿Tienes la llave? Este cofre guarda un tesoro"
+  },
+  {
+   "x": 616,
+   "y": 20,
+   "text": "Detrás de la gran puerta te espera el Rey Pesadelo. ¡Valor, Alice!"
+  }
+ ],
+ "decor": [
+  {
+   "x": 1,
+   "y": 20,
+   "frame": "tree_twisted",
+   "back": true
+  },
+  {
+   "x": 8,
+   "y": 20,
+   "frame": "fence",
+   "back": true
+  },
+  {
+   "x": 14,
+   "y": 20,
+   "frame": "pumpkins"
+  },
+  {
+   "x": 19,
+   "y": 20,
+   "frame": "lamp_post"
+  },
+  {
+   "x": 23,
+   "y": 20,
+   "frame": "tree_twisted_b",
+   "back": true
+  },
+  {
+   "x": 40,
+   "y": 20,
+   "frame": "candles"
+  },
+  {
+   "x": 44,
+   "y": 20,
+   "frame": "tree_twisted",
+   "back": true
+  },
+  {
+   "x": 51,
+   "y": 20,
+   "frame": "pumpkin"
+  },
+  {
+   "x": 63,
+   "y": 19,
+   "frame": "lantern_moon",
+   "back": true
+  },
+  {
+   "x": 66,
+   "y": 19,
+   "frame": "fence_b",
+   "back": true
+  },
+  {
+   "x": 78,
+   "y": 20,
+   "frame": "gargoyle_s",
+   "back": true
+  },
+  {
+   "x": 86,
+   "y": 20,
+   "frame": "tree_twisted_b",
+   "back": true
+  },
+  {
+   "x": 95,
+   "y": 20,
+   "frame": "pumpkins"
+  },
+  {
+   "x": 103,
+   "y": 20,
+   "frame": "orb_post"
+  },
+  {
+   "x": 108,
+   "y": 20,
+   "frame": "tree_twisted",
+   "back": true
+  },
+  {
+   "x": 113,
+   "y": 20,
+   "frame": "lamp_post"
+  },
+  {
+   "x": 117,
+   "y": 20,
+   "frame": "fence",
+   "back": true
+  },
+  {
+   "x": 124,
+   "y": 20,
+   "frame": "lantern_star"
+  },
+  {
+   "x": 147,
+   "y": 19,
+   "frame": "lantern_moon"
+  },
+  {
+   "x": 155,
+   "y": 19,
+   "frame": "gargoyle",
+   "back": true
+  },
+  {
+   "x": 171,
+   "y": 19,
+   "frame": "fence_b",
+   "back": true
+  },
+  {
+   "x": 188,
+   "y": 18,
+   "frame": "pumpkins"
+  },
+  {
+   "x": 203,
+   "y": 18,
+   "frame": "lamp_post"
+  },
+  {
+   "x": 214,
+   "y": 19,
+   "frame": "tree_twisted_b",
+   "back": true
+  },
+  {
+   "x": 229,
+   "y": 19,
+   "frame": "candles"
+  },
+  {
+   "x": 235,
+   "y": 19,
+   "frame": "lantern_star"
+  },
+  {
+   "x": 239,
+   "y": 20,
+   "frame": "tree_twisted",
+   "back": true
+  },
+  {
+   "x": 255,
+   "y": 20,
+   "frame": "pumpkins"
+  },
+  {
+   "x": 269,
+   "y": 20,
+   "frame": "lamp_post"
+  },
+  {
+   "x": 288,
+   "y": 20,
+   "frame": "tree_twisted_b",
+   "back": true
+  },
+  {
+   "x": 295,
+   "y": 20,
+   "frame": "pumpkin"
+  },
+  {
+   "x": 306,
+   "y": 19,
+   "frame": "fence",
+   "back": true
+  },
+  {
+   "x": 324,
+   "y": 19,
+   "frame": "tree_twisted",
+   "back": true
+  },
+  {
+   "x": 336,
+   "y": 20,
+   "frame": "candles"
+  },
+  {
+   "x": 344,
+   "y": 20,
+   "frame": "gargoyle_s",
+   "back": true
+  },
+  {
+   "x": 362,
+   "y": 20,
+   "frame": "tree_twisted_b",
+   "back": true
+  },
+  {
+   "x": 366,
+   "y": 20,
+   "frame": "lantern_moon"
+  },
+  {
+   "x": 370,
+   "y": 20,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 378,
+   "y": 20,
+   "frame": "banner_moon",
+   "back": true
+  },
+  {
+   "x": 389,
+   "y": 16,
+   "frame": "lamp_post"
+  },
+  {
+   "x": 403,
+   "y": 12,
+   "frame": "banner_star",
+   "back": true
+  },
+  {
+   "x": 409,
+   "y": 12,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 423,
+   "y": 13,
+   "frame": "banner_heart",
+   "back": true
+  },
+  {
+   "x": 431,
+   "y": 13,
+   "frame": "gargoyle_s"
+  },
+  {
+   "x": 449,
+   "y": 20,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 464,
+   "y": 20,
+   "frame": "lamp_post"
+  },
+  {
+   "x": 470,
+   "y": 18,
+   "frame": "banner_moon",
+   "back": true
+  },
+  {
+   "x": 477,
+   "y": 20,
+   "frame": "gargoyle",
+   "back": true
+  },
+  {
+   "x": 497,
+   "y": 20,
+   "frame": "banner_star",
+   "back": true
+  },
+  {
+   "x": 501,
+   "y": 20,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 508,
+   "y": 20,
+   "frame": "banner_heart",
+   "back": true
+  },
+  {
+   "x": 517,
+   "y": 20,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 526,
+   "y": 20,
+   "frame": "banner_star",
+   "back": true
+  },
+  {
+   "x": 533,
+   "y": 20,
+   "frame": "lamp_post"
+  },
+  {
+   "x": 545,
+   "y": 20,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 551,
+   "y": 20,
+   "frame": "banner_moon",
+   "back": true
+  },
+  {
+   "x": 563,
+   "y": 20,
+   "frame": "gargoyle",
+   "back": true
+  },
+  {
+   "x": 569,
+   "y": 18,
+   "frame": "banner_heart",
+   "back": true
+  },
+  {
+   "x": 575,
+   "y": 20,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 583,
+   "y": 20,
+   "frame": "banner_star",
+   "back": true
+  },
+  {
+   "x": 598,
+   "y": 20,
+   "frame": "castle_window",
+   "back": true
+  },
+  {
+   "x": 606,
+   "y": 20,
+   "frame": "gargoyle_s",
+   "back": true
+  },
+  {
+   "x": 614,
+   "y": 20,
+   "frame": "banner_heart",
+   "back": true
+  },
+  {
+   "x": 623,
+   "y": 20,
+   "frame": "lamp_post"
+  },
+  {
+   "x": 6,
+   "y": 20,
+   "frame": "pumpkin",
+   "front": true
+  },
+  {
+   "x": 98,
+   "y": 20,
+   "frame": "candles",
+   "front": true
+  },
+  {
+   "x": 190,
+   "y": 18,
+   "frame": "pumpkin",
+   "front": true
+  },
+  {
+   "x": 300,
+   "y": 20,
+   "frame": "candles",
+   "front": true
+  },
+  {
+   "x": 374,
+   "y": 20,
+   "frame": "pumpkin",
+   "front": true
+  },
+  {
+   "x": 511,
+   "y": 20,
+   "frame": "candles",
+   "front": true
+  },
+  {
+   "x": 594,
+   "y": 20,
+   "frame": "candles",
+   "front": true
+  }
+ ],
+ "door": {
+  "x": 620,
+  "y": 20,
+  "atlas": "world8_objects",
+  "frame": "portal_w8",
+  "scale": 1.3,
+  "giant": true
+ }
+}

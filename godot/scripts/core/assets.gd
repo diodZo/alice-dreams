@@ -41,6 +41,11 @@ const FRAMES_PATHS := {
 	"gomilito_mini": "res://resources/world7/frames/gomilito_mini_frames.tres",
 	"piruleta": "res://resources/world7/frames/piruleta_frames.tres",
 	"don_chupeton": "res://resources/world7/frames/don_chupeton_frames.tres",
+	"fantasmita": "res://resources/world8/frames/fantasmita_frames.tres",
+	"murcibola": "res://resources/world8/frames/murcibola_frames.tres",
+	"bloquito": "res://resources/world8/frames/bloquito_frames.tres",
+	"rey_pesadelo": "res://resources/world8/frames/rey_pesadelo_frames.tres",
+	"gato_morado": "res://resources/world8/frames/gato_morado_frames.tres",
 }
 const TILESET_PATHS := {
 	"world1_tiles": "res://resources/tilesets/world1/world1_tileset.tres",
@@ -50,10 +55,11 @@ const TILESET_PATHS := {
 	"world5_tiles": "res://resources/world5/terrain/world5_tileset.tres",
 	"world6_tiles": "res://resources/world6/terrain/world6_tileset.tres",
 	"world7_tiles": "res://resources/world7/terrain/world7_tileset.tres",
+	"world8_tiles": "res://resources/world8/terrain/world8_tileset.tres",
 }
 ## Paquetes de datos por mundo (atlases.json + characters.json). El primero es obligatorio.
-const PACKS := ["res://data", "res://data/world2", "res://data/world3", "res://data/world4", "res://data/world5", "res://data/world6", "res://data/world7"]
-const ENEMY_DIRS := ["res://resources/enemies", "res://resources/world2/enemies", "res://resources/world3/enemies", "res://resources/world4/enemies", "res://resources/world5/enemies", "res://resources/world6/enemies", "res://resources/world7/enemies"]
+const PACKS := ["res://data", "res://data/world2", "res://data/world3", "res://data/world4", "res://data/world5", "res://data/world6", "res://data/world7", "res://data/world8"]
+const ENEMY_DIRS := ["res://resources/enemies", "res://resources/world2/enemies", "res://resources/world3/enemies", "res://resources/world4/enemies", "res://resources/world5/enemies", "res://resources/world6/enemies", "res://resources/world7/enemies", "res://resources/world8/enemies"]
 
 var atlases: Dictionary = {}
 var images: Dictionary = {}

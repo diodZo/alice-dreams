@@ -26,7 +26,7 @@ func _ready() -> void:
 		var kv := a.split("=", true, 1)
 		args[kv[0]] = kv[1] if kv.size() > 1 else "1"
 	var scene_key: String = args.get("scene", "World1")
-	if scene_key in ["World1", "Boss", "World2", "Boss2", "World3", "Boss3", "World4", "Boss4", "World5", "Boss5", "World6", "Boss6", "World7", "Boss7"]:
+	if scene_key in ["World1", "Boss", "World2", "Boss2", "World3", "Boss3", "World4", "Boss4", "World5", "Boss5", "World6", "Boss6", "World7", "Boss7", "World8", "Boss8"]:
 		var world_id := WorldRegistry.id_for_scene(scene_key)
 		WorldRegistry.start_run(world_id)
 		if args.has("weapons"):

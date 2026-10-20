@@ -33,6 +33,10 @@ const SCENES := {
 	"gomilito": preload("res://scenes/enemies/world7/Gomilito.tscn"),
 	"gomilito_mini": preload("res://scenes/enemies/world7/GomilitoMini.tscn"),
 	"piruleta": preload("res://scenes/enemies/world7/Piruleta.tscn"),
+	# Mundo 8
+	"fantasmita": preload("res://scenes/enemies/world8/Fantasmita.tscn"),
+	"murcibola": preload("res://scenes/enemies/world8/Murcibola.tscn"),
+	"bloquito": preload("res://scenes/enemies/world8/BloquitoSombra.tscn"),
 }
 
 var level: Node

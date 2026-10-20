@@ -1,0 +1,38 @@
+{
+ "_doc": "Créditos finales. Sólo nombres confirmados por el propietario del proyecto: las listas vacías no se muestran. Para añadir nombres, escribirlos en las líneas de la sección 'Desarrollo' (o de otra sección).",
+ "title": "Alice Dreams",
+ "subtitle": "Guardiana de los Sueños",
+ "sections": [
+  {
+   "title": "Un agradecimiento muy especial",
+   "lines": [
+    "a Alice"
+   ]
+  },
+  {
+   "title": "Desarrollo",
+   "lines": []
+  },
+  {
+   "title": "Música y sonido",
+   "lines": [
+    "Temas del proyecto Alice Dreams",
+    "Chiptune 8-bit sintetizado en el juego"
+   ]
+  },
+  {
+   "title": "Ilustraciones y recursos",
+   "lines": [
+    "Referencias visuales",
+    "del proyecto Alice Dreams"
+   ]
+  },
+  {
+   "title": "Hecho con",
+   "lines": [
+    "Godot Engine"
+   ]
+  }
+ ],
+ "ending": "¡Gracias por jugar!"
+}

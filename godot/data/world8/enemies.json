@@ -1,0 +1,5 @@
+{
+ "fantasmita": {"key":"fantasmita","name":"Fantasmita Farol","hp":2,"speed":40,"body":{"width":18,"height":18},"detectRange":190,"detectHeight":130,"reactionTime":550,"attackRange":170,"attackCooldown":2400,"trapTime":3500},
+ "murcibola": {"key":"murcibola","name":"Murcibola de Trapo","hp":2,"speed":46,"body":{"width":18,"height":15},"detectRange":170,"detectHeight":150,"reactionTime":500,"attackRange":150,"attackCooldown":2600,"trapTime":3500},
+ "bloquito": {"key":"bloquito","name":"Bloquito Sombra","hp":4,"speed":34,"body":{"width":20,"height":19},"detectRange":150,"detectHeight":40,"reactionTime":500,"attackRange":130,"attackCooldown":2200,"trapTime":3200}
+}

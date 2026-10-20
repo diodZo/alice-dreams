@@ -60,6 +60,12 @@ const SWIM_SPEED := 0.72
 var slide_speed := 0.0
 const SLIDE_CONTROL := 55.0
 const SLIDE_ACCEL := 520.0
+## Ralentización del Mundo 8 (nube del Rey Pesadelo): reduce la velocidad y la aceleración
+## horizontales hasta `slow_until`; no bloquea el salto ni los disparos. Una nube nueva sólo
+## renueva el plazo (nunca se acumula) y el efecto termina solo.
+var slow_until := 0.0
+var slow_factor := 1.0
+const SLOW_TINT := Color(0.82, 0.68, 1.0)
 
 
 func setup(owner_level: Node, input: InputController) -> void:
@@ -116,7 +122,8 @@ func _control(time: float, dt: float) -> void:
 	var axis: int = controls.axis if can_control else 0
 	var sleepy_speed := 0.72 if time < sleepy_until else 1.0
 	var swim := SWIM_SPEED if in_water() else 1.0
-	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed * sleepy_speed * swim
+	var slow := slow_factor if time < slow_until else 1.0
+	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed * sleepy_speed * swim * slow
 	var vx := velocity.x
 	var rate: float
 	if grounded:
@@ -124,6 +131,7 @@ func _control(time: float, dt: float) -> void:
 		rate = (T.groundAccel if same_dir else T.groundDecel) * surface_friction
 	else:
 		rate = T.airAccel if axis != 0 else T.airDecel
+	rate *= slow
 	var next := target
 	if absf(target - vx) > rate * dt:
 		next = vx + signf(target - vx) * rate * dt
@@ -165,6 +173,11 @@ func _control(time: float, dt: float) -> void:
 	if in_water():
 		velocity.y = clampf(velocity.y, WATER_MAX_RISE, WATER_MAX_FALL)
 
+	# tinte violeta mientras dura la ralentización
+	if slow < 1.0:
+		sprite.modulate = Color(SLOW_TINT, sprite.modulate.a)
+	elif slow_until > 0:
+		clear_slow()
 	# parpadeo durante la invulnerabilidad
 	if time < invulnerable_until:
 		sprite.modulate.a = 0.35 if int(floor(time / 70.0)) % 2 else 1.0
@@ -263,6 +276,22 @@ func apply_sleep(duration_ms: float) -> void:
 	sleepy_until = maxf(sleepy_until, now + duration_ms)
 
 
+## Ralentiza a Alice `duration_ms` (renueva el plazo, sin acumular). factor: 0..1.
+func apply_slow(duration_ms: float, factor := 0.5) -> void:
+	slow_factor = clampf(factor, 0.2, 1.0)
+	slow_until = maxf(slow_until, minf(now + duration_ms, now + 4000.0))
+
+
+func is_slowed() -> bool:
+	return now < slow_until
+
+
+func clear_slow() -> void:
+	slow_until = 0.0
+	slow_factor = 1.0
+	sprite.modulate = Color(Color.WHITE, sprite.modulate.a)
+
+
 ## Recibe daño. Devuelve true si el golpe se aplicó.
 func hurt(from_x: Variant = null, amount := 1) -> bool:
 	if is_invulnerable() or celebrating:
@@ -297,6 +326,7 @@ func respawn_at(x: float, y: float) -> void:
 	dead = false
 	set_water(INF)
 	push_x = 0
+	clear_slow()
 	position = Vector2(x, y)
 	velocity = Vector2.ZERO
 	invulnerable_until = now + float(T.invulnerableTime)
