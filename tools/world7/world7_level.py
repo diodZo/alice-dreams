@@ -118,7 +118,7 @@ slopes = [
 # bloques de galleta sueltos (sólidos)
 blocks = [
     {"x": 418, "y": 18, "type": "block_cookie"}, {"x": 419, "y": 18, "type": "block_cookie"}, {"x": 419, "y": 17, "type": "block_cookie"},
-    {"x": 444, "y": 18, "type": "block_cookie"}, {"x": 480, "y": 16, "type": "block_cookie"}, {"x": 481, "y": 16, "type": "block_cookie"},
+    {"x": 480, "y": 16, "type": "block_cookie"}, {"x": 481, "y": 16, "type": "block_cookie"},
     {"x": 655, "y": 18, "type": "block_cookie"}, {"x": 655, "y": 17, "type": "block_cookie"},
 ]
 
@@ -184,7 +184,7 @@ paints = [
     {"x": 268, "y": 20, "w": 10, "color": "choco"}, {"x": 305, "y": 21, "w": 14, "color": "choco"},
     {"x": 340, "y": 20, "w": 12, "color": "choco"}, {"x": 372, "y": 19, "w": 9, "color": "choco"},
     {"x": 509, "y": 17, "w": 4, "color": "caramel"}, {"x": 518, "y": 22, "w": 8, "color": "caramel"},
-    {"x": 604, "y": 19, "w": 6, "color": "choco"},
+    {"x": 616, "y": 19, "w": 5, "color": "choco"},  # después de los pinchos: nunca se salta desde el chocolate
 ]
 
 # ríos de chocolate (decorado al fondo de los huecos: caer sigue siendo caer al vacío)

@@ -166,6 +166,16 @@ func _physics_process(_delta: float) -> void:
 		# se deja llevar por la nube móvil y salta cuando el suelo queda cerca
 		c.script_held.erase("move_right")
 		c.script_held.erase("run")
+		# siguiente plataforma colgante sincronizada a su altura (Mundo 8)
+		for m in level.level_objects.movers:
+			if m != riding and m is SwingPlatform and riding is SwingPlatform and is_equal_approx(m.phase, riding.phase) and is_equal_approx(m.duration, riding.duration) and m.position.x - p.position.x > 40 and m.position.x - p.position.x < 100 and absf(_surface_y(m) - p.position.y) < 20:
+				c.script_held["move_right"] = true
+				c.script_held["run"] = true
+				c.script_pressed["jump"] = true
+				c.script_held["jump"] = true
+				jump_hold = 40
+				target_mover = m
+				return
 		# también suelo más bajo (asientos de las cuerdas del Mundo 3, por encima del borde) o un
 		# saliente hasta dos teselas más alto (cohetes del Mundo 5)
 		for d in [20, 36, 52, 68, 84, 100]:

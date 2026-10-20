@@ -113,7 +113,7 @@ blocks = [
     {"x": 200, "y": 17, "type": "block_moon"}, {"x": 201, "y": 17, "type": "block_moon"},
     {"x": 340, "y": 19, "type": "block_dark"}, {"x": 341, "y": 19, "type": "block_dark"}, {"x": 341, "y": 18, "type": "block_dark"},
     {"x": 490, "y": 19, "type": "block_heart"}, {"x": 491, "y": 19, "type": "block_heart"},
-    {"x": 520, "y": 19, "type": "block_moon"}, {"x": 596, "y": 19, "type": "block_heart"}, {"x": 597, "y": 19, "type": "block_heart"},
+    {"x": 520, "y": 19, "type": "block_moon"},
 ]
 
 SHROOM = -480
@@ -150,9 +150,9 @@ movers = [
 # plataformas colgantes de cadenas (péndulo bajo el anclaje). Oscilan sincronizadas: así nunca
 # se cruzan y la distancia entre ellas es siempre la misma (saltos predecibles).
 swings = [
-    {"x": 131, "y": 12, "length": 112, "amplitude": 0.42, "duration": 3000, "frame": "hang_plat", "top": 3, "knot": "lantern_hang", "rope": "#5A3F2A"},
-    {"x": 136, "y": 12, "length": 112, "amplitude": 0.42, "duration": 3000, "frame": "hang_plat_b", "top": 3, "knot": "lantern_hang", "rope": "#5A3F2A"},
-    {"x": 141, "y": 12, "length": 112, "amplitude": 0.42, "duration": 3000, "frame": "hang_plat", "top": 3, "knot": "lantern_hang", "rope": "#5A3F2A"},
+    {"x": 131, "y": 12, "length": 112, "amplitude": 0.32, "duration": 3000, "frame": "hang_plat", "top": 3, "knot": "lantern_hang", "rope": "#5A3F2A"},
+    {"x": 135.5, "y": 12, "length": 112, "amplitude": 0.32, "duration": 3000, "frame": "hang_plat_b", "top": 3, "knot": "lantern_hang", "rope": "#5A3F2A"},
+    {"x": 140, "y": 12, "length": 112, "amplitude": 0.32, "duration": 3000, "frame": "hang_plat", "top": 3, "knot": "lantern_hang", "rope": "#5A3F2A"},
 ]
 
 # plataformas que desaparecen poco después de pisarlas (tiemblan y vuelven)

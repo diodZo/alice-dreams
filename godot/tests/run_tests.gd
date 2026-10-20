@@ -49,12 +49,12 @@ func _ready() -> void:
 		# Mundo 7
 		"test_w7_data", "test_w7_sprites", "test_w7_level_loads", "test_w7_jelly_bounce", "test_w7_sticky_and_slippery",
 		"test_w7_conveyor", "test_w7_hazards", "test_w7_temp_jelly_and_heart", "test_w7_enemies", "test_w7_weapons_vs_enemies",
-		"test_w7_boss", "test_w7_boss_victory", "test_w7_progression",
+		"test_w7_boss", "test_w7_boss_victory", "test_w7_progression", "test_w7_spikes_jumpable",
 		# Mundo 8 (final)
 		"test_w8_data", "test_w8_sprites", "test_w8_level_loads", "test_w8_ghost_platforms", "test_w8_shadow_damage",
 		"test_w8_hooks_swings_and_stars", "test_w8_lantern_bridges", "test_w8_chest_and_memories", "test_w8_enemies",
 		"test_w8_weapons_vs_enemies", "test_w8_slow_effect", "test_w8_boss_states", "test_w8_boss_attacks",
-		"test_w8_boss_defeat_cancels", "test_w8_boss_victory_and_ending", "test_w8_awakening_and_credits", "test_w8_progression",
+		"test_w8_boss_defeat_cancels", "test_w8_boss_victory_and_ending", "test_w8_awakening_and_credits", "test_w8_progression", "test_w8_spikes_jumpable",
 	]
 	# "-- only=test_x,test_y" ejecuta sólo esas pruebas
 	for a in OS.get_cmdline_user_args():
@@ -4114,3 +4114,45 @@ func test_w8_progression() -> void:
 	check(not SaveManager.is_adventure_completed() and SaveManager.is_world_completed(7) and SaveManager.unlocked_world() == 8, "compatible con partidas guardadas anteriores")
 	await get_tree().process_frame
 	SaveManager.reset_progress()
+
+
+## Cada plataforma de pinchos del Mundo 7 se puede saltar corriendo desde el suelo de delante
+## (existe un momento de salto que deja a Alice al otro lado sin daño).
+func test_w7_spikes_jumpable() -> void:
+	await _spikes_jumpable("World7")
+
+
+func test_w8_spikes_jumpable() -> void:
+	await _spikes_jumpable("World8")
+
+
+func _spikes_jumpable(scene: String) -> void:
+	await load_level(scene)
+	await settle(); _clear_spawner()
+	for h in _w7_objects(Hazard):
+		var rect: RectangleShape2D = h.get_child(1).shape
+		var left: float = h.position.x - rect.size.x / 2.0
+		var right: float = h.position.x + rect.size.x / 2.0
+		var ok := false
+		for d in range(4, 72, 6):
+			level.timers.clear()
+			place(left / C.TILE - 7, h.position.y / C.TILE)
+			level.player.invulnerable_until = 0
+			level.player.hp = level.player.max_hp
+			await frames(4)
+			hold(["move_right", "run"])
+			var hp := level.player.hp
+			var jumped := false
+			for i in 150:
+				if not jumped and level.player.position.x >= left - d:
+					jumped = true
+					hold(["move_right", "run", "jump"])
+					press("jump")
+				await frames(1)
+				if level.player.hp < hp or level.player.position.x > right + 16:
+					break
+			hold([])
+			if level.player.hp == hp and level.player.position.x > right + 8 and level.player.position.y <= h.position.y + 2:
+				ok = true
+				break
+		check(ok, "%s: los pinchos de la tesela %d se pueden saltar corriendo" % [scene, int(h.position.x / C.TILE)])

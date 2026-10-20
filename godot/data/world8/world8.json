@@ -423,16 +423,6 @@
    "x": 520,
    "y": 19,
    "type": "block_moon"
-  },
-  {
-   "x": 596,
-   "y": 19,
-   "type": "block_heart"
-  },
-  {
-   "x": 597,
-   "y": 19,
-   "type": "block_heart"
   }
  ],
  "clouds": [
@@ -588,7 +578,7 @@
    "x": 131,
    "y": 12,
    "length": 112,
-   "amplitude": 0.42,
+   "amplitude": 0.32,
    "duration": 3000,
    "frame": "hang_plat",
    "top": 3,
@@ -596,10 +586,10 @@
    "rope": "#5A3F2A"
   },
   {
-   "x": 136,
+   "x": 135.5,
    "y": 12,
    "length": 112,
-   "amplitude": 0.42,
+   "amplitude": 0.32,
    "duration": 3000,
    "frame": "hang_plat_b",
    "top": 3,
@@ -607,10 +597,10 @@
    "rope": "#5A3F2A"
   },
   {
-   "x": 141,
+   "x": 140,
    "y": 12,
    "length": 112,
-   "amplitude": 0.42,
+   "amplitude": 0.32,
    "duration": 3000,
    "frame": "hang_plat",
    "top": 3,
@@ -2107,6 +2097,10 @@
   },
   {
    "x": 594,
+   "y": 19
+  },
+  {
+   "x": 597,
    "y": 19
   },
   {
