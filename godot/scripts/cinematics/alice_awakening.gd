@@ -4,8 +4,13 @@ extends Node2D
 ##    su alrededor y sonríe.
 ##  4 Un maullido: a los pies de la cama duerme el gato morado; abre los ojos y mueve la cola.
 ##    Alice sonríe sorprendida.
-##  5 Mensaje final: "Los sueños más grandes comienzan con un poquito de valentía.",
-##    "Gracias por jugar, Alice." y "FIN". Después, los créditos.
+##  5 Mensaje final: "Y cuando Alice despertó, descubrió que los sueños más bonitos nunca
+##    desaparecen del todo.", "Gracias por jugar, Alice." y el título ALICE DREAMS. Después, los
+##    créditos.
+## Narrativa: en la habitación hay un pequeño recuerdo de cada mundo (DreamNarrative.memento);
+## el del Mundo 8 es el propio gato morado. Al mirar alrededor, los recuerdos brillan un instante.
+## Si el Diario de Sueños está completo, además el diario brilla sobre la mesilla (detalle
+## opcional: el final es el mismo para todos).
 ## Alice es SIEMPRE la protagonista oficial (resources/player): acostada es su fotograma de ojos
 ## cerrados girado; sentada, sus fotogramas normales con la colcha tapándole las piernas. La
 ## habitación y la colcha se dibujan por código (tools/world8/generate_world8_extras.py).
@@ -18,7 +23,18 @@ const ALICE_SCALE := 2.0
 const WAIST := Vector2(176, 154)
 const LYING := Vector2(126, 163)
 const CAT_POS := Vector2(304, 177)
-const LINES := ["Los sueños más grandes comienzan con un poquito de valentía.", "Gracias por jugar, Alice."]
+const LINES := ["Y cuando Alice despertó, descubrió que los sueños más bonitos nunca desaparecen del todo.", "Gracias por jugar, Alice."]
+## Dónde está el recuerdo de cada mundo en la habitación (480x270). El 8 es el gato (CAT_POS).
+const MEMORY_POS := {
+	1: Vector2(88, 46),     # nubecita colgada entre las estrellas del techo
+	2: Vector2(41, 181),    # crayón junto a la lámpara de la mesilla
+	3: Vector2(394, 236),   # peluche en el suelo, junto a la ventana
+	4: Vector2(205, 252),   # patito sobre la alfombra
+	5: Vector2(108, 252),   # tren en miniatura en el suelo
+	6: Vector2(430, 144),   # estrella luminosa en el alféizar
+	7: Vector2(374, 146),   # caramelo en el alféizar
+}
+const DIARY_POS := Vector2(27, 187)
 
 var alice_lying: AnimatedSprite2D
 var alice: AnimatedSprite2D
@@ -28,6 +44,10 @@ var text_root: Node2D
 var light: Sprite2D
 var t := 0.0
 var steps: Array = []
+## Recuerdos de los mundos (id -> Sprite2D) y diario brillante (sólo con el diario completo).
+var memories := {}
+var diary: Node2D
+var diary_bonus := false
 var step_i := 0
 var leaving := false
 var can_skip_at := 1.0
@@ -47,9 +67,15 @@ func _ready() -> void:
 	light.scale = Vector2(6, 6)
 	light.modulate = Color(C.rgb(0xffd8a0), 0.35)
 	add_child(light)
-	var lt := light.create_tween().set_loops()
-	lt.tween_property(light, "modulate:a", 0.5, 2.0).set_trans(Tween.TRANS_SINE)
-	lt.tween_property(light, "modulate:a", 0.3, 2.0).set_trans(Tween.TRANS_SINE)
+	# amanece: la luz de la ventana crece y después respira suavemente
+	light.modulate.a = 0.08
+	var lt := light.create_tween()
+	lt.tween_property(light, "modulate:a", 0.5, 2.6).set_trans(Tween.TRANS_SINE)
+	lt.tween_callback(func():
+		var loop := light.create_tween().set_loops()
+		loop.tween_property(light, "modulate:a", 0.3, 2.0).set_trans(Tween.TRANS_SINE)
+		loop.tween_property(light, "modulate:a", 0.5, 2.0).set_trans(Tween.TRANS_SINE))
+	_place_memories()
 	alice_lying = _alice()
 	Anim.show_frame(alice_lying, "blink", 0)
 	alice_lying.rotation = -PI / 2.0
@@ -80,11 +106,82 @@ func _ready() -> void:
 	text_root.z_index = 10
 	add_child(text_root)
 	steps = [
-		[2.4, _wake_up], [4.2, _look_left], [5.0, _look_right], [5.8, _smile], [7.2, _meow],
-		[8.2, _cat_wakes], [9.4, _surprised], [10.6, _happy], [12.4, func(): _line(LINES[0], 4.0)],
+		[2.4, _wake_up], [4.2, _look_left], [5.0, _look_right], [5.8, _smile], [6.2, _memories_glow], [7.2, _meow],
+		[8.2, _cat_wakes], [9.4, _surprised], [10.6, _happy], [11.4, _diary_glow], [12.4, func(): _line(LINES[0], 4.2)],
 		[16.8, func(): _line(LINES[1], 3.2)], [20.4, _fin], [24.4, _to_credits],
 	]
 	Fader.fade_in(1400, Color8(255, 240, 250))
+
+
+## Un recuerdo pequeño de cada mundo (sin llenar la habitación). La nubecita se mece.
+func _place_memories() -> void:
+	for id in MEMORY_POS:
+		var m := DreamNarrative.memento_sprite(id)
+		if m.texture == null:
+			continue
+		m.position = MEMORY_POS[id]
+		if DreamNarrative.get_world(id).get("memento", {}).get("glow", false):
+			var g := Sprite2D.new()
+			g.texture = Assets.generated("glow")
+			g.modulate = Color(C.rgb(0xfff3a0), 0.45)
+			g.scale = Vector2(1.2, 1.2)
+			g.position = m.position
+			add_child(g)
+		add_child(m)
+		memories[id] = m
+	if memories.has(1):
+		var c: Sprite2D = memories[1]
+		var tw := c.create_tween().set_loops()
+		tw.tween_property(c, "position:y", c.position.y - 3, 1.4).set_trans(Tween.TRANS_SINE)
+		tw.tween_property(c, "position:y", c.position.y, 1.4).set_trans(Tween.TRANS_SINE)
+	diary_bonus = DreamJournalManager.is_complete()
+
+
+## Alice mira su habitación y cada recuerdo brilla un instante, uno tras otro.
+func _memories_glow() -> void:
+	var i := 0
+	for id in memories:
+		var m: Sprite2D = memories[id]
+		var tw := m.create_tween()
+		tw.tween_interval(0.12 * i)
+		tw.tween_property(m, "modulate", Color(1.6, 1.5, 1.2), 0.15)
+		tw.tween_property(m, "modulate", Color.WHITE, 0.35)
+		tw.parallel().tween_callback(_sparkle.bind(m.position))
+		i += 1
+
+
+## Detalle opcional con el Diario de Sueños completo: el diario brilla sobre la mesilla.
+## PROVISIONAL: el libro se dibuja con rectángulos (no hay sprite oficial del diario).
+func _diary_glow() -> void:
+	if not diary_bonus or diary != null:
+		return
+	diary = Node2D.new()
+	diary.position = DIARY_POS
+	add_child(diary)
+	var glow := Sprite2D.new()
+	glow.texture = Assets.generated("glow")
+	glow.modulate = Color(C.rgb(0xffe18c), 0.0)
+	glow.scale = Vector2(1.4, 1.4)
+	diary.add_child(glow)
+	var cover := ColorRect.new()
+	cover.color = Color("3d3277")
+	cover.position = Vector2(-8, -5)
+	cover.size = Vector2(16, 10)
+	diary.add_child(cover)
+	var pages := ColorRect.new()
+	pages.color = Color("fff4e2")
+	pages.position = Vector2(-7, 3)
+	pages.size = Vector2(14, 2)
+	diary.add_child(pages)
+	var star := ColorRect.new()
+	star.color = C.YELLOW
+	star.position = Vector2(-1, -2)
+	star.size = Vector2(2, 2)
+	diary.add_child(star)
+	var tw := glow.create_tween().set_loops()
+	tw.tween_property(glow, "modulate:a", 0.8, 0.6).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(glow, "modulate:a", 0.35, 0.6).set_trans(Tween.TRANS_SINE)
+	_sparkle(DIARY_POS + Vector2(0, -8))
 
 
 func _alice() -> AnimatedSprite2D:
@@ -191,11 +288,11 @@ func _line(text: String, secs: float) -> void:
 		c.queue_free()
 	var band := ColorRect.new()
 	band.color = Color(C.INK, 0.7)
-	band.position = Vector2(0, 220)
-	band.size = Vector2(C.GAME_W, 34)
+	band.position = Vector2(0, 214)
+	band.size = Vector2(C.GAME_W, 44)
 	text_root.add_child(band)
-	var label := PixelText.make(text, {"origin": Vector2(0.5, 0.5), "tint": C.CREAM})
-	label.position = Vector2(C.GAME_W / 2.0, 237)
+	var label := PixelText.make(text, {"origin": Vector2(0.5, 0.5), "tint": C.CREAM, "max_width": 440.0, "center": true})
+	label.position = Vector2(C.GAME_W / 2.0, 236)
 	text_root.add_child(label)
 	text_root.modulate.a = 0.0
 	var tw := text_root.create_tween()
@@ -211,8 +308,11 @@ func _fin() -> void:
 	band.color = Color(C.INK, 0.75)
 	band.size = Vector2(C.GAME_W, C.GAME_H)
 	text_root.add_child(band)
-	var fin := PixelText.make("FIN", {"origin": Vector2(0.5, 0.5), "tint": C.YELLOW, "scale": 4})
-	fin.position = Vector2(C.GAME_W / 2.0, C.GAME_H / 2.0)
+	var title := PixelText.make("ALICE DREAMS", {"origin": Vector2(0.5, 0.5), "tint": C.YELLOW, "scale": 4})
+	title.position = Vector2(C.GAME_W / 2.0, C.GAME_H / 2.0 - 10)
+	text_root.add_child(title)
+	var fin := PixelText.make("Fin", {"origin": Vector2(0.5, 0.5), "tint": C.PINK, "scale": 2})
+	fin.position = Vector2(C.GAME_W / 2.0, C.GAME_H / 2.0 + 30)
 	text_root.add_child(fin)
 	text_root.modulate.a = 0.0
 	text_root.create_tween().tween_property(text_root, "modulate:a", 1.0, 1.2)

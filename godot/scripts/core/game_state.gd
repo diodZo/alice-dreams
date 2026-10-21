@@ -58,6 +58,8 @@ func new_run(world: Dictionary, boss: Dictionary = {}) -> void:
 		"magicCrayons": [],
 		"magicTotal": world.get("magicCrayons", []).size(),
 		"dreamCollectibles": [],
+		# Narrativa: criaturas liberadas en esta partida {id de aparición: tipo}
+		"rescued": {},
 		"dreamTotal": world.get("dreamCollectibles", []).size(),
 		# icono del HUD para el coleccionable principal: [atlas, fotograma, prefijo de id]
 		"dreamHud": world.get("dreamHud", ["world3_objects", "moon_w3", "moon_"]),

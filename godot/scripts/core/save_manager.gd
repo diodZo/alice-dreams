@@ -33,6 +33,10 @@ func defaults() -> Dictionary:
 		# un guardado anterior se carga igual (valores por defecto) y no pierde nada.
 		"adventureCompleted": false,
 		"adventureCompletedAt": "",
+		# Expansión narrativa (DreamNarrative.VERSION). Las criaturas rescatadas se guardan en
+		# worlds[N].rescued (tipos de criatura); el diario sólo recuerda qué páginas se han visto.
+		"narrativeVersion": DreamNarrative.VERSION,
+		"journal": {"seen": []},
 	}
 
 
@@ -80,9 +84,17 @@ func _merge(p: Dictionary) -> void:
 					state.worlds[key]["magicCrayons"] = w.magicCrayons.filter(func(c): return c is String)
 				if w.get("dreamCollectibles") is Array:
 					state.worlds[key]["dreamCollectibles"] = w.dreamCollectibles.filter(func(c): return c is String)
+				if w.get("rescued") is Array:
+					state.worlds[key]["rescued"] = _unique_strings(w.rescued)
 	if p.get("adventureCompleted") is bool:
 		state.adventureCompleted = p.adventureCompleted
 		state.adventureCompletedAt = str(p.get("adventureCompletedAt", ""))
+	if p.get("journal") is Dictionary and p.journal.get("seen") is Array:
+		var seen: Array = []
+		for v in p.journal.seen:
+			if (v is int or v is float) and not int(v) in seen:
+				seen.append(int(v))
+		state.journal.seen = seen
 	if p.get("settings") is Dictionary:
 		for k in ["music", "sfx"]:
 			if p.settings.get(k) is bool:
@@ -139,6 +151,8 @@ func mark_world_completed(world_id: int, stars: int, total_stars: int, special_s
 		"bestTime": best_time,
 		"completedAt": Time.get_datetime_string_from_system(true),
 	}
+	if prev.has("rescued"):
+		state.worlds[str(world_id)]["rescued"] = prev.rescued.duplicate()
 	# Mundo 2: crayones mágicos (se acumulan entre partidas)
 	var prev_magic: Array = prev.get("magicCrayons", [])
 	if not magic_crayons.is_empty() or not prev_magic.is_empty():
@@ -155,6 +169,50 @@ func mark_world_completed(world_id: int, stars: int, total_stars: int, special_s
 				all_dream.append(item)
 		state.worlds[str(world_id)]["dreamCollectibles"] = all_dream
 	state.unlockedWorld = clampi(maxi(int(state.unlockedWorld), world_id + 1), 1, WORLD_COUNT)
+	persist()
+
+
+func _unique_strings(list: Array) -> Array:
+	var out: Array = []
+	for v in list:
+		if v is String and not v in out:
+			out.append(v)
+	return out
+
+
+# ------------------------------------------------------------- narrativa
+## Registra una criatura rescatada (tipo estable, p. ej. "scratch") en su mundo. Devuelve true
+## si es la primera vez: sólo entonces se escribe el archivo. No toca el estado "completed".
+func add_rescued(world_id: int, creature_id: String) -> bool:
+	var key := str(world_id)
+	if not state.worlds.has(key):
+		state.worlds[key] = {"completed": false, "bestStars": 0, "totalStars": 0, "specialStar": false, "bestTime": 0.0, "completedAt": ""}
+	var list: Array = state.worlds[key].get("rescued", [])
+	if creature_id in list:
+		return false
+	list = list.duplicate()
+	list.append(creature_id)
+	state.worlds[key]["rescued"] = list
+	persist()
+	return true
+
+
+func get_rescued(world_id: int) -> Array:
+	return get_world(world_id).get("rescued", [])
+
+
+func journal_seen() -> Array:
+	return state.journal.get("seen", [])
+
+
+## Marca una página del diario como vista (deja de mostrarse como nueva).
+func mark_journal_seen(world_id: int) -> void:
+	var seen: Array = journal_seen()
+	if world_id in seen:
+		return
+	seen = seen.duplicate()
+	seen.append(world_id)
+	state.journal.seen = seen
 	persist()
 
 

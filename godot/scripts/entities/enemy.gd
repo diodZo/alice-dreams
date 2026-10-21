@@ -45,6 +45,8 @@ var grounded := false
 var blocked_left := false
 var blocked_right := false
 var blocked_up := false
+## Ya se registró su rescate (narrativa: Alice libera a las criaturas, no las destruye).
+var rescue_done := false
 
 
 func setup(owner_level: Node, spawn_data: Dictionary) -> void:
@@ -309,7 +311,10 @@ func _enter_DEFEATED(_prev: String, data: Variant) -> void:
 	$Body.set_deferred("disabled", true)
 	hitbox.set_deferred("monitorable", false)
 	sprite.modulate = Color(Color.WHITE, sprite.modulate.a)
-	if data is Dictionary and data.get("toStar", false):
+	var to_star: bool = data is Dictionary and data.get("toStar", false)
+	if level.has_method("rescue_creature"):
+		level.rescue_creature(self, to_star)
+	if to_star:
 		visible = false
 		level.effects.bubble_pop(position.x, position.y - def.body_size.y / 2.0)
 		finish()

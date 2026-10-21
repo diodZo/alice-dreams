@@ -6,6 +6,9 @@ var clouds: TiledSprite
 var effects: Effects
 var _confetti_acc := 0.0
 var world_id := 1
+var journal_btn: CloudButton
+var celebration: RescueCelebration
+var _new_page := false
 
 
 func _ready() -> void:
@@ -83,7 +86,11 @@ func _ready() -> void:
 	var menu := CloudButton.make("Menú principal", 150)
 	menu.activated.connect(func(_b): Router.go("Menu"))
 	buttons.append(menu)
-	box.position = Vector2(W / 2 + 10 - 75, 139 if buttons.size() == 2 else 136)
+	# Diario de Sueños: la página de este mundo acaba de desbloquearse al cruzar el portal
+	journal_btn = CloudButton.make("Diario de Sueños", 150)
+	journal_btn.activated.connect(func(_b): open_journal())
+	buttons.append(journal_btn)
+	box.position = Vector2(W / 2 + 10 - 75, 139 if buttons.size() == 2 else 136 - 13 * (buttons.size() - 3))
 	box.size = Vector2(150, 26 * buttons.size() - 4)
 	add_child(box)
 	for b in buttons:
@@ -96,6 +103,31 @@ func _ready() -> void:
 	effects = Effects.new(fx)
 	effects.confetti(W / 2, 20, 90)
 	Fader.fade_in(600, Color8(255, 247, 255))
+	# Narrativa: celebración de las criaturas liberadas y aviso de página nueva del diario
+	_new_page = bool(stats.get("newPage", false))
+	celebration = RescueCelebration.make(stats.get("rescued", []))
+	if celebration != null:
+		celebration.finished.connect(_announce_page)
+		add_child(celebration)
+	else:
+		_announce_page()
+
+
+func open_journal() -> void:
+	var j := DreamJournal.open(self, world_id)
+	j.closed.connect(func(): journal_btn.set_label("Diario de Sueños"))
+
+
+## Página nueva en el diario: el botón late y aparece un aviso breve.
+func _announce_page() -> void:
+	if not _new_page or not is_instance_valid(journal_btn):
+		return
+	journal_btn.set_label("¡Página nueva!")
+	var tw := journal_btn.create_tween().set_loops(4)
+	tw.tween_property(journal_btn, "modulate", Color(1.3, 1.25, 0.9), 0.3)
+	tw.tween_property(journal_btn, "modulate", Color.WHITE, 0.3)
+	AudioManager.play("pickup")
+	effects.sparkle(journal_btn.global_position.x + 75, journal_btn.global_position.y + 11, 10)
 
 
 func play_world(id: int) -> void:

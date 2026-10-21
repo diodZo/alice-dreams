@@ -38,6 +38,7 @@ var builder: LevelBuilder
 var level_objects: Dictionary
 var controls: InputController
 var checkpoints: CheckpointManager
+var rescues: RescuedCreatureManager
 var player: Player
 var weapons: WeaponManager
 var spawner: EnemySpawner
@@ -118,6 +119,7 @@ func _ready() -> void:
 				s[k] = e[k]
 		spawns.append(s)
 	spawner = EnemySpawner.new(self, spawns, enemies_root, 6)
+	rescues = RescuedCreatureManager.new(self)
 
 	add_child(camera)
 	camera.setup(player, Rect2(0, 0, world_w, world_h), Assets.camera_tuning())
@@ -474,6 +476,11 @@ func on_projectile_expired(proj: Projectile) -> void:
 			effects.poof(x, y, 4)
 		"frosting":
 			effects.paint_splat(x, y, C.rgb(0xff8fc8))
+
+
+## Narrativa: una criatura vencida se libera de la pesadilla (si es rescatable en este mundo).
+func rescue_creature(enemy: Enemy, to_star := false) -> bool:
+	return rescues != null and rescues.try_rescue(enemy, to_star)
 
 
 func on_enemy_finished(enemy: Enemy) -> void:

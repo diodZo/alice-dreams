@@ -95,6 +95,9 @@ func _on_hugged() -> void:
 	controls.set_enabled(false)
 	player.velocity.x = 0
 	save_ending()
+	# narrativa: el Rey Pesadelo vuelve a ser un gatito; su página del diario queda escrita
+	GameState.set_v("bossPurified", true)
+	GameState.show_toast("¡Nueva página en el Diario de Sueños!")
 	after(1500, _castle_light)
 
 

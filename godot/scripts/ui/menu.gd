@@ -47,6 +47,9 @@ var sfx_btn: HotspotButton
 var reset_btn: CloudButton
 ## Tras terminar la aventura (Mundo 8): volver a ver la cinemática final y los créditos.
 var ending_btn: CloudButton
+## Diario de Sueños (abre la página del mundo seleccionado en el carrusel).
+var journal_btn: CloudButton
+var journal_badge: PixelText
 var list: MenuList
 
 
@@ -95,7 +98,19 @@ func _ready() -> void:
 	reset_btn.activated.connect(confirm_reset)
 	add_child(reset_btn)
 
-	var buttons: Array[CloudButton] = [carousel.focus_slot, music_btn, sfx_btn, reset_btn]
+	journal_btn = CloudButton.make("Diario de Sueños", 100, 18)
+	journal_btn.position = Vector2(300, 195)
+	journal_btn.activated.connect(func(_b): open_journal())
+	add_child(journal_btn)
+	journal_badge = PixelText.make("¡Nuevo!", {"origin": Vector2(0.5, 0.5), "tint": C.YELLOW})
+	journal_badge.position = Vector2(398, 192)
+	add_child(journal_badge)
+	var bt := journal_badge.create_tween().set_loops()
+	bt.tween_property(journal_badge, "scale", Vector2(1.2, 1.2), 0.4)
+	bt.tween_property(journal_badge, "scale", Vector2.ONE, 0.4)
+	_refresh_journal_badge()
+
+	var buttons: Array[CloudButton] = [carousel.focus_slot, music_btn, sfx_btn, reset_btn, journal_btn]
 	if SaveManager.is_adventure_completed():
 		ending_btn = CloudButton.make("Ver el final", 100, 18)
 		ending_btn.position = Vector2(168, 218)
@@ -204,6 +219,19 @@ func start_game(id := 1) -> void:
 	GameState.entry = {"introBanner": true}
 	await Fader.fade_out(400)
 	Router.go(key)
+
+
+func open_journal() -> void:
+	if starting:
+		return
+	var id: int = carousel.worlds[carousel.index].id if carousel != null else 0
+	var j := DreamJournal.open(self, id)
+	j.closed.connect(_refresh_journal_badge)
+
+
+func _refresh_journal_badge() -> void:
+	if journal_badge != null:
+		journal_badge.visible = DreamJournalManager.has_new_pages()
 
 
 func watch_ending() -> void:

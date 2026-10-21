@@ -65,6 +65,8 @@ func _ready() -> void:
 	cat.play("purr")
 	add_child(cat)
 
+	_parade(W, H)
+
 	back_btn = CloudButton.make("Menú principal", 110, 18)
 	back_btn.position = Vector2(8, H - 26)
 	back_btn.activated.connect(func(_b): back_to_menu())
@@ -72,6 +74,33 @@ func _ready() -> void:
 	var buttons: Array[CloudButton] = [back_btn]
 	add_child(MenuList.new().setup(buttons))
 	Fader.fade_in(900)
+
+
+## Desfile de las criaturas liberadas en toda la aventura (una de cada tipo, hasta 6), que
+## saltan de alegría junto a Alice. Sin rescates no aparece nada.
+var parade: Node2D
+
+
+func _parade(W: float, H: float) -> void:
+	var ids: Array = []
+	for wid in DreamJournalManager.world_ids():
+		for c in SaveManager.get_rescued(wid):
+			if not c in ids and ids.size() < 6:
+				ids.append(c)
+	parade = Node2D.new()
+	add_child(parade)
+	for i in ids.size():
+		var spr := AnimatedSprite2D.new()
+		spr.sprite_frames = Assets.sprite_frames(ids[i])
+		Anim.set_origin(spr, Assets.cell_size(ids[i]), 0.5, 1.0)
+		spr.position = Vector2(W - 120 - i * 40, H - 14)
+		Anim.play(spr, "idle")
+		parade.add_child(spr)
+		var tw := spr.create_tween().set_loops()
+		tw.tween_interval(0.13 * i)
+		tw.tween_property(spr, "position:y", H - 24, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tw.tween_property(spr, "position:y", H - 14, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		tw.tween_interval(0.5)
 
 
 func _add(text: String, y: float, scale: int, tint: Color) -> float:

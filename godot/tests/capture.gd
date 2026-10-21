@@ -8,6 +8,10 @@ extends Node
 ##   weapons=1  entrega las tres armas
 ##   boss_hp     vida del jefe al empezar la captura (fuerza la fase)
 ##   shots  número de capturas (separadas por `every` fotogramas)
+##   complete=N  (narrativa) completa los Mundos 1..N con sus criaturas rescatadas (guardado aislado)
+##   rescued=a,b (Victory) criaturas liberadas en la partida -> celebración
+##   journal=N   abre el Diario de Sueños en la página del Mundo N (0 = portada)
+##   t=S         (Awakening) salta la cinemática al segundo S
 
 var args := {}
 var level: Node
@@ -26,6 +30,12 @@ func _ready() -> void:
 		var kv := a.split("=", true, 1)
 		args[kv[0]] = kv[1] if kv.size() > 1 else "1"
 	var scene_key: String = args.get("scene", "World1")
+	if args.has("complete"):
+		SaveManager.reset_progress()
+		for id in range(1, int(args.complete) + 1):
+			SaveManager.mark_world_completed(id, 50, 100, true)
+			for c in DreamNarrative.rescuable(id).slice(0, 1 if id % 2 == 0 else 2):
+				SaveManager.add_rescued(id, c)
 	if scene_key in ["World1", "Boss", "World2", "Boss2", "World3", "Boss3", "World4", "Boss4", "World5", "Boss5", "World6", "Boss6", "World7", "Boss7", "World8", "Boss8"]:
 		var world_id := WorldRegistry.id_for_scene(scene_key)
 		WorldRegistry.start_run(world_id)
@@ -35,9 +45,16 @@ func _ready() -> void:
 		GameState.entry = {"introBanner": true}
 	if scene_key == "Victory":
 		GameState.entry = {"stars": 97, "total": 144, "special": true, "time": 412000, "world": int(args.get("world", "1")), "magic": ["red", "blue"], "magicTotal": 3 if args.get("world", "1") == "2" else 0}
+	if scene_key == "Victory" and args.has("rescued"):
+		GameState.entry["rescued"] = Array(String(args.rescued).split(","))
+		GameState.entry["newPage"] = true
 	var inst: Node = load(Router.SCENES[scene_key]).instantiate()
 	add_child(inst)
 	level = inst
+	if args.has("journal"):
+		DreamJournal.open(inst, int(args.journal))
+	if args.has("t") and inst.get("t") != null:
+		inst.t = float(args.t)
 	if level is Level and args.has("x"):
 		var y := float(args.get("y", "-1"))
 		level.player.position = Vector2(float(args.x) * C.TILE + 8, (y if y >= 0 else level.player.position.y / C.TILE) * C.TILE)

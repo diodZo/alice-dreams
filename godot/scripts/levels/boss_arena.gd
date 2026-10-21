@@ -7,6 +7,9 @@ extends Level
 ##   boss.afterMusic, worldId
 
 const DEFAULT_BOSS := "res://scenes/bosses/Nubarron.tscn"
+## Nombre del jefe del Mundo 1 (su arena no lo declara en los datos).
+const DEFAULT_BOSS_NAME := "Nubarrón"
+const PURIFICATION := preload("res://scenes/narrative/BossPurification.tscn")
 
 ## Nubarron o Garabato (misma interfaz: setup, intro, hit_by, fsm, hp, defeated_at...).
 var boss: Node2D
@@ -26,7 +29,7 @@ func on_create() -> void:
 	boss.visible = false
 	boss.defeated_at.connect(on_boss_defeated)
 	GameState.set_v("bossVisible", false)
-	GameState.set_v("bossName", data.boss.get("name", "Nubarrón"))
+	GameState.set_v("bossName", data.boss.get("name", DEFAULT_BOSS_NAME))
 
 
 func on_update(_time: float, _delta: float) -> void:
@@ -79,10 +82,20 @@ func on_boss_defeated(x: float, y: float) -> void:
 	kill_enemy_projectiles()
 	AudioManager.play_music(data.boss.get("afterMusic", "world1"))
 	GameState.show_banner(data.boss.get("defeatBanner", "¡Has calmado a Nubarrón!"))
+	purify_boss()
 	# entrega la estrella dorada especial, que cae hasta el suelo de la arena
 	var star := Star.new().setup(self, Vector2(x, y), {"special": true})
 	level_objects.stars_root.add_child(star)
 	star.drop_to(float(data.boss.floorY) - 22)
+
+
+## Narrativa: el jefe vencido recupera su forma tierna (efecto común, no bloquea nada).
+func purify_boss() -> BossPurification:
+	var fx: BossPurification = PURIFICATION.instantiate()
+	fx.setup(self, boss, int(data.get("worldId", 1)))
+	fx_root.add_child(fx)
+	GameState.set_v("bossPurified", true)
+	return fx
 
 
 func on_special_star(_star: Star) -> void:
@@ -120,7 +133,8 @@ func enter_portal() -> void:
 		await Fader.fade_out(700, Color8(255, 247, 255))
 		if not is_inside_tree():
 			return
-		GameState.entry = {"stars": stars, "total": total, "special": special, "time": time, "world": world_id, "magic": magic, "magicTotal": int(GameState.get_v("magicTotal", 0)), "dream": dream, "dreamTotal": int(GameState.get_v("dreamTotal", 0))}
+		GameState.entry = {"stars": stars, "total": total, "special": special, "time": time, "world": world_id, "magic": magic, "magicTotal": int(GameState.get_v("magicTotal", 0)), "dream": dream, "dreamTotal": int(GameState.get_v("dreamTotal", 0)),
+			"rescued": RescuedCreatureManager.run_creatures(), "newPage": DreamJournalManager.is_new_page(world_id)}
 		Router.go("Victory"))
 
 
