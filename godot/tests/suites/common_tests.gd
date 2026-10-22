@@ -11,7 +11,7 @@ const TESTS := [
 	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
 	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
-	"test_intro_cinematic", "test_always_run", "test_no_falls_record", "test_resume_checkpoint", "test_hearts_all_worlds",
+	"test_intro_cinematic", "test_always_run", "test_no_falls_record", "test_resume_checkpoint", "test_hearts_all_worlds", "test_victory_teaser",
 ]
 
 
@@ -1106,3 +1106,19 @@ func test_hearts_all_worlds() -> void:
 	level.player.position = heart.position
 	await frames(5)
 	check(level.player.hp == 2 and not heart.active, "al tocarlo con vida baja se recupera un corazón")
+
+
+# IMP-022: la victoria de los Mundos 1-7 anticipa el siguiente reino
+func test_victory_teaser() -> void:
+	var missing := []
+	for w in range(1, 8):
+		GameState.entry = {"stars": 1, "total": 2, "time": 1000, "world": w}
+		var v: Control = load(Router.SCENES.Victory).instantiate()
+		add_child(v)
+		await frames(2)
+		var teaser: Node = v.find_child("NextTeaser", true, false)
+		if teaser == null or not String(teaser.text).begins_with("Siguiente sueño"):
+			missing.append(w)
+		v.queue_free()
+		await get_tree().process_frame
+	check(missing.is_empty(), "la victoria anticipa el siguiente reino (falta en %s)" % str(missing))

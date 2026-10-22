@@ -297,6 +297,7 @@
 - **Complejidad:** Media. **Prioridad:** Media.
 - **Archivos involucrados:** `godot/scenes/cinematics/Intro.tscn` y `godot/scripts/cinematics/intro.gd` **(nuevos, propuestos)**, `godot/scripts/core/router.gd`, `godot/scripts/ui/victory.gd`, `godot/scripts/levels/world_registry.gd`.
 - **Criterios de aceptación:** primera partida muestra la intro una vez (marcada en el guardado); se puede saltar con cualquier acción.
+- **Estado: hecho.** La viñeta inicial la cubre la cinemática de introducción en vídeo (`scenes/cinematics/IntroCinematic.tscn`), que por decisión del autor se ve en cada arranque del juego (no sólo en la primera partida) y se salta con Enter, Esc, A, Start o tocando. La victoria de los Mundos 1-7 muestra una línea que anticipa el siguiente reino (`nextTeaser` en `WorldRegistry`). Prueba `test_victory_teaser`.
 
 ### IMP-023
 **Música y efectos definitivos**

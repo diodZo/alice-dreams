@@ -34,6 +34,17 @@ func _ready() -> void:
 	var sub := PixelText.make(info_w.get("victorySub", ""), {"origin": Vector2(0.5, 0.5), "tint": C.CREAM})
 	sub.position = Vector2(W / 2, 50)
 	add_child(sub)
+	# anticipo del siguiente reino (IMP-022)
+	var teaser_text: String = info_w.get("nextTeaser", "")
+	if teaser_text != "":
+		var teaser := PixelText.make(teaser_text, {"origin": Vector2(0.5, 0.5), "tint": C.PINK})
+		teaser.name = "NextTeaser"
+		teaser.position = Vector2(W / 2, 62)
+		teaser.modulate.a = 0.0
+		add_child(teaser)
+		var tw := teaser.create_tween()
+		tw.tween_interval(1.0)
+		tw.tween_property(teaser, "modulate:a", 1.0, 0.6)
 
 	var hero := AnimatedSprite2D.new()
 	hero.sprite_frames = Assets.sprite_frames("player")
