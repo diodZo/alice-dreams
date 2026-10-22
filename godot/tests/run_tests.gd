@@ -20,7 +20,7 @@ func _ready() -> void:
 		"test_player_rests_on_ground", "test_walk_and_run_speeds", "test_jump_height_and_variable_jump",
 		"test_coyote_time", "test_jump_buffer", "test_one_way_cloud", "test_moving_platform_carries",
 		"test_crumble_platform", "test_bounce_pad", "test_bouncy_cloud", "test_wind_zone", "test_hazard_damage",
-		"test_fall_respawn_checkpoint", "test_star_and_pickup", "test_weapons",
+		"test_fall_respawn_checkpoint", "test_playtest_log", "test_star_and_pickup", "test_weapons",
 		"test_bubble_traps_and_star", "test_paint_and_sling_damage", "test_stomp", "test_scratch_ai",
 		"test_spit_ai", "test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory",
 		"test_menu_keyboard", "test_gamepad", "test_menu_art", "test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside",
@@ -392,6 +392,33 @@ func test_fall_respawn_checkpoint() -> void:
 	await frames(80)
 	check(level.player.hp == 2, "caer al vacío quita un corazón")
 	near(level.player.position.x, 138 * C.TILE + 8, 1.0, "reaparece en la bandera")
+
+
+# IMP-034: con "--playtest" los eventos del nivel se añaden a un CSV; sin él no se escribe nada
+func test_playtest_log() -> void:
+	var file := "user://test_playtest.csv"
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(file))
+	PlaytestLog.path = file
+	PlaytestLog.enabled = false
+	await load_level()
+	await settle()
+	check(not FileAccess.file_exists(file), "sin --playtest no se escribe el registro")
+	PlaytestLog.enabled = true
+	await load_level()
+	await settle()
+	place(138, 19)
+	await frames(10)
+	place(161, 21) # hueco 160-162
+	await frames(80)
+	PlaytestLog.enabled = false
+	var lines := FileAccess.get_file_as_string(file).strip_edges().split("\n")
+	check(lines.size() >= 4 and lines[0] == PlaytestLog.HEADER, "cabecera y una fila por evento (%d líneas)" % lines.size())
+	var kinds := Array(lines).slice(1).map(func(l): return l.split(",")[5])
+	check(kinds.has("inicio") and kinds.has("checkpoint") and kinds.has("caida"), "inicio, checkpoint y caída registrados (%s)" % str(kinds))
+	var fall: PackedStringArray = Array(lines).filter(func(l): return l.split(",")[5] == "caida")[0].split(",")
+	check(fall[2] == "1" and fall[4] == "B" and int(fall[6]) >= 158 and int(fall[6]) <= 164 and fall[8] == "2", "la caída lleva mundo, sección, tesela y vida")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(file))
+	PlaytestLog.path = "user://playtest.csv"
 
 
 func test_star_and_pickup() -> void:

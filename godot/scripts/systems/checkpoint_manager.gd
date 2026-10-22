@@ -43,5 +43,6 @@ func activate(flag: Checkpoint) -> void:
 	GameState.set_v("checkpoint", current)
 	AudioManager.play("checkpoint")
 	GameState.show_toast("¡Punto de control!")
+	PlaytestLog.event(level, "checkpoint", str(flag.index))
 	# al tocar un checkpoint se recupera la vida
 	level.player.heal(true)

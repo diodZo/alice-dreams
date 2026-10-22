@@ -67,6 +67,7 @@ func on_boss_phase(phase: int) -> void:
 
 
 func on_boss_defeated(_x: float, _y: float) -> void:
+	PlaytestLog.event(self, "jefe_vencido")
 	GameState.set_v("bossVisible", false)
 	kill_enemy_projectiles()
 	for fs in phase_stars:

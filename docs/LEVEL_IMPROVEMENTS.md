@@ -318,6 +318,7 @@
 - **Complejidad:** Baja. **Prioridad:** **Crítica** (todas las propuestas de balance dependen de ella).
 - **Archivos involucrados:** `godot/scripts/levels/level.gd` (registro opcional), `docs/PLAYTEST_LOG.md` **(nuevo, propuesto)**.
 - **Criterios de aceptación:** existe un registro por mundo con caídas/golpes por sección de al menos dos jugadores; las propuestas IMP-004/005/006/007 se ajustan con esos datos.
+- **Estado: herramientas listas; faltan las sesiones.** Registro opcional con `-- --playtest` (`godot/scripts/systems/playtest_log.gd` → `user://playtest.csv`: inicio, golpe, caída, desmayo, sección, checkpoint, puerta y jefe vencido, con mundo, sección, tesela, tiempo y vida); resumen con `python tools/playtest_summary.py`; protocolo y plantilla en [`PLAYTEST_LOG.md`](PLAYTEST_LOG.md). Prueba `test_playtest_log`.
 
 ---
 
@@ -379,6 +380,7 @@
 - **Archivos involucrados:** `tools/world6/world6_level.py`, `godot/data/world6/world6.json`, `godot/scripts/objects/train_line.gd` (sólo si se confirma un problema de sincronía).
 - **Dependencias:** IMP-001; IMP-034 para saber si una persona tiene el mismo problema.
 - **Criterios de aceptación:** el piloto invulnerable cruza el tren de la sección E con ≤3 caídas y llega a la puerta en < 150 s; `test_w6_*` en verde.
+- **Estado: punto (1) hecho con IMP-001** (checkpoint en la tesela 548). Con el recuento de caídas corregido, el piloto invulnerable cruza con **3 caídas** (antes se contaban 49) y llega en 198 s (antes 313). Los 198 s se van sobre todo esperando los trenes de las secciones A-C, no en la E: empezando en las teselas 525-549 cruza sin caídas en 15 s; las caídas sólo aparecen si llega al andén con el tren ya en marcha (salida desde las teselas 500-510). El límite de < 150 s no se cumple por esas esperas. Puntos (2) y (3) —sincronía con la llegada y andén visible— pendientes de ver si a una persona le pasa lo mismo (IMP-034).
 
 ### IMP-030
 **Mundo 6 — Pico de densidad en la sección D**

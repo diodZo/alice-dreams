@@ -94,6 +94,7 @@ func _ready() -> void:
 	player.hp = mini(hp, player.max_hp) if hp > 0 else player.max_hp
 	player.hp_changed.connect(func(v): GameState.set_v("hp", v))
 	player.fainted.connect(func(): after(900, func(): respawn(true)))
+	player.fainted.connect(func(): PlaytestLog.event(self, "desmayo"))
 	bonus_root = _container("BonusStars")
 	player_projectiles = _container("PlayerProjectiles")
 	enemy_projectiles = _container("EnemyProjectiles")
@@ -143,6 +144,7 @@ func _ready() -> void:
 		announce_section()
 
 	on_create()
+	PlaytestLog.event(self, "inicio")
 	Fader.fade_in(450)
 
 
@@ -311,6 +313,7 @@ func enter_door() -> void:
 	if leaving or player.dead:
 		return
 	leaving = true
+	PlaytestLog.event(self, "fin", "puerta")
 	player.frozen = true
 	player.velocity = Vector2.ZERO
 	controls.set_enabled(false)
@@ -512,6 +515,7 @@ func handle_fall() -> void:
 	player.hp = maxi(0, player.hp - 1)
 	GameState.set_v("hp", player.hp)
 	AudioManager.play("hurt")
+	PlaytestLog.event(self, "caida")
 	respawn(player.hp <= 0)
 
 
@@ -608,6 +612,7 @@ func update_progress(delta_ms: float) -> void:
 	if idx != section_index:
 		section_index = idx
 		GameState.set_v("section", data.sections[idx].id)
+		PlaytestLog.event(self, "seccion")
 		announce_section()
 
 

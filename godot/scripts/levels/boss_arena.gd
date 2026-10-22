@@ -78,6 +78,7 @@ func start_fight() -> void:
 
 
 func on_boss_defeated(x: float, y: float) -> void:
+	PlaytestLog.event(self, "jefe_vencido")
 	GameState.set_v("bossVisible", false)
 	kill_enemy_projectiles()
 	AudioManager.play_music(data.boss.get("afterMusic", "world1"))

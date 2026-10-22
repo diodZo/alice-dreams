@@ -305,6 +305,7 @@ func hurt(from_x: Variant = null, amount := 1) -> bool:
 	AudioManager.play("hurt")
 	level.camera.shake(120, 0.004)
 	hp_changed.emit(hp)
+	PlaytestLog.event(level, "golpe", "x=%s" % str(from_x) if from_x != null else "")
 	if hp <= 0:
 		faint()
 	return true
