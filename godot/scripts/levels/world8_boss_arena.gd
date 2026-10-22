@@ -107,7 +107,7 @@ func save_ending() -> void:
 	var total := int(GameState.get_v("starsTotal", 0))
 	var time: float = GameState.get_v("playTime", 0.0)
 	var dream: Array = GameState.get_v("dreamCollectibles", [])
-	SaveManager.mark_world_completed(8, stars, total, true, time, [], dream)
+	SaveManager.mark_world_completed(8, stars, total, true, time, [], dream, int(GameState.get_v("falls", 0)) == 0)
 	SaveManager.mark_adventure_completed()
 
 

@@ -33,11 +33,16 @@ func _ready() -> void:
 		AudioManager.set_sfx_enabled(not AudioManager.sfx_on)
 		b.set_label(_sfx_label())
 		AudioManager.play("ui_select"))
+	var run := CloudButton.make(_run_label(), 170)
+	run.activated.connect(func(b):
+		SaveManager.set_setting("alwaysRun", SaveManager.get_setting("alwaysRun") != true)
+		b.set_label(_run_label())
+		AudioManager.play("ui_select"))
 	var restart := CloudButton.make("Volver al checkpoint", 170)
 	restart.activated.connect(func(_b): level.restart_from_checkpoint())
 	var quit := CloudButton.make("Salir al menú", 170)
 	quit.activated.connect(func(_b): level.exit_to_menu())
-	var buttons: Array[CloudButton] = [resume, music, sfx, restart, quit]
+	var buttons: Array[CloudButton] = [resume, music, sfx, run, restart, quit]
 	for b in buttons:
 		box.add_child(b)
 	add_child(MenuList.new().setup(buttons))
@@ -54,6 +59,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _music_label() -> String:
 	return "Música: %s" % ("Sí" if AudioManager.music_on else "No")
+
+
+func _run_label() -> String:
+	return "Correr: %s" % ("siempre" if SaveManager.get_setting("alwaysRun") == true else "mantener")
 
 
 func _sfx_label() -> String:

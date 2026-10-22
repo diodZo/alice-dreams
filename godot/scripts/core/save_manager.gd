@@ -28,7 +28,7 @@ func defaults() -> Dictionary:
 		"unlockedWorld": 1,
 		# { "1": { completed, bestStars, totalStars, specialStar, bestTime, completedAt } }
 		"worlds": {},
-		"settings": {"music": true, "sfx": true},
+		"settings": {"music": true, "sfx": true, "alwaysRun": false},
 		# Mundo 8: victoria final (desbloquea volver a ver el final desde el menú). Campos nuevos:
 		# un guardado anterior se carga igual (valores por defecto) y no pierde nada.
 		"adventureCompleted": false,
@@ -96,7 +96,7 @@ func _merge(p: Dictionary) -> void:
 				seen.append(int(v))
 		state.journal.seen = seen
 	if p.get("settings") is Dictionary:
-		for k in ["music", "sfx"]:
+		for k in ["music", "sfx", "alwaysRun"]:
 			if p.settings.get(k) is bool:
 				state.settings[k] = p.settings[k]
 
@@ -138,7 +138,8 @@ func unlocked_world() -> int:
 	return int(state.unlockedWorld)
 
 
-func mark_world_completed(world_id: int, stars: int, total_stars: int, special_star := false, time_ms := 0.0, magic_crayons: Array = [], dream_collectibles: Array = []) -> void:
+## no_falls: la partida terminó sin caer al vacío ni desmayarse (sello «¡Sin caídas!», IMP-021).
+func mark_world_completed(world_id: int, stars: int, total_stars: int, special_star := false, time_ms := 0.0, magic_crayons: Array = [], dream_collectibles: Array = [], no_falls := false) -> void:
 	var prev := get_world(world_id)
 	var best_time: float = prev.get("bestTime", 0.0)
 	if time_ms > 0 and (best_time <= 0 or time_ms < best_time):
@@ -148,6 +149,7 @@ func mark_world_completed(world_id: int, stars: int, total_stars: int, special_s
 		"bestStars": maxi(int(prev.get("bestStars", 0)), stars),
 		"totalStars": total_stars,
 		"specialStar": bool(prev.get("specialStar", false)) or special_star,
+		"noFalls": bool(prev.get("noFalls", false)) or no_falls,
 		"bestTime": best_time,
 		"completedAt": Time.get_datetime_string_from_system(true),
 	}

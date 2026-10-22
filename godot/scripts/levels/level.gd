@@ -94,7 +94,9 @@ func _ready() -> void:
 	player.hp = mini(hp, player.max_hp) if hp > 0 else player.max_hp
 	player.hp_changed.connect(func(v): GameState.set_v("hp", v))
 	player.fainted.connect(func(): after(900, func(): respawn(true)))
-	player.fainted.connect(func(): PlaytestLog.event(self, "desmayo"))
+	player.fainted.connect(func():
+		GameState.inc("falls", 1)
+		PlaytestLog.event(self, "desmayo"))
 	bonus_root = _container("BonusStars")
 	player_projectiles = _container("PlayerProjectiles")
 	enemy_projectiles = _container("EnemyProjectiles")
@@ -507,6 +509,7 @@ func handle_fall() -> void:
 	player.hp = maxi(0, player.hp - 1)
 	GameState.set_v("hp", player.hp)
 	AudioManager.play("hurt")
+	GameState.inc("falls", 1)
 	PlaytestLog.event(self, "caida")
 	respawn(player.hp <= 0)
 

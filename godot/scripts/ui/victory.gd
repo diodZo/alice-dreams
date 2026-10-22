@@ -71,6 +71,8 @@ func _ready() -> void:
 	var info := PixelText.make("\n".join(lines), {"origin": Vector2(0.5, 0), "tint": C.CREAM, "center": true})
 	info.position = Vector2(W / 2 + 10, 76)
 	add_child(info)
+	if stats.get("noFalls", false):
+		_no_falls_stamp()
 
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 4)
@@ -142,3 +144,17 @@ func _process(delta: float) -> void:
 	if _confetti_acc >= 1600:
 		_confetti_acc -= 1600
 		effects.confetti(randi_range(60, C.GAME_W - 60), 10, 40)
+
+
+## Sello «¡Sin caídas!» (IMP-021): la partida terminó sin caer al vacío ni desmayarse.
+func _no_falls_stamp() -> void:
+	var stamp := PixelText.make("¡Sin caídas!", {"origin": Vector2(0.5, 0.5), "scale": 2, "tint": C.YELLOW})
+	stamp.name = "NoFallsStamp"
+	stamp.position = Vector2(C.GAME_W - 78, 40)
+	stamp.rotation_degrees = -8
+	stamp.scale = Vector2(1.6, 1.6)
+	add_child(stamp)
+	var tw := stamp.create_tween()
+	tw.tween_interval(0.6)
+	tw.tween_property(stamp, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_callback(func(): AudioManager.play("checkpoint"))

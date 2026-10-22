@@ -44,7 +44,9 @@ func update() -> void:
 		left = _held("move_left")
 		right = _held("move_right")
 		up = _held("aim_up")
-		run = _held("run")
+		# opción «Correr: siempre» (IMP-019): corre sin mantener Shift y Shift camina. Los
+		# controles programados (pruebas, piloto) no la usan.
+		run = _held("run") != (not scripted and SaveManager.get_setting("alwaysRun") == true)
 		jump_held = _held("jump")
 		fire_held = _held("fire")
 		jump_pressed = jp

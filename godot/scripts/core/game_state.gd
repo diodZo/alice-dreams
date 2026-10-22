@@ -53,6 +53,8 @@ func new_run(world: Dictionary, boss: Dictionary = {}) -> void:
 		"checkpoint": null,
 		"hp": 3,
 		"playTime": 0.0,
+		# caídas al vacío y desmayos en el nivel y la arena (sello «¡Sin caídas!», IMP-021)
+		"falls": 0,
 		"progress": 0.0,
 		"specialStar": false,
 		"bossVisible": false,

@@ -44,7 +44,7 @@ func _ready() -> void:
 			GameState.set_v("weapon", args.get("weapon", "bubble"))
 		GameState.entry = {"introBanner": true}
 	if scene_key == "Victory":
-		GameState.entry = {"stars": 97, "total": 144, "special": true, "time": 412000, "world": int(args.get("world", "1")), "magic": ["red", "blue"], "magicTotal": 3 if args.get("world", "1") == "2" else 0}
+		GameState.entry = {"stars": 97, "total": 144, "special": true, "time": 412000, "world": int(args.get("world", "1")), "magic": ["red", "blue"], "magicTotal": 3 if args.get("world", "1") == "2" else 0, "noFalls": args.has("nofalls")}
 	if scene_key == "Victory" and args.has("rescued"):
 		GameState.entry["rescued"] = Array(String(args.rescued).split(","))
 		GameState.entry["newPage"] = true

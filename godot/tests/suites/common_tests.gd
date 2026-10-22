@@ -11,7 +11,7 @@ const TESTS := [
 	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
 	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
-	"test_intro_cinematic",
+	"test_intro_cinematic", "test_always_run", "test_no_falls_record",
 ]
 
 
@@ -979,3 +979,69 @@ func test_intro_cinematic() -> void:
 	await get_tree().process_frame
 	check(win.content_scale_mode == base_mode, "la ventana queda con la escala del proyecto")
 	GameState.intro_played = true
+
+
+# IMP-019: opción «Correr: siempre» (corre sin Shift; Shift camina), guardada en los ajustes
+func test_always_run() -> void:
+	SaveManager.set_setting("alwaysRun", true)
+	await load_level()
+	level.controls.scripted = false
+	await settle()
+	place(6, 19)
+	await settle()
+	Input.action_press("move_right")
+	await frames(30)
+	near(level.player.velocity.x, 150, 8, "con la opción activa corre sin mantener Shift")
+	Input.action_press("run")
+	await frames(20)
+	near(level.player.velocity.x, 95, 8, "y Shift camina")
+	Input.action_release("run")
+	Input.action_release("move_right")
+	SaveManager.load_state()
+	check(SaveManager.get_setting("alwaysRun") == true, "el ajuste se guarda")
+	SaveManager.set_setting("alwaysRun", false)
+	place(6, 19)
+	await settle()
+	Input.action_press("move_right")
+	await frames(30)
+	near(level.player.velocity.x, 95, 8, "con la opción desactivada vuelve a andar")
+	Input.action_release("move_right")
+	level.controls.scripted = true
+	SaveManager.set_setting("alwaysRun", true)
+	place(6, 19)
+	await settle()
+	hold(["move_right"])
+	await frames(30)
+	near(level.player.velocity.x, 95, 8, "los controles programados (pruebas, piloto) no usan la opción")
+	SaveManager.set_setting("alwaysRun", false)
+	var menu: CanvasLayer = Level.PAUSE_SCENE.instantiate()
+	menu.level = level
+	add_child(menu)
+	await frames(2)
+	var labels: Array = menu.find_children("*", "CloudButton", true, false).map(func(b): return b.label.text)
+	check(labels.any(func(t): return t == "Correr: mantener"), "el menú de pausa tiene la opción (%s)" % str(labels))
+	menu.queue_free()
+
+
+# IMP-021: las caídas cuentan en la partida; sello «¡Sin caídas!» en la victoria y en el guardado
+func test_no_falls_record() -> void:
+	SaveManager.reset_progress()
+	await load_level()
+	await settle()
+	check(int(GameState.get_v("falls", -1)) == 0, "una partida nueva empieza sin caídas")
+	place(161, 21) # hueco 160-162
+	await frames(80)
+	check(int(GameState.get_v("falls", 0)) == 1, "caer al vacío cuenta como caída")
+	SaveManager.mark_world_completed(1, 10, 100, false, 1000.0, [], [], true)
+	check(SaveManager.get_world(1).get("noFalls", false), "completar sin caídas se guarda")
+	SaveManager.mark_world_completed(1, 10, 100, false, 1000.0, [], [], false)
+	check(SaveManager.get_world(1).get("noFalls", false), "y se conserva aunque otra partida tenga caídas")
+	for no_falls in [true, false]:
+		GameState.entry = {"stars": 1, "total": 2, "time": 1000, "world": 1, "noFalls": no_falls}
+		var v: Control = load(Router.SCENES.Victory).instantiate()
+		add_child(v)
+		await frames(2)
+		check((v.find_child("NoFallsStamp", true, false) != null) == no_falls, "sello en la victoria sólo sin caídas (%s)" % no_falls)
+		v.queue_free()
+		await get_tree().process_frame
+	SaveManager.reset_progress()
