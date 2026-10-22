@@ -335,6 +335,7 @@
 - **Archivos involucrados:** `src/data/world1.js` → `godot/data/worlds/world1.json`; `tools/world2/world2_level.py` → `godot/data/world2/world2.json`; opcional `godot/scripts/objects/moving_platform.gd` para el aviso.
 - **Dependencias:** IMP-001.
 - **Criterios de aceptación:** el piloto invulnerable cruza el foso con ≤3 caídas en ambos mundos; una persona de la edad objetivo lo cruza en ≤3 intentos (IMP-034).
+- **Estado: punto (1) hecho con IMP-001** (Mundo 1: checkpoint en la tesela 229; Mundo 2: el de la 146 pasa a la 125, antes del puente dibujado). Con el recuento de caídas corregido, el piloto invulnerable cae **1 vez** en todo el Mundo 1 y 1 en todo el Mundo 2 (las 49 y 16 de la auditoría eran el recuento inflado): primer criterio cumplido. Los puntos (2) y (3) (escalón de rescate y aviso antes de invertir el sentido) quedan a la espera de la prueba jugada.
 
 ### IMP-025
 **Mundo 1 — Sección E con desafío final**
