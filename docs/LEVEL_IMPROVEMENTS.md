@@ -361,6 +361,7 @@
 - **Archivos involucrados:** `tools/world3/world3_level.py`, `godot/data/world3/world3.json`.
 - **Dependencias:** ninguna.
 - **Criterios de aceptación:** ningún enemigo de embestida patrulla a menos de 4 teselas de un foso que se cruce con cuerda; el piloto sin invulnerabilidad supera la sección B.
+- **Estado: hecho.** El Ovillo de la tesela 132 pasa al suelo continuo de la sección B (tesela 169, patrulla 164-174, a 5 teselas del foso con cuerdas 179-193); la plataforma entre las dos primeras cuerdas queda de descanso. La regla se comprueba en el generador y en `test_w3_data`. El piloto **sin** invulnerabilidad supera la sección B y llega a la tesela 492 (antes 445); con invulnerabilidad, igual que antes (91 s, 0 caídas).
 
 ### IMP-028
 **Mundo 4 — Variación enemiga ligada al agua**

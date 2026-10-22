@@ -1321,6 +1321,18 @@ func test_w3_data() -> void:
 	var types := {}
 	for e in w.enemies: types[e.type] = true
 	check(types.has("rabbit") and types.has("wool") and types.has("pillow"), "los tres enemigos oficiales")
+	# IMP-027: ningún Ovillo (embiste) patrulla a menos de 4 teselas de un foso que se cruza con cuerda
+	var ground := {}
+	for t in w.terrain:
+		for x in range(int(t.x), int(t.x) + int(t.w)):
+			ground[x] = true
+	var near_rope := []
+	for e in w.enemies.filter(func(e): return e.type == "wool"):
+		for x in range(int(e.patrol[0]) - 4, int(e.patrol[1]) + 5):
+			if not ground.has(x) and w.swings.any(func(s): return absf(float(s.x) - x) <= 6):
+				near_rope.append(int(e.x))
+				break
+	check(near_rope.is_empty(), "ningún Ovillo junto a un foso con cuerda (%s)" % str(near_rope))
 	check(String(b.boss.scene).ends_with("ReySieston.tscn"), "arena con Rey Siestón")
 	var manifest: Dictionary = C.load_json("res://data/world3/world3_asset_manifest.json")
 	check(manifest.summary.pending.is_empty(), "manifiesto de recursos sin pendientes")

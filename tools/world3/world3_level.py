@@ -169,7 +169,7 @@ stars = (
 
 enemies = (
     [enemy("rabbit", x, y, a, b) for x, y, a, b in [(50, 20, 44, 64), (84, 19, 76, 94), (200, 20, 195, 207), (330, 20, 324, 342), (388, 16, 382, 394), (480, 20, 470, 486), (528, 19, 518, 540)]]
-    + [enemy("wool", x, y, a, b) for x, y, a, b in [(132, 20, 124, 139), (236, 20, 231, 245), (352, 20, 345, 364), (438, 20, 434, 443), (502, 19, 494, 511)]]
+    + [enemy("wool", x, y, a, b) for x, y, a, b in [(169, 19, 164, 174), (236, 20, 231, 245), (352, 20, 345, 364), (438, 20, 434, 443), (502, 19, 494, 511)]]
     # las almohadas flotan 3-4 teselas sobre el suelo: se alcanzan de un salto
     + [enemy("pillow", x, y, a, b) for x, y, a, b in [(242, 16, 232, 246), (264, 10, 256, 274), (294, 15, 291, 311), (338, 16, 330, 343), (456, 8, 448, 461), (536, 15, 524, 548)]]
 )
@@ -236,6 +236,16 @@ boss = {
              "defeatBanner": "¡El reino vuelve a dormir en paz!", "portalToast": "El portal al Mundo 4 está preparado", "afterMusic": "world3"},
     "portal": {"x": 57, "y": 14},
 }
+
+# IMP-027: ningún Ovillo (embiste) patrulla a menos de 4 teselas de un foso que se cruza con
+# cuerda: su golpe y el retroceso lanzarían a Alice al vacío. La plataforma entre las cuerdas de
+# la sección B (122-140) queda de descanso; el Ovillo pasa al suelo continuo de la 152-177.
+ground = {x for t in terrain for x in range(t["x"], t["x"] + t["w"])}
+rope_pits = [x for x in range(int(level["widthTiles"])) if x not in ground and any(abs(x - s["x"]) <= 6 for s in swings)]
+for e in enemies:
+    if e["type"] == "wool":
+        a, b = e["patrol"]
+        assert all(p < a - 4 or p > b + 4 for p in rope_pits), f"Ovillo junto a un foso con cuerda: {e}"
 
 OUT.mkdir(parents=True, exist_ok=True)
 for name, data in [("world3.json", level), ("world3_boss.json", boss)]:
