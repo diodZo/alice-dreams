@@ -174,7 +174,8 @@ enemies = (
     + [enemy("pillow", x, y, a, b) for x, y, a, b in [(242, 16, 232, 246), (264, 10, 256, 274), (294, 15, 291, 311), (338, 16, 330, 343), (456, 8, 448, 461), (536, 15, 524, 548)]]
 )
 
-checkpoints = [{"x": 109, "y": 19}, {"x": 322, "y": 20}]
+# IMP-001: uno por sección (o a <= 320 px de su entrada), ningún tramo > 2.500 px
+checkpoints = [{"x": 109, "y": 19}, {"x": 214, "y": 20}, {"x": 322, "y": 20}, {"x": 409, "y": 16}, {"x": 485, "y": 20}]
 
 signs = [
     {"x": 5, "y": 20, "text": "Mundo 3: El Reino de los Peluches Dormilones. ¡Tus tres armas te acompañan!"},

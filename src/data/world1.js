@@ -185,9 +185,13 @@ export const WORLD1 = {
     { type: 'flea', x: 440, y: 19, patrol: [436, 444] },
   ],
 
+  // IMP-001: uno por sección (o a <= 320 px de su entrada) y ningún tramo > 2.500 px; el de la
+  // tesela 229 queda antes de la nube móvil sobre el foso 245-255
   checkpoints: [
     { x: 138, y: 20 },
+    { x: 229, y: 19 },
     { x: 367, y: 19 },
+    { x: 401, y: 19 },
   ],
 
   pickups: [

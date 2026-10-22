@@ -255,7 +255,9 @@ enemies = (
         (307, 18, 302, 311), (336, 19, 333, 339), (433, 17, 431, 437), (530, 19, 525, 536)]]
 )
 
-checkpoints = [{"x": 118, "y": 19}, {"x": 398, "y": 19}]
+# IMP-001: uno por sección (o a <= 320 px de su entrada) y ningún tramo > 2.500 px; los de las
+# teselas 254 y 548 quedan justo antes de subir a los trenes de las secciones C y E
+checkpoints = [{"x": 118, "y": 19}, {"x": 254, "y": 18}, {"x": 398, "y": 19}, {"x": 548, "y": 19}]
 
 signs = [
     {"x": 3, "y": 20, "text": "Mundo 5: ¡El Reino del Tren de Juguete! Viaja en los trenes mágicos entre las nubes"},

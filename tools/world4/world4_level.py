@@ -214,7 +214,8 @@ enemies = (
         (512, 15, 506, 518)]]
 )
 
-checkpoints = [{"x": 173, "y": 20}, {"x": 352, "y": 20}]
+# IMP-001: uno por sección (o a <= 320 px de su entrada), ningún tramo > 2.500 px
+checkpoints = [{"x": 111, "y": 20}, {"x": 173, "y": 20}, {"x": 230, "y": 20}, {"x": 352, "y": 20}, {"x": 500, "y": 19}]
 
 signs = [
     {"x": 7, "y": 20, "text": "Mundo 4: ¡El Reino de las Burbujas! Tus tres armas te acompañan"},

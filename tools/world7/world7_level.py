@@ -274,7 +274,8 @@ enemies = (
         (280, 15, 272, 290), (315, 16, 306, 324), (353, 16, 344, 358), (386, 14, 376, 398), (550, 14, 544, 558), (642, 14, 636, 650)]]
 )
 
-checkpoints = [{"x": 205, "y": 18}, {"x": 468, "y": 17}]
+# IMP-001: uno por sección (o a <= 320 px de su entrada), ningún tramo > 2.500 px
+checkpoints = [{"x": 127, "y": 20}, {"x": 205, "y": 18}, {"x": 301, "y": 21}, {"x": 410, "y": 19}, {"x": 468, "y": 17}, {"x": 564, "y": 19}]
 
 signs = [
     {"x": 3, "y": 20, "text": "Mundo 7: ¡El Valle de Caramelo! Un reino de chocolate, glaseado y gominolas"},

@@ -204,7 +204,9 @@ LEVEL = {
         enemy("eraser", 344, 19, 339, 349), enemy("crayon", 364, 19, 358, 375), enemy("brush", 388, 16, 382, 393),
         enemy("crayon", 410, 19, 403, 417), enemy("eraser", 424, 19, 419, 429), enemy("brush", 446, 19, 437, 452),
     ],
-    "checkpoints": [{"x": 146, "y": 19}, {"x": 357, "y": 19}],
+    # IMP-001: uno por sección y ningún tramo > 2.500 px. El primero va antes del puente dibujado
+    # (132-140), no después; el de la sección C, antes de los ríos con plataformas móviles
+    "checkpoints": [{"x": 125, "y": 19}, {"x": 211, "y": 19}, {"x": 357, "y": 19}, {"x": 458, "y": 19}],
     "pickups": [],
     "signs": [
         {"x": 5, "y": 20, "text": "Mundo 2: el Reino de los Crayones Encantados. ¡Tus tres armas te acompañan!"},

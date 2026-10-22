@@ -24,6 +24,7 @@ func _ready() -> void:
 		"test_bubble_traps_and_star", "test_paint_and_sling_damage", "test_stomp", "test_scratch_ai",
 		"test_spit_ai", "test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory",
 		"test_menu_keyboard", "test_menu_art", "test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside",
+		"test_checkpoint_spacing",
 		# Mundo 2
 		"test_w2_data", "test_w2_sprites", "test_w2_level_loads", "test_w2_paint", "test_w2_rulers",
 		"test_w2_switch_and_temporary", "test_w2_hazards", "test_w2_magic_and_checkpoint",
@@ -144,7 +145,7 @@ func test_data_parity() -> void:
 	check(w.terrain.size() == 16, "16 rectángulos de terreno")
 	check(w.stars.size() == 138, "138 estrellas en el mapa")
 	check(w.enemies.size() == 13, "13 enemigos")
-	check(w.checkpoints.size() == 2 and w.pickups.size() == 3, "2 checkpoints y 3 armas")
+	check(w.checkpoints.size() == 4 and w.pickups.size() == 3, "4 checkpoints y 3 armas")
 	check(w.clouds.size() == 9 and w.bridges.size() == 4 and w.movers.size() == 2 and w.crumbles.size() == 4, "nubes, puentes, móviles y de vapor")
 	check(w.pads.size() == 1 and w.winds.size() == 1 and w.hazards.size() == 2, "cojín, corriente y burbujas con pinchos")
 	check(b.widthTiles == 40 and b.boss.floorY == 224 and b.stars.size() == 6, "arena del jefe 40x17 con 6 estrellas")
@@ -794,7 +795,7 @@ func test_w2_data() -> void:
 	for e in w.enemies:
 		types[e.type] = true
 	check(types.keys().size() == 3 and types.has("eraser") and types.has("crayon") and types.has("brush"), "los tres enemigos del Mundo 2")
-	check(w.checkpoints.size() == 2, "dos checkpoints")
+	check(w.checkpoints.size() == 4, "cuatro checkpoints")
 	check(String(b.boss.scene).ends_with("Garabato.tscn"), "la arena usa a Garabato")
 	var manifest: Dictionary = C.load_json("res://data/world2/world2_asset_manifest.json")
 	check(manifest.summary.pending.is_empty(), "ningún recurso pendiente en el manifiesto (%s)" % str(manifest.summary.pending))
@@ -995,13 +996,13 @@ func test_w2_magic_and_checkpoint() -> void:
 	place(150, 11)
 	await frames(30)
 	check("red" in GameState.get_v("magicCrayons"), "se recoge el crayón mágico rojo")
-	place(146, 19)
+	place(125, 19)
 	await frames(10)
 	var cp: Variant = GameState.get_v("checkpoint")
-	check(cp is Dictionary and cp.index == 0 and cp.scene == "World2", "checkpoint 1 del Mundo 2")
+	check(cp is Dictionary and cp.index == 0 and cp.scene == "World2", "checkpoint 1 del Mundo 2 (antes del puente dibujado)")
 	place(357, 19)
 	await frames(10)
-	check(GameState.get_v("checkpoint").index == 1, "checkpoint 2 del Mundo 2")
+	check(GameState.get_v("checkpoint").index == 2, "checkpoint 3 del Mundo 2")
 	place(352, 23)
 	await frames(80)
 	near(level.player.position.x, 357 * C.TILE + 8, 1.0, "reaparece en la última bandera")
@@ -1198,7 +1199,7 @@ func test_w3_data() -> void:
 	var b: Dictionary = C.load_json("res://data/world3/world3_boss.json")
 	check(w.progress.total == 10000 and w.widthTiles * 16 + b.widthTiles * 16 == 10000, "recorrido total de 10.000 px")
 	check(w.sections.map(func(x): return int(x.from)) == [0,1700,3500,5500,7800], "cinco secciones del Mundo 3")
-	check(w.checkpoints.size() == 2 and w.dreamCollectibles.filter(func(x): return x.kind == "moon").size() == 3, "dos checkpoints y tres lunas mágicas")
+	check(w.checkpoints.size() == 5 and w.dreamCollectibles.filter(func(x): return x.kind == "moon").size() == 3, "cinco checkpoints y tres lunas mágicas")
 	check(w.swings.size() >= 4 and w.pads.size() >= 4 and w.yarnRollers.size() >= 4 and w.sleepClouds.size() >= 4, "mecánicas exclusivas distribuidas")
 	var types := {}
 	for e in w.enemies: types[e.type] = true
@@ -1337,7 +1338,7 @@ func test_w4_data() -> void:
 	var b: Dictionary = C.load_json("res://data/world4/world4_boss.json")
 	check(w.progress.total == 10000 and w.widthTiles * 16 + b.widthTiles * 16 == 10000, "recorrido total de 10.000 px")
 	check(w.sections.map(func(x): return int(x.from)) == [0, 1800, 3600, 5600, 7900], "cinco secciones del Mundo 4")
-	check(w.checkpoints.size() == 2, "dos checkpoints")
+	check(w.checkpoints.size() == 5, "cinco checkpoints")
 	check(w.dreamCollectibles.filter(func(x): return x.kind == "shell").size() == 3, "tres conchas token principales")
 	for k in ["starfish", "rainbow", "duck"]:
 		check(w.dreamCollectibles.any(func(x): return x.kind == k), "coleccionable temático %s" % k)
@@ -1764,7 +1765,7 @@ func test_w5_data() -> void:
 	var b: Dictionary = C.load_json("res://data/world5/world5_boss.json")
 	check(w.progress.total == 10496 and w.widthTiles * 16 + b.widthTiles * 16 == 10496, "recorrido total de unos 10.500 px")
 	check(w.sections.map(func(x): return int(x.from)) == [0, 2000, 4000, 6200, 8500], "cinco secciones del Mundo 5")
-	check(w.checkpoints.size() == 2, "dos checkpoints")
+	check(w.checkpoints.size() == 5, "cinco checkpoints")
 	check(w.dreamCollectibles.filter(func(x): return x.kind == "moon_token").size() == 3, "tres fichas de luna principales")
 	for k in ["special", "constellation", "rocket"]:
 		check(w.dreamCollectibles.any(func(x): return x.kind == k), "coleccionable temático %s" % k)
@@ -2347,7 +2348,7 @@ func test_w6_data() -> void:
 	var b: Dictionary = C.load_json("res://data/world6/world6_boss.json")
 	check(w.progress.total == 11008 and w.widthTiles * 16 + b.widthTiles * 16 == 11008, "recorrido total de unos 11.000 px")
 	check(w.sections.map(func(x): return int(x.from)) == [0, 1800, 4000, 6300, 8600], "cinco secciones del Mundo 6")
-	check(w.checkpoints.size() == 2, "dos checkpoints")
+	check(w.checkpoints.size() == 4, "cuatro checkpoints")
 	check(w.dreamCollectibles.filter(func(x): return x.kind == "ticket").size() == 3 and w.dreamMain == "ticket", "tres billetes mágicos")
 	check(w.trains.size() >= 5 and w.trains.any(func(t): return t.has("branches")) and w.trains.any(func(t): return t.get("bellWait", false)), "trenes con desvíos y tren que espera a la campana")
 	check(w.trains.any(func(t): return t.points.any(func(p): return p[1] != t.points[0][1])), "hay vías con pendiente")
@@ -2944,9 +2945,9 @@ func test_w7_data() -> void:
 	var b: Dictionary = C.load_json("res://data/world7/world7_boss.json")
 	check(w.progress.total == 11504 and w.widthTiles * 16 + b.widthTiles * 16 == 11504, "recorrido total de unos 11.500 px")
 	check(w.sections.map(func(x): return int(x.from)) == [0, 2000, 4200, 6500, 9000], "cinco secciones A-E en 0/2.000/4.200/6.500/9.000")
-	check(w.checkpoints.size() == 2, "dos checkpoints")
+	check(w.checkpoints.size() == 6, "seis checkpoints")
 	var cp_x: Array = w.checkpoints.map(func(c): return float(c.x) * 16)
-	check(cp_x[0] >= 2000 and cp_x[0] < 4200 and cp_x[1] >= 6500 and cp_x[1] < 9000, "primer checkpoint en la sección B y segundo en la D")
+	check(cp_x[1] >= 2000 and cp_x[1] < 4200 and cp_x[4] >= 6500 and cp_x[4] < 9000, "los checkpoints originales siguen en las secciones B y D")
 	check(w.dreamCollectibles.filter(func(x): return x.kind == "candy").size() == 3 and w.dreamMain == "candy", "tres caramelos especiales")
 	check(w.dreamCollectibles.any(func(x): return x.kind == "cherry") and w.dreamCollectibles.any(func(x): return x.kind == "cake") and w.hearts.size() >= 3, "cereza dorada, trozo de pastel y corazones")
 	check(w.clouds.filter(func(c): return float(c.get("bouncy", 0)) < 0).size() >= 3, "gelatinas elásticas")
@@ -3433,6 +3434,40 @@ func test_w7_progression() -> void:
 	SaveManager.reset_progress()
 
 
+# IMP-001: en cada nivel, cada sección tiene un checkpoint (o empieza a <= 320 px de uno), ningún
+# tramo sin checkpoint supera 2.500 px y cada bandera está sobre suelo
+func test_checkpoint_spacing() -> void:
+	for w in range(1, 9):
+		var key := "World%d" % w
+		await load_level(key)
+		var data: Dictionary = level.data
+		var start := float(data.playerStart.x) * C.TILE
+		var cps: Array = data.checkpoints.map(func(c): return float(c.x) * C.TILE)
+		var marks: Array = [start] + cps + [level.world_w]
+		var longest := 0.0
+		for i in marks.size() - 1:
+			longest = maxf(longest, marks[i + 1] - marks[i])
+		check(longest <= 2500, "Mundo %d: tramo sin checkpoint más largo %.0f px (<= 2.500)" % [w, longest])
+		var bare := []
+		for s in data.sections:
+			var a := float(s.from)
+			if a >= level.world_w:
+				continue # sección de la arena del jefe
+			var b := level.world_w
+			for s2 in data.sections:
+				if float(s2.from) > a:
+					b = minf(b, float(s2.from))
+			var ok := ([start] + cps).any(func(x): return (x >= a and x < b) or (x < a and a - x <= 320))
+			if not ok:
+				bare.append(s.id)
+		check(bare.is_empty(), "Mundo %d: secciones sin checkpoint %s" % [w, str(bare)])
+		var floating := []
+		for c in data.checkpoints:
+			if not level.terrain_solid_at(Vector2(float(c.x) * C.TILE + 8, float(c.y) * C.TILE + 8)) or level.terrain_solid_at(Vector2(float(c.x) * C.TILE + 8, float(c.y) * C.TILE - 8)):
+				floating.append(c.x)
+		check(floating.is_empty(), "Mundo %d: checkpoints sin suelo o dentro del terreno %s" % [w, str(floating)])
+
+
 # IMP-036: ningún bocadillo de cartel se sale del nivel (el primero de cada mundo está junto al borde)
 func test_sign_bubbles_inside() -> void:
 	for w in range(1, 9):
@@ -3458,7 +3493,7 @@ func test_w8_data() -> void:
 	check(w.progress.total == 12000 and w.widthTiles * 16 + b.widthTiles * 16 == 12000, "recorrido total de 12.000 px (el nivel más grande)")
 	check(w.sections.map(func(x): return int(x.from)) == [0, 1800, 3800, 5900, 8000, 10000], "seis secciones A-F en 0/1.800/3.800/5.900/8.000/10.000")
 	var cp_x: Array = w.checkpoints.map(func(c): return float(c.x) * 16)
-	check(cp_x.size() == 4 and cp_x[0] >= 1800 and cp_x[1] < 3800 and cp_x[2] >= 5900 and cp_x[2] < 8000 and cp_x[3] >= 8000 and cp_x[3] < 10000, "cuatro checkpoints: dos en B, D y antes del jefe (E)")
+	check(cp_x.size() == 7 and cp_x[0] >= 1800 and cp_x[1] < 3800 and cp_x[4] >= 5900 and cp_x[4] < 8000 and cp_x[6] >= 8000 and cp_x[6] < 10000, "siete checkpoints: dos en B, C, D, E y antes del jefe")
 	# IMP-037: el foso de las plataformas colgantes (teselas 128-143) tiene un checkpoint a <= 320 px antes
 	check(cp_x[0] < 128 * 16 and 128 * 16 - cp_x[0] <= 320, "checkpoint justo antes de las plataformas colgantes")
 	var types := {}

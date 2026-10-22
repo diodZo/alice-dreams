@@ -67,6 +67,20 @@
 - **Archivos involucrados:** `src/data/world1.js` (+ `godot/tools/convert_phaser.mjs`) y `godot/data/worlds/world1.json`; `tools/world{2..8}/world{2..8}_level.py` y los `godot/data/world{2..8}/world{2..8}.json` generados.
 - **Dependencias:** ninguna (el sistema admite N checkpoints: `checkpoint_manager.gd`).
 - **Criterios de aceptación:** cada sección A-E de cada nivel contiene ≥1 checkpoint o empieza a ≤ 320 px de uno; ningún tramo sin checkpoint supera 2 500 px; las pruebas `test_fall_respawn_checkpoint` y `test_wN_*` siguen pasando.
+- **Estado: hecho.** Checkpoints nuevos (teselas) en suelo plano, lejos de peligros y a ≥ 6 teselas de donde aparece un enemigo:
+
+  | Mundo | Antes | Ahora | Tramo más largo |
+  |---|---|---|---|
+  | 1 | 138, 367 | 138, **229**, 367, **401** | 3 664 → 2 208 px |
+  | 2 | 146, 357 | **125**, **211**, 357, **458** | 3 376 → 2 336 px |
+  | 3 | 109, 322 | 109, **214**, 322, **409**, **485** | 3 888 → 1 728 px |
+  | 4 | 173, 352 | **111**, 173, **230**, 352, **500** | 3 408 → 2 368 px |
+  | 5 (`world6`) | 118, 398 | 118, **254**, 398, **548** | 4 480 → 2 400 px |
+  | 6 (`world5`) | 163, 419 | **126**, 163, **265**, 419, **540** | 4 096 → 2 464 px |
+  | 7 | 205, 468 | **127**, 205, **301**, **410**, 468, **564** | 4 208 → 1 968 px |
+  | 8 | 116, 150, 425, 610 | 116, 150, **241**, **336**, 425, **518**, 610 | 4 400 → 1 792 px |
+
+  Antes de obstáculos de *timing*: Mundo 1 tesela 229 (nube móvil 245-255), Mundo 2 tesela 125 (puente dibujado 132-140; sustituye al de la 146, que quedaba **después**), Mundo 5 teselas 254 y 548 (subida a los trenes de C y E), Mundo 8 tesela 116 (IMP-037). Prueba nueva `test_checkpoint_spacing` (los 8 niveles: secciones, tramos y suelo). Pendiente de afinar con la prueba jugada (IMP-034).
 
 ### IMP-002
 **Escalado entero *pixel-perfect***

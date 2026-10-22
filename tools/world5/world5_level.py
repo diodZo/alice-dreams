@@ -233,7 +233,8 @@ enemies = (
         (481, 17, 474, 484), (497, 18, 492, 510), (523, 19, 518, 530), (560, 19, 552, 570)]]
 )
 
-checkpoints = [{"x": 163, "y": 19}, {"x": 419, "y": 18}]
+# IMP-001: uno por sección (o a <= 320 px de su entrada), ningún tramo > 2.500 px
+checkpoints = [{"x": 126, "y": 19}, {"x": 163, "y": 19}, {"x": 265, "y": 16}, {"x": 419, "y": 18}, {"x": 540, "y": 19}]
 
 signs = [
     {"x": 3, "y": 20, "text": "Mundo 6: ¡Sueños Cósmicos! Explora las islas del cielo con tus tres armas"},
