@@ -26,6 +26,10 @@ var last_grounded_at := -9999.0
 var last_jump_press_at := -9999.0
 var jumping := false
 var invulnerable_until := 0.0
+## Respuesta al golpe (IMP-020): pausa de impacto y destello blanco.
+const HURT_HIT_STOP_MS := 70.0
+const HURT_FLASH_MS := 90.0
+var _flash: ShaderMaterial
 var stunned_until := 0.0
 var attack_until := 0.0
 var attack_anim := ""
@@ -88,6 +92,10 @@ func _ready() -> void:
 	z_index = C.Z_PLAYER
 	sprite.sprite_frames = Assets.sprite_frames("player")
 	Anim.set_origin(sprite, Assets.cell_size("player"), 0.5, 1.0)
+	# destello blanco al recibir un golpe (IMP-020), el mismo que usan los jefes
+	_flash = ShaderMaterial.new()
+	_flash.shader = preload("res://resources/effects/flash.gdshader")
+	sprite.material = _flash
 	animator = PlayerAnimator.new(self)
 	Anim.play(sprite, "idle")
 
@@ -304,6 +312,9 @@ func hurt(from_x: Variant = null, amount := 1) -> bool:
 	jumping = false
 	AudioManager.play("hurt")
 	level.camera.shake(120, 0.004)
+	_flash.set_shader_parameter("flash", 0.85)
+	level.after(HURT_FLASH_MS, func(): _flash.set_shader_parameter("flash", 0.0))
+	level.hit_stop(HURT_HIT_STOP_MS)
 	hp_changed.emit(hp)
 	PlaytestLog.event(level, "golpe", "x=%s" % str(from_x) if from_x != null else "")
 	if hp <= 0:

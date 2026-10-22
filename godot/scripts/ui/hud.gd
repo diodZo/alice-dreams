@@ -16,6 +16,8 @@ var progress_marker: Control
 var section_text: PixelText
 var boss_group: Control
 var boss_bar: ColorRect
+var boss_ghost: ColorRect
+var _ghost_tween: Tween
 var boss_notches: Array[ColorRect] = []
 var boss_label: PixelText
 ## Mundo 2: casillas de los crayones mágicos (rojo, azul, amarillo).
@@ -133,6 +135,13 @@ func _ready() -> void:
 	boss_group.position = Vector2(W / 2.0, H - 16)
 	root.add_child(boss_group)
 	boss_group.add_child(_panel(Rect2(-102, -6, 204, 12), Color(C.INK, 0.75), 5))
+	# tramo "fantasma" (IMP-020): muestra el daño reciente y se vacía con retraso
+	boss_ghost = ColorRect.new()
+	boss_ghost.color = Color(C.CREAM, 0.85)
+	boss_ghost.position = Vector2(-100, -3)
+	boss_ghost.size = Vector2(200, 6)
+	boss_ghost.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	boss_group.add_child(boss_ghost)
 	boss_bar = ColorRect.new()
 	boss_bar.color = C.LAVENDER
 	boss_bar.position = Vector2(-100, -3)
@@ -250,6 +259,14 @@ func refresh(key: String) -> void:
 		var mx := float(GameState.get_v("bossMaxHp", 1))
 		var ratio := clampf(float(GameState.get_v("bossHp", mx)) / maxf(mx, 1.0), 0, 1)
 		boss_bar.size.x = 200 * ratio
+		if boss_bar.size.x >= boss_ghost.size.x:
+			boss_ghost.size.x = boss_bar.size.x
+		else:
+			if _ghost_tween:
+				_ghost_tween.kill()
+			_ghost_tween = boss_ghost.create_tween()
+			_ghost_tween.tween_interval(0.35)
+			_ghost_tween.tween_property(boss_ghost, "size:x", boss_bar.size.x, 0.4)
 		var th: Array = C.BOSS_PHASE_THRESHOLDS
 		boss_bar.color = C.LAVENDER if ratio > th[0] else (C.PINK if ratio > th[1] else C.rgb(0xff7a9a))
 

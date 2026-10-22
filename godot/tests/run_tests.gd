@@ -26,6 +26,8 @@ const SUITES := [
 func _ready() -> void:
 	SaveManager.save_path = "user://test_save.json"
 	SaveManager.load_state()
+	# sin pausas de impacto: las pruebas cuentan fotogramas (la de IMP-020 la activa)
+	Level.hit_stop_scale = 0.0
 	AudioManager.sfx_on = false # sin persistir: no toca el guardado del usuario
 	var plan: Array = [] # [grupo (nodo), prueba]
 	var groups := {}

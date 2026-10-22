@@ -10,6 +10,8 @@ signal defeated_at(x: float, y: float)
 
 ## Vida restante (fracción) a la que se pasa a la fase 2 y a la 3.
 const PHASE_THRESHOLDS := C.BOSS_PHASE_THRESHOLDS
+## Pausa de impacto (IMP-020) al cambiar de fase y al derrotarlo.
+const STRONG_HIT_STOP_MS := 60.0
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var shape: CollisionShape2D = $Shape
@@ -116,8 +118,12 @@ func take_damage(dmg: int) -> void:
 			b.flash.set_shader_parameter("flash", 0.0))
 	var ratio := float(hp) / max_hp
 	if hp <= 0:
+		level.hit_stop(STRONG_HIT_STOP_MS)
 		fsm.set_state("DEFEATED")
 	elif phase <= PHASE_THRESHOLDS.size() and ratio <= PHASE_THRESHOLDS[phase - 1]:
+		# pausa de impacto sólo en los golpes fuertes: con el lanzaburbujas se acierta varias veces
+		# por segundo y una pausa en cada impacto se notaría como tirones
+		level.hit_stop(STRONG_HIT_STOP_MS)
 		phase += 1
 		fsm.set_state(phase_change_state)
 	else:

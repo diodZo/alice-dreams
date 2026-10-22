@@ -535,6 +535,31 @@ func respawn(full: bool) -> void:
 
 
 # ------------------------------------------------------------------- pausa
+## Pausa de impacto (hit-stop, IMP-020): congela el juego entero (física, reloj `now`, enemigos,
+## animaciones) durante unos milisegundos de tiempo real al recibir un golpe o en los golpes
+## fuertes al jefe. 0 la desactiva (las pruebas automáticas la ponen a 0 salvo la suya).
+static var hit_stop_scale := 1.0
+## Pausa en curso (las que llegan durante otra se ignoran: no se encadenan).
+var _hit_stopped := false
+
+
+func hit_stop(ms: float) -> void:
+	ms *= hit_stop_scale
+	if ms <= 0.0 or leaving or _hit_stopped:
+		return
+	_hit_stopped = true
+	Engine.time_scale = 0.0
+	# temporizador que no depende de la escala de tiempo (si no, nunca terminaría)
+	get_tree().create_timer(ms / 1000.0, true, false, true).timeout.connect(func():
+		_hit_stopped = false
+		Engine.time_scale = 1.0)
+
+
+func _exit_tree() -> void:
+	# nunca dejar el juego congelado si el nivel se cierra durante una pausa de impacto
+	Engine.time_scale = 1.0
+
+
 func pause_game() -> void:
 	if leaving or respawning or _pause_menu != null:
 		return

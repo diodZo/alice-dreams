@@ -10,7 +10,7 @@ const TESTS := [
 	"test_paint_and_sling_damage", "test_stomp", "test_scratch_ai", "test_spit_ai",
 	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
-	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema",
+	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
 ]
 
 
@@ -872,3 +872,33 @@ func test_level_schema() -> void:
 			if suffix == "" and not always.all(func(k): return d.has(k)):
 				bad.append("%s: falta una clave común" % path.get_file())
 	check(bad.is_empty(), "sin listas vacías de mecánicas que el mundo no usa (%s)" % str(bad))
+
+
+# IMP-020: pausa de impacto (el reloj del nivel no avanza), destello de Alice y tramo fantasma
+func test_hit_stop() -> void:
+	await load_level()
+	await settle()
+	Level.hit_stop_scale = 1.0
+	var t0 := level.now
+	level.player.hurt(level.player.position.x + 10)
+	await frames(1) # el fotograma que ya estaba en marcha
+	var t_stop := level.now
+	await frames(3)
+	check(Engine.time_scale == 0.0 and level.now == t_stop and t_stop - t0 <= 17.0, "durante la pausa de impacto el reloj del nivel no avanza")
+	check(level.player.sprite.material.get_shader_parameter("flash") > 0.5, "Alice destella en blanco al recibir el golpe")
+	await get_tree().create_timer(0.2, true, false, true).timeout
+	await frames(3)
+	check(Engine.time_scale == 1.0 and level.now > t0, "y después el juego sigue")
+	Level.hit_stop_scale = 0.0
+	level.player.invulnerable_until = 0
+	var t1 := level.now
+	level.player.hurt(level.player.position.x + 10)
+	await frames(1)
+	check(Engine.time_scale == 1.0 and level.now > t1, "con la duración a 0 no hay pausa")
+	# tramo fantasma de la barra del jefe: se queda atrás y se vacía con retraso
+	GameState.set_v("bossMaxHp", 40)
+	GameState.set_v("bossHp", 40)
+	GameState.set_v("bossHp", 20)
+	check(level.hud.boss_bar.size.x == 100 and level.hud.boss_ghost.size.x == 200, "el tramo fantasma muestra el daño reciente")
+	await get_tree().create_timer(0.9, true, false, true).timeout
+	check(absf(level.hud.boss_ghost.size.x - 100) < 1, "y se vacía hasta la vida actual")

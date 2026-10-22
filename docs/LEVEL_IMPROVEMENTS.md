@@ -250,7 +250,7 @@
 - **Complejidad:** Baja. **Prioridad:** Alta (público infantil: el mando es más cómodo que Shift+Espacio+J).
 - **Archivos involucrados:** `godot/project.godot`. `godot/scripts/systems/input_controller.gd` ya lee acciones (`Input.is_action_pressed`), no teclas, así que no necesita cambios para el mando.
 - **Criterios de aceptación:** recorrido completo del Mundo 1 con un mando XInput; menús navegables con el mando.
-- **Estado: hecho (pendiente de probar con un mando físico).** Eventos de mando en las 11 acciones de `project.godot` (cruceta/stick, A, X, Y, gatillos, Start). En los menús el stick cuenta como una pulsación al salir de la zona central (`MenuList.is_stick_repeat`), así una inclinación no recorre varias opciones; lo usan la lista de botones, el carrusel y el Diario de Sueños, y la celebración de rescates bloquea también los eventos del mando. Prueba `test_gamepad` con eventos simulados (menú, andar, correr, saltar, pausa). No se ha probado con un mando real.
+- **Estado: hecho y probado con un mando físico por el autor (22/10/2026).** Eventos de mando en las 11 acciones de `project.godot` (cruceta/stick, A, X, Y, gatillos, Start). En los menús el stick cuenta como una pulsación al salir de la zona central (`MenuList.is_stick_repeat`), así una inclinación no recorre varias opciones; lo usan la lista de botones, el carrusel y el Diario de Sueños, y la celebración de rescates bloquea también los eventos del mando. Prueba `test_gamepad` con eventos simulados (menú, andar, correr, saltar, pausa). No se ha probado con un mando real.
 
 ### IMP-018
 **Rutas secretas con recompensa tangible**
@@ -276,6 +276,7 @@
 - **Complejidad:** Baja. **Prioridad:** Media.
 - **Archivos involucrados:** `godot/scripts/entities/player.gd`, `godot/scripts/levels/level.gd` (pausa de física breve con su reloj `now`), `godot/scripts/ui/hud.gd`, `godot/resources/effects/flash.gdshader`.
 - **Criterios de aceptación:** el reloj `Level.now` no avanza durante el *hit-stop*; la duración es configurable y puede ponerse a 0.
+- **Estado: hecho.** `Level.hit_stop(ms)` congela el juego entero con `Engine.time_scale = 0` durante unos milisegundos de tiempo real (temporizador que ignora la escala; `_exit_tree` lo restaura siempre). `Level.hit_stop_scale` la regula (0 = sin pausa; las pruebas la ponen a 0 salvo `test_hit_stop`). Alice: pausa de 70 ms y destello blanco de 90 ms (`flash.gdshader`). Jefes: pausa de 60 ms sólo al cambiar de fase y al ser derrotados (con el lanzaburbujas se acierta varias veces por segundo y una pausa por impacto daría tirones). Barra del jefe: tramo fantasma que se vacía 0,35 s después del golpe.
 
 ### IMP-021
 **Registro “sin caídas” en lugar de *game over***
