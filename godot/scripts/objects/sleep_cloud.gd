@@ -40,3 +40,8 @@ func apply(player: Player) -> void:
 		tw.tween_property(z, "position:y", z.position.y - 15, 0.8)
 		tw.tween_property(z, "modulate:a", 0.0, 0.8)
 		tw.chain().tween_callback(z.queue_free)
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, player: Player, _delta: float) -> void:
+	apply(player)

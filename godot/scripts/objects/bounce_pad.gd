@@ -45,3 +45,10 @@ func trigger(player: Player) -> void:
 	tw.tween_property(sprite, "scale", Vector2(1.25, 0.6), 0.07)
 	tw.tween_property(sprite, "scale", Vector2.ONE, 0.07)
 	level.effects.sparkle(position.x, position.y - 8, 6)
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, player: Player, _delta: float) -> void:
+	# sólo al caer sobre él (no al subir atravesándolo)
+	if player.velocity.y >= 0:
+		trigger(player)

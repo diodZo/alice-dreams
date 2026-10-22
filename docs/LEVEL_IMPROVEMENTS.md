@@ -223,6 +223,7 @@
 - **Archivos involucrados:** `godot/scripts/levels/level.gd`, `godot/scripts/objects/*.gd`, `godot/scripts/levels/world{5..8}.gd`.
 - **Dependencias:** IMP-013 recomendable.
 - **Criterios de aceptación:** añadir un objeto nuevo no requiere tocar `level.gd`; 0 fallos en la suite.
+- **Estado: hecho.** Si el objeto de un área de contacto tiene `on_player_overlap(level, player, delta)`, `Level._process_overlaps` lo llama y no pasa por el `match` (las áreas `shootable`, que sólo reciben disparos, se excluyen: palanca y farol tienen las dos). Migrados: cojín, corriente, interruptor, botón mágico, nube de sueño, géiser, rodillo, palanca, campana, barrera de estrella y farol. Siguen en el nivel lo que depende de su estado o se agrega por fotograma (enemigos, proyectiles, estrellas, armas, checkpoints, peligros genéricos, pintura, agua, tobogán, sombras, cofre, puerta, corazones con aviso propio de cada mundo y la nube lenta, que la arena final ignora durante el final). Prueba `test_object_overlap_hook` con un objeto creado en la propia prueba; piloto idéntico en los 8 mundos.
 
 ### IMP-015
 **Esquema de datos por mundo**

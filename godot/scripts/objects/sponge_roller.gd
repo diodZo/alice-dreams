@@ -79,3 +79,8 @@ func push(player: Player) -> void:
 		player.velocity.y = -150
 	AudioManager.play("bounce")
 	level.effects.poof(player.position.x - side * 6, player.position.y - 12, 6)
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, player: Player, _delta: float) -> void:
+	push(player)

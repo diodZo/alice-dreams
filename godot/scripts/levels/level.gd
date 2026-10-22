@@ -198,7 +198,14 @@ func _process_overlaps(delta: float) -> void:
 		var entity: Variant = area.get_meta("entity", null)
 		if entity == null or not is_instance_valid(entity):
 			continue
-		match area.get_meta("kind", ""):
+		var kind: String = area.get_meta("kind", "")
+		# objetos que saben reaccionar solos al contacto (IMP-014): un objeto nuevo no necesita
+		# tocar este bucle. El área "shootable" de un objeto es para los disparos, no para tocarlo.
+		if kind != "shootable" and entity.has_method("on_player_overlap"):
+			entity.on_player_overlap(self, player, delta)
+			continue
+		# lo que depende del estado del nivel o se agrega por fotograma (pintura, agua)
+		match kind:
 			"enemy":
 				on_player_touch_enemy(entity)
 			"projectile":
@@ -209,34 +216,19 @@ func _process_overlaps(delta: float) -> void:
 				on_pickup(entity)
 			"checkpoint":
 				checkpoints.activate(entity)
-			"pad":
-				if player.velocity.y >= 0:
-					entity.trigger(player)
 			"hazard":
 				player.hurt(entity.position.x)
-			"wind":
-				entity.apply(player, delta)
 			"paint":
 				paint[entity.color] = entity.effect()
 			"magic":
 				on_magic_crayon(entity)
-			"switch":
-				entity.trigger()
-			"magic_button":
-				entity.trigger()
-			"sleep_cloud":
-				entity.apply(player)
 			"dream_collectible":
 				on_dream_collectible(entity)
 			# Mundo 4
 			"water":
 				if water == null or entity.surface_y < water.surface_y:
 					water = entity
-			"geyser":
-				entity.apply(player, delta)
-			"roller":
-				entity.push(player)
-			var kind:
+			_:
 				on_custom_overlap(kind, entity)
 	apply_paint(paint)
 	apply_water(water)

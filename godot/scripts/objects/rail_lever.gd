@@ -90,3 +90,8 @@ func toggle() -> void:
 func _show() -> void:
 	sprite.flip_h = state == 1
 	light.modulate = Color(C.rgb(0x70d7b5) if state == 1 else C.rgb(0xffd85c), 0.85)
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, _player: Player, _delta: float) -> void:
+	touch()

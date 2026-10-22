@@ -27,8 +27,6 @@ func on_custom_overlap(kind: String, entity: Object) -> void:
 			if now >= shadow_next and not player.is_invulnerable():
 				shadow_next = now + ShadowZone.DAMAGE_INTERVAL
 				player.hurt(entity.position.x + entity.width / 2.0)
-		"lantern":
-			entity.light()
 		"slow_cloud":
 			entity.apply(player)
 		"chest":

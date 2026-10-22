@@ -56,3 +56,8 @@ func bump(player: Player) -> void:
 	tw.tween_callback(func():
 		sprite.texture = Assets.frame(atlas, "bumper")
 		Anim.set_origin(sprite, sprite.texture.get_size(), 0.5, 1.0))
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, player: Player, _delta: float) -> void:
+	bump(player)

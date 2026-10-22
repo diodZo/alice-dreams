@@ -111,3 +111,8 @@ func _push_others() -> void:
 		if p is Projectile and p.active and rect.has_point(p.position):
 			p.velocity.y = minf(p.velocity.y, -120)
 			p.base_vy = p.velocity.y
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, player: Player, delta: float) -> void:
+	apply(player, delta)

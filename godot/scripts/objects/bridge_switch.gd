@@ -36,3 +36,8 @@ func trigger() -> void:
 	tw.tween_property(sprite, "scale", Vector2.ONE, 0.12)
 	bridge.activate()
 	GameState.show_toast("¡Puente de reglas dibujado!")
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, _player: Player, _delta: float) -> void:
+	trigger()

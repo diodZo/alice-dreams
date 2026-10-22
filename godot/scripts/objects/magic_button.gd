@@ -41,3 +41,8 @@ func trigger() -> void:
 	AudioManager.play("ui_select")
 	activated.emit()
 	GameState.show_toast("¡Mecanismo de sueños activado!")
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, _player: Player, _delta: float) -> void:
+	trigger()

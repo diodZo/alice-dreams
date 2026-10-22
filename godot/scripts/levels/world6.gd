@@ -20,12 +20,6 @@ func on_create() -> void:
 
 func on_custom_overlap(kind: String, entity: Object) -> void:
 	match kind:
-		"lever":
-			entity.touch()
-		"bell":
-			entity.touch()
-		"bumper":
-			entity.bump(player)
 		"shootable":
 			pass  # palancas y bloques de estrella sólo reaccionan a los disparos
 		_:

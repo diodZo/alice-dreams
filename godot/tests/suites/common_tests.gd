@@ -10,7 +10,7 @@ const TESTS := [
 	"test_paint_and_sling_damage", "test_stomp", "test_scratch_ai", "test_spit_ai",
 	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
-	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing",
+	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook",
 ]
 
 
@@ -820,3 +820,37 @@ func test_sign_bubbles_inside() -> void:
 				tail_ok = false
 		check(out.is_empty(), "Mundo %d: bocadillos dentro del nivel (se salen en las teselas %s)" % [w, str(out)])
 		check(tail_ok, "Mundo %d: el pico del bocadillo apunta al poste" % w)
+
+
+# IMP-014: un objeto nuevo reacciona al contacto con su propio on_player_overlap, sin tocar level.gd
+func test_object_overlap_hook() -> void:
+	await load_level()
+	await settle()
+	var gs := GDScript.new()
+	gs.source_code = "extends Area2D
+var touched := 0
+func on_player_overlap(_level: Node, _player: Player, _delta: float) -> void:
+	touched += 1
+"
+	gs.reload()
+	var obj := Area2D.new()
+	obj.set_script(gs)
+	var shape := CollisionShape2D.new()
+	shape.shape = RectangleShape2D.new()
+	shape.shape.size = Vector2(40, 40)
+	obj.add_child(shape)
+	Trigger.configure(obj, "objeto_nuevo")
+	obj.position = level.player.position + Vector2(0, -10)
+	level.level_objects.objects.add_child(obj)
+	await frames(10)
+	check(obj.touched > 0, "on_player_overlap se llama al tocarlo (%d veces)" % obj.touched)
+	var shoot := Area2D.new()
+	shoot.set_script(gs)
+	var shape2 := CollisionShape2D.new()
+	shape2.shape = shape.shape
+	shoot.add_child(shape2)
+	Trigger.configure(shoot, "shootable")
+	shoot.position = obj.position
+	level.level_objects.objects.add_child(shoot)
+	await frames(10)
+	check(shoot.touched == 0, "un área shootable no cuenta como contacto")

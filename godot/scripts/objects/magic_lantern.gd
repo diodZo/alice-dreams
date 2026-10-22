@@ -74,3 +74,8 @@ func light() -> void:
 func hit_by(_projectile: Projectile) -> bool:
 	light()
 	return true
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, _player: Player, _delta: float) -> void:
+	light()

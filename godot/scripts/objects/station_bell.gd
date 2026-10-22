@@ -60,3 +60,8 @@ func ring() -> void:
 		level.spawn_bonus_star(position.x, position.y - 10)
 	rung_once = true
 	rung.emit()
+
+
+## La protagonista toca el objeto (lo llama Level._process_overlaps cada fotograma).
+func on_player_overlap(_level: Node, _player: Player, _delta: float) -> void:
+	touch()
