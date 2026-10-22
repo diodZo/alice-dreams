@@ -7,8 +7,8 @@ var visible_bubble := false
 var _tween: Tween
 
 
-## def: { x, y (teselas), text, touch? }
-func setup(def: Dictionary, atlas: String, touch_mode: bool, post_frame := "signpost") -> SignPost:
+## def: { x, y (teselas), text, touch? }. world_w: ancho del nivel en px (el bocadillo no se sale).
+func setup(def: Dictionary, atlas: String, touch_mode: bool, post_frame := "signpost", world_w := INF) -> SignPost:
 	position = Vector2(float(def.x) * C.TILE + C.TILE / 2.0, float(def.y) * C.TILE + 2)
 	z_index = C.Z_DECOR_BACK + 1
 	var post := Sprite2D.new()
@@ -27,6 +27,10 @@ func setup(def: Dictionary, atlas: String, touch_mode: bool, post_frame := "sign
 	# que el bocadillo no se salga por arriba
 	if position.y + bubble.position.y - h / 2.0 < 4:
 		bubble.position.y = h / 2.0 + 4 - position.y
+	# ni por los lados (el primer cartel de cada mundo está junto al borde izquierdo); el pico
+	# sigue apuntando al poste
+	bubble.position.x = clampf(0.0, w / 2.0 + 4 - position.x, maxf(w / 2.0 + 4 - position.x, world_w - 4 - w / 2.0 - position.x))
+	bubble.tail_x = clampf(-bubble.position.x, -w / 2.0 + 8, w / 2.0 - 8)
 	bubble.z_as_relative = false
 	bubble.z_index = C.Z_PLAYER - 1
 	bubble.modulate.a = 0.0
@@ -53,6 +57,8 @@ func update_proximity(active: bool) -> void:
 class SpeechBubble:
 	extends Node2D
 	var box := Vector2(40, 20)
+	## Posición horizontal del pico (hacia el poste) respecto al centro del bocadillo.
+	var tail_x := 0.0
 
 	func _draw() -> void:
 		var w := box.x
@@ -67,4 +73,4 @@ class SpeechBubble:
 		inner.set_corner_radius_all(4)
 		inner.anti_aliasing = false
 		draw_style_box(inner, Rect2(-w / 2.0, -h / 2.0, w, h))
-		draw_colored_polygon(PackedVector2Array([Vector2(-4, h / 2.0 - 1), Vector2(4, h / 2.0 - 1), Vector2(0, h / 2.0 + 5)]), C.CREAM)
+		draw_colored_polygon(PackedVector2Array([Vector2(tail_x - 4, h / 2.0 - 1), Vector2(tail_x + 4, h / 2.0 - 1), Vector2(tail_x, h / 2.0 + 5)]), C.CREAM)

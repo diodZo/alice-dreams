@@ -11,6 +11,7 @@ var max_frames := 40000
 var best_x := 0.0
 var deaths := 0
 var last_hp := 3
+var was_dead := false
 var wait_frames := 0
 var jump_hold := 0
 var stuck_frames := 0
@@ -70,11 +71,13 @@ func _physics_process(_delta: float) -> void:
 	var p := level.player
 	var c := level.controls
 	c.script_held.clear()
-	if p.hp < last_hp or (p.dead and last_hp > 0):
+	# una caída cuenta una vez (mientras dura el fundido Alice sigue muerta con la misma vida)
+	if p.hp < last_hp or (p.dead and not was_dead):
 		deaths += 1
 		if "hits" in OS.get_cmdline_user_args():
 			print("[autopilot] golpe/caída en x=%.0f (tesela %d) y=%.0f" % [p.position.x, int(p.position.x / 16), p.position.y])
 	last_hp = p.hp
+	was_dead = p.dead
 	best_x = maxf(best_x, p.position.x)
 	if frame % 600 == 0:
 		print("[autopilot] f=%d x=%.0f (tesela %d) mejor=%d hp=%d golpes=%d estrellas=%d" % [frame, p.position.x, int(p.position.x / 16), int(best_x / 16), p.hp, deaths, int(GameState.get_v("stars", 0))])
@@ -87,6 +90,9 @@ func _physics_process(_delta: float) -> void:
 	if "trace" in OS.get_cmdline_user_args() and frame % 5 == 0:
 		var m: MovingPlatform = level.level_objects.movers[0]
 		print("  f=%d p=(%.1f,%.1f) v=(%.0f,%.0f) g=%s mover=(%.1f,%.1f) ride=%s wait=%d hold=%s" % [frame, p.position.x, p.position.y, p.velocity.x, p.velocity.y, p.grounded, m.position.x, m.position.y, _riding_mover(p) != null, wait_frames, str(c.script_held.keys())])
+	if "trace_swing" in OS.get_cmdline_user_args() and frame % 5 == 0:
+		var sw: Array = level.level_objects.movers.filter(func(m): return m is SwingPlatform).map(func(m): return "(%.0f,%.0f)" % [m.position.x, _surface_y(m)])
+		print("  f=%d p=(%.1f,%.1f) v=(%.0f,%.0f) g=%s ride=%s swings=%s hold=%s" % [frame, p.position.x, p.position.y, p.velocity.x, p.velocity.y, p.grounded, _riding_mover(p) != null, " ".join(sw), str(c.script_held.keys())])
 	if p.dead or level.respawning:
 		return
 	if godmode:
@@ -131,6 +137,8 @@ func _physics_process(_delta: float) -> void:
 				c.script_held.erase("run")
 				if p.position.x < m.position.x - 4:
 					c.script_held["move_right"] = true
+					# una plataforma colgante se aleja deprisa: corre para alcanzarla
+					c.script_held["run"] = m is SwingPlatform and m.position.x - p.position.x > 24
 				elif p.position.x > m.position.x + 4:
 					c.script_held["move_left"] = true
 		return
@@ -158,6 +166,14 @@ func _physics_process(_delta: float) -> void:
 				jump_hold = 40
 			return
 		# en marcha (o en una parada intermedia): se queda en el vagón
+		return
+	var next := _next_mover(p, riding) if riding != null else null
+	if next != null:
+		# cadena de plataformas colgantes (Mundo 8): salta a la siguiente cuando queda al alcance
+		target_mover = next
+		c.script_pressed["jump"] = true
+		c.script_held["jump"] = true
+		jump_hold = 6 # salto corto: menos tiempo en el aire mientras la siguiente se mueve
 		return
 	if riding != null and ride_frames > 240:
 		# plataforma opcional sin suelo cerca (secretos del Mundo 3): se baja andando
@@ -300,6 +316,23 @@ func _mover_in_gap(p: Player) -> MovingPlatform:
 		if p.position.x > span_l - 60 and p.position.x < span_r and near_y:
 			if not level.terrain_solid_at(p.position + Vector2(18, 4)):
 				return m
+	return null
+
+
+## Plataforma colgante por delante, a la altura de la que se monta y a distancia de salto
+## (cadena de columpios sobre un foso del Mundo 8; con suelo cerca se salta al suelo).
+func _next_mover(p: Player, riding: MovingPlatform) -> MovingPlatform:
+	if not riding is SwingPlatform:
+		return null
+	for m in level.level_objects.movers:
+		if m == riding or not m is SwingPlatform:
+			continue
+		var dx: float = m.position.x - p.position.x
+		if dx > 56 and dx < 96 and absf(_surface_y(m) - _surface_y(riding)) < 12:
+			# salta en el extremo derecho del vaivén: mientras vuela, la siguiente viene hacia Alice
+			var mv: float = riding.position.x - float(mover_prev.get(riding, riding.position.x))
+			var right_half: bool = riding.position.x > riding.start.x + riding.delta_px.x * 0.5
+			return m if right_half and absf(mv) < 0.5 else null
 	return null
 
 

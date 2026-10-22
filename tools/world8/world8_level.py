@@ -276,7 +276,8 @@ enemies = (
         (496, 14, 488, 499), (568, 13, 562, 576)]]
 )
 
-checkpoints = [{"x": 150, "y": 19}, {"x": 425, "y": 13}, {"x": 610, "y": 20}]
+# el primero, antes de las plataformas colgantes (foso 128-143): una caída no devuelve al inicio
+checkpoints = [{"x": 116, "y": 20}, {"x": 150, "y": 19}, {"x": 425, "y": 13}, {"x": 610, "y": 20}]
 
 signs = [
     {"x": 3, "y": 20, "text": "Mundo 8: El Castillo de las Pesadillas. ¡La última aventura de Alice!"},
@@ -417,9 +418,10 @@ for x in range(LEVEL_W):
     covered = any(a <= x <= b for a, b in spans)
     run = 0 if has_ground or covered else run + 1
     assert run <= 5, f"hueco de más de 5 teselas sin plataforma en x={x}"
-# secciones: cada checkpoint en la sección pedida (B, D y antes del jefe en E)
+# secciones: cada checkpoint en la sección pedida (dos en B, D y antes del jefe en E)
 cpx = [c["x"] * 16 for c in checkpoints]
-assert 1800 <= cpx[0] < 3800 and 5900 <= cpx[1] < 8000 and 8000 <= cpx[2] < 10000
+assert 1800 <= cpx[0] < cpx[1] < 3800 and 5900 <= cpx[2] < 8000 and 8000 <= cpx[3] < 10000
+assert 0 < 128 * 16 - cpx[0] <= 320, "checkpoint justo antes de las plataformas colgantes"
 
 # ------------------------------------------------------------------ salón del trono (F)
 GATE_X = 64

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/jefe_mundo_2.mp3-d2e39363847794675ee53d2c7990
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

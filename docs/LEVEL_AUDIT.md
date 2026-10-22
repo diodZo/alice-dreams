@@ -42,6 +42,7 @@ Comando: `Godot_v4.7.2-stable_win64.exe --headless --path godot --fixed-fps 60 r
 Lectura:
 - Los fallos **sin invulnerabilidad** se deben sobre todo a que el piloto no esquiva; no son una medida de dificultad (los informes `WORLD7_REPORT.md` y `WORLD8_REPORT.md` ya lo advierten).
 - Los fallos **con invulnerabilidad** sólo pueden ser caídas: señalan obstáculos de *timing* que un jugador automático no resuelve. Aparecen en 1, 2, 5 y 8.
+- **Corrección posterior (IMP-037/IMP-040):** el piloto contaba como caída nueva cada fotograma del fundido tras caer, así que las caídas de esta tabla están infladas. Con el recuento corregido y el modo `godmode`: Mundo 1, 4 caídas; Mundo 2, 3; Mundo 5, 4 (313 s); Mundo 8, 0 (78 s). Los puntos de fallo señalados siguen siendo los mismos.
 - **Discrepancia:** `WORLD8_REPORT.md` afirma que el piloto con invulnerabilidad recorría el Mundo 8 completo en 78 s. Hoy no pasa de la tesela 140. Es una posible regresión o un cambio no documentado del piloto (IMP-037).
 - Todas las ejecuciones del piloto terminan con un aviso del motor al salir (*41-43 ObjectDB instances leaked*, *19 resources still in use*). La suite de pruebas no lo produce: parece propio de la salida del piloto, no del juego.
 - La captura del menú (`scene=Menu`) generó la imagen y después el proceso terminó con *access violation* (código −1073741819) al cerrarse. `WORLD8_REPORT.md` describe un fallo similar con los créditos. No se reprodujo en el juego normal (no se ejecutó con ventana fuera de la herramienta de captura).

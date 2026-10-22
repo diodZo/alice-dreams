@@ -154,6 +154,7 @@
 - **Archivos involucrados:** `godot/scripts/core/audio_config.gd`, `godot/resources/audio/mundo_2.mp3.import`, `godot/resources/audio/jefe_mundo_2.mp3.import`.
 - **Dependencias:** confirmar con el autor que esas pistas son las definitivas del Mundo 2.
 - **Criterios de aceptación:** `AudioManager._music_streams["world2"]` es un `AudioStreamMP3` al arrancar; la pista se repite en bucle; `CheckAll` sin fallos.
+- **Estado: hecho.** Las dos pistas están en `MUSIC_FILES` con `loop=true` en su importación; `test_menu_keyboard` comprueba ahora también `world2` y `garabato`. Falta confirmar de oído que el bucle no corta.
 
 ### IMP-009
 **Un solo catálogo de mundos**
@@ -410,6 +411,7 @@
 - **Archivos involucrados:** `godot/scripts/objects/sign_post.gd`.
 - **Dependencias:** ninguna.
 - **Criterios de aceptación:** captura con `tests/Capture.tscn -- scene=World7` con el bocadillo completo; prueba automática que compruebe que ningún bocadillo de ningún nivel tiene borde izquierdo < 0.
+- **Estado: hecho.** `sign_post.gd` desplaza el bocadillo dentro de `[4, ancho del nivel − 4]` y mueve el pico para que siga apuntando al poste. Prueba nueva `test_sign_bubbles_inside` (los 8 niveles, ambos bordes); captura del Mundo 7 con el texto completo.
 
 ### IMP-037
 **Mundo 8 — Plataformas colgantes antes del primer checkpoint**
@@ -421,6 +423,7 @@
 - **Archivos involucrados:** `tools/world8/world8_level.py`, `godot/data/world8/world8.json`, `godot/scripts/objects/swing_platform.gd`, `godot/tests/autopilot.gd`.
 - **Dependencias:** IMP-001.
 - **Criterios de aceptación:** `Autopilot.tscn -- world=8 godmode` vuelve a llegar a la gran puerta; el foso de la sección B tiene un checkpoint a ≤ 320 px antes.
+- **Estado: hecho (puntos 1 y 2).** Causa de la discrepancia: el nivel no había cambiado (el JSON coincide con su generador); el piloto sí. Montado en la primera plataforma colgante, no sabía saltar a la siguiente y tras 240 fotogramas «se bajaba andando» hacia el foso. Ahora salta de una colgante a la siguiente en el extremo derecho del vaivén (`autopilot.gd → _next_mover`) y llega a la puerta en 78 s sin caídas, como decía `WORLD8_REPORT.md`. Nuevo checkpoint en la tesela 116 (192 px antes del foso); se mantiene el de la tesela 150. El punto 3 (enseñar la mecánica con dos plataformas) queda pendiente de la prueba jugada (IMP-034).
 
 ### IMP-038
 **Diferenciar el terreno entre mundos**
@@ -451,6 +454,7 @@
 - **Archivos involucrados:** `godot/tests/autopilot.gd`, `godot/tests/Autopilot.tscn`, `godot/tests/run_autopilot_all.ps1` **(nuevo, propuesto)**, `README_GODOT.md` §6.
 - **Dependencias:** IMP-037 (hasta resolverlo, el Mundo 8 fallará).
 - **Criterios de aceptación:** el script devuelve 0 con los 8 mundos en verde; las ejecuciones no muestran *ObjectDB instances leaked*.
+- **Estado: hecho.** `godot/tests/run_autopilot_all.ps1` con límites de fotogramas y caídas por mundo sobre la línea base medida. Los avisos de objetos sin liberar ya no aparecen (ni al llegar ni al agotar los fotogramas); el script falla si vuelven. Corregido además el recuento de caídas del piloto: contaba cada fotograma del fundido como una caída nueva, así que las cifras de caídas de `LEVEL_AUDIT.md` §1.3 están infladas (p. ej. Mundo 1: 4 caídas reales, no 49; Mundo 2: 3, no 48).
 
 ---
 

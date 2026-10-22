@@ -23,7 +23,7 @@ func _ready() -> void:
 		"test_fall_respawn_checkpoint", "test_star_and_pickup", "test_weapons",
 		"test_bubble_traps_and_star", "test_paint_and_sling_damage", "test_stomp", "test_scratch_ai",
 		"test_spit_ai", "test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory",
-		"test_menu_keyboard", "test_menu_art", "test_world_carousel", "test_pause_resume",
+		"test_menu_keyboard", "test_menu_art", "test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside",
 		# Mundo 2
 		"test_w2_data", "test_w2_sprites", "test_w2_level_loads", "test_w2_paint", "test_w2_rulers",
 		"test_w2_switch_and_temporary", "test_w2_hazards", "test_w2_magic_and_checkpoint",
@@ -679,7 +679,7 @@ func test_menu_art() -> void:
 	var menu_song: AudioStream = AudioManager._music_streams.get("menu")
 	check(menu_song is AudioStreamMP3 and menu_song.loop and menu_song.get_length() > 10, "el menú suena con menu_principal.mp3 en bucle")
 	check(AudioManager.current_track == "menu" and AudioManager._music.stream == menu_song, "la canción del menú es la pista actual")
-	for track in ["world1", "boss"]:
+	for track in ["world1", "boss", "world2", "garabato"]:
 		var song: AudioStream = AudioManager._music_streams.get(track)
 		check(song is AudioStreamMP3 and song.loop and song.get_length() > 10, "la pista %s usa su mp3 en bucle" % track)
 	menu.queue_free()
@@ -3433,6 +3433,24 @@ func test_w7_progression() -> void:
 	SaveManager.reset_progress()
 
 
+# IMP-036: ningún bocadillo de cartel se sale del nivel (el primero de cada mundo está junto al borde)
+func test_sign_bubbles_inside() -> void:
+	for w in range(1, 9):
+		await load_level("World%d" % w)
+		var out := []
+		var tail_ok := true
+		for sign: SignPost in level.level_objects.signs:
+			var cx := sign.position.x + sign.bubble.position.x
+			var half: float = sign.bubble.box.x / 2.0
+			if cx - half < 0 or cx + half > level.world_w:
+				out.append(int(sign.position.x / C.TILE))
+			# el pico apunta al poste salvo que el poste quede fuera del bocadillo
+			if absf(sign.bubble.tail_x + sign.bubble.position.x) > 0.5 and absf(sign.bubble.position.x) < half - 8:
+				tail_ok = false
+		check(out.is_empty(), "Mundo %d: bocadillos dentro del nivel (se salen en las teselas %s)" % [w, str(out)])
+		check(tail_ok, "Mundo %d: el pico del bocadillo apunta al poste" % w)
+
+
 # ======================================================================= Mundo 8
 func test_w8_data() -> void:
 	var w: Dictionary = C.load_json("res://data/world8/world8.json")
@@ -3440,7 +3458,9 @@ func test_w8_data() -> void:
 	check(w.progress.total == 12000 and w.widthTiles * 16 + b.widthTiles * 16 == 12000, "recorrido total de 12.000 px (el nivel más grande)")
 	check(w.sections.map(func(x): return int(x.from)) == [0, 1800, 3800, 5900, 8000, 10000], "seis secciones A-F en 0/1.800/3.800/5.900/8.000/10.000")
 	var cp_x: Array = w.checkpoints.map(func(c): return float(c.x) * 16)
-	check(cp_x.size() == 3 and cp_x[0] >= 1800 and cp_x[0] < 3800 and cp_x[1] >= 5900 and cp_x[1] < 8000 and cp_x[2] >= 8000 and cp_x[2] < 10000, "tres checkpoints: B, D y antes del jefe (E)")
+	check(cp_x.size() == 4 and cp_x[0] >= 1800 and cp_x[1] < 3800 and cp_x[2] >= 5900 and cp_x[2] < 8000 and cp_x[3] >= 8000 and cp_x[3] < 10000, "cuatro checkpoints: dos en B, D y antes del jefe (E)")
+	# IMP-037: el foso de las plataformas colgantes (teselas 128-143) tiene un checkpoint a <= 320 px antes
+	check(cp_x[0] < 128 * 16 and 128 * 16 - cp_x[0] <= 320, "checkpoint justo antes de las plataformas colgantes")
 	var types := {}
 	for e in w.enemies: types[e.type] = true
 	check(types.has("fantasmita") and types.has("murcibola") and types.has("bloquito"), "los tres enemigos oficiales")

@@ -149,6 +149,9 @@ REM 3. piloto automático: recorre un mundo con los controles normales hasta la 
 %G% --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn -- world=5 max_frames=30000
 REM    "hits" añade dónde se produce cada golpe o caída
 
+REM 3b. regresión: los 8 mundos con invulnerabilidad, con límites de tiempo y de caídas (0 = todos pasan)
+powershell -File godot/tests/run_autopilot_all.ps1 -Godot %G%
+
 REM 4. capturas para revisión visual (ventana)
 %G% --path godot res://tests/Capture.tscn -- scene=World1 x=186 y=12 frames=60 out=C:/tmp/c.png
 ```

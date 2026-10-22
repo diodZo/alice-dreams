@@ -252,7 +252,7 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		objects.add_child(WeaponPickup.new().setup(level, p))
 	out.signs = []
 	for s in data.signs:
-		var sign := SignPost.new().setup(s, atlas, touch_mode, frame_of("signpost", "signpost"))
+		var sign := SignPost.new().setup(s, atlas, touch_mode, frame_of("signpost", "signpost"), cols * C.TILE)
 		objects.add_child(sign)
 		out.signs.append(sign)
 	var decor := Node2D.new()
