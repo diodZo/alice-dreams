@@ -89,6 +89,8 @@ func describe() -> String:
 		State.COMPLETED:
 			return head + " - %d estrellas" % int(SaveManager.get_world(id).get("bestStars", 0))
 		State.UNLOCKED:
+			if not SaveManager.get_resume(id).is_empty():
+				return head + " - Partida a medias"
 			return head + (" - Desbloqueado: próximamente" if is_pending() else " - ¡A jugar!")
 	if not WorldRegistry.get_world(id).get("implemented", false):
 		return head + " - Próximamente"

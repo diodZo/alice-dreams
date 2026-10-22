@@ -53,6 +53,8 @@ func _ready() -> void:
 	level = inst
 	if args.has("journal"):
 		DreamJournal.open(inst, int(args.journal))
+	if args.has("resume_prompt") and inst.has_method("_ask_resume"):
+		inst._ask_resume(int(args.resume_prompt))
 	if args.has("t") and inst.get("t") != null:
 		inst.t = float(args.t)
 	if level is Level and args.has("x"):

@@ -51,6 +51,8 @@ var ending_btn: CloudButton
 var journal_btn: CloudButton
 var journal_badge: PixelText
 var list: MenuList
+## Pregunta «Continuar / Empezar de nuevo» de un mundo con partida a medias (IMP-016).
+var resume_prompt: ResumePrompt
 
 
 func _ready() -> void:
@@ -206,19 +208,44 @@ func confirm_reset(btn: CloudButton) -> void:
 
 
 func start_game(id := 1) -> void:
-	if starting:
+	if starting or resume_prompt != null:
 		return
 	if not WorldRegistry.is_playable(id):
 		AudioManager.play("no_weapon")
 		_toast("Completa el Mundo %d para desbloquearlo" % (id - 1))
 		return
+	if not SaveManager.get_resume(id).is_empty():
+		_ask_resume(id)
+		return
+	_launch(id, false)
+
+
+## Abre el mundo (reanudando su partida guardada si `resume`).
+func _launch(id: int, resume: bool) -> void:
 	starting = true
 	AudioManager.play("ui_select")
 	carousel.play_enter()
-	var key := WorldRegistry.start_run(id)
+	var key := WorldRegistry.resume_run(id) if resume else WorldRegistry.start_run(id)
+	if key == "":
+		key = WorldRegistry.start_run(id)
 	GameState.entry = {"introBanner": true}
 	await Fader.fade_out(400)
 	Router.go(key)
+
+
+func _ask_resume(id: int) -> void:
+	AudioManager.play("ui_select")
+	resume_prompt = ResumePrompt.new().setup(id)
+	resume_prompt.chosen.connect(func(resume: bool):
+		resume_prompt.queue_free()
+		resume_prompt = null
+		if not resume:
+			SaveManager.clear_resume()
+		_launch(id, resume))
+	resume_prompt.cancelled.connect(func():
+		resume_prompt.queue_free()
+		resume_prompt = null)
+	add_child(resume_prompt)
 
 
 func open_journal() -> void:
@@ -256,3 +283,47 @@ func _toast(text: String) -> void:
 	_toast_label.modulate.a = 1.0
 	var tw := _toast_label.create_tween()
 	tw.tween_property(_toast_label, "modulate:a", 0.0, 0.5).set_delay(1.6)
+
+
+## Cuadro sobre el menú para un mundo con partida a medias: «Continuar» (desde el último
+## checkpoint) o «Empezar de nuevo». Esc lo cierra sin elegir. Su lista de botones recibe las
+## flechas antes que el carrusel (se añade después), así que el carrusel no cambia de mundo.
+class ResumePrompt:
+	extends CanvasLayer
+	signal chosen(resume: bool)
+	signal cancelled
+
+	func setup(world_id: int) -> ResumePrompt:
+		# capa propia por encima del carrusel; se cierra antes del fundido al abrir el mundo
+		layer = 12
+		var W := float(C.GAME_W)
+		var H := float(C.GAME_H)
+		var dim := ColorRect.new()
+		dim.color = Color(C.INK, 0.75)
+		dim.size = Vector2(W, H)
+		dim.mouse_filter = Control.MOUSE_FILTER_STOP
+		add_child(dim)
+		var text := PixelText.make("Mundo %d: tienes una partida a medias.
+¿Sigues desde el último punto de control?" % world_id, {"origin": Vector2(0.5, 0.5), "tint": C.CREAM, "center": true})
+		text.position = Vector2(W / 2, H / 2 - 26)
+		add_child(text)
+		var go_on := CloudButton.make("Continuar", 120)
+		go_on.activated.connect(func(_b): chosen.emit(true))
+		var fresh := CloudButton.make("Empezar de nuevo", 120)
+		fresh.activated.connect(func(_b): chosen.emit(false))
+		var box := HBoxContainer.new()
+		box.add_theme_constant_override("separation", 8)
+		box.position = Vector2(W / 2 - 124, H / 2)
+		box.add_child(go_on)
+		box.add_child(fresh)
+		add_child(box)
+		var list := MenuList.new()
+		list.horizontal = true
+		list.setup([go_on, fresh] as Array[CloudButton])
+		add_child(list)
+		return self
+
+	func _unhandled_input(event: InputEvent) -> void:
+		if event.is_action_pressed("pause"):
+			get_viewport().set_input_as_handled()
+			cancelled.emit()

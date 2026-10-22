@@ -242,6 +242,7 @@
 - **Archivos involucrados:** `godot/scripts/core/save_manager.gd`, `godot/scripts/systems/checkpoint_manager.gd`, `godot/scripts/levels/world_registry.gd`, `godot/scripts/ui/world_card.gd`.
 - **Dependencias:** IMP-001 (más checkpoints hacen la función más útil).
 - **Criterios de aceptación:** cerrar y reabrir tras activar un checkpoint ofrece reanudar allí; un guardado sin el campo nuevo carga sin errores (`test_save_manager`).
+- **Estado: hecho.** Al activar un checkpoint, `SaveManager.save_resume` guarda `resume = {world, scene, run}` (estrellas, recogidas, enemigos derrotados, armas, checkpoint, tiempo, caídas, coleccionables y rescates); se borra al completar ese mundo. En el menú, elegir un mundo con partida a medias abre «Continuar / Empezar de nuevo» (Esc cierra) y su texto dice «Partida a medias»; `WorldRegistry.resume_run` restaura la partida y el nivel coloca a Alice en el checkpoint. Campo opcional: los guardados antiguos cargan igual. Prueba `test_resume_checkpoint`.
 
 ### IMP-017
 **Soporte de mando**

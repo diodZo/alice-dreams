@@ -73,6 +73,17 @@ static func start_run(id: int) -> String:
 	return w.scene
 
 
+## Reanuda la partida guardada del mundo en su último checkpoint (IMP-016). Devuelve la escena
+## ("" si no hay partida guardada de ese mundo).
+static func resume_run(id: int) -> String:
+	var r := SaveManager.get_resume(id)
+	if r.is_empty() or start_run(id) == "":
+		return ""
+	for k in r.run:
+		GameState.set_v(k, r.run[k])
+	return r.scene
+
+
 ## Número de mundo de una escena de Router ("World6" -> 5, "Boss6" -> 5, "Boss" -> 1).
 static func id_for_scene(key: String) -> int:
 	var scene := "World1" if key == "Boss" else key.replace("Boss", "World")

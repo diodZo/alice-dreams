@@ -37,6 +37,9 @@ func defaults() -> Dictionary:
 		# worlds[N].rescued (tipos de criatura); el diario sólo recuerda qué páginas se han visto.
 		"narrativeVersion": DreamNarrative.VERSION,
 		"journal": {"seen": []},
+		# IMP-016: partida a medias para reanudar tras cerrar el juego. Se guarda al activar un
+		# checkpoint y se borra al completar ese mundo: {world, scene, run: {campos de GameState}}.
+		"resume": {},
 	}
 
 
@@ -95,6 +98,9 @@ func _merge(p: Dictionary) -> void:
 			if (v is int or v is float) and not int(v) in seen:
 				seen.append(int(v))
 		state.journal.seen = seen
+	var r: Variant = p.get("resume")
+	if r is Dictionary and r.get("world") is float and r.get("scene") is String and r.get("run") is Dictionary and r.run.get("checkpoint") is Dictionary:
+		state.resume = {"world": int(r.world), "scene": r.scene, "run": r.run}
 	if p.get("settings") is Dictionary:
 		for k in ["music", "sfx", "alwaysRun"]:
 			if p.settings.get(k) is bool:
@@ -171,6 +177,9 @@ func mark_world_completed(world_id: int, stars: int, total_stars: int, special_s
 				all_dream.append(item)
 		state.worlds[str(world_id)]["dreamCollectibles"] = all_dream
 	state.unlockedWorld = clampi(maxi(int(state.unlockedWorld), world_id + 1), 1, WORLD_COUNT)
+	# el mundo terminado ya no tiene una partida a medias
+	if int(state.get("resume", {}).get("world", 0)) == world_id:
+		state.resume = {}
 	persist()
 
 
@@ -233,6 +242,32 @@ func is_adventure_completed() -> bool:
 
 
 ## Borra el progreso conservando los ajustes de audio (como en Phaser).
+## Campos de la partida (GameState) que se guardan para reanudarla en el último checkpoint.
+const RESUME_KEYS := ["stars", "collectedStars", "defeatedEnemies", "weaponsOwned", "weapon", "checkpoint", "playTime", "falls",
+	"specialStar", "magicCrayons", "dreamCollectibles", "rescued"]
+
+
+## Guarda la partida en curso del mundo para poder reanudarla (al activar un checkpoint).
+func save_resume(world_id: int, scene_key: String) -> void:
+	var run := {}
+	for k in RESUME_KEYS:
+		run[k] = GameState.get_v(k)
+	state.resume = {"world": world_id, "scene": scene_key, "run": run}
+	persist()
+
+
+## Partida a medias de ese mundo ({} si no hay).
+func get_resume(world_id: int) -> Dictionary:
+	var r: Dictionary = state.get("resume", {})
+	return r if not r.is_empty() and int(r.get("world", 0)) == world_id else {}
+
+
+func clear_resume() -> void:
+	if not state.get("resume", {}).is_empty():
+		state.resume = {}
+		persist()
+
+
 func reset_progress() -> void:
 	var settings: Dictionary = state.settings.duplicate()
 	state = defaults()

@@ -11,7 +11,7 @@ const TESTS := [
 	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
 	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
-	"test_intro_cinematic", "test_always_run", "test_no_falls_record",
+	"test_intro_cinematic", "test_always_run", "test_no_falls_record", "test_resume_checkpoint",
 ]
 
 
@@ -1044,4 +1044,40 @@ func test_no_falls_record() -> void:
 		check((v.find_child("NoFallsStamp", true, false) != null) == no_falls, "sello en la victoria sólo sin caídas (%s)" % no_falls)
 		v.queue_free()
 		await get_tree().process_frame
+	SaveManager.reset_progress()
+
+
+# IMP-016: reanudar en el último checkpoint tras cerrar el juego
+func test_resume_checkpoint() -> void:
+	SaveManager.reset_progress()
+	check(SaveManager.get_resume(1).is_empty(), "sin partida guardada al empezar")
+	await load_level()
+	await settle()
+	GameState.set_v("stars", 7)
+	place(138, 19)
+	await frames(10)
+	SaveManager.load_state() # como si se cerrara y se abriera el juego
+	var r := SaveManager.get_resume(1)
+	check(r.get("scene") == "World1" and int(r.run.checkpoint.index) == 0 and int(r.run.stars) == 7, "al activar un checkpoint se guarda la partida (%s)" % str(r.get("scene")))
+	await load_level("World1", func(): WorldRegistry.resume_run(1))
+	await settle()
+	near(level.player.position.x, 138 * C.TILE + 8, 2.0, "al reanudar Alice aparece en el checkpoint")
+	check(int(GameState.get_v("stars", 0)) == 7, "con las estrellas que llevaba")
+	check(SaveManager.get_resume(2).is_empty(), "la partida guardada es sólo de ese mundo")
+	# el menú pregunta antes de abrir un mundo con partida a medias; Esc cierra la pregunta
+	level.queue_free()
+	level = null
+	await get_tree().process_frame
+	var menu: Control = load(Router.SCENES.Menu).instantiate()
+	add_child(menu)
+	await frames(2)
+	menu.start_game(1)
+	check(menu.resume_prompt != null and not menu.starting, "el menú pregunta «Continuar / Empezar de nuevo»")
+	await _action("pause")
+	await frames(2)
+	check(menu.resume_prompt == null and not menu.starting, "Esc cierra la pregunta sin abrir el mundo")
+	menu.queue_free()
+	await get_tree().process_frame
+	SaveManager.mark_world_completed(1, 7, 100)
+	check(SaveManager.get_resume(1).is_empty(), "completar el mundo borra la partida a medias")
 	SaveManager.reset_progress()

@@ -41,6 +41,8 @@ func activate(flag: Checkpoint) -> void:
 		return
 	current = {"scene": scene_key, "index": flag.index, "x": flag.respawn.x, "y": flag.respawn.y}
 	GameState.set_v("checkpoint", current)
+	# IMP-016: cerrar el juego ya no obliga a empezar el nivel de nuevo
+	SaveManager.save_resume(int(GameState.get_v("world", 0)), scene_key)
 	AudioManager.play("checkpoint")
 	GameState.show_toast("¡Punto de control!")
 	PlaytestLog.event(level, "checkpoint", str(flag.index))
