@@ -15,7 +15,9 @@ func test_w2_data() -> void:
 	check(w.progress.total == 9000, "recorrido total de 9.000 px")
 	near(float(w.widthTiles * 16) + float(b.widthTiles * 16) * float(b.progress.scale), 9000, 1, "nivel + arena = 9.000 px")
 	var froms: Array = w.sections.map(func(x): return int(x.from))
-	check(froms == [0, 1500, 3300, 5200, 7300], "cinco secciones A-E en 0/1.500/3.300/5.200/7.300")
+	check(froms == [0, 1500, 3300, 5200, 6900], "cinco secciones A-E en 0/1.500/3.300/5.200/6.900")
+	# IMP-026: la sección E ocupa al menos 600 px del nivel
+	check(float(w.widthTiles) * 16 - 6900 >= 600, "la sección E ocupa al menos 600 px")
 	check(w.magicCrayons.size() == 3, "tres crayones mágicos (rojo, azul, amarillo)")
 	var types := {}
 	for e in w.enemies:

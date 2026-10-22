@@ -280,26 +280,19 @@ enemies = (
 # IMP-001: uno por sección (o a <= 320 px de su entrada), ningún tramo > 2.500 px
 checkpoints = [{"x": 127, "y": 20}, {"x": 205, "y": 18}, {"x": 301, "y": 21}, {"x": 410, "y": 19}, {"x": 468, "y": 17}, {"x": 564, "y": 19}]
 
+# IMP-031: cartel sólo para lo que aparece por primera vez en este mundo (lo ya enseñado en
+# mundos anteriores se aprende con la colocación); como mucho 12 por nivel
 signs = [
     {"x": 3, "y": 20, "text": "Mundo 7: ¡El Valle de Caramelo! Un reino de chocolate, glaseado y gominolas"},
-    {"x": 30, "y": 20, "text": "Las gelatinas son elásticas: ¡salta encima y rebotarás muy alto!"},
     {"x": 41, "y": 20, "text": "El Gomilito Saltarín se mueve a saltitos. Si le das, ¡se divide en gomitas!"},
     {"x": 74, "y": 20, "text": "Pisa la goma elástica para subir a la cornisa. Hay tres caramelos especiales"},
-    {"x": 66, "y": 20, "text": "Golpea los bloques de premio desde abajo: ¡sueltan estrellas!"},
-    {"x": 128, "y": 20, "text": "¡Un corazón dulce! Recupera un corazón de vida"},
     {"x": 150, "y": 19, "text": "Cuppy Dulzón levanta su piruleta antes de disparar: ¡salta el caramelo!"},
-    {"x": 177, "y": 18, "text": "El caramelo dorado resbala: frena con tiempo"},
-    {"x": 224, "y": 18, "text": "El bastón que sube lleva a una cereza dorada"},
     {"x": 264, "y": 20, "text": "El Río de Chocolate: el chocolate es pegajoso y te frena"},
     {"x": 282, "y": 20, "text": "Los chorros de chocolate burbujean antes de salir"},
     {"x": 302, "y": 21, "text": "La Piruleta Voladora lanza caramelitos en abanico: busca el hueco"},
-    {"x": 320, "y": 21, "text": "La goma te sube a los malvaviscos: ¡ruta de estrellas!"},
     {"x": 408, "y": 19, "text": "La Fábrica de Caramelos: las correas de chocolate te llevan"},
     {"x": 438, "y": 19, "text": "El lanzador brilla antes de disparar. Las piruletas giran siempre igual"},
-    {"x": 452, "y": 19, "text": "Estas gelatinas tiemblan y desaparecen: ¡no te pares!"},
     {"x": 479, "y": 17, "text": "Esta correa va hacia atrás: ¡corre!"},
-    {"x": 510, "y": 17, "text": "¡El tobogán de caramelo dorado!"},
-    {"x": 564, "y": 19, "text": "El Castillo del Gran Pastel"},
     {"x": 645, "y": 19, "text": "Don Chupetón te espera dentro del castillo"},
 ]
 

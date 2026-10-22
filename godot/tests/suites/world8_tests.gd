@@ -45,6 +45,8 @@ func test_w8_data() -> void:
 	check(manifest.resources.any(func(r): return r.has("reused")), "el manifiesto documenta los cuadros reutilizados")
 	check(manifest.resources.filter(func(r): return String(r.name).begins_with("rey_pesadelo/")).all(func(r): return r.source == "imagenes/jefemundo8.png"), "el Rey Pesadelo sale sólo de jefemundo8.png")
 	check(manifest.resources.filter(func(r): return String(r.name).begins_with("gato_morado/")).all(func(r): return r.source == "imagenes/jefemundo8.png"), "el gato morado sale de la hoja oficial del jefe")
+	# IMP-031: cartel sólo para lo nuevo del mundo
+	check(w.signs.size() <= 12, "como mucho 12 carteles (%d)" % w.signs.size())
 
 
 func test_w8_sprites() -> void:

@@ -36,6 +36,8 @@ func test_w7_data() -> void:
 	for src in ["imagenes/word_7.png", "imagenes/tilesets_world_7.png", "imagenes/enemies_world_7.png", "imagenes/jefemundo7.png"]:
 		check(manifest.resources.any(func(r): return r.get("source") == src), "usa la referencia oficial %s" % src)
 	check(manifest.resources.any(func(r): return r.has("reused")), "el manifiesto documenta los cuadros reutilizados")
+	# IMP-031: cartel sólo para lo nuevo del mundo
+	check(w.signs.size() <= 12, "como mucho 12 carteles (%d)" % w.signs.size())
 
 
 func test_w7_sprites() -> void:

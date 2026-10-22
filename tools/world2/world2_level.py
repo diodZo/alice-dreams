@@ -70,7 +70,8 @@ LEVEL = {
         {"id": "B", "name": "Jardín de crayones", "from": 1500},
         {"id": "C", "name": "Río de pintura", "from": 3300},
         {"id": "D", "name": "Fábrica de dibujos", "from": 5200},
-        {"id": "E", "name": "El Gran Lienzo", "from": 7300},
+        # IMP-026: E incluye el último tramo de la fábrica (antes empezaba 160 px antes de la puerta)
+        {"id": "E", "name": "El Gran Lienzo", "from": 6900},
     ],
     # Capas del fondo (word_2.png como referencia de composición): cielo, arcoíris y castillo
     # lejanos, nubes, hojas de cuaderno y garabatos a media distancia, estrellas colgantes.
@@ -276,7 +277,7 @@ BOSS = {
     "frames": LEVEL["frames"],
     "progress": {"total": 9000, "offset": LEVEL_W * 16, "scale": (9000 - LEVEL_W * 16) / (ARENA_W * 16)},
     "playerStart": {"x": 2, "y": 14},
-    "sections": [{"id": "E", "name": "El Gran Lienzo", "from": 7300}],
+    "sections": [{"id": "E", "name": "El Gran Lienzo", "from": 6900}],
     "terrain": [{"x": 0, "y": 14, "w": ARENA_W, "h": 3}],
     "blocks": [],
     "clouds": [

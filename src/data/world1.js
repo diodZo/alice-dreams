@@ -66,8 +66,11 @@ export const WORLD1 = {
     g(332, 9, 13),
     g(341, 29, 19),
     g(377, 18, 16),
-    // D/E — llegada al castillo
-    g(395, 80, 19),
+    // D/E — llegada al castillo. IMP-025: foso 452-462 (11 teselas, más que un salto) como
+    // examen final sin enemigos: se cruza con una nube de vapor y una nube móvil. Empieza
+    // pasados los bloques flotantes 446-448 (un cabezazo contra ellos cortaría el salto)
+    g(395, 57, 19),
+    g(463, 12, 19),
   ],
 
   blocks: [
@@ -113,6 +116,8 @@ export const WORLD1 = {
   movers: [
     { x: 184, y: 19, frame: 'cloud_face_small', dx: 13, dy: 0, duration: 3400 },
     { x: 247, y: 19, frame: 'cloud_face_small', dx: 7, dy: 0, duration: 2600 },
+    // E: examen final (IMP-025), tras la nube de vapor de la tesela 455
+    { x: 458, y: 19, frame: 'cloud_face_small', dx: 3, dy: 0, duration: 2200 },
   ],
 
   crumbles: [
@@ -120,6 +125,8 @@ export const WORLD1 = {
     { x: 294, y: 17 },
     { x: 299, y: 18 },
     { x: 303, y: 17 },
+    // E: examen final (vapor y nube móvil sobre el foso 452-462)
+    { x: 455, y: 18 },
   ],
 
   pads: [{ x: 360, y: 19, power: -600 }],
@@ -166,7 +173,7 @@ export const WORLD1 = {
     // E
     ...row(400, 18, 4),
     ...row(446, 14, 3),
-    ...row(452, 18, 5),
+    ...row(455, 16, 5),
   ],
 
   enemies: [
@@ -220,7 +227,7 @@ export const WORLD1 = {
     { x: 317, y: 19, text: 'Las corrientes de aire te elevan: ¡déjate llevar!' },
     { x: 357, y: 19, text: 'Salta en el cojín de burbujas para llegar muy alto' },
     { x: 369, y: 19, text: 'La nube elástica te hará rebotar' },
-    { x: 457, y: 19, text: 'Castillo de Nubarrón. ¡Prepárate!' },
+    { x: 464, y: 19, text: 'Castillo de Nubarrón. ¡Prepárate!' },
   ],
 
   decor: [
@@ -273,7 +280,7 @@ export const WORLD1 = {
     { x: 424, y: 19, frame: 'egg_yellow' },
     { x: 434, y: 19, frame: 'pinwheel_big', sway: true },
     { x: 443, y: 19, frame: 'crystals' },
-    { x: 451, y: 19, frame: 'fence_med' },
+    { x: 472, y: 19, frame: 'fence_med' },
     { x: 461, y: 19, frame: 'lollipops', sway: true },
   ],
 

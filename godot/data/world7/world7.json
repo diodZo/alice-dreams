@@ -2473,11 +2473,6 @@
    "text": "Mundo 7: ¡El Valle de Caramelo! Un reino de chocolate, glaseado y gominolas"
   },
   {
-   "x": 30,
-   "y": 20,
-   "text": "Las gelatinas son elásticas: ¡salta encima y rebotarás muy alto!"
-  },
-  {
    "x": 41,
    "y": 20,
    "text": "El Gomilito Saltarín se mueve a saltitos. Si le das, ¡se divide en gomitas!"
@@ -2488,29 +2483,9 @@
    "text": "Pisa la goma elástica para subir a la cornisa. Hay tres caramelos especiales"
   },
   {
-   "x": 66,
-   "y": 20,
-   "text": "Golpea los bloques de premio desde abajo: ¡sueltan estrellas!"
-  },
-  {
-   "x": 128,
-   "y": 20,
-   "text": "¡Un corazón dulce! Recupera un corazón de vida"
-  },
-  {
    "x": 150,
    "y": 19,
    "text": "Cuppy Dulzón levanta su piruleta antes de disparar: ¡salta el caramelo!"
-  },
-  {
-   "x": 177,
-   "y": 18,
-   "text": "El caramelo dorado resbala: frena con tiempo"
-  },
-  {
-   "x": 224,
-   "y": 18,
-   "text": "El bastón que sube lleva a una cereza dorada"
   },
   {
    "x": 264,
@@ -2528,11 +2503,6 @@
    "text": "La Piruleta Voladora lanza caramelitos en abanico: busca el hueco"
   },
   {
-   "x": 320,
-   "y": 21,
-   "text": "La goma te sube a los malvaviscos: ¡ruta de estrellas!"
-  },
-  {
    "x": 408,
    "y": 19,
    "text": "La Fábrica de Caramelos: las correas de chocolate te llevan"
@@ -2543,24 +2513,9 @@
    "text": "El lanzador brilla antes de disparar. Las piruletas giran siempre igual"
   },
   {
-   "x": 452,
-   "y": 19,
-   "text": "Estas gelatinas tiemblan y desaparecen: ¡no te pares!"
-  },
-  {
    "x": 479,
    "y": 17,
    "text": "Esta correa va hacia atrás: ¡corre!"
-  },
-  {
-   "x": 510,
-   "y": 17,
-   "text": "¡El tobogán de caramelo dorado!"
-  },
-  {
-   "x": 564,
-   "y": 19,
-   "text": "El Castillo del Gran Pastel"
   },
   {
    "x": 645,

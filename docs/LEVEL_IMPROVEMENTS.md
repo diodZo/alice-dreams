@@ -358,6 +358,7 @@
 - **Complejidad:** Baja. **Prioridad:** Media.
 - **Archivos involucrados:** `src/data/world1.js`, `godot/data/worlds/world1.json`.
 - **Criterios de aceptación:** la sección E contiene ≥2 tipos de objeto de mecánica; el piloto invulnerable llega a la puerta.
+- **Estado: hecho.** Foso de 11 teselas (452-462) sin enemigos justo antes del castillo: se cruza con una nube de vapor (tesela 455) y una nube móvil (458, recorrido de 3 teselas), las dos ya enseñadas en C y D; checkpoint de la sección en la tesela 401. Empieza pasados los bloques flotantes 446-448: con el foso en la 449 el cabezazo contra ellos cortaba el salto. Un cojín tras el foso se descartó: lanzaba a Alice por encima de la puerta. El piloto llega en 58 s (antes 57) sin caídas nuevas.
 
 ### IMP-026
 **Mundo 2 — Sección E “El Gran Lienzo” prácticamente vacía**
@@ -366,6 +367,7 @@
 - **Complejidad:** Baja. **Prioridad:** Baja.
 - **Archivos involucrados:** `tools/world2/world2_level.py`, `godot/data/world2/world2.json` (`sections`).
 - **Criterios de aceptación:** la sección E ocupa ≥ 600 px de nivel.
+- **Estado: hecho.** La sección E empieza en 6 900 px (antes 7 300), en el nivel y en la arena: ocupa 684 px e incluye el último tramo de la fábrica y su checkpoint (tesela 458).
 
 ### IMP-027
 **Mundo 3 — Ovillo entre dos cuerdas sobre fosos**
@@ -424,6 +426,7 @@
 - **Complejidad:** Baja. **Prioridad:** Baja.
 - **Archivos involucrados:** `tools/world7/world7_level.py`, `godot/data/world7/world7.json` (igual para `world8`).
 - **Criterios de aceptación:** ≤12 carteles por nivel; todos los carteles explican algo que no apareció antes.
+- **Estado: hecho.** Mundo 7: 20 → 11 carteles; Mundo 8: 20 → 12. Se conservan la bienvenida, los enemigos y mecánicas nuevos del mundo y la llegada al jefe; se quitan los que repetían lo ya enseñado (gelatinas y setas elásticas, bloques de premio, plataformas que se caen, estrellas que caen, tobogán, corazones) y las pistas de rutas y coleccionables. `test_w7_data` y `test_w8_data` comprueban el máximo.
 
 ### IMP-032
 **Mundo 8 — Reintento por fase en el jefe final**

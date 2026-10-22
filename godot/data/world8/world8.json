@@ -2468,19 +2468,9 @@
    "text": "El Bloquito Sombra embiste: después del golpe se queda quieto. ¡Ahora!"
   },
   {
-   "x": 84,
-   "y": 20,
-   "text": "Arriba hay un fragmento de luna. ¡Reúne los tres!"
-  },
-  {
    "x": 114,
    "y": 20,
    "text": "Los Puentes de la Luna: salta a las plataformas colgantes cuando se acerquen"
-  },
-  {
-   "x": 152,
-   "y": 19,
-   "text": "Las estrellas titilan antes de caer: mira el destello del suelo"
   },
   {
    "x": 166,
@@ -2488,34 +2478,9 @@
    "text": "El Murcibola de Trapo se encoge antes de lanzarse en picada"
   },
   {
-   "x": 174,
-   "y": 19,
-   "text": "Estas plataformas tiemblan y se caen: ¡no te pares!"
-  },
-  {
    "x": 240,
    "y": 20,
    "text": "El Jardín de las Sombras: no pises los charcos de sombra"
-  },
-  {
-   "x": 258,
-   "y": 20,
-   "text": "Las setas fantasma son elásticas: ¡rebota!"
-  },
-  {
-   "x": 270,
-   "y": 20,
-   "text": "La bruma de sombras hace daño: salta por encima con la seta"
-  },
-  {
-   "x": 316,
-   "y": 19,
-   "text": "Esta seta te sube a una ruta secreta con el orbe especial"
-  },
-  {
-   "x": 370,
-   "y": 20,
-   "text": "Las Torres Encantadas: ¡salta de escalón en escalón!"
   },
   {
    "x": 449,
@@ -2536,11 +2501,6 @@
    "x": 528,
    "y": 20,
    "text": "Los faroles mágicos revelan puentes ocultos. ¡Tócalo!"
-  },
-  {
-   "x": 590,
-   "y": 20,
-   "text": "¿Tienes la llave? Este cofre guarda un tesoro"
   },
   {
    "x": 616,

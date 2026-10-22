@@ -284,26 +284,20 @@ enemies = (
 checkpoints = [{"x": 116, "y": 20}, {"x": 150, "y": 19}, {"x": 241, "y": 20}, {"x": 336, "y": 20}, {"x": 425, "y": 13},
                {"x": 518, "y": 20}, {"x": 610, "y": 20}]
 
+# IMP-031: cartel sólo para lo que aparece por primera vez en este mundo (lo ya enseñado en
+# mundos anteriores se aprende con la colocación); como mucho 12 por nivel
 signs = [
     {"x": 3, "y": 20, "text": "Mundo 8: El Castillo de las Pesadillas. ¡La última aventura de Alice!"},
     {"x": 27, "y": 20, "text": "Las plataformas fantasma brillan antes de desaparecer... ¡y siempre vuelven!"},
     {"x": 39, "y": 20, "text": "El Fantasmita Farol levanta su farol antes de lanzar una estrellita"},
     {"x": 74, "y": 20, "text": "El Bloquito Sombra embiste: después del golpe se queda quieto. ¡Ahora!"},
-    {"x": 84, "y": 20, "text": "Arriba hay un fragmento de luna. ¡Reúne los tres!"},
     {"x": 114, "y": 20, "text": "Los Puentes de la Luna: salta a las plataformas colgantes cuando se acerquen"},
-    {"x": 152, "y": 19, "text": "Las estrellas titilan antes de caer: mira el destello del suelo"},
     {"x": 166, "y": 19, "text": "El Murcibola de Trapo se encoge antes de lanzarse en picada"},
-    {"x": 174, "y": 19, "text": "Estas plataformas tiemblan y se caen: ¡no te pares!"},
     {"x": 240, "y": 20, "text": "El Jardín de las Sombras: no pises los charcos de sombra"},
-    {"x": 258, "y": 20, "text": "Las setas fantasma son elásticas: ¡rebota!"},
-    {"x": 270, "y": 20, "text": "La bruma de sombras hace daño: salta por encima con la seta"},
-    {"x": 316, "y": 19, "text": "Esta seta te sube a una ruta secreta con el orbe especial"},
-    {"x": 370, "y": 20, "text": "Las Torres Encantadas: ¡salta de escalón en escalón!"},
     {"x": 449, "y": 20, "text": "Los ganchos se balancean siempre igual: pasa cuando se alejen"},
     {"x": 477, "y": 20, "text": "Arriba, entre plataformas fantasma, está la llave del castillo"},
     {"x": 502, "y": 20, "text": "El Corazón del Castillo: busca los tres recuerdos mágicos"},
     {"x": 528, "y": 20, "text": "Los faroles mágicos revelan puentes ocultos. ¡Tócalo!"},
-    {"x": 590, "y": 20, "text": "¿Tienes la llave? Este cofre guarda un tesoro"},
     {"x": 616, "y": 20, "text": "Detrás de la gran puerta te espera el Rey Pesadelo. ¡Valor, Alice!"},
 ]
 
