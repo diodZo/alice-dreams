@@ -10,7 +10,7 @@ const TESTS := [
 	"test_paint_and_sling_damage", "test_stomp", "test_scratch_ai", "test_spit_ai",
 	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
-	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook",
+	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema",
 ]
 
 
@@ -854,3 +854,21 @@ func on_player_overlap(_level: Node, _player: Player, _delta: float) -> void:
 	level.level_objects.objects.add_child(shoot)
 	await frames(10)
 	check(shoot.touched == 0, "un área shootable no cuenta como contacto")
+
+
+# IMP-015: los JSON generados (Mundos 2-8 y sus arenas) sólo declaran las mecánicas que usan; los
+# niveles llevan siempre las claves del esquema común (tools/level_schema.py, ALWAYS)
+func test_level_schema() -> void:
+	var always := ["sections", "terrain", "enemies", "stars", "checkpoints", "signs", "decor", "pickups", "startWeapons"]
+	var bad := []
+	for w in range(2, 9):
+		for suffix in ["", "_boss"]:
+			var path := "res://data/world%d/world%d%s.json" % [w, w, suffix]
+			var d: Dictionary = C.load_json(path)
+			for k in d:
+				if d[k] is Array and d[k].is_empty() and not k in always:
+					bad.append("%s:%s" % [path.get_file(), k])
+			# los niveles (no las arenas, que nunca las han declarado todas) llevan las comunes
+			if suffix == "" and not always.all(func(k): return d.has(k)):
+				bad.append("%s: falta una clave común" % path.get_file())
+	check(bad.is_empty(), "sin listas vacías de mecánicas que el mundo no usa (%s)" % str(bad))

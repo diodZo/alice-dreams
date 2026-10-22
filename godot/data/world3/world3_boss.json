@@ -66,7 +66,6 @@
    "h": 3
   }
  ],
- "blocks": [],
  "clouds": [
   {
    "x": 15,
@@ -79,14 +78,6 @@
    "frame": "cloud_blue"
   }
  ],
- "bridges": [],
- "rulers": [],
- "movers": [],
- "swings": [],
- "crumbles": [],
- "pads": [],
- "winds": [],
- "hazards": [],
  "stars": [
   {
    "x": 14,

@@ -106,7 +106,6 @@
    "mat": "frosting"
   }
  ],
- "blocks": [],
  "clouds": [
   {
    "x": 15,
@@ -127,14 +126,6 @@
    "top": 4
   }
  ],
- "bridges": [],
- "rulers": [],
- "movers": [],
- "swings": [],
- "crumbles": [],
- "pads": [],
- "winds": [],
- "hazards": [],
  "stars": [
   {
    "x": 14,

@@ -125,7 +125,6 @@
    "mat": "cosmic"
   }
  ],
- "blocks": [],
  "clouds": [
   {
    "x": 15,
@@ -140,14 +139,6 @@
    "top": 1
   }
  ],
- "bridges": [],
- "rulers": [],
- "movers": [],
- "swings": [],
- "crumbles": [],
- "pads": [],
- "winds": [],
- "hazards": [],
  "stars": [
   {
    "x": 14,

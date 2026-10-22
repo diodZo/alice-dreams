@@ -325,8 +325,6 @@
    "frame": "cloud_blue"
   }
  ],
- "bridges": [],
- "rulers": [],
  "movers": [
   {
    "x": 221,
@@ -450,14 +448,6 @@
    "power": -480
   }
  ],
- "winds": [],
- "hazards": [],
- "paints": [],
- "rollers": [],
- "bouncers": [],
- "drips": [],
- "rivers": [],
- "magicCrayons": [],
  "yarnRollers": [
   {
    "x": 160,

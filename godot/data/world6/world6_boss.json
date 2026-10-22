@@ -128,7 +128,6 @@
    "mat": "cloud"
   }
  ],
- "blocks": [],
  "clouds": [
   {
    "x": 13,
@@ -149,14 +148,6 @@
    "top": 3
   }
  ],
- "bridges": [],
- "rulers": [],
- "movers": [],
- "swings": [],
- "crumbles": [],
- "pads": [],
- "winds": [],
- "hazards": [],
  "stars": [
   {
    "x": 12,

@@ -22,6 +22,9 @@ la superficie queda 1 tesela por debajo del borde y siempre hay salida (borde ba
 import json
 import math
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from level_schema import compact  # noqa: E402  (esquema común, IMP-015)
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "godot" / "data" / "world4"
@@ -310,5 +313,5 @@ boss = {
 
 OUT.mkdir(parents=True, exist_ok=True)
 for name, data in [("world4.json", level), ("world4_boss.json", boss)]:
-    (OUT / name).write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    (OUT / name).write_text(json.dumps(compact(data), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 print(f"Mundo 4: {len(stars)} estrellas, {len(enemies)} enemigos, ancho total {(LEVEL_W + ARENA_W) * 16} px")

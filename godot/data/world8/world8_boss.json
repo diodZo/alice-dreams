@@ -107,7 +107,6 @@
    "mat": "castle"
   }
  ],
- "blocks": [],
  "clouds": [
   {
    "x": 74,
@@ -128,14 +127,6 @@
    "top": 3
   }
  ],
- "bridges": [],
- "rulers": [],
- "movers": [],
- "swings": [],
- "crumbles": [],
- "pads": [],
- "winds": [],
- "hazards": [],
  "stars": [
   {
    "x": 8,

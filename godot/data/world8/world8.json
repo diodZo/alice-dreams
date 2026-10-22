@@ -561,8 +561,6 @@
    "top": 3
   }
  ],
- "bridges": [],
- "rulers": [],
  "movers": [
   {
    "x": 414,
@@ -656,8 +654,6 @@
    "top": 6
   }
  ],
- "pads": [],
- "winds": [],
  "hazards": [
   {
    "x": 120,
@@ -684,15 +680,6 @@
    "shape": "spikes"
   }
  ],
- "paints": [],
- "rollers": [],
- "bouncers": [],
- "drips": [],
- "rivers": [],
- "magicCrayons": [],
- "yarnRollers": [],
- "sleepClouds": [],
- "magicButtons": [],
  "fallingStars": [
   {
    "x": 158,

@@ -447,7 +447,6 @@
    "frame": "cloud_puffy"
   }
  ],
- "bridges": [],
  "rulers": [
   {
    "x": 39,
@@ -560,8 +559,6 @@
    "frame": "notebook_page"
   }
  ],
- "pads": [],
- "winds": [],
  "hazards": [
   {
    "x": 262,

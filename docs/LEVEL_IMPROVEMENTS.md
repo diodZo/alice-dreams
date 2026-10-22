@@ -232,6 +232,7 @@
 - **Complejidad:** Media. **Prioridad:** Baja.
 - **Archivos involucrados:** `godot/scripts/levels/level_builder.gd`, `tools/world*/world*_level.py`.
 - **Criterios de aceptación:** los JSON regenerados sólo contienen claves no vacías; todas las pruebas pasan.
+- **Estado: hecho en lo que pide el criterio; la división de `build()` queda pendiente.** `tools/level_schema.py` (`compact()`) quita de los JSON de los Mundos 2-8 y sus arenas las listas vacías de mecánicas que el mundo no usa (140 líneas menos); se conservan siempre las claves del esquema común (`ALWAYS`: secciones, terreno, enemigos, estrellas, checkpoints, carteles, decoración, armas y armas iniciales), que leen el nivel, el registro de mundos y las pruebas. `LevelBuilder` lee como opcionales (`data.get(k, [])`) las 9 claves de mecánicas que aún leía como obligatorias. El Mundo 1 sale de los datos de Phaser, que ya sólo tienen sus claves. Prueba `test_level_schema`. No se ha dividido `build()` en constructores por familia: es un cambio grande del motor sin efecto para quien juega.
 
 ### IMP-016
 **Reanudar en el último checkpoint tras cerrar el juego**

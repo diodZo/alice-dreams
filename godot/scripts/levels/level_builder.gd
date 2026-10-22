@@ -32,9 +32,9 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 	platforms.name = "Platforms"
 	root.add_child(platforms)
 	out.platforms = platforms
-	for c in data.clouds:
+	for c in data.get("clouds", []):
 		platforms.add_child(CloudPlatform.new().setup(c, atlas))
-	for b in data.bridges:
+	for b in data.get("bridges", []):
 		platforms.add_child(RainbowBridge.new().setup(b, atlas))
 	# Mundo 2: puentes de reglas (rectos, inclinados, articulados, dibujados, temporales, activables)
 	out.rulers = []
@@ -43,12 +43,12 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 		platforms.add_child(rb)
 		out.rulers.append(rb)
 	out.movers = []
-	for m in data.movers:
+	for m in data.get("movers", []):
 		var p := MovingPlatform.new().setup(m, atlas)
 		platforms.add_child(p)
 		out.movers.append(p)
 	out.crumbles = []
-	for c in data.crumbles:
+	for c in data.get("crumbles", []):
 		var p := CrumblePlatform.new().setup(level, c, atlas)
 		platforms.add_child(p)
 		out.crumbles.append(p)
@@ -115,11 +115,11 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 	objects.name = "Objects"
 	root.add_child(objects)
 	out.objects = objects
-	for p in data.pads:
+	for p in data.get("pads", []):
 		objects.add_child(BouncePad.new().setup(level, p, atlas))
-	for h in data.hazards:
+	for h in data.get("hazards", []):
 		objects.add_child(Hazard.new().setup(h, atlas))
-	for w in data.winds:
+	for w in data.get("winds", []):
 		objects.add_child(WindZone.new().setup(level, w))
 	# Mundo 2: pintura, lápices rodantes, borradores que rebotan, goteos, crayones e interruptores
 	for p in data.get("paints", []):
@@ -229,8 +229,9 @@ func build(root: Node2D, touch_mode: bool, collected_stars: Array) -> Dictionary
 	for m in data.get("magicCrayons", []):
 		if not (m.color in GameState.get_v("magicCrayons", [])):
 			objects.add_child(MagicCrayon.new().setup(level, m, atlas))
-	for i in data.get("rulers", []).size():
-		var r: Dictionary = data.rulers[i]
+	var rulers: Array = data.get("rulers", [])
+	for i in rulers.size():
+		var r: Dictionary = rulers[i]
 		if r.has("switch"):
 			objects.add_child(BridgeSwitch.new().setup(r.switch, out.rulers[i], atlas))
 
@@ -280,16 +281,16 @@ func frame_of(key: String, default: Variant) -> Variant:
 ## Avisa (sin ocultarlo) si el atlas no contiene algún fotograma usado por los datos.
 func _check_frames(atlas: String) -> void:
 	var frames: Array = []
-	if data.crumbles.any(func(c): return not c.has("frame")):
+	if data.get("crumbles", []).any(func(c): return not c.has("frame")):
 		frames.append("cloud_puff")
-	if not data.pads.is_empty():
-		for p in data.pads:
+	if not data.get("pads", []).is_empty():
+		for p in data.get("pads", []):
 			frames.append(p.get("frame", "jump_pad"))
 	if not data.signs.is_empty():
 		frames.append(frame_of("signpost", "signpost"))
 	if not data.checkpoints.is_empty():
 		frames.append(frame_of("flag", "flag"))
-	if not data.bridges.is_empty():
+	if not data.get("bridges", []).is_empty():
 		frames += ["rainbow_mid", "rainbow_cap_l", "rainbow_cap_r"]
 	if not data.get("rulers", []).is_empty():
 		frames += ["ruler_mid", "ruler_post", "ruler_hinge"]
@@ -364,7 +365,7 @@ func _check_frames(atlas: String) -> void:
 		var f: String = x.get("frame", "sleep_cloud")
 		if not Assets.has_frame(fx_atlas, f):
 			Assets.mark_placeholder("%s:%s" % [fx_atlas, f])
-	for list in [data.clouds, data.movers, data.hazards, data.decor, data.crumbles, data.get("rockets", []), data.get("orbits", [])]:
+	for list in [data.get("clouds", []), data.get("movers", []), data.get("hazards", []), data.decor, data.get("crumbles", []), data.get("rockets", []), data.get("orbits", [])]:
 		for x in list:
 			if x.has("frame"):
 				frames.append(x.frame)
@@ -446,7 +447,7 @@ func build_terrain() -> TileMapLayer:
 			else:
 				set_tiles = ts.terrain.fill
 			_put(x, y, int(set_tiles[v]))
-	for b in data.blocks:
+	for b in data.get("blocks", []):
 		if not ts.blocks.has(b.type):
 			Assets.mark_placeholder("tileset:" + b.type)
 			continue

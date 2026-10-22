@@ -16,6 +16,9 @@ Recorrido: 474 x 25 teselas (7.584 px) + arena del Gran Lienzo (60 teselas) = 9.
 import json
 import math
 import os
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+from level_schema import compact  # noqa: E402  (esquema común, IMP-015)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(ROOT, "godot", "data", "world2")
@@ -320,7 +323,7 @@ def main():
     check(BOSS)
     for name, d in (("world2.json", LEVEL), ("world2_boss.json", BOSS)):
         with open(os.path.join(OUT, name), "w", encoding="utf-8") as fh:
-            json.dump(d, fh, indent=1, ensure_ascii=False)
+            json.dump(compact(d), fh, indent=1, ensure_ascii=False)
     print(f"Mundo 2: {LEVEL['widthTiles']}x{ROWS} teselas ({LEVEL['widthTiles'] * 16} px) + arena {ARENA_W} teselas; "
           f"{len(LEVEL['stars'])} estrellas (+{len(BOSS['stars'])} en la arena), {len(LEVEL['enemies'])} enemigos, "
           f"{len(LEVEL['rulers'])} puentes de reglas, {len(LEVEL['paints'])} superficies de pintura")

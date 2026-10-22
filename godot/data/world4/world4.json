@@ -435,8 +435,6 @@
    "top": 4
   }
  ],
- "bridges": [],
- "rulers": [],
  "movers": [
   {
    "x": 72,
@@ -503,7 +501,6 @@
    "duration": 3000
   }
  ],
- "swings": [],
  "crumbles": [
   {
    "x": 322,
@@ -541,8 +538,6 @@
    "power": -470
   }
  ],
- "winds": [],
- "hazards": [],
  "paints": [
   {
    "x": 116,
@@ -566,14 +561,6 @@
    "frame": "foam_slip"
   }
  ],
- "rollers": [],
- "bouncers": [],
- "drips": [],
- "rivers": [],
- "magicCrayons": [],
- "yarnRollers": [],
- "sleepClouds": [],
- "magicButtons": [],
  "waters": [
   {
    "x": 30,

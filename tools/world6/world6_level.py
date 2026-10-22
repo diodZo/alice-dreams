@@ -29,6 +29,9 @@ ningún hueco obligatorio supera 5 teselas sin plataforma.
 import json
 import math
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from level_schema import compact  # noqa: E402  (esquema común, IMP-015)
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "godot" / "data" / "world6"
@@ -419,5 +422,5 @@ boss = {
 
 OUT.mkdir(parents=True, exist_ok=True)
 for name, data in [("world6.json", level), ("world6_boss.json", boss)]:
-    (OUT / name).write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    (OUT / name).write_text(json.dumps(compact(data), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 print(f"Mundo 6: {len(level['stars'])} estrellas, {len(enemies)} enemigos, {len(trains)} trenes, ancho total {TOTAL} px")
