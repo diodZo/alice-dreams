@@ -387,6 +387,7 @@
 - **Complejidad:** Media. **Prioridad:** Baja.
 - **Archivos involucrados:** `godot/scripts/ai/bubble_fish.gd`, `tools/world4/world4_level.py`, `godot/data/world4/world4.json`.
 - **Criterios de aceptación:** todos los Peces Burbuja aparecen en agua; `test_w4_enemies` actualizado.
+- **Estado: hecho en la colocación; el comportamiento queda pendiente.** Los 4 peces que estaban en tierra (teselas 64, 395, 488 y 545) pasan a las zonas de agua libres (150-161 y 235-274) o se cambian por Pompas (488 y 545), que flotan; el Mundo 4 sigue con 22 enemigos (7 peces, 7 cangrejos, 8 pompas). El generador y `test_w4_data` comprueban que ningún pez queda fuera del agua. Sin cambiar `bubble_fish.gd` (disparar sólo desde el agua y saltar como aviso): es un ajuste de IA para después de la prueba jugada. El piloto sigue completando el nivel con y sin invulnerabilidad.
 
 ### IMP-029
 **Mundo 5 — Cruce en tren de la sección E (teselas 553-591)**

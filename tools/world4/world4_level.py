@@ -206,15 +206,17 @@ stars = (
 )
 
 enemies = (
+    # IMP-028: los Peces Burbuja viven en el agua (las cinco zonas de `waters`); los que estaban en
+    # tierra pasan a las zonas libres (150-161 y 235-274) o se cambian por Pompas, que flotan
     [enemy("bubble_fish", x, y, a, b) for x, y, a, b in [
-        (35, 22.6, 31, 39), (64, 16, 58, 68), (91, 22.8, 87, 95), (266, 22.6, 262, 273), (395, 10, 389, 404),
-        (418, 20, 409, 428), (436, 22, 430, 443), (488, 13, 480, 492), (545, 15, 540, 552)]]
+        (35, 22.6, 31, 39), (91, 22.8, 87, 95), (155, 22.6, 151, 160), (240, 22.6, 236, 248), (266, 22.6, 262, 273),
+        (418, 20, 409, 428), (436, 22, 430, 443)]]
     + [enemy("sponge_crab", x, y, a, b) for x, y, a, b in [
         (128, 20, 125, 134), (184, 20, 178, 189), (220, 20, 215, 224), (298, 14, 292, 303), (344, 19, 335, 348),
         (480, 17, 477, 484), (530, 19, 526, 531)]]
     + [enemy("pompa", x, y, a, b) for x, y, a, b in [
         (246, 16, 240, 252), (283, 16, 277, 289), (312, 13, 307, 317), (341, 15, 335, 347), (452, 10, 448, 460),
-        (512, 15, 506, 518)]]
+        (512, 15, 506, 518), (488, 13, 480, 492), (545, 15, 540, 552)]]
 )
 
 # IMP-011: corazones recogibles (una vida si falta alguna) al terminar los tramos con más enemigos
@@ -313,6 +315,11 @@ boss = {
              "afterMusic": "world4"},
     "portal": {"x": 57, "y": 14},
 }
+
+# IMP-028: ningún Pez Burbuja fuera del agua
+for e in enemies:
+    if e["type"] == "bubble_fish":
+        assert any(w["x"] <= e["x"] < w["x"] + w["w"] for w in waters), f"Pez Burbuja fuera del agua: {e}"
 
 OUT.mkdir(parents=True, exist_ok=True)
 for name, data in [("world4.json", level), ("world4_boss.json", boss)]:

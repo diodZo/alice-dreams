@@ -34,6 +34,9 @@ func test_w4_data() -> void:
 	check(manifest.summary.pending.is_empty(), "manifiesto de recursos sin pendientes")
 	for src in ["imagenes/word_4.png", "imagenes/tilesets_world_4.png", "imagenes/enemies_world_4.png", "imagenes/jefemundo4.png"]:
 		check(manifest.resources.any(func(r): return r.get("source") == src), "usa la referencia oficial %s" % src)
+	# IMP-028: todos los Peces Burbuja aparecen en el agua
+	var dry: Array = w.enemies.filter(func(e): return e.type == "bubble_fish" and not w.waters.any(func(z): return float(z.x) <= float(e.x) and float(e.x) < float(z.x) + float(z.w))).map(func(e): return e.x)
+	check(dry.is_empty(), "ningún Pez Burbuja fuera del agua (%s)" % str(dry))
 
 
 func test_w4_sprites() -> void:
