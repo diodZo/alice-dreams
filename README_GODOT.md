@@ -169,6 +169,19 @@ Guarda: mundo desbloqueado, mundos completados con mejor marca de estrellas, est
 ## 8. Audio
 
 Igual que en Phaser, **todos los sonidos y la música son provisionales**: se sintetizan al arrancar (`scripts/core/synth.gd`, port directo de `SynthSounds.js`: mismas ondas, notas, envolventes y partituras). Para usar archivos reales, cópialos a `godot/resources/audio/` y asígnalos en `scripts/core/audio_config.gd` (p. ej. `"jump": "res://resources/audio/jump.ogg"`). La música del Mundo 2 se reconoce sola si existen `world2_theme.ogg`, `garabato_boss.ogg` y `world2_victory.ogg` en esa carpeta. Si una ruta no existe se vuelve al sonido provisional: la falta de audio nunca bloquea el juego.
+
+## 9. Cinemática de introducción
+
+Al arrancar el juego: pantalla de carga → **cinemática** (`scenes/cinematics/IntroCinematic.tscn`, `scripts/cinematics/intro_cinematic.gd`) → menú principal. Sólo se ve una vez por sesión: volver al menú desde una partida, la victoria o los créditos va directo al menú.
+
+- **Vídeo:** `godot/resources/video/intro_alice_dreams.ogv` (Ogg Theora 1280×720 a 24 fps con audio Vorbis; copia de `videos/video_intro.ogv`). Godot lo reproduce de forma nativa, sin plugins.
+- **Omitir:** Enter, Espacio o Esc (también P, la A o Start del mando, o tocar la pantalla). Una sola transición aunque se pulse varias veces; la pulsación no llega al menú.
+- **Audio:** el sonido del vídeo va por el bus `Music` (respeta «Música: NO» y su volumen). La música del menú se detiene durante el vídeo y la pone el menú al aparecer.
+- **Pantalla:** mientras dura, la ventana dibuja a su resolución real con bandas negras si no es 16:9 (el resto del juego usa el escalado entero de 480×270, que se restaura al salir).
+- **Errores:** si el vídeo no existe o no se puede cargar se registra el error y se abre el menú; si deja de avanzar 2 s también. Nunca queda la pantalla en negro.
+
+**Cambiar el vídeo:** sustituye `godot/resources/video/intro_alice_dreams.ogv` por otro `.ogv` (Theora + Vorbis; desde otros formatos: `ffmpeg -i video.mp4 -c:v libtheora -q:v 7 -c:a libvorbis -q:a 5 intro_alice_dreams.ogv`) o cambia `VIDEO_PATH` en `intro_cinematic.gd`. Después ejecuta `--headless --path godot --import` una vez. La prueba `test_intro_cinematic` comprueba que se carga, se omite, termina sola y no se repite.
+
 # Mundo 3
 
 El Reino de los Peluches Dormilones está integrado en la selección de mundos. Incluye sus cinco secciones, tres enemigos, mecánicas de sueño y Rey Siestón. Los recursos pueden regenerarse con:

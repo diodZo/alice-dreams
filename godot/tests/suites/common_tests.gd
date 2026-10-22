@@ -11,6 +11,7 @@ const TESTS := [
 	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
 	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
+	"test_intro_cinematic",
 ]
 
 
@@ -902,3 +903,79 @@ func test_hit_stop() -> void:
 	check(level.hud.boss_bar.size.x == 100 and level.hud.boss_ghost.size.x == 200, "el tramo fantasma muestra el daño reciente")
 	await get_tree().create_timer(0.9, true, false, true).timeout
 	check(absf(level.hud.boss_ghost.size.x - 100) < 1, "y se vacía hasta la vida actual")
+
+
+## Crea la intro sin cambiar de escena al terminar; cuenta las veces que termina.
+func _make_intro(ends: Array, path := "") -> Control:
+	var intro: Control = load(Router.SCENES.Intro).instantiate()
+	intro.go_to_menu = false
+	if path != "":
+		intro.video_path = path
+	intro.intro_finished.connect(func(): ends.append(1))
+	add_child(intro)
+	return intro
+
+
+# Cinemática de introducción: se ve al arrancar, se omite una sola vez, termina sola, no se repite
+# en la sesión, un vídeo ausente no deja la pantalla negra y la ventana vuelve a su escala
+func test_intro_cinematic() -> void:
+	var win := get_window()
+	var base_mode := win.content_scale_mode
+	var base_stretch := win.content_scale_stretch
+	GameState.intro_played = false
+	AudioManager.play_music("menu")
+	var ends: Array = []
+	var intro := _make_intro(ends)
+	await frames(5)
+	check(intro.video.stream != null and intro.video.is_playing(), "el vídeo de la intro se carga y se reproduce")
+	check(not AudioManager._music.playing, "la música del menú no suena encima del vídeo")
+	check(String(intro.video.bus) == "Music", "el audio del vídeo va por el bus de música")
+	check(win.content_scale_mode == Window.CONTENT_SCALE_MODE_CANVAS_ITEMS, "durante la intro la ventana dibuja a resolución real")
+	await _action("menu_accept")
+	await _action("pause")
+	await _action("menu_accept")
+	await frames(60)
+	check(ends.size() == 1, "Enter (y pulsaciones repetidas) omiten la intro una sola vez (%d)" % ends.size())
+	check(not intro.video.is_playing(), "al omitirla se detiene el vídeo y su audio")
+	check(win.content_scale_mode == base_mode and win.content_scale_stretch == base_stretch, "y la ventana vuelve a su escala")
+	intro.queue_free()
+	await get_tree().process_frame
+	# Esc también la omite
+	GameState.intro_played = false
+	ends.clear()
+	intro = _make_intro(ends)
+	await frames(5)
+	await _action("pause")
+	await frames(60)
+	check(ends.size() == 1, "Esc omite la intro")
+	intro.queue_free()
+	await get_tree().process_frame
+	# no se repite en la misma sesión (volver al menú no pasa por la intro)
+	ends.clear()
+	intro = _make_intro(ends)
+	await frames(5)
+	check(ends.size() == 1 and intro.video.stream == null, "en la misma sesión la intro no se repite")
+	intro.queue_free()
+	await get_tree().process_frame
+	# vídeo ausente: se registra el error y se abre el menú
+	GameState.intro_played = false
+	ends.clear()
+	intro = _make_intro(ends, "res://resources/video/no_existe.ogv")
+	await frames(5)
+	check(ends.size() == 1, "sin vídeo se pasa directamente al menú")
+	intro.queue_free()
+	await get_tree().process_frame
+	# termina sola al acabar el vídeo
+	GameState.intro_played = false
+	ends.clear()
+	intro = _make_intro(ends)
+	var waited := 0
+	while ends.is_empty() and waited < 1200:
+		await get_tree().process_frame
+		waited += 1
+	# 10 s de vídeo a 60 fps más el fundido: termina por el final del vídeo, no por el vigilante
+	check(ends.size() == 1 and waited >= 590 and waited < 700, "al terminar el vídeo se abre el menú (%d fotogramas)" % waited)
+	intro.queue_free()
+	await get_tree().process_frame
+	check(win.content_scale_mode == base_mode, "la ventana queda con la escala del proyecto")
+	GameState.intro_played = true

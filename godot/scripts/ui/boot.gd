@@ -50,4 +50,5 @@ func _process(delta: float) -> void:
 	bar.size.x = 200 * p
 	if ready or _elapsed > 8.0:
 		set_process(false)
-		Router.go("Menu")
+		# la cinemática de introducción sólo al arrancar; después, directo al menú
+		Router.go("Menu" if GameState.intro_played else "Intro")

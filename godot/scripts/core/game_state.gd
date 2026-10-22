@@ -12,6 +12,8 @@ var data: Dictionary = {}
 var entry: Dictionary = {}
 ## Botones táctiles: dispositivo táctil o argumento "--touch" (equivale a ?touch=1).
 var touch_mode := false
+## La cinemática de introducción ya se vio en esta sesión (sólo se ve al arrancar el juego).
+var intro_played := false
 
 
 func _ready() -> void:

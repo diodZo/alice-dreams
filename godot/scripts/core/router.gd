@@ -3,6 +3,7 @@ class_name Router
 
 const SCENES := {
 	"Boot": "res://scenes/main/Main.tscn",
+	"Intro": "res://scenes/cinematics/IntroCinematic.tscn",
 	"Menu": "res://scenes/menus/Menu.tscn",
 	"World1": "res://scenes/worlds/World1.tscn",
 	"Boss": "res://scenes/bosses/World1Boss.tscn",
