@@ -1,5 +1,5 @@
 class_name ReyPesadelo
-extends Area2D
+extends BossBase
 ## Rey Pesadelo, jefe final (Mundo 8): monstruo de pesadilla del salón del trono, con el diseño
 ## oficial de jefemundo8.png. Misma interfaz que los jefes anteriores (setup, intro, hit_by, fsm,
 ## hp, max_hp, defeated_at, is_defeated, set_body_enabled, invulnerable).
@@ -20,7 +20,6 @@ extends Area2D
 ##   Fase 3 La última pesadilla    ( 30- 0 %): grito, garrazos dobles, escupitajos seguidos,
 ##                                             nubes y combinaciones controladas; música de furia.
 
-signal defeated_at(x: float, y: float)
 signal transformed(cat: Node2D)
 
 const MAX_HP := 80
@@ -40,25 +39,7 @@ const CLAW_WAVE := {"speed": 150.0, "damage": 1, "lifespan": 3400.0, "scale": 0.
 const FURY := {"speed": 125.0, "damage": 1, "lifespan": 2800.0, "scale": 0.6, "waves": 3, "gap": 700.0, "warn": 1500.0}
 const CLOUD := {"speed": 34.0, "life": 4200.0}
 
-@onready var sprite: AnimatedSprite2D = $Sprite
-@onready var shape: CollisionShape2D = $Shape
 @onready var hurtbox: Area2D = $Hurtbox
-var level: Node
-var cfg := {}
-var fsm: StateMachine
-var timers := Timers.new()
-var velocity := Vector2.ZERO
-var max_hp := MAX_HP
-var hp := MAX_HP
-var phase := 1
-var pattern_index := 0
-var min_x := 0.0
-var max_x := 0.0
-var floor_y := 0.0
-var dir := -1
-var invulnerable := true
-var body_enabled := false
-var flash: ShaderMaterial
 var eyes: Array[Sprite2D] = []
 var dash_at := 0.0
 var cat: Node2D
@@ -101,23 +82,15 @@ func _ready() -> void:
 		add_child(e)
 		eyes.append(e)
 	fsm = StateMachine.new(self)
+	phase_change_state = "HURT"
 	set_body_enabled(false)
 
 
-var player: Player:
-	get: return level.player
-var now: float:
-	get: return level.now
-
-
 func is_defeated() -> bool: return fsm.current in ["DEFEATED", "TRANSFORMING", "CAT"]
-func phase_data() -> Dictionary: return PHASES[phase]
 func set_body_enabled(on: bool) -> void:
-	body_enabled = on
-	shape.set_deferred("disabled", not on)
+	super(on)
 	for c in hurtbox.get_children():
 		c.set_deferred("disabled", not on)
-func intro() -> void: fsm.set_state("INTRO")
 func anim(anim_name: String, ignore := true) -> void: Anim.play(sprite, anim_name, ignore)
 ## El dibujo mira a la derecha; flip_h = mira a la izquierda.
 func face(d: int) -> void:
@@ -125,10 +98,6 @@ func face(d: int) -> void:
 	sprite.flip_h = d < 0
 	_place_eyes()
 func face_player() -> void: face(-1 if player.position.x < position.x else 1)
-func facing() -> int: return -1 if sprite.flip_h else 1
-func after(ms: float, fn: Callable) -> void:
-	timers.add(now, ms, func():
-		if not is_defeated(): fn.call())
 ## Boca (salida del escupitajo y del grito).
 func mouth() -> Vector2: return position + Vector2(facing() * 38, -50)
 
@@ -503,33 +472,7 @@ func _enter_CAT(_p: String, d: Variant) -> void:
 
 
 # --------------------------------------------------------------------- daño
-func hit_by(projectile: Projectile) -> bool:
-	if is_defeated():
-		return true
-	if invulnerable:
-		level.effects.sparkle(projectile.position.x, projectile.position.y, 3)
-		return true
-	var dmg := projectile.weapon.boss_damage if projectile.weapon else 1
-	take_damage(dmg)
-	return true
-
-
-func take_damage(dmg: int) -> void:
-	if is_defeated() or invulnerable:
-		return
-	hp = maxi(0, hp - dmg)
-	GameState.set_v("bossHp", hp)
-	AudioManager.play("boss_hit")
-	flash.set_shader_parameter("flash", 1.0)
-	level.after(60, func(): if is_instance_valid(self): flash.set_shader_parameter("flash", 0.0))
-	var ratio := float(hp) / max_hp
-	if hp <= 0:
-		fsm.set_state("DEFEATED")
-	elif phase == 1 and ratio <= 0.65:
-		phase = 2
-		fsm.set_state("HURT")
-	elif phase == 2 and ratio <= 0.30:
-		phase = 3
-		fsm.set_state("HURT")
-	elif fsm.is_state("STUNNED"):
+## Golpe con el jefe aturdido (sin cambio de fase): gesto de dolor.
+func on_hurt() -> void:
+	if fsm.is_state("STUNNED"):
 		Anim.show_frame(sprite, "hurt", int(now / 200.0) % 2)

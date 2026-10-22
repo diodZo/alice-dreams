@@ -1,5 +1,5 @@
 class_name Locomostro
-extends Area2D
+extends BossBase
 ## Locomostro, jefe del Mundo 6: locomotora de juguete azul, roja y amarilla con un vagón lleno
 ## de peluches. Recorre el suelo de la Gran Estación Real. Misma interfaz que los jefes
 ## anteriores (setup, intro, hit_by, fsm, hp, max_hp, defeated_at, is_defeated...).
@@ -12,7 +12,6 @@ extends Area2D
 ##  3 El expreso arcoíris (30-0 %): aceleración temporal con estrellas, ráfagas dobles, lluvia de
 ##    bloques con hueco marcado y combinaciones (embestida + bloques).
 
-signal defeated_at(x: float, y: float)
 const MAX_HP := 60
 const BLOCK_GRAVITY := 520.0
 const BLOCK_FLIGHT := 1.05
@@ -23,24 +22,6 @@ const PHASES := {
 }
 const CHARGE_SPEED := {2: 230.0, 3: 290.0}
 
-@onready var sprite: AnimatedSprite2D = $Sprite
-@onready var shape: CollisionShape2D = $Shape
-var level: Node
-var cfg := {}
-var fsm: StateMachine
-var timers := Timers.new()
-var velocity := Vector2.ZERO
-var max_hp := MAX_HP
-var hp := MAX_HP
-var phase := 1
-var pattern_index := 0
-var min_x := 0.0
-var max_x := 0.0
-var floor_y := 0.0
-var dir := -1
-var invulnerable := true
-var body_enabled := false
-var flash: ShaderMaterial
 var turn_at := 0.0
 var spark_at := 0.0
 var combo := false
@@ -73,28 +54,12 @@ func _ready() -> void:
 	set_body_enabled(false)
 
 
-var player: Player:
-	get: return level.player
-var now: float:
-	get: return level.now
-
-
-func is_defeated() -> bool: return fsm.is_state("DEFEATED")
-func phase_data() -> Dictionary: return PHASES[phase]
-func set_body_enabled(on: bool) -> void:
-	body_enabled = on
-	shape.set_deferred("disabled", not on)
-func intro() -> void: fsm.set_state("INTRO")
 func anim(anim_name: String, ignore := true) -> void: Anim.play(sprite, anim_name, ignore)
 ## El dibujo mira a la derecha; flip_h = mira a la izquierda.
 func face(d: int) -> void:
 	dir = d
 	sprite.flip_h = d < 0
 func face_player() -> void: face(-1 if player.position.x < position.x else 1)
-func facing() -> int: return -1 if sprite.flip_h else 1
-func after(ms: float, fn: Callable) -> void:
-	timers.add(now, ms, func():
-		if not is_defeated(): fn.call())
 ## Chimenea / frente del tren (salida del humo) y vagón de carga (salida de los bloques).
 func chimney() -> Vector2: return position + Vector2(facing() * 34, -44)
 func cargo() -> Vector2: return position + Vector2(-facing() * 30, -40)
@@ -467,21 +432,7 @@ func _falling_toy(i: int) -> void:
 	tw.tween_callback(b.queue_free)
 
 
-func hit_by(projectile: Projectile) -> bool:
-	if is_defeated(): return true
-	if invulnerable:
-		level.effects.sparkle(projectile.position.x, projectile.position.y, 3)
-		return true
-	var dmg := projectile.weapon.boss_damage if projectile.weapon else 1
-	hp = maxi(0, hp - dmg)
-	GameState.set_v("bossHp", hp)
-	AudioManager.play("boss_hit")
-	flash.set_shader_parameter("flash", 1.0)
-	level.after(60, func(): if is_instance_valid(self): flash.set_shader_parameter("flash", 0.0))
-	var ratio := float(hp) / max_hp
-	if hp <= 0: fsm.set_state("DEFEATED")
-	elif phase == 1 and ratio <= 0.65: phase = 2; fsm.set_state("PHASE_CHANGE")
-	elif phase == 2 and ratio <= 0.30: phase = 3; fsm.set_state("PHASE_CHANGE")
-	elif fsm.is_state("REST") and not sprite.animation == "stunned":
+## Golpe durante el descanso (sin cambio de fase): gesto de dolor.
+func on_hurt() -> void:
+	if fsm.is_state("REST") and not sprite.animation == "stunned":
 		Anim.show_frame(sprite, "hurt", 0)
-	return true

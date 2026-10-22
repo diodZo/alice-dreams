@@ -1,5 +1,5 @@
 class_name LunaEstelar
-extends Area2D
+extends BossBase
 ## Luna Estelar, jefa del Mundo 5: luna creciente envuelta en nubes que flota sobre el trono
 ## lunar con estrellas orbitando a su alrededor. Misma interfaz que Nubarrón, Garabato, Rey
 ## Siestón y Rey Patoburbuja (setup, intro, hit_by, fsm, hp, defeated_at...).
@@ -10,7 +10,6 @@ extends Area2D
 ##  3 Tormenta de constelaciones (30-0 %): aura cósmica, estrellas múltiples, giro con anillo de
 ##    energía y lluvia de estrellas con huecos marcados. Siempre esquivable.
 
-signal defeated_at(x: float, y: float)
 const MAX_HP := 50
 ## Altura de vuelo sobre el suelo de la arena (px).
 const HOVER := 14.0
@@ -20,25 +19,7 @@ const PHASES := {
 	3: {"speed": 66.0, "interval": 1050.0, "rest": 1450.0, "orbit": 3.2, "pattern": ["COSMIC", "STARFALL", "SPIN_RING", "MULTI_SHOT", "ORBIT"]},
 }
 
-@onready var sprite: AnimatedSprite2D = $Sprite
-@onready var shape: CollisionShape2D = $Shape
-var level: Node
-var cfg := {}
-var fsm: StateMachine
-var timers := Timers.new()
-var velocity := Vector2.ZERO
-var max_hp := MAX_HP
-var hp := MAX_HP
-var phase := 1
-var pattern_index := 0
-var min_x := 0.0
-var max_x := 0.0
-var floor_y := 0.0
 var hover_y := 0.0
-var dir := -1
-var invulnerable := true
-var body_enabled := false
-var flash: ShaderMaterial
 var bob := 0.0
 ## Estrellitas decorativas que orbitan siempre a su alrededor (giran más lento al dormirse).
 var orbit_deco: Array[Sprite2D] = []
@@ -82,24 +63,8 @@ func _ready() -> void:
 	set_body_enabled(false)
 
 
-var player: Player:
-	get: return level.player
-var now: float:
-	get: return level.now
-
-
-func is_defeated() -> bool: return fsm.is_state("DEFEATED")
-func phase_data() -> Dictionary: return PHASES[phase]
-func set_body_enabled(on: bool) -> void:
-	body_enabled = on
-	shape.set_deferred("disabled", not on)
-func intro() -> void: fsm.set_state("INTRO")
 func anim(anim_name: String, ignore := true) -> void: Anim.play(sprite, anim_name, ignore)
 func face_player() -> void: sprite.flip_h = player.position.x < position.x
-func facing() -> int: return -1 if sprite.flip_h else 1
-func after(ms: float, fn: Callable) -> void:
-	timers.add(now, ms, func():
-		if not is_defeated(): fn.call())
 ## Centro del cuerpo (la luna), punto de salida de los ataques.
 func core() -> Vector2: return position + Vector2(0, -28)
 
@@ -465,21 +430,3 @@ func _clouds_front() -> void:
 	tw.tween_interval(2.2)
 	tw.tween_property(f, "modulate:a", 0.0, 1.0)
 	tw.tween_callback(f.queue_free)
-
-
-func hit_by(projectile: Projectile) -> bool:
-	if is_defeated(): return true
-	if invulnerable:
-		level.effects.sparkle(projectile.position.x, projectile.position.y, 3)
-		return true
-	var dmg := projectile.weapon.boss_damage if projectile.weapon else 1
-	hp = maxi(0, hp - dmg)
-	GameState.set_v("bossHp", hp)
-	AudioManager.play("boss_hit")
-	flash.set_shader_parameter("flash", 1.0)
-	level.after(60, func(): if is_instance_valid(self): flash.set_shader_parameter("flash", 0.0))
-	var ratio := float(hp) / max_hp
-	if hp <= 0: fsm.set_state("DEFEATED")
-	elif phase == 1 and ratio <= 0.65: phase = 2; fsm.set_state("PHASE_CHANGE")
-	elif phase == 2 and ratio <= 0.30: phase = 3; fsm.set_state("PHASE_CHANGE")
-	return true

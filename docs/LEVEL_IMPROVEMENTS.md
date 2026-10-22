@@ -103,6 +103,7 @@
 - **Archivos involucrados:** `godot/scripts/entities/boss_base.gd` **(nuevo, propuesto)**; los 8 scripts de jefe; `godot/scripts/levels/boss_arena.gd`; `godot/scripts/levels/world8_boss_arena.gd`.
 - **Dependencias:** suite `tests/Tests.tscn`.
 - **Criterios de aceptación:** los 8 jefes heredan de `BossBase`; `hit_by` existe sólo en la base (o la sobrescribe con `super()`); 0 fallos en `Tests.tscn` (las 131 pruebas actuales).
+- **Estado: hecho.** `godot/scripts/entities/boss_base.gd` (`extends Area2D`, como los jefes, no `CharacterBody2D`): señal `defeated_at`, estado compartido, `player`/`now`, `is_defeated`, `phase_data`, `set_body_enabled`, `intro`, `facing`, `after`, `hit_by` y `take_damage` con los umbrales de fase en `PHASE_THRESHOLDS` (65 %/30 %). Cada jefe sólo define `MAX_HP`, `PHASES` y sus estados; la base lee esas constantes. Puntos de extensión: `phase_change_state` (`HURT` en el Rey Pesadelo), `on_hurt()` (gesto de dolor en el descanso de Locomostro y Don Chupetón, y aturdido en el Rey Pesadelo) e `impact_effects` (chispa o pintura en Nubarrón y Garabato). El Rey Pesadelo conserva su `is_defeated` (también TRANSFORMING y CAT) y amplía `set_body_enabled` con `super()`. Prueba `test_boss_base`. Sin cambios de comportamiento: todas las pruebas de jefes siguen en verde.
 
 ### IMP-004
 **Corregir la curva de dificultad tras el cambio 5↔6**

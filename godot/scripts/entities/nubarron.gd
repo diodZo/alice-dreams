@@ -1,5 +1,5 @@
 class_name Nubarron
-extends Area2D
+extends BossBase
 ## NUBARRÓN — jefe del Mundo 1 (port de bosses/Nubarron.js).
 ##
 ## Fases según la vida restante (40 puntos):
@@ -9,8 +9,6 @@ extends Area2D
 ## Tras cada ataque baja y descansa: es la ventana clara para golpearle.
 ## Los ataques siempre tienen aviso y huecos para esquivarlos.
 
-signal defeated_at(x: float, y: float)
-
 const PHASES := {
 	1: {"speed": 38.0, "interval": 1500.0, "rest": 1300.0, "pattern": ["WIND", "SHOOT", "SHOOT", "WIND"]},
 	2: {"speed": 62.0, "interval": 1250.0, "rest": 1300.0, "pattern": ["RAIN", "SHOOT", "SUMMON", "WIND", "RAIN", "SHOOT"]},
@@ -19,30 +17,11 @@ const PHASES := {
 const PHASE3_TINT := Color("cdb8ff")
 const MAX_HP := 40
 
-@onready var sprite: AnimatedSprite2D = $Sprite
-@onready var shape: CollisionShape2D = $Shape
-
-var level: Node
-var cfg: Dictionary
-var fsm: StateMachine
-var timers := Timers.new()
-var velocity := Vector2.ZERO
-var max_hp := MAX_HP
-var hp := MAX_HP
-var phase := 1
-var pattern_index := 0
 var home_y := 0.0
-var min_x := 0.0
-var max_x := 0.0
-var floor_y := 0.0
-var dir := -1
-var invulnerable := true
 var bob_t := 0.0
 var target_y := 0.0
-var body_enabled := false
 var rest_glow: Sprite2D
 var _cleanup_markers := Callable()
-var _flash_material: ShaderMaterial
 
 
 ## cfg: { homeX (teselas), homeY, minX, maxX (teselas), floorY (px) }
@@ -65,34 +44,12 @@ func _ready() -> void:
 	set_meta("kind", "boss")
 	set_meta("entity", self)
 	sprite.sprite_frames = Assets.sprite_frames("nubarron")
-	_flash_material = ShaderMaterial.new()
-	_flash_material.shader = preload("res://resources/effects/flash.gdshader")
-	sprite.material = _flash_material
+	flash = ShaderMaterial.new()
+	flash.shader = preload("res://resources/effects/flash.gdshader")
+	sprite.material = flash
 	fsm = StateMachine.new(self)
+	impact_effects = true
 	set_body_enabled(false)
-
-
-var player: Player:
-	get:
-		return level.player
-
-
-var now: float:
-	get:
-		return level.now
-
-
-func is_defeated() -> bool:
-	return fsm.is_state("DEFEATED")
-
-
-func phase_data() -> Dictionary:
-	return PHASES[phase]
-
-
-func set_body_enabled(on: bool) -> void:
-	body_enabled = on
-	shape.set_deferred("disabled", not on)
 
 
 func anim(anim_name: String, ignore := true) -> void:
@@ -100,19 +57,8 @@ func anim(anim_name: String, ignore := true) -> void:
 	Anim.play(sprite, key, ignore)
 
 
-func after(ms: float, fn: Callable) -> void:
-	timers.add(now, ms, func():
-		if not is_defeated():
-			fn.call())
-
-
 func clear_timers() -> void:
 	timers.clear()
-
-
-## Entrada en escena (la llama la arena al cerrar la puerta).
-func intro() -> void:
-	fsm.set_state("INTRO")
 
 
 func face_player() -> void:
@@ -380,7 +326,7 @@ func _enter_DEFEATED(_prev: String, _data: Variant) -> void:
 	velocity = Vector2.ZERO
 	set_body_enabled(false)
 	sprite.modulate = Color.WHITE
-	_flash_material.set_shader_parameter("flash", 0.0)
+	flash.set_shader_parameter("flash", 0.0)
 	anim("defeated", false)
 	AudioManager.play("enemy_defeat")
 	level.effects.confetti(position.x, position.y, 80)
@@ -457,36 +403,3 @@ func fire_ball(angle_offset := 0.0, speed := 120.0) -> void:
 	})
 	AudioManager.play("shoot_bubble")
 
-
-## Impacto de un arma de la protagonista. Siempre consume el proyectil.
-func hit_by(projectile: Projectile) -> bool:
-	if is_defeated():
-		return true
-	if invulnerable:
-		level.effects.sparkle(projectile.position.x, projectile.position.y, 3)
-		return true
-	var dmg := projectile.weapon.boss_damage if projectile.weapon else 1
-	hp = maxi(0, hp - dmg)
-	AudioManager.play("boss_hit")
-	if projectile.weapon and projectile.weapon.effect == "paint":
-		level.effects.paint_splat(projectile.position.x, projectile.position.y, projectile.paint_color)
-	else:
-		level.effects.impact(projectile.position.x, projectile.position.y, Color.WHITE)
-	# destello blanco (setTintFill) durante 60 ms
-	_flash_material.set_shader_parameter("flash", 1.0)
-	var ref: WeakRef = weakref(self)
-	level.after(60, func():
-		var b: Nubarron = ref.get_ref()
-		if b != null and not b.is_defeated():
-			b._flash_material.set_shader_parameter("flash", 0.0))
-	GameState.set_v("bossHp", hp)
-	var ratio := float(hp) / max_hp
-	if hp <= 0:
-		fsm.set_state("DEFEATED")
-	elif phase == 1 and ratio <= 0.65:
-		phase = 2
-		fsm.set_state("PHASE_CHANGE")
-	elif phase == 2 and ratio <= 0.3:
-		phase = 3
-		fsm.set_state("PHASE_CHANGE")
-	return true

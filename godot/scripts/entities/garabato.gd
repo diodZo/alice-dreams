@@ -1,5 +1,5 @@
 class_name Garabato
-extends Area2D
+extends BossBase
 ## GARABATO, EL REY DE LOS CRAYONES — jefe del Mundo 2 (caja viviente de crayones de jefemundo2.png).
 ## Misma interfaz que Nubarrón (setup, intro, hit_by, defeated_at...) para compartir la arena.
 ##
@@ -8,8 +8,6 @@ extends Area2D
 ##  2 Remolino de crayones (65-30 %):  remolinos en distintas trayectorias, crayones orbitando, más rápido.
 ##  3 El Gran Garabato     (30-0 %):   remolinos grandes, ráfagas, lluvia de crayones y pintura en el suelo.
 ## Todos los ataques tienen aviso ("!" + destello) y huecos; tras cada uno descansa (ventana de contraataque).
-
-signal defeated_at(x: float, y: float)
 
 const PHASES := {
 	1: {"speed": 40.0, "interval": 1400.0, "rest": 1400.0, "pattern": ["SHOOT", "SPLASH", "SHOOT", "SPLASH"]},
@@ -20,30 +18,11 @@ const MAX_HP := 48
 const CRAYONS := ["crayon_red", "crayon_yellow", "crayon_blue", "crayon_purple", "crayon_green"]
 const RAINBOW := [0xf7489a, 0xff9f5a, 0xffe082, 0x7ee07e, 0x78c5f8, 0xb9a7f4]
 
-@onready var sprite: AnimatedSprite2D = $Sprite
-@onready var shape: CollisionShape2D = $Shape
-
-var level: Node
-var cfg: Dictionary
-var fsm: StateMachine
-var timers := Timers.new()
-var velocity := Vector2.ZERO
-var max_hp := MAX_HP
-var hp := MAX_HP
-var phase := 1
-var pattern_index := 0
 var home_x := 0.0
-var min_x := 0.0
-var max_x := 0.0
-var floor_y := 0.0
-var dir := -1
-var invulnerable := true
-var body_enabled := false
 var rest_glow: Sprite2D
 var orbit: Array[Area2D] = []
 var orbit_angle := 0.0
 var _markers: Array = []
-var _flash_material: ShaderMaterial
 
 
 ## cfg: { homeX, minX, maxX (teselas), floorY (px) }
@@ -66,60 +45,24 @@ func _ready() -> void:
 	set_meta("entity", self)
 	sprite.sprite_frames = Assets.sprite_frames("garabato")
 	Anim.set_origin(sprite, Assets.cell_size("garabato"), 0.5, 1.0)
-	_flash_material = ShaderMaterial.new()
-	_flash_material.shader = preload("res://resources/effects/flash.gdshader")
-	sprite.material = _flash_material
+	flash = ShaderMaterial.new()
+	flash.shader = preload("res://resources/effects/flash.gdshader")
+	sprite.material = flash
 	fsm = StateMachine.new(self)
+	impact_effects = true
 	set_body_enabled(false)
-
-
-var player: Player:
-	get:
-		return level.player
-
-
-var now: float:
-	get:
-		return level.now
-
-
-func is_defeated() -> bool:
-	return fsm.is_state("DEFEATED")
-
-
-func phase_data() -> Dictionary:
-	return PHASES[phase]
-
-
-func set_body_enabled(on: bool) -> void:
-	body_enabled = on
-	shape.set_deferred("disabled", not on)
 
 
 func anim(anim_name: String, ignore := true) -> void:
 	Anim.play(sprite, anim_name, ignore)
 
 
-func after(ms: float, fn: Callable) -> void:
-	timers.add(now, ms, func():
-		if not is_defeated():
-			fn.call())
-
-
 func clear_timers() -> void:
 	timers.clear()
 
 
-func intro() -> void:
-	fsm.set_state("INTRO")
-
-
 func face_player() -> void:
 	sprite.flip_h = player.position.x < position.x
-
-
-func facing() -> int:
-	return -1 if sprite.flip_h else 1
 
 
 func _physics_process(delta: float) -> void:
@@ -457,7 +400,7 @@ func _enter_DEFEATED(_prev: String, _data: Variant) -> void:
 	invulnerable = true
 	velocity.x = 0
 	set_body_enabled(false)
-	_flash_material.set_shader_parameter("flash", 0.0)
+	flash.set_shader_parameter("flash", 0.0)
 	anim("stun")
 	AudioManager.play("enemy_defeat")
 	level.camera.shake(300, 0.005)
@@ -517,36 +460,3 @@ func warn(ms: float) -> void:
 	tw.tween_property(mark, "position:y", mark.position.y - 6, ms / 1000.0)
 	tw.tween_property(mark, "modulate:a", 0.0, ms / 1000.0)
 	tw.chain().tween_callback(mark.queue_free)
-
-
-## Impacto de un arma de la protagonista. Siempre consume el proyectil.
-func hit_by(projectile: Projectile) -> bool:
-	if is_defeated():
-		return true
-	if invulnerable:
-		level.effects.sparkle(projectile.position.x, projectile.position.y, 3)
-		return true
-	var dmg := projectile.weapon.boss_damage if projectile.weapon else 1
-	hp = maxi(0, hp - dmg)
-	AudioManager.play("boss_hit")
-	if projectile.weapon and projectile.weapon.effect == "paint":
-		level.effects.paint_splat(projectile.position.x, projectile.position.y, projectile.paint_color)
-	else:
-		level.effects.impact(projectile.position.x, projectile.position.y, Color.WHITE)
-	_flash_material.set_shader_parameter("flash", 1.0)
-	var ref: WeakRef = weakref(self)
-	level.after(60, func():
-		var b: Garabato = ref.get_ref()
-		if b != null and not b.is_defeated():
-			b._flash_material.set_shader_parameter("flash", 0.0))
-	GameState.set_v("bossHp", hp)
-	var ratio := float(hp) / max_hp
-	if hp <= 0:
-		fsm.set_state("DEFEATED")
-	elif phase == 1 and ratio <= 0.65:
-		phase = 2
-		fsm.set_state("PHASE_CHANGE")
-	elif phase == 2 and ratio <= 0.3:
-		phase = 3
-		fsm.set_state("PHASE_CHANGE")
-	return true

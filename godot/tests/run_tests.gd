@@ -22,7 +22,7 @@ func _ready() -> void:
 		"test_crumble_platform", "test_bounce_pad", "test_bouncy_cloud", "test_wind_zone", "test_hazard_damage",
 		"test_fall_respawn_checkpoint", "test_playtest_log", "test_star_and_pickup", "test_weapons",
 		"test_bubble_traps_and_star", "test_paint_and_sling_damage", "test_stomp", "test_scratch_ai",
-		"test_spit_ai", "test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory",
+		"test_spit_ai", "test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 		"test_menu_keyboard", "test_gamepad", "test_menu_art", "test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside",
 		"test_checkpoint_spacing",
 		# Mundo 2
@@ -849,6 +849,20 @@ func test_world_carousel() -> void:
 	c.queue_free()
 	await get_tree().process_frame
 	SaveManager.reset_progress()
+
+
+# IMP-003: los ocho jefes heredan de BossBase; el daño y los umbrales de fase viven sólo en la base
+func test_boss_base() -> void:
+	var bosses := ["Nubarron", "Garabato", "ReySieston", "ReyPatoburbuja", "LunaEstelar", "Locomostro", "DonChupeton", "ReyPesadelo"]
+	var hp := {"Nubarron": 40, "Garabato": 48, "ReySieston": 50, "ReyPatoburbuja": 50, "LunaEstelar": 50, "Locomostro": 60, "DonChupeton": 65, "ReyPesadelo": 80}
+	var wrong := []
+	for name in bosses:
+		var boss: Node = load("res://scenes/bosses/%s.tscn" % name).instantiate()
+		var script: GDScript = boss.get_script()
+		if not boss is BossBase or script.source_code.contains("func hit_by") or script.source_code.contains("func take_damage") or boss.max_hp != hp[name] or boss.hp != hp[name] or boss.phase_data().is_empty():
+			wrong.append(name)
+		boss.free()
+	check(wrong.is_empty(), "los 8 jefes heredan de BossBase con su vida y sus fases (fallan %s)" % str(wrong))
 
 
 func test_menu_keyboard() -> void:

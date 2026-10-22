@@ -1,8 +1,7 @@
 class_name ReySieston
-extends Area2D
+extends BossBase
 ## Rey Siestón: tres fases con avisos legibles y ventanas de contraataque.
 
-signal defeated_at(x: float, y: float)
 const MAX_HP := 50
 const PHASES := {
 	1:{"speed":30.0,"interval":1500.0,"rest":1450.0,"pattern":["PILLOW","HOP","PILLOW"]},
@@ -10,24 +9,6 @@ const PHASES := {
 	3:{"speed":68.0,"interval":980.0,"rest":1500.0,"pattern":["SPIN","RAIN","CLOUD","DOUBLE","WAVE"]},
 }
 
-@onready var sprite: AnimatedSprite2D = $Sprite
-@onready var shape: CollisionShape2D = $Shape
-var level: Node
-var cfg := {}
-var fsm: StateMachine
-var timers := Timers.new()
-var velocity := Vector2.ZERO
-var max_hp := MAX_HP
-var hp := MAX_HP
-var phase := 1
-var pattern_index := 0
-var min_x := 0.0
-var max_x := 0.0
-var floor_y := 0.0
-var dir := -1
-var invulnerable := true
-var body_enabled := false
-var flash: ShaderMaterial
 var hop_tween: Tween
 
 func setup(owner_level: Node, boss_cfg: Dictionary) -> void:
@@ -53,24 +34,8 @@ func _ready() -> void:
 	fsm = StateMachine.new(self)
 	set_body_enabled(false)
 
-var player: Player:
-	get: return level.player
-var now: float:
-	get: return level.now
-
-func is_defeated() -> bool: return fsm.is_state("DEFEATED")
-func phase_data() -> Dictionary: return PHASES[phase]
-func set_body_enabled(on: bool) -> void:
-	body_enabled = on
-	shape.set_deferred("disabled", not on)
-func intro() -> void: fsm.set_state("INTRO")
 func anim(name: String, ignore := true) -> void: Anim.play(sprite, name, ignore)
 func face_player() -> void: sprite.flip_h = player.position.x < position.x
-func facing() -> int: return -1 if sprite.flip_h else 1
-func after(ms: float, fn: Callable) -> void:
-	timers.add(now, ms, func():
-		if not is_defeated(): fn.call())
-
 func _physics_process(delta: float) -> void:
 	if level == null: return
 	timers.process(now)
@@ -176,15 +141,3 @@ func _enter_DEFEATED(_p:String,_d:Variant)->void:
 		if is_instance_valid(self):
 			var z:=PixelText.make("Z z z",{"origin":Vector2(0.5,0.5),"tint":C.rgb(0xc9b5ff),"scale":1})
 			z.position=position+Vector2(0,-82); level.fx_root.add_child(z); defeated_at.emit(position.x-76,position.y-38))
-
-func hit_by(projectile: Projectile)->bool:
-	if is_defeated(): return true
-	if invulnerable: level.effects.sparkle(projectile.position.x,projectile.position.y,3); return true
-	var dmg:=projectile.weapon.boss_damage if projectile.weapon else 1
-	hp=maxi(0,hp-dmg); GameState.set_v("bossHp",hp); AudioManager.play("boss_hit")
-	flash.set_shader_parameter("flash",1.0); level.after(60,func(): if is_instance_valid(self): flash.set_shader_parameter("flash",0.0))
-	var ratio:=float(hp)/max_hp
-	if hp<=0: fsm.set_state("DEFEATED")
-	elif phase==1 and ratio<=0.65: phase=2; fsm.set_state("PHASE_CHANGE")
-	elif phase==2 and ratio<=0.30: phase=3; fsm.set_state("PHASE_CHANGE")
-	return true
