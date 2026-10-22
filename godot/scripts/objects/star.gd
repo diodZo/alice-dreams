@@ -12,6 +12,7 @@ var collectable_at := 0.0
 var active := true
 var sprite: Sprite2D
 var glow: Sprite2D
+var outline: Sprite2D
 var area: Area2D
 var moves := false
 var bounce_factor := 0.4
@@ -38,6 +39,16 @@ func setup(owner_level: Node, pos: Vector2, opts: Dictionary = {}) -> Star:
 	else:
 		sprite.texture = Assets.frame("fx", "star_gold")
 	sprite.scale = Vector2(s, s)
+	# contorno oscuro de 1 px (IMP-039): copia oscura un poco mayor detrás. Distingue las
+	# recogibles de las estrellas de la decoración y del fondo, que no lo tienen.
+	outline = Sprite2D.new()
+	outline.texture = sprite.texture
+	var w := maxf(sprite.texture.get_width(), 1.0)
+	outline.scale = sprite.scale * (w + 2.0 / s) / w
+	outline.modulate = Color(C.INK, 0.85)
+	outline.show_behind_parent = true
+	outline.visible = not special # la especial gira y ya lleva su halo
+	add_child(outline)
 	add_child(sprite)
 	var circle := CircleShape2D.new()
 	circle.radius = sprite.texture.get_width() * 0.35 * s
@@ -60,6 +71,11 @@ func _ready() -> void:
 		velocity = Vector2(randi_range(-40, 40), -180)
 		collectable_at = level.now + 350
 	else:
+		# brillo pulsante (sólo las recogibles), cada una con su fase
+		var pulse := sprite.create_tween().set_loops()
+		pulse.tween_interval(randf() * 0.9)
+		pulse.tween_property(sprite, "modulate", Color(1.35, 1.35, 1.2), 0.45).set_trans(Tween.TRANS_SINE)
+		pulse.tween_property(sprite, "modulate", Color.WHITE, 0.45).set_trans(Tween.TRANS_SINE)
 		_float_tween = create_tween().set_loops()
 		var y := position.y
 		var d := (700 + randf() * 300) / 1000.0
