@@ -23,7 +23,7 @@ func _ready() -> void:
 		"test_fall_respawn_checkpoint", "test_star_and_pickup", "test_weapons",
 		"test_bubble_traps_and_star", "test_paint_and_sling_damage", "test_stomp", "test_scratch_ai",
 		"test_spit_ai", "test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory",
-		"test_menu_keyboard", "test_menu_art", "test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside",
+		"test_menu_keyboard", "test_gamepad", "test_menu_art", "test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside",
 		"test_checkpoint_spacing",
 		# Mundo 2
 		"test_w2_data", "test_w2_sprites", "test_w2_level_loads", "test_w2_paint", "test_w2_rulers",
@@ -644,6 +644,96 @@ func test_boss_phases_and_victory() -> void:
 			check(level.leaving and level.player.celebrating, "cruza el portal y celebra")
 			check(SaveManager.is_world_completed(1), "el Mundo 1 queda guardado como completado")
 	SaveManager.reset_progress()
+
+
+func _joy(ev: InputEvent) -> void:
+	Input.parse_input_event(ev)
+	await get_tree().process_frame
+
+
+func _joy_button(index: int, pressed: bool) -> InputEventJoypadButton:
+	var ev := InputEventJoypadButton.new()
+	ev.device = 0
+	ev.button_index = index as JoyButton
+	ev.pressed = pressed
+	return ev
+
+
+func _joy_axis(axis: int, value: float) -> InputEventJoypadMotion:
+	var ev := InputEventJoypadMotion.new()
+	ev.device = 0
+	ev.axis = axis as JoyAxis
+	ev.axis_value = value
+	return ev
+
+
+# IMP-017: mando XInput en el Input Map, en los menús (cruceta/stick + A) y en el juego
+func test_gamepad() -> void:
+	var missing := []
+	for a in ["move_left", "move_right", "aim_up", "jump", "fire", "switch_weapon", "run", "pause", "menu_up", "menu_down", "menu_accept"]:
+		if not InputMap.action_get_events(a).any(func(e): return e is InputEventJoypadButton or e is InputEventJoypadMotion):
+			missing.append(a)
+	check(missing.is_empty(), "todas las acciones tienen un evento de mando (faltan %s)" % str(missing))
+	var menu: Control = load(Router.SCENES.Menu).instantiate()
+	add_child(menu)
+	await frames(2)
+	var list: MenuList = menu.get_children().filter(func(n): return n is MenuList)[0]
+	var carousel: WorldCarousel = menu.carousel
+	var world_before := carousel.index
+	# el stick envía muchos eventos al inclinarse: cuenta como una sola pulsación
+	for v in [0.3, 0.6, 0.8, 1.0, 0.9, 1.0]:
+		await _joy(_joy_axis(JOY_AXIS_LEFT_X, v))
+	await _joy(_joy_axis(JOY_AXIS_LEFT_X, 0.0))
+	check(carousel.index == (world_before + 1) % 8, "inclinar el stick a la derecha cambia un solo mundo")
+	await frames(32)
+	await _joy(_joy_button(JOY_BUTTON_DPAD_DOWN, true))
+	await _joy(_joy_button(JOY_BUTTON_DPAD_DOWN, false))
+	check(list.index == 1 and not carousel.focused, "la cruceta abajo pasa a Música")
+	var music_before := AudioManager.music_on
+	await _joy(_joy_button(JOY_BUTTON_A, true))
+	await _joy(_joy_button(JOY_BUTTON_A, false))
+	check(AudioManager.music_on != music_before, "A activa la opción (música)")
+	await _joy(_joy_button(JOY_BUTTON_A, true))
+	await _joy(_joy_button(JOY_BUTTON_A, false))
+	for v in [0.4, 0.9, 1.0]:
+		await _joy(_joy_axis(JOY_AXIS_LEFT_Y, -v))
+	await _joy(_joy_axis(JOY_AXIS_LEFT_Y, 0.0))
+	check(list.index == 0 and carousel.focused and AudioManager.music_on == music_before, "el stick arriba vuelve al carrusel (un solo paso)")
+	menu.queue_free()
+	await get_tree().process_frame
+	# en el nivel: los controles reales (no programados) leen el mando
+	await load_level()
+	level.controls.scripted = false
+	await settle()
+	place(6, 19)
+	await settle()
+	var x0 := level.player.position.x
+	await _joy(_joy_axis(JOY_AXIS_LEFT_X, 1.0))
+	await frames(30)
+	check(level.player.position.x > x0 + 20, "el stick mueve a Alice")
+	near(level.player.velocity.x, 95, 8, "andando con el stick")
+	await _joy(_joy_axis(JOY_AXIS_TRIGGER_RIGHT, 1.0))
+	await frames(20)
+	near(level.player.velocity.x, 150, 8, "el gatillo derecho corre")
+	await _joy(_joy_axis(JOY_AXIS_TRIGGER_RIGHT, 0.0))
+	await _joy(_joy_axis(JOY_AXIS_LEFT_X, 0.0))
+	await settle()
+	await _joy(_joy_button(JOY_BUTTON_A, true))
+	await frames(6)
+	check(level.player.velocity.y < 0 and not level.player.grounded, "A salta")
+	await _joy(_joy_button(JOY_BUTTON_A, false))
+	await settle()
+	await _joy(_joy_button(JOY_BUTTON_START, true))
+	await frames(2)
+	await _joy(_joy_button(JOY_BUTTON_START, false))
+	await frames(2)
+	check(get_tree().paused, "Start pausa el juego")
+	await _joy(_joy_button(JOY_BUTTON_START, true))
+	await frames(2)
+	await _joy(_joy_button(JOY_BUTTON_START, false))
+	await frames(2)
+	check(not get_tree().paused, "y Start lo reanuda")
+	level.controls.reset()
 
 
 func _action(action: String) -> void:

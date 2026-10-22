@@ -29,16 +29,16 @@ El resultado (`godot/export/windows/AliceDreams.exe`, ~110 MB con el motor y los
 
 ## 2. Controles
 
-| Acción | Teclado | Táctil |
-|---|---|---|
-| Moverse | A / D o ← / → | `◀` `▶` |
-| Saltar (mantener = más alto) | Espacio | A |
-| Correr | Shift (mantener) | RUN |
-| Disparar | J (el lanzaburbujas admite mantener pulsado) | B |
-| Apuntar hacia arriba | W / ↑ + J | `▲` + B |
-| Cambiar de arma | K | ARMA |
-| Pausa | Esc o P | II |
-| Menús | ↑ ↓ / W S + Enter / Espacio / J, o ratón / táctil | táctil |
+| Acción | Teclado | Mando (XInput) | Táctil |
+|---|---|---|---|
+| Moverse | A / D o ← / → | Cruceta o stick izquierdo | `◀` `▶` |
+| Saltar (mantener = más alto) | Espacio | A | A |
+| Correr | Shift (mantener) | Gatillo LT o RT (mantener) | RUN |
+| Disparar | J (el lanzaburbujas admite mantener pulsado) | X | B |
+| Apuntar hacia arriba | W / ↑ + J | Cruceta ▲ o stick arriba + X | `▲` + B |
+| Cambiar de arma | K | Y | ARMA |
+| Pausa | Esc o P | Start | II |
+| Menús | ↑ ↓ / W S + Enter / Espacio / J, o ratón / táctil | Cruceta o stick + A (Start cierra el diario) | táctil |
 
 Los botones táctiles aparecen solos en dispositivos táctiles. Para verlos en escritorio: `godot --path godot -- --touch` (equivale a `?touch=1`).
 Para ver las hitboxes: en el editor, menú **Depurar → Formas de colisión visibles** (equivale a `?debug=1`).

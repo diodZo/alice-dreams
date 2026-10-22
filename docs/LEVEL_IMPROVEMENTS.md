@@ -243,6 +243,7 @@
 - **Complejidad:** Baja. **Prioridad:** Alta (público infantil: el mando es más cómodo que Shift+Espacio+J).
 - **Archivos involucrados:** `godot/project.godot`. `godot/scripts/systems/input_controller.gd` ya lee acciones (`Input.is_action_pressed`), no teclas, así que no necesita cambios para el mando.
 - **Criterios de aceptación:** recorrido completo del Mundo 1 con un mando XInput; menús navegables con el mando.
+- **Estado: hecho (pendiente de probar con un mando físico).** Eventos de mando en las 11 acciones de `project.godot` (cruceta/stick, A, X, Y, gatillos, Start). En los menús el stick cuenta como una pulsación al salir de la zona central (`MenuList.is_stick_repeat`), así una inclinación no recorre varias opciones; lo usan la lista de botones, el carrusel y el Diario de Sueños, y la celebración de rescates bloquea también los eventos del mando. Prueba `test_gamepad` con eventos simulados (menú, andar, correr, saltar, pausa). No se ha probado con un mando real.
 
 ### IMP-018
 **Rutas secretas con recompensa tangible**

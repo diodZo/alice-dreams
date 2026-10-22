@@ -151,7 +151,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouse:
 		return  # el ratón lo gestionan los botones y la capa oscura
-	if not event.is_pressed() or event.is_echo():
+	if not event.is_pressed() or event.is_echo() or MenuList.is_stick_repeat(event):
 		get_viewport().set_input_as_handled()
 		return
 	if event.is_action("move_left") or event.is_action("menu_up") or event.is_action("ui_left"):

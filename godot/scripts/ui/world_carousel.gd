@@ -102,6 +102,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and not event.pressed:
 		return
+	if MenuList.is_stick_repeat(event):
+		return
 	if event.is_action_pressed("ui_left", true) or event.is_action_pressed("move_left", true):
 		step(-1)
 	elif event.is_action_pressed("ui_right", true) or event.is_action_pressed("move_right", true):

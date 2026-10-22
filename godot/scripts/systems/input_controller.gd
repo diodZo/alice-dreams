@@ -5,6 +5,8 @@ extends RefCounted
 ## nunca teclas (port de systems/InputController.js).
 ##   A/←  D/→  izquierda/derecha · W/↑ apuntar arriba · Espacio saltar
 ##   J disparar · K cambiar arma · Shift correr · Esc/P pausa
+## Mando (XInput, Input Map de project.godot): cruceta/stick moverse y apuntar arriba · A saltar
+##   X disparar · Y cambiar arma · gatillos correr · Start pausa
 ##
 ## Para pruebas automáticas se puede activar `scripted` y escribir en `script_held`
 ## (acciones mantenidas) y `script_pressed` (pulsaciones de un fotograma).

@@ -121,7 +121,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		if t >= SKIP_AFTER:
 			skip()
-	elif event is InputEventKey or event is InputEventAction:
+	elif event is InputEventKey or event is InputEventAction or event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		get_viewport().set_input_as_handled()
 
 
