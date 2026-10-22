@@ -23,7 +23,7 @@ func _ready() -> void:
 		"test_fall_respawn_checkpoint", "test_playtest_log", "test_star_and_pickup", "test_weapons",
 		"test_bubble_traps_and_star", "test_paint_and_sling_damage", "test_stomp", "test_scratch_ai",
 		"test_spit_ai", "test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
-		"test_menu_keyboard", "test_gamepad", "test_menu_art", "test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside",
+		"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art", "test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside",
 		"test_checkpoint_spacing",
 		# Mundo 2
 		"test_w2_data", "test_w2_sprites", "test_w2_level_loads", "test_w2_paint", "test_w2_rulers",
@@ -867,6 +867,12 @@ func test_boss_base() -> void:
 	await load_level()
 	var notches: Array = level.hud.boss_notches.map(func(n): return (n.position.x + 100) / 200.0)
 	check(notches.size() == 2 and BossBase.PHASE_THRESHOLDS.size() == 2 and notches.all(func(x): return BossBase.PHASE_THRESHOLDS.any(func(t): return absf(t - x) < 0.01)), "muescas de la barra del jefe en %s" % str(notches))
+
+
+# IMP-002: escalado entero (píxeles iguales, con bandas si la pantalla no es múltiplo de 480x270)
+func test_integer_scaling() -> void:
+	check(ProjectSettings.get_setting("display/window/stretch/mode") == "viewport" and ProjectSettings.get_setting("display/window/stretch/scale_mode") == "integer", "ventana a 480x270 escalada por un factor entero")
+	check(get_window().content_scale_stretch == Window.CONTENT_SCALE_STRETCH_INTEGER, "la ventana aplica el escalado entero")
 
 
 func test_menu_keyboard() -> void:

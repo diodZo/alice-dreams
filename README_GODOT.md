@@ -47,7 +47,7 @@ Para ver las hitboxes: en el editor, menú **Depurar → Formas de colisión vis
 
 ```
 godot/
-  project.godot            480x270, escalado sin suavizado, capas de colisión, acciones, autoloads
+  project.godot            480x270, escalado entero sin suavizado (bandas si la pantalla no es múltiplo), capas de colisión, acciones, autoloads
   export_presets.cfg       exportación a Windows
   data/                    DATOS GENERADOS desde el código Phaser (no editar a mano)
     worlds/world1.json       mapa del Mundo 1 (src/data/world1.js)

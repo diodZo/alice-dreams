@@ -92,6 +92,7 @@
 - **Archivos involucrados:** `godot/project.godot`.
 - **Dependencias:** ninguna.
 - **Criterios de aceptación:** a 1366×768 la imagen se muestra a 2× con bandas, sin columnas de ancho desigual (captura con `tests/Capture.tscn`); menú y HUD sin recortes.
+- **Estado: hecho (decisión del autor: entero con bandas).** `window/stretch/scale_mode="integer"` en `project.godot`; la resolución lógica (480×270) no cambia, así que HUD, menús y controles táctiles se dibujan igual. Prueba `test_integer_scaling`. `tests/Capture.tscn` guarda la imagen lógica, no la ventana: las bandas a 1366×768 quedan por comprobar en una pantalla real.
 
 ### IMP-003
 **Clase base común para los jefes**
