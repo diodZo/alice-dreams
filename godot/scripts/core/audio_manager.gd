@@ -18,6 +18,11 @@ var _last_play: Dictionary = {}
 var _voices: Array[AudioStreamPlayer] = []
 var _music: AudioStreamPlayer
 var _music_task := -1
+## Pistas que el hilo de síntesis ya terminó y el hilo principal aún no ha recogido. Se pasan por
+## aquí (con un call_deferred sin argumentos) y no dentro de la llamada diferida: una llamada
+## pendiente al cerrar el juego dejaba la pista sin liberar (aviso de ObjectDB al salir).
+var _ready_tracks := {}
+var _ready_mutex := Mutex.new()
 var _music_bus := 0
 var _sfx_bus := 0
 
@@ -63,6 +68,15 @@ func _exit_tree() -> void:
 		Synth.abort = true
 		WorkerThreadPool.wait_for_task_completion(_music_task)
 		_music_task = -1
+	# y se sueltan todas las pistas y reproducciones antes de que el motor compruebe fugas
+	_ready_mutex.lock()
+	_ready_tracks.clear()
+	_ready_mutex.unlock()
+	for p in _voices + [_music]:
+		p.stop()
+		p.stream = null
+	_music_streams.clear()
+	_sfx_streams.clear()
 
 
 func _ensure_bus(bus_name: String) -> int:
@@ -92,7 +106,20 @@ func _render_music_tracks(order: Array) -> void:
 		var stream := Synth.render_music(track)
 		if Synth.abort:
 			return
-		_on_music_ready.call_deferred(track, stream)
+		_ready_mutex.lock()
+		_ready_tracks[track] = stream
+		_ready_mutex.unlock()
+		_collect_ready_music.call_deferred()
+
+
+## Hilo principal: recoge las pistas que el hilo de síntesis ha terminado.
+func _collect_ready_music() -> void:
+	_ready_mutex.lock()
+	var ready := _ready_tracks
+	_ready_tracks = {}
+	_ready_mutex.unlock()
+	for track in ready:
+		_on_music_ready(track, ready[track])
 
 
 func _on_music_ready(track: String, stream: AudioStream) -> void:

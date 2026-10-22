@@ -268,6 +268,7 @@
 - **Complejidad:** Baja. **Prioridad:** Media.
 - **Archivos involucrados:** `godot/scripts/systems/input_controller.gd`, `godot/scripts/ui/pause_menu.gd`, `godot/scripts/ui/menu.gd`, `godot/scripts/core/save_manager.gd` (`settings`).
 - **Criterios de aceptación:** con la opción activa la velocidad horizontal sin Shift es `runSpeed` (150 px/s); el ajuste persiste.
+- **Estado: hecho.** «Correr: mantener / siempre» en el menú de pausa (ajuste `alwaysRun` de `SaveManager`; los guardados antiguos cargan con `false`). Con «siempre», Shift (o el gatillo) camina. No se añadió al menú principal: sus ajustes son zonas pintadas sobre la ilustración y habría que rediseñarlo. Los controles programados (pruebas y piloto) no usan la opción. Prueba `test_always_run`.
 
 ### IMP-020
 **Respuesta al golpe más clara**
@@ -285,6 +286,7 @@
 - **Complejidad:** Baja. **Prioridad:** Baja.
 - **Archivos involucrados:** `godot/scripts/core/game_state.gd`, `godot/scripts/levels/level.gd`, `godot/scripts/ui/victory.gd`, `godot/scripts/core/save_manager.gd`.
 - **Criterios de aceptación:** el sello aparece sólo si no hubo caídas en nivel ni arena; el guardado antiguo sigue cargando.
+- **Estado: hecho.** `GameState.falls` cuenta caídas al vacío y desmayos en el nivel y la arena; la victoria muestra el sello «¡Sin caídas!» si es 0 y el guardado añade `noFalls` al mundo (se conserva una vez conseguido; campo opcional). Prueba `test_no_falls_record`.
 
 ### IMP-022
 **Introducción y transición entre mundos**
@@ -482,7 +484,7 @@
 - **Archivos involucrados:** `godot/tests/autopilot.gd`, `godot/tests/Autopilot.tscn`, `godot/tests/run_autopilot_all.ps1` **(nuevo, propuesto)**, `README_GODOT.md` §6.
 - **Dependencias:** IMP-037 (hasta resolverlo, el Mundo 8 fallará).
 - **Criterios de aceptación:** el script devuelve 0 con los 8 mundos en verde; las ejecuciones no muestran *ObjectDB instances leaked*.
-- **Estado: hecho.** `godot/tests/run_autopilot_all.ps1` con límites de fotogramas y caídas por mundo sobre la línea base medida. Los avisos de objetos sin liberar ya no aparecen (ni al llegar ni al agotar los fotogramas); el script falla si vuelven. Corregido además el recuento de caídas del piloto: contaba cada fotograma del fundido como una caída nueva, así que las cifras de caídas de `LEVEL_AUDIT.md` §1.3 están infladas (p. ej. Mundo 1: 4 caídas reales, no 49; Mundo 2: 3, no 48).
+- **Estado: hecho.** `godot/tests/run_autopilot_all.ps1` con límites de fotogramas y caídas por mundo sobre la línea base medida. Los avisos de objetos sin liberar (intermitentes: una pista de música sintetizada y su reproducción) venían de `AudioManager`: el hilo de síntesis entregaba cada pista en una llamada diferida que podía quedar pendiente al cerrar. Ahora la deja en un diccionario protegido y `_exit_tree` suelta pistas y reproductores; el piloto, además, libera el nivel antes de salir y juega sin música (sin guardarlo). 0 avisos en 8 ejecuciones seguidas; el script falla si vuelven. Corregido además el recuento de caídas del piloto: contaba cada fotograma del fundido como una caída nueva, así que las cifras de caídas de `LEVEL_AUDIT.md` §1.3 están infladas (p. ej. Mundo 1: 4 caídas reales, no 49; Mundo 2: 3, no 48).
 
 ---
 

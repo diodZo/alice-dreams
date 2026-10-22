@@ -39,6 +39,9 @@ func _ready() -> void:
 		if a.begins_with("start="):
 			start_tile = float(a.substr(6))
 	AudioManager.sfx_on = false # sin persistir: no toca el guardado del usuario
+	# sin música (tampoco se guarda): una reproducción viva al salir hace que el motor avise a
+	# veces de objetos sin liberar y la regresión daría un falso fallo
+	AudioManager.music_on = false
 	SaveManager.save_path = "user://tools_save.json"
 	SaveManager.load_state()
 	var world := 1
@@ -386,4 +389,11 @@ func _finish(ok: bool) -> void:
 	set_physics_process(false)
 	print("[autopilot] %s en %d fotogramas (%.0f s de juego): mejor tesela %d, golpes/caídas %d, estrellas %d" % [
 		"LLEGA A LA PUERTA DEL JEFE" if ok else "NO llega", frame, frame / 60.0, int(best_x / 16), deaths, int(GameState.get_v("stars", 0))])
+	# libera el nivel (y lo que tenga pendiente: fundido, cambio de escena) antes de salir; si no,
+	# el motor avisa a veces de objetos sin liberar al cerrar
+	if is_instance_valid(level):
+		level.queue_free()
+	Fader.clear()
+	for i in 3:
+		await get_tree().process_frame
 	get_tree().quit(0 if ok else 1)

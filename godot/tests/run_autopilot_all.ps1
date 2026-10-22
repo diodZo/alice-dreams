@@ -10,7 +10,8 @@
 
 param(
 	[string]$Godot = $env:GODOT,
-	[int[]]$Worlds = @(1, 2, 3, 4, 5, 6, 7, 8)
+	# lista separada por comas ("3,8"): con -File PowerShell no convierte "3,8" en un array de números
+	[string]$Worlds = "1,2,3,4,5,6,7,8"
 )
 
 # mundo (número del jugador) => límite de fotogramas y de caídas
@@ -31,8 +32,9 @@ if (-not $Godot -or -not (Test-Path $Godot)) {
 }
 $project = Join-Path $PSScriptRoot ".."
 $failed = @()
+$worldList = @($Worlds -split "," | ForEach-Object { [int]$_.Trim() })
 
-foreach ($w in $Worlds) {
+foreach ($w in $worldList) {
 	$lim = $limits[$w]
 	$out = & $Godot --headless --path $project --fixed-fps 60 res://tests/Autopilot.tscn -- "world=$w" godmode "max_frames=$($lim.frames)" 2>&1 | Out-String
 	$code = $LASTEXITCODE
@@ -51,5 +53,5 @@ if ($failed.Count -gt 0) {
 	Write-Host "Mundos con regresión: $($failed -join ', ')"
 	exit 1
 }
-Write-Host "Los $($Worlds.Count) mundos llegan a la puerta del jefe dentro de los límites"
+Write-Host "Los $($worldList.Count) mundos llegan a la puerta del jefe dentro de los límites"
 exit 0
