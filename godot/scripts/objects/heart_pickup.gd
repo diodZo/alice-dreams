@@ -1,20 +1,22 @@
 class_name HeartPickup
 extends Area2D
-## Corazón dulce del Mundo 7: devuelve un corazón de vida a Alice al recogerlo (si le falta
-## alguno; con la vida llena se queda donde está). Flota y late. No se guarda: es una ayuda.
+## Corazón recogible (Mundos 1-8, IMP-011): devuelve un corazón de vida a Alice al recogerlo (si
+## le falta alguno; con la vida llena se queda donde está). Flota y late. No se guarda: es una ayuda.
 
 var level: Node
 var active := true
 var sprite: Sprite2D
 
 
-## def: { x, y (teselas, centro), frame }
+## def: { x, y (teselas, centro), frame, atlas? (por defecto el de objetos del mundo), scale? }
 func setup(owner_level: Node, def: Dictionary, atlas: String) -> HeartPickup:
 	level = owner_level
 	position = Vector2(float(def.x) * C.TILE + 8, float(def.y) * C.TILE + 8)
 	z_index = C.Z_PICKUP
 	sprite = Sprite2D.new()
-	sprite.texture = Assets.frame(atlas, def.get("frame", "heart_w7"))
+	sprite.texture = Assets.frame(def.get("atlas", atlas), def.get("frame", "heart_w7"))
+	var base := Vector2.ONE * float(def.get("scale", 1.0))
+	sprite.scale = base
 	add_child(sprite)
 	var shape := CircleShape2D.new()
 	shape.radius = 7
@@ -23,8 +25,8 @@ func setup(owner_level: Node, def: Dictionary, atlas: String) -> HeartPickup:
 	add_child(cs)
 	Trigger.configure(self, "heart")
 	var tw := sprite.create_tween().set_loops()
-	tw.tween_property(sprite, "scale", Vector2(1.15, 1.15), 0.3).set_trans(Tween.TRANS_SINE)
-	tw.tween_property(sprite, "scale", Vector2.ONE, 0.3).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(sprite, "scale", base * 1.15, 0.3).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(sprite, "scale", base, 0.3).set_trans(Tween.TRANS_SINE)
 	var bob := sprite.create_tween().set_loops()
 	bob.tween_property(sprite, "position:y", -2.0, 0.6).set_trans(Tween.TRANS_SINE)
 	bob.tween_property(sprite, "position:y", 2.0, 0.6).set_trans(Tween.TRANS_SINE)

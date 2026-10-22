@@ -217,6 +217,9 @@ enemies = (
         (512, 15, 506, 518)]]
 )
 
+# IMP-011: corazones recogibles (una vida si falta alguna) al terminar los tramos con más enemigos
+hearts = [{"x": 167, "y": 16, "atlas": "fx", "frame": "heart_full", "scale": 1.5}, {"x": 336, "y": 18, "atlas": "fx", "frame": "heart_full", "scale": 1.5}, {"x": 484, "y": 16, "atlas": "fx", "frame": "heart_full", "scale": 1.5}]
+
 # IMP-001: uno por sección (o a <= 320 px de su entrada), ningún tramo > 2.500 px
 checkpoints = [{"x": 111, "y": 20}, {"x": 173, "y": 20}, {"x": 230, "y": 20}, {"x": 352, "y": 20}, {"x": 500, "y": 19}]
 
@@ -276,7 +279,7 @@ level = {
     "waters": waters, "geysers": geysers, "bubbleColumns": bubble_columns, "spongeRollers": sponge_rollers, "soaps": soaps,
     "dreamCollectibles": dream, "dreamMain": "shell", "dreamNames": dream_names,
     "dreamBanner": "¡Las %d conchas token! Estrella extra", "dreamHud": ["world4_objects", "shell_token", "shell_"],
-    "stars": stars, "enemies": enemies, "checkpoints": checkpoints, "pickups": [],
+    "stars": stars, "enemies": enemies, "checkpoints": checkpoints, "pickups": [], "hearts": hearts,
     "signs": signs, "decor": decor,
     "door": {"x": 558, "y": 19, "atlas": "world4_objects", "frame": "portal_w4", "scale": 1.0},
 }

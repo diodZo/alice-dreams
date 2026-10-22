@@ -1039,6 +1039,29 @@
    ]
   }
  ],
+ "hearts": [
+  {
+   "x": 262,
+   "y": 18,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  },
+  {
+   "x": 335,
+   "y": 12,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  },
+  {
+   "x": 422,
+   "y": 18,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  }
+ ],
  "checkpoints": [
   {
    "x": 138,

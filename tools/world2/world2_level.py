@@ -209,6 +209,8 @@ LEVEL = {
     ],
     # IMP-001: uno por sección y ningún tramo > 2.500 px. El primero va antes del puente dibujado
     # (132-140), no después; el de la sección C, antes de los ríos con plataformas móviles
+    # IMP-011: corazones recogibles (una vida si falta alguna) al terminar los tramos con más enemigos
+    "hearts": [{"x": 206, "y": 18, "atlas": "fx", "frame": "heart_full", "scale": 1.5}, {"x": 322, "y": 18, "atlas": "fx", "frame": "heart_full", "scale": 1.5}, {"x": 435, "y": 18, "atlas": "fx", "frame": "heart_full", "scale": 1.5}],
     "checkpoints": [{"x": 125, "y": 19}, {"x": 211, "y": 19}, {"x": 357, "y": 19}, {"x": 458, "y": 19}],
     "pickups": [],
     "signs": [

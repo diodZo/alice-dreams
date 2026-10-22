@@ -347,7 +347,8 @@ func _check_frames(atlas: String) -> void:
 	for x in data.get("chocoJets", []):
 		frames += [x.get("frame", "choco_jet_a"), "choco_drip"]
 	for x in data.get("hearts", []):
-		frames.append(x.get("frame", "heart_w7"))
+		if not x.has("atlas"): # los de los Mundos 1-6 usan el corazón del HUD (atlas fx)
+			frames.append(x.get("frame", "heart_w7"))
 	for x in data.get("ghostPlatforms", []):
 		frames += [x.get("frame", "ghost_plat_on"), x.get("frame_off", "ghost_plat_off")]
 	for x in data.get("shadowZones", []):

@@ -1403,6 +1403,29 @@
   }
  ],
  "pickups": [],
+ "hearts": [
+  {
+   "x": 205,
+   "y": 19,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  },
+  {
+   "x": 343,
+   "y": 19,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  },
+  {
+   "x": 466,
+   "y": 19,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  }
+ ],
  "signs": [
   {
    "x": 5,

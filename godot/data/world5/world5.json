@@ -2055,6 +2055,29 @@
   }
  ],
  "pickups": [],
+ "hearts": [
+  {
+   "x": 185,
+   "y": 12,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  },
+  {
+   "x": 306,
+   "y": 19,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  },
+  {
+   "x": 466,
+   "y": 17,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  }
+ ],
  "signs": [
   {
    "x": 3,

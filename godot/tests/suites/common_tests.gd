@@ -11,7 +11,7 @@ const TESTS := [
 	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
 	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
-	"test_intro_cinematic", "test_always_run", "test_no_falls_record", "test_resume_checkpoint",
+	"test_intro_cinematic", "test_always_run", "test_no_falls_record", "test_resume_checkpoint", "test_hearts_all_worlds",
 ]
 
 
@@ -1081,3 +1081,28 @@ func test_resume_checkpoint() -> void:
 	SaveManager.mark_world_completed(1, 7, 100)
 	check(SaveManager.get_resume(1).is_empty(), "completar el mundo borra la partida a medias")
 	SaveManager.reset_progress()
+
+
+# IMP-011: los Mundos 1-6 tienen corazones recogibles (al menos 2), sobre el suelo y no dentro del
+# terreno; recoger uno con la vida llena no lo gasta
+func test_hearts_all_worlds() -> void:
+	for w in range(1, 7):
+		await load_level("World%d" % w)
+		var hearts: Array = level.level_objects.objects.get_children().filter(func(o): return o is HeartPickup)
+		var floating := []
+		for h in hearts:
+			var below := false
+			for dy in range(1, 4):
+				below = below or level.terrain_solid_at(h.position + Vector2(0, dy * C.TILE))
+			if level.terrain_solid_at(h.position) or not below:
+				floating.append(int(h.position.x / C.TILE))
+		check(hearts.size() >= 2 and hearts.size() == level.data.hearts.size(), "Mundo %d: %d corazones" % [w, hearts.size()])
+		check(floating.is_empty(), "Mundo %d: corazones al alcance sobre el suelo (fallan %s)" % [w, str(floating)])
+	await load_level()
+	await settle()
+	var heart: HeartPickup = level.level_objects.objects.get_children().filter(func(o): return o is HeartPickup)[0]
+	check(not heart.collect(level.player), "con la vida llena el corazón no se gasta")
+	level.player.hp = 1
+	level.player.position = heart.position
+	await frames(5)
+	check(level.player.hp == 2 and not heart.active, "al tocarlo con vida baja se recupera un corazón")

@@ -187,6 +187,13 @@ export const WORLD1 = {
 
   // IMP-001: uno por sección (o a <= 320 px de su entrada) y ningún tramo > 2.500 px; el de la
   // tesela 229 queda antes de la nube móvil sobre el foso 245-255
+  // IMP-011: corazones recogibles (una vida si falta alguna)
+  hearts: [
+    { x: 262, y: 18, atlas: 'fx', frame: 'heart_full', scale: 1.5 },
+    { x: 335, y: 12, atlas: 'fx', frame: 'heart_full', scale: 1.5 },
+    { x: 422, y: 18, atlas: 'fx', frame: 'heart_full', scale: 1.5 },
+  ],
+
   checkpoints: [
     { x: 138, y: 20 },
     { x: 229, y: 19 },

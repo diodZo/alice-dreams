@@ -258,6 +258,9 @@ enemies = (
         (307, 18, 302, 311), (336, 19, 333, 339), (433, 17, 431, 437), (530, 19, 525, 536)]]
 )
 
+# IMP-011: corazones recogibles (una vida si falta alguna) al terminar los tramos con más enemigos
+hearts = [{"x": 212, "y": 16, "atlas": "fx", "frame": "heart_full", "scale": 1.5}, {"x": 438, "y": 16, "atlas": "fx", "frame": "heart_full", "scale": 1.5}, {"x": 525, "y": 18, "atlas": "fx", "frame": "heart_full", "scale": 1.5}]
+
 # IMP-001: uno por sección (o a <= 320 px de su entrada) y ningún tramo > 2.500 px; los de las
 # teselas 254 y 548 quedan justo antes de subir a los trenes de las secciones C y E
 checkpoints = [{"x": 118, "y": 19}, {"x": 254, "y": 18}, {"x": 398, "y": 19}, {"x": 548, "y": 19}]
@@ -357,7 +360,7 @@ level = {
     "starBlocks": star_blocks,
     "dreamCollectibles": dream, "dreamMain": "ticket", "dreamNames": dream_names,
     "dreamBanner": "¡Los %d billetes mágicos! Estrella extra", "dreamHud": ["world6_objects", "ticket", "ticket_"],
-    "stars": [], "enemies": enemies, "checkpoints": checkpoints, "pickups": [],
+    "stars": [], "enemies": enemies, "checkpoints": checkpoints, "pickups": [], "hearts": hearts,
     "signs": signs, "decor": decor,
     "door": {"x": 626, "y": 19, "atlas": "world6_objects", "frame": "portal_w6", "scale": 1.0},
 }

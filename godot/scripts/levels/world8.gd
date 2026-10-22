@@ -18,11 +18,12 @@ var door_opening := false
 var vision: Node2D
 
 
+func heart_toast() -> String:
+	return "¡Corazón de sueño!"
+
+
 func on_custom_overlap(kind: String, entity: Object) -> void:
 	match kind:
-		"heart":
-			if entity.collect(player):
-				GameState.show_toast("¡Corazón de sueño!")
 		"shadow":
 			if now >= shadow_next and not player.is_invulnerable():
 				shadow_next = now + ShadowZone.DAMAGE_INTERVAL

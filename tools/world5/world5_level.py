@@ -236,6 +236,9 @@ enemies = (
         (481, 17, 474, 484), (497, 18, 492, 510), (523, 19, 518, 530), (560, 19, 552, 570)]]
 )
 
+# IMP-011: corazones recogibles (una vida si falta alguna) al terminar los tramos con más enemigos
+hearts = [{"x": 185, "y": 12, "atlas": "fx", "frame": "heart_full", "scale": 1.5}, {"x": 306, "y": 19, "atlas": "fx", "frame": "heart_full", "scale": 1.5}, {"x": 466, "y": 17, "atlas": "fx", "frame": "heart_full", "scale": 1.5}]
+
 # IMP-001: uno por sección (o a <= 320 px de su entrada), ningún tramo > 2.500 px
 checkpoints = [{"x": 126, "y": 19}, {"x": 163, "y": 19}, {"x": 265, "y": 16}, {"x": 419, "y": 18}, {"x": 540, "y": 19}]
 
@@ -327,7 +330,7 @@ level = {
     "fallingStars": falling_stars, "explosiveClouds": explosive_clouds,
     "dreamCollectibles": dream, "dreamMain": "moon_token", "dreamNames": dream_names,
     "dreamBanner": "¡Las %d fichas de luna! Estrella extra", "dreamHud": ["world5_objects", "moon_token", "moon_"],
-    "stars": stars, "enemies": enemies, "checkpoints": checkpoints, "pickups": [],
+    "stars": stars, "enemies": enemies, "checkpoints": checkpoints, "pickups": [], "hearts": hearts,
     "signs": signs, "decor": decor,
     "door": {"x": 590, "y": 19, "atlas": "world5_objects", "frame": "portal_w5", "scale": 1.0},
 }

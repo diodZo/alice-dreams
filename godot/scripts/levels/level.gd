@@ -226,6 +226,9 @@ func _process_overlaps(delta: float) -> void:
 				on_magic_crayon(entity)
 			"dream_collectible":
 				on_dream_collectible(entity)
+			"heart":
+				if entity.collect(player):
+					GameState.show_toast(heart_toast())
 			# Mundo 4
 			"water":
 				if water == null or entity.surface_y < water.surface_y:
@@ -667,5 +670,10 @@ func on_special_star(_star: Star) -> void:
 
 
 ## Solapamientos propios de cada escena (puerta del castillo, portal, jefe...).
+## Aviso al recoger un corazón (cada mundo puede tener el suyo).
+func heart_toast() -> String:
+	return "¡Corazón!"
+
+
 func on_custom_overlap(_kind: String, _entity: Object) -> void:
 	pass

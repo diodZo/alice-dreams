@@ -1779,6 +1779,29 @@
   }
  ],
  "pickups": [],
+ "hearts": [
+  {
+   "x": 167,
+   "y": 16,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  },
+  {
+   "x": 336,
+   "y": 18,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  },
+  {
+   "x": 484,
+   "y": 16,
+   "atlas": "fx",
+   "frame": "heart_full",
+   "scale": 1.5
+  }
+ ],
  "signs": [
   {
    "x": 7,

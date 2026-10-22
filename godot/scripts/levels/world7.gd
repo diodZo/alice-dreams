@@ -6,11 +6,12 @@ extends DoorLevel
 ## sólo se aplican los contactos propios del mundo.
 
 
+func heart_toast() -> String:
+	return "¡Corazón dulce!"
+
+
 func on_custom_overlap(kind: String, entity: Object) -> void:
 	match kind:
-		"heart":
-			if entity.collect(player):
-				GameState.show_toast("¡Corazón dulce!")
 		"shootable":
 			pass  # los bloques de premio sólo reaccionan a cabezazos y disparos
 		_:

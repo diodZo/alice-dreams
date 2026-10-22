@@ -194,6 +194,7 @@
 - **Archivos involucrados:** `godot/scripts/levels/level.gd`, `godot/scripts/levels/world7.gd`, `godot/scripts/levels/world8.gd`, generadores `tools/world{2..6}/*_level.py`, `src/data/world1.js`.
 - **Dependencias:** ninguna.
 - **Criterios de aceptación:** cada nivel 1-6 tiene ≥2 corazones; recoger uno con vida completa no lo consume (comportamiento actual de `heart_pickup.gd → collect`, que debe conservarse).
+- **Estado: hecho.** Tres corazones por nivel en los Mundos 1-6, al terminar los tramos con más enemigos (uno del Mundo 1, en la tesela 335, en una plataforma alta opcional), con el corazón del HUD (`fx/heart_full` a 1,5×). El contacto `heart` pasa a `level.gd` con `heart_toast()` («¡Corazón!»; «¡Corazón dulce!» en el 7 y «¡Corazón de sueño!» en el 8). `collect` no cambia: con la vida llena el corazón se queda. Prueba `test_hearts_all_worlds`. No se han colocado en rutas secretas (IMP-018).
 
 ### IMP-012
 **Avisar de animaciones inexistentes**
