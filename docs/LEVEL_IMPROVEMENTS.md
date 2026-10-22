@@ -213,6 +213,7 @@
 - **Complejidad:** Media. **Prioridad:** Baja.
 - **Archivos involucrados:** `godot/tests/run_tests.gd`, `godot/tests/Tests.tscn`.
 - **Criterios de aceptación:** mismas 1 488 comprobaciones en verde; ejecución filtrada por mundo.
+- **Estado: hecho.** `tests/test_base.gd` (utilidades y recuento compartido), `tests/suites/` con `common_tests.gd`, `world2_tests.gd` … `world8_tests.gd` y `narrative_tests.gd` (cada uno con su lista `TESTS` y sus ayudantes; los compartidos están en la base) y `run_tests.gd` como lanzador (59 líneas). Filtro `-- only=w7` por grupo o `-- only=test_x` por nombre. División hecha con un script: las 187 funciones se conservan con el cuerpo idéntico y la suite da el mismo número de comprobaciones que antes de dividirla.
 
 ### IMP-014
 **Registro de manejadores de contacto**

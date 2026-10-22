@@ -138,8 +138,11 @@ Desde la raíz del repositorio (`G` = ruta a `Godot_v4.7.2-stable_win64_console.
 REM 1. todos los scripts compilan y todas las escenas/recursos cargan
 %G% --headless --path godot res://tests/CheckAll.tscn
 
-REM 2. pruebas automáticas (comprobaciones de los Mundos 1 a 5)
+REM 2. pruebas automáticas de los 8 mundos y la narrativa (tests/suites/: un archivo por mundo)
 %G% --headless --path godot --fixed-fps 60 res://tests/Tests.tscn
+REM    sólo un grupo (common, w2 ... w8, narrative) o unas pruebas concretas:
+%G% --headless --path godot --fixed-fps 60 res://tests/Tests.tscn -- only=w7
+%G% --headless --path godot --fixed-fps 60 res://tests/Tests.tscn -- only=test_w3_boss,test_boss_base
 
 REM 3. piloto automático: recorre un mundo con los controles normales hasta la puerta del jefe
 %G% --headless --path godot --fixed-fps 60 res://tests/Autopilot.tscn -- world=1 godmode max_frames=15000
