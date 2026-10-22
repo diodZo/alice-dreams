@@ -9,7 +9,7 @@ extends Area2D
 signal defeated_at(x: float, y: float)
 
 ## Vida restante (fracción) a la que se pasa a la fase 2 y a la 3.
-const PHASE_THRESHOLDS := [0.65, 0.30]
+const PHASE_THRESHOLDS := C.BOSS_PHASE_THRESHOLDS
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var shape: CollisionShape2D = $Shape

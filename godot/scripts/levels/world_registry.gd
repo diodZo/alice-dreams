@@ -28,7 +28,7 @@ const WORLDS := [
 		"victoryTitle": "¡Mundo 3 completado!", "victorySub": "El Rey Siestón duerme feliz otra vez",
 		"bossFrames": "sieston", "bossAnim": "defeated", "bossFrame": 2, "bossScale": 0.5,
 		"nextPortal": "Portal al Mundo 4: abierto", "victoryMusic": "world3_victory"},
-	{"id": 4, "name": "Reino de las Burbujas", "short": "Reino de las Burbujas", "scene": "World4", "data": "res://data/world4/world4.json", "boss_data": "res://data/world4/world4_boss.json", "implemented": true,
+	{"id": 4, "name": "Reino de las Burbujas", "short": "Océano de Burbujas", "scene": "World4", "data": "res://data/world4/world4.json", "boss_data": "res://data/world4/world4_boss.json", "implemented": true,
 		"victoryTitle": "¡Mundo 4 completado!", "victorySub": "El Rey Patoburbuja duerme feliz entre la espuma",
 		"bossFrames": "patoburbuja", "bossAnim": "defeated", "bossFrame": 0, "bossScale": 0.6,
 		"nextPortal": "Portal al Mundo 5: abierto", "victoryMusic": "world4_victory"},

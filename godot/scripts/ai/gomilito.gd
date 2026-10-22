@@ -90,7 +90,8 @@ func alert_update(time: float) -> void:
 func attack() -> void:
 	hopping = false
 	leaping = false
-	Anim.show_frame(sprite, "attack", 0)
+	if _has_attack_frames():
+		Anim.show_frame(sprite, "attack", 0)
 	telegraph(CROUCH_MS)
 	var tw := sprite.create_tween()
 	tw.tween_property(sprite, "scale", Vector2(1.2, 0.8), CROUCH_MS / 1000.0)
@@ -109,8 +110,14 @@ func _leap() -> void:
 	leaping = true
 	velocity = Vector2(facing * speed * speed_factor(), LEAP_VY)
 	grounded = false
-	Anim.show_frame(sprite, "attack", 1)
+	if _has_attack_frames():
+		Anim.show_frame(sprite, "attack", 1)
 	AudioManager.play("jelly")
+
+
+## Las gomitas (gomilito_mini) sólo tienen un fotograma por color: atacan sin cambiarlo.
+func _has_attack_frames() -> bool:
+	return sprite.sprite_frames.has_animation("attack")
 
 
 func _update_ATTACK(_time: float, _delta: float) -> void:

@@ -863,6 +863,10 @@ func test_boss_base() -> void:
 			wrong.append(name)
 		boss.free()
 	check(wrong.is_empty(), "los 8 jefes heredan de BossBase con su vida y sus fases (fallan %s)" % str(wrong))
+	# IMP-033: las muescas de la barra del jefe están en los umbrales reales de cambio de fase
+	await load_level()
+	var notches: Array = level.hud.boss_notches.map(func(n): return (n.position.x + 100) / 200.0)
+	check(notches.size() == 2 and BossBase.PHASE_THRESHOLDS.size() == 2 and notches.all(func(x): return BossBase.PHASE_THRESHOLDS.any(func(t): return absf(t - x) < 0.01)), "muescas de la barra del jefe en %s" % str(notches))
 
 
 func test_menu_keyboard() -> void:

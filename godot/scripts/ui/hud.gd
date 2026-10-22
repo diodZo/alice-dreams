@@ -16,6 +16,7 @@ var progress_marker: Control
 var section_text: PixelText
 var boss_group: Control
 var boss_bar: ColorRect
+var boss_notches: Array[ColorRect] = []
 var boss_label: PixelText
 ## Mundo 2: casillas de los crayones mágicos (rojo, azul, amarillo).
 var magic_icons: Array[TextureRect] = []
@@ -138,6 +139,15 @@ func _ready() -> void:
 	boss_bar.size = Vector2(200, 6)
 	boss_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	boss_group.add_child(boss_bar)
+	# muescas donde el jefe cambia de fase (IMP-033)
+	for t in C.BOSS_PHASE_THRESHOLDS:
+		var notch := ColorRect.new()
+		notch.color = C.CREAM
+		notch.position = Vector2(-100 + roundf(200 * t), -5)
+		notch.size = Vector2(1, 10)
+		notch.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		boss_group.add_child(notch)
+		boss_notches.append(notch)
 	boss_label = PixelText.make("Nubarrón", {"origin": Vector2(0.5, 0.5), "tint": C.YELLOW})
 	boss_label.position = Vector2(0, -16)
 	boss_group.add_child(boss_label)
@@ -240,7 +250,8 @@ func refresh(key: String) -> void:
 		var mx := float(GameState.get_v("bossMaxHp", 1))
 		var ratio := clampf(float(GameState.get_v("bossHp", mx)) / maxf(mx, 1.0), 0, 1)
 		boss_bar.size.x = 200 * ratio
-		boss_bar.color = C.LAVENDER if ratio > 0.65 else (C.PINK if ratio > 0.3 else C.rgb(0xff7a9a))
+		var th: Array = C.BOSS_PHASE_THRESHOLDS
+		boss_bar.color = C.LAVENDER if ratio > th[0] else (C.PINK if ratio > th[1] else C.rgb(0xff7a9a))
 
 
 func _draw_weapon_dots() -> void:

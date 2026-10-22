@@ -14,16 +14,17 @@ enum State { LOCKED, UNLOCKED, COMPLETED }
 
 const ISLANDS_DIR := "res://resources/menu/islands/"
 const MAP_ART := preload("res://resources/menu/world_map_bg.png")
-## Orden fijo del carrusel: [id en WorldRegistry, nombre, recorte provisional en world_map_bg.png].
+## Orden fijo del carrusel: [id en WorldRegistry, recorte provisional en world_map_bg.png].
+## El nombre sale del nombre corto de WorldRegistry (un único catálogo de mundos, IMP-009).
 const CATALOG := [
-	[1, "Nubes de Algodón", Rect2(8, 22, 115, 94)],
-	[2, "Crayones", Rect2(125, 56, 110, 64)],
-	[3, "Peluches", Rect2(243, 48, 115, 71)],
-	[4, "Océano de Burbujas", Rect2(365, 42, 110, 74)],
-	[5, "Juguetes", Rect2(128, 148, 112, 68)],
-	[6, "Parque de las Estrellas", Rect2(8, 143, 118, 76)],
-	[7, "Bosque de Caramelos", Rect2(243, 152, 115, 74)],
-	[8, "Castillo de los Sueños", Rect2(358, 137, 117, 88)],
+	[1, Rect2(8, 22, 115, 94)],
+	[2, Rect2(125, 56, 110, 64)],
+	[3, Rect2(243, 48, 115, 71)],
+	[4, Rect2(365, 42, 110, 74)],
+	[5, Rect2(128, 148, 112, 68)],
+	[6, Rect2(8, 143, 118, 76)],
+	[7, Rect2(243, 152, 115, 74)],
+	[8, Rect2(358, 137, 117, 88)],
 ]
 
 @export var id := 1
@@ -39,8 +40,8 @@ static func catalog() -> Array[WorldData]:
 	for row in CATALOG:
 		var d := WorldData.new()
 		d.id = row[0]
-		d.title = row[1]
-		d.fallback_region = row[2]
+		d.title = WorldRegistry.get_world(d.id).get("short", "Mundo %d" % d.id)
+		d.fallback_region = row[1]
 		d.island_path = ISLANDS_DIR + "world_%d.png" % d.id
 		list.append(d)
 	return list

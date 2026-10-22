@@ -181,6 +181,7 @@
 - **Archivos involucrados:** `godot/scripts/ui/world_data.gd`, `godot/scripts/levels/world_registry.gd`.
 - **Dependencias:** ninguna.
 - **Criterios de aceptación:** ningún nombre de mundo está escrito en `world_data.gd`; `test_world_carousel` pasa.
+- **Estado: hecho.** `WorldData.catalog()` toma el nombre del nombre corto (`short`) de `WorldRegistry`; `world_data.gd` sólo guarda los recortes de ilustración. La única discrepancia era el Mundo 4: el nombre corto pasa a «Océano de Burbujas», como en el carrusel y el mapa (también lo usa el Diario de Sueños).
 
 ### IMP-011
 **Corazones recogibles en los Mundos 1-6**
@@ -202,6 +203,7 @@
 - **Archivos involucrados:** `godot/scripts/core/anim.gd`.
 - **Dependencias:** ninguna.
 - **Criterios de aceptación:** la suite completa no produce ningún aviso nuevo (o se corrigen los que aparezcan).
+- **Estado: hecho.** `Anim.play` y `Anim.show_frame` avisan una vez por escena y animación (`push_warning`, sólo en depuración). La suite completa sólo produjo un aviso: las gomitas (`GomilitoMini`) heredan el ataque del Gomilito y pedían `attack`, que su hoja no tiene (un fotograma por color); ahora se comprueba antes en `gomilito.gd`.
 
 ### IMP-013
 **Dividir la suite de pruebas**
@@ -311,6 +313,7 @@
 - **Complejidad:** Baja. **Prioridad:** Baja.
 - **Archivos involucrados:** `godot/scripts/ui/hud.gd`; umbrales desde `BossBase` (IMP-003) o constantes compartidas.
 - **Criterios de aceptación:** las muescas coinciden con los umbrales reales de cada jefe.
+- **Estado: hecho.** El color ya cambiaba por fase; ahora hay dos muescas claras en la barra. Los umbrales viven en `C.BOSS_PHASE_THRESHOLDS`, que usan a la vez `BossBase` y el HUD (sin que el HUD dependa del script de los jefes); `test_boss_base` comprueba que coinciden.
 
 ### IMP-034
 **Sesión de prueba jugada estructurada**

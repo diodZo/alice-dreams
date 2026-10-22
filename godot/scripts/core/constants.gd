@@ -31,6 +31,9 @@ const L_ENEMY_PROJ := 64
 const L_TRIGGER := 128
 const L_BOSS := 256
 
+## Vida restante (fracción) a la que los jefes pasan a la fase 2 y a la 3 (BossBase y la barra del HUD).
+const BOSS_PHASE_THRESHOLDS := [0.65, 0.30]
+
 ## Colores de la paleta usados por la interfaz.
 const INK := Color("2a2350")
 const CREAM := Color("fff7ff")
