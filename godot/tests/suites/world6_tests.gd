@@ -3,8 +3,8 @@ extends "res://tests/test_base.gd"
 
 const TESTS := [
 	"test_w6_data", "test_w6_sprites", "test_w6_level_loads", "test_w6_layout",
-	"test_w6_train_carry", "test_w6_train_slope", "test_w6_train_stations", "test_w6_walk_along_train",
-	"test_w6_switch", "test_w6_bell_train", "test_w6_helis", "test_w6_rainbow_arch",
+	"test_w6_train_carry", "test_w6_train_slope", "test_w6_train_waits", "test_w6_train_drive", "test_w6_walk_along_train",
+	"test_w6_switch", "test_w6_train_recover", "test_w6_helis", "test_w6_rainbow_arch",
 	"test_w6_falling_block", "test_w6_spring_wheel_bumper", "test_w6_hazard_train", "test_w6_collectibles",
 	"test_w6_enemies", "test_w6_weapons_vs_enemies", "test_w6_camera", "test_w6_boss",
 	"test_w6_boss_victory", "test_w6_progression", "test_w6_jump_while_riding", "test_w6_ride_star_blocks", "test_w6_hurt_while_riding",
@@ -23,45 +23,57 @@ func _w6_platforms(cls: Variant) -> Array:
 	return level.level_objects.platforms.get_children().filter(func(n): return is_instance_of(n, cls))
 
 
+## Sube a Alice a un vagón (de pie y parada).
+func _w6_board(line: TrainLine, car_i: int) -> TrainCar:
+	var car: TrainCar = line.cars[car_i]
+	hold([])
+	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
+	level.player.velocity = Vector2.ZERO
+	await frames(20)
+	return car
+
+
+## Conduce el tren: ARRIBA mantenido y la flecha del sentido (dir 0: sólo ARRIBA).
+func _w6_drive(dir: int) -> void:
+	hold(["aim_up"] + (["move_right"] if dir > 0 else ["move_left"] if dir < 0 else []))
+
+
 func test_w6_train_carry() -> void:
 	await load_level("World6")
 	await settle(); _clear_spawner()
 	var line := _w6_line(0)
-	line.wait_left = 2000
-	var car: TrainCar = line.cars[1]
-	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
-	level.player.velocity = Vector2.ZERO
-	await frames(30)
-	check(level.player.grounded and level.get("riding_car") != null and level.riding_car() == car, "Alice queda de pie sobre el vagón parado")
+	var car := await _w6_board(line, 1)
+	check(level.player.grounded and level.riding_car() == car and level.drive_line == line, "Alice queda de pie sobre el vagón parado (y es quien lo conduce)")
 	var p0 := level.player.position.x
 	var c0 := car.position.x
 	var max_err := 0.0
 	var fell := false
+	_w6_drive(1)
 	for i in 240:
 		await frames(1)
 		max_err = maxf(max_err, absf((level.player.position.x - p0) - (car.position.x - c0)))
 		if not level.player.grounded:
 			fell = true
+	hold([])
 	print("  train: car moved %.1f px, player moved %.1f, err %.2f, fell %s, v=%.1f" % [car.position.x - c0, level.player.position.x - p0, max_err, fell, line.v])
-	check(car.position.x - c0 > 40, "el tren arranca y avanza")
-	check(not fell and max_err < 3, "el vagón transporta a Alice sin que se caiga ni resbale")
+	check(car.position.x - c0 > 40, "con ARRIBA + derecha el tren arranca y avanza")
+	check(not fell and max_err < 3, "el vagón transporta a Alice sin que se caiga ni resbale (las flechas no la mueven mientras conduce)")
 
 
+## Conduce hasta el final de la vía con Alice de pie en un vagón.
 func _w6_ride(line: TrainLine, car_i: int, max_frames: int) -> Dictionary:
-	var car: TrainCar = line.cars[car_i]
-	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
-	level.player.velocity = Vector2.ZERO
+	var car := await _w6_board(line, car_i)
 	var out := {"fell": false, "max_err": 0.0, "min_y": INF, "arrived": false}
-	await frames(20)
 	var p0 := level.player.position
 	var c0 := car.position
+	_w6_drive(1)
 	for i in max_frames:
 		await frames(1)
 		var e := (level.player.position - p0) - (car.position - c0)
 		if e.length() > out.max_err:
 			out["worst"] = [e, line.s, level.player.grounded]
 		if OS.get_cmdline_user_args().has("ride_log") and i % 20 == 0:
-			print("    s=%.0f v=%.1f err=(%.2f,%.2f) g=%s pv=%.1f wait=%.0f" % [line.s, line.v, e.x, e.y, level.player.grounded, level.player.velocity.x, line.wait_left])
+			print("    s=%.0f v=%.1f err=(%.2f,%.2f) g=%s pv=%.1f" % [line.s, line.v, e.x, e.y, level.player.grounded, level.player.velocity.x])
 		out.max_err = maxf(out.max_err, e.length())
 		out.min_y = minf(out.min_y, car.position.y)
 		# se cae si deja de estar encima del vagón (unos fotogramas sin apoyo al arrancar no cuentan)
@@ -69,9 +81,10 @@ func _w6_ride(line: TrainLine, car_i: int, max_frames: int) -> Dictionary:
 			out.fell = true
 			out["fell_at"] = level.player.position
 			break
-		if line.is_waiting() and line.s >= line.s_max() - 1:
+		if line.is_stopped() and line.s >= line.s_max() - 0.5:
 			out.arrived = true
 			break
+	hold([])
 	return out
 
 
@@ -79,32 +92,89 @@ func test_w6_train_slope() -> void:
 	await load_level("World6")
 	await settle(); _clear_spawner()
 	var line := _w6_line(4)
-	line.wait_left = 300
 	var r := await _w6_ride(line, 1, 1400)
-	check(r.arrived and not r.fell and r.max_err < 4, "Alice viaja en el tren por las pendientes hasta el final sin resbalar (%.1f px)" % r.max_err)
+	check(r.arrived and not r.fell and r.max_err < 4, "Alice conduce el tren por las pendientes hasta el final sin resbalar (%.1f px)" % r.max_err)
 	check(r.min_y < 15 * C.TILE, "el recorrido sube la pendiente")
 
 
-func test_w6_train_stations() -> void:
+# IMP-029: los trenes esperan en su estación de salida hasta que Alice sube (sin horario ni esperas)
+func test_w6_train_waits() -> void:
 	await load_level("World6")
 	await settle(); _clear_spawner()
-	var line := _w6_line(4)
-	var waits := []
-	line.wait_left = 10
-	var was := false
-	for i in 1400:
+	await frames(300)
+	var moved: Array = level.level_objects.trains.filter(func(t): return absf(t.s - t.s_min()) > 0.01 or not t.is_stopped())
+	check(moved.is_empty(), "sin Alice ningún tren sale de su estación (%d se movieron)" % moved.size())
+	var line := _w6_line(2)
+	await _w6_board(line, 0)
+	await frames(240)
+	check(line.s == line.s_min() and line.is_stopped(), "con Alice encima, el tren espera a que ella lo conduzca")
+	check(line.hint.visible and line.hint.text == "^", "sobre Alice aparece la flecha ARRIBA que indica cómo conducir")
+	_w6_drive(1)
+	await frames(10)
+	check(not line.hint.visible and line.v > 0, "al pulsar ARRIBA la flecha se oculta y el tren arranca enseguida")
+	hold([])
+
+
+# IMP-029: avance, frenado, marcha atrás y topes de la vía
+func test_w6_train_drive() -> void:
+	await load_level("World6")
+	await settle(); _clear_spawner()
+	var line := _w6_line(6)
+	var car := await _w6_board(line, 1)
+	var dx0 := level.player.position.x - car.position.x
+	_w6_drive(1)
+	var top_speed := 0.0
+	for i in 150:
 		await frames(1)
-		if line.is_waiting() and not was:
-			waits.append(snappedf(line.cars[0].position.x / C.TILE, 0.1))
-		was = line.is_waiting()
-	check(waits.size() >= 2 and absf(waits[0] - 367) < 1.5, "el tren se detiene en la estación intermedia (%s)" % str(waits))
+		top_speed = maxf(top_speed, absf(line.v))
+	check(line.v > 0 and line.s > line.s_min() + 60, "ARRIBA + derecha: avanza (s=%.0f)" % line.s)
+	check(top_speed <= line.max_speed + 0.01, "no pasa de su velocidad máxima (%.1f / %.0f)" % [top_speed, line.max_speed])
+	check(absf(level.player.position.x - car.position.x - dx0) < 3, "mientras conduce Alice no anda por el vagón")
+	# soltar ARRIBA: frena con suavidad hasta pararse
+	hold([])
+	var s0 := line.s
+	var n := 0
+	while not line.is_stopped() and n < 200:
+		await frames(1)
+		n += 1
+	check(line.is_stopped() and n < 90 and line.s - s0 < 48, "al soltar ARRIBA el tren frena y se para (%d fotogramas, %.0f px)" % [n, line.s - s0])
+	check(level.riding_car() == car, "Alice sigue de pie en el vagón")
+	# marcha atrás: mirando a la izquierda
+	_w6_drive(-1)
+	await frames(60)
+	check(line.v < 0 and level.player.facing == -1, "ARRIBA + izquierda: Alice mira atrás y el tren va marcha atrás")
+	# tope del principio: nunca se sale de la vía
+	var min_s := INF
+	for i in 400:
+		await frames(1)
+		min_s = minf(min_s, line.s)
+		if line.is_stopped():
+			break
+	check(line.is_stopped() and is_equal_approx(line.s, line.s_min()) and min_s >= line.s_min(), "marcha atrás se para justo en el tope de la estación de salida")
+	# tope del final (sólo ARRIBA: va hacia donde mira; las flechas eligen el sentido)
+	_w6_drive(1)
+	await frames(2)
+	_w6_drive(0)
+	var max_s := -INF
+	for i in 1200:
+		await frames(1)
+		max_s = maxf(max_s, line.s)
+		if line.is_stopped() and line.s > line.s_min() + 1:
+			break
+	check(line.is_stopped() and is_equal_approx(line.s, line.s_max()) and max_s <= line.s_max(), "sólo con ARRIBA sigue hacia donde mira y se para justo en el tope del final")
+	check(level.riding_car() == car, "Alice llega de pie al final de la vía")
+	# en el tope el tren ya no puede seguir: las flechas vuelven a mover a Alice para bajarse
+	var px := level.player.position.x
+	_w6_drive(1)
+	await frames(30)
+	hold([])
+	check(not level.player.driving and level.player.position.x > px + 20 and is_equal_approx(line.s, line.s_max()), "en el tope ARRIBA + derecha no bloquea: Alice anda hacia la estación")
 
 
 func test_w6_walk_along_train() -> void:
 	await load_level("World6")
 	await settle(); _clear_spawner()
 	var line := _w6_line(4)
-	line.wait_left = 100000
 	var rear: TrainCar = line.cars[line.cars.size() - 1]
 	level.player.position = Vector2(rear.position.x, rear.surface_y() - 2)
 	await frames(15)
@@ -116,6 +186,7 @@ func test_w6_walk_along_train() -> void:
 			ok = false
 	hold([])
 	check(ok and level.player.position.x > line.cars[0].position.x - 10, "Alice camina por todo el tren hasta la locomotora sin caerse entre vagones (%.0f / %.0f)" % [level.player.position.x, line.cars[0].position.x])
+	check(line.is_stopped() and line.s == line.s_min(), "andando (sin ARRIBA) el tren no se mueve")
 	var tops: Array = line.cars.map(func(c): return snappedf(c.surface_y(), 0.5))
 	check(tops.all(func(t): return t == tops[0]), "todos los vagones tienen el techo a la misma altura (%s)" % str(tops))
 
@@ -127,7 +198,9 @@ func test_w6_data() -> void:
 	check(w.sections.map(func(x): return int(x.from)) == [0, 1800, 4000, 6300, 8600], "cinco secciones del Mundo 6")
 	check(w.checkpoints.size() == 4, "cuatro checkpoints")
 	check(w.dreamCollectibles.filter(func(x): return x.kind == "ticket").size() == 3 and w.dreamMain == "ticket", "tres billetes mágicos")
-	check(w.trains.size() >= 5 and w.trains.any(func(t): return t.has("branches")) and w.trains.any(func(t): return t.get("bellWait", false)), "trenes con desvíos y tren que espera a la campana")
+	check(w.trains.size() >= 5 and w.trains.any(func(t): return t.has("branches")), "trenes con desvíos")
+	check(w.trains.all(func(t): return not (t.has("wait") or t.has("delay") or t.has("stops") or t.has("bellWait"))), "los trenes no tienen horario ni esperas: los conduce Alice (IMP-029)")
+	check(w.signs.any(func(x): return "ARRIBA" in x.text and "Conduce" in x.text and x.x < 30), "un cartel de la estación de salida explica cómo conducir")
 	check(w.trains.any(func(t): return t.points.any(func(p): return p[1] != t.points[0][1])), "hay vías con pendiente")
 	check(w.levers.size() >= 2 and w.bells.size() >= 2 and w.starBlocks.size() >= 3, "palancas, campanas y bloques de estrella")
 	check(w.helis.any(func(h): return h.get("dx", 0) == 0 and h.get("dy", 0) == 0) and w.helis.any(func(h): return h.get("dx", 0) != 0) and w.helis.any(func(h): return h.get("dy", 0) != 0), "hélices fija, horizontal y vertical")
@@ -224,6 +297,35 @@ func test_w6_layout() -> void:
 					blocked.append("%d" % int(p.x / C.TILE))
 			d += 8.0
 	check(blocked.is_empty(), "las vías tienen el paso libre por encima (%s)" % str(blocked))
+	# ... y hasta la cabeza de Alice de pie sobre el techo de los vagones (bloques de estrella
+	# incluidos): si no, se da con la cabeza y cae del tren
+	var space := level.get_world_2d().direct_space_state
+	var low_ceiling: Array = []
+	var body: float = level.player.body_rect().size.y + 1.0
+	for line in level.level_objects.trains:
+		# de pie en el techo (SURFACE - 1 px sobre el carril), en cualquier punto del vagón más ancho
+		var head: float = TrainCar.SURFACE - 1.0 + body
+		var half: float = line.cars.map(func(c): return c.width / 2.0).max()
+		for br in range(maxi(1, line.branches.size())):
+			if not line.branches.is_empty():
+				line.branch = br
+				line._rebuild_curve()
+			var d := 0.0
+			while d < line.length():
+				var p: Vector2 = line.rail_point(d)
+				for ox in [-half, 0.0, half]:
+					for dy in range(int(TrainCar.SURFACE) + 1, int(head) + 2, 4):
+						var q := PhysicsPointQueryParameters2D.new()
+						q.position = p + Vector2(ox, -dy)
+						q.collision_mask = C.L_WORLD
+						if level.terrain_solid_at(q.position) or not space.intersect_point(q).is_empty():
+							low_ceiling.append("%d" % int(q.position.x / C.TILE))
+							break
+				d += 8.0
+		if not line.branches.is_empty():
+			line.branch = 0
+			line._rebuild_curve()
+	check(low_ceiling.is_empty(), "sobre las vías cabe Alice de pie en el vagón (%s)" % str(low_ceiling))
 	# ningún enemigo cerca de la estación de un tren que cruza un hueco (no empujan al vacío)
 	var near_station: Array = []
 	for line in level.level_objects.trains:
@@ -242,9 +344,8 @@ func test_w6_switch() -> void:
 	check(line.branch == 0 and lever.train == line, "la primera palanca controla el tren de la pendiente")
 	var end_a: Vector2 = line.rail_point(line.length())
 	# el tren va por el ramal: el cambio queda pendiente hasta el punto seguro
-	line.wait_left = 0
+	line.auto_return = false
 	line.s = line.decision_s + 40
-	line.dir = 1
 	lever.ready_at = 0
 	lever.toggle()
 	check(lever.state == 1 and line.pending_branch == 1 and line.branch == 0, "con el tren en el ramal el desvío no cambia de golpe")
@@ -267,33 +368,80 @@ func test_w6_switch() -> void:
 	check(lever.state == st2, "quedarse encima no la vuelve a mover")
 
 
-func test_w6_bell_train() -> void:
+# IMP-029: Alice siempre recupera el tren: si lo deja, vuelve solo a buscarla; si se cae, al
+# reaparecer lo tiene parado a su lado
+func test_w6_train_recover() -> void:
 	await load_level("World6")
 	await settle(); _clear_spawner()
-	var line := _w6_line(3)
-	check(line.bell_wait, "el tren rápido espera a la campana")
-	await frames(240)
-	check(line.is_waiting() and line.s <= line.s_min() + 1, "sin campana no sale de su estación")
-	var bell: StationBell = level.level_objects.bells[1]
-	check(bell.train == line, "la campana de la isla llama a ese tren")
-	bell.ring()
-	check(line.called, "la campana avisa al tren")
+	var line := _w6_line(6)
+	# abandono: conduce hasta medio foso y vuelve a la estación (sin tren)
+	await _w6_board(line, 1)
+	_w6_drive(1)
+	await frames(200)
+	hold([])
+	while not line.is_stopped():
+		await frames(1)
+	var mid := line.s
+	place(549, 19)
 	await frames(30)
-	check(line.is_waiting(), "deja tiempo para subir antes de salir")
-	await frames(110)
-	check(not line.is_waiting() and line.s > line.s_min() + 4, "después de la campana el tren sale")
-	var found_end := false
-	for i in 600:
+	check(line.is_stopped() and line.s == mid, "el tren abandonado no se va de inmediato (deja volver a subir)")
+	var n := 0
+	while n < 900 and not (line.is_stopped() and line.s == line.s_min()):
 		await frames(1)
-		if line.is_waiting() and line.s >= line.s_max() - 1:
-			found_end = true
-			break
-	check(found_end, "llega a la estación del otro lado")
-	for i in 900:
+		n += 1
+	check(line.s == line.s_min() and line.is_stopped(), "al rato vuelve solo a la estación donde espera Alice (%d fotogramas)" % n)
+	# a mitad de camino: el tren de la pasarela del túnel viene a buscarla bajo la pasarela
+	var line4 := _w6_line(4)
+	await _w6_board(line4, 0)
+	_w6_drive(1)
+	await frames(150)
+	hold([])
+	await frames(60)
+	var s_left := line4.s
+	place(367, 13)
+	await frames(20)
+	var on_bridge := level.player.grounded and level.riding_car() == null
+	n = 0
+	while n < 900:
 		await frames(1)
-		if line.is_waiting() and line.s <= line.s_min() + 1:
+		n += 1
+		var nearest: TrainCar = line4.cars[0]
+		for c in line4.cars:
+			if absf(c.position.x - level.player.position.x) < absf(nearest.position.x - level.player.position.x):
+				nearest = c
+		if line4.is_stopped() and absf(nearest.position.x - level.player.position.x) <= nearest.width / 2.0 + TrainLine.REACH and n > 90:
 			break
-	check(line.s <= line.s_min() + 1, "vuelve solo a su estación (nunca se queda al otro lado)")
+	check(on_bridge and n < 900 and line4.s > s_left + 40, "subida a la pasarela, el tren vuelve solo a ponerle un vagón debajo (%d fotogramas)" % n)
+	# baja de la pasarela andando por el borde y cae sobre el tren
+	hold(["move_left"])
+	n = 0
+	while level.player.grounded and n < 90:
+		await frames(1)
+		n += 1
+	hold([])
+	await frames(40)
+	check(level.riding_car() != null and level.riding_car().line == line4, "Alice baja de la pasarela al tren y sigue el viaje")
+	# caída: con el checkpoint de la estación activado, se cae del tren en marcha
+	await load_level("World6")
+	await settle(); _clear_spawner()
+	line = _w6_line(6)
+	place(548, 19)
+	await frames(10)
+	check(absf(level.checkpoints.respawn_point().x - 548 * C.TILE) < 2 * C.TILE, "checkpoint de la estación de salida activado")
+	await _w6_board(line, 2)
+	_w6_drive(1)
+	await frames(160)
+	hold([])
+	level.player.position = Vector2(level.player.position.x, level.world_h + 40)
+	n = 0
+	while n < 200 and (level.respawning or not level.player.grounded or n < 10):
+		await frames(1)
+		n += 1
+	await frames(10)
+	check(not level.player.dead and absf(level.player.position.x - 548 * C.TILE) < 2 * C.TILE, "reaparece en el checkpoint de la estación")
+	check(line.is_stopped() and line.s == line.s_min(), "el tren la espera parado en la estación (no se queda en medio del foso)")
+	var r := await _w6_ride(line, 1, 1400)
+	check(r.arrived and not r.fell, "Alice vuelve a subir y cruza hasta el otro lado")
 
 
 func test_w6_helis() -> void:
@@ -542,11 +690,9 @@ func test_w6_camera() -> void:
 	await load_level("World6")
 	await settle(); _clear_spawner()
 	var line := _w6_line(4)
-	line.wait_left = 400
-	var car: TrainCar = line.cars[1]
-	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
+	await _w6_board(line, 1)
 	level.camera.snap_to_target()
-	await frames(20)
+	_w6_drive(1)
 	var max_jump := 0.0
 	var prev := level.camera.position
 	var looked := false
@@ -556,6 +702,7 @@ func test_w6_camera() -> void:
 		prev = level.camera.position
 		if level.riding_car() != null and line.velocity_x > 30 and level.look_ahead > 10:
 			looked = true
+	hold([])
 	check(max_jump <= 4.0, "la cámara sigue al tren sin saltos bruscos (máx. %.1f px por fotograma)" % max_jump)
 	check(looked, "la cámara se anticipa hacia donde avanza el tren")
 	var view: Rect2 = level.camera.view_rect()
@@ -706,33 +853,43 @@ func test_w6_progression() -> void:
 	SaveManager.reset_progress()
 
 
-# Saltar con el tren en marcha (sin tocar las flechas) no tira a Alice del vagón: conserva la
-# velocidad del tren en el aire. Es lo que hace seguros los bloques de estrella sobre la vía (IMP-035).
+# Saltar con el tren en marcha no tira a Alice del vagón: conserva la velocidad del tren en el aire
+# y el tren mantiene la suya mientras ella salta (IMP-035). Así son seguros los bloques de estrella
+# sobre la vía. Se prueba conduciendo (ARRIBA + derecha mantenidos) y soltándolo todo al saltar.
 func test_w6_jump_while_riding() -> void:
 	await load_level("World6")
 	await settle()
 	_clear_spawner()
 	var line := _w6_line(2)
-	var car: TrainCar = line.cars[0]
-	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
-	level.player.velocity = Vector2.ZERO
+	var car := await _w6_board(line, 0)
+	_w6_drive(1)
 	var waited := 0
-	while (line.is_waiting() or absf(line.v) < 20) and waited < 900:
+	while line.v < line.max_speed - 0.5 and waited < 300:
 		await frames(1)
 		waited += 1
-	var dx0 := level.player.position.x - car.position.x
-	press("jump")
-	hold(["jump"])
-	await frames(12)
+	for keep_driving in [true, false]:
+		var dx0 := level.player.position.x - car.position.x
+		var v0 := line.v
+		var held: Array = ["aim_up", "move_right"] if keep_driving else []
+		press("jump")
+		hold(held + ["jump"])
+		await frames(12)
+		hold(held)
+		var landed := false
+		var v_air := INF
+		for i in 90:
+			await frames(1)
+			if level.player.grounded:
+				landed = true
+				break
+			v_air = minf(v_air, line.v)
+		var dx1 := level.player.position.x - car.position.x
+		var how := "conduciendo" if keep_driving else "soltando los controles"
+		check(absf(v_air - v0) < 0.5, "%s, el tren no cambia de velocidad mientras Alice salta (%.1f -> %.1f)" % [how, v0, v_air])
+		check(landed and absf(level.player.position.y - car.surface_y()) < 6 and absf(dx1 - dx0) < 12, "%s, al saltar en marcha vuelve a caer sobre el vagón (desvío %.1f px)" % [how, dx1 - dx0])
+		_w6_drive(1)
+		await frames(10)
 	hold([])
-	var landed := false
-	for i in 90:
-		await frames(1)
-		if level.player.grounded:
-			landed = true
-			break
-	var dx1 := level.player.position.x - car.position.x
-	check(landed and absf(level.player.position.y - car.surface_y()) < 6 and absf(dx1 - dx0) < 12, "al saltar en marcha vuelve a caer sobre el vagón (desvío %.1f px, velocidad del tren %.0f)" % [dx1 - dx0, line.v])
 
 
 # IMP-035: los viajes en tren de la sección C tienen bloques de estrella sobre la vía: de pie no se
@@ -751,19 +908,20 @@ func test_w6_ride_star_blocks() -> void:
 	await settle()
 	_clear_spawner()
 	var line := _w6_line(2)
-	var car: TrainCar = line.cars[0]
-	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
+	var car := await _w6_board(line, 0)
 	var target: StarBlock = level.level_objects.star_blocks.filter(func(b): return b.position.x > 256 * C.TILE and b.position.x < 280 * C.TILE)[0]
 	var before := target.left
+	_w6_drive(1)
 	var waited := 0
 	while absf(level.player.position.x - target.position.x) > 6 and waited < 1500:
 		await frames(1)
 		waited += 1
 	press("jump")
-	hold(["jump"])
+	hold(["aim_up", "move_right", "jump"])
 	await frames(14)
-	hold([])
+	_w6_drive(1)
 	await frames(60)
+	hold([])
 	check(target.left < before, "saltando desde el vagón se golpea el bloque")
 	check(absf(level.player.position.y - car.surface_y()) < 6, "y Alice vuelve a caer sobre el vagón")
 
@@ -775,11 +933,10 @@ func test_w6_hurt_while_riding() -> void:
 	await settle()
 	_clear_spawner()
 	var line := _w6_line(2)
-	var car: TrainCar = line.cars[0]
-	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
-	level.player.velocity = Vector2.ZERO
+	await _w6_board(line, 0)
+	_w6_drive(1)
 	var waited := 0
-	while (line.is_waiting() or absf(line.v) < 20) and waited < 900:
+	while absf(line.v) < 20 and waited < 900:
 		await frames(1)
 		waited += 1
 	Level.hit_stop_scale = 1.0
@@ -787,5 +944,6 @@ func test_w6_hurt_while_riding() -> void:
 	await get_tree().create_timer(0.3, true, false, true).timeout
 	await frames(30)
 	Level.hit_stop_scale = 0.0
+	hold([])
 	var p := level.player.position
 	check(is_finite(p.x) and is_finite(p.y) and is_finite(level.player.velocity.x), "tras el golpe la posición de Alice sigue siendo válida (%s)" % str(p))

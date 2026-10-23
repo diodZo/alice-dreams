@@ -275,7 +275,7 @@
   },
   {
    "x": 457,
-   "y": 21,
+   "y": 22,
    "w": 10,
    "h": 2,
    "mat": "cloud"
@@ -501,7 +501,7 @@
   },
   {
    "x": 464,
-   "y": 21,
+   "y": 22,
    "frame": "toy_spring",
    "power": -480,
    "surface": "top"
@@ -542,9 +542,7 @@
     "train_yellow"
    ],
    "speed": 38,
-   "accel": 30,
-   "wait": 2200,
-   "delay": 1200
+   "accel": 30
   },
   {
    "points": [
@@ -597,9 +595,7 @@
     "train_star"
    ],
    "speed": 50,
-   "accel": 40,
-   "wait": 2000,
-   "delay": 800
+   "accel": 40
   },
   {
    "points": [
@@ -617,8 +613,7 @@
     "train_red"
    ],
    "speed": 46,
-   "accel": 40,
-   "wait": 1800
+   "accel": 40
   },
   {
    "points": [
@@ -636,9 +631,7 @@
     "train_star"
    ],
    "speed": 84,
-   "accel": 70,
-   "wait": 1500,
-   "bellWait": true
+   "accel": 70
   },
   {
    "points": [
@@ -673,11 +666,7 @@
     "train_red"
    ],
    "speed": 68,
-   "accel": 50,
-   "wait": 1500,
-   "stops": [
-    367
-   ]
+   "accel": 50
   },
   {
    "points": [
@@ -708,11 +697,11 @@
      ],
      [
       458,
-      21
+      22
      ],
      [
       466,
-      21
+      22
      ]
     ]
    ],
@@ -721,9 +710,7 @@
     "train_star"
    ],
    "speed": 56,
-   "accel": 45,
-   "wait": 1800,
-   "delay": 400
+   "accel": 45
   },
   {
    "points": [
@@ -743,8 +730,7 @@
     "train_star"
    ],
    "speed": 60,
-   "accel": 40,
-   "wait": 2000
+   "accel": 40
   }
  ],
  "levers": [
@@ -769,7 +755,7 @@
   {
    "x": 282,
    "y": 16,
-   "train": 3
+   "train": -1
   },
   {
    "x": 544,
@@ -938,12 +924,12 @@
    "count": 2
   },
   {
-   "x": 459,
+   "x": 460,
    "y": 17,
    "count": 2
   },
   {
-   "x": 461,
+   "x": 462,
    "y": 17,
    "count": 3
   },
@@ -1693,19 +1679,19 @@
   },
   {
    "x": 458,
-   "y": 19
+   "y": 20
   },
   {
    "x": 460,
-   "y": 19
+   "y": 20
   },
   {
    "x": 462,
-   "y": 19
+   "y": 20
   },
   {
    "x": 464,
-   "y": 19
+   "y": 20
   },
   {
    "x": 472,
@@ -2194,7 +2180,7 @@
   {
    "x": 21,
    "y": 20,
-   "text": "Sube al vagón cuando el tren pare en la estación. Puedes andar y saltar encima"
+   "text": "¡Conduce el tren! Súbete y mantén ARRIBA (^, W o cruceta): va hacia donde miras. Suelta y frena"
   },
   {
    "x": 46,
@@ -2214,7 +2200,7 @@
   {
    "x": 141,
    "y": 19,
-   "text": "Toca la palanca para cambiar el desvío. El tren lo toma al volver a la estación"
+   "text": "Toca la palanca para cambiar el desvío antes de cruzarlo con el tren"
   },
   {
    "x": 189,
@@ -2229,7 +2215,7 @@
   {
    "x": 279,
    "y": 18,
-   "text": "Este tren rápido espera en la estación: toca la campana para llamarlo"
+   "text": "Mira atrás y mantén ARRIBA: el tren va marcha atrás. Si lo dejas, vuelve a buscarte"
   },
   {
    "x": 302,
@@ -2244,7 +2230,7 @@
   {
    "x": 342,
    "y": 19,
-   "text": "Este tren para a mitad de camino: ¡hay estrellas en la pasarela!"
+   "text": "Frena el tren bajo la pasarela del túnel: ¡hay estrellas!"
   },
   {
    "x": 392,

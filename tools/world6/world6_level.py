@@ -12,14 +12,14 @@ Límites de Alice (data/tuning.json): salto ~62 px (3,9 teselas) de alto y ~7 te
 corriendo. Ningún escalón obligatorio supera 3 teselas sin ayuda (resortes, trenes, hélices);
 ningún hueco obligatorio supera 5 teselas sin plataforma.
 
-  A La Estación de los Sueños      0-1.800   estación, campana, tren lento de práctica,
+  A La Estación de los Sueños      0-1.800   estación, campana, tren lento de práctica (conducir),
                                               Bloquecito Travieso, plataformas con hélice
   B Los Puentes del Arcoíris    1.800-4.000   puente arcoíris, tren que sube una pendiente con
                                               la primera palanca (ramal opcional: billete 1),
                                               Payasitos Resorte, pasarelas estrechas, 1.er checkpoint
-  C El Ferrocarril de las Nubes 4.000-6.300   trenes de velocidades distintas, tren que espera la
-                                              campana, Vagoncitos, bloques móviles, ruta del cielo
-                                              opcional (billete 2), tren con parada intermedia
+  C El Ferrocarril de las Nubes 4.000-6.300   trenes de velocidades distintas (marcha atrás),
+                                              Vagoncitos, bloques móviles, ruta del cielo opcional
+                                              (billete 2), tren con pasarela a mitad de camino
   D La Fábrica de Juguetes      6.300-8.600   bloques que caen, ruedas, resortes, hélices, segunda
                                               palanca, barreras de estrella, los tres enemigos,
                                               ruta alta (billete 3), 2.º checkpoint
@@ -95,7 +95,7 @@ terrain = [
     # C — El Ferrocarril de las Nubes
     island(279, 7, 18, 3), g(300, 14, 18), g(328, 20, 19),
     # D — La Fábrica de Juguetes
-    g(386, 30, 19), g(416, 1, 20), g(417, 13, 21), g(430, 16, 17), island(457, 10, 21, 2), g(470, 22, 17),
+    g(386, 30, 19), g(416, 1, 20), g(417, 13, 21), g(430, 16, 17), island(457, 10, 22, 2), g(470, 22, 17),
     g(499, 18, 18), g(524, 13, 19),
     # E — La Gran Estación Real
     g(537, 23, 19), g(584, 46, 19),
@@ -135,25 +135,28 @@ movers = [
     {"x": 519.5, "y": 18, "frame": "block_bridge", "top": 3, "dx": 2, "dy": 0, "duration": 2200},    # 1: pasarela móvil
 ]
 
-# Trenes de juguete: vía (altura del carril), vagones, velocidad, paradas y desvíos
+# Trenes de juguete: vía (altura del carril), vagones y velocidad máxima / aceleración (px/s, px/s²).
+# Los conduce Alice (IMP-029/IMP-035): cada tren espera parado al principio de su vía (la estación
+# de salida) hasta que ella sube; con ARRIBA avanza hacia donde mira y al soltarlo frena. Si lo
+# deja o se cae, el tren vuelve solo hasta ponerle un vagón al alcance (train_line.gd).
 trains = [
     # 0 (A): tren lento de práctica sobre el primer hueco
-    {"points": [[24, 20], [49, 20]], "cars": ["train_loco", "train_yellow"], "speed": 38, "accel": 30, "wait": 2200, "delay": 1200},
+    {"points": [[24, 20], [49, 20]], "cars": ["train_loco", "train_yellow"], "speed": 38, "accel": 30},
     # 1 (B): sube la pendiente; la primera palanca elige el ramal (A: isla principal; B: isla baja con billete 1)
     {"points": [[146, 19], [158, 19], [168, 15], [171, 15]], "branches": [[[171, 15], [190, 15]], [[171, 15], [177, 18], [184, 18]]],
-     "cars": ["train_loco", "train_red", "train_star"], "speed": 50, "accel": 40, "wait": 2000, "delay": 800},
+     "cars": ["train_loco", "train_red", "train_star"], "speed": 50, "accel": 40},
     # 2 (C): tren lento hasta la isla de la campana
-    {"points": [[256, 18], [280, 18]], "cars": ["train_loco", "train_red"], "speed": 46, "accel": 40, "wait": 1800},
-    # 3 (C): tren rápido que espera en su estación a que suene la campana
-    {"points": [[283, 18], [303, 18]], "cars": ["train_loco", "train_star"], "speed": 84, "accel": 70, "wait": 1500, "bellWait": True},
-    # 4 (C): vía larga con pendientes por el túnel arcoíris y parada intermedia en la pasarela
+    {"points": [[256, 18], [280, 18]], "cars": ["train_loco", "train_red"], "speed": 46, "accel": 40},
+    # 3 (C): tren rápido desde la isla de la campana
+    {"points": [[283, 18], [303, 18]], "cars": ["train_loco", "train_star"], "speed": 84, "accel": 70},
+    # 4 (C): vía larga con pendientes por el túnel arcoíris; se puede frenar bajo la pasarela (367)
     {"points": [[344, 19], [354, 19], [360, 15], [374, 15], [380, 19], [391, 19]], "cars": ["train_loco", "train_yellow", "train_red"],
-     "speed": 68, "accel": 50, "wait": 1500, "stops": [367]},
+     "speed": 68, "accel": 50},
     # 5 (D): segunda palanca (A: sigue a la derecha; B: baja a la isla de los bloques de estrella)
-    {"points": [[442, 17], [453, 17]], "branches": [[[453, 17], [473, 17]], [[453, 17], [458, 21], [466, 21]]],
-     "cars": ["train_loco", "train_star"], "speed": 56, "accel": 45, "wait": 1800, "delay": 400},
+    {"points": [[442, 17], [453, 17]], "branches": [[[453, 17], [473, 17]], [[453, 17], [458, 22], [466, 22]]],
+     "cars": ["train_loco", "train_star"], "speed": 56, "accel": 45},
     # 6 (E): el tren largo de la gran estación
-    {"points": [[553, 19], [591, 19]], "cars": ["train_loco", "train_red", "train_yellow", "train_star"], "speed": 60, "accel": 40, "wait": 2000},
+    {"points": [[553, 19], [591, 19]], "cars": ["train_loco", "train_red", "train_yellow", "train_star"], "speed": 60, "accel": 40},
 ]
 
 levers = [
@@ -163,7 +166,7 @@ levers = [
 
 bells = [
     {"x": 12, "y": 15, "train": -1, "gift": True},
-    {"x": 282, "y": 16, "train": 3},
+    {"x": 282, "y": 16, "train": -1},
     {"x": 544, "y": 15, "train": -1, "gift": True},
 ]
 
@@ -212,12 +215,14 @@ hazards = [
 pads = [
     {"x": 182, "y": 18, "frame": "toy_spring", "power": -470, "surface": "top"},   # isla baja -> isla principal
     {"x": 429, "y": 21, "frame": "toy_spring", "power": -480, "surface": "top"},   # sube a la meseta de la fábrica
-    {"x": 464, "y": 21, "frame": "toy_spring", "power": -480, "surface": "top"},   # isla de los bloques -> camino
+    {"x": 464, "y": 22, "frame": "toy_spring", "power": -480, "surface": "top"},   # isla de los bloques -> camino
 ]
 
 star_blocks = [
     {"x": 52, "y": 16, "count": 2}, {"x": 53, "y": 16, "count": 1}, {"x": 54, "y": 16, "count": 2},
-    {"x": 459, "y": 17, "count": 2}, {"x": 461, "y": 17, "count": 3},
+    # isla baja del segundo desvío (suelo en la fila 22), justo bajo el ramal A: lejos de la bajada
+    # del ramal B para que Alice, de pie en el vagón, no se dé con la cabeza (IMP-029)
+    {"x": 460, "y": 17, "count": 2}, {"x": 462, "y": 17, "count": 3},
     {"x": 541, "y": 15, "count": 2},
     # IMP-035: sobre las vías de la sección C (trenes 256-280 y 283-303, vía en la fila 18): de pie
     # en el vagón no se tocan; saltando se golpean desde abajo. Saltar en marcha es seguro: Alice
@@ -245,7 +250,7 @@ stars = (
     + arc(348, 364, 12, 2, 3) + row(366, 369, 11, 1) + arc(372, 390, 12, 2, 3)
     # D
     + row(392, 414, 18, 3) + row(418, 426, 20, 3) + row(431, 444, 16, 3) + row(434, 438, 11, 2) + row(441, 443, 7, 1)
-    + arc(447, 469, 14, 2, 3) + row(458, 465, 19, 2) + row(472, 490, 16, 3) + arc(492, 499, 15, 2, 2)
+    + arc(447, 469, 14, 2, 3) + row(458, 465, 20, 2) + row(472, 490, 16, 3) + arc(492, 499, 15, 2, 2)
     + row(501, 516, 17, 3) + row(518, 522, 16, 2) + row(526, 536, 18, 3)
     # E
     + row(539, 558, 18, 3) + row(546, 550, 13, 2) + arc(560, 584, 15, 3, 3) + row(586, 595, 18, 3)
@@ -273,17 +278,17 @@ checkpoints = [{"x": 118, "y": 19}, {"x": 254, "y": 18}, {"x": 398, "y": 19}, {"
 signs = [
     {"x": 3, "y": 20, "text": "Mundo 5: ¡El Reino del Tren de Juguete! Viaja en los trenes mágicos entre las nubes"},
     {"x": 9, "y": 20, "text": "Toca la campana de la estación: ¡Din don!"},
-    {"x": 21, "y": 20, "text": "Sube al vagón cuando el tren pare en la estación. Puedes andar y saltar encima"},
+    {"x": 21, "y": 20, "text": "¡Conduce el tren! Súbete y mantén ARRIBA (^, W o cruceta): va hacia donde miras. Suelta y frena"},
     {"x": 46, "y": 20, "text": "Golpea los bloques de estrella desde abajo: ¡sueltan estrellas!"},
     {"x": 66, "y": 20, "text": "Las plataformas con hélice flotan. Sus hélices no hacen daño"},
     {"x": 120, "y": 19, "text": "El puente arcoíris une las islas: ¡crúzalo!"},
-    {"x": 141, "y": 19, "text": "Toca la palanca para cambiar el desvío. El tren lo toma al volver a la estación"},
+    {"x": 141, "y": 19, "text": "Toca la palanca para cambiar el desvío antes de cruzarlo con el tren"},
     {"x": 189, "y": 15, "text": "El Payasito Resorte salta de su caja y lanza estrellas: ¡apártate!"},
     {"x": 238, "y": 18, "text": "Hay tres billetes dorados escondidos en el reino"},
-    {"x": 279, "y": 18, "text": "Este tren rápido espera en la estación: toca la campana para llamarlo"},
+    {"x": 279, "y": 18, "text": "Mira atrás y mantén ARRIBA: el tren va marcha atrás. Si lo dejas, vuelve a buscarte"},
     {"x": 302, "y": 18, "text": "El Vagoncito Chispa lanza chispas y suelta humo. El humo no hace daño"},
     {"x": 329, "y": 19, "text": "La hélice que sube lleva a la ruta del cielo"},
-    {"x": 342, "y": 19, "text": "Este tren para a mitad de camino: ¡hay estrellas en la pasarela!"},
+    {"x": 342, "y": 19, "text": "Frena el tren bajo la pasarela del túnel: ¡hay estrellas!"},
     {"x": 392, "y": 19, "text": "La Fábrica de Juguetes: los bloques tiemblan antes de caer"},
     {"x": 419, "y": 21, "text": "Las ruedas ruedan siempre igual: ¡sáltalas! El resorte te sube a la meseta"},
     {"x": 472, "y": 17, "text": "Las barreras de estrella te empujan sin hacer daño"},

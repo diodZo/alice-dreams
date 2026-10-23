@@ -20,7 +20,7 @@ $limits = @{
 	2 = @{ frames = 6000; falls = 4 }    # base: 3 766, 1
 	3 = @{ frames = 8000; falls = 2 }    # base: 5 445, 0
 	4 = @{ frames = 7000; falls = 2 }    # base: 4 369, 0
-	5 = @{ frames = 16000; falls = 6 }   # base: 11 851, 3 (cruce en tren de la sección E, IMP-029)
+	5 = @{ frames = 10000; falls = 2 }   # base: 7 158, 0 (trenes que conduce Alice, IMP-029; antes 11 851, 3)
 	6 = @{ frames = 7000; falls = 2 }    # base: 4 592, 0
 	7 = @{ frames = 8000; falls = 2 }    # base: 5 217, 0
 	8 = @{ frames = 7000; falls = 2 }    # base: 4 705, 0

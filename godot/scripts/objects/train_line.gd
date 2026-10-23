@@ -6,20 +6,29 @@ extends Node2D
 ##    de la vía sin girar (la franja pisable queda siempre horizontal y estable).
 ##  - Cada vagón es un TrainCar (AnimatableBody2D con sync_to_physics): Godot traslada a Alice
 ##    cuando va encima, puede andar y saltar desde él y no la atraviesa (colisión unidireccional).
-##  - Movimiento determinista sobre el reloj del nivel: acelera y frena con suavidad (frenada
-##    calculada para parar justo en cada estación), espera en las estaciones y en los topes del
-##    final da la vuelta (ida y vuelta).
+##  - Lo conduce Alice (IMP-029/IMP-035): espera en su estación de salida hasta que sube; con
+##    ARRIBA mantenido avanza hacia donde mira Alice (las flechas eligen el sentido) y al
+##    soltarlo frena hasta pararse. Acelera y frena con suavidad y nunca pasa de los topes.
+##  - Saltando desde el vagón el mando queda fijado hasta que Alice vuelve a pisar algo: el tren
+##    no cambia de velocidad bajo ella mientras está en el aire (y ella conserva su velocidad).
+##  - Tren abandonado: cuando Alice lleva un rato fuera (sobre otro apoyo) y está a menos de una
+##    pantalla de la vía, el tren vuelve solo hasta ponerle un vagón al alcance, sin salirse de la
+##    vía; al reaparecer tras una caída el nivel lo coloca directamente junto a ella (reset_near).
+##    Así nunca se queda sin tren. Los trenes de vías lejanas no se mueven.
 ##  - Desvío: la palanca pide un ramal (pending_branch); el tren sólo lo toma en un punto seguro,
 ##    cuando toda la composición está en el tramo común (nunca a mitad del ramal o de una curva).
-##  - Con bell_wait el tren espera en las estaciones hasta que suena una campana.
 
 signal arrived(stop_s: float)
 signal branch_changed(branch: int)
 
 const CAR_GAP := 3.0
 const MIN_SPEED := 6.0
-## Tiempo para subir después de tocar la campana.
-const BOARD_MS := 1600.0
+## Frenada respecto a la aceleración (soltar ARRIBA, cambio de sentido y topes).
+const BRAKE := 1.6
+## Tiempo que el tren espera a Alice antes de volver solo a buscarla (ms).
+const RETURN_MS := 1200.0
+## Margen (px) entre Alice y el vagón más cercano para considerarlo a su alcance.
+const REACH := 12.0
 
 var level: Node
 var atlas := ""
@@ -35,26 +44,29 @@ var cars: Array = []
 var offsets: Array[float] = []
 var train_len := 0.0
 var s := 0.0
+## Velocidad a lo largo de la vía (px/s, con signo: + hacia el final de la vía).
 var v := 0.0
+## Sentido del último movimiento (+1 / -1).
 var dir := 1
 var max_speed := 60.0
 var accel := 50.0
-var wait_ms := 1600.0
-var wait_left := 0.0
-var bell_wait := false
-var called := false
-var stop_xs: Array = []
+## Mando actual: -1, 0 (frenar) o +1. Queda fijado mientras Alice salta desde el tren.
+var command := 0
+## Vuelve solo a buscar a Alice si lo deja (las pruebas lo apagan para colocar el tren a mano).
+var auto_return := true
+## Último instante (reloj del nivel) en que Alice iba en este tren o saltaba desde él.
+var with_alice_at := -INF
 var rails: Array[Line2D] = []
+var hint: PixelText
 var _tick_frame := -1
-var _stops_cache: Array = []
 var _last_x := 0.0
 ## Velocidad horizontal de la composición en el último paso (px/s, con signo).
 var velocity_x := 0.0
 
 
 ## def: { points: [[x, y]...] (teselas: altura del carril), branches: [[[x, y]...], [[x, y]...]],
-##        branch, cars: ["train_loco", "train_red"...], speed, accel (px/s, px/s²), wait (ms),
-##        stops: [x...] (teselas: dónde para la locomotora), start ("begin" | "end"), bellWait }
+##        branch, cars: ["train_loco", "train_red"...], speed, accel (px/s, px/s²) }
+## El tren empieza parado en su estación de salida (el principio de la vía).
 func setup(owner_level: Node, def: Dictionary, atlas_name: String) -> TrainLine:
 	level = owner_level
 	atlas = atlas_name
@@ -70,9 +82,6 @@ func setup(owner_level: Node, def: Dictionary, atlas_name: String) -> TrainLine:
 	pending_branch = branch
 	max_speed = float(def.get("speed", 60))
 	accel = float(def.get("accel", 50))
-	wait_ms = float(def.get("wait", 1600))
-	bell_wait = bool(def.get("bellWait", false))
-	stop_xs = def.get("stops", [])
 	path = Path2D.new()
 	path.name = "Route"
 	add_child(path)
@@ -91,11 +100,14 @@ func setup(owner_level: Node, def: Dictionary, atlas_name: String) -> TrainLine:
 		prev_half = half
 		cars.append(car)
 	train_len = acc
-	s = s_max() if str(def.get("start", "begin")) == "end" else s_min()
-	dir = -1 if str(def.get("start", "begin")) == "end" else 1
-	wait_left = float(def.get("delay", 600))
+	s = s_min()
 	_place_cars()
 	_last_x = cars[0].position.x if not cars.is_empty() else 0.0
+	# aviso de conducción: una flecha ARRIBA sobre Alice mientras va en el tren parado
+	hint = PixelText.make("^", {"origin": Vector2(0.5, 1.0), "tint": C.YELLOW})
+	hint.z_index = C.Z_PLAYER + 1 - C.Z_PLATFORM
+	hint.visible = false
+	add_child(hint)
 	return self
 
 
@@ -136,7 +148,6 @@ func _rebuild_curve() -> void:
 	for p in common:
 		cc.add_point(p)
 	decision_s = cc.get_baked_length() if not branches.is_empty() else INF
-	_stops_cache = []
 	_update_rail_tint()
 
 
@@ -157,29 +168,18 @@ func rail_point(d: float) -> Vector2:
 	return path.curve.sample_baked(clampf(d, 0.0, length()))
 
 
-## Paradas en coordenadas de la vía (distancia de la locomotora). Los topes siempre lo son.
-func stops() -> Array:
-	if not _stops_cache.is_empty():
-		return _stops_cache
-	var out: Array = [s_min(), s_max()]
-	var curve := path.curve
-	for x in stop_xs:
-		var target := float(x) * C.TILE
-		# punto de la vía más cercano a esa x
-		var best := 0.0
-		var best_d := INF
-		var d := 0.0
-		while d <= length():
-			var dx := absf(curve.sample_baked(d).x - target)
-			if dx < best_d:
-				best_d = dx
-				best = d
-			d += 2.0
-		if best_d < C.TILE and best > s_min() + 1 and best < s_max() - 1:
-			out.append(best)
-	out.sort()
-	_stops_cache = out
-	return out
+## Distancia de la vía cuyo punto queda más cerca (en horizontal) de x.
+func s_at_x(x: float) -> float:
+	var best := 0.0
+	var best_d := INF
+	var d := 0.0
+	while d <= length():
+		var dx := absf(rail_point(d).x - x)
+		if dx < best_d:
+			best_d = dx
+			best = d
+		d += 2.0
+	return best
 
 
 ## Un paso de simulación (idempotente por fotograma de física: lo llama cada vagón).
@@ -190,52 +190,110 @@ func tick(delta_ms: float) -> void:
 	_tick_frame = f
 	var dt := delta_ms / 1000.0
 	_try_switch()
-	if wait_left > 0:
-		# con bell_wait sólo espera a la campana en su estación de salida (nunca se queda al otro lado)
-		if bell_wait and not called and s <= s_min() + 0.5 and wait_left <= delta_ms:
-			wait_left = delta_ms + 1  # sigue esperando a la campana
-		else:
-			wait_left -= delta_ms
+	var want := _wanted_speed()
+	# nunca pasa de los topes: la velocidad se limita para frenar justo en el final de la vía
+	var brake := accel * BRAKE
+	want = clampf(want, -sqrt(2.0 * brake * maxf(s - s_min(), 0.0)), sqrt(2.0 * brake * maxf(s_max() - s, 0.0)))
+	if want != 0.0 and absf(want) < MIN_SPEED:
+		want = signf(want) * MIN_SPEED
+	var speeding_up := want != 0.0 and (v == 0.0 or signf(want) == signf(v)) and absf(want) > absf(v)
+	v = move_toward(v, want, (accel if speeding_up else brake) * dt)
+	var moving := absf(v) > 0.01
+	s += v * dt
+	if s >= s_max() or s <= s_min():
+		s = clampf(s, s_min(), s_max())
+		if moving:
+			_arrive(s)
 		v = 0.0
-		velocity_x = 0.0
-		return
-	var target := _next_stop()
-	var dist := absf(target - s)
-	var brake := sqrt(2.0 * accel * dist)
-	var want := minf(max_speed, brake)
-	v = move_toward(v, want, accel * dt)
-	var step := maxf(v, MIN_SPEED) * dt
-	if step >= dist:
-		s = target
-		_arrive(target)
-	else:
-		s += dir * step
+	if absf(v) > 0.01:
+		dir = 1 if v > 0 else -1
 	_place_cars()
 	velocity_x = (cars[0].position.x - _last_x) / maxf(dt, 0.0001)
 	_last_x = cars[0].position.x
+	_update_hint()
 
 
-func _next_stop() -> float:
-	var list := stops()
-	if dir > 0:
-		for x in list:
-			if x > s + 0.01:
-				return x
-		return s_max()
-	for i in range(list.size() - 1, -1, -1):
-		if list[i] < s - 0.01:
-			return list[i]
-	return s_min()
+## Velocidad que pide el mando (o el regreso automático) en este paso, antes de los topes.
+func _wanted_speed() -> float:
+	var player: Player = level.player
+	if level.get("drive_line") == self and not player.dead:
+		with_alice_at = level.now
+		if carries_alice():
+			command = drive_dir() if level.controls.up else 0
+		# en el aire tras saltar del tren: el mando queda como estaba al despegar
+		return command * max_speed
+	command = 0
+	if not auto_return or player.dead or not player.grounded or level.get("respawning"):
+		return 0.0
+	if level.now - with_alice_at < RETURN_MS or not is_near(player.position.x):
+		return 0.0
+	# tren abandonado: vuelve hasta ponerle a Alice un vagón al alcance
+	var dist := pickup_s(player.position.x) - s
+	if absf(dist) < 1.0:
+		return 0.0
+	return signf(dist) * minf(max_speed, sqrt(2.0 * accel * BRAKE * absf(dist)))
+
+
+## Sentido en el que conduce Alice: el de las flechas o, sin ellas, hacia donde mira.
+func drive_dir() -> int:
+	var axis: int = level.controls.axis
+	return axis if axis != 0 else int(level.player.facing)
+
+
+## ¿Puede el tren avanzar en ese sentido? (en un tope no: Alice baja andando)
+func can_move(d: int) -> bool:
+	return s < s_max() - 0.5 if d > 0 else s > s_min() + 0.5
+
+
+## ¿Está Alice de pie sobre uno de los vagones en este fotograma?
+func carries_alice() -> bool:
+	var player: Player = level.player
+	if not player.grounded:
+		return false
+	for i in player.get_slide_collision_count():
+		var col := player.get_slide_collision(i)
+		if col.get_normal().y < -0.5 and col.get_collider() in cars:
+			return true
+	return false
+
+
+## Posición del tren (s) que deja un vagón al alcance de Alice en x (la actual si ya lo está).
+## Fuera de la vía se queda en el tope más cercano.
+func pickup_s(x: float) -> float:
+	var best := 0
+	for i in cars.size():
+		if absf(cars[i].position.x - x) < absf(cars[best].position.x - x):
+			best = i
+	var car: TrainCar = cars[best]
+	if absf(car.position.x - x) <= car.width / 2.0 + REACH:
+		return s
+	return clampf(s_at_x(x) + offsets[best], s_min(), s_max())
+
+
+## ¿Queda x a menos de `dist` px (una pantalla por defecto) del tramo que cubre la vía?
+func is_near(x: float, dist := float(C.GAME_W)) -> bool:
+	var lo := INF
+	var hi := -INF
+	for pts in [common] + branches:
+		for p in pts:
+			lo = minf(lo, p.x)
+			hi = maxf(hi, p.x)
+	return x > lo - dist and x < hi + dist
+
+
+## Coloca el tren parado junto a Alice (al reaparecer tras una caída o un desmayo).
+func reset_near(x: float) -> void:
+	command = 0
+	v = 0.0
+	with_alice_at = -INF
+	s = pickup_s(x)
+	_place_cars()
+	_last_x = cars[0].position.x
+	velocity_x = 0.0
+	hint.visible = false
 
 
 func _arrive(stop_s: float) -> void:
-	v = 0.0
-	wait_left = wait_ms
-	called = false
-	if stop_s >= s_max() - 0.5:
-		dir = -1
-	elif stop_s <= s_min() + 0.5:
-		dir = 1
 	arrived.emit(stop_s)
 	if absf(level.player.position.x - cars[0].position.x) < C.GAME_W:
 		AudioManager.play("train_bell")
@@ -244,6 +302,20 @@ func _arrive(stop_s: float) -> void:
 func _place_cars() -> void:
 	for i in cars.size():
 		cars[i].place(rail_point(s - offsets[i]))
+
+
+## Flecha ARRIBA que bota sobre Alice mientras va en el tren parado (cómo se conduce).
+func _update_hint() -> void:
+	var show: bool = level.get("drive_line") == self and carries_alice() and is_stopped() and not level.controls.up \
+		and (can_move(1) or can_move(-1))
+	hint.visible = show
+	if show:
+		var p: Vector2 = level.player.position
+		hint.position = Vector2(round(p.x), round(p.y - 36 - absf(sin(level.now / 180.0)) * 4))
+
+
+func is_stopped() -> bool:
+	return absf(v) < 0.01
 
 
 ## ¿Está toda la composición en el tramo común? (punto seguro para cambiar de ramal)
@@ -267,18 +339,12 @@ func request_branch(b: int) -> int:
 	return pending_branch
 
 
-## La campana de la estación llama al tren (sólo cuenta con bell_wait).
-## Sale al cabo de BOARD_MS para que dé tiempo a subir ("¡Pasajeros al tren!").
+## La campana de su estación llama al tren: vuelve a buscar a Alice sin esperar.
 func call_train() -> void:
-	if called or not is_waiting():
+	if level.get("drive_line") == self:
 		return
-	called = true
-	wait_left = maxf(wait_left, BOARD_MS)
+	with_alice_at = -INF
 	GameState.show_toast("¡Pasajeros al tren!")
-
-
-func is_waiting() -> bool:
-	return wait_left > 0
 
 
 # ------------------------------------------------------------------ dibujo

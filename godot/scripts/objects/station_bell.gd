@@ -1,8 +1,8 @@
 class_name StationBell
 extends Area2D
 ## Campana de estación del Mundo 6: al tocarla suena, se balancea y suelta notas y destellos.
-## Puede llamar a un tren que espera en su estación (TrainLine con bellWait) y, la primera vez,
-## dar una estrella de regalo.
+## Puede llamar a un tren (TrainLine.call_train: vuelve a buscar a Alice sin esperar) y, la
+## primera vez, dar una estrella de regalo.
 
 signal rung
 

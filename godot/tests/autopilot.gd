@@ -89,7 +89,7 @@ func _physics_process(_delta: float) -> void:
 		for cand in level.level_objects.trains:
 			if absf(cand.cars[0].position.x - p.position.x) < absf(tl.cars[0].position.x - p.position.x):
 				tl = cand
-		print("  f=%d p=(%.1f,%.1f) v=(%.0f,%.0f) g=%s ride=%s train s=%.1f wait=%.0f car0=(%.1f,%.1f) hold=%s press=%s" % [frame, p.position.x, p.position.y, p.velocity.x, p.velocity.y, p.grounded, _riding_mover(p) != null, tl.s, tl.wait_left, tl.cars[0].position.x, tl.cars[0].position.y, str(c.script_held.keys()), str(c.script_pressed.keys())])
+		print("  f=%d p=(%.1f,%.1f) v=(%.0f,%.0f) g=%s ride=%s train s=%.1f v=%.0f car0=(%.1f,%.1f) hold=%s press=%s" % [frame, p.position.x, p.position.y, p.velocity.x, p.velocity.y, p.grounded, _riding_mover(p) != null, tl.s, tl.v, tl.cars[0].position.x, tl.cars[0].position.y, str(c.script_held.keys()), str(c.script_pressed.keys())])
 	if "trace" in OS.get_cmdline_user_args() and frame % 5 == 0:
 		var m: MovingPlatform = level.level_objects.movers[0]
 		print("  f=%d p=(%.1f,%.1f) v=(%.0f,%.0f) g=%s mover=(%.1f,%.1f) ride=%s wait=%d hold=%s" % [frame, p.position.x, p.position.y, p.velocity.x, p.velocity.y, p.grounded, m.position.x, m.position.y, _riding_mover(p) != null, wait_frames, str(c.script_held.keys())])
@@ -125,6 +125,12 @@ func _physics_process(_delta: float) -> void:
 		# en el aire: si hay una nube móvil debajo, se orienta hacia su centro
 		if p.velocity.y < -400:
 			target_x = NAN # rebote (nube elástica, cojín): sigue hacia delante
+		if target_mover == null and is_nan(target_x) and p.velocity.y > 0:
+			# cayendo sin destino (p. ej. tras rebotar en un monstruo junto a un hueco): se orienta
+			# hacia la plataforma con hélice del hueco si queda debajo (Mundo 5)
+			var below := _mover_in_gap(p)
+			if below is HeliPlatform and absf(below.position.x - p.position.x) < 60 and _surface_y(below) > p.position.y:
+				target_mover = below
 		if not is_nan(target_x) and target_mover == null:
 			c.script_held.erase("move_right")
 			c.script_held.erase("run")
@@ -150,25 +156,22 @@ func _physics_process(_delta: float) -> void:
 	var riding := _riding_mover(p)
 	ride_frames = ride_frames + 1 if riding != null else 0
 	if riding is TrainCar:
-		# tren del Mundo 6: espera montada mientras el tren está parado en su primera estación;
-		# al llegar al final (o con suelo cerca mientras avanza) se baja hacia delante
+		# tren del Mundo 6: lo conduce hacia delante (ARRIBA + derecha: las flechas eligen el
+		# sentido y no mueven a Alice) hasta el tope del final; allí se baja hacia delante
 		var line: TrainLine = riding.line
 		c.script_held.erase("move_right")
 		c.script_held.erase("run")
-		if line.is_waiting() and line.s <= line.s_min() + 1:
-			# se coloca sobre la locomotora (delante) para bajarse en cuanto haya suelo
-			if p.position.x < line.cars[0].position.x - 6:
-				c.script_held["move_right"] = true
+		if line.can_move(1):
+			c.script_held["aim_up"] = true
+			c.script_held["move_right"] = true
 			return
-		if line.is_waiting() and line.s >= line.s_max() - 1:
+		if line.is_stopped():
 			c.script_held["move_right"] = true
 			c.script_held["run"] = true
 			if not _support_ahead(p.position + Vector2(18, 4)) or level.terrain_solid_at(p.position + Vector2(14, -10)):
 				c.script_pressed["jump"] = true
 				c.script_held["jump"] = true
 				jump_hold = 40
-			return
-		# en marcha (o en una parada intermedia): se queda en el vagón
 		return
 	var next := _next_mover(p, riding) if riding != null else null
 	if next != null:
@@ -211,7 +214,7 @@ func _physics_process(_delta: float) -> void:
 	if gap:
 		var mover := _mover_in_gap(p)
 		if mover is TrainCar or (mover == null and _track_over_gap(p)):
-			# a un tren sólo se sube cuando está parado en su estación (ver _train_to_board)
+			# a un tren se sube cuando está parado en su estación (si no, vuelve solo a buscarla)
 			wait_frames = 4
 			c.script_held.erase("move_right")
 			return
@@ -354,15 +357,18 @@ func _track_over_gap(p: Player) -> bool:
 	return false
 
 
-## Vagón al que subir: un tren del Mundo 6 parado en su primera estación justo delante.
+## Vagón al que subir: un tren del Mundo 6 parado justo delante (en su estación de salida o donde
+## Alice lo dejó: si no está a su alcance, vuelve solo a buscarla).
 func _train_to_board(p: Player) -> TrainCar:
 	for line in level.level_objects.get("trains", []):
-		if not line.is_waiting() or line.s > line.s_min() + 1:
+		if not line.is_stopped():
 			continue
+		# fuera de su estación sólo un tren por delante (al bajarse en el final queda detrás)
+		var lo := -64.0 if line.s <= line.s_min() + 1 else 8.0
 		var best: TrainCar = null
 		for car in line.cars:
 			var dx: float = car.position.x - p.position.x
-			if dx > -64 and dx < 70 and absf(car.position.y - p.position.y) < 40 and (best == null or absf(dx) < absf(best.position.x - p.position.x)):
+			if dx > lo and dx < 70 and absf(car.position.y - p.position.y) < 40 and (best == null or absf(dx) < absf(best.position.x - p.position.x)):
 				best = car
 		if best != null:
 			return best

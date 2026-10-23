@@ -34,6 +34,9 @@ var _flash: ShaderMaterial
 ## aire para volver a caer sobre el vagón en lugar de quedarse atrás. 0 fuera de un salto así.
 var carry_x := 0.0
 var _ride_vx := 0.0
+## Conduciendo un tren (Mundo 5, IMP-029): las flechas sólo eligen hacia dónde mira Alice (el
+## sentido del tren) y no la mueven por el vagón. Lo fija el nivel en cada fotograma.
+var driving := false
 var stunned_until := 0.0
 var attack_until := 0.0
 var attack_anim := ""
@@ -135,16 +138,17 @@ func _control(time: float, dt: float) -> void:
 	var sleepy_speed := 0.72 if time < sleepy_until else 1.0
 	var swim := SWIM_SPEED if in_water() else 1.0
 	var slow := slow_factor if time < slow_until else 1.0
-	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed * sleepy_speed * swim * slow
+	var walk_axis := 0 if driving else axis
+	var target := walk_axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed * sleepy_speed * swim * slow
 	if not grounded:
 		target += carry_x
 	var vx := velocity.x
 	var rate: float
 	if grounded:
-		var same_dir := axis != 0 and signf(axis) == signf(vx if vx != 0 else axis)
+		var same_dir := walk_axis != 0 and signf(walk_axis) == signf(vx if vx != 0 else walk_axis)
 		rate = (T.groundAccel if same_dir else T.groundDecel) * surface_friction
 	else:
-		rate = T.airAccel if axis != 0 else T.airDecel
+		rate = T.airAccel if walk_axis != 0 else T.airDecel
 	rate *= slow
 	var next := target
 	if absf(target - vx) > rate * dt:
@@ -369,6 +373,8 @@ func heal(full := true) -> void:
 
 func respawn_at(x: float, y: float) -> void:
 	dead = false
+	driving = false
+	carry_x = 0.0
 	set_water(INF)
 	push_x = 0
 	clear_slow()
