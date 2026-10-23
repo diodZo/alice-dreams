@@ -6,7 +6,8 @@ extends Area2D
 
 ## def: { x, y (teselas), frame, dx, dy (teselas), duration, delay (ms) }
 ## Mundo 7: shape "spikes" (plataforma con pinchos de caramelo): fija, apoyada en el suelo
-## (y = fila de la superficie) y con colisión rectangular sólo en la franja de los pinchos.
+## (y = fila de la superficie) y con colisión rectangular sólo en la franja de los pinchos
+## (insetX, insetTop: márgenes en px que la estrechan respecto al dibujo).
 func setup(def: Dictionary, atlas: String) -> Hazard:
 	var spr := Sprite2D.new()
 	spr.texture = Assets.frame(atlas, def.get("frame", "spiky_bubble"))
@@ -17,11 +18,15 @@ func setup(def: Dictionary, atlas: String) -> Hazard:
 	if def.get("shape", "") == "spikes":
 		position.y = float(def.y) * C.TILE
 		Anim.set_origin(spr, size, 0.5, 1.0)
+		# franja de los pinchos; insetX / insetTop (px) la hacen más pequeña que el dibujo para
+		# dar margen al saltar por encima (tartas del Mundo 7)
+		var inset_x := float(def.get("insetX", 3))
+		var inset_top := float(def.get("insetTop", 1))
 		var rect := RectangleShape2D.new()
-		rect.size = Vector2(size.x - 6, size.y * 0.45)
+		rect.size = Vector2(size.x - 2.0 * inset_x, size.y * 0.45 - (inset_top - 1.0))
 		var rs := CollisionShape2D.new()
 		rs.shape = rect
-		rs.position = Vector2(0, -size.y + rect.size.y / 2.0 + 1)
+		rs.position = Vector2(0, -size.y + inset_top + rect.size.y / 2.0)
 		add_child(rs)
 		Trigger.configure(self, "hazard")
 		return self

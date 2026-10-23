@@ -225,8 +225,12 @@ choco_jets = [
 
 hazards = [
     # plataformas con pinchos de caramelo (se saltan)
-    {"x": 449, "y": 19, "frame": "spike_cake", "shape": "spikes"},
-    {"x": 611, "y": 19, "frame": "spike_cake", "shape": "spikes"},
+    # D: con sitio para aterrizar antes del lanzador y lejos del hueco de las correas (un golpe no
+    # la tira al vacío); en la 449 quedaba pegada a la piruleta y a 1,5 teselas del hueco: o se
+    # caía sobre los pinchos o al vacío (imposible de pasar). Franja de pinchos indulgente
+    # (insetX/insetTop): con la del dibujo la ventana para saltarla corriendo era de ~6 fotogramas
+    {"x": 438, "y": 19, "frame": "spike_cake", "shape": "spikes", "insetX": 8, "insetTop": 4},
+    {"x": 611, "y": 19, "frame": "spike_cake", "shape": "spikes", "insetX": 8, "insetTop": 4},
 ]
 
 # bloques de premio (golpe desde abajo o disparo: sueltan estrellas)
@@ -259,7 +263,7 @@ stars = (
     + row(264, 290, 19, 3) + arc(292, 300, 16, 2, 2) + row(302, 324, 20, 3) + row(326, 337, 11, 2) + row(343, 348, 12, 1)
     + arc(326, 334, 18, 2, 2) + row(336, 356, 19, 3) + arc(358, 366, 16, 2, 2) + row(368, 404, 18, 3) + row(378, 382, 13, 2)
     # D
-    + row(408, 420, 18, 3) + row(423, 432, 15, 2) + row(435, 452, 18, 3) + arc(453, 460, 15, 2, 1) + row(462, 480, 16, 3)
+    + row(408, 420, 18, 3) + row(423, 432, 15, 2) + arc(436, 441, 15, 2, 1) + row(443, 452, 18, 3) + arc(453, 460, 15, 2, 1) + row(462, 480, 16, 3)
     + row(463, 467, 11, 2) + row(469, 473, 8, 2) + arc(482, 491, 14, 2, 2) + row(493, 508, 17, 3) + row(509, 516, 15, 1)
     + row(518, 530, 21, 3) + row(533, 560, 18, 3) + row(541, 545, 14, 2)
     # E
@@ -291,7 +295,7 @@ signs = [
     {"x": 282, "y": 20, "text": "Los chorros de chocolate burbujean antes de salir"},
     {"x": 302, "y": 21, "text": "La Piruleta Voladora lanza caramelitos en abanico: busca el hueco"},
     {"x": 408, "y": 19, "text": "La Fábrica de Caramelos: las correas de chocolate te llevan"},
-    {"x": 438, "y": 19, "text": "El lanzador brilla antes de disparar. Las piruletas giran siempre igual"},
+    {"x": 434, "y": 19, "text": "El lanzador brilla antes de disparar. Las piruletas giran siempre igual"},
     {"x": 479, "y": 17, "text": "Esta correa va hacia atrás: ¡corre!"},
     {"x": 645, "y": 19, "text": "Don Chupetón te espera dentro del castillo"},
 ]

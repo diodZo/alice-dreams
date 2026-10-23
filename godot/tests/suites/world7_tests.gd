@@ -3,7 +3,7 @@ extends "res://tests/test_base.gd"
 
 const TESTS := [
 	"test_w7_data", "test_w7_sprites", "test_w7_level_loads", "test_w7_jelly_bounce",
-	"test_w7_sticky_and_slippery", "test_w7_conveyor", "test_w7_hazards", "test_w7_temp_jelly_and_heart",
+	"test_w7_sticky_and_slippery", "test_w7_conveyor", "test_w7_hazards", "test_w7_factory_passable", "test_w7_temp_jelly_and_heart",
 	"test_w7_enemies", "test_w7_weapons_vs_enemies", "test_w7_boss", "test_w7_boss_victory",
 	"test_w7_progression",
 ]
@@ -494,3 +494,124 @@ func test_w7_progression() -> void:
 	menu.queue_free()
 	await get_tree().process_frame
 	SaveManager.reset_progress()
+
+
+# La Fábrica (sección D): tarta de pinchos, lanzador, bloque de galleta, piruleta giratoria y hueco
+# con gelatinas (teselas 433-460). Con la tarta en la 449 (pegada a la piruleta y a 1,5 teselas del
+# hueco) ningún salto la pasaba sin daño. Se comprueba cada paso por separado, como lo haría una
+# niña: saltar la tarta corriendo, esperar en el bloque a que la piruleta se esconda y saltar el hueco.
+func test_w7_factory_passable() -> void:
+	await load_level("World7")
+	await settle(); _clear_spawner()
+	for ln in level.level_objects.launchers:
+		ln.process_mode = Node.PROCESS_MODE_DISABLED
+	var cake: Hazard = _w7_objects(Hazard).filter(func(h): return h.position.x > 430 * C.TILE and h.position.x < 453 * C.TILE)[0]
+	var lolli: SpinningLollipop = level.level_objects.lollipops.filter(func(l): return absf(l.position.x - 447.5 * C.TILE) < C.TILE)[0]
+	# 1) la tarta se salta corriendo desde la salida de las correas, con margen para el momento del salto
+	var lolli_far := lolli.position.x - 40.0
+	var good_jumps: Array = []
+	for jx in range(433 * C.TILE + 8, int(cake.position.x) - 20, 2):
+		# llega corriendo desde las correas (como en el juego): ya a velocidad de carrera
+		place(433, 19); await frames(3)
+		level.player.invulnerable_until = 0
+		level.player.hp = 3
+		level.player.velocity.x = 150
+		hold(["move_right", "run"])
+		var jumped := false
+		var result := false
+		for i in 150:
+			await frames(1)
+			var p := level.player.position
+			if not jumped and p.x >= jx:
+				jumped = true
+				press("jump")
+				hold(["move_right", "run", "jump"])
+			if level.player.hp < 3 or level.respawning:
+				break
+			if jumped and level.player.grounded and p.x > cake.position.x + 30:
+				result = true
+				hold([])
+				break
+			if p.x > lolli_far:
+				hold([])
+		hold([])
+		while level.respawning:
+			await frames(1)
+		if result:
+			good_jumps.append(jx)
+	var window: int = good_jumps.max() - good_jumps.min() if good_jumps.size() > 1 else 0
+	print("  tarta de pinchos: %d px de margen para saltar" % window)
+	check(window >= 20, "la tarta de pinchos se salta corriendo sin daño con margen (%d px para saltar: %s)" % [window, str(good_jumps)])
+	# chocar con la tarta corriendo (sin saltar) quita un corazón pero el empujón no la tira al hueco
+	place(433, 19); await frames(3)
+	level.player.invulnerable_until = 0
+	level.player.hp = 3
+	level.player.velocity.x = 150
+	hold(["move_right", "run"])
+	var hit := false
+	for i in 60:
+		await frames(1)
+		if level.player.hp < 3:
+			hit = true
+			hold([])
+			break
+	await frames(90)
+	hold([])
+	check(hit and not level.respawning and level.player.grounded and level.player.position.x > 433 * C.TILE, "un golpe con la tarta no empuja a Alice al hueco de las correas (x=%.0f)" % level.player.position.x)
+	# 2) la piruleta: desde el bloque de galleta se pasa en cualquier fase esperando a que se esconda
+	var failed_phases: Array = []
+	for phase in range(0, 360, 30):
+		level.player.position = Vector2(444 * C.TILE + 4, 18 * C.TILE)
+		level.player.velocity = Vector2.ZERO
+		await frames(3)
+		lolli.t = 0.0
+		lolli.base_angle = float(phase)
+		await frames(1)
+		level.player.invulnerable_until = 0
+		level.player.hp = 3
+		# espera a que la cabeza baje bajo el suelo por el lado de la tarta (gira en sentido horario)
+		var waited := 0
+		while waited < 400:
+			var hp_pos := lolli.head_position()
+			if hp_pos.y > lolli.position.y + 6 and hp_pos.x > lolli.position.x:
+				break
+			await frames(1)
+			waited += 1
+		hold(["move_right", "run"])
+		var passed := false
+		for i in 90:
+			await frames(1)
+			if level.player.hp < 3 or level.respawning:
+				break
+			if level.player.position.x > lolli.position.x + 50:
+				passed = true
+				break
+		hold([])
+		while level.respawning:
+			await frames(1)
+		if not passed:
+			failed_phases.append(phase)
+	check(failed_phases.is_empty(), "la piruleta se cruza esperándola en el bloque de galleta, en cualquier fase (fallan: %s)" % str(failed_phases))
+	# 3) el hueco de las gelatinas: corriendo desde el borde se llega a la primera gelatina
+	place(450, 19); await frames(3)
+	lolli.base_angle = 180.0 - lolli.t * lolli.speed
+	level.player.invulnerable_until = 0
+	level.player.hp = 3
+	hold(["move_right", "run"])
+	var landed := false
+	var jumped2 := false
+	var airborne := false
+	for i in 120:
+		await frames(1)
+		if not jumped2 and level.player.position.x > 452 * C.TILE + 4:
+			jumped2 = true
+			press("jump")
+			hold(["move_right", "run", "jump"])
+		if level.player.hp < 3 or level.respawning:
+			break
+		airborne = airborne or (jumped2 and not level.player.grounded)
+		if airborne and level.player.grounded:
+			landed = true
+			break
+	hold([])
+	check(landed and level.player.position.x > 454 * C.TILE, "el hueco se cruza saltando a la gelatina (x=%.0f)" % level.player.position.x)

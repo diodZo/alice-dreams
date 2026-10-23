@@ -380,6 +380,13 @@ func _enemy_ahead(p: Player) -> bool:
 	for o in level.level_objects.objects.get_children():
 		if o is StarBumper and o.position.x - p.position.x > 0 and o.position.x - p.position.x < 40 and absf(o.position.y - p.position.y) < 24:
 			return true
+		# tartas con pinchos del Mundo 7: se saltan corriendo desde poco antes de la franja
+		if o is Hazard and absf(o.position.y - p.position.y) < 8:
+			for cs in o.get_children():
+				if cs is CollisionShape2D and cs.shape is RectangleShape2D:
+					var left: float = o.position.x + cs.position.x - cs.shape.size.x / 2.0 - p.position.x
+					if left > 28 and left < 60:
+						return true
 		# ruedas rodantes que vienen hacia Alice: también se saltan
 		if o is RollingWheel and o.visible and o.position.x - p.position.x > 0 and o.position.x - p.position.x < 46 and absf(o.position.y - p.position.y) < 30:
 			return true
