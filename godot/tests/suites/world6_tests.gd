@@ -7,7 +7,7 @@ const TESTS := [
 	"test_w6_switch", "test_w6_bell_train", "test_w6_helis", "test_w6_rainbow_arch",
 	"test_w6_falling_block", "test_w6_spring_wheel_bumper", "test_w6_hazard_train", "test_w6_collectibles",
 	"test_w6_enemies", "test_w6_weapons_vs_enemies", "test_w6_camera", "test_w6_boss",
-	"test_w6_boss_victory", "test_w6_progression",
+	"test_w6_boss_victory", "test_w6_progression", "test_w6_jump_while_riding", "test_w6_ride_star_blocks",
 ]
 
 
@@ -704,3 +704,65 @@ func test_w6_progression() -> void:
 	check(SaveManager.is_world_completed(6) and SaveManager.get_world(6).bestStars == 77 and not SaveManager.is_world_completed(5), "un guardado antiguo pasa Sueños Cósmicos al Mundo 6")
 	check(WorldRegistry.is_playable(5) and WorldRegistry.is_playable(6), "y conserva abiertos el Tren (5) y Sueños Cósmicos (6)")
 	SaveManager.reset_progress()
+
+
+# Saltar con el tren en marcha (sin tocar las flechas) no tira a Alice del vagón: conserva la
+# velocidad del tren en el aire. Es lo que hace seguros los bloques de estrella sobre la vía (IMP-035).
+func test_w6_jump_while_riding() -> void:
+	await load_level("World6")
+	await settle()
+	_clear_spawner()
+	var line := _w6_line(2)
+	var car: TrainCar = line.cars[0]
+	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
+	level.player.velocity = Vector2.ZERO
+	var waited := 0
+	while (line.is_waiting() or absf(line.v) < 20) and waited < 900:
+		await frames(1)
+		waited += 1
+	var dx0 := level.player.position.x - car.position.x
+	press("jump")
+	hold(["jump"])
+	await frames(12)
+	hold([])
+	var landed := false
+	for i in 90:
+		await frames(1)
+		if level.player.grounded:
+			landed = true
+			break
+	var dx1 := level.player.position.x - car.position.x
+	check(landed and absf(level.player.position.y - car.surface_y()) < 6 and absf(dx1 - dx0) < 12, "al saltar en marcha vuelve a caer sobre el vagón (desvío %.1f px, velocidad del tren %.0f)" % [dx1 - dx0, line.v])
+
+
+# IMP-035: los viajes en tren de la sección C tienen bloques de estrella sobre la vía: de pie no se
+# tocan (el viaje termina sin caídas) y saltando desde el vagón se golpean
+func test_w6_ride_star_blocks() -> void:
+	await load_level("World6")
+	await settle()
+	_clear_spawner()
+	var blocks: Array = level.level_objects.star_blocks.filter(func(b): return b.position.x > 256 * C.TILE and b.position.x < 303 * C.TILE)
+	check(blocks.size() >= 4, "bloques de estrella sobre las vías de la sección C (%d)" % blocks.size())
+	var ride: Dictionary = await _w6_ride(_w6_line(2), 0, 1500)
+	check(not ride.fell and ride.arrived, "de pie en el vagón el viaje pasa por debajo sin caídas")
+	check(blocks.all(func(b): return b.left > 0 or not b.is_empty()), "sin saltar no se gasta ningún bloque")
+	# saltando bajo un bloque con el tren en marcha, se golpea y Alice sigue en el vagón
+	await load_level("World6")
+	await settle()
+	_clear_spawner()
+	var line := _w6_line(2)
+	var car: TrainCar = line.cars[0]
+	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
+	var target: StarBlock = level.level_objects.star_blocks.filter(func(b): return b.position.x > 256 * C.TILE and b.position.x < 280 * C.TILE)[0]
+	var before := target.left
+	var waited := 0
+	while absf(level.player.position.x - target.position.x) > 6 and waited < 1500:
+		await frames(1)
+		waited += 1
+	press("jump")
+	hold(["jump"])
+	await frames(14)
+	hold([])
+	await frames(60)
+	check(target.left < before, "saltando desde el vagón se golpea el bloque")
+	check(absf(level.player.position.y - car.surface_y()) < 6, "y Alice vuelve a caer sobre el vagón")

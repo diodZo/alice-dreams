@@ -30,6 +30,10 @@ var invulnerable_until := 0.0
 const HURT_HIT_STOP_MS := 70.0
 const HURT_FLASH_MS := 90.0
 var _flash: ShaderMaterial
+## Velocidad horizontal del tren al saltar desde un vagón (Mundo 5, IMP-035): se conserva en el
+## aire para volver a caer sobre el vagón en lugar de quedarse atrás. 0 fuera de un salto así.
+var carry_x := 0.0
+var _ride_vx := 0.0
 var stunned_until := 0.0
 var attack_until := 0.0
 var attack_anim := ""
@@ -132,6 +136,8 @@ func _control(time: float, dt: float) -> void:
 	var swim := SWIM_SPEED if in_water() else 1.0
 	var slow := slow_factor if time < slow_until else 1.0
 	var target := axis * (float(T.runSpeed) if controls.run else float(T.walkSpeed)) * surface_speed * sleepy_speed * swim * slow
+	if not grounded:
+		target += carry_x
 	var vx := velocity.x
 	var rate: float
 	if grounded:
@@ -201,6 +207,7 @@ func _integrate(delta: float) -> void:
 	move_and_slide()
 	grounded = is_on_floor()
 	landed_speed = vy_before if grounded and not was_grounded else 0.0
+	_update_train_carry(was_grounded)
 	# límites del mundo: izquierda, derecha y arriba (abajo no: caer al vacío es peligro)
 	var half: float = ($Body.shape as RectangleShape2D).size.x / 2.0
 	var top: float = -$Body.position.y + ($Body.shape as RectangleShape2D).size.y / 2.0
@@ -221,6 +228,24 @@ func _integrate(delta: float) -> void:
 				var other := col.get_collider()
 				if other != null and other.has_method("on_player_contact"):
 					level.on_platform_contact(other)
+
+
+## Al despegar de un vagón en marcha se guarda su velocidad (ver carry_x); al tocar suelo o
+## agua se olvida. Sólo los trenes: las demás plataformas móviles no cambian.
+func _update_train_carry(was_grounded: bool) -> void:
+	if grounded or in_water() or dead:
+		carry_x = 0.0
+		_ride_vx = 0.0
+		if grounded:
+			for i in get_slide_collision_count():
+				var col := get_slide_collision(i)
+				var other := col.get_collider()
+				if col.get_normal().y < -0.5 and other != null and "line" in other:
+					_ride_vx = get_platform_velocity().x
+		return
+	if was_grounded and _ride_vx != 0.0:
+		carry_x = _ride_vx
+		_ride_vx = 0.0
 
 
 func in_water() -> bool:

@@ -219,6 +219,11 @@ star_blocks = [
     {"x": 52, "y": 16, "count": 2}, {"x": 53, "y": 16, "count": 1}, {"x": 54, "y": 16, "count": 2},
     {"x": 459, "y": 17, "count": 2}, {"x": 461, "y": 17, "count": 3},
     {"x": 541, "y": 15, "count": 2},
+    # IMP-035: sobre las vías de la sección C (trenes 256-280 y 283-303, vía en la fila 18): de pie
+    # en el vagón no se tocan; saltando se golpean desde abajo. Saltar en marcha es seguro: Alice
+    # conserva la velocidad del tren en el aire (player.gd -> carry_x)
+    {"x": 266, "y": 12, "count": 2}, {"x": 272, "y": 12, "count": 2},
+    {"x": 292, "y": 12, "count": 2}, {"x": 297, "y": 12, "count": 2},
 ]
 
 dream = [

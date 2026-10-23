@@ -419,6 +419,7 @@
 - **Complejidad:** Media. **Prioridad:** Baja.
 - **Archivos involucrados:** `tools/world6/world6_level.py`, `godot/data/world6/world6.json`.
 - **Criterios de aceptación:** cada viaje en tren de más de 3 s ofrece al menos una interacción opcional.
+- **Estado: hecho.** Los siete viajes ya tenían estrellas a 3-5 filas sobre la vía (se recogen saltando desde el vagón). Al probarlo se vio que **saltar con el tren en marcha dejaba a Alice unos 22 px atrás** (perdía la velocidad del tren en el aire): saltos repetidos podían tirarla al foso. Por decisión del autor, al saltar desde un vagón conserva su velocidad en el aire (`player.gd → carry_x`; las demás plataformas móviles no cambian). Con eso, cuatro bloques de estrella en la fila 12 sobre las vías de la sección C (trenes 256-280 y 283-303): de pie no se tocan, saltando se golpean. Pruebas `test_w6_jump_while_riding` y `test_w6_ride_star_blocks`; piloto del Mundo 5 idéntico.
 
 ### IMP-031
 **Mundo 7 — Exceso de carteles tutoriales**
