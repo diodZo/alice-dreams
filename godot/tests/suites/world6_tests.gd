@@ -7,7 +7,7 @@ const TESTS := [
 	"test_w6_switch", "test_w6_bell_train", "test_w6_helis", "test_w6_rainbow_arch",
 	"test_w6_falling_block", "test_w6_spring_wheel_bumper", "test_w6_hazard_train", "test_w6_collectibles",
 	"test_w6_enemies", "test_w6_weapons_vs_enemies", "test_w6_camera", "test_w6_boss",
-	"test_w6_boss_victory", "test_w6_progression", "test_w6_jump_while_riding", "test_w6_ride_star_blocks",
+	"test_w6_boss_victory", "test_w6_progression", "test_w6_jump_while_riding", "test_w6_ride_star_blocks", "test_w6_hurt_while_riding",
 ]
 
 
@@ -766,3 +766,26 @@ func test_w6_ride_star_blocks() -> void:
 	await frames(60)
 	check(target.left < before, "saltando desde el vagón se golpea el bloque")
 	check(absf(level.player.position.y - car.surface_y()) < 6, "y Alice vuelve a caer sobre el vagón")
+
+
+# Un golpe sobre el tren en marcha con la pausa de impacto (IMP-020) no debe dejar a Alice con una
+# posición inválida (se volvía invisible y el HUD marcaba la sección A)
+func test_w6_hurt_while_riding() -> void:
+	await load_level("World6")
+	await settle()
+	_clear_spawner()
+	var line := _w6_line(2)
+	var car: TrainCar = line.cars[0]
+	level.player.position = Vector2(car.position.x, car.surface_y() - 2)
+	level.player.velocity = Vector2.ZERO
+	var waited := 0
+	while (line.is_waiting() or absf(line.v) < 20) and waited < 900:
+		await frames(1)
+		waited += 1
+	Level.hit_stop_scale = 1.0
+	level.player.hurt(level.player.position.x + 10)
+	await get_tree().create_timer(0.3, true, false, true).timeout
+	await frames(30)
+	Level.hit_stop_scale = 0.0
+	var p := level.player.position
+	check(is_finite(p.x) and is_finite(p.y) and is_finite(level.player.velocity.x), "tras el golpe la posición de Alice sigue siendo válida (%s)" % str(p))

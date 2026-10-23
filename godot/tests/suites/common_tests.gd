@@ -889,17 +889,17 @@ func test_hit_stop() -> void:
 	await frames(1) # el fotograma que ya estaba en marcha
 	var t_stop := level.now
 	await frames(3)
-	check(Engine.time_scale == 0.0 and level.now == t_stop and t_stop - t0 <= 17.0, "durante la pausa de impacto el reloj del nivel no avanza")
+	check(level.process_mode == Node.PROCESS_MODE_DISABLED and level.now == t_stop and t_stop - t0 <= 17.0 and Engine.time_scale == 1.0, "durante la pausa de impacto el reloj del nivel no avanza (sin tocar Engine.time_scale)")
 	check(level.player.sprite.material.get_shader_parameter("flash") > 0.5, "Alice destella en blanco al recibir el golpe")
 	await get_tree().create_timer(0.2, true, false, true).timeout
 	await frames(3)
-	check(Engine.time_scale == 1.0 and level.now > t0, "y después el juego sigue")
+	check(level.process_mode == Node.PROCESS_MODE_INHERIT and level.now > t0, "y después el juego sigue")
 	Level.hit_stop_scale = 0.0
 	level.player.invulnerable_until = 0
 	var t1 := level.now
 	level.player.hurt(level.player.position.x + 10)
 	await frames(1)
-	check(Engine.time_scale == 1.0 and level.now > t1, "con la duración a 0 no hay pausa")
+	check(level.process_mode == Node.PROCESS_MODE_INHERIT and level.now > t1, "con la duración a 0 no hay pausa")
 	# tramo fantasma de la barra del jefe: se queda atrás y se vacía con retraso
 	GameState.set_v("bossMaxHp", 40)
 	GameState.set_v("bossHp", 40)

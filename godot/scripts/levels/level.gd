@@ -541,9 +541,12 @@ func respawn(full: bool) -> void:
 
 
 # ------------------------------------------------------------------- pausa
-## Pausa de impacto (hit-stop, IMP-020): congela el juego entero (física, reloj `now`, enemigos,
-## animaciones) durante unos milisegundos de tiempo real al recibir un golpe o en los golpes
+## Pausa de impacto (hit-stop, IMP-020): congela el nivel entero (física, reloj `now`, enemigos,
+## animaciones, HUD) durante unos milisegundos de tiempo real al recibir un golpe o en los golpes
 ## fuertes al jefe. 0 la desactiva (las pruebas automáticas la ponen a 0 salvo la suya).
+## Se hace desactivando el procesamiento del nivel, NO con Engine.time_scale = 0: con la escala a
+## 0 la física daba pasos con delta 0 y, sobre plataformas móviles, la posición de Alice podía
+## volverse NaN (desaparecía y el HUD marcaba la sección A).
 static var hit_stop_scale := 1.0
 ## Pausa en curso (las que llegan durante otra se ignoran: no se encadenan).
 var _hit_stopped := false
@@ -554,16 +557,15 @@ func hit_stop(ms: float) -> void:
 	if ms <= 0.0 or leaving or _hit_stopped:
 		return
 	_hit_stopped = true
-	Engine.time_scale = 0.0
-	# temporizador que no depende de la escala de tiempo (si no, nunca terminaría)
+	process_mode = Node.PROCESS_MODE_DISABLED
+	# temporizador del árbol (sigue corriendo aunque el nivel esté detenido); referencia débil por
+	# si el nivel se cierra durante la pausa
+	var ref: WeakRef = weakref(self)
 	get_tree().create_timer(ms / 1000.0, true, false, true).timeout.connect(func():
-		_hit_stopped = false
-		Engine.time_scale = 1.0)
-
-
-func _exit_tree() -> void:
-	# nunca dejar el juego congelado si el nivel se cierra durante una pausa de impacto
-	Engine.time_scale = 1.0
+		var lv: Node = ref.get_ref()
+		if lv != null:
+			lv._hit_stopped = false
+			lv.process_mode = Node.PROCESS_MODE_INHERIT)
 
 
 func pause_game() -> void:

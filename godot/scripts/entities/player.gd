@@ -204,7 +204,14 @@ func _integrate(delta: float) -> void:
 		velocity.y += C.GRAVITY * delta * (WATER_GRAVITY if in_water() else 1.0)
 	var was_grounded := grounded
 	var vy_before := velocity.y
+	var safe_position := position
 	move_and_slide()
+	if not (is_finite(position.x) and is_finite(position.y)):
+		# defensa: una posición inválida haría desaparecer a Alice; vuelve a la última buena
+		push_warning("[Player] posición no válida tras moverse (%s); se restaura %s" % [str(position), str(safe_position)])
+		position = safe_position
+		velocity = Vector2.ZERO
+		carry_x = 0.0
 	grounded = is_on_floor()
 	landed_speed = vy_before if grounded and not was_grounded else 0.0
 	_update_train_carry(was_grounded)
@@ -241,9 +248,10 @@ func _update_train_carry(was_grounded: bool) -> void:
 				var col := get_slide_collision(i)
 				var other := col.get_collider()
 				if col.get_normal().y < -0.5 and other != null and "line" in other:
-					_ride_vx = get_platform_velocity().x
+					var pv := get_platform_velocity().x
+					_ride_vx = pv if is_finite(pv) else 0.0
 		return
-	if was_grounded and _ride_vx != 0.0:
+	if was_grounded and _ride_vx != 0.0 and is_finite(_ride_vx):
 		carry_x = _ride_vx
 		_ride_vx = 0.0
 
