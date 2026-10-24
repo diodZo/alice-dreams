@@ -4,7 +4,7 @@
 >
 > - **No se dan estimaciones de tiempo:** no hay datos de velocidad del equipo ni pruebas jugadas que permitan calibrarlas.
 > - **Nada de esto está implementado.** Requiere autorización explícita antes de tocar el juego.
-> - Regla para todas las tareas: después de cada cambio, `CheckAll.tscn` con 0 fallos y `Tests.tscn` con 0 comprobaciones fallidas (hoy: 1 801 comprobaciones). Desde que exista IMP-040, también el piloto de los 8 mundos.
+> - Regla para todas las tareas: después de cada cambio, `CheckAll.tscn` con 0 fallos y `Tests.tscn` con 0 comprobaciones fallidas (hoy: 1 816 comprobaciones). Desde que exista IMP-040, también el piloto de los 8 mundos.
 > - Los cambios de diseño de nivel se hacen en `tools/worldN/worldN_level.py` (o `src/data/world1.js`) y se regeneran los JSON.
 
 ## Visión general

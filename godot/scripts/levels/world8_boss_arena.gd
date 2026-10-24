@@ -8,8 +8,13 @@ extends "res://scripts/levels/boss_arena.gd"
 ##    el jefe se transforma en el gato morado y, al abrazarlo, se guarda el final de la aventura
 ##    y empieza la cinemática: el castillo recupera la luz, Alice brilla y despierta.
 
+## IMP-032: fase en la que Alice cayó rendida (2 o 3). La guarda respawn() antes de recargar la
+## escena y la lee (y borra) on_create(): el combate sigue en esa fase, sin la intro ni el salón.
+const RETRY_KEY := "bossRetryPhase"
+
 var phase_stars: Array = []
 var ending := false
+var retry_phase := 1
 var cat: PurpleCat
 var ghosts_root: Node2D
 
@@ -17,6 +22,23 @@ var ghosts_root: Node2D
 func on_create() -> void:
 	super()
 	boss.transformed.connect(_on_transformed)
+	retry_phase = int(GameState.get_v(RETRY_KEY, 1))
+	GameState.data.erase(RETRY_KEY)
+	if retry_phase >= 2:
+		# justo pasado el disparador del combate, que empieza en el primer fotograma
+		player.position.x = (float(data.triggerX) + 1.5) * C.TILE
+		camera.snap_to_target()
+
+
+func begin_boss() -> void:
+	if retry_phase < 2:
+		super()
+		return
+	boss.start_at_phase(retry_phase)
+	# el escenario de cada fase ya superada (cielo, estrellas que caen, música de furia)
+	for p in range(2, retry_phase + 1):
+		on_boss_phase(p)
+	GameState.show_toast("¡Sigues en la fase %d!" % retry_phase)
 
 
 func on_custom_overlap(kind: String, entity: Object) -> void:
@@ -176,8 +198,15 @@ func _dream_fades() -> void:
 
 
 ## Si Alice cae rendida durante el combate, el combate empieza de nuevo (como en las demás
-## arenas); después de la derrota del jefe ya no hay peligro.
+## arenas), pero en la fase en la que estaba (IMP-032); después de la derrota del jefe ya no hay
+## peligro.
 func respawn(full: bool) -> void:
 	if ending:
 		return
+	remember_retry_phase()
 	super.respawn(full)
+
+
+func remember_retry_phase() -> void:
+	if fight_started and not boss.is_defeated() and not respawning:
+		GameState.set_v(RETRY_KEY, boss.phase)

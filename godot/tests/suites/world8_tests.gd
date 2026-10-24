@@ -5,7 +5,7 @@ const TESTS := [
 	"test_w8_data", "test_w8_sprites", "test_w8_level_loads", "test_w8_ghost_platforms",
 	"test_w8_shadow_damage", "test_w8_hooks_swings_and_stars", "test_w8_lantern_bridges", "test_w8_chest_and_memories",
 	"test_w8_enemies", "test_w8_weapons_vs_enemies", "test_w8_slow_effect", "test_w8_boss_states",
-	"test_w8_boss_attacks", "test_w8_boss_defeat_cancels", "test_w8_boss_victory_and_ending", "test_w8_awakening_and_credits",
+	"test_w8_boss_attacks", "test_w8_boss_defeat_cancels", "test_w8_boss_retry_phase", "test_w8_boss_victory_and_ending", "test_w8_awakening_and_credits",
 	"test_w8_progression",
 ]
 
@@ -563,6 +563,38 @@ func test_w8_boss_defeat_cancels() -> void:
 	check(level.enemy_projectiles.get_children().all(func(n): return not (n is Projectile and n.active)), "no se generan más proyectiles después")
 	check(get_tree().get_nodes_in_group("boss_hazard").all(func(c): return c.fading), "las nubes se desvanecen")
 	check(not level.controls.combat_enabled, "los controles de combate se desactivan")
+
+
+# IMP-032: desmayarse en la fase 2 o 3 reinicia el combate en esa fase, con el jefe en su umbral
+# y sin la intro ni el salón (la recarga de la escena se simula cargando la arena con la fase)
+func test_w8_boss_retry_phase() -> void:
+	await _w8_boss_ready()
+	var boss: ReyPesadelo = level.boss
+	boss.invulnerable = false
+	boss.phase = 2
+	boss.hp = 25
+	boss.take_damage(2)
+	await frames(10)
+	check(boss.phase == 3, "el jefe pasa a la fase 3")
+	level.remember_retry_phase()
+	check(GameState.get_v("bossRetryPhase") == 3, "al desmayarse se guarda la fase en curso")
+	for p in [3, 2]:
+		await load_level("Boss8", func(): GameState.set_v("weapon", "sling"); GameState.set_v("bossRetryPhase", p))
+		await frames(3)
+		boss = level.boss
+		check(not GameState.data.has("bossRetryPhase"), "fase %d: la arena consume la fase guardada" % p)
+		check(level.fight_started and level.player.position.x > float(level.data.triggerX) * C.TILE, "fase %d: el combate empieza sin recorrer el salón" % p)
+		var hp_at := int(floor(boss.max_hp * C.BOSS_PHASE_THRESHOLDS[p - 2]))
+		check(boss.phase == p and boss.hp == hp_at and int(GameState.get_v("bossHp")) == hp_at, "fase %d: el jefe empieza con %d PV" % [p, hp_at])
+		check(not boss.fsm.is_state("INTRO") and boss.invulnerable, "fase %d: sin intro y con un respiro" % p)
+		check(level.phase_stars.size() == level.data.phaseStars.size(), "fase %d: el escenario de la fase 2 (estrellas que caen)" % p)
+		await frames(110)
+		check(not boss.invulnerable and not boss.fsm.is_state(""), "fase %d: tras el respiro ataca y se le puede golpear" % p)
+	await load_level("Boss8")
+	await settle()
+	place(70, 14)
+	await frames(5)
+	check(level.boss.phase == 1 and level.boss.fsm.is_state("INTRO"), "sin fase guardada: el combate empieza desde el principio")
 
 
 func test_w8_boss_victory_and_ending() -> void:

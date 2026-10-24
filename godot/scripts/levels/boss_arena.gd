@@ -70,11 +70,16 @@ func start_fight() -> void:
 		camera.target = cam_focus
 	boss.visible = true
 	boss.set_body_enabled(true)
-	boss.intro()
+	begin_boss()
 	GameState.set_v("bossMaxHp", boss.max_hp)
 	GameState.set_v("bossHp", boss.hp)
 	GameState.set_v("bossVisible", true)
 	GameState.show_banner(data.boss.get("introBanner", "¡Nubarrón!"))
+
+
+## Entrada del jefe al empezar el combate (la arena del Mundo 8 puede empezar en otra fase).
+func begin_boss() -> void:
+	boss.intro()
 
 
 func on_boss_defeated(x: float, y: float) -> void:

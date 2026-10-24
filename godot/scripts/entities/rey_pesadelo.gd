@@ -23,6 +23,8 @@ extends BossBase
 signal transformed(cat: Node2D)
 
 const MAX_HP := 80
+## Respiro al reintentar desde una fase (IMP-032), igual que el tiempo que Alice queda congelada.
+const RETRY_GRACE_MS := 1500.0
 const PHASES := {
 	1: {"speed": 30.0, "idle": 750.0, "move": 1300.0, "rest": 1500.0, "warn": 850.0, "spit": 1, "claw": 1,
 		"pattern": ["SPIT", "CLAW", "SPIT", "CLAW"]},
@@ -132,6 +134,20 @@ func _enter_INTRO(_p: String, _d: Variant) -> void:
 		AudioManager.play("fury_scream"))
 	tw.tween_interval(0.8)
 	tw.tween_callback(func(): invulnerable = false; fsm.set_state("IDLE"))
+
+
+## IMP-032: reintento tras desmayarse en la fase 2 o 3. Sin intro: aparece en su sitio con la vida
+## en el umbral de esa fase y empieza a atacar tras un respiro (lo que dura Alice congelada).
+func start_at_phase(p: int) -> void:
+	phase = clampi(p, 1, PHASE_THRESHOLDS.size() + 1)
+	if phase > 1:
+		hp = int(floor(max_hp * PHASE_THRESHOLDS[phase - 2]))
+	pattern_index = 0
+	position.x = float(cfg.homeX) * C.TILE
+	invulnerable = true
+	face(-1)
+	anim("idle")
+	after(RETRY_GRACE_MS, func(): invulnerable = false; fsm.set_state("IDLE"))
 
 
 # ------------------------------------------------------- reposo y movimiento

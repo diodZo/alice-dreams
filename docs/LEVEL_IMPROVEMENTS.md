@@ -456,6 +456,7 @@
 - **Archivos involucrados:** `godot/scripts/levels/world8_boss_arena.gd`, `godot/scripts/entities/rey_pesadelo.gd`, `godot/scripts/core/game_state.gd`.
 - **Dependencias:** IMP-003 recomendable.
 - **Criterios de aceptación:** caer en fase 3 reinicia con el jefe al 30 % y en fase 3; `test_w8_boss_*` en verde.
+- **Estado: hecho.** Al desmayarse o caer durante el combate, `world8_boss_arena.gd → respawn` guarda la fase en curso (`GameState.bossRetryPhase`) antes de recargar la escena; la arena recargada la lee y la borra (también la borra una partida nueva). Si es la fase 2 o la 3, Alice aparece pasado el disparador del combate (sin recorrer el salón) y el Rey Pesadelo empieza sin intro, en su sitio, con la vida en el umbral (52 PV en la fase 2, 24 en la 3; `rey_pesadelo.gd → start_at_phase`), invulnerable y quieto durante 1,5 s (lo que Alice queda congelada al cerrarse la puerta). El escenario de las fases ya superadas se vuelve a aplicar (cielo, estrellas que caen de la fase 2, música de furia en la 3) y un aviso dice «¡Sigues en la fase N!». En la fase 1 todo sigue como antes. La arena común (`boss_arena.gd`) separa la entrada del jefe en `begin_boss()` para que el Mundo 8 la cambie; las demás arenas no cambian. Prueba `test_w8_boss_retry_phase`.
 
 ### IMP-036
 **Bocadillos de cartel recortados en el borde izquierdo**
