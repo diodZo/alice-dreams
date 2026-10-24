@@ -126,7 +126,14 @@
 - **Archivos involucrados:** `tools/world5/world5_level.py`, `godot/data/world5/world5.json`, `godot/scripts/entities/luna_estelar.gd` (`MAX_HP`) o `godot/scripts/entities/locomostro.gd`.
 - **Dependencias:** IMP-034 para validar con personas.
 - **Criterios de aceptación:** densidad y PV de jefe no decrecen de un mundo al siguiente salvo decisión documentada; `test_w5_boss` y `test_w6_boss` adaptados y en verde.
-- **Estado: punto (a) hecho con IMP-030** (Mundo 6: 30 → 23 enemigos, 3,1 → 2,4 por 1 000 px, igual que los Mundos 4 y 8). Pendientes (b), la vida de los jefes, y (c), la tabla objetivo.
+- **Estado: punto (a) hecho con IMP-030** (Mundo 6: 30 → 23 enemigos, 3,1 → 2,4 por 1 000 px, igual que los Mundos 4 y 8). Punto (b) hecho: Luna Estelar pasa de 50 a 62 PV (`luna_estelar.gd → MAX_HP`), entre Locomostro (60) y Don Chupetón (65); los umbrales de fase siguen en el 65 % y el 30 %. Punto (c), tabla actual (densidad = enemigos del nivel por 1 000 px de nivel):
+
+  | Mundo | 1 | 2 | 3 | 4 | 5 (`world6`) | 6 (`world5`) | 7 | 8 |
+  |---|---|---|---|---|---|---|---|---|
+  | Enemigos (densidad) | 13 (1,7) | 14 (1,8) | 18 (2,0) | 22 (2,4) | 20 (2,0) | 23 (2,4) | 20 (1,9) | 24 (2,4) |
+  | PV del jefe | 40 | 48 | 50 | 50 | 60 | 62 | 65 | 80 |
+
+  La vida de los jefes ya no baja nunca de un mundo al siguiente. La densidad sí baja en los Mundos 5 y 7. Se deja así a propósito: en esos mundos la dificultad está en el terreno (conducir los trenes y las correas y pinchos de la fábrica de caramelos), y la prueba jugada (IMP-034) dirá si hay que ajustarla. `test_w5_boss` y `test_boss_base` actualizados.
 
 ### IMP-005
 **Ventana de vulnerabilidad con significado**

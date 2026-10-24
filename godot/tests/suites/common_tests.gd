@@ -707,7 +707,7 @@ func test_world_carousel() -> void:
 # IMP-003: los ocho jefes heredan de BossBase; el daño y los umbrales de fase viven sólo en la base
 func test_boss_base() -> void:
 	var bosses := ["Nubarron", "Garabato", "ReySieston", "ReyPatoburbuja", "LunaEstelar", "Locomostro", "DonChupeton", "ReyPesadelo"]
-	var hp := {"Nubarron": 40, "Garabato": 48, "ReySieston": 50, "ReyPatoburbuja": 50, "LunaEstelar": 50, "Locomostro": 60, "DonChupeton": 65, "ReyPesadelo": 80}
+	var hp := {"Nubarron": 40, "Garabato": 48, "ReySieston": 50, "ReyPatoburbuja": 50, "LunaEstelar": 62, "Locomostro": 60, "DonChupeton": 65, "ReyPesadelo": 80}
 	var wrong := []
 	for name in bosses:
 		var boss: Node = load("res://scenes/bosses/%s.tscn" % name).instantiate()

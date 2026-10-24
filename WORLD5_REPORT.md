@@ -64,7 +64,7 @@ Escenas en `godot/scenes/enemies/world5/`, comportamiento en `godot/scripts/ai/`
 
 Escena `godot/scenes/bosses/LunaEstelar.tscn` con la misma interfaz que los jefes anteriores, en la arena común `BossArena`.
 
-- 50 HP; fases al 65 % y al 30 %, con un instante invulnerable de transición. Flota sobre el suelo con cuatro estrellitas que orbitan siempre a su alrededor (más rápido en cada fase).
+- 62 HP (50 hasta IMP-004); fases al 65 % y al 30 %, con un instante invulnerable de transición. Flota sobre el suelo con cuatro estrellitas que orbitan siempre a su alrededor (más rápido en cada fase).
 - Fase 1, Destellos nocturnos: estrellitas dirigidas, movimiento lateral suave y embestidas estelares breves con estela de cometa.
 - Fase 2, Órbita celestial: giro lunar con medias lunas de energía a ras de suelo, seis estrellas en órbita que después salen disparadas hacia fuera, ondas cósmicas por el suelo y más movilidad.
 - Fase 3, Tormenta de constelaciones: aura cósmica con anillo de doce estrellas y hueco seguro, lluvia de estrellas con columnas marcadas y tres libres, giro con dos anillos de energía alternados y abanicos de cinco estrellas.

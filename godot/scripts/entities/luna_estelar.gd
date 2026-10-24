@@ -10,7 +10,7 @@ extends BossBase
 ##  3 Tormenta de constelaciones (30-0 %): aura cósmica, estrellas múltiples, giro con anillo de
 ##    energía y lluvia de estrellas con huecos marcados. Siempre esquivable.
 
-const MAX_HP := 50
+const MAX_HP := 62  # IMP-004: entre Locomostro (60, Mundo 5) y Don Chupetón (65, Mundo 7)
 ## Altura de vuelo sobre el suelo de la arena (px).
 const HOVER := 14.0
 const PHASES := {

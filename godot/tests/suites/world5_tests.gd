@@ -371,7 +371,7 @@ func test_w5_boss() -> void:
 	await load_level("Boss5", func(): GameState.set_v("weapon", "sling"))
 	await settle(); place(12, 14); await frames(140)
 	var boss: LunaEstelar = level.boss
-	check(boss != null and boss.max_hp == 50 and not boss.invulnerable, "Luna Estelar entra vulnerable con 50 HP")
+	check(boss != null and boss.max_hp == 62 and not boss.invulnerable, "Luna Estelar entra vulnerable con 62 HP")
 	check(level.terrain_solid_at(Vector2(5 * C.TILE + 8, 12 * C.TILE + 8)), "la arena queda cerrada durante el combate")
 	var p: Projectile = level.spawn_projectile("player", {"x": 0, "y": 0, "vx": 0, "vy": 0, "kind": "sling", "frame": "pellet", "lifespan": 100})
 	p.weapon = Assets.weapon("sling")

@@ -335,7 +335,7 @@ Las animaciones disponibles de cada uno están en `data/**/characters.json` (tod
 | 3 | Rey Siestón | `entities/rey_sieston.gd` | 50 | 3 | PILLOW, DOUBLE, HOP, WAVE, CLOUD, SPIN, RAIN |
 | 4 | Rey Patoburbuja | `entities/rey_patoburbuja.gd` | 50 | 3 | SPIT, SLAP, BIG_BUBBLE, WAVE, SMALL_WHIRL, WHIRL, RAIN, COMBO |
 | 5 | Locomostro | `entities/locomostro.gd` | 60 | 3 | SMOKE, DOUBLE_SMOKE, WHIRLS, BLOCK_TOSS, MULTI_BLOCKS, CHARGE, COMBO, EXPRESS |
-| 6 | Luna Estelar | `entities/luna_estelar.gd` | 50 | 3 | STAR_SHOT, DASH, SPIN, ORBIT, WAVE, COSMIC, STARFALL, SPIN_RING, MULTI_SHOT |
+| 6 | Luna Estelar | `entities/luna_estelar.gd` | 62 | 3 | STAR_SHOT, DASH, SPIN, ORBIT, WAVE, COSMIC, STARFALL, SPIN_RING, MULTI_SHOT |
 | 7 | Don Chupetón | `entities/don_chupeton.gd` | 65 | 3 | CANDY_SHOT, LOLLIPOP, FROSTING_JET, CANDY_FAN, SWIRLS, SPIN, COMBO, FROSTING_BURST, MULTI |
 | 8 | Rey Pesadelo | `entities/rey_pesadelo.gd` | 80 | 3 | SPIT, CLAW, SLOW_CLOUD, FURY_SCREAM, COMBO → TRANSFORMING → gato |
 
@@ -360,7 +360,7 @@ Resumen (datos extraídos de los JSON; densidad = enemigos por 1000 px):
 | 3 | El Reino de los Peluches Dormilones | `World3` / `World3Boss` | 9040 px | 5 | 18 (2,0) | 2 | 162 + 6 | Rey Siestón (50) |
 | 4 | Reino de las Burbujas | `World4` / `World4Boss` | 9040 px | 5 | 22 (2,4) | 2 | 197 + 6 | Rey Patoburbuja (50) |
 | 5 | El Reino del Tren de Juguete | `World6` / `World6Boss` | 10080 px | 5 | 20 (2,0) | 2 | 237 + 9 | Locomostro (60) |
-| 6 | Sueños Cósmicos — Islas en el Cielo | `World5` / `World5Boss` | 9552 px | 5 | 30 (3,1) | 2 | 240 + 6 | Luna Estelar (50) |
+| 6 | Sueños Cósmicos — Islas en el Cielo | `World5` / `World5Boss` | 9552 px | 5 | 23 (2,4) | 2 | 240 + 6 | Luna Estelar (62) |
 | 7 | El Valle de Caramelo | `World7` / `World7Boss` | 10496 px | 5 | 20 (1,9) | 2 | 298 + 9 | Don Chupetón (65) |
 | 8 | El Castillo de las Pesadillas | `World8` / `World8Boss` | 10000 px | 6 (F en la arena) | 24 (2,4) | 3 | 282 + 22 | Rey Pesadelo (80) |
 
