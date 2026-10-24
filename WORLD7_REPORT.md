@@ -59,7 +59,7 @@ Las cuatro referencias se procesan con `tools/world7/prepare_world7_assets.py` (
 | Lanzadores de caramelos | `CandyLauncher` nuevo: intervalo configurable; avisa 700 ms antes (tiembla, se hincha y brilla) y dispara una bola lenta a altura fija. |
 | Chorros de chocolate | `ChocoJet` nuevo: ciclo fijo reposo → aviso (burbujea y brilla 800 ms) → columna que sube; sólo hace daño levantada. |
 | Plataformas temporales | `CrumblePlatform` con los dibujos de gelatina: tiemblan al pisarlas, desaparecen y vuelven a aparecer. |
-| Plataformas con pinchos | `Hazard` con forma `spikes`: colisión rectangular sólo en la franja de pinchos. |
+| Plataformas con pinchos | `Hazard` con forma `spikes`: colisión rectangular sólo en la franja de pinchos, que `insetX`/`insetTop` (px) estrechan respecto al dibujo. Las dos tartas (teselas 438 y 611) usan 8 y 4 px: con la franja del dibujo, la ventana para saltarlas corriendo era de unos 6 fotogramas. La de la sección D estaba en la 449, pegada a la piruleta y a 1,5 teselas del hueco de las correas (o se caía sobre los pinchos o al vacío); pasa a la 438. |
 | Plataformas móviles de bastón dulce | `MovingPlatform` (horizontal y vertical). |
 | Bloques de premio | `StarBlock` con el dibujo del bloque "?": sueltan estrellas con cabezazo o disparo. |
 | Corazones | `HeartPickup` nuevo: devuelven un corazón (con la vida llena no se gastan). |

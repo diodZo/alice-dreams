@@ -1,6 +1,6 @@
 # Propuestas de mejora — Alice Dreams (Godot)
 
-> Propuestas concretas derivadas de [`GAME_DESIGN_DOCUMENT.md`](GAME_DESIGN_DOCUMENT.md) y [`LEVEL_AUDIT.md`](LEVEL_AUDIT.md). **Ninguna está implementada.** Todas respetan la identidad del juego: plataformas 2D infantil, tono amable (los jefes “se duermen”, no mueren), tres armas de juguete, un nivel largo + una arena por mundo.
+> Propuestas concretas derivadas de [`GAME_DESIGN_DOCUMENT.md`](GAME_DESIGN_DOCUMENT.md) y [`LEVEL_AUDIT.md`](LEVEL_AUDIT.md). Lo implementado se indica en la línea **Estado** de cada propuesta; las que no la tienen siguen pendientes. Todas respetan la identidad del juego: plataformas 2D infantil, tono amable (los jefes “se duermen”, no mueren), tres armas de juguete, un nivel largo + una arena por mundo.
 >
 > **Reglas de lectura**
 > - *Problema detectado* cita evidencia del repositorio o de las ejecuciones automáticas de esta auditoría. El piloto automático (`tests/autopilot.gd`) **no es un jugador humano**: corre, salta y dispara, pero no esquiva; sus fallos señalan puntos de riesgo, no prueban que un humano fallará.
@@ -126,6 +126,7 @@
 - **Archivos involucrados:** `tools/world5/world5_level.py`, `godot/data/world5/world5.json`, `godot/scripts/entities/luna_estelar.gd` (`MAX_HP`) o `godot/scripts/entities/locomostro.gd`.
 - **Dependencias:** IMP-034 para validar con personas.
 - **Criterios de aceptación:** densidad y PV de jefe no decrecen de un mundo al siguiente salvo decisión documentada; `test_w5_boss` y `test_w6_boss` adaptados y en verde.
+- **Estado: punto (a) hecho con IMP-030** (Mundo 6: 30 → 23 enemigos, 3,1 → 2,4 por 1 000 px, igual que los Mundos 4 y 8). Pendientes (b), la vida de los jefes, y (c), la tabla objetivo.
 
 ### IMP-005
 **Ventana de vulnerabilidad con significado**
@@ -419,6 +420,7 @@
 - **Archivos involucrados:** `tools/world5/world5_level.py`, `godot/data/world5/world5.json`.
 - **Dependencias:** IMP-004.
 - **Criterios de aceptación:** ninguna sección de ningún mundo supera 8 enemigos; las nubes explosivas aparecen por primera vez en un tramo sin enemigos.
+- **Estado: hecho.** Mundo 6: 30 → 23 enemigos (sección C 7 → 5, D 12 → 7). En C se quitan las Estrellitas de en medio de los grupos de las teselas 292-298 y 317-322. En D se quitan el Meteorito que duplicaba la Estrellita de la 424, el de la 405 (donde se enseñan las estrellas que caen), el del medio del trío 478-482 y la Estrellita 500 y el Meteorito 503, bajo las tres estrellas que caen de 495-505; el Meteorito de la 393 pasa a la 394 (patrulla 391-408). La nube explosiva de la 425 (dentro de la patrulla de una Estrellita y bajo una estrella que cae) pasa a la tesela 382, al final de C tras el cohete ascensor, sin enemigos a menos de 8 teselas, y su cartel pasa de la 408 a la 378: las nubes se enseñan antes de la lluvia de meteoros. Las otras cuatro siguen en D. Recuento por sección de los 8 niveles: ninguno supera 8 (el máximo es la sección C del Mundo 4, con 8). El generador falla si se incumple y la prueba nueva `test_section_enemy_cap` lo comprueba en los 8 niveles. Piloto invulnerable: igual que antes (77 s, 0 caídas). **Sin** invulnerabilidad empeora: 125 s y 11 golpes con 2 desmayos (antes 77 s y 3 golpes). Casi todos los golpes vienen de las nubes explosivas (teselas 411, 486 y 525) y de las estrellas que caen (495-505), que no han cambiado; el piloto no esquiva y siempre dispara hacia delante, así que con menos enemigos llega a esos peligros en otro momento. Con los enemigos originales y las nubes nuevas vuelve a 77 s y 3 golpes; reponer sólo los de las teselas 481, 500 y 503 no lo arregla (10 golpes). Hay que confirmar con una persona (IMP-034) que el tramo 480-525 se lee bien sin los enemigos de antes.
 
 ### IMP-035
 **Mundo 5 — Sección C: viaje en tren con interacción**
@@ -490,6 +492,7 @@
 - **Complejidad:** Baja. **Prioridad:** Media.
 - **Archivos involucrados:** `godot/scripts/objects/star.gd`, `tools/world5/world5_level.py`.
 - **Criterios de aceptación:** en una captura de la sección C del Mundo 6, una persona ajena al proyecto distingue todas las recogibles en < 5 s.
+- **Estado: hecho en las estrellas; falta quitar estrellas.** Cada estrella recogible lleva detrás una copia oscura algo mayor (contorno de 1 px) y un brillo pulsante con fase propia (`star.gd`); la estrella especial no lleva contorno porque ya gira y tiene halo. Falta reducir las estrellas en los tramos con decoración estelar del Mundo 6 y la comprobación con una persona.
 
 ### IMP-040
 **Piloto automático como prueba de regresión**

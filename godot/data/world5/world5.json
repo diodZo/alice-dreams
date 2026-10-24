@@ -707,12 +707,12 @@
  ],
  "explosiveClouds": [
   {
-   "x": 411,
-   "y": 13
+   "x": 382,
+   "y": 11
   },
   {
-   "x": 425,
-   "y": 14
+   "x": 411,
+   "y": 13
   },
   {
    "x": 486,
@@ -1808,23 +1808,13 @@
   },
   {
    "type": "estrellita",
-   "x": 295,
-   "y": 14,
-   "patrol": [
-    290,
-    306
-   ],
-   "wave_phase": 0.33
-  },
-  {
-   "type": "estrellita",
    "x": 298,
    "y": 15,
    "patrol": [
     292,
     308
    ],
-   "wave_phase": 0.66
+   "wave_phase": 0.5
   },
   {
    "type": "estrellita",
@@ -1833,18 +1823,7 @@
    "patrol": [
     314,
     326
-   ],
-   "wave_phase": 0.0
-  },
-  {
-   "type": "estrellita",
-   "x": 320,
-   "y": 14,
-   "patrol": [
-    314,
-    326
-   ],
-   "wave_phase": 0.5
+   ]
   },
   {
    "type": "estrellita",
@@ -1853,15 +1832,6 @@
    "patrol": [
     418,
     429
-   ]
-  },
-  {
-   "type": "estrellita",
-   "x": 500,
-   "y": 13,
-   "patrol": [
-    493,
-    509
    ]
   },
   {
@@ -1952,38 +1922,11 @@
   },
   {
    "type": "meteorito",
-   "x": 393,
+   "x": 394,
    "y": 17,
    "patrol": [
-    389,
+    391,
     408
-   ]
-  },
-  {
-   "type": "meteorito",
-   "x": 405,
-   "y": 17,
-   "patrol": [
-    398,
-    409
-   ]
-  },
-  {
-   "type": "meteorito",
-   "x": 424,
-   "y": 18,
-   "patrol": [
-    419,
-    428
-   ]
-  },
-  {
-   "type": "meteorito",
-   "x": 503,
-   "y": 18,
-   "patrol": [
-    498,
-    510
    ]
   },
   {
@@ -1992,15 +1935,6 @@
    "y": 17,
    "patrol": [
     472,
-    484
-   ]
-  },
-  {
-   "type": "meteorito",
-   "x": 481,
-   "y": 17,
-   "patrol": [
-    474,
     484
    ]
   },
@@ -2130,14 +2064,14 @@
    "text": "El cohete ascensor sube y baja: espera a que llegue"
   },
   {
+   "x": 378,
+   "y": 15,
+   "text": "Las nubes explosivas estallan si las tocas: ¡dispárales desde lejos!"
+  },
+  {
    "x": 389,
    "y": 17,
    "text": "¡Lluvia de meteoros! Las estrellas que caen avisan con un destello"
-  },
-  {
-   "x": 408,
-   "y": 17,
-   "text": "Las nubes explosivas estallan si las tocas: ¡dispárales desde lejos!"
   },
   {
    "x": 533,

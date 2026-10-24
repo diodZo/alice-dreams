@@ -12,6 +12,7 @@ const TESTS := [
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
 	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
 	"test_intro_cinematic", "test_always_run", "test_no_falls_record", "test_resume_checkpoint", "test_hearts_all_worlds", "test_victory_teaser",
+	"test_section_enemy_cap",
 ]
 
 
@@ -1126,3 +1127,20 @@ func test_victory_teaser() -> void:
 		v.queue_free()
 		await get_tree().process_frame
 	check(missing.is_empty(), "la victoria anticipa el siguiente reino (falta en %s)" % str(missing))
+
+
+# IMP-030: ninguna sección de ningún nivel tiene más de 8 enemigos; en el Mundo 6 (world5) la
+# primera nube explosiva se enseña lejos de los enemigos y de sus patrullas
+func test_section_enemy_cap() -> void:
+	for w in range(1, 9):
+		var d: Dictionary = C.load_json("res://data/worlds/world1.json" if w == 1 else "res://data/world%d/world%d.json" % [w, w])
+		var bounds: Array = d.sections.map(func(s): return float(s.from)) + [float(d.widthTiles) * C.TILE]
+		var counts := []
+		for i in d.sections.size():
+			counts.append(d.enemies.filter(func(e): return float(e.x) * C.TILE >= bounds[i] and float(e.x) * C.TILE < bounds[i + 1]).size())
+		check(counts.max() <= 8, "Mundo %d: enemigos por sección %s (<= 8)" % [w, str(counts)])
+	var w6: Dictionary = C.load_json("res://data/world5/world5.json")
+	var first: float = w6.explosiveClouds.map(func(c): return float(c.x)).min()
+	var near: Array = w6.enemies.filter(func(e): return [e.x, e.patrol[0], e.patrol[1]].any(func(t): return absf(float(t) - first) < 8))
+	check(near.is_empty() and first * C.TILE < 6200, "Mundo 6: la primera nube explosiva está en la sección C, sin enemigos cerca")
+	check(w6.enemies.size() == 23, "Mundo 6: 23 enemigos (densidad ~2,4 por 1.000 px, IMP-004)")

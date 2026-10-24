@@ -185,7 +185,11 @@ falling_stars = [
 ]
 
 explosive_clouds = [
-    {"x": 411, "y": 13}, {"x": 425, "y": 14},
+    # IMP-030: la primera, al final de C (tras el cohete ascensor) en un tramo sin enemigos, para
+    # enseñarla antes de la lluvia de meteoros; antes estaba en la 425, dentro de la patrulla de
+    # una Estrellita y bajo una estrella que cae
+    {"x": 382, "y": 11},
+    {"x": 411, "y": 13},
     {"x": 486, "y": 12}, {"x": 490, "y": 13},
     {"x": 525, "y": 15},
 ]
@@ -220,20 +224,25 @@ stars = (
     + row(532, 543, 18, 3) + column(545, 7, 17) + row(548, 553, 9, 2) + row(555, 586, 18, 3)
 )
 
+# IMP-030 / IMP-004: 30 -> 23 enemigos (densidad ~2,4 por 1.000 px) y ninguna sección con más de
+# MAX_PER_SECTION. Se quitaron los grupos apretados: Estrellitas de C a 3 teselas (295, 320) y en
+# D el Meteorito duplicado de la 424, el de la 405 (donde se enseñan las estrellas que caen), el
+# del medio del trío 478-482 (481) y dos del grupo 497-508 (500, 503), bajo las tres estrellas
+# que caen de 495-505
+MAX_PER_SECTION = 8
 enemies = (
     [enemy("estrellita", x, y, a, b, **kw) for x, y, a, b, kw in [
         (66, 15, 60, 74, {}), (108, 15, 102, 116, {"wave_phase": 0.0}), (113, 14, 107, 121, {"wave_phase": 0.5}),
         (168, 15, 162, 176, {}), (238, 15, 233, 248, {}),
-        (292, 15, 288, 304, {"wave_phase": 0.0}), (295, 14, 290, 306, {"wave_phase": 0.33}), (298, 15, 292, 308, {"wave_phase": 0.66}),
-        (317, 15, 314, 326, {"wave_phase": 0.0}), (320, 14, 314, 326, {"wave_phase": 0.5}),
-        (424, 14, 418, 429, {}), (500, 13, 493, 509, {}), (565, 14, 558, 575, {"wave_phase": 0.25})]]
+        (292, 15, 288, 304, {"wave_phase": 0.0}), (298, 15, 292, 308, {"wave_phase": 0.5}),
+        (317, 15, 314, 326, {}),
+        (424, 14, 418, 429, {}), (565, 14, 558, 575, {"wave_phase": 0.25})]]
     + [enemy("cohetito", x, y, a, b, **kw) for x, y, a, b, kw in [
         (170, 15, 165, 176, {}), (210, 12, 210, 210, {"axis": "v", "range": 2}), (244, 14, 236, 249, {}),
         (322, 14, 317, 326, {}), (357, 16, 357, 357, {"axis": "v", "range": 2}), (482, 14, 477, 484, {}),
         (508, 14, 503, 510, {}), (580, 14, 572, 588, {})]]
     + [enemy("meteorito", x, y, a, b) for x, y, a, b in [
-        (393, 17, 389, 408), (405, 17, 398, 409), (424, 18, 419, 428), (503, 18, 498, 510), (478, 17, 472, 484),
-        (481, 17, 474, 484), (497, 18, 492, 510), (523, 19, 518, 530), (560, 19, 552, 570)]]
+        (394, 17, 391, 408), (478, 17, 472, 484), (497, 18, 492, 510), (523, 19, 518, 530), (560, 19, 552, 570)]]
 )
 
 # IMP-011: corazones recogibles (una vida si falta alguna) al terminar los tramos con más enemigos
@@ -253,8 +262,8 @@ signs = [
     {"x": 268, "y": 16, "text": "El tobogán arcoíris desliza rápido: las flechas frenan o aceleran un poco"},
     {"x": 297, "y": 20, "text": "La plataforma de lanzamiento te lanza muy alto: arriba hay un tesoro"},
     {"x": 369, "y": 21, "text": "El cohete ascensor sube y baja: espera a que llegue"},
+    {"x": 378, "y": 15, "text": "Las nubes explosivas estallan si las tocas: ¡dispárales desde lejos!"},
     {"x": 389, "y": 17, "text": "¡Lluvia de meteoros! Las estrellas que caen avisan con un destello"},
-    {"x": 408, "y": 17, "text": "Las nubes explosivas estallan si las tocas: ¡dispárales desde lejos!"},
     {"x": 533, "y": 19, "text": "El Trono de la Luna: Luna Estelar te espera"},
 ]
 
@@ -365,6 +374,14 @@ boss = {
              "afterMusic": "world5"},
     "portal": {"x": 56, "y": 14},
 }
+
+_bounds = [s["from"] for s in level["sections"]] + [LEVEL_W * 16]
+for _i, _s in enumerate(level["sections"]):
+    _n = sum(1 for e in enemies if _bounds[_i] <= e["x"] * 16 < _bounds[_i + 1])
+    assert _n <= MAX_PER_SECTION, f"sección {_s['id']}: {_n} enemigos (máximo {MAX_PER_SECTION}, IMP-030)"
+# la primera nube explosiva se enseña sin enemigos cerca (IMP-030)
+_first = min(explosive_clouds, key=lambda c: c["x"])
+assert all(min(abs(t - _first["x"]) for t in (e["x"], *e["patrol"])) >= 8 for e in enemies), "enemigo junto a la primera nube explosiva"
 
 OUT.mkdir(parents=True, exist_ok=True)
 for name, data in [("world5.json", level), ("world5_boss.json", boss)]:
