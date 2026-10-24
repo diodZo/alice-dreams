@@ -20,6 +20,7 @@ const FRAMES_PATHS := {
 	"crayon": "res://resources/world2/frames/crayon_frames.tres",
 	"brush": "res://resources/world2/frames/brush_frames.tres",
 	"garabato": "res://resources/world2/frames/garabato_frames.tres",
+	"garabato_friend": "res://resources/world2/frames/garabato_friend_frames.tres",
 	"rabbit": "res://resources/world3/frames/rabbit_frames.tres",
 	"wool": "res://resources/world3/frames/wool_frames.tres",
 	"pillow": "res://resources/world3/frames/pillow_frames.tres",

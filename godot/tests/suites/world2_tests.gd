@@ -5,7 +5,7 @@ const TESTS := [
 	"test_w2_data", "test_w2_sprites", "test_w2_level_loads", "test_w2_paint",
 	"test_w2_rulers", "test_w2_switch_and_temporary", "test_w2_hazards", "test_w2_magic_and_checkpoint",
 	"test_w2_eraser", "test_w2_crayon", "test_w2_brush", "test_w2_weapons_vs_enemies",
-	"test_w2_boss", "test_w2_progression",
+	"test_w2_boss", "test_w2_boss_friend", "test_w2_progression",
 ]
 
 
@@ -40,6 +40,7 @@ func test_w2_sprites() -> void:
 		"crayon": {"idle": 4, "walk": 4, "charge": 3, "attack": 3, "hurt": 2, "defeated": 2},
 		"brush": {"idle": 4, "walk": 4, "attack": 3, "hurt": 2, "defeated": 1},
 		"garabato": {"idle": 3, "move": 6, "shoot": 4, "swirl": 4, "spin": 4, "stun": 2, "hurt": 1, "defeated": 2},
+		"garabato_friend": {"transform": 6, "friend_idle": 4, "friend_walk": 6, "friend_celebrate": 6},
 	}
 	for key in expected:
 		var sf := Assets.sprite_frames(key)
@@ -379,9 +380,14 @@ func test_w2_boss() -> void:
 	check(seen.has("phase2") and seen.has("phase3"), "pasa por las tres fases")
 	for s in ["SHOOT", "SPLASH", "REST", "PHASE_CHANGE", "SWIRL", "ORBIT", "RAIN", "BIG_SWIRL", "PAINT_FLOOR"]:
 		check(seen.has(s), "usa el ataque %s" % s)
-	# la protagonista se aparta para ver caer la estrella
+	# la protagonista se aparta para ver caer la estrella (sale cuando Garabato ya es amigo)
 	level.player.position.x = 20 * C.TILE
-	await frames(260)
+	guard = 0
+	while not boss.fsm.is_state("FRIEND") and guard < 600:
+		guard += 1
+		await frames(1)
+	check(boss.fsm.is_state("FRIEND"), "Garabato se transforma en amigo")
+	await frames(120)
 	var star: Array = level.level_objects.stars_root.get_children().filter(func(n): return n.special)
 	check(star.size() == 1 or GameState.get_v("specialStar") == true, "suelta la estrella especial")
 	if star.size() == 1:
@@ -396,6 +402,58 @@ func test_w2_boss() -> void:
 			check(SaveManager.is_world_completed(2), "el Mundo 2 queda guardado como completado")
 			check(SaveManager.unlocked_world() == 3, "el Mundo 3 queda desbloqueado")
 	SaveManager.reset_progress()
+
+
+# Al vencer a Garabato: derrota (ojos en X) -> transformación -> amigo que celebra y acompaña a
+# Alice. La estrella (defeated_at) sale una sola vez y sólo cuando la transformación termina.
+func test_w2_boss_friend() -> void:
+	await load_level("Boss2", func(): GameState.set_v("weapon", "sling"))
+	await settle()
+	place(12, 14)
+	await frames(130)
+	var boss: Garabato = level.boss
+	var emitted := [0]
+	boss.defeated_at.connect(func(_x, _y): emitted[0] += 1)
+	boss.invulnerable = false
+	boss.hp = 1
+	boss.take_damage(1)
+	await frames(2)
+	check(boss.fsm.is_state("DEFEATED") and boss.is_defeated() and boss.shape.disabled, "derrota: sin ataques ni colisión")
+	var at := boss.position
+	var hp := level.player.hp
+	var anims := {}
+	var guard := 0
+	while not boss.fsm.is_state("TRANSFORMING") and guard < 400:
+		guard += 1
+		anims[String(boss.sprite.animation)] = true
+		await frames(1)
+	check(anims.has("defeated") and boss.fsm.is_state("TRANSFORMING"), "la transformación empieza tras la animación de derrota")
+	check(emitted[0] == 0 and level.level_objects.stars_root.get_children().filter(func(n): return n.special).is_empty(), "sin estrella antes de transformarse")
+	check(boss.sprite.sprite_frames == Assets.sprite_frames("garabato_friend") and boss.sprite.animation == "transform", "usa la hoja del amigo")
+	check(boss.position == at and boss.visible, "se transforma en su sitio, visible")
+	guard = 0
+	while not boss.fsm.is_state("FRIEND") and guard < 200:
+		guard += 1
+		await frames(1)
+	check(boss.fsm.is_state("FRIEND") and emitted[0] == 1, "al terminar es amigo y sale la estrella una sola vez")
+	check(boss.sprite.animation == "friend_celebrate" and boss.is_defeated(), "celebra y sigue fuera del combate")
+	# camina hasta Alice y se queda a su lado
+	level.player.position.x = boss.position.x - 150
+	await frames(90)
+	check(boss.sprite.animation == "friend_walk" and boss.position.x < at.x, "camina hacia Alice")
+	await frames(240)
+	check(boss.sprite.animation == "friend_idle" and absf(boss.position.x - level.player.position.x) <= Garabato.FRIEND_GAP + 1, "espera junto a Alice")
+	# tocar al amigo no hace daño
+	level.player.invulnerable_until = 0
+	level.player.position = boss.position
+	await frames(30)
+	check(level.player.hp == hp, "tocar al amigo no hace daño")
+	boss.celebrate()
+	await frames(60)
+	check(boss.sprite.animation == "friend_celebrate" and boss.friend_party, "celebra con Alice al final")
+	check(emitted[0] == 1, "la estrella sigue saliendo una sola vez")
+	# como al entrar en el portal: si la pista MP3 del Mundo 2 sigue sonando al salir, queda sin liberar
+	AudioManager.stop_music()
 
 
 func test_w2_progression() -> void:

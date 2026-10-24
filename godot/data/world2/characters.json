@@ -276,5 +276,62 @@
    }
   },
   "name": "Garabato, el Rey de los Crayones"
+ },
+ "garabato_friend": {
+  "frameWidth": 116,
+  "frameHeight": 78,
+  "anims": {
+   "transform": {
+    "frames": [
+     "transform_0",
+     "transform_1",
+     "transform_2",
+     "transform_3",
+     "transform_4",
+     "transform_5"
+    ],
+    "fps": 7,
+    "loop": false,
+    "derived": false
+   },
+   "friend_idle": {
+    "frames": [
+     "friend_idle_0",
+     "friend_idle_1",
+     "friend_idle_2",
+     "friend_idle_3"
+    ],
+    "fps": 5,
+    "loop": true,
+    "derived": false
+   },
+   "friend_walk": {
+    "frames": [
+     "friend_walk_0",
+     "friend_walk_1",
+     "friend_walk_2",
+     "friend_walk_3",
+     "friend_walk_4",
+     "friend_walk_5"
+    ],
+    "fps": 9,
+    "loop": true,
+    "derived": false
+   },
+   "friend_celebrate": {
+    "frames": [
+     "friend_celebrate_0",
+     "friend_celebrate_1",
+     "friend_celebrate_2",
+     "friend_celebrate_3",
+     "friend_celebrate_4",
+     "friend_celebrate_5"
+    ],
+    "fps": 8,
+    "loop": false,
+    "derived": false
+   }
+  },
+  "name": "Garabato, amigo de Alice"
  }
 }

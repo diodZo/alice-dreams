@@ -5,7 +5,8 @@
   "scene": "imagenes/word_2.png",
   "tiles": "imagenes/tilesets_world_2.png",
   "enemies": "imagenes/enemies_world_2.png",
-  "boss": "imagenes/jefemundo2.png"
+  "boss": "imagenes/jefemundo2old.png",
+  "boss_friend": "imagenes/jefemundo2.png"
  },
  "resources": [
   {
@@ -1677,7 +1678,7 @@
   {
    "name": "garabato/idle_0",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     53,
     9,
@@ -1711,7 +1712,7 @@
   {
    "name": "garabato/idle_1",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     317,
     9,
@@ -1745,7 +1746,7 @@
   {
    "name": "garabato/idle_2",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     593,
     10,
@@ -1779,7 +1780,7 @@
   {
    "name": "garabato/move_0",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     22,
     195,
@@ -1813,7 +1814,7 @@
   {
    "name": "garabato/move_1",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     262,
     195,
@@ -1847,7 +1848,7 @@
   {
    "name": "garabato/move_2",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     503,
     201,
@@ -1881,7 +1882,7 @@
   {
    "name": "garabato/move_3",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     756,
     199,
@@ -1915,7 +1916,7 @@
   {
    "name": "garabato/move_4",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     974,
     196,
@@ -1949,7 +1950,7 @@
   {
    "name": "garabato/move_5",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     1207,
     198,
@@ -1983,7 +1984,7 @@
   {
    "name": "garabato/shoot_0",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     40,
     386,
@@ -2017,7 +2018,7 @@
   {
    "name": "garabato/shoot_1",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     293,
     383,
@@ -2051,7 +2052,7 @@
   {
    "name": "garabato/shoot_2",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     737,
     390,
@@ -2085,7 +2086,7 @@
   {
    "name": "garabato/shoot_3",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     1106,
     391,
@@ -2119,7 +2120,7 @@
   {
    "name": "garabato/swirl_0",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     36,
     560,
@@ -2153,7 +2154,7 @@
   {
    "name": "garabato/swirl_1",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     351,
     570,
@@ -2187,7 +2188,7 @@
   {
    "name": "garabato/swirl_2",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     658,
     561,
@@ -2221,7 +2222,7 @@
   {
    "name": "garabato/swirl_3",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     1071,
     579,
@@ -2255,7 +2256,7 @@
   {
    "name": "garabato/spin_0",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     85,
     741,
@@ -2289,7 +2290,7 @@
   {
    "name": "garabato/spin_1",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     421,
     754,
@@ -2323,7 +2324,7 @@
   {
    "name": "garabato/spin_2",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     763,
     753,
@@ -2357,7 +2358,7 @@
   {
    "name": "garabato/spin_3",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     1092,
     747,
@@ -2391,7 +2392,7 @@
   {
    "name": "garabato/stun_0",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     42,
     934,
@@ -2425,7 +2426,7 @@
   {
    "name": "garabato/stun_1",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     269,
     926,
@@ -2459,7 +2460,7 @@
   {
    "name": "garabato/hurt_0",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     517,
     949,
@@ -2493,7 +2494,7 @@
   {
    "name": "garabato/defeated_0",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     797,
     969,
@@ -2527,7 +2528,7 @@
   {
    "name": "garabato/defeated_1",
    "type": "frame",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     1068,
     971,
@@ -2557,6 +2558,754 @@
    ],
    "status": "ok",
    "notes": ""
+  },
+  {
+   "name": "garabato_friend/transform_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    965,
+    565,
+    1115,
+    698
+   ],
+   "trimmed": [
+    965,
+    613,
+    1115,
+    682
+   ],
+   "animation": "transform",
+   "frame": 0,
+   "duration_ms": 143,
+   "offset": [
+    9,
+    30
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/transform_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1116,
+    565,
+    1231,
+    698
+   ],
+   "trimmed": [
+    1116,
+    578,
+    1231,
+    682
+   ],
+   "animation": "transform",
+   "frame": 1,
+   "duration_ms": 143,
+   "offset": [
+    21,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/transform_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1232,
+    565,
+    1356,
+    698
+   ],
+   "trimmed": [
+    1232,
+    573,
+    1356,
+    684
+   ],
+   "animation": "transform",
+   "frame": 2,
+   "duration_ms": 143,
+   "offset": [
+    13,
+    2
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/transform_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1357,
+    565,
+    1487,
+    698
+   ],
+   "trimmed": [
+    1360,
+    578,
+    1487,
+    685
+   ],
+   "animation": "transform",
+   "frame": 3,
+   "duration_ms": 143,
+   "offset": [
+    13,
+    5
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/transform_4",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1488,
+    565,
+    1616,
+    698
+   ],
+   "trimmed": [
+    1488,
+    575,
+    1616,
+    685
+   ],
+   "animation": "transform",
+   "frame": 4,
+   "duration_ms": 143,
+   "offset": [
+    13,
+    3
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/transform_5",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1617,
+    565,
+    1768,
+    698
+   ],
+   "trimmed": [
+    1617,
+    573,
+    1768,
+    685
+   ],
+   "animation": "transform",
+   "frame": 5,
+   "duration_ms": 143,
+   "offset": [
+    12,
+    1
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_idle_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    18,
+    740,
+    143,
+    880
+   ],
+   "trimmed": [
+    18,
+    754,
+    143,
+    858
+   ],
+   "animation": "friend_idle",
+   "frame": 0,
+   "duration_ms": 200,
+   "offset": [
+    11,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_idle_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    144,
+    740,
+    241,
+    880
+   ],
+   "trimmed": [
+    144,
+    753,
+    241,
+    859
+   ],
+   "animation": "friend_idle",
+   "frame": 1,
+   "duration_ms": 200,
+   "offset": [
+    21,
+    5
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_idle_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    242,
+    740,
+    355,
+    880
+   ],
+   "trimmed": [
+    242,
+    751,
+    355,
+    859
+   ],
+   "animation": "friend_idle",
+   "frame": 2,
+   "duration_ms": 200,
+   "offset": [
+    14,
+    4
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_idle_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    356,
+    740,
+    495,
+    880
+   ],
+   "trimmed": [
+    356,
+    755,
+    477,
+    858
+   ],
+   "animation": "friend_idle",
+   "frame": 3,
+   "duration_ms": 200,
+   "offset": [
+    16,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_walk_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    508,
+    740,
+    612,
+    880
+   ],
+   "trimmed": [
+    508,
+    749,
+    612,
+    856
+   ],
+   "animation": "friend_walk",
+   "frame": 0,
+   "duration_ms": 111,
+   "offset": [
+    21,
+    5
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato_friend/friend_walk_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    613,
+    740,
+    709,
+    880
+   ],
+   "trimmed": [
+    613,
+    752,
+    709,
+    856
+   ],
+   "animation": "friend_walk",
+   "frame": 1,
+   "duration_ms": 111,
+   "offset": [
+    23,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_walk_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    710,
+    740,
+    808,
+    880
+   ],
+   "trimmed": [
+    710,
+    752,
+    808,
+    856
+   ],
+   "animation": "friend_walk",
+   "frame": 2,
+   "duration_ms": 111,
+   "offset": [
+    22,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_walk_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    809,
+    740,
+    899,
+    880
+   ],
+   "trimmed": [
+    809,
+    753,
+    899,
+    856
+   ],
+   "animation": "friend_walk",
+   "frame": 3,
+   "duration_ms": 111,
+   "offset": [
+    23,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_walk_4",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    900,
+    740,
+    992,
+    880
+   ],
+   "trimmed": [
+    900,
+    751,
+    992,
+    856
+   ],
+   "animation": "friend_walk",
+   "frame": 4,
+   "duration_ms": 111,
+   "offset": [
+    25,
+    6
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_walk_5",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    993,
+    740,
+    1078,
+    880
+   ],
+   "trimmed": [
+    993,
+    753,
+    1078,
+    856
+   ],
+   "animation": "friend_walk",
+   "frame": 5,
+   "duration_ms": 111,
+   "offset": [
+    29,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_celebrate_0",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1107,
+    740,
+    1218,
+    880
+   ],
+   "trimmed": [
+    1107,
+    752,
+    1218,
+    857
+   ],
+   "animation": "friend_celebrate",
+   "frame": 0,
+   "duration_ms": 125,
+   "offset": [
+    20,
+    6
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato_friend/friend_celebrate_1",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1219,
+    740,
+    1325,
+    880
+   ],
+   "trimmed": [
+    1220,
+    747,
+    1323,
+    852
+   ],
+   "animation": "friend_celebrate",
+   "frame": 1,
+   "duration_ms": 125,
+   "offset": [
+    24,
+    6
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": ""
+  },
+  {
+   "name": "garabato_friend/friend_celebrate_2",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1326,
+    740,
+    1415,
+    880
+   ],
+   "trimmed": [
+    1326,
+    748,
+    1415,
+    856
+   ],
+   "animation": "friend_celebrate",
+   "frame": 2,
+   "duration_ms": 125,
+   "offset": [
+    16,
+    4
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_celebrate_3",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1416,
+    740,
+    1545,
+    880
+   ],
+   "trimmed": [
+    1416,
+    749,
+    1545,
+    853
+   ],
+   "animation": "friend_celebrate",
+   "frame": 3,
+   "duration_ms": 125,
+   "offset": [
+    10,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda, derecha | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_celebrate_4",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1546,
+    740,
+    1652,
+    880
+   ],
+   "trimmed": [
+    1546,
+    753,
+    1649,
+    856
+   ],
+   "animation": "friend_celebrate",
+   "frame": 4,
+   "duration_ms": 125,
+   "offset": [
+    30,
+    7
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
+  },
+  {
+   "name": "garabato_friend/friend_celebrate_5",
+   "type": "frame",
+   "source": "imagenes/jefemundo2.png",
+   "crop": [
+    1653,
+    740,
+    1767,
+    880
+   ],
+   "trimmed": [
+    1653,
+    751,
+    1754,
+    852
+   ],
+   "animation": "friend_celebrate",
+   "frame": 5,
+   "duration_ms": 125,
+   "offset": [
+    25,
+    9
+   ],
+   "origin": [
+    58,
+    77
+   ],
+   "cell": [
+    116,
+    78
+   ],
+   "status": "ok",
+   "notes": "toca el borde de la caja: izquierda | revisado a mano: fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
   },
   {
    "name": "paint_big",
@@ -2681,7 +3430,7 @@
   {
    "name": "rainbow_burst",
    "type": "fx",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     972,
     412,
@@ -2705,7 +3454,7 @@
   {
    "name": "swirl",
    "type": "fx",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     1312,
     610,
@@ -2729,7 +3478,7 @@
   {
    "name": "crayon_red",
    "type": "fx",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     407,
     740,
@@ -2753,7 +3502,7 @@
   {
    "name": "crayon_yellow",
    "type": "fx",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     367,
     805,
@@ -2777,7 +3526,7 @@
   {
    "name": "crayon_blue",
    "type": "fx",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     694,
     837,
@@ -2801,7 +3550,7 @@
   {
    "name": "crayon_purple",
    "type": "fx",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     1061,
     774,
@@ -2825,7 +3574,7 @@
   {
    "name": "crayon_green",
    "type": "fx",
-   "source": "imagenes/jefemundo2.png",
+   "source": "imagenes/jefemundo2old.png",
    "crop": [
     941,
     865,
@@ -4708,7 +5457,7 @@
   }
  ],
  "summary": {
-  "total": 167,
+  "total": 189,
   "pending": []
  }
 }

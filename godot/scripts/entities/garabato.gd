@@ -8,6 +8,12 @@ extends BossBase
 ##  2 Remolino de crayones (65-30 %):  remolinos en distintas trayectorias, crayones orbitando, más rápido.
 ##  3 El Gran Garabato     (30-0 %):   remolinos grandes, ráfagas, lluvia de crayones y pintura en el suelo.
 ## Todos los ataques tienen aviso ("!" + destello) y huecos; tras cada uno descansa (ventana de contraataque).
+##
+## Al vencerlo no desaparece: DEFEATED (aturdido, crayones que caen, ojos en X) -> TRANSFORMING
+## (cambia a la hoja del amigo, garabato_friend de la nueva jefemundo2.png, y se transforma) ->
+## FRIEND (celebra, camina hasta Alice y la espera). Cada paso empieza al terminar la animación
+## anterior (animation_finished). La señal defeated_at (estrella especial, portal) sale una sola
+## vez, al convertirse en amigo; la victoria sigue llegando por el portal, como siempre.
 
 const PHASES := {
 	1: {"speed": 40.0, "interval": 1400.0, "rest": 1400.0, "pattern": ["SHOOT", "SPLASH", "SHOOT", "SPLASH"]},
@@ -23,6 +29,17 @@ var rest_glow: Sprite2D
 var orbit: Array[Area2D] = []
 var orbit_angle := 0.0
 var _markers: Array = []
+
+## Forma amistosa (sin colisión: ni hace daño ni recibe disparos).
+const FRIEND_FRAMES := "garabato_friend"
+const FRIEND_SPEED := 42.0
+## Distancia (px) a la que el amigo se queda junto a Alice.
+const FRIEND_GAP := 48.0
+## Momento con los ojos en X antes de transformarse (se lee la derrota).
+const TRANSFORM_DELAY_MS := 450.0
+var friend_celebrating := false
+## Celebración final (al entrar Alice en el portal): repite la animación hasta el cambio de escena.
+var friend_party := false
 
 
 ## cfg: { homeX, minX, maxX (teselas), floorY (px) }
@@ -51,6 +68,10 @@ func _ready() -> void:
 	fsm = StateMachine.new(self)
 	impact_effects = true
 	set_body_enabled(false)
+
+
+func is_defeated() -> bool:
+	return fsm.current in ["DEFEATED", "TRANSFORMING", "FRIEND"]
 
 
 func anim(anim_name: String, ignore := true) -> void:
@@ -421,13 +442,104 @@ func _enter_DEFEATED(_prev: String, _data: Variant) -> void:
 		if b != null:
 			Anim.play(b.sprite, "defeated", false)
 			b.level.effects.confetti(b.position.x, b.position.y - 40, 90)
-			b.level.effects.poof(b.position.x, b.position.y - 10, 20))
-	level.after(2700, func():
+			b.level.effects.poof(b.position.x, b.position.y - 10, 20)
+			# 4. al terminar la derrota (ojos en X) empieza la transformación
+			b.sprite.animation_finished.connect(b._on_defeated_shown, CONNECT_ONE_SHOT))
+
+
+func _on_defeated_shown() -> void:
+	var ref: WeakRef = weakref(self)
+	level.after(TRANSFORM_DELAY_MS, func():
 		var b: Garabato = ref.get_ref()
-		if b != null:
-			# la estrella sale hacia el centro de la arena para no quedar tapada por el jefe
-			var side := -1.0 if b.position.x > (b.min_x + b.max_x) / 2.0 else 1.0
-			b.defeated_at.emit(b.position.x + side * 72, b.position.y - 40))
+		if b != null and b.fsm.is_state("DEFEATED"):
+			b.fsm.set_state("TRANSFORMING"))
+
+
+# ------------------------------------------------------------- forma amistosa
+## Se calma y se limpia del caos: misma posición y mismos pies (las dos hojas se alinean por los
+## pies), destellos y estrellitas de colores alrededor.
+func _enter_TRANSFORMING(_prev: String, _data: Variant) -> void:
+	velocity.x = 0
+	sprite.sprite_frames = Assets.sprite_frames(FRIEND_FRAMES)
+	Anim.set_origin(sprite, Assets.cell_size(FRIEND_FRAMES), 0.5, 1.0)
+	AudioManager.play("memory")
+	level.effects.glow_flash(position + Vector2(0, -30), C.rgb(0xfff0c8), 1, 4, 900, 0.7, 1)
+	level.effects.sparkle(position.x, position.y - 30, 16)
+	for i in 3:
+		var ref: WeakRef = weakref(self)
+		level.after(200 * (i + 1), func():
+			var b: Garabato = ref.get_ref()
+			if b != null:
+				b.level.effects.sparkle(b.position.x + randi_range(-36, 36), b.position.y - randi_range(10, 56), 8))
+	if not sprite.sprite_frames.has_animation("transform"):
+		fsm.set_state("FRIEND") # sin la hoja del amigo no se queda a medias
+		return
+	sprite.animation_finished.connect(func(): fsm.set_state("FRIEND"), CONNECT_ONE_SHOT)
+	Anim.play(sprite, "transform", false)
+
+
+## Amigo de Alice: celebra una vez, luego camina hasta ella y la espera mirándola.
+func _enter_FRIEND(_prev: String, _data: Variant) -> void:
+	# la estrella sale hacia el centro de la arena para no quedar tapada por el amigo
+	var side := -1.0 if position.x > (min_x + max_x) / 2.0 else 1.0
+	defeated_at.emit(position.x + side * 72, position.y - 40)
+	_friend_celebrate()
+
+
+func _update_FRIEND(_time: float, delta_ms: float) -> void:
+	if friend_celebrating or player == null:
+		return
+	var dx := player.position.x - position.x
+	sprite.flip_h = dx < 0
+	# arranca pasados FRIEND_GAP + 10 px y anda hasta quedar a FRIEND_GAP (sin titubear en el borde)
+	var walking := sprite.animation == "friend_walk"
+	if absf(dx) > FRIEND_GAP + (0.0 if walking else 10.0):
+		position.x = clampf(position.x + signf(dx) * FRIEND_SPEED * delta_ms / 1000.0, min_x - 40, max_x + 40)
+		anim("friend_walk")
+	else:
+		anim("friend_idle")
+
+
+## Celebración (saltitos, corazones y estrellas). La arena la pide al entrar Alice en el portal.
+func celebrate() -> void:
+	friend_party = true
+	if fsm.is_state("FRIEND") and not friend_celebrating:
+		_friend_celebrate()
+
+
+func _friend_celebrate() -> void:
+	friend_celebrating = true
+	if player != null:
+		sprite.flip_h = player.position.x < position.x
+	_hearts(3)
+	level.effects.sparkle(position.x, position.y - 40, 10)
+	sprite.animation_finished.connect(_on_celebrate_done, CONNECT_ONE_SHOT)
+	Anim.play(sprite, "friend_celebrate", false)
+
+
+func _on_celebrate_done() -> void:
+	if friend_party:
+		_friend_celebrate()
+		return
+	friend_celebrating = false
+	anim("friend_idle")
+
+
+## Corazones que suben desde el amigo.
+func _hearts(n: int) -> void:
+	for i in n:
+		var h := Sprite2D.new()
+		h.texture = Assets.frame("fx", "heart_full")
+		h.position = position + Vector2(randi_range(-26, 26), -50)
+		h.z_index = C.Z_UI_WORLD
+		h.modulate.a = 0.0
+		level.fx_root.add_child(h)
+		var tw := h.create_tween()
+		tw.tween_interval(0.12 * i)
+		tw.tween_property(h, "modulate:a", 1.0, 0.12)
+		tw.parallel().tween_property(h, "position:y", h.position.y - 26, 0.9).set_trans(Tween.TRANS_SINE)
+		tw.tween_property(h, "modulate:a", 0.0, 0.25)
+		tw.tween_callback(h.queue_free)
 
 
 ## Crayón que salta de la caja y cae alrededor (sin daño).

@@ -5,13 +5,15 @@
   "las de la hoja de teselas, con el mismo método sobre el fondo crema. Se pueden corregir a mano aquí.",
   "mode: alpha -> la hoja trae canal alfa con halo de color (se conserva alfa >= alpha_min);",
   "      cream -> paneles color crema: se elimina sólo el fondo conectado con el borde del recorte (no se tocan blancos interiores).",
-  "status: ok | pending (se conserva el recorte pero queda marcado para revisión) | auto (lo decide la validación)."
+  "status: ok | pending (se conserva el recorte pero queda marcado para revisión) | auto (lo decide la validación).",
+  "mode: panel -> hoja sin transparencia útil (jefemundo2.png nueva): fondo = color mediano del borde del recorte (bg_tol) y, con shadow, la sombra gris del suelo; las cajas de garabato_friend cortan en la columna con menos dibujo entre fotogramas que se tocan."
  ],
  "sources": {
   "scene": "imagenes/word_2.png",
   "tiles": "imagenes/tilesets_world_2.png",
   "enemies": "imagenes/enemies_world_2.png",
-  "boss": "imagenes/jefemundo2.png"
+  "boss": "imagenes/jefemundo2old.png",
+  "boss_friend": "imagenes/jefemundo2.png"
  },
  "characters": {
   "eraser": {
@@ -668,6 +670,176 @@
      ]
     }
    }
+  },
+  "garabato_friend": {
+   "name": "Garabato, amigo de Alice",
+   "src": "boss_friend",
+   "mode": "panel",
+   "bg_tol": 60,
+   "shadow": true,
+   "scale": 0.67,
+   "anchor": "feet",
+   "colors": 48,
+   "keep": 0.12,
+   "anims": {
+    "transform": {
+     "fps": 7,
+     "loop": false,
+     "boxes": [
+      [
+       965,
+       565,
+       1115,
+       698
+      ],
+      [
+       1116,
+       565,
+       1231,
+       698
+      ],
+      [
+       1232,
+       565,
+       1356,
+       698
+      ],
+      [
+       1357,
+       565,
+       1487,
+       698
+      ],
+      [
+       1488,
+       565,
+       1616,
+       698
+      ],
+      [
+       1617,
+       565,
+       1768,
+       698
+      ]
+     ]
+    },
+    "friend_idle": {
+     "fps": 5,
+     "loop": true,
+     "boxes": [
+      [
+       18,
+       740,
+       143,
+       880
+      ],
+      [
+       144,
+       740,
+       241,
+       880
+      ],
+      [
+       242,
+       740,
+       355,
+       880
+      ],
+      [
+       356,
+       740,
+       495,
+       880
+      ]
+     ]
+    },
+    "friend_walk": {
+     "fps": 9,
+     "loop": true,
+     "boxes": [
+      [
+       508,
+       740,
+       612,
+       880
+      ],
+      [
+       613,
+       740,
+       709,
+       880
+      ],
+      [
+       710,
+       740,
+       808,
+       880
+      ],
+      [
+       809,
+       740,
+       899,
+       880
+      ],
+      [
+       900,
+       740,
+       992,
+       880
+      ],
+      [
+       993,
+       740,
+       1078,
+       880
+      ]
+     ]
+    },
+    "friend_celebrate": {
+     "fps": 8,
+     "loop": false,
+     "boxes": [
+      [
+       1107,
+       740,
+       1218,
+       880
+      ],
+      [
+       1219,
+       740,
+       1325,
+       880
+      ],
+      [
+       1326,
+       740,
+       1415,
+       880
+      ],
+      [
+       1416,
+       740,
+       1545,
+       880
+      ],
+      [
+       1546,
+       740,
+       1652,
+       880
+      ],
+      [
+       1653,
+       740,
+       1767,
+       880
+      ]
+     ]
+    }
+   },
+   "split_px": 3
   }
  },
  "fx": {
@@ -1562,6 +1734,28 @@
   "rolling_pencil": "líneas de movimiento excluidas",
   "bg_star_hang_a": "el hilo sube hasta la cabecera del panel",
   "bg_star_hang_b": "el hilo sube hasta la cabecera del panel",
-  "bg_scrap_b": "hojas superpuestas: se toma una"
+  "bg_scrap_b": "hojas superpuestas: se toma una",
+  "garabato_friend/transform_0": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/transform_1": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/transform_2": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/transform_3": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/transform_4": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/transform_5": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_idle_0": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_idle_1": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_idle_2": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_idle_3": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_walk_0": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_walk_1": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_walk_2": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_walk_3": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_walk_4": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_walk_5": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_celebrate_0": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_celebrate_1": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_celebrate_2": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_celebrate_3": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_celebrate_4": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)",
+  "garabato_friend/friend_celebrate_5": "fotogramas que se tocan en jefemundo2.png: corte en la columna con menos dibujo; los trozos del vecino se quitan con split_px (revisado en debug_garabato_friend.png)"
  }
 }

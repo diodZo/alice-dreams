@@ -65,6 +65,20 @@ def cream_bg(rgba):
     return (mx >= 232) & ((mx - mn) < 28)
 
 
+def panel_bg(rgb, opts):
+    """Fondo de un panel de color liso (hoja nueva de jefemundo2.png, sin transparencia útil): el
+    color mediano del borde del recorte con tolerancia bg_tol y, con shadow, la sombra gris
+    cálida del suelo bajo los pies (sólo la conectada con el panel, la elimina flood())."""
+    rgb = rgb.astype(int)
+    edge = np.concatenate([rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]])
+    bg = np.median(edge, axis=0)
+    cand = np.abs(rgb - bg).sum(-1) < opts.get("bg_tol", 60)
+    if opts.get("shadow"):
+        mx, mn = rgb.max(-1), rgb.min(-1)
+        cand |= ((mx - mn) < 55) & (mx >= 120) & (mx <= 200) & (rgb[..., 0] >= rgb[..., 2])
+    return cand
+
+
 def flood(cand):
     """Fondo = candidatos conectados con el borde del recorte (rápido, con SciPy)."""
     lab, _ = ndimage.label(cand)
@@ -89,6 +103,26 @@ def extract(src_name, mode, box, opts):
     crop = img[y0:y1 + 1, x0:x1 + 1].copy()
     if mode == "alpha":
         fg = crop[..., 3] >= opts.get("alpha_min", 240)
+    elif mode == "panel":
+        cand = panel_bg(crop[..., :3], opts)
+        fg = ~flood(cand)
+        if opts.get("shadow"):
+            # la sombra encerrada entre los pies no toca el panel: en la franja baja se quita igual
+            low = int(fg.shape[0] * 0.82)
+            mx, mn = crop[..., :3].max(-1).astype(int), crop[..., :3].min(-1).astype(int)
+            # gris poco saturado de cualquier tono (sobre el panel verde la sombra tira a verde); el
+            # contorno azul marino de los pies queda fuera por oscuro
+            shadow = ((mx - mn) < 55) & (mx >= 110) & (mx <= 205)
+            fg[low:] &= ~shadow[low:]
+        fg = ndimage.binary_opening(fg)  # quita el borde de un píxel que deja el antialias del panel
+        if opts.get("split_px"):
+            # fotogramas que se tocan: los trozos del vecino que entran en la caja sólo se unen al
+            # personaje por puentes finos; se cortan erosionando, se elige la isla principal y se
+            # recupera su contorno
+            n = opts["split_px"]
+            core = keep_main(ndimage.binary_erosion(fg, iterations=n), opts.get("keep", 0.2))
+            fg &= ndimage.binary_dilation(core, iterations=n + 1)
+        crop[..., 3] = 255
     else:
         fg = ~flood(cream_bg(crop))
         if opts.get("opaque"):
@@ -107,6 +141,13 @@ def extract(src_name, mode, box, opts):
     # probablemente la caja corta el dibujo.
     touches = []
     H, W = img.shape[:2]
+    if mode == "panel":
+        # los fotogramas de un panel se tocan: se avisa si el corte lateral atraviesa el dibujo
+        for side, col in (("izquierda", fg[:, 0]), ("derecha", fg[:, -1])):
+            if col.mean() > 0.04:
+                touches.append(side)
+        info = {"trim": [int(x0 + bx0), int(y0 + by0), int(x0 + bx1 - 1), int(y0 + by1 - 1)], "touches": touches}
+        return out, info
     if by0 == 0 and y0 > 0 and _opaque_outside(img, mode, slice(x0 + bx0, x0 + bx1), y0 - 1, True):
         touches.append("arriba")
     if by1 == crop.shape[0] and y1 + 1 < H and _opaque_outside(img, mode, slice(x0 + bx0, x0 + bx1), y1 + 1, True):
@@ -347,7 +388,7 @@ def main():
     previews = {}
     for key, c in CFG["characters"].items():
         cells, entry = build_character(key, c)
-        atlases[key] = save_atlas(key, cells, "enemies" if key != "garabato" else "boss")
+        atlases[key] = save_atlas(key, cells, "boss" if key.startswith("garabato") else "enemies")
         characters[key] = entry
         previews[key] = cells
     fx = build_set(CFG["fx"], default_src="enemies", default_mode="alpha", kind="fx")

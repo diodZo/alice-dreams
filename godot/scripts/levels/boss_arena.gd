@@ -122,6 +122,9 @@ func enter_portal() -> void:
 	leaving = true
 	controls.set_enabled(false)
 	player.celebrate()
+	# el jefe convertido en amigo (Mundo 2) celebra con Alice
+	if boss.has_method("celebrate"):
+		boss.celebrate()
 	AudioManager.stop_music()
 	AudioManager.play("victory")
 	effects.confetti(player.position.x, player.position.y - 40, 80)
