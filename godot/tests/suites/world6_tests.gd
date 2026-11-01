@@ -772,6 +772,7 @@ func test_w6_boss_victory() -> void:
 	level.player.max_hp = 99; level.player.hp = 99
 	var seen := {}
 	var guard := 0
+	boss.window_damage = 1.0; boss.open_damage = 1.0 # para recorrer todos los ataques
 	var prev := ""
 	while not boss.is_defeated() and guard < 16000:
 		guard += 1

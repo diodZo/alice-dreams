@@ -11,5 +11,5 @@ body_size = Vector2(22, 22)
 detect_range = 170.0
 detect_height = 110.0
 reaction_time = 600.0
-attack_cooldown = 2400.0
+attack_cooldown = 1670.0
 attack_range = 56.0

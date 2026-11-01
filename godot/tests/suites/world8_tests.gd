@@ -361,6 +361,8 @@ func test_w8_weapons_vs_enemies() -> void:
 			p.weapon = Assets.weapon(wid)
 			e.hit_by(p)
 			if wid == "bubble":
+				if e.def.hp >= Enemy.TOUGH_BUBBLE_HP:
+					e.hit_by(p)
 				check(e.is_trapped(), "%s queda atrapado en la burbuja" % type)
 				e.hit_by(p)
 				check(not e.is_alive(), "%s atrapado se convierte en estrella" % type)

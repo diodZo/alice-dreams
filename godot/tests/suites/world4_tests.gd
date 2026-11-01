@@ -328,9 +328,9 @@ func test_w4_boss() -> void:
 	var p: Projectile = level.spawn_projectile("player", {"x": 0, "y": 0, "vx": 0, "vy": 0, "kind": "sling", "frame": "pellet", "lifespan": 100})
 	p.weapon = Assets.weapon("sling")
 	p.active = false
-	boss.hp = 34; boss.hit_by(p)
+	boss.hp = 33; boss.hit_by(p)
 	check(boss.phase == 2, "cambia a la fase 2 (Oleaje juguetón) al 65%")
-	boss.invulnerable = false; boss.hp = 16; boss.hit_by(p)
+	boss.invulnerable = false; boss.hp = 15; boss.hit_by(p)
 	check(boss.phase == 3, "cambia a la fase 3 (Tormenta de espuma) al 30%")
 	# cada ataque avisa antes de soltar proyectiles y termina en un descanso vulnerable
 	for phase in [1, 2, 3]:

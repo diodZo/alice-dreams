@@ -36,8 +36,8 @@ func attack() -> void:
 	step_until = 0
 	wait_until = 0
 	Anim.show_frame(sprite, "attack", 0)
-	telegraph(380)
-	after(380, func():
+	telegraph(400)
+	after(400, func():
 		face_player()
 		Anim.show_frame(sprite, "attack", 1)
 		if ground_ahead(facing):

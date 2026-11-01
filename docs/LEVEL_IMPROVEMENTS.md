@@ -145,6 +145,7 @@
 - **Archivos involucrados:** los 8 scripts de jefe o `boss_base.gd` (IMP-003).
 - **Dependencias:** IMP-003 (recomendado); IMP-034 para ajustar multiplicadores.
 - **Criterios de aceptación:** prueba automática que compare el daño de un mismo proyectil en `REST` y en ataque; tiempo de combate mínimo (disparo continuo perfecto) ≥ 1,3× el actual.
+- **Estado: hecho, con valores provisionales (sin datos de IMP-034).** `BossBase` multiplica el daño de arma por 1,5 en `REST`/`STUNNED` (`WINDOW_DAMAGE`, con chispa dorada) y por 0,4 fuera (`OPEN_DAMAGE`). Las fracciones se acumulan, así que dos o tres burbujas fuera del descanso quitan un punto; un acierto que no llega a quitarlo destella y suena igual. Los ×2 y ×0,5 con mínimo 1 de la propuesta no cumplían el criterio: medidos en los jefes, el combate duraba entre 1,0 y 1,5 veces lo anterior y las burbujas apenas cambiaban. Con 1,5/0,4 el Tirachinas continuo pasa de 9,8 s a 13,7 s en Nubarrón y de 11,7 s a 15,6 s en el Rey Patoburbuja. Pruebas `test_boss_damage_window` y `test_boss_fight_length` (Nubarrón y Rey Pesadelo).
 
 ### IMP-006
 **Equilibrar el Lanzaburbujas frente a enemigos resistentes**
@@ -156,6 +157,7 @@
 - **Archivos involucrados:** `godot/scripts/entities/enemy.gd`, `godot/scripts/entities/enemy_def.gd`, `godot/data/world7/enemies.json`, `godot/data/world8/enemies.json`, `godot/tools/build_resources.gd` (si se añade un campo nuevo al `EnemyDef`).
 - **Dependencias:** ninguna.
 - **Criterios de aceptación:** prueba: 1 burbuja atrapa a un Arañitas y no a un Gomilito; `test_bubble_traps_and_star` y `test_w7_weapons_vs_enemies` actualizados.
+- **Estado: hecho.** Opción de las dos burbujas: con `hp ≥ 4` (Gomilito y Bloquito Sombra) la primera deja una burbuja translúcida y el enemigo sigue moviéndose; la segunda, antes de 2,5 s (`HALF_WRAP_MS`), lo atrapa. Prueba `test_tough_enemy_two_bubbles`.
 
 ### IMP-007
 **Curva de agresividad por mundo**
@@ -167,6 +169,7 @@
 - **Archivos involucrados:** `godot/data/world{2..8}/enemies.json`, `godot/resources/**/enemies/*.tres` (regenerados por `godot/tools/build_resources.gd`).
 - **Dependencias:** IMP-034.
 - **Criterios de aceptación:** mediana de `attackCooldown` no creciente entre mundos consecutivos; ningún aviso por debajo de 400 ms.
+- **Estado: hecho, con valores provisionales (sin datos de IMP-034).** Medianas: Mundo 1 1 500, 2 1 400, 3 1 360, 4 1 320, 5 1 280, 6 1 240, 7 1 200, 8 1 160 ms (−3 % por mundo en lugar del −5 % del ejemplo, porque el Mundo 8 ya ataca el doble de seguido que antes, 2 400 ms). Cada mundo escala sus enemigos por igual; los Mundos 1 y 2 no cambian. `reactionTime` tampoco cambia: es el margen para reaccionar. Avisos subidos a 400 ms: Arañitas (300), Conejo (320) y Cangrejito Esponja (380), con su ataque al mismo tiempo. Prueba `test_enemy_aggression_curve`.
 
 ### IMP-008
 **Conectar la música existente del Mundo 2**
@@ -260,7 +263,7 @@
 - **Complejidad:** Baja. **Prioridad:** Alta (público infantil: el mando es más cómodo que Shift+Espacio+J).
 - **Archivos involucrados:** `godot/project.godot`. `godot/scripts/systems/input_controller.gd` ya lee acciones (`Input.is_action_pressed`), no teclas, así que no necesita cambios para el mando.
 - **Criterios de aceptación:** recorrido completo del Mundo 1 con un mando XInput; menús navegables con el mando.
-- **Estado: hecho y probado con un mando físico por el autor (22/10/2026).** Eventos de mando en las 11 acciones de `project.godot` (cruceta/stick, A, X, Y, gatillos, Start). En los menús el stick cuenta como una pulsación al salir de la zona central (`MenuList.is_stick_repeat`), así una inclinación no recorre varias opciones; lo usan la lista de botones, el carrusel y el Diario de Sueños, y la celebración de rescates bloquea también los eventos del mando. Prueba `test_gamepad` con eventos simulados (menú, andar, correr, saltar, pausa). No se ha probado con un mando real.
+- **Estado: hecho y probado con un mando físico por el autor (22/10/2026).** Eventos de mando en las 11 acciones de `project.godot` (cruceta/stick, A, X, Y, gatillos, Start). En los menús el stick cuenta como una pulsación al salir de la zona central (`MenuList.is_stick_repeat`), así una inclinación no recorre varias opciones; lo usan la lista de botones, el carrusel y el Diario de Sueños, y la celebración de rescates bloquea también los eventos del mando. Prueba `test_gamepad` con eventos simulados (menú, andar, correr, saltar, pausa).
 
 ### IMP-018
 **Rutas secretas con recompensa tangible**

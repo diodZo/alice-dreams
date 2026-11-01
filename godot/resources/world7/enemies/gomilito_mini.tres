@@ -10,6 +10,6 @@ hp = 1
 speed = 48.0
 body_size = Vector2(12, 11)
 reaction_time = 300.0
-attack_cooldown = 1400.0
+attack_cooldown = 910.0
 trap_time = 3000.0
 attack_range = 60.0

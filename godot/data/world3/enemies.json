@@ -1,5 +1,5 @@
 {
- "rabbit": {"key":"rabbit","name":"Conejito saltarín","hp":2,"speed":48,"body":{"width":14,"height":22},"detectRange":150,"detectHeight":70,"reactionTime":450,"attackRange":105,"attackCooldown":1450,"trapTime":3500},
- "wool": {"key":"wool","name":"Bola de lana viviente","hp":3,"speed":46,"body":{"width":21,"height":20},"detectRange":170,"detectHeight":55,"reactionTime":400,"attackRange":125,"attackCooldown":1600,"trapTime":3500},
- "pillow": {"key":"pillow","name":"Almohada voladora","hp":3,"speed":38,"body":{"width":24,"height":16},"detectRange":220,"detectHeight":100,"reactionTime":500,"keepDistance":[90,170],"attackCooldown":1700,"trapTime":3500}
+ "rabbit": {"key":"rabbit","name":"Conejito saltarín","hp":2,"speed":48,"body":{"width":14,"height":22},"detectRange":150,"detectHeight":70,"reactionTime":450,"attackRange":105,"attackCooldown":1230,"trapTime":3500},
+ "wool": {"key":"wool","name":"Bola de lana viviente","hp":3,"speed":46,"body":{"width":21,"height":20},"detectRange":170,"detectHeight":55,"reactionTime":400,"attackRange":125,"attackCooldown":1360,"trapTime":3500},
+ "pillow": {"key":"pillow","name":"Almohada voladora","hp":3,"speed":38,"body":{"width":24,"height":16},"detectRange":220,"detectHeight":100,"reactionTime":500,"keepDistance":[90,170],"attackCooldown":1450,"trapTime":3500}
 }

@@ -33,6 +33,13 @@ func sparkle(x: float, y: float, count := 10) -> void:
 	_burst(cfg, count, Vector2(x, y))
 
 
+## Acierto en el descanso de un jefe (IMP-005).
+func gold_spark(x: float, y: float) -> void:
+	var cfg := SPARKLES.duplicate()
+	cfg.colors = colors([0xffd23f, 0xfff0a0])
+	_burst(cfg, 8, Vector2(x, y))
+
+
 func paint_splat(x: float, y: float, color: Color) -> void:
 	var cfg := SPLAT.duplicate()
 	cfg.colors = [color]

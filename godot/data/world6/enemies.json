@@ -1,5 +1,5 @@
 {
- "payasito": {"key":"payasito","name":"Payasito Resorte","hp":2,"speed":0,"body":{"width":16,"height":18},"detectRange":150,"detectHeight":90,"reactionTime":500,"attackCooldown":2200,"trapTime":3500},
- "bloquecito": {"key":"bloquecito","name":"Bloquecito Travieso","hp":3,"speed":36,"body":{"width":18,"height":18},"detectRange":150,"detectHeight":30,"reactionTime":450,"attackRange":130,"attackCooldown":1800,"trapTime":3500},
- "vagoncito": {"key":"vagoncito","name":"Vagoncito Chispa","hp":3,"speed":42,"body":{"width":24,"height":18},"detectRange":190,"detectHeight":40,"reactionTime":550,"attackRange":160,"attackCooldown":2100,"trapTime":3500}
+ "payasito": {"key":"payasito","name":"Payasito Resorte","hp":2,"speed":0,"body":{"width":16,"height":18},"detectRange":150,"detectHeight":90,"reactionTime":500,"attackCooldown":1340,"trapTime":3500},
+ "bloquecito": {"key":"bloquecito","name":"Bloquecito Travieso","hp":3,"speed":36,"body":{"width":18,"height":18},"detectRange":150,"detectHeight":30,"reactionTime":450,"attackRange":130,"attackCooldown":1100,"trapTime":3500},
+ "vagoncito": {"key":"vagoncito","name":"Vagoncito Chispa","hp":3,"speed":42,"body":{"width":24,"height":18},"detectRange":190,"detectHeight":40,"reactionTime":550,"attackRange":160,"attackCooldown":1280,"trapTime":3500}
 }

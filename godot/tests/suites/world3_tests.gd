@@ -125,9 +125,9 @@ func test_w3_boss() -> void:
 	var boss: ReySieston = level.boss
 	check(boss != null and boss.max_hp == 50 and not boss.invulnerable, "Rey Siestón entra vulnerable con 50 HP")
 	var p: Projectile = level.spawn_projectile("player",{"x":boss.position.x,"y":boss.position.y-20,"vx":0,"vy":0,"kind":"sling","frame":"pellet","lifespan":100})
-	p.weapon=Assets.weapon("sling"); boss.hp=34; boss.hit_by(p)
+	p.weapon=Assets.weapon("sling"); boss.hp=33; boss.hit_by(p)
 	check(boss.phase == 2, "cambia a fase 2 al 65%")
-	boss.invulnerable=false; boss.hp=16; boss.hit_by(p)
+	boss.invulnerable=false; boss.hp=15; boss.hit_by(p)
 	check(boss.phase == 3, "cambia a fase 3 al 30%")
 	boss.invulnerable=false; boss.hp=1; boss.hit_by(p)
 	check(boss.is_defeated(), "puede ser derrotado y entra en sueño final")

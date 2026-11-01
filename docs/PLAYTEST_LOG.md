@@ -64,7 +64,7 @@ Imprime las tablas de caídas/golpes por sección y de mundos completados, lista
 - Puntos a mirar: subir y bajar de los trenes, cruce en tren de la sección E (foso 560-583), jefe Locomostro.
 
 ### Mundo 6 — Sueños Cósmicos, Islas en el Cielo
-- Puntos a mirar: sección D (la más densa del juego), ¿se distinguen las estrellas recogibles?, jefa Luna Estelar.
+- Puntos a mirar: tramo 480-525 de la sección D (menos enemigos tras IMP-030), ¿se distinguen las estrellas recogibles?, jefa Luna Estelar.
 
 ### Mundo 7 — El Valle de Caramelo
 - Puntos a mirar: sección D (correas, piruletas, lanzadores), Piruletas Voladoras 280 y 353, jefe Don Chupetón.

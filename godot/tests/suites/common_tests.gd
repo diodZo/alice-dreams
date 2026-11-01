@@ -8,7 +8,7 @@ const TESTS := [
 	"test_bouncy_cloud", "test_wind_zone", "test_hazard_damage", "test_fall_respawn_checkpoint",
 	"test_playtest_log", "test_star_and_pickup", "test_weapons", "test_bubble_traps_and_star",
 	"test_paint_and_sling_damage", "test_stomp", "test_scratch_ai", "test_spit_ai",
-	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base",
+	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base", "test_boss_damage_window", "test_boss_fight_length", "test_tough_enemy_two_bubbles", "test_enemy_aggression_curve",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
 	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
 	"test_intro_cinematic", "test_always_run", "test_no_falls_record", "test_resume_checkpoint", "test_hearts_all_worlds", "test_victory_teaser",
@@ -720,6 +720,118 @@ func test_boss_base() -> void:
 	await load_level()
 	var notches: Array = level.hud.boss_notches.map(func(n): return (n.position.x + 100) / 200.0)
 	check(notches.size() == 2 and BossBase.PHASE_THRESHOLDS.size() == 2 and notches.all(func(x): return BossBase.PHASE_THRESHOLDS.any(func(t): return absf(t - x) < 0.01)), "muescas de la barra del jefe en %s" % str(notches))
+
+
+# IMP-005: el mismo proyectil hace más daño en el descanso que durante un ataque
+func test_boss_damage_window() -> void:
+	await load_level("Boss", func(): GameState.set_v("weapon", "sling"))
+	await settle(); place(12, 14); await frames(150)
+	var boss: BossBase = level.boss
+	var p := _still_shot("sling")
+	var hit_in := func(state: String) -> int:
+		boss.fsm.set_state(state)
+		boss.hp = boss.max_hp
+		boss.phase = 1
+		boss._damage_carry = 0.0
+		boss.hit_by(p)
+		return boss.max_hp - boss.hp
+	check(hit_in.call("REST") == 4, "tirachinas en el descanso: 4 puntos (3 × 1,5)")
+	check(hit_in.call("WIND") == 1, "tirachinas durante un ataque: 1 punto (3 × 0,4)")
+	boss.fsm.set_state("WIND")
+	boss.hp = boss.max_hp
+	boss._damage_carry = 0.0
+	p.weapon = Assets.weapon("bubble")
+	for i in 5:
+		boss.hit_by(p)
+	check(boss.max_hp - boss.hp == 2, "cinco burbujas fuera del descanso quitan 2 puntos: disparar sin parar también avanza")
+
+
+# IMP-005: disparar sin parar y sin esquivar tarda ≥ 1,3× lo que tardaba sin la ventana
+func test_boss_fight_length() -> void:
+	for key in ["Boss", "Boss8"]:
+		var flat := await _fight_ms(key, 1.0, 1.0)
+		var scaled := await _fight_ms(key, BossBase.WINDOW_DAMAGE, BossBase.OPEN_DAMAGE)
+		check(flat > 0 and scaled >= flat * 1.3, "%s: %.1f s -> %.1f s" % [key, flat / 1000.0, scaled / 1000.0])
+
+
+func _still_shot(wid: String) -> Projectile:
+	var p: Projectile = level.spawn_projectile("player", {"x": 0, "y": 0, "vx": 0, "vy": 0, "kind": wid, "frame": "pellet", "lifespan": 100})
+	p.weapon = Assets.weapon(wid)
+	p.active = false
+	return p
+
+
+func _fight_ms(key: String, window: float, open: float) -> float:
+	await load_level(key, func(): GameState.set_v("weapon", "sling"))
+	await settle()
+	place(70 if key == "Boss8" else 12, 14)
+	await frames(200)
+	var boss: BossBase = level.boss
+	boss.window_damage = window
+	boss.open_damage = open
+	var p := _still_shot("sling")
+	var start: float = level.now
+	var next := start
+	while not boss.is_defeated() and level.now - start < 120000.0:
+		level.player.hp = level.player.max_hp
+		level.player.invulnerable_until = level.now + 100000
+		if level.now >= next:
+			boss.hit_by(p)
+			next += p.weapon.cooldown
+		await frames(1)
+	var ms: float = level.now - start
+	level.queue_free()
+	level = null
+	await get_tree().process_frame
+	return ms if ms < 120000.0 else -1.0
+
+
+# IMP-006: los enemigos de 4 PV o más necesitan dos burbujas
+func test_tough_enemy_two_bubbles() -> void:
+	await load_level("World7")
+	await settle(); _clear_spawner()
+	place(100, 20); await frames(3)
+	var e: Enemy = _spawn_enemy("gomilito", 106, 20)
+	await frames(2)
+	var p := _still_shot("bubble")
+	e.hit_by(p)
+	check(not e.is_trapped() and e.half_bubble != null, "la primera burbuja lo envuelve a medias")
+	e.hit_by(p)
+	check(e.is_trapped() and e.half_bubble == null, "la segunda lo atrapa")
+	e.hit_by(p)
+	check(not e.is_alive(), "atrapado se convierte en estrella")
+	var other: Enemy = _spawn_enemy("gomilito", 106, 20)
+	await frames(2)
+	other.hit_by(p)
+	other.half_wrap_until = level.now
+	await frames(2)
+	check(other.half_bubble == null and other.half_wrap_until == 0.0, "la media burbuja se suelta si no llega la segunda")
+	var weak: Enemy = _spawn_enemy("cuppy", 110, 20)
+	await frames(2)
+	weak.hit_by(p)
+	check(weak.is_trapped(), "un enemigo de menos de 4 PV cae con una burbuja")
+
+
+# IMP-007: los enemigos atacan algo más a menudo en cada mundo, siempre con aviso de ≥ 400 ms
+func test_enemy_aggression_curve() -> void:
+	var dirs := ["enemies", "world2", "world3", "world4", "world6", "world5", "world7", "world8"] # en orden de juego
+	var last := INF
+	for d in dirs:
+		var data: Dictionary = C.load_json("res://data/%s/enemies.json" % d)
+		var cds: Array = data.values().map(func(e): return float(e.attackCooldown))
+		cds.sort()
+		var n := cds.size()
+		var median: float = cds[n / 2] if n % 2 else (cds[n / 2 - 1] + cds[n / 2]) / 2.0
+		check(median <= last, "%s: mediana de enfriamiento %d no crece" % [d, median])
+		last = median
+	var short := []
+	var regex := RegEx.create_from_string("telegraph\\((\\d+)\\)")
+	for f in DirAccess.get_files_at("res://scripts/ai"):
+		if f.ends_with(".gd"):
+			for m in regex.search_all(FileAccess.get_file_as_string("res://scripts/ai/" + f)):
+				if int(m.get_string(1)) < 400:
+					short.append(f)
+	check(short.is_empty(), "ningún aviso por debajo de 400 ms (fallan %s)" % str(short))
 
 
 # IMP-002: escalado entero (píxeles iguales, con bandas si la pantalla no es múltiplo de 480x270)

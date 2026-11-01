@@ -22,8 +22,8 @@ func alert_update(time: float) -> void:
 
 func attack() -> void:
 	anim("attack", false)
-	telegraph(300)
-	after(300, func():
+	telegraph(400)
+	after(400, func():
 		level.spawn_projectile("enemy", {
 			"x": position.x + facing * 14,
 			"y": position.y - 11,

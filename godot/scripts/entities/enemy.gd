@@ -15,6 +15,10 @@ const HURT := "HURT"
 const DEFEATED := "DEFEATED"
 const TRAPPED := "TRAPPED"
 const MAX_FALL := 420.0
+## Desde esta vida hacen falta dos burbujas para atraparlo (IMP-006).
+const TOUGH_BUBBLE_HP := 4
+## Tiempo para acertar la segunda burbuja antes de que se suelte la primera.
+const HALF_WRAP_MS := 2500.0
 
 @export var enemy_type := "scratch"
 
@@ -37,6 +41,8 @@ var paint_color: Variant = null
 var lost_sight_at := 0.0
 var trap_until := 0.0
 var bubble: Sprite2D
+var half_wrap_until := 0.0
+var half_bubble: Sprite2D
 var alert_icon: Node2D
 var gravity_enabled := true
 var body_enabled := true
@@ -269,14 +275,8 @@ func _enter_TRAPPED(_prev: String, _data: Variant) -> void:
 	sprite.pause()
 	gravity_enabled = false
 	velocity = Vector2(0, -16)
-	bubble = Sprite2D.new()
-	bubble.texture = Assets.frame("fx", "bubble")
-	var size := maxf(def.body_size.x, def.body_size.y) + 12
-	bubble.scale = Vector2(size / bubble.texture.get_width(), size / bubble.texture.get_height())
-	bubble.position = Vector2(0, -def.body_size.y / 2.0)
-	bubble.modulate.a = 0.8
-	bubble.z_index = 1
-	add_child(bubble)
+	_clear_half_wrap()
+	bubble = _make_bubble(12, 0.8)
 	trap_until = now + def.trap_time
 	AudioManager.play("bubble_trap")
 
@@ -294,6 +294,33 @@ func _update_TRAPPED(time: float, _delta: float) -> void:
 		level.effects.bubble_pop(bp.x, bp.y)
 		AudioManager.play("bubble_pop")
 		fsm.set_state(ALERT)
+
+
+func _make_bubble(margin: float, alpha: float) -> Sprite2D:
+	var b := Sprite2D.new()
+	b.texture = Assets.frame("fx", "bubble")
+	var size := maxf(def.body_size.x, def.body_size.y) + margin
+	b.scale = Vector2(size / b.texture.get_width(), size / b.texture.get_height())
+	b.position = Vector2(0, -def.body_size.y / 2.0)
+	b.modulate.a = alpha
+	b.z_index = 1
+	add_child(b)
+	return b
+
+
+## Primera burbuja sobre un enemigo resistente: queda envuelto a medias, sin dejar de moverse.
+func _half_wrap() -> void:
+	half_wrap_until = now + HALF_WRAP_MS
+	if half_bubble == null:
+		half_bubble = _make_bubble(2, 0.4)
+	AudioManager.play("bubble_trap")
+
+
+func _clear_half_wrap() -> void:
+	half_wrap_until = 0
+	if half_bubble != null:
+		half_bubble.queue_free()
+		half_bubble = null
 
 
 func _exit_TRAPPED(_next: String) -> void:
@@ -342,6 +369,8 @@ func _physics_process(delta: float) -> void:
 	if painted_until != 0 and time >= painted_until:
 		painted_until = 0
 		apply_tint()
+	if half_wrap_until != 0 and time >= half_wrap_until:
+		_clear_half_wrap()
 	if body_enabled:
 		if gravity_enabled:
 			velocity.y = minf(velocity.y + C.GRAVITY * delta, MAX_FALL)
@@ -368,7 +397,10 @@ func hit_by(projectile: Projectile) -> bool:
 		convert_to_star()
 		return true
 	if w.effect == "trap":
-		fsm.set_state(TRAPPED)
+		if def.hp >= TOUGH_BUBBLE_HP and half_wrap_until == 0:
+			_half_wrap()
+		else:
+			fsm.set_state(TRAPPED)
 		return true
 	if w.effect == "paint":
 		painted_until = now + 2500

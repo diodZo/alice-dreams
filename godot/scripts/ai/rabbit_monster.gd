@@ -27,8 +27,8 @@ func _prepare_jump() -> void:
 	hop_state = "prep"
 	velocity.x = 0
 	Anim.show_frame(sprite, "jump", 0)
-	telegraph(320)
-	after(320, _jump)
+	telegraph(400)
+	after(400, _jump)
 
 func _jump() -> void:
 	face_player()

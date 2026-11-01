@@ -12,6 +12,11 @@ signal defeated_at(x: float, y: float)
 const PHASE_THRESHOLDS := C.BOSS_PHASE_THRESHOLDS
 ## Pausa de impacto (IMP-020) al cambiar de fase y al derrotarlo.
 const STRONG_HIT_STOP_MS := 60.0
+## Estados de descanso: la ventana para castigar al jefe (IMP-005).
+const WINDOW_STATES := ["REST", "STUNNED"]
+## Multiplicadores del daño de arma en la ventana y fuera de ella (IMP-005).
+const WINDOW_DAMAGE := 1.5
+const OPEN_DAMAGE := 0.4
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var shape: CollisionShape2D = $Shape
@@ -37,6 +42,10 @@ var flash: ShaderMaterial
 var phase_change_state := "PHASE_CHANGE"
 ## Chispa o mancha de pintura donde impacta el proyectil (Nubarrón y Garabato).
 var impact_effects := false
+var window_damage := WINDOW_DAMAGE
+var open_damage := OPEN_DAMAGE
+## Fracción de daño pendiente: fuera de la ventana una burbuja no llega a quitar un punto de vida.
+var _damage_carry := 0.0
 var _phases := {}
 
 
@@ -98,15 +107,29 @@ func hit_by(projectile: Projectile) -> bool:
 			level.effects.paint_splat(projectile.position.x, projectile.position.y, projectile.paint_color)
 		else:
 			level.effects.impact(projectile.position.x, projectile.position.y, Color.WHITE)
-	take_damage(projectile.weapon.boss_damage if projectile.weapon else 1)
+	var in_window := in_damage_window()
+	if in_window:
+		level.effects.gold_spark(projectile.position.x, projectile.position.y)
+	take_damage(_scaled_damage(projectile.weapon.boss_damage if projectile.weapon else 1, in_window))
 	return true
+
+
+func in_damage_window() -> bool:
+	return fsm.current in WINDOW_STATES
+
+
+func _scaled_damage(base: int, in_window: bool) -> int:
+	var total := base * (window_damage if in_window else open_damage) + _damage_carry
+	var whole := int(total)
+	_damage_carry = total - whole
+	return whole
 
 
 ## Resta vida, destella y decide el cambio de fase o la derrota.
 func take_damage(dmg: int) -> void:
 	if is_defeated() or invulnerable:
 		return
-	hp = maxi(0, hp - dmg)
+	hp = maxi(0, hp - dmg) # dmg 0: acierto que aún no quita un punto entero; se ve y se oye igual
 	GameState.set_v("bossHp", hp)
 	AudioManager.play("boss_hit")
 	# destello blanco (setTintFill) durante 60 ms

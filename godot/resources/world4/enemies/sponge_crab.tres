@@ -10,5 +10,4 @@ hp = 3
 speed = 42.0
 body_size = Vector2(22, 18)
 detect_range = 140.0
-attack_cooldown = 1300.0
 attack_range = 34.0
