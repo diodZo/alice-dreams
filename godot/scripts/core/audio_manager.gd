@@ -8,6 +8,9 @@ const SFX_VOICES := 10
 
 var music_on := true
 var sfx_on := true
+## Volumen elegido en el panel de volumen (0-100).
+var music_volume := 100
+var sfx_volume := 100
 var current_track := ""
 var ducked := false
 
@@ -31,6 +34,8 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	music_on = SaveManager.get_setting("music") != false
 	sfx_on = SaveManager.get_setting("sfx") != false
+	music_volume = int(SaveManager.get_setting("musicVolume"))
+	sfx_volume = int(SaveManager.get_setting("sfxVolume"))
 	_music_bus = _ensure_bus("Music")
 	_sfx_bus = _ensure_bus("SFX")
 	for i in SFX_VOICES:
@@ -42,6 +47,7 @@ func _ready() -> void:
 	_music.bus = "Music"
 	add_child(_music)
 	_apply_music_volume()
+	_apply_sfx_volume()
 	# Efectos: cortos, se generan al arrancar. Música: en segundo plano (tarda unos segundos).
 	for ev in Synth.SFX:
 		_sfx_streams[ev] = _load_file(AudioConfig.SFX_FILES.get(ev, ""))
@@ -209,6 +215,24 @@ func set_sfx_enabled(on: bool) -> void:
 	SaveManager.set_setting("sfx", on)
 
 
+## Subir el volumen con la música en «No» la vuelve a encender.
+func set_music_volume(value: int) -> void:
+	music_volume = clampi(value, 0, 100)
+	SaveManager.set_setting("musicVolume", music_volume)
+	if music_on or music_volume == 0:
+		_apply_music_volume()
+	else:
+		set_music_enabled(true)
+
+
+func set_sfx_volume(value: int) -> void:
+	sfx_volume = clampi(value, 0, 100)
+	SaveManager.set_setting("sfxVolume", sfx_volume)
+	if sfx_volume > 0 and not sfx_on:
+		set_sfx_enabled(true)
+	_apply_sfx_volume()
+
+
 ## Atenúa la música (pausa) o la restaura.
 func duck(on: bool) -> void:
 	ducked = on
@@ -221,4 +245,17 @@ func _apply_music_volume() -> void:
 	var vol := 1.0 if not file_music else 0.5
 	if ducked:
 		vol = 0.35 if not file_music else 0.2
-	AudioServer.set_bus_volume_db(_music_bus, linear_to_db(vol) if music_on else -80.0)
+	AudioServer.set_bus_volume_db(_music_bus, _volume_db(vol * _gain(music_volume)) if music_on else -80.0)
+
+
+func _apply_sfx_volume() -> void:
+	AudioServer.set_bus_volume_db(_sfx_bus, _volume_db(_gain(sfx_volume)))
+
+
+## El oído no es lineal: al cuadrado, cada paso del panel se nota parecido.
+func _gain(volume: int) -> float:
+	return pow(volume / 100.0, 2.0)
+
+
+func _volume_db(gain: float) -> float:
+	return linear_to_db(gain) if gain > 0.0 else -80.0

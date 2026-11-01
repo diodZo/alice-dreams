@@ -50,6 +50,7 @@ var ending_btn: CloudButton
 ## Diario de Sueños (abre la página del mundo seleccionado en el carrusel).
 var journal_btn: CloudButton
 var journal_badge: PixelText
+var volume_btn: CloudButton
 var list: MenuList
 ## Pregunta «Continuar / Empezar de nuevo» de un mundo con partida a medias (IMP-016).
 var resume_prompt: ResumePrompt
@@ -112,10 +113,18 @@ func _ready() -> void:
 	bt.tween_property(journal_badge, "scale", Vector2.ONE, 0.4)
 	_refresh_journal_badge()
 
-	var buttons: Array[CloudButton] = [carousel.focus_slot, music_btn, sfx_btn, reset_btn, journal_btn]
+	volume_btn = CloudButton.make("Volumen", 100, 18)
+	volume_btn.position = Vector2(168, 218)
+	volume_btn.activated.connect(func(_b):
+		VolumePanel.open(self).closed.connect(func():
+			music_btn.set_label(_music_label())
+			sfx_btn.set_label(_sfx_label())))
+	add_child(volume_btn)
+
+	var buttons: Array[CloudButton] = [carousel.focus_slot, music_btn, sfx_btn, reset_btn, journal_btn, volume_btn]
 	if SaveManager.is_adventure_completed():
 		ending_btn = CloudButton.make("Ver el final", 100, 18)
-		ending_btn.position = Vector2(168, 218)
+		ending_btn.position = Vector2(168, 239)
 		ending_btn.activated.connect(func(_b): watch_ending())
 		add_child(ending_btn)
 		buttons.append(ending_btn)

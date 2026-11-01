@@ -8,7 +8,7 @@ const TESTS := [
 	"test_bouncy_cloud", "test_wind_zone", "test_hazard_damage", "test_fall_respawn_checkpoint",
 	"test_playtest_log", "test_star_and_pickup", "test_weapons", "test_bubble_traps_and_star",
 	"test_paint_and_sling_damage", "test_stomp", "test_scratch_ai", "test_spit_ai",
-	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base", "test_boss_damage_window", "test_boss_fight_length", "test_tough_enemy_two_bubbles", "test_enemy_aggression_curve",
+	"test_flea_ai", "test_enemy_spawner_distance", "test_boss_phases_and_victory", "test_boss_base", "test_volume_panel", "test_boss_damage_window", "test_boss_fight_length", "test_tough_enemy_two_bubbles", "test_enemy_aggression_curve",
 	"test_integer_scaling", "test_menu_keyboard", "test_gamepad", "test_menu_art",
 	"test_world_carousel", "test_pause_resume", "test_sign_bubbles_inside", "test_checkpoint_spacing", "test_object_overlap_hook", "test_level_schema", "test_hit_stop",
 	"test_intro_cinematic", "test_always_run", "test_no_falls_record", "test_resume_checkpoint", "test_hearts_all_worlds", "test_victory_teaser",
@@ -832,6 +832,53 @@ func test_enemy_aggression_curve() -> void:
 				if int(m.get_string(1)) < 400:
 					short.append(f)
 	check(short.is_empty(), "ningún aviso por debajo de 400 ms (fallan %s)" % str(short))
+
+
+# Volumen de música y efectos: se guarda, llega a los buses y carga en guardados antiguos
+func test_volume_panel() -> void:
+	var music_before := [AudioManager.music_on, AudioManager.music_volume]
+	var sfx_before := [AudioManager.sfx_on, AudioManager.sfx_volume]
+	AudioManager.music_on = true
+	var host := Node.new()
+	add_child(host)
+	var panel := VolumePanel.open(host)
+	await frames(2)
+	panel.change_music(50)
+	var music_bus := AudioServer.get_bus_index("Music")
+	var full: float = AudioServer.get_bus_volume_db(music_bus)
+	check(SaveManager.get_setting("musicVolume") == 50 and panel.music_btn.label.text.contains("50"), "la música queda al 50 % y el panel lo escribe")
+	panel.change_music(100)
+	check(AudioServer.get_bus_volume_db(music_bus) > full, "subir el volumen sube el bus de música")
+	panel.change_sfx(40)
+	var sfx_bus := AudioServer.get_bus_index("SFX")
+	check(SaveManager.get_setting("sfxVolume") == 40 and is_equal_approx(AudioServer.get_bus_volume_db(sfx_bus), linear_to_db(0.16)), "el volumen de efectos llega a su bus")
+	panel.change_sfx(0)
+	check(AudioServer.get_bus_volume_db(sfx_bus) == -80.0, "a 0 los efectos quedan en silencio")
+	panel.change_sfx(250)
+	check(AudioManager.sfx_volume == 100, "el volumen no pasa de 100")
+	panel.list.select(0)
+	panel.change_music(90)
+	panel._adjust(VolumePanel.STEP)
+	check(AudioManager.music_volume == 100, "derecha sube la opción seleccionada")
+	panel.music_btn.activate()
+	check(AudioManager.music_volume == 0, "activar desde 100 vuelve a 0 (ratón y táctil)")
+	panel.music_btn.activate()
+	check(AudioManager.music_volume == 10, "y sigue subiendo")
+	var closed := [false]
+	panel.closed.connect(func(): closed[0] = true)
+	panel.close()
+	await frames(2)
+	check(closed[0] and not is_instance_valid(panel), "Volver cierra el panel")
+	host.queue_free()
+	var f := FileAccess.open(SaveManager.save_path, FileAccess.WRITE)
+	f.store_string(JSON.stringify({"version": 2, "settings": {"music": true, "sfx": true}}))
+	f.close()
+	SaveManager.load_state()
+	check(SaveManager.get_setting("musicVolume") == 100 and SaveManager.get_setting("sfxVolume") == 100, "un guardado sin volumen carga al 100 %")
+	AudioManager.set_music_volume(music_before[1])
+	AudioManager.set_sfx_volume(sfx_before[1])
+	AudioManager.music_on = music_before[0]
+	AudioManager.sfx_on = sfx_before[0]
 
 
 # IMP-002: escalado entero (píxeles iguales, con bandas si la pantalla no es múltiplo de 480x270)

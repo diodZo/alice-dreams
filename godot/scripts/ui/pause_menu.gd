@@ -2,6 +2,7 @@ extends CanvasLayer
 ## Menú de pausa superpuesto al nivel, que queda en pausa (port de scenes/PauseScene.js).
 
 var level: Node
+var volume_panel: VolumePanel
 
 
 func _ready() -> void:
@@ -14,13 +15,13 @@ func _ready() -> void:
 	dim.size = Vector2(W, H)
 	add_child(dim)
 	var title := PixelText.make("Pausa", {"origin": Vector2(0.5, 0.5), "scale": 2, "tint": C.YELLOW})
-	title.position = Vector2(W / 2, 50)
+	title.position = Vector2(W / 2, 44)
 	add_child(title)
 
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 4)
-	box.position = Vector2(W / 2 - 85, 75)
-	box.size = Vector2(170, 130)
+	box.position = Vector2(W / 2 - 85, 68)
+	box.size = Vector2(170, 180)
 	add_child(box)
 	var resume := CloudButton.make("Continuar", 170)
 	resume.activated.connect(func(_b): resume_game())
@@ -33,6 +34,12 @@ func _ready() -> void:
 		AudioManager.set_sfx_enabled(not AudioManager.sfx_on)
 		b.set_label(_sfx_label())
 		AudioManager.play("ui_select"))
+	var volume := CloudButton.make("Volumen", 170)
+	volume.activated.connect(func(_b):
+		volume_panel = VolumePanel.open(self)
+		volume_panel.closed.connect(func():
+			music.set_label(_music_label())
+			sfx.set_label(_sfx_label())))
 	var run := CloudButton.make(_run_label(), 170)
 	run.activated.connect(func(b):
 		SaveManager.set_setting("alwaysRun", SaveManager.get_setting("alwaysRun") != true)
@@ -42,7 +49,7 @@ func _ready() -> void:
 	restart.activated.connect(func(_b): level.restart_from_checkpoint())
 	var quit := CloudButton.make("Salir al menú", 170)
 	quit.activated.connect(func(_b): level.exit_to_menu())
-	var buttons: Array[CloudButton] = [resume, music, sfx, run, restart, quit]
+	var buttons: Array[CloudButton] = [resume, music, sfx, volume, run, restart, quit]
 	for b in buttons:
 		box.add_child(b)
 	add_child(MenuList.new().setup(buttons))
@@ -52,7 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and (not event.pressed or event.echo):
 		return
 	# Esc / P o el botón táctil de pausa reanudan
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and not is_instance_valid(volume_panel):
 		get_viewport().set_input_as_handled()
 		resume_game()
 

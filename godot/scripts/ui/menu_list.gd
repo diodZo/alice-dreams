@@ -69,7 +69,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			buttons[index].activate()
 	else:
 		return
-	get_viewport().set_input_as_handled()
+	if is_inside_tree(): # activar un botón puede haber cambiado de escena
+		get_viewport().set_input_as_handled()
 
 
 func move(d: int) -> void:

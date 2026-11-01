@@ -28,7 +28,7 @@ func defaults() -> Dictionary:
 		"unlockedWorld": 1,
 		# { "1": { completed, bestStars, totalStars, specialStar, bestTime, completedAt } }
 		"worlds": {},
-		"settings": {"music": true, "sfx": true, "alwaysRun": false},
+		"settings": {"music": true, "sfx": true, "alwaysRun": false, "musicVolume": 100, "sfxVolume": 100},
 		# Mundo 8: victoria final (desbloquea volver a ver el final desde el menú). Campos nuevos:
 		# un guardado anterior se carga igual (valores por defecto) y no pierde nada.
 		"adventureCompleted": false,
@@ -105,6 +105,9 @@ func _merge(p: Dictionary) -> void:
 		for k in ["music", "sfx", "alwaysRun"]:
 			if p.settings.get(k) is bool:
 				state.settings[k] = p.settings[k]
+		for k in ["musicVolume", "sfxVolume"]:
+			if p.settings.get(k) is float:
+				state.settings[k] = clampi(int(p.settings[k]), 0, 100)
 
 
 func persist() -> void:
